@@ -1,0 +1,228 @@
+{
+  "created_at": "2026-10-09T03:09:02.450009+00:00",
+  "name": "smt-v1",
+  "dataset": "smt2020",
+  "phase": "acceptance_smt_v1",
+  "tag": "freeze-smt-v1",
+  "code_commit": "248ed415177ddd0741f9061c668bdd841e24ac42",
+  "protocol_version": "round2-smt-v1",
+  "config_path": "configs/smt-v1.json",
+  "effective_config_sha256": {
+    "1": "dffa6bf507ddd68ff10a874582f0b1daaf54ab11e3c3331ef47f9c965abf56be",
+    "2": "747ca4b8fe4e1bf959d6ecf43914db5148a8e5becb4070037de6bb70bad7d02b",
+    "3": "01fbfd498c17de904784d564ca54d0df19f0cfb98daa995cffdb99e48b8d9b27"
+  },
+  "matrix": [
+    [
+      801,
+      "A",
+      1
+    ],
+    [
+      801,
+      "B",
+      1
+    ],
+    [
+      801,
+      "C",
+      1
+    ],
+    [
+      801,
+      "A",
+      2
+    ],
+    [
+      801,
+      "B",
+      2
+    ],
+    [
+      801,
+      "C",
+      2
+    ],
+    [
+      801,
+      "A",
+      3
+    ],
+    [
+      801,
+      "B",
+      3
+    ],
+    [
+      801,
+      "C",
+      3
+    ],
+    [
+      802,
+      "A",
+      1
+    ],
+    [
+      802,
+      "B",
+      1
+    ],
+    [
+      802,
+      "C",
+      1
+    ],
+    [
+      802,
+      "A",
+      2
+    ],
+    [
+      802,
+      "B",
+      2
+    ],
+    [
+      802,
+      "C",
+      2
+    ],
+    [
+      802,
+      "A",
+      3
+    ],
+    [
+      802,
+      "B",
+      3
+    ],
+    [
+      802,
+      "C",
+      3
+    ],
+    [
+      803,
+      "A",
+      1
+    ],
+    [
+      803,
+      "B",
+      1
+    ],
+    [
+      803,
+      "C",
+      1
+    ],
+    [
+      803,
+      "A",
+      2
+    ],
+    [
+      803,
+      "B",
+      2
+    ],
+    [
+      803,
+      "C",
+      2
+    ],
+    [
+      803,
+      "A",
+      3
+    ],
+    [
+      803,
+      "B",
+      3
+    ],
+    [
+      803,
+      "C",
+      3
+    ]
+  ],
+  "core": true,
+  "files": {
+    "configs/development-aux.json": "375e513a612b98fc030b1d4347780b1aa4bab5892bb549c8110706cd844c1606",
+    "configs/development-compact-c.json": "dc6d16a87d6281ccad8d00a55158060f46611550bf2c8c98585561e3f50246b5",
+    "configs/development-portfolio.json": "3beb720387000443a5aec4928470e887177fcf32b5be7d3661d30e59d0f45988",
+    "configs/development-v2.json": "715cefbd8f6b6042496116aac38e96e3a904e5e2dc9261c80a2aa364a757093e",
+    "configs/development.json": "0b4d03278cff2a6de33f9c49690184429c2956b9feba7ce30cb47b228179cd29",
+    "configs/model.json": "871a8242b9e79ef424cf33e45cf7f6045543fe0e6fee48cc77b1ce65edf195b6",
+    "configs/smt-aux-v1.json": "54098331561d07c719c433707cb13e159e4b012133defe870e7e166955e3d18e",
+    "configs/smt-development.json": "0c03198c6438f795ea5ceca0e8707efecc8320a13f64e98230f2c3342aca166e",
+    "configs/smt-scenarios-v1.json": "64f73f572c409df453b84d78d7b64aac7d8311207efbffec9ad9ab95e633ffbe",
+    "configs/smt-v1.json": "ce3c2f66f38f649c635e1efff065ef223d9089d75c3d74eed367ba8cb4aed66e",
+    "configs/static-aux-v1.json": "14a0d489c1a459c9e218e0c00a77c7cd6cba7e315cb4a15a18a2b8de17036d5b",
+    "configs/static-v1.json": "0c1259041ecaad8d3a37bd819a07522ced50a18cdb0b4420154fc07d91961b7c",
+    "data/smt/conversion-manifest.json": "65ab3f0568bc6b850306b8408e78d4810fddec85649cc1f99ae27208edb09ac2",
+    "data/smt/source-manifest.json": "efb504ed6cb50ad91edb71aab8163bc6af7ef0df835aecd42887007435ba73e1",
+    "docs/PROTOCOL_SMT_v1.md": "5abd55d16eee09479bd22c36f9ccb2a4965d72dda66d9403b05e4f0d8ea83a18",
+    "docs/runtime-environment.json": "621a32ac77a845fcacca5055abc929cdc9dc10ffff023df3748274b90a93f27b",
+    "prompts/static_b.txt": "31463750bfa69ee35f750fc940de6ff2dd16e66c7c21862ae4a541cd09e47c01",
+    "prompts/static_b_compact.txt": "0c960ef7d94039a6cac9bb8812a140b011080bf361f03d2a71de5a13a86fe097",
+    "prompts/static_c.txt": "66f9f408b23e4aa9b1fe7cae05977cbcb754f0d3b245f68f25f7ba11bc2d39cc",
+    "requirements.lock": "a356a738d3d5a3a9811a9deb86de3b7efc4e22aa86bd3b8f6092ceb9408a5f6f",
+    "scripts/freeze_smt.py": "b09b893f386d9f0433c66a944821b87705a6277b532b0269dacc749b75c48b89",
+    "src/__init__.py": "5de895cc2273e38380fb6d9ffe12144cd766b7c1f85590243097f60bc581f55a",
+    "src/agents/__init__.py": "0cba2ea53ed62a07a8b038e5c44791c07281472ee51d8dbc3a1df515b476a23d",
+    "src/agents/budget.py": "aa675160127599dddb18fb88683ebc79f4df1522b9c5bdfdcc166141df783c8a",
+    "src/agents/model_transport.py": "29f4ea6f6333124a34db48cc3cbec42ac3c487fa89408861f6ae0bb076cb6ced",
+    "src/agents/static.py": "8f797bffc43f57b691af29af94564755ddf7a2b3c9ae17a7de7b66cd3ccdb85d",
+    "src/batch.py": "2e2a96fa92334a6b7ac9d94f4773b9bb681094875ba8fa0b985e405476d13b54",
+    "src/experiment.py": "557ad651715fa3661f65f4b3a61d6145f61d714cdceaf3e2e4f0c9f11b42bcad",
+    "src/fjsp/__init__.py": "1d27e5a98ae190279c29e48be976479c1500d01c34d3b262cb64e55ff7708f6d",
+    "src/fjsp/problem.py": "90d9b016477aa150e1367999d80cef4465b0c037d086ab707347a057339b7ae4",
+    "src/fjsp/solver.py": "ba400c94587718a40594ca1aeb74f09ad71383e513605f8fb7fc539448bb3381",
+    "src/fjsp/validator.py": "d4f4162bf2f0163b0319f4626b5c1cda1f39321f6f2ab19a66cca83baee5eecb",
+    "src/replay.py": "734c68d5d82e4cec7d4e61d6ee4efe4824e7c787005603cfed590c833c7a6296",
+    "src/report.py": "83ad9e3885977003913f3154442a88efaedfc9e27c3b5092c20292fe0b2d3f2d",
+    "src/runner.py": "419212047819b4ed8c8a2dcf458ddeed1764abc09855c052fbdfeb4ef732e6fe",
+    "src/smt/__init__.py": "2a0553110db752270170e7f14da1ca6ac36a496dcab4a5495f943e5e41af9f80",
+    "src/smt/audit.py": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+    "src/smt/environment.py": "04598803fd84239ec1de464505f5450e9a82dbb6ea0b73d13227a1ab55b8c5c6",
+    "src/smt/optimizer.py": "c57a42533c3d941e4a56039af41c6f1d62ee8a51b12062194c7e342c316f9ece",
+    "src/smt/source_check.py": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+    "src/smt_control.py": "0157214fb003b98f1e20d0a36743c46cae81589c102a1241cd65419f758d90f5",
+    "src/smt_replay.py": "f92d2cabe0c43d1f8493e62018f7259bba9827a3225f37501d0cd9325a837edb",
+    "src/smt_report.py": "2c8aeaee52a3f2aa24cbc2c160e0479adee289991a69bffb041e2cf3704b6ac5",
+    "tests/test_agents.py": "65919dba9a5435bedd15254e4581fe4fb4bfabd96da7bdeaa66ac17dc16ccdd7",
+    "tests/test_budget_tokens.py": "43d23e35a5951858dcb0255bd52ff08d75bd3dffa212c35095db45a82df7bfa3",
+    "tests/test_compact_actions.py": "94982e09c0c556ac35e829bd52b50c14089131c6759b61057bd4ca02e9856467",
+    "tests/test_fjsp_validation.py": "d5b131124042b147dbb6cc045d2b37f5cd78ed7d32ea930afd95f0e6a9f9f102",
+    "tests/test_replay.py": "3c3621dfa88fb762bef7720e2c0af72eeaa32d0c2af4ebed7cb495988d0bfca3",
+    "tests/test_smt.py": "011ab9dc9b40fcde1d2a3f77165dcdc84ff233d6389b2a1411a5ada71522c118",
+    "tests/test_smt_replay.py": "46cb7edc5cdd95953f6efb7116917a30f3de280e75dfdb0e19bd5c457d6e9ce0",
+    "tests/test_solver.py": "9d1bd59f7e3881ad6141e66c60bf9d64334373ac46e2dcbcd5aeb7d4e7dfb011"
+  },
+  "source_data": {
+    "data/smt/SMT2020_LVHM/WIP.txt": "5175dc5c17acc53bf599be99922576738ef621407062200027f0b16d7da07035",
+    "data/smt/SMT2020_LVHM/attach.txt": "b2b32badc09121c9f2b596c1a10a42418f4de16590fe32923ec8b7f9c446d62d",
+    "data/smt/SMT2020_LVHM/downcal.txt": "c548e7d2c46898717b0e57986c6de745f104b4616cb31e825bf141be4d4baca0",
+    "data/smt/SMT2020_LVHM/fromto.txt": "56229f6f17e347e7092aec03aeec98d95628676d765555b1a1d6d0af1c95f8d1",
+    "data/smt/SMT2020_LVHM/order.txt": "f47d7163bf292fc3ac637cffdbe5946e209dde04470acdf86334ffb7fbc6fb07",
+    "data/smt/SMT2020_LVHM/part.txt": "fa86df1b5a49e15cba4b6c4f0c58e758347c2403fab100255c5ededa71371b37",
+    "data/smt/SMT2020_LVHM/pmcal.txt": "8c6f791d45ba6ac31913848f32fec78191e52e4021688a75bd46bd8090fc376a",
+    "data/smt/SMT2020_LVHM/route_1.txt": "fe3a01416aca85116bf53cec2276b9834e472f97aff395b98a73acf09a550090",
+    "data/smt/SMT2020_LVHM/route_10.txt": "f2220b8acbe116d613ab033124af3e86db10d46f8db8eef8397c43fa50e96d22",
+    "data/smt/SMT2020_LVHM/route_2.txt": "edd41aeeaad8bc4b55029494bd6905eddd68382a45cd7f41c85d2d0c257e5809",
+    "data/smt/SMT2020_LVHM/route_3.txt": "21f8e94fd36b66c869efa482056257c1c8c908b1550731e7fde9f9f2e96b74ef",
+    "data/smt/SMT2020_LVHM/route_4.txt": "f9daf7e844299bfb5722172b4fde6b8354a761d6fcc4fd40a27d53cc43278ac9",
+    "data/smt/SMT2020_LVHM/route_5.txt": "a33b1ab6e0169770fd47dcc5e849698bf98fa73d31ccc43f1279f27ae04a9530",
+    "data/smt/SMT2020_LVHM/route_6.txt": "c012aa3d2d84e338aa594fcb0deb2744d9cb09040fd8f142aef630dd11138bf4",
+    "data/smt/SMT2020_LVHM/route_7.txt": "b3ababe660f6d9ca907e0d69f20683c8baa091142bd954beb976310f3273b075",
+    "data/smt/SMT2020_LVHM/route_8.txt": "fead38c4e7ae450a9701bbee1bdbae9e9855141586781b811303e5c06f2b1622",
+    "data/smt/SMT2020_LVHM/route_9.txt": "9944b6304418aad3be9c4f7676c67a2fd6e4e5880727db626dbff115fc8b0aa5",
+    "data/smt/SMT2020_LVHM/setup.txt": "bacd8cfdf6ab6599821bb430033dda12802d7424f93501c4dea8d7d1a739cdb7",
+    "data/smt/SMT2020_LVHM/setupgrp.txt": "e557590f4bc776607f1100b9cdd27ce373ca0ddec831b56f2ca58465ed0792f1",
+    "data/smt/SMT2020_LVHM/tool.txt.1l": "adf66e557c78adf27ae11583fa964a164da7928d16e42b7c9932cc0ca457016c"
+  }
+}

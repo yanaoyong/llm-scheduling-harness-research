@@ -1,0 +1,52 @@
+{
+  "scope": "快速核对本次修订涉及的会话摘要是否把助手建议误写成用户批准；依据 8 份 notes 摘要及 canonical conversations/index.json 截止。",
+  "canonical_snapshot": {
+    "sessions": 98,
+    "primary_sessions": 8,
+    "visible_messages": 5035,
+    "cutoff_utc": "2026-10-12T12:48:19.877397+00:00"
+  },
+  "checks": [
+    {
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "result": "摘要将预算/模型分工写为用户授权，将路线建议与 harness 方案标成调研结论/讨论稿；没有把助手建议写成用户批准。"
+    },
+    {
+      "thread_id": "01a12f91-839a-7c20-966e-c689ec30391a",
+      "result": "摘要将45次、41次启动等限定为当时检查点，明确不是后续最终预算/研究结论。"
+    },
+    {
+      "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+      "result": "摘要补入规范 transcript 中 B 完成3600秒的最终结果、修复内容、10/12报告与已知成本边界；明确803.25秒是起点。"
+    },
+    {
+      "thread_id": "01a12393-b066-79e3-ad84-0ee36b45d691",
+      "result": "摘要区分观察会话的阶段性进度与后续修复会话最终结果，并记录授权转交续跑。"
+    },
+    {
+      "thread_id": "01a11fc6-3c70-7380-aadd-4a88dbd97d58",
+      "result": "摘要明确该会话停止时停在803.25秒且任务暂停，续跑后由另一会话接手；未冒称本会话已完成。"
+    },
+    {
+      "thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+      "result": "摘要把135/45运行数据标为助手报告，把两设备设计局限与后续建议分开；未把全厂建议冒充已执行。"
+    },
+    {
+      "thread_id": "01a11bce-5043-7871-b0e3-cd5f4e9f2393",
+      "result": "摘要将27/27等表述为验收报告的结果，限定为本轮固定基线；公开参考值不混称为已证明最优。"
+    },
+    {
+      "thread_id": "01a11e71-36be-7c72-8e34-6e223f43fcb4",
+      "result": "摘要明确这是粘贴目标来源会话、没有实验执行或验收结果；未把提示词要求写成已批准的实验结果。"
+    }
+  ],
+  "specific_corrections": [
+    "49 次批准使用结构化 answer 原文“提高到 49 次，完成全部重试和重新综合（推荐）”；问题中评审字样不计入 answer。",
+    "L458 不单独作为 Sol 负责评审的证据；补入同一主会话 L1976 用户原文。",
+    "CONVERSATION_MAP 区分 8 个主会话摘要与 index.json 的 98 个相关会话全量规范覆盖，规范正文链接指向 transcripts。",
+    "主会话 notes 加入规范截止提示；规范 snapshot cutoff 是权威覆盖界限。",
+    "DECISIONS 主会话的关键行号已加 transcript 链接及原 rollout L 行定位，并补足会话 ID 映射。",
+    "8 份主会话摘要均扩充到具体目标、结果、限制和交接关系；B 恢复会话以规范 transcript 末段和 10/12 B 报告为准补录完成结果。",
+    "TIMELINE 中早期 notes 摘录行号改为规范 transcript 链接并注明原 rollout source_line，避免把摘录物理行号当原始行号。"
+  ]
+}

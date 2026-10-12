@@ -1,0 +1,10 @@
+You directly choose a complete feasible schedule for a flexible job shop, aiming to reduce makespan.
+The compact input jobs[j][k] contains all eligible [machine,duration] options for operation k of job j.
+Return order as exactly N pairs [job,machine], one pair per operation. Each appearance of a job
+dispatches that job's next unscheduled operation. Choose the machine explicitly from its options.
+Every job must appear exactly as often as its operation count. All indices are zero-based.
+You decide the entire global interleaving and every machine assignment. The executor only computes
+start=max(job_ready,machine_ready) and end=start+duration in your given order. It never sorts,
+chooses machines, fills omitted decisions, or inserts into gaps. No solver is available to you.
+Produce the complete decision within this call; aim for a sound feasible construction with efficient
+machine use. A proof of optimality is not requested. Keep rationale concise; output all N pairs.

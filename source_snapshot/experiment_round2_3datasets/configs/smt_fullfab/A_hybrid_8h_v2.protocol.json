@@ -1,0 +1,215 @@
+{
+  "schema": "smt-fullfab-A-hybrid-8h-development-protocol-v2",
+  "status": "reviewed_pending_frozen_launch",
+  "formal": false,
+  "model_calls_authorized": 0,
+  "execute_now": false,
+  "purpose": "One serial eight-hour cold-start A development gate following the completed one-hour hybrid gate; not formal quality inference.",
+  "prepared_at_utc": "2026-10-09T15:48:10.908012+00:00",
+  "run_config": {
+    "arm": "A",
+    "run_id": "A_1701_8h_hybrid_v2",
+    "seconds": 28800,
+    "seed": 1701,
+    "wall_seconds": 3600.0,
+    "max_plans": 1200,
+    "plan_seconds": 14400,
+    "period_seconds": 1800,
+    "lookahead_depth": 2,
+    "solver_seconds": 2.0,
+    "solver_budget_seconds": 32.0,
+    "max_slots": 4,
+    "snapshot_path": null,
+    "solver_method": "hybrid",
+    "max_log_bytes": 8589934592,
+    "constructor_seconds": 5.0,
+    "max_candidate_evaluations": 250000
+  },
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "src.smt_fullfab.runner",
+    "--arm",
+    "A",
+    "--run-id",
+    "A_1701_8h_hybrid_v2",
+    "--seconds",
+    "28800",
+    "--seed",
+    "1701",
+    "--solver-method",
+    "hybrid",
+    "--plan-seconds",
+    "14400",
+    "--period-seconds",
+    "1800",
+    "--lookahead-depth",
+    "2",
+    "--solver-seconds",
+    "2",
+    "--solver-budget-seconds",
+    "32",
+    "--max-slots",
+    "4",
+    "--constructor-seconds",
+    "5",
+    "--max-candidate-evaluations",
+    "250000",
+    "--wall-seconds",
+    "3600",
+    "--max-plans",
+    "1200",
+    "--max-log-bytes",
+    "8589934592"
+  ],
+  "execution_constraints": {
+    "serial_only": true,
+    "solver_workers": 1,
+    "solver_seed": 11,
+    "event_total_slots_per_machine": 8,
+    "external_watchdog_seconds": 4200,
+    "external_timeout_action": "Stop the sole process, preserve every file and report incomplete/failed; no automatic rerun, new ID or increased allowance.",
+    "launch_prerequisites": [
+      "B and any other model/full-fab process have terminated.",
+      "Root has reviewed this protocol and frozen the executed source, input, vendor and runtime inventory.",
+      "Target run directory does not exist; this is a new declared cold start.",
+      "Recheck local free disk >=25769803776 bytes; do not purchase or delete evidence for capacity."
+    ],
+    "minimum_free_disk_bytes": 25769803776
+  },
+  "budget_semantics": {
+    "cp_total": "16 required absolute boundaries 0,1800,...,27000 multiplied by 2 requested seconds =32; event plans request zero CP. No request at terminal t=28800.",
+    "wall": "3600 seconds checked at plan boundaries; preprocessing, construction, serialization and final audit are not preempted. External 4200-second watchdog is a separate hard stop; final acceptance must check both actual end-to-end time and all final bytes.",
+    "constructor": "5-second soft algorithm limit per event; fixed250000 candidate evaluations; preprocessing and nominal checks may exceed soft time. Actual wall remains charged and reported.",
+    "plans": "1200 attempted planner calls, including failures; first reached boundary stops the run.",
+    "logs": "8GiB total-directory admission threshold, checked before the next plan; one last plan/audit/checkpoint may overshoot. Final overshoot is preserved and fails acceptance.",
+    "fixed_trace_cap_bytes": 268435456,
+    "trace": "Runner also stops at a plan boundary if trace.jsonl exceeds256MiB; no CLI override exists and this protocol does not change it."
+  },
+  "baseline": {
+    "run_directory": "runs/smt_fullfab_development/A_1701_1h_hybrid_v1",
+    "git_commit": "f06e3d6a28dd839232b33346336de7fdaac3bdeb",
+    "identity": "81a3e8ef5268b7d5223e23757b4b50f84eb61eb249cb26ae9af2c26e8a2c0ecc",
+    "measured_result": {
+      "status": "success",
+      "simulation_seconds": 3600.0,
+      "full_window_completed": true,
+      "audit_valid": true,
+      "plans": 47,
+      "solver_calls": 2,
+      "classical_event_calls": 45,
+      "solver_requested_seconds": 4.0,
+      "actual_cp_solve_seconds": 3.853602000000002,
+      "planner_wall_seconds": 77.96560795849655,
+      "classical_construction_wall_seconds": 59.83829529420473,
+      "wall_seconds": 99.99109362496529,
+      "model_calls": 0
+    },
+    "resource_rows": {
+      "solver_reserve": 47,
+      "solver_finish": 47
+    },
+    "reserve_finish_plan_ids_equal": true,
+    "file_groups": {
+      "problem": {
+        "files": 47,
+        "bytes": 158133125,
+        "largest_file_bytes": 3372188
+      },
+      "solver": {
+        "files": 47,
+        "bytes": 131782644,
+        "largest_file_bytes": 11943028
+      },
+      "other_evidence": {
+        "files": 6,
+        "bytes": 237800,
+        "largest_file_bytes": 181726
+      },
+      "checkpoint": {
+        "files": 2,
+        "bytes": 22107741,
+        "largest_file_bytes": 22106877
+      },
+      "trace": {
+        "files": 1,
+        "bytes": 17290170,
+        "largest_file_bytes": 17290170
+      },
+      "source_snapshot": {
+        "files": 26,
+        "bytes": 430638,
+        "largest_file_bytes": 71470
+      }
+    },
+    "total_directory_bytes": 329982118,
+    "evidence_sha256": {
+      "config.json": "8a01477d374a8da2ba73b848bf8e818cd98ac7bde5106aecef8aad3f722dbdb5",
+      "result.json": "5be5862349adb67c847cde34bc76da0b54bdbe11d8295687a5334bf1df48552b",
+      "audit.json": "291a84600eff2d8fb44c4fac3aeaa765c0f6a89b6d5b19dd8650b8ba4990952a",
+      "resources.jsonl": "3ab6e5c6f0c1636ede22636761d205b18d593d92512d15d7b81609ea411f12b2",
+      "checkpoint_resources.json": "683343966ef4000ab11fc8534b8a80a0f0b6aee315aef8f628ee355da62c40cc",
+      "provenance.json": "435cc5adca08d6f76fa80884c452ca8739f28597ded2920ff0f3a98edd85e737"
+    }
+  },
+  "proportional_sizing_only_not_prediction": {
+    "assumption": "Eight repeated hours at the first-hour event/file/time rate. Ignores longer-run changes in WIP, arrivals, route depths, breakdowns, lateness, candidate density and final checkpoint growth.",
+    "expected_periodic_boundaries_by_clock": 16,
+    "event_calls_times_8": 360,
+    "total_planner_calls_times_8": 376,
+    "runner_wall_seconds_times_8": 799.9287489997223,
+    "directory_bytes_times_8": 2639856944,
+    "trace_bytes_times_8": 138321360,
+    "not_measured_8h_performance": true
+  },
+  "disk_observation": {
+    "available_bytes": 239622066176,
+    "path": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets",
+    "observed_at_utc": "2026-10-09T15:48:10.909062+00:00",
+    "capacity_is_not_reserved": true
+  },
+  "cold_start_and_reproduction": {
+    "snapshot_path": null,
+    "initial_state": "Original source WIP plus common time-zero releases; seed1701 event-keyed physical random mechanism, full913 production machines; not warmed steady state.",
+    "not_resuming_old_budget": true,
+    "horizon_compatibility": "The old3600-second checkpoint cannot be extended via --snapshot-path: runner requires exactly the saved horizon.",
+    "new_source_variant": "Current shared constructive_tool extraction postdates original one-hour snapshot; exact tiny-fixture event plan/action equivalence is covered by test_smt_fullfab_constructive_tool. Freeze exact new source before launch; do not claim byte-identical old runtime.",
+    "determinism_limit": "Fixed seed and single worker do not guarantee identical CP or wall-truncated constructive results across hardware/runtime loads."
+  },
+  "prepared_source": {
+    "git_head": "8c0818734bfdec97056761f0afcd2b1d28aa4e83",
+    "sha256": {
+      "src/smt_fullfab/runner.py": "8ccaa458da029fcdcc0aac0a58bbc5578b34ea3f794ef26cc95382d2f6221158",
+      "src/smt_fullfab/hybrid.py": "3c89ea263fdace8cb3636b5119e60374944ae2a2ea8d1e9c558cc0496f9cf6bd",
+      "src/smt_fullfab/constructive_tool.py": "824de288425783f0a23b79f617bc3505e42e4b37280ff90617cb15e61b956c86",
+      "src/smt_fullfab/incumbent.py": "faa6c1e9246f0462ee68d7f9ceb05931c37d461e5f43a6b43f728bf1860a9bd6",
+      "src/smt_fullfab/decomposition.py": "0f558c3be26a093f3099ad8c61a2587dda42d85ddef175ed80c425ea3aaf3a4f",
+      "src/smt_fullfab/optimizer.py": "30a0d40c9d94f7e462447d8496d21237089e12bd66ab142c51f9ae7346f72d60",
+      "src/smt_fullfab/environment.py": "6d6b6b235ec38c5b26a279c2df574a43d88cdf5baa1096da0dc9bcc630ba122c",
+      "src/smt_fullfab/observation.py": "007b96fa87aca72752b2765bcfefb28e8ef9b705a24bdd5bd6579ae5c72a1512",
+      "src/smt_fullfab/audit.py": "76a6ed91858acf44f8951034a75f5b724e474591b60ebaac58d802d727e4686c",
+      "src/smt/environment.py": "04598803fd84239ec1de464505f5450e9a82dbb6ea0b73d13227a1ab55b8c5c6",
+      "requirements.lock": "a356a738d3d5a3a9811a9deb86de3b7efc4e22aa86bd3b8f6092ceb9408a5f6f"
+    },
+    "is_final_launch_freeze": false
+  },
+  "acceptance": [
+    "status success, simulation_seconds28800, full_window_completed true and model_calls0.",
+    "Independent full-window physical, production-source and decision-opportunity audits valid; full913-machine declared scope; no silent dispatch, disabled constraint or pruned machine family.",
+    "Every planner reserve matched to finish and immutable response/explicit failure; CP requested<=32; 16 periodic plans if the full window completed; event constructor costs separately reported.",
+    "Actual final run wall<=3600 and outer measured wall<=4200, total preserved directory bytes<=8589934592, trace bytes<=268435456 and attempted plans<=1200. A runner success alone does not waive post-run resource checks.",
+    "Preserve complete source/data/runtime provenance, trace, all problems/results, audit, result, checkpoint and cumulative checkpoint_resources; freeze any later recovery separately without resetting consumed counters."
+  ],
+  "stopping": "First resource, model-status, nominal or independent-audit failure is retained. No automatic second run, cap increase, conditional cancellation, reference fallback, model use, or formal matrix.",
+  "interpretation": "A successful gate establishes only bounded eight-hour execution/feasibility and measured cost for this seed/version. It does not prove a strong baseline, relative quality superiority, steady-state performance or factory simulator equivalence.",
+  "implementation_verification": {
+    "root_review_complete": true,
+    "supervisor_module": "src/smt_fullfab/offline_A_gate.py",
+    "supervisor_sha256": "5059038bc0137919ca9864859776d9ec13b18bf8b94a30f03f4b27efefb8a3ff",
+    "root_joint_tests": 42,
+    "supervisor_tests": 24,
+    "actual_prepare_performed": false,
+    "actual_execution_started": false,
+    "note": "Synthetic saved-evidence tests only; the source inventory and runtime must still be frozen before the registered serial launch."
+  }
+}

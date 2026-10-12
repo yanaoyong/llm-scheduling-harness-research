@@ -1,0 +1,25 @@
+{
+  "protocol_version": "round2-static-v1",
+  "phase": "development",
+  "model": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "timeout_seconds": 300,
+    "phase": "formal",
+    "grant_id": "formal-static-models"
+  },
+  "max_model_calls": 3,
+  "wall_seconds": 1000,
+  "solver_budget_seconds": 30,
+  "max_solver_calls": 2,
+  "solver_grant_id": "formal-static-solvers",
+  "seed": 11,
+  "workers": 1,
+  "search_branching": "AUTOMATIC_SEARCH",
+  "randomize_search": false,
+  "compact_state": true,
+  "search_branching_by_family": {
+    "brandimarte": "PORTFOLIO_SEARCH",
+    "hurink": "AUTOMATIC_SEARCH"
+  }
+}

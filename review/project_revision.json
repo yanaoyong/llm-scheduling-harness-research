@@ -1,0 +1,32 @@
+{
+  "revision_date": "2026-10-12",
+  "changes": [
+    {
+      "file": "docs/TIMELINE.md",
+      "change": "将三数据集验收日期改为验收记录 checked_at 的 2026-10-09 07:13:34 UTC；补入 2026-10-08 首轮、首轮 M0.5、10-11 B 停止交接修复、10-12 harness 调研与方案讨论。",
+      "evidence": [
+        "experiment_round2_3datasets/artifacts/final/acceptance.json#L3-L5",
+        "experiment_round1/docs/source-audit.md#L1-L5",
+        "research_harness_scheduling_20261012/m0.5_research/evidence/completion.json",
+        "archive/20261012_project_archive/conversations/notes/01a11fc6-3c70-7380-aadd-4a88dbd97d58.jsonl#L871-L876",
+        "archive/20261012_project_archive/conversations/notes/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl#L173-L176"
+      ]
+    },
+    {
+      "file": "docs/PROJECT_STATE.md",
+      "change": "区分 M0.5 当时尚未设计与当前已进行的方案讨论；标明方案未定稿、未编码、未获最终批准。",
+      "evidence": [
+        "research_harness_scheduling_20261012_round2/m0.5_research/summary.md#L3-L5",
+        "archive/20261012_project_archive/conversations/notes/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl#L173-L176"
+      ]
+    },
+    {
+      "file": "review/project_claims.json",
+      "change": "第 1 条限制到 M0.5 交付时点，并追加当前讨论状态事实。",
+      "evidence": [
+        "research_harness_scheduling_20261012_round2/m0.5_research/summary.md#L3",
+        "archive/20261012_project_archive/conversations/notes/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl#L176"
+      ]
+    }
+  ]
+}

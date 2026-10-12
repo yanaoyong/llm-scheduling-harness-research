@@ -1,0 +1,36 @@
+{
+  "schema": "smt-fullfab-offline-development-preregistration-1",
+  "formal": false,
+  "authorization": "goal stage 1 offline development; user renewed continuation",
+  "execution": "serial; no model calls; no concurrent full-factory solver/reference runs",
+  "A_hybrid_1h": {
+    "run_id": "A_1701_1h_hybrid_v1",
+    "seed": 1701,
+    "seconds": 3600,
+    "solver_method": "hybrid",
+    "solver_seconds": 2,
+    "solver_budget_seconds": 60,
+    "period_seconds": 1800,
+    "plan_seconds": 14400,
+    "lookahead_depth": 2,
+    "max_slots": 4,
+    "constructor_seconds": 5,
+    "max_candidate_evaluations": 250000,
+    "wall_seconds": 900,
+    "max_plans": 1000,
+    "max_log_bytes": 1073741824,
+    "continuation": "new declared cold-start development configuration; old failed runs remain unchanged, not a resumed allowance"
+  },
+  "reference_discrimination_8h": {
+    "seeds": [1702, 1703, 1704, 1705, 1706],
+    "policies": ["cr", "fifo"],
+    "seconds": 28800,
+    "wall_seconds_per_run": 180,
+    "max_plans_per_run": 20000,
+    "max_log_bytes_per_run": 536870912,
+    "analysis": "Keep all 10 outcomes, pair by independent exogenous seed. Report weighted tardy lot-hours, throughput, terminal WIP and failures separately; paired differences, dispersion and exploratory confidence/MDE diagnostics. No formal superiority claim and no seed deletion.",
+    "initialization": "original cold WIP plus time-zero releases; not warm steady state",
+    "version_rule": "all paired reference runs use the same frozen implementation; original 1701 observations remain historical descriptive evidence"
+  },
+  "stopping": "Each process stops at its registered resource boundary; any audit failure is retained and diagnosed before further expansion. No automatic model calls. No formal matrix."
+}

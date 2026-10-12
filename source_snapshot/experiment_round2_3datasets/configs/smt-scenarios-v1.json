@@ -1,0 +1,9 @@
+{
+  "dataset":"official SMT2020 Dataset2 LVHM",
+  "development":[701,702],
+  "formal":[801,802,803],
+  "reserve":[901,902,903],
+  "repeats":[1,2,3],
+  "selection":"Preselected consecutive scenario seeds, never run or tuned before formal freeze",
+  "seed_meaning":"exogenous event-keyed random field; repeat indexes model stochasticity and solver seed, not independent factory scenarios"
+}

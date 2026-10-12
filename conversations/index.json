@@ -1,0 +1,3109 @@
+{
+  "cutoff_utc": "2026-10-12T12:48:19.877397+00:00",
+  "coverage": "persisted sessions matching project cwd or known root IDs and legacy project path; related research CLI evidence also preserved in original project backup",
+  "limits": [
+    "not a reconstruction of unavailable historical records",
+    "compaction replacement summaries and internal reasoning omitted from readable export; private originals preserved",
+    "only explicitly referenced Codex attachment directories captured here; other dependencies listed separately",
+    "current thread is a prefix snapshot; subsequent archival work is documented in review files"
+  ],
+  "sessions": [
+    {
+      "thread_id": "01a11bce-5043-7871-b0e3-cd5f4e9f2393",
+      "title": "完成半导体排程三方案对照实验",
+      "classification": "known_root",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/08/rollout-2026-10-08T21-57-48-01a11bce-5043-7871-b0e3-cd5f4e9f2393.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": "vscode",
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 8398114,
+      "captured_bytes": 8398114,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T02:14:43.149Z",
+      "compaction_markers": 2,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 645,
+        "response_item": 597,
+        "world_state": 7,
+        "turn_context": 18,
+        "token_usage_record": 169,
+        "inter_agent_communication_metadata": 30,
+        "compacted": 2
+      },
+      "visible_messages": 75,
+      "raw_path": "private/conversations/01a11bce-5043-7871-b0e3-cd5f4e9f2393.jsonl",
+      "raw_sha256": "af8521d547af664ad0eca37070b9079ec9d6f244460d173529922eb5ad8a462b",
+      "transcript_jsonl": "conversations/transcripts/01a11bce-5043-7871-b0e3-cd5f4e9f2393.jsonl",
+      "transcript_md": "conversations/transcripts/01a11bce-5043-7871-b0e3-cd5f4e9f2393.md"
+    },
+    {
+      "thread_id": "01a11bcf-9222-75e2-9973-95b371941ff5",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/08/rollout-2026-10-08T21-59-10-01a11bcf-9222-75e2-9973-95b371941ff5.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 453846,
+      "captured_bytes": 453846,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-08T14:32:02.112Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 59,
+        "response_item": 67,
+        "world_state": 1,
+        "turn_context": 10,
+        "token_usage_record": 10
+      },
+      "visible_messages": 35,
+      "raw_path": "private/conversations/01a11bcf-9222-75e2-9973-95b371941ff5.jsonl",
+      "raw_sha256": "e9c974a44ff806b480e6365bb131da9cd0c375fcef7df4570ff3a2ada9a056da",
+      "transcript_jsonl": "conversations/transcripts/01a11bcf-9222-75e2-9973-95b371941ff5.jsonl",
+      "transcript_md": "conversations/transcripts/01a11bcf-9222-75e2-9973-95b371941ff5.md"
+    },
+    {
+      "thread_id": "01a11bd0-1cd7-70c3-8167-cf65db17bfa4",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/08/rollout-2026-10-08T21-59-46-01a11bd0-1cd7-70c3-8167-cf65db17bfa4.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11bce-5043-7871-b0e3-cd5f4e9f2393",
+            "depth": 1,
+            "agent_path": "/root/source_audit",
+            "agent_nickname": "Lorentz",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 1238938,
+      "captured_bytes": 1238938,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-08T14:15:27.001Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 153,
+        "response_item": 162,
+        "world_state": 2,
+        "turn_context": 2,
+        "inter_agent_communication_metadata": 11,
+        "token_usage_record": 53
+      },
+      "visible_messages": 4,
+      "raw_path": "private/conversations/01a11bd0-1cd7-70c3-8167-cf65db17bfa4.jsonl",
+      "raw_sha256": "feb51d78d510931e780a7cec03865b3780ad15b3b5b2de2ca4e2b6831216f532",
+      "transcript_jsonl": "conversations/transcripts/01a11bd0-1cd7-70c3-8167-cf65db17bfa4.jsonl",
+      "transcript_md": "conversations/transcripts/01a11bd0-1cd7-70c3-8167-cf65db17bfa4.md"
+    },
+    {
+      "thread_id": "01a11bd0-1d00-7cb2-9ef5-8d784643eeb2",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/08/rollout-2026-10-08T21-59-46-01a11bd0-1d00-7cb2-9ef5-8d784643eeb2.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 286103,
+      "captured_bytes": 286103,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-08T14:05:35.254Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 44,
+        "response_item": 36,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 7
+      },
+      "visible_messages": 21,
+      "raw_path": "private/conversations/01a11bd0-1d00-7cb2-9ef5-8d784643eeb2.jsonl",
+      "raw_sha256": "d62b7ed37671f080994f1cdbbf49377084d5211c157179efcaa3217fcecb0a5a",
+      "transcript_jsonl": "conversations/transcripts/01a11bd0-1d00-7cb2-9ef5-8d784643eeb2.jsonl",
+      "transcript_md": "conversations/transcripts/01a11bd0-1d00-7cb2-9ef5-8d784643eeb2.md"
+    },
+    {
+      "thread_id": "01a11bd0-b04f-7583-8f7f-ac0bd8bd7eb6",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/08/rollout-2026-10-08T22-00-23-01a11bd0-b04f-7583-8f7f-ac0bd8bd7eb6.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11bce-5043-7871-b0e3-cd5f4e9f2393",
+            "depth": 1,
+            "agent_path": "/root/model_transport",
+            "agent_nickname": "Bacon",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 1248245,
+      "captured_bytes": 1248245,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-08T14:16:12.776Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 158,
+        "response_item": 154,
+        "world_state": 3,
+        "turn_context": 2,
+        "inter_agent_communication_metadata": 4,
+        "token_usage_record": 52
+      },
+      "visible_messages": 9,
+      "raw_path": "private/conversations/01a11bd0-b04f-7583-8f7f-ac0bd8bd7eb6.jsonl",
+      "raw_sha256": "f8644454da9fdbc54968f436a957dee07d64a0bfd760e181216597aea5795b24",
+      "transcript_jsonl": "conversations/transcripts/01a11bd0-b04f-7583-8f7f-ac0bd8bd7eb6.jsonl",
+      "transcript_md": "conversations/transcripts/01a11bd0-b04f-7583-8f7f-ac0bd8bd7eb6.md"
+    },
+    {
+      "thread_id": "01a11bd0-b072-7441-80cc-009496dd815a",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/08/rollout-2026-10-08T22-00-23-01a11bd0-b072-7441-80cc-009496dd815a.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 388581,
+      "captured_bytes": 388581,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-08T14:11:28.100Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 44,
+        "response_item": 30,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 7
+      },
+      "visible_messages": 18,
+      "raw_path": "private/conversations/01a11bd0-b072-7441-80cc-009496dd815a.jsonl",
+      "raw_sha256": "e181f68269d87358234facda30df2b7ed09c4b7608a0c5b22606b49496d4fb02",
+      "transcript_jsonl": "conversations/transcripts/01a11bd0-b072-7441-80cc-009496dd815a.jsonl",
+      "transcript_md": "conversations/transcripts/01a11bd0-b072-7441-80cc-009496dd815a.md"
+    },
+    {
+      "thread_id": "01a11bd2-1ac7-72c1-9ece-8007f5ed61a9",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/08/rollout-2026-10-08T22-01-56-01a11bd2-1ac7-72c1-9ece-8007f5ed61a9.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11bce-5043-7871-b0e3-cd5f4e9f2393",
+            "depth": 1,
+            "agent_path": "/root/problem_validator",
+            "agent_nickname": "Boyle",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 1392559,
+      "captured_bytes": 1392559,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-08T14:38:32.825Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 142,
+        "response_item": 129,
+        "world_state": 4,
+        "turn_context": 4,
+        "inter_agent_communication_metadata": 8,
+        "token_usage_record": 42
+      },
+      "visible_messages": 6,
+      "raw_path": "private/conversations/01a11bd2-1ac7-72c1-9ece-8007f5ed61a9.jsonl",
+      "raw_sha256": "e14233c565de221f9a593cd62cc6bee4169130ea2eab116703549fba6164e296",
+      "transcript_jsonl": "conversations/transcripts/01a11bd2-1ac7-72c1-9ece-8007f5ed61a9.jsonl",
+      "transcript_md": "conversations/transcripts/01a11bd2-1ac7-72c1-9ece-8007f5ed61a9.md"
+    },
+    {
+      "thread_id": "01a11e61-bb0f-7291-b82a-3e596111f5d0",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T09-58-03-01a11e61-bb0f-7291-b82a-3e596111f5d0.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 280347,
+      "captured_bytes": 280347,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T02:01:48.948Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 19,
+        "event_msg": 33,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 11,
+      "raw_path": "private/conversations/01a11e61-bb0f-7291-b82a-3e596111f5d0.jsonl",
+      "raw_sha256": "780b562cc97762150469707fcc27bc5e48afe67950bf3ef03895667cf3a8ae46",
+      "transcript_jsonl": "conversations/transcripts/01a11e61-bb0f-7291-b82a-3e596111f5d0.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e61-bb0f-7291-b82a-3e596111f5d0.md"
+    },
+    {
+      "thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+      "title": "Read Codex goal objective",
+      "classification": "known_root",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T10-15-24-01a11e71-9b95-76c1-97d9-db087c25bc4c.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": "vscode",
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 22173435,
+      "captured_bytes": 22173435,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T08:26:39.792Z",
+      "compaction_markers": 4,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 1954,
+        "response_item": 1844,
+        "world_state": 9,
+        "turn_context": 16,
+        "token_usage_record": 539,
+        "inter_agent_communication_metadata": 96,
+        "compacted": 4
+      },
+      "visible_messages": 195,
+      "raw_path": "private/conversations/01a11e71-9b95-76c1-97d9-db087c25bc4c.jsonl",
+      "raw_sha256": "b2f528bd553fa3c34e95eb91c7c4fef071d31a4a164f3dafda0dd043f2ab670e",
+      "transcript_jsonl": "conversations/transcripts/01a11e71-9b95-76c1-97d9-db087c25bc4c.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e71-9b95-76c1-97d9-db087c25bc4c.md"
+    },
+    {
+      "thread_id": "01a11e73-a0ec-7953-bc2c-9d17c24932b8",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T10-17-36-01a11e73-a0ec-7953-bc2c-9d17c24932b8.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+            "depth": 1,
+            "agent_path": "/root/static_benchmarks",
+            "agent_nickname": "Turing",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 7744924,
+      "captured_bytes": 7744924,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T07:06:49.388Z",
+      "compaction_markers": 2,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 477,
+        "response_item": 435,
+        "world_state": 4,
+        "turn_context": 10,
+        "inter_agent_communication_metadata": 20,
+        "token_usage_record": 133,
+        "compacted": 2
+      },
+      "visible_messages": 31,
+      "raw_path": "private/conversations/01a11e73-a0ec-7953-bc2c-9d17c24932b8.jsonl",
+      "raw_sha256": "fcebced2bdab75c24b8c0b93a6a4188f3456cd58e73f19eabab7485c332b09f5",
+      "transcript_jsonl": "conversations/transcripts/01a11e73-a0ec-7953-bc2c-9d17c24932b8.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e73-a0ec-7953-bc2c-9d17c24932b8.md"
+    },
+    {
+      "thread_id": "01a11e73-a10c-70a2-a4b1-cd7bde1196e5",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T10-17-36-01a11e73-a10c-70a2-a4b1-cd7bde1196e5.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 210444,
+      "captured_bytes": 210444,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T02:27:18.682Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 31,
+        "response_item": 26,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 15,
+      "raw_path": "private/conversations/01a11e73-a10c-70a2-a4b1-cd7bde1196e5.jsonl",
+      "raw_sha256": "eb185e7168b1546cd872ec189b9719310231bb3369e0d21aac4353792aa983f5",
+      "transcript_jsonl": "conversations/transcripts/01a11e73-a10c-70a2-a4b1-cd7bde1196e5.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e73-a10c-70a2-a4b1-cd7bde1196e5.md"
+    },
+    {
+      "thread_id": "01a11e73-d967-7ef2-b559-60da0ab012ec",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T10-17-51-01a11e73-d967-7ef2-b559-60da0ab012ec.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+            "depth": 1,
+            "agent_path": "/root/smt_simulation",
+            "agent_nickname": "Galileo",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 7440906,
+      "captured_bytes": 7440906,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T06:48:42.954Z",
+      "compaction_markers": 1,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 419,
+        "response_item": 407,
+        "world_state": 4,
+        "turn_context": 6,
+        "inter_agent_communication_metadata": 22,
+        "token_usage_record": 130,
+        "compacted": 1
+      },
+      "visible_messages": 17,
+      "raw_path": "private/conversations/01a11e73-d967-7ef2-b559-60da0ab012ec.jsonl",
+      "raw_sha256": "beb3f6ed9137ada13f43f1f5d651ce86ab6ccaf85f5cf54e9c53809afcae6143",
+      "transcript_jsonl": "conversations/transcripts/01a11e73-d967-7ef2-b559-60da0ab012ec.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e73-d967-7ef2-b559-60da0ab012ec.md"
+    },
+    {
+      "thread_id": "01a11e73-d98a-7ab1-89f5-6419f3257a1c",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T10-17-51-01a11e73-d98a-7ab1-89f5-6419f3257a1c.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 318983,
+      "captured_bytes": 318983,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T02:26:59.664Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 48,
+        "response_item": 33,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 8
+      },
+      "visible_messages": 18,
+      "raw_path": "private/conversations/01a11e73-d98a-7ab1-89f5-6419f3257a1c.jsonl",
+      "raw_sha256": "dc0bc269f32f47ac91845c63274530420e67ed7b8ee2638912908f839398742e",
+      "transcript_jsonl": "conversations/transcripts/01a11e73-d98a-7ab1-89f5-6419f3257a1c.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e73-d98a-7ab1-89f5-6419f3257a1c.md"
+    },
+    {
+      "thread_id": "01a11e74-209d-7f02-9b2a-7e35b79fe8e1",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T10-18-09-01a11e74-209d-7f02-9b2a-7e35b79fe8e1.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+            "depth": 1,
+            "agent_path": "/root/model_runner",
+            "agent_nickname": "Boyle",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 5728262,
+      "captured_bytes": 5728262,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T06:53:39.286Z",
+      "compaction_markers": 1,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 474,
+        "response_item": 448,
+        "world_state": 5,
+        "turn_context": 10,
+        "inter_agent_communication_metadata": 25,
+        "token_usage_record": 135,
+        "compacted": 1
+      },
+      "visible_messages": 29,
+      "raw_path": "private/conversations/01a11e74-209d-7f02-9b2a-7e35b79fe8e1.jsonl",
+      "raw_sha256": "e4d72c3746fa82608d0ab0c40c4e4122b1679ad3fb50af0ae5f75e176ef7ea7e",
+      "transcript_jsonl": "conversations/transcripts/01a11e74-209d-7f02-9b2a-7e35b79fe8e1.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e74-209d-7f02-9b2a-7e35b79fe8e1.md"
+    },
+    {
+      "thread_id": "01a11e74-20b4-7bd1-b765-5183c05ddab6",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T10-18-09-01a11e74-20b4-7bd1-b765-5183c05ddab6.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 88583,
+      "captured_bytes": 88583,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T02:21:09.902Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 5,
+        "response_item": 13,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 7,
+      "raw_path": "private/conversations/01a11e74-20b4-7bd1-b765-5183c05ddab6.jsonl",
+      "raw_sha256": "fd58a060ebecbaf6ed5daac72a2078a7a84f55103e17e5f1c6942dbbd4fbe611",
+      "transcript_jsonl": "conversations/transcripts/01a11e74-20b4-7bd1-b765-5183c05ddab6.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e74-20b4-7bd1-b765-5183c05ddab6.md"
+    },
+    {
+      "thread_id": "01a11e74-68d8-7d52-9a2c-1d9d25094037",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T10-18-27-01a11e74-68d8-7d52-9a2c-1d9d25094037.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 485790,
+      "captured_bytes": 485790,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T02:50:06.280Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 47,
+        "response_item": 98,
+        "world_state": 1,
+        "turn_context": 8,
+        "token_usage_record": 8
+      },
+      "visible_messages": 46,
+      "raw_path": "private/conversations/01a11e74-68d8-7d52-9a2c-1d9d25094037.jsonl",
+      "raw_sha256": "3c91c4b34c1c39083f5f685b0ad1b4de8b35442f4a95f0af1cc30244375bc7b3",
+      "transcript_jsonl": "conversations/transcripts/01a11e74-68d8-7d52-9a2c-1d9d25094037.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e74-68d8-7d52-9a2c-1d9d25094037.md"
+    },
+    {
+      "thread_id": "01a11ea3-2e76-7f41-a2ba-66df46b9552c",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T11-09-33-01a11ea3-2e76-7f41-a2ba-66df46b9552c.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 141004,
+      "captured_bytes": 141004,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T03:09:39.152Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 12,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 5,
+      "raw_path": "private/conversations/01a11ea3-2e76-7f41-a2ba-66df46b9552c.jsonl",
+      "raw_sha256": "2795a7efb9af18804dcbe241d903762519c96757d744ca8d4a3d6e9381892c1f",
+      "transcript_jsonl": "conversations/transcripts/01a11ea3-2e76-7f41-a2ba-66df46b9552c.jsonl",
+      "transcript_md": "conversations/transcripts/01a11ea3-2e76-7f41-a2ba-66df46b9552c.md"
+    },
+    {
+      "thread_id": "01a11f22-8e55-7710-a4a9-7562c550fe56",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T13-28-40-01a11f22-8e55-7710-a4a9-7562c550fe56.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 166978,
+      "captured_bytes": 166978,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T06:34:26.827Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 10,
+        "event_msg": 13,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 5,
+      "raw_path": "private/conversations/01a11f22-8e55-7710-a4a9-7562c550fe56.jsonl",
+      "raw_sha256": "7e9f2a71c91d0b646e0625b1ed1a418e2386f8ff67225b8bdf768cb95f6b285b",
+      "transcript_jsonl": "conversations/transcripts/01a11f22-8e55-7710-a4a9-7562c550fe56.jsonl",
+      "transcript_md": "conversations/transcripts/01a11f22-8e55-7710-a4a9-7562c550fe56.md"
+    },
+    {
+      "thread_id": "01a11f8f-bb0c-7e20-be14-d37efe79a747",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T15-27-55-01a11f8f-bb0c-7e20-be14-d37efe79a747.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 65201,
+      "captured_bytes": 65201,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T07:27:55.665Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 1,
+        "event_msg": 1
+      },
+      "visible_messages": 0,
+      "raw_path": "private/conversations/01a11f8f-bb0c-7e20-be14-d37efe79a747.jsonl",
+      "raw_sha256": "2bdfd804d57df4f2720edd71e1d9e9d47b9fe2a048c431000dcc24019e2d957b",
+      "transcript_jsonl": "conversations/transcripts/01a11f8f-bb0c-7e20-be14-d37efe79a747.jsonl",
+      "transcript_md": "conversations/transcripts/01a11f8f-bb0c-7e20-be14-d37efe79a747.md"
+    },
+    {
+      "thread_id": "01a11fc6-3c70-7380-aadd-4a88dbd97d58",
+      "title": "推进 SMT2020 全厂排程实验",
+      "classification": "known_root",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T16-27-27-01a11fc6-3c70-7380-aadd-4a88dbd97d58.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": "vscode",
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 105645057,
+      "captured_bytes": 105645057,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T07:30:00.918Z",
+      "compaction_markers": 50,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 14387,
+        "response_item": 14338,
+        "world_state": 59,
+        "turn_context": 95,
+        "token_usage_record": 4089,
+        "inter_agent_communication_metadata": 1238,
+        "compacted": 50
+      },
+      "visible_messages": 924,
+      "raw_path": "private/conversations/01a11fc6-3c70-7380-aadd-4a88dbd97d58.jsonl",
+      "raw_sha256": "c7d78930afcd5cbafb55a5a728ebb536cf48f1d9bc3ffc1d215c1c1e833a484f",
+      "transcript_jsonl": "conversations/transcripts/01a11fc6-3c70-7380-aadd-4a88dbd97d58.jsonl",
+      "transcript_md": "conversations/transcripts/01a11fc6-3c70-7380-aadd-4a88dbd97d58.md"
+    },
+    {
+      "thread_id": "01a11fc6-f665-7511-9a93-79fae7662205",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T16-28-15-01a11fc6-f665-7511-9a93-79fae7662205.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11fc6-3c70-7380-aadd-4a88dbd97d58",
+            "depth": 1,
+            "agent_path": "/root/semantics",
+            "agent_nickname": "Banach",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 74208750,
+      "captured_bytes": 74208750,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T07:15:37.054Z",
+      "compaction_markers": 37,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 6660,
+        "response_item": 6108,
+        "world_state": 44,
+        "turn_context": 133,
+        "inter_agent_communication_metadata": 305,
+        "token_usage_record": 1891,
+        "compacted": 37
+      },
+      "visible_messages": 346,
+      "raw_path": "private/conversations/01a11fc6-f665-7511-9a93-79fae7662205.jsonl",
+      "raw_sha256": "3f97d461ebf413ca2538c1485a1202ead5cb9526b3616502d8f34180ceae8304",
+      "transcript_jsonl": "conversations/transcripts/01a11fc6-f665-7511-9a93-79fae7662205.jsonl",
+      "transcript_md": "conversations/transcripts/01a11fc6-f665-7511-9a93-79fae7662205.md"
+    },
+    {
+      "thread_id": "01a11fc7-2c86-71e2-82ab-ffbe3e0b71cd",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T16-28-29-01a11fc7-2c86-71e2-82ab-ffbe3e0b71cd.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11fc6-3c70-7380-aadd-4a88dbd97d58",
+            "depth": 1,
+            "agent_path": "/root/optimizer",
+            "agent_nickname": "Curie",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 75426951,
+      "captured_bytes": 75426951,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T07:07:31.407Z",
+      "compaction_markers": 38,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 6202,
+        "response_item": 5829,
+        "world_state": 46,
+        "turn_context": 143,
+        "inter_agent_communication_metadata": 390,
+        "token_usage_record": 1778,
+        "compacted": 38
+      },
+      "visible_messages": 350,
+      "raw_path": "private/conversations/01a11fc7-2c86-71e2-82ab-ffbe3e0b71cd.jsonl",
+      "raw_sha256": "e49f9e0f60ecdcaf205ca7c2dfbc8718f354b46eddfa77fbd4e805435eeecf57",
+      "transcript_jsonl": "conversations/transcripts/01a11fc7-2c86-71e2-82ab-ffbe3e0b71cd.jsonl",
+      "transcript_md": "conversations/transcripts/01a11fc7-2c86-71e2-82ab-ffbe3e0b71cd.md"
+    },
+    {
+      "thread_id": "01a11fc7-5545-7d83-86ab-e4386704ed3e",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T16-28-39-01a11fc7-5545-7d83-86ab-e4386704ed3e.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "thread_spawn": {
+            "parent_thread_id": "01a11fc6-3c70-7380-aadd-4a88dbd97d58",
+            "depth": 1,
+            "agent_path": "/root/audit_metrics",
+            "agent_nickname": "Gibbs",
+            "agent_role": null
+          }
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 78000334,
+      "captured_bytes": 78000334,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T07:04:50.408Z",
+      "compaction_markers": 39,
+      "record_counts": {
+        "session_meta": 2,
+        "event_msg": 7021,
+        "response_item": 6289,
+        "world_state": 48,
+        "turn_context": 152,
+        "inter_agent_communication_metadata": 365,
+        "token_usage_record": 2008,
+        "compacted": 39
+      },
+      "visible_messages": 381,
+      "raw_path": "private/conversations/01a11fc7-5545-7d83-86ab-e4386704ed3e.jsonl",
+      "raw_sha256": "df04dd0c64681d3ec4e6826a260134f2301cac18c84578873bdb22f03bab0c9a",
+      "transcript_jsonl": "conversations/transcripts/01a11fc7-5545-7d83-86ab-e4386704ed3e.jsonl",
+      "transcript_md": "conversations/transcripts/01a11fc7-5545-7d83-86ab-e4386704ed3e.md"
+    },
+    {
+      "thread_id": "01a11fc9-35c6-71e0-a976-60a730953c96",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T16-30-42-01a11fc9-35c6-71e0-a976-60a730953c96.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 355044,
+      "captured_bytes": 355044,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T09:07:17.826Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 29,
+        "response_item": 77,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 35,
+      "raw_path": "private/conversations/01a11fc9-35c6-71e0-a976-60a730953c96.jsonl",
+      "raw_sha256": "252ea29755a25c1d6743ba9b2720e6c1054dafad3a172b058048be6b303ade4a",
+      "transcript_jsonl": "conversations/transcripts/01a11fc9-35c6-71e0-a976-60a730953c96.jsonl",
+      "transcript_md": "conversations/transcripts/01a11fc9-35c6-71e0-a976-60a730953c96.md"
+    },
+    {
+      "thread_id": "01a12003-fa0b-7bb2-8ce1-c1923816e44a",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T17-34-53-01a12003-fa0b-7bb2-8ce1-c1923816e44a.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 316116,
+      "captured_bytes": 316116,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T13:44:25.691Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 53,
+        "event_msg": 25,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 26,
+      "raw_path": "private/conversations/01a12003-fa0b-7bb2-8ce1-c1923816e44a.jsonl",
+      "raw_sha256": "ef2ebf955c96bc45ba6f490a65fb8b3add1f43166c9ed56ee27469098f85a87b",
+      "transcript_jsonl": "conversations/transcripts/01a12003-fa0b-7bb2-8ce1-c1923816e44a.jsonl",
+      "transcript_md": "conversations/transcripts/01a12003-fa0b-7bb2-8ce1-c1923816e44a.md"
+    },
+    {
+      "thread_id": "01a120f8-ac02-7c00-8b4c-fe8494ee9176",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T22-02-10-01a120f8-ac02-7c00-8b4c-fe8494ee9176.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 393115,
+      "captured_bytes": 393115,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T14:34:21.959Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 56,
+        "event_msg": 38,
+        "world_state": 1,
+        "turn_context": 6,
+        "token_usage_record": 6
+      },
+      "visible_messages": 28,
+      "raw_path": "private/conversations/01a120f8-ac02-7c00-8b4c-fe8494ee9176.jsonl",
+      "raw_sha256": "1ce260aebdfabc9abf667a3cae39a14e5ee9cf494b2703fc74a04522355e68d7",
+      "transcript_jsonl": "conversations/transcripts/01a120f8-ac02-7c00-8b4c-fe8494ee9176.jsonl",
+      "transcript_md": "conversations/transcripts/01a120f8-ac02-7c00-8b4c-fe8494ee9176.md"
+    },
+    {
+      "thread_id": "01a12121-7932-7140-9e7f-30fd9e52d099",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T22-46-44-01a12121-7932-7140-9e7f-30fd9e52d099.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 410878,
+      "captured_bytes": 410878,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T15:10:27.364Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 49,
+        "event_msg": 38,
+        "world_state": 1,
+        "turn_context": 6,
+        "token_usage_record": 6
+      },
+      "visible_messages": 26,
+      "raw_path": "private/conversations/01a12121-7932-7140-9e7f-30fd9e52d099.jsonl",
+      "raw_sha256": "40f6b581e6f7a71f5fec915ea6d5478f400525488d7ae858ea1dac1988bac0c1",
+      "transcript_jsonl": "conversations/transcripts/01a12121-7932-7140-9e7f-30fd9e52d099.jsonl",
+      "transcript_md": "conversations/transcripts/01a12121-7932-7140-9e7f-30fd9e52d099.md"
+    },
+    {
+      "thread_id": "01a1213e-12a3-7c31-98e9-8f90626b3c0e",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/09/rollout-2026-10-09T23-17-58-01a1213e-12a3-7c31-98e9-8f90626b3c0e.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 370890,
+      "captured_bytes": 370890,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T15:42:35.297Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 49,
+        "event_msg": 31,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 25,
+      "raw_path": "private/conversations/01a1213e-12a3-7c31-98e9-8f90626b3c0e.jsonl",
+      "raw_sha256": "843a5fb8612918940085f2fc0680ed2fb2fafe3dc241697da7bdcb4d4fd413ef",
+      "transcript_jsonl": "conversations/transcripts/01a1213e-12a3-7c31-98e9-8f90626b3c0e.jsonl",
+      "transcript_md": "conversations/transcripts/01a1213e-12a3-7c31-98e9-8f90626b3c0e.md"
+    },
+    {
+      "thread_id": "01a12169-6eb1-7f60-8505-66cd8d0e156a",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T00-05-20-01a12169-6eb1-7f60-8505-66cd8d0e156a.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 294048,
+      "captured_bytes": 294048,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T16:16:01.150Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 37,
+        "event_msg": 26,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 19,
+      "raw_path": "private/conversations/01a12169-6eb1-7f60-8505-66cd8d0e156a.jsonl",
+      "raw_sha256": "765c380885f28112b7e55ece935c0a1639f5352ff0c24bde845ae653f7a4102c",
+      "transcript_jsonl": "conversations/transcripts/01a12169-6eb1-7f60-8505-66cd8d0e156a.jsonl",
+      "transcript_md": "conversations/transcripts/01a12169-6eb1-7f60-8505-66cd8d0e156a.md"
+    },
+    {
+      "thread_id": "01a12188-ed0d-7602-bd16-f99b3ea6bc3c",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T00-39-44-01a12188-ed0d-7602-bd16-f99b3ea6bc3c.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 423634,
+      "captured_bytes": 423634,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T16:58:55.068Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 49,
+        "event_msg": 44,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 7
+      },
+      "visible_messages": 27,
+      "raw_path": "private/conversations/01a12188-ed0d-7602-bd16-f99b3ea6bc3c.jsonl",
+      "raw_sha256": "70aa7d49b2562bfe5f7aa573da0398b928d6349a1f99ddd86a97462406d250be",
+      "transcript_jsonl": "conversations/transcripts/01a12188-ed0d-7602-bd16-f99b3ea6bc3c.jsonl",
+      "transcript_md": "conversations/transcripts/01a12188-ed0d-7602-bd16-f99b3ea6bc3c.md"
+    },
+    {
+      "thread_id": "01a121a3-3117-7403-bb74-7f87f203e97a",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T01-08-25-01a121a3-3117-7403-bb74-7f87f203e97a.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 326059,
+      "captured_bytes": 326059,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T17:29:06.973Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 41,
+        "event_msg": 25,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 20,
+      "raw_path": "private/conversations/01a121a3-3117-7403-bb74-7f87f203e97a.jsonl",
+      "raw_sha256": "a565a0fe8edb0ea57518bd5b562ae4230a95d9b84e09a3f91cb55a19589b4622",
+      "transcript_jsonl": "conversations/transcripts/01a121a3-3117-7403-bb74-7f87f203e97a.jsonl",
+      "transcript_md": "conversations/transcripts/01a121a3-3117-7403-bb74-7f87f203e97a.md"
+    },
+    {
+      "thread_id": "01a121c4-0dce-70a3-a415-0ea6f4468ee9",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T01-44-19-01a121c4-0dce-70a3-a415-0ea6f4468ee9.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 247778,
+      "captured_bytes": 247778,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T17:56:18.355Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 35,
+        "event_msg": 13,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 17,
+      "raw_path": "private/conversations/01a121c4-0dce-70a3-a415-0ea6f4468ee9.jsonl",
+      "raw_sha256": "cd42fd7b1829d2f411373bf05025ec13f39c562af2fbeddc75ca4f1156461547",
+      "transcript_jsonl": "conversations/transcripts/01a121c4-0dce-70a3-a415-0ea6f4468ee9.jsonl",
+      "transcript_md": "conversations/transcripts/01a121c4-0dce-70a3-a415-0ea6f4468ee9.md"
+    },
+    {
+      "thread_id": "01a121dc-20fd-7e51-839a-5798752d4eb3",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T02-10-36-01a121dc-20fd-7e51-839a-5798752d4eb3.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 325696,
+      "captured_bytes": 325696,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T18:35:18.332Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 48,
+        "event_msg": 19,
+        "world_state": 1,
+        "turn_context": 3,
+        "token_usage_record": 3
+      },
+      "visible_messages": 21,
+      "raw_path": "private/conversations/01a121dc-20fd-7e51-839a-5798752d4eb3.jsonl",
+      "raw_sha256": "d985262ab10e64cafbe74f57321cbbfcdef4ab288132538a760e97fe18436a09",
+      "transcript_jsonl": "conversations/transcripts/01a121dc-20fd-7e51-839a-5798752d4eb3.jsonl",
+      "transcript_md": "conversations/transcripts/01a121dc-20fd-7e51-839a-5798752d4eb3.md"
+    },
+    {
+      "thread_id": "01a121fd-e0ba-7840-8a31-bf8143ffba94",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T02-47-28-01a121fd-e0ba-7840-8a31-bf8143ffba94.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 317556,
+      "captured_bytes": 317556,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T19:10:33.695Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 44,
+        "event_msg": 19,
+        "world_state": 1,
+        "turn_context": 3,
+        "token_usage_record": 3
+      },
+      "visible_messages": 21,
+      "raw_path": "private/conversations/01a121fd-e0ba-7840-8a31-bf8143ffba94.jsonl",
+      "raw_sha256": "44d98e3cc2b6dce4c205d5a2f4372cc91c8361fdb0e94c63dfcd8382ac8c3b13",
+      "transcript_jsonl": "conversations/transcripts/01a121fd-e0ba-7840-8a31-bf8143ffba94.jsonl",
+      "transcript_md": "conversations/transcripts/01a121fd-e0ba-7840-8a31-bf8143ffba94.md"
+    },
+    {
+      "thread_id": "01a1223e-8f7e-75e2-bff3-dc8aebf518c4",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T03-58-07-01a1223e-8f7e-75e2-bff3-dc8aebf518c4.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 417022,
+      "captured_bytes": 417022,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T20:15:13.125Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 54,
+        "event_msg": 47,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 7
+      },
+      "visible_messages": 28,
+      "raw_path": "private/conversations/01a1223e-8f7e-75e2-bff3-dc8aebf518c4.jsonl",
+      "raw_sha256": "a4974fe7c56bafe624826651ebec0bbc53b5a9c6a498a6576f5b440addf6850f",
+      "transcript_jsonl": "conversations/transcripts/01a1223e-8f7e-75e2-bff3-dc8aebf518c4.jsonl",
+      "transcript_md": "conversations/transcripts/01a1223e-8f7e-75e2-bff3-dc8aebf518c4.md"
+    },
+    {
+      "thread_id": "01a12259-7d1d-7b61-a646-8abe695ec63f",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T04-27-32-01a12259-7d1d-7b61-a646-8abe695ec63f.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 318908,
+      "captured_bytes": 318908,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T20:44:12.092Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 39,
+        "event_msg": 27,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 20,
+      "raw_path": "private/conversations/01a12259-7d1d-7b61-a646-8abe695ec63f.jsonl",
+      "raw_sha256": "1f9d9c83105a6e35d380630f4081900fe56d788347f25a0b95eeaefca8555c74",
+      "transcript_jsonl": "conversations/transcripts/01a12259-7d1d-7b61-a646-8abe695ec63f.jsonl",
+      "transcript_md": "conversations/transcripts/01a12259-7d1d-7b61-a646-8abe695ec63f.md"
+    },
+    {
+      "thread_id": "01a1227a-b31b-71f3-8db1-d659b0e2eb20",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T05-03-49-01a1227a-b31b-71f3-8db1-d659b0e2eb20.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 331470,
+      "captured_bytes": 331470,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T21:14:12.301Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 46,
+        "event_msg": 32,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 24,
+      "raw_path": "private/conversations/01a1227a-b31b-71f3-8db1-d659b0e2eb20.jsonl",
+      "raw_sha256": "e9dad569deefb55416c9eb27ecfb3bce6c11bb3a73beb8a37d465221f0a27fb4",
+      "transcript_jsonl": "conversations/transcripts/01a1227a-b31b-71f3-8db1-d659b0e2eb20.jsonl",
+      "transcript_md": "conversations/transcripts/01a1227a-b31b-71f3-8db1-d659b0e2eb20.md"
+    },
+    {
+      "thread_id": "01a12297-ea80-78b0-a55e-2267541b60da",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T05-35-43-01a12297-ea80-78b0-a55e-2267541b60da.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 210049,
+      "captured_bytes": 210049,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T21:36:20.264Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 29,
+        "event_msg": 14,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 13,
+      "raw_path": "private/conversations/01a12297-ea80-78b0-a55e-2267541b60da.jsonl",
+      "raw_sha256": "83c195e443e8d796b571cc58b5e586966d9e756b38f3ec49a37e58ea273ba003",
+      "transcript_jsonl": "conversations/transcripts/01a12297-ea80-78b0-a55e-2267541b60da.jsonl",
+      "transcript_md": "conversations/transcripts/01a12297-ea80-78b0-a55e-2267541b60da.md"
+    },
+    {
+      "thread_id": "01a122a0-4a10-7761-af62-eed63c1993ae",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T05-44-52-01a122a0-4a10-7761-af62-eed63c1993ae.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 413211,
+      "captured_bytes": 413211,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T21:57:08.073Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 56,
+        "event_msg": 46,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 7
+      },
+      "visible_messages": 28,
+      "raw_path": "private/conversations/01a122a0-4a10-7761-af62-eed63c1993ae.jsonl",
+      "raw_sha256": "fedefcb988a28d57648a43c68676bf345a6dd556e178a35dd2b73a07bc3d7304",
+      "transcript_jsonl": "conversations/transcripts/01a122a0-4a10-7761-af62-eed63c1993ae.jsonl",
+      "transcript_md": "conversations/transcripts/01a122a0-4a10-7761-af62-eed63c1993ae.md"
+    },
+    {
+      "thread_id": "01a122ba-5f71-7ef1-9945-a50ac2898a6d",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T06-13-21-01a122ba-5f71-7ef1-9945-a50ac2898a6d.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 382558,
+      "captured_bytes": 382558,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T22:27:38.059Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 45,
+        "event_msg": 40,
+        "world_state": 1,
+        "turn_context": 6,
+        "token_usage_record": 6
+      },
+      "visible_messages": 23,
+      "raw_path": "private/conversations/01a122ba-5f71-7ef1-9945-a50ac2898a6d.jsonl",
+      "raw_sha256": "2c4eb101ec06f4852b7ffc7b8d4986560b4ee9913b5192914825ef6139fb7292",
+      "transcript_jsonl": "conversations/transcripts/01a122ba-5f71-7ef1-9945-a50ac2898a6d.jsonl",
+      "transcript_md": "conversations/transcripts/01a122ba-5f71-7ef1-9945-a50ac2898a6d.md"
+    },
+    {
+      "thread_id": "01a122d0-2bf7-7750-a67f-0b91e9d0ca8b",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T06-37-10-01a122d0-2bf7-7750-a67f-0b91e9d0ca8b.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 190411,
+      "captured_bytes": 190411,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T22:37:24.690Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 24,
+        "event_msg": 14,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 12,
+      "raw_path": "private/conversations/01a122d0-2bf7-7750-a67f-0b91e9d0ca8b.jsonl",
+      "raw_sha256": "68080013c76af981ab668522a65409f4e25ecf3d12b63ac27f30edec85fa4fde",
+      "transcript_jsonl": "conversations/transcripts/01a122d0-2bf7-7750-a67f-0b91e9d0ca8b.jsonl",
+      "transcript_md": "conversations/transcripts/01a122d0-2bf7-7750-a67f-0b91e9d0ca8b.md"
+    },
+    {
+      "thread_id": "01a122df-81c5-7310-bf0d-832f7b493c79",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T06-53-55-01a122df-81c5-7310-bf0d-832f7b493c79.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 425557,
+      "captured_bytes": 425557,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T23:12:53.375Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 52,
+        "event_msg": 38,
+        "world_state": 1,
+        "turn_context": 6,
+        "token_usage_record": 6
+      },
+      "visible_messages": 27,
+      "raw_path": "private/conversations/01a122df-81c5-7310-bf0d-832f7b493c79.jsonl",
+      "raw_sha256": "4b01ec2fd6bc0555906f785bd6ea3bab845892a619b66d872999b3f074a2a73f",
+      "transcript_jsonl": "conversations/transcripts/01a122df-81c5-7310-bf0d-832f7b493c79.jsonl",
+      "transcript_md": "conversations/transcripts/01a122df-81c5-7310-bf0d-832f7b493c79.md"
+    },
+    {
+      "thread_id": "01a122f7-412e-71b1-bf83-ef4afad1aff0",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T07-19-51-01a122f7-412e-71b1-bf83-ef4afad1aff0.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 457956,
+      "captured_bytes": 457956,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T00:32:33.587Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 43,
+        "event_msg": 49,
+        "world_state": 1,
+        "turn_context": 6,
+        "token_usage_record": 9
+      },
+      "visible_messages": 19,
+      "raw_path": "private/conversations/01a122f7-412e-71b1-bf83-ef4afad1aff0.jsonl",
+      "raw_sha256": "67b3e3cd5d87dd58ecf52abbb4eda2d92dd4b1b30789e9951ece206d90471df8",
+      "transcript_jsonl": "conversations/transcripts/01a122f7-412e-71b1-bf83-ef4afad1aff0.jsonl",
+      "transcript_md": "conversations/transcripts/01a122f7-412e-71b1-bf83-ef4afad1aff0.md"
+    },
+    {
+      "thread_id": "01a12343-12aa-7011-8ab3-ea61fe3c918a",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T08-42-40-01a12343-12aa-7011-8ab3-ea61fe3c918a.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 338575,
+      "captured_bytes": 338575,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T00:51:43.871Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 40,
+        "event_msg": 19,
+        "world_state": 1,
+        "turn_context": 3,
+        "token_usage_record": 3
+      },
+      "visible_messages": 18,
+      "raw_path": "private/conversations/01a12343-12aa-7011-8ab3-ea61fe3c918a.jsonl",
+      "raw_sha256": "5e5e91364cb0047911df9dc1d0438b131846362af48a334d0a3acb5faeaafb46",
+      "transcript_jsonl": "conversations/transcripts/01a12343-12aa-7011-8ab3-ea61fe3c918a.jsonl",
+      "transcript_md": "conversations/transcripts/01a12343-12aa-7011-8ab3-ea61fe3c918a.md"
+    },
+    {
+      "thread_id": "01a12350-4c0c-70f2-8b15-8e4d42549821",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T08-57-07-01a12350-4c0c-70f2-8b15-8e4d42549821.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 446268,
+      "captured_bytes": 446268,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T01:17:27.272Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 41,
+        "event_msg": 45,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 7
+      },
+      "visible_messages": 23,
+      "raw_path": "private/conversations/01a12350-4c0c-70f2-8b15-8e4d42549821.jsonl",
+      "raw_sha256": "0a4cd48485fe4a9d86ddf2a30f61d5bf11c740b1837687a1bb845ac9d11a4738",
+      "transcript_jsonl": "conversations/transcripts/01a12350-4c0c-70f2-8b15-8e4d42549821.jsonl",
+      "transcript_md": "conversations/transcripts/01a12350-4c0c-70f2-8b15-8e4d42549821.md"
+    },
+    {
+      "thread_id": "01a1236f-4784-7a03-9cd1-2f6bc99df1a8",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T09-30-57-01a1236f-4784-7a03-9cd1-2f6bc99df1a8.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 231843,
+      "captured_bytes": 231843,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T01:31:16.654Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 19,
+        "event_msg": 14,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 9,
+      "raw_path": "private/conversations/01a1236f-4784-7a03-9cd1-2f6bc99df1a8.jsonl",
+      "raw_sha256": "26f958ff430bc088162c3f231e85b5ad841353c2e0e9adebbb3acf105c9ecbfb",
+      "transcript_jsonl": "conversations/transcripts/01a1236f-4784-7a03-9cd1-2f6bc99df1a8.jsonl",
+      "transcript_md": "conversations/transcripts/01a1236f-4784-7a03-9cd1-2f6bc99df1a8.md"
+    },
+    {
+      "thread_id": "01a12380-f74d-7d90-abcd-8a677f2a76a4",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T09-50-16-01a12380-f74d-7d90-abcd-8a677f2a76a4.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 545908,
+      "captured_bytes": 545908,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T02:00:51.449Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 57,
+        "event_msg": 66,
+        "world_state": 1,
+        "turn_context": 10,
+        "token_usage_record": 10
+      },
+      "visible_messages": 31,
+      "raw_path": "private/conversations/01a12380-f74d-7d90-abcd-8a677f2a76a4.jsonl",
+      "raw_sha256": "1a999f8b4613888332341462b87353e0012183aacf4abd56d1dc989919b9eaf5",
+      "transcript_jsonl": "conversations/transcripts/01a12380-f74d-7d90-abcd-8a677f2a76a4.jsonl",
+      "transcript_md": "conversations/transcripts/01a12380-f74d-7d90-abcd-8a677f2a76a4.md"
+    },
+    {
+      "thread_id": "01a12393-b066-79e3-ad84-0ee36b45d691",
+      "title": "查看另一个 Codex 会话进度",
+      "classification": "known_root",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T10-10-43-01a12393-b066-79e3-ad84-0ee36b45d691.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": "vscode",
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 5784415,
+      "captured_bytes": 5784415,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T00:34:54.837Z",
+      "compaction_markers": 2,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 583,
+        "response_item": 441,
+        "world_state": 7,
+        "turn_context": 32,
+        "token_usage_record": 139,
+        "compacted": 2
+      },
+      "visible_messages": 107,
+      "raw_path": "private/conversations/01a12393-b066-79e3-ad84-0ee36b45d691.jsonl",
+      "raw_sha256": "09f3bfca2eabb4d25c2b3dbd6652869659e6741a3077bc97950fa0e04f170248",
+      "transcript_jsonl": "conversations/transcripts/01a12393-b066-79e3-ad84-0ee36b45d691.jsonl",
+      "transcript_md": "conversations/transcripts/01a12393-b066-79e3-ad84-0ee36b45d691.md"
+    },
+    {
+      "thread_id": "01a12396-2d9a-7342-b8ea-9e44a242d269",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T10-13-27-01a12396-2d9a-7342-b8ea-9e44a242d269.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 336691,
+      "captured_bytes": 336691,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T02:25:08.852Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 27,
+        "event_msg": 19,
+        "world_state": 1,
+        "turn_context": 3,
+        "token_usage_record": 3
+      },
+      "visible_messages": 13,
+      "raw_path": "private/conversations/01a12396-2d9a-7342-b8ea-9e44a242d269.jsonl",
+      "raw_sha256": "abd7f412d992eade6a7cb99156d8c78313bc3c9a03e338fe8f6c303cb79765df",
+      "transcript_jsonl": "conversations/transcripts/01a12396-2d9a-7342-b8ea-9e44a242d269.jsonl",
+      "transcript_md": "conversations/transcripts/01a12396-2d9a-7342-b8ea-9e44a242d269.md"
+    },
+    {
+      "thread_id": "01a123ab-c53a-7220-bdeb-e0524c23ea26",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T10-37-02-01a123ab-c53a-7220-bdeb-e0524c23ea26.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 412792,
+      "captured_bytes": 412792,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T02:52:06.161Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 46,
+        "event_msg": 32,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 22,
+      "raw_path": "private/conversations/01a123ab-c53a-7220-bdeb-e0524c23ea26.jsonl",
+      "raw_sha256": "fbe55d3ab96db87ecedce7e1a5cfd4a7648a77786f617e31a053de3bea212a7d",
+      "transcript_jsonl": "conversations/transcripts/01a123ab-c53a-7220-bdeb-e0524c23ea26.jsonl",
+      "transcript_md": "conversations/transcripts/01a123ab-c53a-7220-bdeb-e0524c23ea26.md"
+    },
+    {
+      "thread_id": "01a123bd-4944-75f0-ba78-aa8dc498c205",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T10-56-10-01a123bd-4944-75f0-ba78-aa8dc498c205.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 624308,
+      "captured_bytes": 624308,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T03:17:14.397Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 59,
+        "event_msg": 71,
+        "world_state": 1,
+        "turn_context": 11,
+        "token_usage_record": 11
+      },
+      "visible_messages": 33,
+      "raw_path": "private/conversations/01a123bd-4944-75f0-ba78-aa8dc498c205.jsonl",
+      "raw_sha256": "b3d7ae8da3d9d2297f70b0987378d8020076f13d218d00188c2ac7d7a7fa257b",
+      "transcript_jsonl": "conversations/transcripts/01a123bd-4944-75f0-ba78-aa8dc498c205.jsonl",
+      "transcript_md": "conversations/transcripts/01a123bd-4944-75f0-ba78-aa8dc498c205.md"
+    },
+    {
+      "thread_id": "01a123da-9210-7533-914a-04a272d9dae2",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T11-28-09-01a123da-9210-7533-914a-04a272d9dae2.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 209795,
+      "captured_bytes": 209795,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T03:28:14.449Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 12,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 6,
+      "raw_path": "private/conversations/01a123da-9210-7533-914a-04a272d9dae2.jsonl",
+      "raw_sha256": "538b896d22bd768d53f27072f25380f61e094684a9daa9c3c3ac40d971576226",
+      "transcript_jsonl": "conversations/transcripts/01a123da-9210-7533-914a-04a272d9dae2.jsonl",
+      "transcript_md": "conversations/transcripts/01a123da-9210-7533-914a-04a272d9dae2.md"
+    },
+    {
+      "thread_id": "01a123f0-6b46-72b0-9ec0-1ba3bc42a569",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T11-52-01-01a123f0-6b46-72b0-9ec0-1ba3bc42a569.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 322244,
+      "captured_bytes": 322244,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T03:58:27.448Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 33,
+        "event_msg": 19,
+        "world_state": 1,
+        "turn_context": 3,
+        "token_usage_record": 3
+      },
+      "visible_messages": 16,
+      "raw_path": "private/conversations/01a123f0-6b46-72b0-9ec0-1ba3bc42a569.jsonl",
+      "raw_sha256": "cce80e1d536a0eb188240b66edb688413d6e04ae8c2a58646fd77d95eca9661e",
+      "transcript_jsonl": "conversations/transcripts/01a123f0-6b46-72b0-9ec0-1ba3bc42a569.jsonl",
+      "transcript_md": "conversations/transcripts/01a123f0-6b46-72b0-9ec0-1ba3bc42a569.md"
+    },
+    {
+      "thread_id": "01a12408-b295-77d2-92cb-3da727f03c2c",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T12-18-32-01a12408-b295-77d2-92cb-3da727f03c2c.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 232831,
+      "captured_bytes": 232831,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T04:18:41.686Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 21,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 9,
+      "raw_path": "private/conversations/01a12408-b295-77d2-92cb-3da727f03c2c.jsonl",
+      "raw_sha256": "0ddcb9021f1fa56112b26ef93895d30c160228c014ed5a4fd3f1970c34e70d0c",
+      "transcript_jsonl": "conversations/transcripts/01a12408-b295-77d2-92cb-3da727f03c2c.jsonl",
+      "transcript_md": "conversations/transcripts/01a12408-b295-77d2-92cb-3da727f03c2c.md"
+    },
+    {
+      "thread_id": "01a12412-ef03-7c71-9878-6059fdac6279",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T12-29-43-01a12412-ef03-7c71-9878-6059fdac6279.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 296630,
+      "captured_bytes": 296630,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T04:42:19.699Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 18,
+        "event_msg": 13,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 9,
+      "raw_path": "private/conversations/01a12412-ef03-7c71-9878-6059fdac6279.jsonl",
+      "raw_sha256": "d6f4100eb2eacefa239d0eb51fcd8f9f389ecf6d52ec8e1505aebd7c8f618643",
+      "transcript_jsonl": "conversations/transcripts/01a12412-ef03-7c71-9878-6059fdac6279.jsonl",
+      "transcript_md": "conversations/transcripts/01a12412-ef03-7c71-9878-6059fdac6279.md"
+    },
+    {
+      "thread_id": "01a12429-5086-7101-9655-d81382ee599f",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T12-54-09-01a12429-5086-7101-9655-d81382ee599f.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 257598,
+      "captured_bytes": 257598,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T04:54:25.008Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 24,
+        "event_msg": 14,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 12,
+      "raw_path": "private/conversations/01a12429-5086-7101-9655-d81382ee599f.jsonl",
+      "raw_sha256": "a389eee6ca70c5c43a9e996e6a6bd979042b8cc3d90246dde1a1ce58d675a828",
+      "transcript_jsonl": "conversations/transcripts/01a12429-5086-7101-9655-d81382ee599f.jsonl",
+      "transcript_md": "conversations/transcripts/01a12429-5086-7101-9655-d81382ee599f.md"
+    },
+    {
+      "thread_id": "01a1243f-414c-7382-a8bd-e94fc3bc38bc",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T13-18-07-01a1243f-414c-7382-a8bd-e94fc3bc38bc.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 267135,
+      "captured_bytes": 267135,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T05:18:46.074Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 22,
+        "event_msg": 13,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 11,
+      "raw_path": "private/conversations/01a1243f-414c-7382-a8bd-e94fc3bc38bc.jsonl",
+      "raw_sha256": "7d35018fc1dc99e989e31ed00d6879e695b8a8c5da30c9a8435b46da23f56d9b",
+      "transcript_jsonl": "conversations/transcripts/01a1243f-414c-7382-a8bd-e94fc3bc38bc.jsonl",
+      "transcript_md": "conversations/transcripts/01a1243f-414c-7382-a8bd-e94fc3bc38bc.md"
+    },
+    {
+      "thread_id": "01a12453-5f8b-7632-b3c6-549459f0bc2f",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T13-40-06-01a12453-5f8b-7632-b3c6-549459f0bc2f.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 363604,
+      "captured_bytes": 363604,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T05:49:27.324Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 38,
+        "event_msg": 26,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 20,
+      "raw_path": "private/conversations/01a12453-5f8b-7632-b3c6-549459f0bc2f.jsonl",
+      "raw_sha256": "c7d872aa68b43a49658a95a548c3c8d0d33ee33988d869b28ea1990b1301a613",
+      "transcript_jsonl": "conversations/transcripts/01a12453-5f8b-7632-b3c6-549459f0bc2f.jsonl",
+      "transcript_md": "conversations/transcripts/01a12453-5f8b-7632-b3c6-549459f0bc2f.md"
+    },
+    {
+      "thread_id": "01a1246f-65e0-7d51-a6db-0575466dc97d",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T14-10-42-01a1246f-65e0-7d51-a6db-0575466dc97d.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 371163,
+      "captured_bytes": 371163,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T06:20:04.473Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 32,
+        "event_msg": 26,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 16,
+      "raw_path": "private/conversations/01a1246f-65e0-7d51-a6db-0575466dc97d.jsonl",
+      "raw_sha256": "4cc4f24be50f41ae6011c75117a1c0184caa23faadce86b2092f24164dbd9b54",
+      "transcript_jsonl": "conversations/transcripts/01a1246f-65e0-7d51-a6db-0575466dc97d.jsonl",
+      "transcript_md": "conversations/transcripts/01a1246f-65e0-7d51-a6db-0575466dc97d.md"
+    },
+    {
+      "thread_id": "01a12486-a42b-7860-99b6-85129152d191",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T14-36-06-01a12486-a42b-7860-99b6-85129152d191.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 312115,
+      "captured_bytes": 312115,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T06:38:35.146Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 24,
+        "event_msg": 26,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 13,
+      "raw_path": "private/conversations/01a12486-a42b-7860-99b6-85129152d191.jsonl",
+      "raw_sha256": "cbdefb66f010401df43bc59ef42c8d60b812b0c3da23e54ceaddb6cc5ca1b638",
+      "transcript_jsonl": "conversations/transcripts/01a12486-a42b-7860-99b6-85129152d191.jsonl",
+      "transcript_md": "conversations/transcripts/01a12486-a42b-7860-99b6-85129152d191.md"
+    },
+    {
+      "thread_id": "01a1248a-1a52-7983-855a-f9085d1f66b1",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T14-39-52-01a1248a-1a52-7983-855a-f9085d1f66b1.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 171870,
+      "captured_bytes": 171870,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T08:14:59.718Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 11,
+        "response_item": 9,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 5,
+      "raw_path": "private/conversations/01a1248a-1a52-7983-855a-f9085d1f66b1.jsonl",
+      "raw_sha256": "d696bc0c2599c1201d59e572d7f574e7d3d5c2284c5a217129a3df711e07c08d",
+      "transcript_jsonl": "conversations/transcripts/01a1248a-1a52-7983-855a-f9085d1f66b1.jsonl",
+      "transcript_md": "conversations/transcripts/01a1248a-1a52-7983-855a-f9085d1f66b1.md"
+    },
+    {
+      "thread_id": "01a124a6-32ce-7881-8f4f-c26fd2ff4cdb",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T15-10-34-01a124a6-32ce-7881-8f4f-c26fd2ff4cdb.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 231882,
+      "captured_bytes": 231882,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T07:10:51.216Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 17,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 7,
+      "raw_path": "private/conversations/01a124a6-32ce-7881-8f4f-c26fd2ff4cdb.jsonl",
+      "raw_sha256": "1d9e3c1a021212c2c61c810091c8edfeb71e266474233142314cab10df227ba0",
+      "transcript_jsonl": "conversations/transcripts/01a124a6-32ce-7881-8f4f-c26fd2ff4cdb.jsonl",
+      "transcript_md": "conversations/transcripts/01a124a6-32ce-7881-8f4f-c26fd2ff4cdb.md"
+    },
+    {
+      "thread_id": "01a124ab-17a2-7a43-ba46-79dc233870bf",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T15-15-54-01a124ab-17a2-7a43-ba46-79dc233870bf.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 178028,
+      "captured_bytes": 178028,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T07:16:05.213Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 6,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 3,
+      "raw_path": "private/conversations/01a124ab-17a2-7a43-ba46-79dc233870bf.jsonl",
+      "raw_sha256": "c12f74ef4ec109b579c5cae85d96d352e2518f2e7eedea9f0de9325f8a77454c",
+      "transcript_jsonl": "conversations/transcripts/01a124ab-17a2-7a43-ba46-79dc233870bf.jsonl",
+      "transcript_md": "conversations/transcripts/01a124ab-17a2-7a43-ba46-79dc233870bf.md"
+    },
+    {
+      "thread_id": "01a124d1-e5ad-7312-904b-7d2fbc24c2c0",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T15-58-18-01a124d1-e5ad-7312-904b-7d2fbc24c2c0.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 438448,
+      "captured_bytes": 438448,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T08:09:05.181Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 35,
+        "event_msg": 46,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 7
+      },
+      "visible_messages": 20,
+      "raw_path": "private/conversations/01a124d1-e5ad-7312-904b-7d2fbc24c2c0.jsonl",
+      "raw_sha256": "2be55f3d8cdc30da09cf50681c07730cdd514dc3f4f4a9814d6ed3f22ce30d63",
+      "transcript_jsonl": "conversations/transcripts/01a124d1-e5ad-7312-904b-7d2fbc24c2c0.jsonl",
+      "transcript_md": "conversations/transcripts/01a124d1-e5ad-7312-904b-7d2fbc24c2c0.md"
+    },
+    {
+      "thread_id": "01a124e3-b68f-7d22-9663-08db0a7bc645",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T16-17-45-01a124e3-b68f-7d22-9663-08db0a7bc645.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 900386,
+      "captured_bytes": 900386,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T08:53:01.032Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 83,
+        "event_msg": 131,
+        "world_state": 1,
+        "turn_context": 21,
+        "token_usage_record": 21
+      },
+      "visible_messages": 51,
+      "raw_path": "private/conversations/01a124e3-b68f-7d22-9663-08db0a7bc645.jsonl",
+      "raw_sha256": "6575df09267f04d10b30de03a5c6134fcae3e6ae6dd6018ae21324ba7865f4cf",
+      "transcript_jsonl": "conversations/transcripts/01a124e3-b68f-7d22-9663-08db0a7bc645.jsonl",
+      "transcript_md": "conversations/transcripts/01a124e3-b68f-7d22-9663-08db0a7bc645.md"
+    },
+    {
+      "thread_id": "01a1250d-9792-7a62-8ba8-3055c8a61664",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T17-03-30-01a1250d-9792-7a62-8ba8-3055c8a61664.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 517388,
+      "captured_bytes": 517388,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T09:30:15.282Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 53,
+        "event_msg": 50,
+        "world_state": 1,
+        "turn_context": 8,
+        "token_usage_record": 8
+      },
+      "visible_messages": 28,
+      "raw_path": "private/conversations/01a1250d-9792-7a62-8ba8-3055c8a61664.jsonl",
+      "raw_sha256": "efebc807d9528f5b8843d3aaf8b508977d01cb2a7ae2986c8bf791b29cd8daa4",
+      "transcript_jsonl": "conversations/transcripts/01a1250d-9792-7a62-8ba8-3055c8a61664.jsonl",
+      "transcript_md": "conversations/transcripts/01a1250d-9792-7a62-8ba8-3055c8a61664.md"
+    },
+    {
+      "thread_id": "01a12599-4aae-7e30-9668-87864afc65ef",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T19-36-05-01a12599-4aae-7e30-9668-87864afc65ef.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 131260,
+      "captured_bytes": 131260,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T11:36:10.535Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 6,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 3,
+      "raw_path": "private/conversations/01a12599-4aae-7e30-9668-87864afc65ef.jsonl",
+      "raw_sha256": "6f6e42508b15b810658526c14aafee4cd08a63173fdd569e3d18960a0a130a25",
+      "transcript_jsonl": "conversations/transcripts/01a12599-4aae-7e30-9668-87864afc65ef.jsonl",
+      "transcript_md": "conversations/transcripts/01a12599-4aae-7e30-9668-87864afc65ef.md"
+    },
+    {
+      "thread_id": "01a1259d-ebe2-7cd0-a02a-1e45cdde86f3",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T19-41-08-01a1259d-ebe2-7cd0-a02a-1e45cdde86f3.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 724996,
+      "captured_bytes": 724996,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T12:13:01.549Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 69,
+        "event_msg": 120,
+        "world_state": 1,
+        "turn_context": 21,
+        "token_usage_record": 21
+      },
+      "visible_messages": 48,
+      "raw_path": "private/conversations/01a1259d-ebe2-7cd0-a02a-1e45cdde86f3.jsonl",
+      "raw_sha256": "00edc922bfaedb87e3e319f241c6f9ac7eecf7a72bed50bc240df4ee39e78de1",
+      "transcript_jsonl": "conversations/transcripts/01a1259d-ebe2-7cd0-a02a-1e45cdde86f3.jsonl",
+      "transcript_md": "conversations/transcripts/01a1259d-ebe2-7cd0-a02a-1e45cdde86f3.md"
+    },
+    {
+      "thread_id": "01a125cd-3f8e-7851-9b25-d494c90299a7",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T20-32-50-01a125cd-3f8e-7851-9b25-d494c90299a7.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 712787,
+      "captured_bytes": 712787,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T15:42:10.163Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 68,
+        "event_msg": 107,
+        "world_state": 1,
+        "turn_context": 18,
+        "token_usage_record": 18
+      },
+      "visible_messages": 46,
+      "raw_path": "private/conversations/01a125cd-3f8e-7851-9b25-d494c90299a7.jsonl",
+      "raw_sha256": "5c6b2c99d26696d8a49c7ebd83d4d4fd0b9b860b805e5bef41576955856e0cfa",
+      "transcript_jsonl": "conversations/transcripts/01a125cd-3f8e-7851-9b25-d494c90299a7.jsonl",
+      "transcript_md": "conversations/transcripts/01a125cd-3f8e-7851-9b25-d494c90299a7.md"
+    },
+    {
+      "thread_id": "01a1267d-1cae-7610-877c-667837b07688",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/10/rollout-2026-10-10T23-44-55-01a1267d-1cae-7610-877c-667837b07688.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 3312439,
+      "captured_bytes": 3312439,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T18:17:07.086Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 453,
+        "event_msg": 893,
+        "world_state": 2,
+        "turn_context": 149,
+        "token_usage_record": 149
+      },
+      "visible_messages": 305,
+      "raw_path": "private/conversations/01a1267d-1cae-7610-877c-667837b07688.jsonl",
+      "raw_sha256": "151d6c292c0d870170f56371d8691cdd7f20756ab70ebbdcae587d1293c9fd89",
+      "transcript_jsonl": "conversations/transcripts/01a1267d-1cae-7610-877c-667837b07688.jsonl",
+      "transcript_md": "conversations/transcripts/01a1267d-1cae-7610-877c-667837b07688.md"
+    },
+    {
+      "thread_id": "01a126ac-ac14-7d20-b109-e5684098f071",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T00-36-52-01a126ac-ac14-7d20-b109-e5684098f071.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 71485,
+      "captured_bytes": 71485,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T16:36:52.893Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 1,
+        "event_msg": 1
+      },
+      "visible_messages": 0,
+      "raw_path": "private/conversations/01a126ac-ac14-7d20-b109-e5684098f071.jsonl",
+      "raw_sha256": "242fe2d7aa13d2a9142df1ab11b9717e5d17561766422f3c1e4eb2fad138ce24",
+      "transcript_jsonl": "conversations/transcripts/01a126ac-ac14-7d20-b109-e5684098f071.jsonl",
+      "transcript_md": "conversations/transcripts/01a126ac-ac14-7d20-b109-e5684098f071.md"
+    },
+    {
+      "thread_id": "01a12708-7114-7793-bf03-bb6a88155b1d",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T02-17-07-01a12708-7114-7793-bf03-bb6a88155b1d.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 697774,
+      "captured_bytes": 697774,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T18:42:22.539Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 82,
+        "event_msg": 158,
+        "world_state": 1,
+        "turn_context": 27,
+        "token_usage_record": 27
+      },
+      "visible_messages": 57,
+      "raw_path": "private/conversations/01a12708-7114-7793-bf03-bb6a88155b1d.jsonl",
+      "raw_sha256": "fbef0e4a1c564b6ad03e00f5b46271679e16816f36813cc4ddd855461ab77dd6",
+      "transcript_jsonl": "conversations/transcripts/01a12708-7114-7793-bf03-bb6a88155b1d.jsonl",
+      "transcript_md": "conversations/transcripts/01a12708-7114-7793-bf03-bb6a88155b1d.md"
+    },
+    {
+      "thread_id": "01a12722-02ae-7d11-9bf2-b65dd7b43901",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T02-45-02-01a12722-02ae-7d11-9bf2-b65dd7b43901.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 347379,
+      "captured_bytes": 347379,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T02:24:18.251Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 40,
+        "event_msg": 32,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 20,
+      "raw_path": "private/conversations/01a12722-02ae-7d11-9bf2-b65dd7b43901.jsonl",
+      "raw_sha256": "ef1fed98ada0ea4b7f458931a261f5d759bec269dd8dd1c302a6bf27541aa124",
+      "transcript_jsonl": "conversations/transcripts/01a12722-02ae-7d11-9bf2-b65dd7b43901.jsonl",
+      "transcript_md": "conversations/transcripts/01a12722-02ae-7d11-9bf2-b65dd7b43901.md"
+    },
+    {
+      "thread_id": "01a12837-30d6-7dd0-ba56-cbce80462ec3",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T07-47-48-01a12837-30d6-7dd0-ba56-cbce80462ec3.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 71485,
+      "captured_bytes": 71485,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-10T23:47:48.073Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 1,
+        "event_msg": 1
+      },
+      "visible_messages": 0,
+      "raw_path": "private/conversations/01a12837-30d6-7dd0-ba56-cbce80462ec3.jsonl",
+      "raw_sha256": "2e39b610011f2c2584dced0614499b5b611e9c76e1d8dcd1638318eed907abed",
+      "transcript_jsonl": "conversations/transcripts/01a12837-30d6-7dd0-ba56-cbce80462ec3.jsonl",
+      "transcript_md": "conversations/transcripts/01a12837-30d6-7dd0-ba56-cbce80462ec3.md"
+    },
+    {
+      "thread_id": "01a128bc-6f1c-76e0-b071-1fb4341bf7b6",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T10-13-20-01a128bc-6f1c-76e0-b071-1fb4341bf7b6.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 373115,
+      "captured_bytes": 373115,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T07:30:29.944Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 19,
+        "event_msg": 31,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 11,
+      "raw_path": "private/conversations/01a128bc-6f1c-76e0-b071-1fb4341bf7b6.jsonl",
+      "raw_sha256": "4ac7dd6b63fd6bebafae612c108953badec3eb06ecdac3ea04e35b455203be3f",
+      "transcript_jsonl": "conversations/transcripts/01a128bc-6f1c-76e0-b071-1fb4341bf7b6.jsonl",
+      "transcript_md": "conversations/transcripts/01a128bc-6f1c-76e0-b071-1fb4341bf7b6.md"
+    },
+    {
+      "thread_id": "01a128db-0c41-7da2-867a-652e591933ed",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T10-46-46-01a128db-0c41-7da2-867a-652e591933ed.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 268036,
+      "captured_bytes": 268036,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T02:51:15.141Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 29,
+        "event_msg": 13,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 13,
+      "raw_path": "private/conversations/01a128db-0c41-7da2-867a-652e591933ed.jsonl",
+      "raw_sha256": "1ab523cade345701ea10343cd5d22810e23e7f3ebbc1dc80302f51df1e2441da",
+      "transcript_jsonl": "conversations/transcripts/01a128db-0c41-7da2-867a-652e591933ed.jsonl",
+      "transcript_md": "conversations/transcripts/01a128db-0c41-7da2-867a-652e591933ed.md"
+    },
+    {
+      "thread_id": "01a12958-3db6-7ff0-b410-487f7094e19f",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T13-03-31-01a12958-3db6-7ff0-b410-487f7094e19f.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 338174,
+      "captured_bytes": 338174,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T06:02:06.221Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 40,
+        "event_msg": 31,
+        "world_state": 1,
+        "turn_context": 5,
+        "token_usage_record": 5
+      },
+      "visible_messages": 21,
+      "raw_path": "private/conversations/01a12958-3db6-7ff0-b410-487f7094e19f.jsonl",
+      "raw_sha256": "6266c7bfce5de94945e81089870442d8b6ec64d5d33119c9971fdcefeaeb3e99",
+      "transcript_jsonl": "conversations/transcripts/01a12958-3db6-7ff0-b410-487f7094e19f.jsonl",
+      "transcript_md": "conversations/transcripts/01a12958-3db6-7ff0-b410-487f7094e19f.md"
+    },
+    {
+      "thread_id": "01a129b3-ebd7-73b3-bd40-e84b2a982193",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T14-43-39-01a129b3-ebd7-73b3-bd40-e84b2a982193.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 323984,
+      "captured_bytes": 323984,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T06:50:46.253Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 25,
+        "event_msg": 27,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 13,
+      "raw_path": "private/conversations/01a129b3-ebd7-73b3-bd40-e84b2a982193.jsonl",
+      "raw_sha256": "ee7f517160120e0965524133fff575685f3768ef69ba88eb00b245b4ccaa1f17",
+      "transcript_jsonl": "conversations/transcripts/01a129b3-ebd7-73b3-bd40-e84b2a982193.jsonl",
+      "transcript_md": "conversations/transcripts/01a129b3-ebd7-73b3-bd40-e84b2a982193.md"
+    },
+    {
+      "thread_id": "01a129d3-e9e7-7890-86fc-e7378158d1e2",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T15-18-36-01a129d3-e9e7-7890-86fc-e7378158d1e2.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 287855,
+      "captured_bytes": 287855,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T07:23:50.416Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 17,
+        "event_msg": 19,
+        "world_state": 1,
+        "turn_context": 3,
+        "token_usage_record": 3
+      },
+      "visible_messages": 9,
+      "raw_path": "private/conversations/01a129d3-e9e7-7890-86fc-e7378158d1e2.jsonl",
+      "raw_sha256": "6b21b91d9b371bf48e25d485ebe881b5b38c4b801b7b8843d1335bce75b762a0",
+      "transcript_jsonl": "conversations/transcripts/01a129d3-e9e7-7890-86fc-e7378158d1e2.jsonl",
+      "transcript_md": "conversations/transcripts/01a129d3-e9e7-7890-86fc-e7378158d1e2.md"
+    },
+    {
+      "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+      "title": "修复 B 记忆超限与重复读页并恢复排程",
+      "classification": "known_root",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T15-28-02-01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": "vscode",
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 21640553,
+      "captured_bytes": 21640553,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T02:52:45.396Z",
+      "compaction_markers": 6,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 5695,
+        "response_item": 5471,
+        "world_state": 8,
+        "turn_context": 11,
+        "token_usage_record": 1827,
+        "compacted": 6
+      },
+      "visible_messages": 723,
+      "raw_path": "private/conversations/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+      "raw_sha256": "465124866110c78d426f6066b8effbd2c00c1bdd6a5be1a51af5b488e24b2305",
+      "transcript_jsonl": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+      "transcript_md": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.md"
+    },
+    {
+      "thread_id": "01a129ea-8e20-7033-98ff-c8fe65f26bd4",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T15-43-20-01a129ea-8e20-7033-98ff-c8fe65f26bd4.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 247771,
+      "captured_bytes": 247771,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T08:31:40.546Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 23,
+        "response_item": 15,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 9,
+      "raw_path": "private/conversations/01a129ea-8e20-7033-98ff-c8fe65f26bd4.jsonl",
+      "raw_sha256": "338a18d47984045552242df590e151567c6b76cb9da7f330891881c617650551",
+      "transcript_jsonl": "conversations/transcripts/01a129ea-8e20-7033-98ff-c8fe65f26bd4.jsonl",
+      "transcript_md": "conversations/transcripts/01a129ea-8e20-7033-98ff-c8fe65f26bd4.md"
+    },
+    {
+      "thread_id": "01a12a3a-2591-7b40-ac1f-e95cfdec28a9",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T17-10-16-01a12a3a-2591-7b40-ac1f-e95cfdec28a9.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 403275,
+      "captured_bytes": 403275,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T11:40:15.072Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 25,
+        "event_msg": 47,
+        "world_state": 1,
+        "turn_context": 7,
+        "token_usage_record": 7
+      },
+      "visible_messages": 15,
+      "raw_path": "private/conversations/01a12a3a-2591-7b40-ac1f-e95cfdec28a9.jsonl",
+      "raw_sha256": "74cb64d390735701a76fc9fd9c8148499d2a4cf7bfa4a1541d0121c2c3774426",
+      "transcript_jsonl": "conversations/transcripts/01a12a3a-2591-7b40-ac1f-e95cfdec28a9.jsonl",
+      "transcript_md": "conversations/transcripts/01a12a3a-2591-7b40-ac1f-e95cfdec28a9.md"
+    },
+    {
+      "thread_id": "01a12ab5-cac6-71b1-a51f-48fdf131a4bb",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T19-25-19-01a12ab5-cac6-71b1-a51f-48fdf131a4bb.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 71485,
+      "captured_bytes": 71485,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T11:25:19.443Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 1,
+        "event_msg": 1
+      },
+      "visible_messages": 0,
+      "raw_path": "private/conversations/01a12ab5-cac6-71b1-a51f-48fdf131a4bb.jsonl",
+      "raw_sha256": "bd40b36e82a441593c6e5b1855e0ee2ad367f7430696aa9e053cf9059f5b2bee",
+      "transcript_jsonl": "conversations/transcripts/01a12ab5-cac6-71b1-a51f-48fdf131a4bb.jsonl",
+      "transcript_md": "conversations/transcripts/01a12ab5-cac6-71b1-a51f-48fdf131a4bb.md"
+    },
+    {
+      "thread_id": "01a12b16-a872-7b33-9202-2b61849af18a",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T21-11-07-01a12b16-a872-7b33-9202-2b61849af18a.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 163812,
+      "captured_bytes": 163812,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T13:11:15.770Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 6,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 3,
+      "raw_path": "private/conversations/01a12b16-a872-7b33-9202-2b61849af18a.jsonl",
+      "raw_sha256": "5f20d44de83a79e1a578f6246d3a6cf576216be72c678d9a7183689cef07b340",
+      "transcript_jsonl": "conversations/transcripts/01a12b16-a872-7b33-9202-2b61849af18a.jsonl",
+      "transcript_md": "conversations/transcripts/01a12b16-a872-7b33-9202-2b61849af18a.md"
+    },
+    {
+      "thread_id": "01a12b23-d969-7223-a2bd-1846601b079d",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/11/rollout-2026-10-11T21-25-32-01a12b23-d969-7223-a2bd-1846601b079d.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 277196,
+      "captured_bytes": 277196,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T14:28:06.649Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 16,
+        "event_msg": 25,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 9,
+      "raw_path": "private/conversations/01a12b23-d969-7223-a2bd-1846601b079d.jsonl",
+      "raw_sha256": "dd0f9e9817f3bd29bcf60e64170c325a007bbe1c2aeafbd5ca6a8364469eeaef",
+      "transcript_jsonl": "conversations/transcripts/01a12b23-d969-7223-a2bd-1846601b079d.jsonl",
+      "transcript_md": "conversations/transcripts/01a12b23-d969-7223-a2bd-1846601b079d.md"
+    },
+    {
+      "thread_id": "01a12bb3-f48e-7752-a19a-cab3b93c6da8",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T00-02-56-01a12bb3-f48e-7752-a19a-cab3b93c6da8.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 161641,
+      "captured_bytes": 161641,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T16:03:01.317Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 6,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 3,
+      "raw_path": "private/conversations/01a12bb3-f48e-7752-a19a-cab3b93c6da8.jsonl",
+      "raw_sha256": "fa0664c953daaf59243af973a35ab52099d7cd73ad53ea29e468f484a719a02a",
+      "transcript_jsonl": "conversations/transcripts/01a12bb3-f48e-7752-a19a-cab3b93c6da8.jsonl",
+      "transcript_md": "conversations/transcripts/01a12bb3-f48e-7752-a19a-cab3b93c6da8.md"
+    },
+    {
+      "thread_id": "01a12d54-d2db-7a63-8ec4-0d001e6805d0",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T07-38-16-01a12d54-d2db-7a63-8ec4-0d001e6805d0.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 77053,
+      "captured_bytes": 77053,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-11T23:38:16.189Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 1,
+        "event_msg": 1
+      },
+      "visible_messages": 0,
+      "raw_path": "private/conversations/01a12d54-d2db-7a63-8ec4-0d001e6805d0.jsonl",
+      "raw_sha256": "3cc5516f78b977216453969b92c974d2b30d5039e99a16511aa62bcc2a240468",
+      "transcript_jsonl": "conversations/transcripts/01a12d54-d2db-7a63-8ec4-0d001e6805d0.jsonl",
+      "transcript_md": "conversations/transcripts/01a12d54-d2db-7a63-8ec4-0d001e6805d0.md"
+    },
+    {
+      "thread_id": "01a12d88-35ac-7560-8907-97cb0a74b7d7",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T08-34-23-01a12d88-35ac-7560-8907-97cb0a74b7d7.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 174467,
+      "captured_bytes": 174467,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T00:34:28.611Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 6,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 3,
+      "raw_path": "private/conversations/01a12d88-35ac-7560-8907-97cb0a74b7d7.jsonl",
+      "raw_sha256": "742aabbf7485dd121527a36dbb2b34a65ab966f3cf83d168a62b9ecc92f1a5a1",
+      "transcript_jsonl": "conversations/transcripts/01a12d88-35ac-7560-8907-97cb0a74b7d7.jsonl",
+      "transcript_md": "conversations/transcripts/01a12d88-35ac-7560-8907-97cb0a74b7d7.md"
+    },
+    {
+      "thread_id": "01a12d8d-fecd-7372-805e-730018e877ab",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T08-40-42-01a12d8d-fecd-7372-805e-730018e877ab.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 172507,
+      "captured_bytes": 172507,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T00:40:47.548Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 6,
+        "event_msg": 7,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 3,
+      "raw_path": "private/conversations/01a12d8d-fecd-7372-805e-730018e877ab.jsonl",
+      "raw_sha256": "c24559305e1df0ec9c8f972d21df537369d9f4e6f43870b362797d7b9d1bede6",
+      "transcript_jsonl": "conversations/transcripts/01a12d8d-fecd-7372-805e-730018e877ab.jsonl",
+      "transcript_md": "conversations/transcripts/01a12d8d-fecd-7372-805e-730018e877ab.md"
+    },
+    {
+      "thread_id": "01a12e06-e241-7dd1-9b66-0fe2c703ca78",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T10-52-45-01a12e06-e241-7dd1-9b66-0fe2c703ca78.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 107913,
+      "captured_bytes": 107913,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T02:52:45.512Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 1,
+        "event_msg": 1
+      },
+      "visible_messages": 0,
+      "raw_path": "private/conversations/01a12e06-e241-7dd1-9b66-0fe2c703ca78.jsonl",
+      "raw_sha256": "72e81b9ef6e3ddb31255a0298ae234aebe1cdcb01d686f55c9428d2d4020c807",
+      "transcript_jsonl": "conversations/transcripts/01a12e06-e241-7dd1-9b66-0fe2c703ca78.jsonl",
+      "transcript_md": "conversations/transcripts/01a12e06-e241-7dd1-9b66-0fe2c703ca78.md"
+    },
+    {
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "title": "分析 Codex 工厂数据排程的缺陷",
+      "classification": "known_root",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T10-53-57-01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": "vscode",
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 14358131,
+      "captured_bytes": 14209614,
+      "cutoff_applied": true,
+      "last_record_timestamp": "2026-10-12T12:48:19.781Z",
+      "compaction_markers": 6,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 1895,
+        "response_item": 1654,
+        "world_state": 7,
+        "turn_context": 24,
+        "token_usage_record": 504,
+        "compacted": 6
+      },
+      "visible_messages": 188,
+      "raw_path": "private/conversations/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl",
+      "raw_sha256": "d25680917b3cd7ba6c8750476a2b403f74f5df9f488668a98aa8e1b85a1d6dd5",
+      "transcript_jsonl": "conversations/transcripts/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl",
+      "transcript_md": "conversations/transcripts/01a12e07-fae5-70c2-ad30-c126f1f1b178.md"
+    },
+    {
+      "thread_id": "01a12e35-571a-7252-83ca-b1990d44a24a",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T11-43-30-01a12e35-571a-7252-83ca-b1990d44a24a.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 208071,
+      "captured_bytes": 208071,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T03:44:33.008Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 10,
+        "event_msg": 13,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 5,
+      "raw_path": "private/conversations/01a12e35-571a-7252-83ca-b1990d44a24a.jsonl",
+      "raw_sha256": "4f6068607a3ecb01f6be52cd616501866ab3817a1e5e5b1f86967be9e2756cc6",
+      "transcript_jsonl": "conversations/transcripts/01a12e35-571a-7252-83ca-b1990d44a24a.jsonl",
+      "transcript_md": "conversations/transcripts/01a12e35-571a-7252-83ca-b1990d44a24a.md"
+    },
+    {
+      "thread_id": "01a12e40-7c6b-75e0-830b-91759965eba5",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T11-55-40-01a12e40-7c6b-75e0-830b-91759965eba5.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 330343,
+      "captured_bytes": 330343,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T05:16:16.809Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 16,
+        "event_msg": 25,
+        "world_state": 1,
+        "turn_context": 4,
+        "token_usage_record": 4
+      },
+      "visible_messages": 9,
+      "raw_path": "private/conversations/01a12e40-7c6b-75e0-830b-91759965eba5.jsonl",
+      "raw_sha256": "0591f310104d4f5fcc5ba3308ae93104baa759ffe93dcdcd6bbda5cbd31e2fd3",
+      "transcript_jsonl": "conversations/transcripts/01a12e40-7c6b-75e0-830b-91759965eba5.jsonl",
+      "transcript_md": "conversations/transcripts/01a12e40-7c6b-75e0-830b-91759965eba5.md"
+    },
+    {
+      "thread_id": "01a12f0b-49d8-7ad3-b2b1-0c3fc0d27c29",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T15-37-11-01a12f0b-49d8-7ad3-b2b1-0c3fc0d27c29.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 326509,
+      "captured_bytes": 326509,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T08:02:03.857Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 13,
+        "event_msg": 19,
+        "world_state": 1,
+        "turn_context": 3,
+        "token_usage_record": 3
+      },
+      "visible_messages": 7,
+      "raw_path": "private/conversations/01a12f0b-49d8-7ad3-b2b1-0c3fc0d27c29.jsonl",
+      "raw_sha256": "15ff72c6ba1317903084117c7722373e370b0b30445d4aee1041b14a86f0d74f",
+      "transcript_jsonl": "conversations/transcripts/01a12f0b-49d8-7ad3-b2b1-0c3fc0d27c29.jsonl",
+      "transcript_md": "conversations/transcripts/01a12f0b-49d8-7ad3-b2b1-0c3fc0d27c29.md"
+    },
+    {
+      "thread_id": "01a12f4c-8c15-7442-bafe-aa9cd9d8c84c",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T16-48-28-01a12f4c-8c15-7442-bafe-aa9cd9d8c84c.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 245894,
+      "captured_bytes": 245894,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T10:51:05.209Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 10,
+        "event_msg": 13,
+        "world_state": 1,
+        "turn_context": 2,
+        "token_usage_record": 2
+      },
+      "visible_messages": 5,
+      "raw_path": "private/conversations/01a12f4c-8c15-7442-bafe-aa9cd9d8c84c.jsonl",
+      "raw_sha256": "2a674a6c3a2ae800f32a82024e15e53d6fa56b7bd8406cf3965b2ab1a443d6b9",
+      "transcript_jsonl": "conversations/transcripts/01a12f4c-8c15-7442-bafe-aa9cd9d8c84c.jsonl",
+      "transcript_md": "conversations/transcripts/01a12f4c-8c15-7442-bafe-aa9cd9d8c84c.md"
+    },
+    {
+      "thread_id": "01a12f91-839a-7c20-966e-c689ec30391a",
+      "title": "检查 Codex 会话是否偏移",
+      "classification": "known_root",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T18-03-47-01a12f91-839a-7c20-966e-c689ec30391a.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": "vscode",
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 661309,
+      "captured_bytes": 661309,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T10:06:13.851Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 35,
+        "response_item": 37,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 10
+      },
+      "visible_messages": 7,
+      "raw_path": "private/conversations/01a12f91-839a-7c20-966e-c689ec30391a.jsonl",
+      "raw_sha256": "4bd195520fcf23db9f9d4db396b5d0511dffa891d91af623c46a461e72078801",
+      "transcript_jsonl": "conversations/transcripts/01a12f91-839a-7c20-966e-c689ec30391a.jsonl",
+      "transcript_md": "conversations/transcripts/01a12f91-839a-7c20-966e-c689ec30391a.md"
+    },
+    {
+      "thread_id": "01a12fc7-5c16-7422-9111-76ec4fae5bd7",
+      "title": null,
+      "classification": "related_persisted_session",
+      "source_path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T19-02-36-01a12fc7-5c16-7422-9111-76ec4fae5bd7.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": {
+        "subagent": {
+          "other": "guardian"
+        }
+      },
+      "cli_version": "0.162.0-alpha.17.2",
+      "original_size_at_read": 299808,
+      "captured_bytes": 299808,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-12T11:27:19.383Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "response_item": 13,
+        "event_msg": 19,
+        "world_state": 1,
+        "turn_context": 3,
+        "token_usage_record": 3
+      },
+      "visible_messages": 7,
+      "raw_path": "private/conversations/01a12fc7-5c16-7422-9111-76ec4fae5bd7.jsonl",
+      "raw_sha256": "5c4a9c5e7cee7070850325d6487f8365aee544bbfa344169f69528d3dad203aa",
+      "transcript_jsonl": "conversations/transcripts/01a12fc7-5c16-7422-9111-76ec4fae5bd7.jsonl",
+      "transcript_md": "conversations/transcripts/01a12fc7-5c16-7422-9111-76ec4fae5bd7.md"
+    },
+    {
+      "thread_id": "01a11e71-36be-7c72-8e34-6e223f43fcb4",
+      "title": null,
+      "classification": "known_root",
+      "source_path": "__LOCAL_HOME__/.codex/archived_sessions/rollout-2026-10-09T10-14-58-01a11e71-36be-7c72-8e34-6e223f43fcb4.jsonl",
+      "source_cwd": "__LOCAL_PROJECT_ROOT__",
+      "source_kind": "vscode",
+      "cli_version": "0.162.0-alpha.2",
+      "original_size_at_read": 180508,
+      "captured_bytes": 180508,
+      "cutoff_applied": false,
+      "last_record_timestamp": "2026-10-09T02:15:14.285Z",
+      "compaction_markers": 0,
+      "record_counts": {
+        "session_meta": 1,
+        "event_msg": 8,
+        "response_item": 12,
+        "world_state": 1,
+        "turn_context": 1,
+        "token_usage_record": 1
+      },
+      "visible_messages": 4,
+      "raw_path": "private/conversations/01a11e71-36be-7c72-8e34-6e223f43fcb4.jsonl",
+      "raw_sha256": "b370b389f7b73d4cf9c1716d584e094a1c8ac019a980609ae42c1e0a2f2f43b3",
+      "transcript_jsonl": "conversations/transcripts/01a11e71-36be-7c72-8e34-6e223f43fcb4.jsonl",
+      "transcript_md": "conversations/transcripts/01a11e71-36be-7c72-8e34-6e223f43fcb4.md"
+    }
+  ],
+  "excluded_after_cutoff": [
+    {
+      "thread_id": "01a13029-0b11-7502-9c9c-6ee138c28cfc",
+      "reason": "created_after_archive_cutoff",
+      "path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T20-49-18-01a13029-0b11-7502-9c9c-6ee138c28cfc.jsonl"
+    },
+    {
+      "thread_id": "01a13029-9569-7ae3-b167-e8219fad567d",
+      "reason": "created_after_archive_cutoff",
+      "path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T20-49-54-01a13029-9569-7ae3-b167-e8219fad567d.jsonl"
+    },
+    {
+      "thread_id": "01a1302a-064a-7cc2-9866-2dfb9176903d",
+      "reason": "created_after_archive_cutoff",
+      "path": "__LOCAL_HOME__/.codex/sessions/2026/10/12/rollout-2026-10-12T20-50-22-01a1302a-064a-7cc2-9866-2dfb9176903d.jsonl"
+    }
+  ],
+  "attachments": [
+    {
+      "source": "__LOCAL_HOME__/.codex/attachments/25c28572-519e-46ba-94d9-de60331a6977/已粘贴的文本.txt",
+      "archive_path": "private/attachments/25c28572-519e-46ba-94d9-de60331a6977/已粘贴的文本.txt",
+      "bytes": 19605,
+      "sha256": "bf015e4ada7b70b00dce6f858889ad915605001b73868b60f800af28e13f5c56"
+    },
+    {
+      "source": "__LOCAL_HOME__/.codex/attachments/b739e0a5-3fc9-45a5-9ff4-15106f9e8693/goal-objective.md",
+      "archive_path": "private/attachments/b739e0a5-3fc9-45a5-9ff4-15106f9e8693/goal-objective.md",
+      "bytes": 19599,
+      "sha256": "d791e4ba07894161fa259d25c3ff41bfa457ba477f5539fa0e425653dbbb3553"
+    }
+  ]
+}

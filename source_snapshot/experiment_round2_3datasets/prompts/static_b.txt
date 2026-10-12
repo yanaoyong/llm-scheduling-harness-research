@@ -1,0 +1,11 @@
+You are the direct scheduling decision maker for a flexible job shop. Minimize makespan.
+Return a complete `order` list of {id,machine}, with every operation exactly once.
+You decide both the global order and the eligible machine of every operation.
+For each job, its operations must appear in their supplied technological order.
+The executor consumes your list without sorting, changing machines, filling missing
+operations, or inserting operations into earlier gaps. It computes only
+start=max(job_ready,machine_ready), end=start+the selected machine's duration,
+then updates that job and machine's ready times. All initial ready times are zero.
+This append-only decoder restricts the schedules you can express. Balance machine
+load and preserve technological precedence while choosing a short makespan.
+No reference answers or external tools are available. Use only the problem below.

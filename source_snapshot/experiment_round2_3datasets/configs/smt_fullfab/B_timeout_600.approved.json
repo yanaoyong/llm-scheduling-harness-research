@@ -1,0 +1,22 @@
+{
+  "schema": "smt-fullfab-B-timeout-extension-v1",
+  "extension_id": "smt-fullfab-B-per-call600-v1",
+  "budget_id": "smt-fullfab-stage2-probe-v1",
+  "authorization": "approved_by_user",
+  "approval_text": "把单次180秒超时也放宽，继续排查并推进B的全厂1小时验证，保留完整调用和费用记录，不要停在汇报上。",
+  "selected_by": "root_within_user_timeout_relaxation",
+  "selection_reason": "600 seconds gives the original astra/medium call more time after V6 timed out at180; no final output established the cause. Keep the request semantics unchanged to isolate this change.",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "allowed_arm": "B",
+  "allowed_window_seconds": 3600,
+  "target_run_id": "B_1701_1h_delta_v7",
+  "per_call_timeout_seconds": 600,
+  "global_max_calls": null,
+  "global_max_tokens": null,
+  "run_wall_seconds": 21600.0,
+  "original_research_waiver_sha256": "877e27d040316f6532d89bcb960f2cd149d472487bc600827d53ce2602cf009d",
+  "preserve_all_prior_costs_and_unknown_usage": true,
+  "automatic_transport_retries": 0,
+  "formal": false
+}

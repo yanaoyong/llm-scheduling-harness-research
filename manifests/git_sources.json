@@ -1,0 +1,26 @@
+[
+  {
+    "name": "experiment_round2_3datasets",
+    "source_path": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets",
+    "head": "6929dd8cb624d95b85d374e6a697025b93af4fc5",
+    "status_entries": 224,
+    "status_before_path": "private/git/experiment_round2_3datasets/status-before.z",
+    "status_sha256": "692fdbe7102ad5a154e218d5511854c1df38043a8d4b610baadcbe0ab2d8f125",
+    "index_sha256_before": "5f80e0b826ac1872b2d65aefd23412ed9fce9681b2758c2dd4ef3bd1bc0152ad",
+    "bundle": "private/git/experiment_round2_3datasets/history.bundle",
+    "bundle_sha256": "1a7434b8193aacee7010e46f1b0484a074ce8d65f53f8b26db62bc4eaa6f8db7",
+    "policy": "experiment: complete source backup + Git bundle + dirty/index patches; myharness: relevant source snapshot + dependency manifest, broader repository not copied"
+  },
+  {
+    "name": "myharness",
+    "source_path": "__LOCAL_HOME__/Downloads/大模型训练营/myharness",
+    "head": "ca64ee852e23f385d9bb193caae9d42d37f40b51",
+    "status_entries": 114,
+    "status_before_path": "private/git/myharness/status-before.z",
+    "status_sha256": "114c8b9ee281c1f58be04c42201e721a840288603f6f14611624b0df94c08cd0",
+    "index_sha256_before": "7088c0dac15eb6045d2da953066f0e6f5ecd9a8c2bd7b5447f9dc922ba9c4d70",
+    "bundle": null,
+    "bundle_sha256": null,
+    "policy": "experiment: complete source backup + Git bundle + dirty/index patches; myharness: relevant source snapshot + dependency manifest, broader repository not copied"
+  }
+]

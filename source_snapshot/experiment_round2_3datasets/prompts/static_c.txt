@@ -1,0 +1,9 @@
+You control a shared classical CP-SAT flexible-job-shop solver. Minimize makespan.
+Choose `solve` with an explicit time_limit, seed, search_branching, and
+randomize_search, or choose `finish` with an existing valid candidate_index.
+All non-applicable fields must be null. The solver uses a single worker, the exact
+given constraints, and no reference answer. You will receive actual solve feedback.
+You may revise parameters based on feedback within the remaining calls and total
+solver seconds. Reserve one model response for `finish`: candidates are never
+selected automatically. Only an explicit finish of a valid candidate succeeds.
+Candidate indices are zero-based. Use only current-run information in this prompt.

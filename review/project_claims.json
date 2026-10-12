@@ -1,0 +1,101 @@
+{
+  "archive_date": "2026-10-12",
+  "claims": [
+    {
+      "claim": "第二轮 M0.5 交付时（2026-10-12 11:44 UTC）未启动 harness 设计、新工厂实验或 M1；之后会话中已有未定稿方案讨论。",
+      "source_path": "research_harness_scheduling_20261012_round2/m0.5_research/summary.md",
+      "line": 3,
+      "status": "historical_snapshot"
+    },
+    {
+      "claim": "第二轮保留 B、C、离线规则生成三条路线，证据不足以判定同条件胜负。",
+      "source_path": "research_harness_scheduling_20261012_round2/m0.5_research/summary.md",
+      "line": 19,
+      "status": "qualified"
+    },
+    {
+      "claim": "49 个额外会话中 45 completed、4 failed；4 次原超时仍计入总数。",
+      "source_path": "research_harness_scheduling_20261012_round2/m0.5_research/summary.md",
+      "line": 33,
+      "status": "confirmed"
+    },
+    {
+      "claim": "三数据集 README 报告 135 核心记录、一次恢复后 108 个逻辑格点通过独立检查。",
+      "source_path": "experiment_round2_3datasets/README.md",
+      "line": 3,
+      "status": "reported"
+    },
+    {
+      "claim": "三数据集 SMT 八小时控制范围为 2/913 台；其余设备用统一固定策略。",
+      "source_path": "experiment_round2_3datasets/README.md",
+      "line": 32,
+      "status": "confirmed"
+    },
+    {
+      "claim": "SMT README 是 2026-10-10 04:19:39 UTC 冻结快照，当时 B 一小时尚未通过。",
+      "source_path": "experiment_round2_3datasets/docs/smt_fullfab/README.md",
+      "line": 3,
+      "status": "historical_snapshot"
+    },
+    {
+      "claim": "A24 与 C8 失败状态在该冻结截面中保留。",
+      "source_path": "experiment_round2_3datasets/docs/smt_fullfab/README.md",
+      "line": 7,
+      "status": "failed_preserved"
+    },
+    {
+      "claim": "B 于 2026-10-12 完成场景 1701 的 0—3600 秒直接排程窗口，责任范围 913 台。",
+      "source_path": "experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+      "line": 7,
+      "status": "reported_pass"
+    },
+    {
+      "claim": "B 一小时 95 次提交、1071 次派工，涉及 841 台；构造器和求解器调用为零。",
+      "source_path": "experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+      "line": 7,
+      "status": "reported_pass"
+    },
+    {
+      "claim": "B 窗口通过来源、物理、机会审计及归属检查；不能据此宣称长期质量、经济性或实时性。",
+      "source_path": "experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+      "line": 9,
+      "status": "qualified"
+    },
+    {
+      "claim": "A/B/C 一小时比较版本存在差异，只是已保存开发方案的描述性对比。",
+      "source_path": "experiment_round2_3datasets/docs/smt_fullfab/ABC_1h_plan_comparison_20261012.md",
+      "line": 5,
+      "status": "qualified"
+    },
+    {
+      "claim": "C-fixed 尚缺，当前不能将 C 的表现增益归因于模型。",
+      "source_path": "experiment_round2_3datasets/docs/smt_fullfab/ABC_1h_plan_comparison_20261012.md",
+      "line": 59,
+      "status": "open"
+    },
+    {
+      "claim": "A24 长窗口失败及 C8 通道失败仍保留，后续短窗口成功不应覆盖。",
+      "source_path": "experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+      "line": 63,
+      "status": "failed_preserved"
+    },
+    {
+      "claim": "433 个初始 lot 的 CQT 历史起点未知，1311 个 lot 缺绑定历史。",
+      "source_path": "research_harness_scheduling_20261012_round2/m0.5_research/dossier.md",
+      "line": 69,
+      "status": "unknown_open"
+    },
+    {
+      "claim": "三数据集 SMT 验收不代表全厂自主排程或真实工厂上线收益。",
+      "source_path": "experiment_round2_3datasets/README.md",
+      "line": 32,
+      "status": "scope_limit"
+    },
+    {
+      "claim": "截至会话导出所覆盖的 2026-10-12，harness 讨论方案尚未定稿、编码或最终批准。",
+      "source_path": "archive/20261012_project_archive/conversations/notes/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl",
+      "line": 176,
+      "status": "discussion_draft"
+    }
+  ]
+}

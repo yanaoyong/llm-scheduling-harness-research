@@ -1,0 +1,631 @@
+{
+  "created_at": "2026-10-09T02:59:53.250059+00:00",
+  "name": "static-aux-v1",
+  "phase": "auxiliary_static_v1",
+  "tag": "freeze-static-aux-v1",
+  "code_commit": "9ae3b700006f4d3a8d7169aab165e95a0ae48023",
+  "protocol_version": "round2-static-v1",
+  "config_path": "configs/static-aux-v1.json",
+  "effective_config_sha256": {
+    "1": "26bcda84e77bdec63b63cdd0cf134002b59df6a3a6acb496277a7695203a4d46",
+    "2": "8f71ca060002e6d946e90fa387a19ebd601b5d4761058af935701609ea631acc",
+    "3": "1408aad7d27903ec65f727f256bb206afa73954623878fcb9829d0b7195785c8"
+  },
+  "matrix": [
+    [
+      "mk03",
+      "A",
+      1
+    ],
+    [
+      "mk03",
+      "B",
+      1
+    ],
+    [
+      "mk03",
+      "C",
+      1
+    ],
+    [
+      "mk03",
+      "A",
+      2
+    ],
+    [
+      "mk03",
+      "B",
+      2
+    ],
+    [
+      "mk03",
+      "C",
+      2
+    ],
+    [
+      "mk03",
+      "A",
+      3
+    ],
+    [
+      "mk03",
+      "B",
+      3
+    ],
+    [
+      "mk03",
+      "C",
+      3
+    ],
+    [
+      "mk05",
+      "A",
+      1
+    ],
+    [
+      "mk05",
+      "B",
+      1
+    ],
+    [
+      "mk05",
+      "C",
+      1
+    ],
+    [
+      "mk05",
+      "A",
+      2
+    ],
+    [
+      "mk05",
+      "B",
+      2
+    ],
+    [
+      "mk05",
+      "C",
+      2
+    ],
+    [
+      "mk05",
+      "A",
+      3
+    ],
+    [
+      "mk05",
+      "B",
+      3
+    ],
+    [
+      "mk05",
+      "C",
+      3
+    ],
+    [
+      "mk08",
+      "A",
+      1
+    ],
+    [
+      "mk08",
+      "B",
+      1
+    ],
+    [
+      "mk08",
+      "C",
+      1
+    ],
+    [
+      "mk08",
+      "A",
+      2
+    ],
+    [
+      "mk08",
+      "B",
+      2
+    ],
+    [
+      "mk08",
+      "C",
+      2
+    ],
+    [
+      "mk08",
+      "A",
+      3
+    ],
+    [
+      "mk08",
+      "B",
+      3
+    ],
+    [
+      "mk08",
+      "C",
+      3
+    ],
+    [
+      "la02_edata",
+      "A",
+      1
+    ],
+    [
+      "la02_edata",
+      "B",
+      1
+    ],
+    [
+      "la02_edata",
+      "C",
+      1
+    ],
+    [
+      "la02_edata",
+      "A",
+      2
+    ],
+    [
+      "la02_edata",
+      "B",
+      2
+    ],
+    [
+      "la02_edata",
+      "C",
+      2
+    ],
+    [
+      "la02_edata",
+      "A",
+      3
+    ],
+    [
+      "la02_edata",
+      "B",
+      3
+    ],
+    [
+      "la02_edata",
+      "C",
+      3
+    ],
+    [
+      "la02_rdata",
+      "A",
+      1
+    ],
+    [
+      "la02_rdata",
+      "B",
+      1
+    ],
+    [
+      "la02_rdata",
+      "C",
+      1
+    ],
+    [
+      "la02_rdata",
+      "A",
+      2
+    ],
+    [
+      "la02_rdata",
+      "B",
+      2
+    ],
+    [
+      "la02_rdata",
+      "C",
+      2
+    ],
+    [
+      "la02_rdata",
+      "A",
+      3
+    ],
+    [
+      "la02_rdata",
+      "B",
+      3
+    ],
+    [
+      "la02_rdata",
+      "C",
+      3
+    ],
+    [
+      "la02_vdata",
+      "A",
+      1
+    ],
+    [
+      "la02_vdata",
+      "B",
+      1
+    ],
+    [
+      "la02_vdata",
+      "C",
+      1
+    ],
+    [
+      "la02_vdata",
+      "A",
+      2
+    ],
+    [
+      "la02_vdata",
+      "B",
+      2
+    ],
+    [
+      "la02_vdata",
+      "C",
+      2
+    ],
+    [
+      "la02_vdata",
+      "A",
+      3
+    ],
+    [
+      "la02_vdata",
+      "B",
+      3
+    ],
+    [
+      "la02_vdata",
+      "C",
+      3
+    ],
+    [
+      "la06_edata",
+      "A",
+      1
+    ],
+    [
+      "la06_edata",
+      "B",
+      1
+    ],
+    [
+      "la06_edata",
+      "C",
+      1
+    ],
+    [
+      "la06_edata",
+      "A",
+      2
+    ],
+    [
+      "la06_edata",
+      "B",
+      2
+    ],
+    [
+      "la06_edata",
+      "C",
+      2
+    ],
+    [
+      "la06_edata",
+      "A",
+      3
+    ],
+    [
+      "la06_edata",
+      "B",
+      3
+    ],
+    [
+      "la06_edata",
+      "C",
+      3
+    ],
+    [
+      "la06_rdata",
+      "A",
+      1
+    ],
+    [
+      "la06_rdata",
+      "B",
+      1
+    ],
+    [
+      "la06_rdata",
+      "C",
+      1
+    ],
+    [
+      "la06_rdata",
+      "A",
+      2
+    ],
+    [
+      "la06_rdata",
+      "B",
+      2
+    ],
+    [
+      "la06_rdata",
+      "C",
+      2
+    ],
+    [
+      "la06_rdata",
+      "A",
+      3
+    ],
+    [
+      "la06_rdata",
+      "B",
+      3
+    ],
+    [
+      "la06_rdata",
+      "C",
+      3
+    ],
+    [
+      "la06_vdata",
+      "A",
+      1
+    ],
+    [
+      "la06_vdata",
+      "B",
+      1
+    ],
+    [
+      "la06_vdata",
+      "C",
+      1
+    ],
+    [
+      "la06_vdata",
+      "A",
+      2
+    ],
+    [
+      "la06_vdata",
+      "B",
+      2
+    ],
+    [
+      "la06_vdata",
+      "C",
+      2
+    ],
+    [
+      "la06_vdata",
+      "A",
+      3
+    ],
+    [
+      "la06_vdata",
+      "B",
+      3
+    ],
+    [
+      "la06_vdata",
+      "C",
+      3
+    ],
+    [
+      "la11_edata",
+      "A",
+      1
+    ],
+    [
+      "la11_edata",
+      "B",
+      1
+    ],
+    [
+      "la11_edata",
+      "C",
+      1
+    ],
+    [
+      "la11_edata",
+      "A",
+      2
+    ],
+    [
+      "la11_edata",
+      "B",
+      2
+    ],
+    [
+      "la11_edata",
+      "C",
+      2
+    ],
+    [
+      "la11_edata",
+      "A",
+      3
+    ],
+    [
+      "la11_edata",
+      "B",
+      3
+    ],
+    [
+      "la11_edata",
+      "C",
+      3
+    ],
+    [
+      "la11_rdata",
+      "A",
+      1
+    ],
+    [
+      "la11_rdata",
+      "B",
+      1
+    ],
+    [
+      "la11_rdata",
+      "C",
+      1
+    ],
+    [
+      "la11_rdata",
+      "A",
+      2
+    ],
+    [
+      "la11_rdata",
+      "B",
+      2
+    ],
+    [
+      "la11_rdata",
+      "C",
+      2
+    ],
+    [
+      "la11_rdata",
+      "A",
+      3
+    ],
+    [
+      "la11_rdata",
+      "B",
+      3
+    ],
+    [
+      "la11_rdata",
+      "C",
+      3
+    ],
+    [
+      "la11_vdata",
+      "A",
+      1
+    ],
+    [
+      "la11_vdata",
+      "B",
+      1
+    ],
+    [
+      "la11_vdata",
+      "C",
+      1
+    ],
+    [
+      "la11_vdata",
+      "A",
+      2
+    ],
+    [
+      "la11_vdata",
+      "B",
+      2
+    ],
+    [
+      "la11_vdata",
+      "C",
+      2
+    ],
+    [
+      "la11_vdata",
+      "A",
+      3
+    ],
+    [
+      "la11_vdata",
+      "B",
+      3
+    ],
+    [
+      "la11_vdata",
+      "C",
+      3
+    ]
+  ],
+  "core": true,
+  "files": {
+    "configs/development-aux.json": "375e513a612b98fc030b1d4347780b1aa4bab5892bb549c8110706cd844c1606",
+    "configs/development-compact-c.json": "dc6d16a87d6281ccad8d00a55158060f46611550bf2c8c98585561e3f50246b5",
+    "configs/development-portfolio.json": "3beb720387000443a5aec4928470e887177fcf32b5be7d3661d30e59d0f45988",
+    "configs/development-v2.json": "715cefbd8f6b6042496116aac38e96e3a904e5e2dc9261c80a2aa364a757093e",
+    "configs/development.json": "0b4d03278cff2a6de33f9c49690184429c2956b9feba7ce30cb47b228179cd29",
+    "configs/model.json": "871a8242b9e79ef424cf33e45cf7f6045543fe0e6fee48cc77b1ce65edf195b6",
+    "configs/static-aux-v1.json": "14a0d489c1a459c9e218e0c00a77c7cd6cba7e315cb4a15a18a2b8de17036d5b",
+    "configs/static-v1.json": "0c1259041ecaad8d3a37bd819a07522ced50a18cdb0b4420154fc07d91961b7c",
+    "data/fjsp/instances/ft06_edata.json": "dc2a48edde20bcd67dd41e39c8b7541bf39667973ec0d9c4f1ed4e6dffe2b1eb",
+    "data/fjsp/instances/ft06_rdata.json": "176247ad84cfa2eccdeff293a44e2282e73f8eb1036a3d98f377d660d3358b69",
+    "data/fjsp/instances/ft06_vdata.json": "966f1e5f4fd6d0c9cea15560f9fbad34a0da63153d862d24765ba6ec1a221c22",
+    "data/fjsp/instances/la01_edata.json": "c3094b1e8252e47484c29e616d8850eb4feccd0f4b220b23a5fe855d3f8029ad",
+    "data/fjsp/instances/la01_rdata.json": "92fd0e4635513bb86971bb5be5d7f2103c59151f2a9996deb47847f0c0e8bdb6",
+    "data/fjsp/instances/la01_vdata.json": "c09112df40a51a99d037b1530b02834e2cdf45119914a1e7cba93694c366c40c",
+    "data/fjsp/instances/la02_edata.json": "ad357f42b7acea5597739524fdc7aae3e8d2cb92a24cb6a7236812b9da5fa949",
+    "data/fjsp/instances/la02_rdata.json": "217393578d80e423b690d87a894f8fa86de073d71ab55d37e7d1979a98bc71d3",
+    "data/fjsp/instances/la02_vdata.json": "6815c6e25fd6d9cde5fec51b177203535090cef040c2a2cda305571afd9c26cc",
+    "data/fjsp/instances/la03_edata.json": "72a6911418ee836d708e79bbe9e9acb9fd9c5e58ad105cf8fdb7db62115b5819",
+    "data/fjsp/instances/la03_rdata.json": "d4c2a4742b4a8325ae64938411da13dcedf4be87816f2f9f1a5fc85eab9c3321",
+    "data/fjsp/instances/la03_vdata.json": "88224913ef4cb99cf91762bbba4229d3ee450faf7e136810e549401dc76661f5",
+    "data/fjsp/instances/la06_edata.json": "506e1180acd63a9da5cad26539db8d8d7081e98c4ce071262f4e9878ce102e9f",
+    "data/fjsp/instances/la06_rdata.json": "dc6db8f802b1824f67eda99400a760ea55d9a769aff373d202281a93e824feef",
+    "data/fjsp/instances/la06_vdata.json": "b96bf65a9962c4faabf66173721e2d7cf6995f02050ce0e2f9e2e308649e4483",
+    "data/fjsp/instances/la07_edata.json": "766570c10fdd4bdf0000bca50115a5947ab8bc27ec6f5d860f4f496b1709b120",
+    "data/fjsp/instances/la07_rdata.json": "1f9673e82671346f01f0235fc576ca6577a77006b0237b792a526ea8ceb75567",
+    "data/fjsp/instances/la07_vdata.json": "c5a82abfafbd1bac4fe23e8759951bfa2d2808266c65181f28f76d81d6eba167",
+    "data/fjsp/instances/la11_edata.json": "b662170f8091489ab75cad8b6b41d7c84d796009104c37a4abe688fdcd37f3fc",
+    "data/fjsp/instances/la11_rdata.json": "027c54a67fda0bfe63fa1fee92432d87eb1945e0fb4b12dafc6d020efba6f9cd",
+    "data/fjsp/instances/la11_vdata.json": "85059ad4e0747d359befbf736412363353fc0520103855edf6baf8101f1a7902",
+    "data/fjsp/instances/la12_edata.json": "a9beba41d1302368c5212c92f7ee6c11caba08bdd57fb866563678bc06799a6c",
+    "data/fjsp/instances/la12_rdata.json": "4842f02831890ed371d2e78166e9f1df7aefd90491632f05b1d410379e7f039f",
+    "data/fjsp/instances/la12_vdata.json": "d894a696c7270bca865d51681580308105b998c3a4d9b688d2ad62deaca73294",
+    "data/fjsp/instances/mk01.json": "c41147161f2306b3a06c77dd2d4de272ef7a496f74721891e201b8976393f6cd",
+    "data/fjsp/instances/mk02.json": "c6caf05c9763d2169cf034d82b4d3de4a2e04b7385a5684d15db7d0e46026dd5",
+    "data/fjsp/instances/mk03.json": "73de6161fd8e51a45d2b70b708509953d8cd74af032837fa340d948cd5d7bd6d",
+    "data/fjsp/instances/mk04.json": "ffe9a3f18aae3d2ba219ef5d8b3ecc8bd3508abd04dfd5a1bde5a7e99297f805",
+    "data/fjsp/instances/mk05.json": "8ace2ecbd8a1d8c46e13202adff12f551477c8650f6f52eda85eea4041fada3c",
+    "data/fjsp/instances/mk06.json": "add0e56324598d4fb52faaf0e49f53f458dc986c99101939f381f410e2006b0e",
+    "data/fjsp/instances/mk08.json": "4a1875320bf98ee141a420a09e2cbeb94970bf3f64ca4680a291e187d4653d3c",
+    "data/fjsp/instances/mk09.json": "e9eaa70c93db5327b80669702369b340833b426cfc546e72f5d5da71c9760ad6",
+    "data/fjsp/instances/mk10.json": "4d98eb51e3681b8c133e36a70901c4f6155d3009e3f8d645a24c10994f5ceea4",
+    "data/fjsp/manifest.json": "7bf5acfce85d6a633208da3e77df697b354aff7ce7c54a89923d572b7eea9870",
+    "data/fjsp/source-lock.json": "352a4365e8d7fb49cdb82c7dbe819f2523ad2a91901ac5c82b1d9cf4affe4654",
+    "data/fjsp/split.json": "e61e6f28367fdd683ef2658271a8c6ec9e6638da0b32d046d4e51aef7ce0f08a",
+    "docs/PROTOCOL_STATIC_v1.md": "bc1a315a99d9fa96bf83a20c90611ef9214e0e097307c3aafeecd231d46c1e00",
+    "docs/fjsp-reference-values.json": "c329dc1e94f54b4f1dc4380a48583ef4279eae26c53d60d9b49ca4432fe24079",
+    "docs/runtime-environment.json": "621a32ac77a845fcacca5055abc929cdc9dc10ffff023df3748274b90a93f27b",
+    "prompts/static_b.txt": "31463750bfa69ee35f750fc940de6ff2dd16e66c7c21862ae4a541cd09e47c01",
+    "prompts/static_b_compact.txt": "0c960ef7d94039a6cac9bb8812a140b011080bf361f03d2a71de5a13a86fe097",
+    "prompts/static_c.txt": "66f9f408b23e4aa9b1fe7cae05977cbcb754f0d3b245f68f25f7ba11bc2d39cc",
+    "requirements.lock": "a356a738d3d5a3a9811a9deb86de3b7efc4e22aa86bd3b8f6092ceb9408a5f6f",
+    "scripts/freeze_static.py": "11d63852e25f1524ee4c614047b615effce31d2f911ece12444caeeffd633011",
+    "src/__init__.py": "5de895cc2273e38380fb6d9ffe12144cd766b7c1f85590243097f60bc581f55a",
+    "src/agents/__init__.py": "0cba2ea53ed62a07a8b038e5c44791c07281472ee51d8dbc3a1df515b476a23d",
+    "src/agents/budget.py": "aa675160127599dddb18fb88683ebc79f4df1522b9c5bdfdcc166141df783c8a",
+    "src/agents/model_transport.py": "29f4ea6f6333124a34db48cc3cbec42ac3c487fa89408861f6ae0bb076cb6ced",
+    "src/agents/static.py": "8f797bffc43f57b691af29af94564755ddf7a2b3c9ae17a7de7b66cd3ccdb85d",
+    "src/batch.py": "2e2a96fa92334a6b7ac9d94f4773b9bb681094875ba8fa0b985e405476d13b54",
+    "src/experiment.py": "557ad651715fa3661f65f4b3a61d6145f61d714cdceaf3e2e4f0c9f11b42bcad",
+    "src/fjsp/__init__.py": "1d27e5a98ae190279c29e48be976479c1500d01c34d3b262cb64e55ff7708f6d",
+    "src/fjsp/problem.py": "90d9b016477aa150e1367999d80cef4465b0c037d086ab707347a057339b7ae4",
+    "src/fjsp/solver.py": "ba400c94587718a40594ca1aeb74f09ad71383e513605f8fb7fc539448bb3381",
+    "src/fjsp/validator.py": "d4f4162bf2f0163b0319f4626b5c1cda1f39321f6f2ab19a66cca83baee5eecb",
+    "src/replay.py": "734c68d5d82e4cec7d4e61d6ee4efe4824e7c787005603cfed590c833c7a6296",
+    "src/report.py": "83ad9e3885977003913f3154442a88efaedfc9e27c3b5092c20292fe0b2d3f2d",
+    "src/runner.py": "419212047819b4ed8c8a2dcf458ddeed1764abc09855c052fbdfeb4ef732e6fe",
+    "tests/test_agents.py": "65919dba9a5435bedd15254e4581fe4fb4bfabd96da7bdeaa66ac17dc16ccdd7",
+    "tests/test_budget_tokens.py": "43d23e35a5951858dcb0255bd52ff08d75bd3dffa212c35095db45a82df7bfa3",
+    "tests/test_compact_actions.py": "94982e09c0c556ac35e829bd52b50c14089131c6759b61057bd4ca02e9856467",
+    "tests/test_fjsp_validation.py": "d5b131124042b147dbb6cc045d2b37f5cd78ed7d32ea930afd95f0e6a9f9f102",
+    "tests/test_replay.py": "3c3621dfa88fb762bef7720e2c0af72eeaa32d0c2af4ebed7cb495988d0bfca3",
+    "tests/test_solver.py": "9d1bd59f7e3881ad6141e66c60bf9d64334373ac46e2dcbcd5aeb7d4e7dfb011"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "timeout_seconds": 180,
+  "codex_binary": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+  "proxy": "http://127.0.0.1:7897",
+  "phase": "development",
+  "grant_id": "unallocated"
+}

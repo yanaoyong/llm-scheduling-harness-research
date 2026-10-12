@@ -1,0 +1,1 @@
+{"amendment_id":"smt-fullfab-stage2-C-count-token-waiver-v1","budget_id":"smt-fullfab-stage2-probe-v1","authorization":"approved_by_user","approval_text":"豁免次数与用量限制","allowed_purpose":"C","waived_limits":["attempt_count","reported_tokens","unknown_usage_admission"],"scenario":1701,"window_seconds":3600}

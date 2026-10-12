@@ -1,0 +1,192 @@
+{
+  "status": "failed",
+  "reviewed_at": "2026-10-12T13:12:25.867604+00:00",
+  "reviewer": "owner",
+  "delegated_model": "gpt-6-luna",
+  "delegated_agents": 3,
+  "method": "Owner read generated documents and primary source passages, then checked quoted authority against frozen visible transcripts and rehashed copied sources. Not a rerun of scheduling experiments.",
+  "conversation_quote_checks": [
+    {
+      "claim": "先完成调研再讨论 harness；模型/程序/求解器分工暂作假设。",
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "source_line": 103,
+      "role": "user",
+      "quote_matches": true
+    },
+    {
+      "claim": "用户选择 Luna 用于拆题/检索/提取，Sol 用于对抗核验/综合；评审分工另由 L1976 支持。",
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "source_line": 458,
+      "role": "user",
+      "quote_matches": true
+    },
+    {
+      "claim": "用户选择 Luna 用于拆题/检索/提取，Sol 用于对抗核验/综合；评审分工另由 L1976 支持。",
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "source_line": 1976,
+      "role": "user",
+      "quote_matches": true
+    },
+    {
+      "claim": "用户批准将本轮 M0.5 上限提高到 49 次，用于重试并重新综合；不包含把问题措辞中的评审要求误读为用户 answer。",
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "source_line": 3250,
+      "role": "user",
+      "quote_matches": true
+    },
+    {
+      "claim": "B、C 与离线规则共享评测流程的 harness 方案仍是讨论稿。",
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "source_line": 3918,
+      "role": "user",
+      "quote_matches": true
+    },
+    {
+      "claim": "当前优先任务改为归档项目及 Codex 会话关键内容。",
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "source_line": 3976,
+      "role": "user",
+      "quote_matches": true
+    },
+    {
+      "claim": "用户授权统筹低成本子 agent 归档/Git，并要求抽检；此处子任务仅负责会话摘要与声明证据。",
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "source_line": 4076,
+      "role": "user",
+      "quote_matches": true
+    },
+    {
+      "claim": "第一轮 27 次方案排程均通过约束检查，但结果局限于本轮固定参数基线。",
+      "thread_id": "01a11bce-5043-7871-b0e3-cd5f4e9f2393",
+      "source_line": 945,
+      "role": "assistant",
+      "quote_matches": true
+    },
+    {
+      "claim": "SMT2020 试验将全厂状态仿真与受控设备决策区分；旧的两机控制不足以证明全厂能力。",
+      "thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+      "source_line": 4256,
+      "role": "assistant",
+      "quote_matches": false
+    },
+    {
+      "claim": "对仅控制两台设备设计缺乏代表性依据的明确承认。",
+      "thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+      "source_line": 4350,
+      "role": "assistant",
+      "quote_matches": true
+    },
+    {
+      "claim": "SMT2020 是仿真基准，不能据此声称已在本厂现场验证。",
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "source_line": 82,
+      "role": "assistant",
+      "quote_matches": true
+    }
+  ],
+  "project_source_checks": [
+    {
+      "id": "research_attempts_and_failures",
+      "source": "research_harness_scheduling_20261012_round2/m0.5_research/summary.md",
+      "checked_fragments": [
+        "49/49",
+        "45",
+        "failed",
+        "4"
+      ],
+      "matches": true
+    },
+    {
+      "id": "B_window_and_ownership",
+      "source": "experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+      "checked_fragments": [
+        "0—3600",
+        "913",
+        "95",
+        "1,071",
+        "841",
+        "调用为 0"
+      ],
+      "matches": true
+    },
+    {
+      "id": "B_cost_boundary",
+      "source": "experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+      "checked_fragments": [
+        "1,362",
+        "44,666,702",
+        "3 条历史调用用量未知",
+        "24 小时 41 分 8.54 秒"
+      ],
+      "matches": true
+    },
+    {
+      "id": "old_failures_and_C_fixed",
+      "source": "experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+      "checked_fragments": [
+        "58,153.22",
+        "6,386.39",
+        "C-fixed",
+        "版本并不完全相同"
+      ],
+      "matches": true
+    },
+    {
+      "id": "two_machine_scope",
+      "source": "experiment_round2_3datasets/README.md",
+      "checked_fragments": [
+        "2/913",
+        "其余全厂统一固定策略",
+        "108",
+        "不宣称全厂自主排程"
+      ],
+      "matches": true
+    },
+    {
+      "id": "CQT_history_unknown",
+      "source": "research_harness_scheduling_20261012_round2/m0.5_research/dossier.md",
+      "checked_fragments": [
+        "433",
+        "1311",
+        "历史起点",
+        "未知"
+      ],
+      "matches": true
+    },
+    {
+      "id": "old_readme_cutoff",
+      "source": "experiment_round2_3datasets/docs/smt_fullfab/README.md",
+      "checked_fragments": [
+        "2026-10-10 04:19:39 UTC",
+        "本页固定此次证据截面"
+      ],
+      "matches": true
+    },
+    {
+      "id": "acceptance_date",
+      "source": "experiment_round2_3datasets/artifacts/final/acceptance.json",
+      "checked_fragments": [
+        "2026-10-09T07:13:34.256976Z"
+      ],
+      "matches": false
+    }
+  ],
+  "authored_link_count": 137,
+  "missing_links": [],
+  "source_snapshot_files_rechecked": 581,
+  "snapshot_mismatches": [],
+  "corrections_required_and_completed": [
+    "Removed invented October 12 acceptance date; used actual October 9 checked_at with correct event meaning.",
+    "Separated M0.5 delivery-time scope from later unapproved harness discussion.",
+    "Replaced approval-question quote with explicit user answer for 49-session grant; added separate source for Sol review role.",
+    "Expanded B repair summary to final one-hour completion and bounded cost rather than leaving early 803.25s checkpoint as unresolved.",
+    "Distinguished 8 main-session summaries from 98-session frozen preservation.",
+    "Moved newly authored evidence links into byte-identical local source snapshots for portability.",
+    "Clarified complete-tree restoration versus bundle-only restoration; avoided applying two overlapping patches."
+  ],
+  "limits": [
+    "Byte checks and source checks do not certify runtime reproducibility or missing historical events.",
+    "Snapshot remains same-disk only; no remote backup or push.",
+    "Current conversation is captured only through the stated cutoff; this archival work is documented separately."
+  ]
+}

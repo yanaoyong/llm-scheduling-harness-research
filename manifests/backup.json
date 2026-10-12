@@ -1,0 +1,310 @@
+{
+  "started_at": "2026-10-12T13:00:00.306508+00:00",
+  "completed_at": "2026-10-12T13:03:50.744617+00:00",
+  "source_root": "__LOCAL_PROJECT_ROOT__",
+  "archive_file": "private/project-originals.tar.gz",
+  "archive_bytes": 6856765291,
+  "archive_sha256": "0b43a7b68753679aee5166144876027db4dadb3ce0d519bff003242ab6224872",
+  "manifest_path": "manifests/project_files.jsonl",
+  "manifest_sha256": "4ee834de1ef4c0af53e5d6fa45ecf1c802dc0be952cc230bb5072f3aebf933bb",
+  "regular_files": 121279,
+  "uncompressed_bytes": 50263836618,
+  "changed_while_reading": [],
+  "symlinks": [
+    {
+      "path": "experiment_round1/.venv/bin/python",
+      "mode": 41453,
+      "mtime_ns": 1791468065349309030,
+      "size": 10,
+      "type": "symlink",
+      "target": "python3.12",
+      "resolved_target": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "target_exists": true,
+      "external_to_project": true
+    },
+    {
+      "path": "experiment_round1/.venv/bin/python3",
+      "mode": 41453,
+      "mtime_ns": 1791468065349360029,
+      "size": 10,
+      "type": "symlink",
+      "target": "python3.12",
+      "resolved_target": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "target_exists": true,
+      "external_to_project": true
+    },
+    {
+      "path": "experiment_round1/.venv/bin/python3.12",
+      "mode": 41453,
+      "mtime_ns": 1791468065349252698,
+      "size": 65,
+      "type": "symlink",
+      "target": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "resolved_target": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "target_exists": true,
+      "external_to_project": true
+    },
+    {
+      "path": "experiment_round2_3datasets/.venv/bin/python",
+      "mode": 41453,
+      "mtime_ns": 1791512313211771227,
+      "size": 10,
+      "type": "symlink",
+      "target": "python3.12",
+      "resolved_target": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "target_exists": true,
+      "external_to_project": true
+    },
+    {
+      "path": "experiment_round2_3datasets/.venv/bin/python3",
+      "mode": 41453,
+      "mtime_ns": 1791512313211822100,
+      "size": 10,
+      "type": "symlink",
+      "target": "python3.12",
+      "resolved_target": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "target_exists": true,
+      "external_to_project": true
+    },
+    {
+      "path": "experiment_round2_3datasets/.venv/bin/python3.12",
+      "mode": 41453,
+      "mtime_ns": 1791512313211718228,
+      "size": 65,
+      "type": "symlink",
+      "target": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "resolved_target": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+      "target_exists": true,
+      "external_to_project": true
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v1/frozen/progress",
+      "mode": 41453,
+      "mtime_ns": 1791576484277415440,
+      "size": 101,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v1/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791576484277354481,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v2/frozen/progress",
+      "mode": 41453,
+      "mtime_ns": 1791576880952465285,
+      "size": 101,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v2/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791576880952407199,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v3/frozen/progress",
+      "mode": 41453,
+      "mtime_ns": 1791577662111679139,
+      "size": 101,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v3/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791577662111613013,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v4/frozen/progress",
+      "mode": 41453,
+      "mtime_ns": 1791601374761713108,
+      "size": 101,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v4/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791601374761650524,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v5/frozen/progress",
+      "mode": 41453,
+      "mtime_ns": 1791632488109077908,
+      "size": 101,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v5/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791632488109018908,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v6/frozen/progress",
+      "mode": 41453,
+      "mtime_ns": 1791635594622416321,
+      "size": 101,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v6/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791635594622357988,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v7/frozen/progress",
+      "mode": 41453,
+      "mtime_ns": 1791646468549308736,
+      "size": 101,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_B_delta_gate/B_1701_1h_delta_v7/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791646468549249819,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_C_stream_gate/C_1701_8h_stream_v1/frozen/progress",
+      "mode": 41453,
+      "mtime_ns": 1791584048799854669,
+      "size": 101,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/progress",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_C_stream_gate/C_1701_8h_stream_v1/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791584048799788917,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_offline_A_gate/A_1701_24h_hybrid_v1/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791597437999379281,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_offline_A_gate/A_1701_8h_hybrid_v2/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791562380017274187,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_offline_A_gate/A_1701_8h_hybrid_v3/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791573033965741368,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    },
+    {
+      "path": "experiment_round2_3datasets/runs/smt_fullfab_offline_pilot/reference_discrimination_8h_v1/frozen/runs",
+      "mode": 41453,
+      "mtime_ns": 1791557461822303365,
+      "size": 97,
+      "type": "symlink",
+      "target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "resolved_target": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/runs",
+      "target_exists": true,
+      "external_to_project": false
+    }
+  ],
+  "storage_scope": "same local disk; independent off-device backup not created",
+  "includes": [
+    "all original top-level project entries listed in SOURCE_NAMES including ignored data, runs, nested .git, environments"
+  ],
+  "excludes": [
+    "new archive directory itself",
+    "unrelated personal Codex configuration and credentials",
+    "external symlink targets, individually inventoried"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "protocol_version": "round2-smt-development-0.1",
+  "model": {"model":"gpt-6-astra","reasoning_effort":"medium","timeout_seconds":180,"phase":"development","grant_id":"dev-smt-integration"},
+  "window_seconds":28800,
+  "controlled_machine_ids":[790,9],
+  "max_decisions":8,
+  "max_model_calls":{"B":8,"C":16},
+  "responses_per_decision":{"B":2,"C":3},
+  "wall_seconds":2400,
+  "solver_budget_seconds":16,
+  "solver_grant_id":"dev-smt-solvers",
+  "classical_parameters":{"time_limit":1,"priority_weight":100,"waiting_weight":1,"fill_weight":1000,"setup_weight":1}
+}

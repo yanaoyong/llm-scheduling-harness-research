@@ -1,0 +1,1880 @@
+{
+  "created_at": "2026-10-12T11:13:11.233898+00:00",
+  "policy": "Original27 attempts and4 failures remain unchanged. Latest valid result per role is used only in the supplemental summary; failure is not a substantive vote. Model-check counts are not independent empirical studies.",
+  "attempts": [
+    {
+      "claim_id": "R2-C09",
+      "original_attempt_label": "R2-C09/v2",
+      "original_agent_id": 26,
+      "role_index": 2,
+      "retry_label": "R2-C09/v2/retry1",
+      "result": {
+        "claim_id": "R2-C09",
+        "verdict": "supported",
+        "confidence": "medium",
+        "evidence": "截至2026-10-12，原条件性源码命题受支持，本次反向检查未发现指定证伪情形。先读取白名单及分类准则，再沿 V15 host→restore→V14 Interaction→包内组装器→plan_delta 定向读取。host 设置 frozen 导入路径并检查自身位置、运行文件哈希；restore 实例化 V14 Interaction。Interaction 按同目录文件的字节哈希加载三项依赖。使用 Python 标准库只读解析指定完整性清单，仅筛选已打开的10个文件并计算 SHA256，均与基线匹配；三项包内依赖也与代码硬编码哈希一致。这确认的是当前源码与指定基线，实际 campaign/frozen 部署对应仍未知。\n\n组装器从空 delta 开始，只复制模型提交的完整字段并按提交顺序追加数组；创建中间对象容器不生成排程值。seal 要求所有规定路径、包括空数组均显式声明。编译器要求每个待执行基准任务及 hold 有完整保留、取消或替换处分，新增任务必须包含机台、lot、operation、visit 和开始条件。保留任务复制原值；未显式改序时保留原每机顺序，新增或迁移任务则要求受影响机台的完整顺序。这里存在程序展开和约束检查，但未见程序自行选择机台、批组或顺序。\n\n反向检索覆盖补字段、默认值、排序、回退、修复及 selection 赋值。静态候选反例包括缺机台、新增任务却缺完整机序、非冻结任务沿用过期开始条件、hold 锚到已删除任务；相应分支均拒绝，未见自动修补。排序命中主要用于页面、历史反馈和观测索引；候选按成功检查的创建次序展示。环境中的 plan_from_action 确有从状态生成字段的逻辑，但已查调用链没有调用它，不能据此推翻本句，也不能把整个工程概括为绝无自动转换。\n\n检查成功只登记候选。apply 必须在另一次较晚输出中提供精确候选 ID 和完整哈希；host 再验证显式 apply、锚点和逐条原输出重放，然后把选中计划交给公共 commit。公共 commit 复制并校验计划，没有补排程字段的分支。执行器按每机首项和模型给定的开始条件、hold 检查能否启动；物理未就绪会等待，失效或覆盖缺口会停止请求重规划。另有虚拟延迟节点由环境选择组别并推进，须披露为环境贡献；该路径跳过物理生产机台，未改写选中生产计划。\n\n组装器和编译器接受不代表全部动态物理约束已获认证，也不证明模型原始输出合法率。16草稿、32候选、1024次尝试、120000字符提示上限，以及 host 的600秒调用超时配置和停滞阈值，均留下中止与规模成本缺口；结果代码的成本字段为未知。本次没有执行测试、求解、模拟或模型，也未读取运行输出、日志及工厂数据；配置模型标识不能证明实际调用版本，具体部署、实际可行率、质量、耗时和成本均未验证。以上缺口没有推翻原句的限定控制流结论。",
+        "queries_executed": [
+          "cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+          "rg --files：检索白名单源根下 B_candidate_paths_v14 与 B_delta_assembly；再按 (assembly|interaction|delta|session).*\\.py$ 筛选，定位实际包内组装器。",
+          "rg -n 反向检索：模式 (def _dispatch_with_progress|assembly_layer|compile_plan_delta|setdefault|sorted\\(|\\.sort\\(|fallback|repair|auto|default|_selection\\s*=|min\\(|max\\()；目标为 V14 workflow/interaction.py、V15 host.py。",
+          "rg -n 定向检索：函数定义、导入、setdefault、sorted、sort、fallback、repair、auto、default、not_before、machine_orders、keep、hold；目标为包内 B_delta_assembly.py 与 plan_delta.py。",
+          "rg -n 反向检索：模式 (plan_from_action|construct|repair|fallback|fill|\\.sort\\(|sorted\\(|setdefault|not_before.*=|candidate.*(min|max)|_selection\\s*=)；目标为 V15 host/restore、V14 Interaction、包内组装器、plan_delta、physical_resume。",
+          "rg -n：在 environment.py 定位 commit_plan、执行顺序、hold、not_before、修复和排序分支；随后读取对应源码行。",
+          "python3 -B -c：只读解析 inputs/internal-code-baseline.json，筛选已打开的10个源码条目，并计算当前文件字节 SHA256 作比较。"
+        ],
+        "citations": [
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+            "anchor": "L16-L28、L91-L104、L136-L166、L186-L190",
+            "access_level": "partial"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+            "anchor": "L12-L47、L417-L423、L434-L510、L512-L555",
+            "access_level": "partial"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+            "anchor": "L125-L130、L154-L208、L254-L284、L303-L358",
+            "access_level": "partial"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+            "anchor": "L91-L115、L118-L177、L196-L270",
+            "access_level": "full"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/environment.py",
+            "anchor": "L72-L92、L94-L170、L199-L278、L343-L355",
+            "access_level": "partial"
+          }
+        ],
+        "explicit_not_found": false,
+        "not_found_note": "主来源已命中；限定反向检索未找到链内自动补排程字段、默认选择候选或修复模型决定的反例，不能推断所有版本均不存在。初次目录发现中 B_delta_assembly 目录不存在，随后定位实际包内 B_delta_assembly.py。完整性清单首次 heredoc 命令因只读环境禁止临时文件而失败，改用 python3 -B -c 完成只读解析和哈希。实际冻结部署与运行对应关系未查，未复现；原超时失败记录未修改。",
+        "suggested_narrowing": "保留原句的导入、依赖哈希、锚点及物理校验条件和静态范围；具体部署一致性、原始输出合法率、规模表现与成本需另行取证。"
+      },
+      "original_status": "failed",
+      "original_error": "agent timeout after 600000 ms",
+      "original_path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/verify/agents/0026/events.jsonl",
+      "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-timeouts/agents/0001/result.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "claim_id": "R2-C09",
+      "original_attempt_label": "R2-C09/v3",
+      "original_agent_id": 27,
+      "role_index": 3,
+      "retry_label": "R2-C09/v3/retry1",
+      "result": {
+        "claim_id": "R2-C09",
+        "verdict": "supported",
+        "confidence": "medium",
+        "evidence": "截至2026-10-12，原限定命题受本次静态源码审计支持，具体部署实例仍未验证。先读取白名单和分类标准，再沿V15 host→V14 Interaction→同目录B_delta_assembly→plan_delta检查实际导入语句。以只读Python解析指定internal-code-baseline.json，仅筛选当时已打开的11份源码并计算SHA256，全部匹配；Interaction固定的提示、组装、反馈三项包内依赖哈希也匹配。此清单是源码完整性基线，不是运行证据。host把frozen置于导入路径首位并检查来源，但本次没有读取campaign及其frozen清单，不能证明某次部署实际加载了这些文件。\n决定归属有执行分支支持：组装器要求全部15条路径，包括空数组，明确声明后才能seal；新增或替换任务必须包含lot、step、visit、operation、machine和not_before，hold也要求完整字段。chunk在副本上验证，全部通过才发布；失败返回拒绝，不补字段。编译器要求每个旧任务及hold具有明确保留、取消或替换处分；保留项复制原值，未明确改变的机台顺序保留旧序，新增或迁移任务要求受影响机台完整顺序。模型提供开始条件与等待声明，实际派工仍受物理就绪条件限制。\n候选只在模型单独请求check_assembly后产生；32个候选上限会拒绝新检查，没有淘汰后自动择优。列表按检查创建顺序返回。稍后的独立apply必须给出具体候选ID及完整哈希，并匹配当前锚点。host要求最后动作为apply，重放原始输出验证选择一致，再将该候选编译计划交给公共commit；公共commit复制并保存提交计划，没有重新挑lot、机台或批次。执行器按各机台提交顺序检查首任务；发生过期、路线变化或物理不合法时停止并要求重排。\n反向检索覆盖selection赋值、排序、默认值、修复和回退。发现environment中的plan_from_action确实会生成工序、开始条件和等待字段，随后对所列链路文件检索其引用，零命中；不能把这个未见接入的辅助函数当作本链反例。已查到的排序用于哈希、查询元数据或状态表示，编译器的任务重排执行模型明确给出的顺序。未发现链上工具补出新的排程选择、自动选候选或改写模型决策值。\n编译校验覆盖身份、资格、批量界限、完整处分、冻结前缀、范围及hold锚点，但不证明完整物理可行性；公共commit和执行时物理检查的贡献必须披露。本次未运行测试、模拟、求解器或模型，未读取运行明细、此前核验结果或报告。部署对应关系、同条件基线与消融、持出泛化、真实执行延迟和费用分母均未核验；最终合法候选或成功commit不能替代完整原始尝试及失败分母，也不能据此推出B优于C或跨厂可迁移。",
+        "queries_executed": [
+          "cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+          "本地nl -ba/sed：针对V15 host、restore，V14 Interaction及包内组装器、提示与反馈模块，plan_delta、physical_resume、environment和policy的必要函数读取源码。",
+          "本地rg模式：delta|assemble|compile|select|candidate|commit|fallback|repair|sort|hold|start；范围为V14 workflow/interaction.py。",
+          "本地rg模式：def _validate|def _dispatch_with_progress|strict_json|setdefault|sorted\\(|sort\\(|_selection\\s*=|compile_plan_delta|fallback|repair|not_before.*max|policy\\.|construct|planner|solver；限定已打开的核心链路源码。",
+          "本地rg -n 'plan_from_action'：限定V15 host/restore、V14 workflow/policy、plan_delta、physical_resume、controller、delta_session；退出码1，零命中。",
+          "只读python -c：解析指定完整性清单，仅筛选已打开文件计算SHA256；用ast.literal_eval读取Interaction的DEPENDENCIES常量，核对三项包内依赖，未导入或执行工程模块。"
+        ],
+        "citations": [
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+            "anchor": "L17-L28、L91-L104、L141-L177：导入、原始输出传递、显式选择重放及公共commit",
+            "access_level": "partial"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+            "anchor": "L12-L34、L395-L405、L417-L510、L512-L578：包内依赖、精确校验、候选检查及独立apply",
+            "access_level": "partial"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+            "anchor": "L15-L22、L125-L197、L269-L361：完整字段、全部路径声明、副本校验及拒绝",
+            "access_level": "partial"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+            "anchor": "L91-L115、L118-L270：明确处分、完整任务、机台顺序、冻结与hold校验",
+            "access_level": "partial"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/environment.py",
+            "anchor": "L94-L170、L172-L248、L343-L355：公共commit、按计划执行及反向核查的字段生成辅助函数",
+            "access_level": "partial"
+          }
+        ],
+        "explicit_not_found": true,
+        "not_found_note": "所列链路中未检索到plan_from_action引用，定向审计未发现命题指定的反例；未命中不证明未读版本或部署中不存在。一次here-doc因只读沙箱无法创建临时文件失败，随后用python -c完成只读哈希复核。",
+        "suggested_narrowing": "无需先改写原句再支持；使用结论时保留实际导入、包内依赖哈希及公共状态校验前提，并明确这是静态控制流结论，具体运行归属、物理效果及原始输出合法率仍未知。"
+      },
+      "original_status": "failed",
+      "original_error": "agent timeout after 600000 ms",
+      "original_path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/verify/agents/0027/events.jsonl",
+      "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-timeouts/agents/0002/result.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "claim_id": "R2-C01",
+      "original_attempt_label": "R2-C01/v1",
+      "original_agent_id": 1,
+      "role_index": 1,
+      "retry_label": "R2-C01/v1/retry1",
+      "result": {
+        "claim_id": "R2-C01",
+        "verdict": "refuted",
+        "confidence": "high",
+        "evidence": "截至2026-10-12，原句的限定条件仍不足以保证最终具体动作由模型决定，存在明确的静态代码反例，故判断为refuted；这不否认合法ActionID直接接受分支可属于受限B。\n读取方式：通过本地只读命令检查白名单、分类口径及指定清单，读取六份公开源码快照的入口和必要函数，重算六份文件的SHA256与Git blob SHA，均与清单一致；论文通过真实WebFetch读取。未运行测试、模型、求解器或工厂模拟。\n支持部分：feature_extractor.py第337行先截断基础候选，第344—353行在select_machine=True时逐机台复制动作并写入machine_id，第448—461行将具体工件、工序、机组、机台绑定到ActionID。policy.py第737—742、766—769及594—599行确实存在按合法ID直接取展开动作的接受分支。Simulator.py第540—542行保留有效指定机台。因此，模型在这些分支决定具体工件/机台，工具使用本身不能据此归为C。\n关键反例来自源码反向检索：Direct模式接受多个合法输出后，第775—790行统计投票；两个不同合法ActionID并列时，第786—790行由程序调用_env_score并排序选最终动作。第284—289行表明评分来自环境估计或短程rollout。此时模型输出已进入候选集合，fallback_triggered仍保持False，仅fallback_type记为tie_broken；GREEDY或BEST_OF_N的后续处理直接保留该程序选出的动作（第813—819行）。所以“select_machine=True且模型输出被接受”并未排除程序决定最终工件/机台的路径。原句仅披露失败回退，遗漏了这个成功解析后的程序裁决条件，不能先补上限定再支持原句。\n另一个需披露的接口边界是Direct的job/group匹配通道：_is_legal在缺machine_id时可返回True，模拟器随后按最早可开始时间补机台；其解析器本体本次未取得，故不把此通道写成已验证的端到端反例。\n其余限定基本符合源码：合法候选由环境提供，截断含随机抽样和PDR选择；工序取current_op_index；开始时刻由程序取最大值并处理重叠；无动作推进及失败回退也由程序负责。这不足以覆盖本项目B全部字段。\n[论文v1](https://arxiv.org/html/2605.27566v1)§7.1与J介绍实验协议、投票、反思及信息/模拟工具，但本次未找到固定提交、机台配置、候选截断或失败分支发生率的对应说明。未发现本命题把实验数字写成亲跑结果或读错表格；论文与源码属于同项目材料，不能作为独立复现实证。提交与论文实验版本、实际部署及上述分支发生率继续未知。",
+        "queries_executed": [
+          "本地rg定位指定白名单、分类口径、版本清单及DynaSchedBench快照清单；读取指定六份快照入口并重算SHA256/Git blob SHA。",
+          "仅在指定源码快照中执行rg反向检索：select_machine、ActionID、action_id、prune_candidates、_is_legal、fallback、machine_id、advance_if_idle、_select_machine_for_action。",
+          "源码限定检索：candidates.append、len(best_keys)、scored.sort、env_selected_when_tie、tie_broken、act_m、return True、voting_n、n: int；随后读取decide、_decide_o1_cognitive、_env_score及_refine_decision必要行。",
+          "WebFetch https://arxiv.org/html/2605.27566v1；读取§7.1和Appendix J，并全文find fallback、ActionID、select_machine、commit、truncat。",
+          "WebFetch固定提交的prompts.py：先访问raw.githubusercontent.com，再访问GitHub blob页面；两次均返回Cache miss，停止重试。"
+        ],
+        "citations": [
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+            "anchor": "route_definitions.B_project/C_project；ownership_fields；limits",
+            "access_level": "full"
+          },
+          {
+            "kind": "external",
+            "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/feature_extractor.py",
+            "anchor": "实际源文件行号：prune_candidates L176–328；encode L337–355、L448–461",
+            "access_level": "snapshot"
+          },
+          {
+            "kind": "external",
+            "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/policy.py",
+            "anchor": "实际源文件行号：_decide_o1_cognitive L718–722、L766–790；_env_score L284–289；_refine_decision L813–819；_is_legal L274–282",
+            "access_level": "snapshot"
+          },
+          {
+            "kind": "external",
+            "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Sim/Simulator.py",
+            "anchor": "实际源文件行号：step_action L163–191；_select_machine_for_action L534–559",
+            "access_level": "snapshot"
+          },
+          {
+            "kind": "external",
+            "ref": "https://arxiv.org/html/2605.27566v1",
+            "anchor": "§7.1 Experimental Configuration；Appendix J.1 Refinement and Robustness Mechanisms、Active Exploration via Tool-Use",
+            "access_level": "full"
+          }
+        ],
+        "explicit_not_found": true,
+        "not_found_note": "在指定论文已读章节及全文词查中，未找到固定提交与实验版本/配置的对应关系及失败分支发生率；未命中不证明不存在。prompts.py两次真实抓取均失败，解析器本体未核实。未复现任何运行结果。",
+        "suggested_narrowing": "增加条件：模型返回合法ActionID，最终动作直接保留该ID对应的具体工件/机台，且不经过环境评分破并列、缺机台补选、单动作免调用或失败回退；另行披露多样本聚合和反思重编码。该缩窄命题可获支持，原句不能因此改判。"
+      },
+      "original_status": "failed",
+      "original_error": "agent timeout after 600000 ms",
+      "original_path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/verify/agents/0001/events.jsonl",
+      "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-timeouts/agents/0003/result.json",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "claim_id": "R2-C06",
+      "original_attempt_label": "R2-C06/v2",
+      "original_agent_id": 17,
+      "role_index": 2,
+      "retry_label": "R2-C06/v2/retry1",
+      "result": {
+        "claim_id": "R2-C06",
+        "verdict": "refuted",
+        "confidence": "high",
+        "evidence": "截至2026-10-12，原句整体判为 refuted，反证针对“论文摘要所称2,000次”的出处；离线生成路线判断、不得把装箱查询数当作FSSP实际成本，以及2024实验提交对应关系未确认，均得到支持。指定[v3原文](https://arxiv.org/html/2401.02051v3)摘要只称装箱启发式使用较低查询预算，没有2,000这个数字；[正式发表版摘要](https://proceedings.mlr.press/v235/liu24bs.html)同样没有。2,000明确出现在正文§4.2的在线装箱结果段。因此不能先把“摘要”改成“正文”再支持原句。\n\n分类方面，§4.1与D.2说明，LLM产物是更新加工时间矩阵、选择扰动作业的启发式程序，GLS通过swap与relocate形成顺序。D.2程序确实选择具体扰动作业，这是需要披露的决定贡献；但执行这些选择的是离线生成后运行的程序，不能据此认定在线LLM正在逐项安排生产。已读取本地分类规则，其offline_generation定义支持作为第三条路线；若另有部署把模型接入在线动作环，应另行审查，原命题已有这一条件。\n\n实际读取的[作者源码](https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py)提供进一步限定：evaluate_program把生成的callable传入gls；NEH构造初始顺序，local_search及local_search_perturb比较候选makespan并接受移动。生成程序返回加工矩阵和作业列表；gls将编号转为整数、超过五个时截断，少于两个或发生异常时返回1E10。候选限制、失败处理及具体顺序形成均有框架贡献，不能只按论文标题归为B，也不能把返回惩罚值当作模型自行保证合法。\n\n反向源码检查还发现合法性缺口：sum_and_order以max_time=1选作业；若两个作业各机器加工时间分别为[0.1,0.1]和[0.2,0.2]，两轮均选编号0，NEH初始序列重复作业。这是静态分支推演，未执行，不能冒充复现结果；原命题没有承诺任意输入合法，因此该例不推翻路线分类。\n\n规模、超时和成本证据仍有限：论文设置包含64个评估实例、每实例最多1,000轮及60秒，这些是作者实验设置，不能换算成实际调用账单。当前读取的是可变main的网页缓存，文件标注2026，默认评估为3实例、30秒；未固定commit，也未建立与2024实验提交的映射。针对FSSP查询、失败、在线决策及超时的限定检索未取得可核验的调用流水、重试数、tokens或费用；未命中不证明不存在。论文与同项目代码不是独立实证，本次没有运行测试、模型或排程。",
+        "queries_executed": [
+          "本地只读：cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+          "WebFetch：https://arxiv.org/html/2401.02051v3",
+          "WebFetch：https://github.com/FeiLiu36/EoH/blob/main/examples/fssp_gls_numba/prob.py",
+          "WebFetch：https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py",
+          "WebFetch：https://arxiv.org/abs/2401.02051",
+          "WebFetch：https://proceedings.mlr.press/v235/liu24bs.html",
+          "\"Evolution of Heuristics\" \"flow shop\" \"LLM queries\"",
+          "\"Evolution of Heuristics\" FSSP \"online\" \"2000\"",
+          "\"Evolution of Heuristics\" \"FSSP\" \"queries\" \"failure\"；限定arxiv.org、proceedings.mlr.press",
+          "\"fssp_gls_numba\" \"update_time\" \"timeout\"；限定github.com",
+          "\"Evolution of Heuristics\" \"2,000\" abstract；限定arxiv.org、proceedings.mlr.press、openreview.net",
+          "\"Evolution of Heuristics\" \"FSSP\" \"online\" \"decision\"；限定arxiv.org、github.com"
+        ],
+        "citations": [
+          {
+            "kind": "external",
+            "ref": "https://arxiv.org/html/2401.02051v3",
+            "anchor": "摘要；§4.1实现细节；§4.2在线装箱结果；Appendix D.2生成程序",
+            "access_level": "full"
+          },
+          {
+            "kind": "external",
+            "ref": "https://proceedings.mlr.press/v235/liu24bs.html",
+            "anchor": "正式发表版Abstract，网页解析L13–16",
+            "access_level": "full"
+          },
+          {
+            "kind": "external",
+            "ref": "https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py",
+            "anchor": "makespan、local_search、local_search_perturb、sum_and_order、neh、gls、FSSPGLS.evaluate_program；网页解析L40–245；可变main缓存，未固定提交",
+            "access_level": "snapshot"
+          },
+          {
+            "kind": "internal",
+            "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+            "anchor": "route_definitions.offline_generation、B_project、C_project及ownership_fields；通过cat只读",
+            "access_level": "full"
+          }
+        ],
+        "explicit_not_found": true,
+        "not_found_note": "限定检索未取得FSSP实际LLM调用、重试、tokens及费用记录，也未建立所读main与2024实验提交的对应关系。两项失败/超时限定查询返回空结果；不据此断言记录或对应提交不存在。",
+        "suggested_narrowing": "将“论文摘要所称2,000次”纠正为“论文§4.2在线装箱结果所报2,000次”；保留离线生成路线及在线部署例外，继续将FSSP实际生成成本、2024实验提交映射标为未知。"
+      },
+      "original_status": "failed",
+      "original_error": "agent timeout after 600000 ms",
+      "original_path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/verify/agents/0017/events.jsonl",
+      "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-timeouts/agents/0004/result.json",
+      "status": "completed",
+      "error": null
+    }
+  ],
+  "claims": {
+    "R2-C01": {
+      "original_status": "refuted",
+      "original_counts": {
+        "supported": 0,
+        "refuted": 2,
+        "abstained": 1
+      },
+      "effective_status": "refuted",
+      "effective_counts": {
+        "supported": 0,
+        "refuted": 3,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C01",
+          "verdict": "refuted",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原句的限定条件仍不足以保证最终具体动作由模型决定，存在明确的静态代码反例，故判断为refuted；这不否认合法ActionID直接接受分支可属于受限B。\n读取方式：通过本地只读命令检查白名单、分类口径及指定清单，读取六份公开源码快照的入口和必要函数，重算六份文件的SHA256与Git blob SHA，均与清单一致；论文通过真实WebFetch读取。未运行测试、模型、求解器或工厂模拟。\n支持部分：feature_extractor.py第337行先截断基础候选，第344—353行在select_machine=True时逐机台复制动作并写入machine_id，第448—461行将具体工件、工序、机组、机台绑定到ActionID。policy.py第737—742、766—769及594—599行确实存在按合法ID直接取展开动作的接受分支。Simulator.py第540—542行保留有效指定机台。因此，模型在这些分支决定具体工件/机台，工具使用本身不能据此归为C。\n关键反例来自源码反向检索：Direct模式接受多个合法输出后，第775—790行统计投票；两个不同合法ActionID并列时，第786—790行由程序调用_env_score并排序选最终动作。第284—289行表明评分来自环境估计或短程rollout。此时模型输出已进入候选集合，fallback_triggered仍保持False，仅fallback_type记为tie_broken；GREEDY或BEST_OF_N的后续处理直接保留该程序选出的动作（第813—819行）。所以“select_machine=True且模型输出被接受”并未排除程序决定最终工件/机台的路径。原句仅披露失败回退，遗漏了这个成功解析后的程序裁决条件，不能先补上限定再支持原句。\n另一个需披露的接口边界是Direct的job/group匹配通道：_is_legal在缺machine_id时可返回True，模拟器随后按最早可开始时间补机台；其解析器本体本次未取得，故不把此通道写成已验证的端到端反例。\n其余限定基本符合源码：合法候选由环境提供，截断含随机抽样和PDR选择；工序取current_op_index；开始时刻由程序取最大值并处理重叠；无动作推进及失败回退也由程序负责。这不足以覆盖本项目B全部字段。\n[论文v1](https://arxiv.org/html/2605.27566v1)§7.1与J介绍实验协议、投票、反思及信息/模拟工具，但本次未找到固定提交、机台配置、候选截断或失败分支发生率的对应说明。未发现本命题把实验数字写成亲跑结果或读错表格；论文与源码属于同项目材料，不能作为独立复现实证。提交与论文实验版本、实际部署及上述分支发生率继续未知。",
+          "queries_executed": [
+            "本地rg定位指定白名单、分类口径、版本清单及DynaSchedBench快照清单；读取指定六份快照入口并重算SHA256/Git blob SHA。",
+            "仅在指定源码快照中执行rg反向检索：select_machine、ActionID、action_id、prune_candidates、_is_legal、fallback、machine_id、advance_if_idle、_select_machine_for_action。",
+            "源码限定检索：candidates.append、len(best_keys)、scored.sort、env_selected_when_tie、tie_broken、act_m、return True、voting_n、n: int；随后读取decide、_decide_o1_cognitive、_env_score及_refine_decision必要行。",
+            "WebFetch https://arxiv.org/html/2605.27566v1；读取§7.1和Appendix J，并全文find fallback、ActionID、select_machine、commit、truncat。",
+            "WebFetch固定提交的prompts.py：先访问raw.githubusercontent.com，再访问GitHub blob页面；两次均返回Cache miss，停止重试。"
+          ],
+          "citations": [
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions.B_project/C_project；ownership_fields；limits",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/feature_extractor.py",
+              "anchor": "实际源文件行号：prune_candidates L176–328；encode L337–355、L448–461",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/policy.py",
+              "anchor": "实际源文件行号：_decide_o1_cognitive L718–722、L766–790；_env_score L284–289；_refine_decision L813–819；_is_legal L274–282",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Sim/Simulator.py",
+              "anchor": "实际源文件行号：step_action L163–191；_select_machine_for_action L534–559",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2605.27566v1",
+              "anchor": "§7.1 Experimental Configuration；Appendix J.1 Refinement and Robustness Mechanisms、Active Exploration via Tool-Use",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "在指定论文已读章节及全文词查中，未找到固定提交与实验版本/配置的对应关系及失败分支发生率；未命中不证明不存在。prompts.py两次真实抓取均失败，解析器本体未核实。未复现任何运行结果。",
+          "suggested_narrowing": "增加条件：模型返回合法ActionID，最终动作直接保留该ID对应的具体工件/机台，且不经过环境评分破并列、缺机台补选、单动作免调用或失败回退；另行披露多样本聚合和反思重编码。该缩窄命题可获支持，原句不能因此改判。"
+        },
+        {
+          "claim_id": "R2-C01",
+          "verdict": "refuted",
+          "confidence": "high",
+          "evidence": "原命题判为refuted：开启机台选择且模型输出被接受，仍不足以保证由模型通过ActionID决定具体机台；反例保留了原有两个条件。2026-10-12实际读取指定六份公开代码快照，并复算SHA256与Git blob SHA，均与manifest一致；这些是本地快照读取。另通过GitHub工具在线读取固定提交的prompts.py，论文也已在线读取，未执行模拟、求解或模型调用。\n\n展开机制本身成立：feature_extractor.py第337—355行先截断基础候选，再按机器候选展开并写入机台字段；第420—461行将工件、当前工序、机台对应到表格编号。有效编号分支在policy.py第737—742、766—769行返回对应动作，模拟器第541—542行接受有效指定机台，确实存在受限逐步B分支。\n\n真正的反向尝试是用rg追踪编号缺失、合法性检查、精化和机台补选。静态构造两个合法工件、每工件两台机器，开启机台选择，采用直接模式、默认贪心精化和单样本，候选上限设为1；模型仅返回合法工件与机台组。prompts.py第1000—1019行会成功解析；policy.py第771—784行接受该动作，而第274—282行对缺机台的匹配动作返回合法，未标记失败回退。第813—814行原样保留动作，Simulator.py第169—170、544—559行遂由程序选择最早可开工机台。该接受路径并未用编号选具体机台，直接推翻原命题条件的充分性。这是源码分支反例，未声称论文实际发生过。\n\n另有有效编号投票打平后由环境评分选动作的分支（policy.py第782—790行），也需披露算法的决定权。程序还负责随机与规则截断、当前工序、开始时间及重叠调整（模拟器第163—191行），环境负责无动作推进；单动作跳过模型、解析失败回退均存在。候选上限作用于展开前，不能当作最终表格行数上限。采样调用传入9999秒并可重试三次，实际超时和壁钟未验证。\n\n依所给分类规则，观察/试算工具并不自动构成本项目C，完整B所需批次、等待等字段也未由模型完整承担。[论文§7.1、表3和附录J](https://arxiv.org/html/2605.27566v1)报告70实例评估及工具模式约三倍token消耗；这是作者结果，不能外推本厂。对提交号、机台开关、截断、失败和超时作限定检索未命中对应说明，代码与论文版本及分支发生率仍未确认；论文与同项目代码亦非独立实证。本次未验证原始可行率、修复后可行率、线上延迟或不同规模下的调度质量；不能由合法候选和最终可执行动作反推模型自行保证全部约束，也不能把校准器的规模实验当作该决策分支的规模实证。",
+          "queries_executed": [
+            "公开WebSearch：\"large language model\" \"dynamic scheduling\" \"invalid\" \"latency\"",
+            "对指定六份快照执行rg -n：select_machine|ActionID|fallback|illegal|invalid|except|timeout|prune|top_k|earliest|machine_id|advance_if_idle|legal_actions|tool|token|cost|wait|idle",
+            "对policy.py快照执行rg -n：def _refine|def _env_score|GREEDY|REFLECTION|ActionID|action_id|execute_tool_call|tool_name|select_machine|request_timeout|9999|machine_id|base_action",
+            "对Simulator.py及policy.py快照执行rg -n：get_ready_operations|candidate_machines|batch|wait|advance_to_next_decision_point|def _env_score",
+            "论文HTML限定find：7.1 Experimental Configuration；J.1 Information；fallback；latency；trunc；08975；select_machine；wall-clock；invalid；timeout",
+            "WebFetch固定提交prompts.py的raw及GitHub blob URL均失败；随后GitHub fetch成功读取同一不可变提交文件，并定位parse_o1与编码调用"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/feature_extractor.py",
+              "anchor": "实际源文件行号：prune_candidates L176-L328；encode L337-L355、L420-L461、L705-L714；读取本地公开快照并复核两种哈希",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/policy.py",
+              "anchor": "实际源文件行号：decide L79-L96、L144-L199；_is_legal L223-L282；_decide_o1_cognitive L711-L796；_refine_decision L798-L819；工具最终动作采纳 L585-L599",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/prompts.py",
+              "anchor": "GitHub工具在线读取；按返回原源计算实际行号：build_cognitive_prompt_o1编码调用 L739-L741；parse_o1 L1000-L1039，尤其L1005-L1019允许缺少action_id和machine_id",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Sim/Simulator.py",
+              "anchor": "实际源文件行号：step_action L163-L191；_select_machine_for_action L534-L559；_get_ready_operations L1502-L1571；读取本地公开快照并复核两种哈希",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2605.27566v1",
+              "anchor": "在线读取：§7.1、表3、§7.2、Appendix J.1/J.2；限定检索提交、配置、截断、失败和超时字段；Appendix G规模结果的对象是校准器",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "在所读论文HTML中，fallback、latency、trunc、08975、select_machine、invalid、timeout未命中；这不证明其他材料不存在相关说明。论文实验与固定提交的对应关系、接受旧格式及环境打平选择的发生率、实际推理超时仍未知。prompts.py经原生WebFetch两次访问失败，但随后通过GitHub工具成功读取；六份既有快照未冒称在线读取。全部分支判断均为静态核查，未复现运行。",
+          "suggested_narrowing": "补充条件：模型给出有效ActionID，该编号唯一决定最终返回动作，动作携带有效machine_id且由执行器采用；排除旧格式缺机台输出、投票打平后环境评分选择、单动作跳过模型及程序回退。保留受限逐步B、未覆盖完整B字段及论文版本对应关系未确认的限定。"
+        },
+        {
+          "claim_id": "R2-C01",
+          "verdict": "refuted",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原命题的限定仍过宽：select_machine=True且模型输出被接受，并不足以保证最终工件、机台均由模型决定，因此按原句判为refuted。已读取清单内六份本地公开源码快照，重算SHA256和Git blob SHA全部匹配；这证明与所给清单一致，不冒称此次在线取得代码或复现实验。\n正向证据支持其核心成功子分支：feature_extractor.py:176–328用随机抽样及两种PDR优先规则形成截断集合；330–355随后逐机台复制候选，写入machine_id；420–461以ActionID展示具体工件、当前工序和机台。policy.py:725–742的CoT有效编号分支直接返回对应候选，597–599的信息工具模式也由最终编号定动作。按已读B/C规则，这些分支可属受限逐步B，信息查询本身不构成C。\n但实际反向rg检索发现遗漏的成功分支：policy.py:766–790先接受并映射有效ActionID；DIRECT多输出平票时，786–790由环境评分排序选最终动作，fallback_triggered仍保持false，仅记录tie_broken。因此，即使输出有效、机台选择开启，也存在程序作最终裁决的静态反例。另在223–282及771–784，合法性检查允许省略machine_id；Simulator.py:540–559在未指定合法具体机台时自行选最早可开始者。这些程序选择不能只归入模型失败回退，也不能将其发生率写成论文事实。\n原句其余边界有依据：Simulator.py:163–191固定当前工序并计算开始时刻、必要时调整防重叠；275–314负责无就绪动作的推进；policy.py:181–200、743–751负责无响应或无有效编号的回退。没有模型明确形成批次及主动等待的完整字段覆盖。[论文§7.1和附录J](https://arxiv.org/html/2605.27566v1)已在线读取，全文反查commit、select_machine、fallback、truncat未命中，提交与实验配置对应仍未知。作者报告有固定PDR对照与观察/提示消融，但这些不隔离上述程序贡献；70实例覆盖采样也不自动证明持出泛化。质量分母为每实例最佳观测排程，费用报告为总tokens，不能等同本厂约束覆盖、真实执行延迟或货币成本。\n据此作方法审计推断：迁移或比较B/C须保持候选过滤、截断、机台展开、投票裁决和回退同条件，提供相同观察及无模型对照，分别报告原始合法率、修复后合法率、分支占比与失败计入方式。基准的工序先后和资源不重叠检查不能外推为本厂全部约束覆盖，多次采样也不是多项独立研究。未运行模拟、求解或模型；代码、文档和论文属于同项目来源，不能合算独立实证。",
+          "queries_executed": [
+            "rg -n --no-filename -C 2 'if len\\(legal_actions\\) == 1|if self\\._is_legal|if len\\(best_keys\\) == 1|ties_broken|env_selected_when_tie|tie_broken|fallback_triggered|if act_m is not None|return True' m0.5_research/evidence/public-source-snapshots/DynaSchedBench__src__dsbx__Agents__LLMScheduler__policy.py",
+            "rg -n --no-filename -C 2 'if select_machine|if not cands|pruned = base_pruned|random.shuffle|random.sample|selected = selected\\[:L\\]' m0.5_research/evidence/public-source-snapshots/DynaSchedBench__src__dsbx__Agents__LLMScheduler__feature_extractor.py",
+            "rg -n 'B_project|C_project|ownership_fields|过滤|解码器|工具仅|batch|批次|等待' inputs/route-classification-rubric.json",
+            "WebFetch https://arxiv.org/html/2605.27566v1；读取§7.1及Appendix J；全文find：commit、fallback、truncat、select_machine、ActionID、latency、held-out",
+            "WebFetch 固定提交的prompts.py：raw.githubusercontent.com返回Internal Error，github.com页面返回Cache miss；随后curl通过127.0.0.1:7897尝试读取同一公开文件，代理连接失败"
+          ],
+          "citations": [
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "L4–5：B_project/C_project；L14–25：ownership_fields；L41–46：过滤、解码器及信息工具的归属限制",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/feature_extractor.py",
+              "anchor": "实际源文件：prune_candidates L176–328；encode L330–355、L420–461。读取的是本地公开源码快照，哈希与清单一致",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/policy.py",
+              "anchor": "实际源文件：decide L79–94、L144–200；_is_legal L223–282；工具最终编号映射L585–599；_decide_o1_cognitive L711–796，尤其L766–790有效输出后的环境平票裁决",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Sim/Simulator.py",
+              "anchor": "实际源文件：step_action L137–191；advance_to_next_decision_point L275–314；_select_machine_for_action L534–559",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2605.27566v1",
+              "anchor": "§7.1：70实例、匹配模型比较协议、质量及token分母；§7.3：固定PDR对照；Appendix J.1–J.2：信息工具、投票及提示消融",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "已读论文§7.1、附录J及全文关键词查找未确认固定提交与实验配置的对应关系，也未取得候选截断或程序裁决、失败回退的实验发生率；未命中不证明这些资料不存在。额外公开解析器prompts.py的在线读取及代理尝试失败，未补核其实现。反例判断来自已核验的policy.py静态分支，不代表论文实验实际进入过该分支。",
+          "suggested_narrowing": "将B归属明确限定为：最终接受的有效ActionID映射到包含合法具体machine_id的候选，且最终选择未经环境评分平票裁决或其他程序补选。DIRECT平票、接受未指定机台的直接动作、单动作绕过模型及失败回退须分别披露决定者；提交与论文实验的对应关系继续保留未知。"
+        }
+      ],
+      "retry_attempts": [
+        {
+          "claim_id": "R2-C01",
+          "original_attempt_label": "R2-C01/v1",
+          "original_agent_id": 1,
+          "role_index": 1,
+          "retry_label": "R2-C01/v1/retry1",
+          "result": {
+            "claim_id": "R2-C01",
+            "verdict": "refuted",
+            "confidence": "high",
+            "evidence": "截至2026-10-12，原句的限定条件仍不足以保证最终具体动作由模型决定，存在明确的静态代码反例，故判断为refuted；这不否认合法ActionID直接接受分支可属于受限B。\n读取方式：通过本地只读命令检查白名单、分类口径及指定清单，读取六份公开源码快照的入口和必要函数，重算六份文件的SHA256与Git blob SHA，均与清单一致；论文通过真实WebFetch读取。未运行测试、模型、求解器或工厂模拟。\n支持部分：feature_extractor.py第337行先截断基础候选，第344—353行在select_machine=True时逐机台复制动作并写入machine_id，第448—461行将具体工件、工序、机组、机台绑定到ActionID。policy.py第737—742、766—769及594—599行确实存在按合法ID直接取展开动作的接受分支。Simulator.py第540—542行保留有效指定机台。因此，模型在这些分支决定具体工件/机台，工具使用本身不能据此归为C。\n关键反例来自源码反向检索：Direct模式接受多个合法输出后，第775—790行统计投票；两个不同合法ActionID并列时，第786—790行由程序调用_env_score并排序选最终动作。第284—289行表明评分来自环境估计或短程rollout。此时模型输出已进入候选集合，fallback_triggered仍保持False，仅fallback_type记为tie_broken；GREEDY或BEST_OF_N的后续处理直接保留该程序选出的动作（第813—819行）。所以“select_machine=True且模型输出被接受”并未排除程序决定最终工件/机台的路径。原句仅披露失败回退，遗漏了这个成功解析后的程序裁决条件，不能先补上限定再支持原句。\n另一个需披露的接口边界是Direct的job/group匹配通道：_is_legal在缺machine_id时可返回True，模拟器随后按最早可开始时间补机台；其解析器本体本次未取得，故不把此通道写成已验证的端到端反例。\n其余限定基本符合源码：合法候选由环境提供，截断含随机抽样和PDR选择；工序取current_op_index；开始时刻由程序取最大值并处理重叠；无动作推进及失败回退也由程序负责。这不足以覆盖本项目B全部字段。\n[论文v1](https://arxiv.org/html/2605.27566v1)§7.1与J介绍实验协议、投票、反思及信息/模拟工具，但本次未找到固定提交、机台配置、候选截断或失败分支发生率的对应说明。未发现本命题把实验数字写成亲跑结果或读错表格；论文与源码属于同项目材料，不能作为独立复现实证。提交与论文实验版本、实际部署及上述分支发生率继续未知。",
+            "queries_executed": [
+              "本地rg定位指定白名单、分类口径、版本清单及DynaSchedBench快照清单；读取指定六份快照入口并重算SHA256/Git blob SHA。",
+              "仅在指定源码快照中执行rg反向检索：select_machine、ActionID、action_id、prune_candidates、_is_legal、fallback、machine_id、advance_if_idle、_select_machine_for_action。",
+              "源码限定检索：candidates.append、len(best_keys)、scored.sort、env_selected_when_tie、tie_broken、act_m、return True、voting_n、n: int；随后读取decide、_decide_o1_cognitive、_env_score及_refine_decision必要行。",
+              "WebFetch https://arxiv.org/html/2605.27566v1；读取§7.1和Appendix J，并全文find fallback、ActionID、select_machine、commit、truncat。",
+              "WebFetch固定提交的prompts.py：先访问raw.githubusercontent.com，再访问GitHub blob页面；两次均返回Cache miss，停止重试。"
+            ],
+            "citations": [
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+                "anchor": "route_definitions.B_project/C_project；ownership_fields；limits",
+                "access_level": "full"
+              },
+              {
+                "kind": "external",
+                "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/feature_extractor.py",
+                "anchor": "实际源文件行号：prune_candidates L176–328；encode L337–355、L448–461",
+                "access_level": "snapshot"
+              },
+              {
+                "kind": "external",
+                "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Agents/LLMScheduler/policy.py",
+                "anchor": "实际源文件行号：_decide_o1_cognitive L718–722、L766–790；_env_score L284–289；_refine_decision L813–819；_is_legal L274–282",
+                "access_level": "snapshot"
+              },
+              {
+                "kind": "external",
+                "ref": "https://github.com/dsbx7/DynaSchedBench/blob/08975bf4a0473c5dff9177393bc6743db9ddc946/src/dsbx/Sim/Simulator.py",
+                "anchor": "实际源文件行号：step_action L163–191；_select_machine_for_action L534–559",
+                "access_level": "snapshot"
+              },
+              {
+                "kind": "external",
+                "ref": "https://arxiv.org/html/2605.27566v1",
+                "anchor": "§7.1 Experimental Configuration；Appendix J.1 Refinement and Robustness Mechanisms、Active Exploration via Tool-Use",
+                "access_level": "full"
+              }
+            ],
+            "explicit_not_found": true,
+            "not_found_note": "在指定论文已读章节及全文词查中，未找到固定提交与实验版本/配置的对应关系及失败分支发生率；未命中不证明不存在。prompts.py两次真实抓取均失败，解析器本体未核实。未复现任何运行结果。",
+            "suggested_narrowing": "增加条件：模型返回合法ActionID，最终动作直接保留该ID对应的具体工件/机台，且不经过环境评分破并列、缺机台补选、单动作免调用或失败回退；另行披露多样本聚合和反思重编码。该缩窄命题可获支持，原句不能因此改判。"
+          },
+          "original_status": "failed",
+          "original_error": "agent timeout after 600000 ms",
+          "original_path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/verify/agents/0001/events.jsonl",
+          "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-timeouts/agents/0003/result.json",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    "R2-C02": {
+      "original_status": "confirmed",
+      "original_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_status": "confirmed",
+      "effective_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C02",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，实际在线读取了指定arXiv v1正文，未以本地快照冒充在线访问。表3列顺序为Tokens（百万）、Mean Cmax（%）、SE；三行确实对应L1 Direct：3.752、2.0；L1 CoT：4.016、1.9；L1+Tool：12.614、2.0。§7.1明确说明评估子集共70例，其中Grid 30例、Sweep 40例，并将成本指标称为总token消耗。因此，原命题对数字及表列精度下趋势的描述直接成立。质量指标是相对每例最佳已观察排程的归一化makespan差距，不能理解为原始工期或相对已证明最优解的差距。[论文v1](https://arxiv.org/html/2605.27566v1)。\n反向核查实际执行了限定arxiv.org的通用技术词检索，并在v1全文查找paired、failure、token、fallback，随后逐项检查表4、表6及附录J。表4没有L1 CoT；表6检验模型与派工规则；表j-2的42个完整案例及Wilcoxon检验针对L2/L3提示机制消融，均不能补作这三种L1配置的配对检验。已读相关段落未明确表3基础模型、各配置有效n、失败样本纳入规则，以及tokens是否包含输入、输出、重试和工具往返。70是子集规模，不能直接当作每行有效n。均值仅显示一位小数，不能据此宣称CoT显著更优或工具必然无效。\n归属审计还实际读取作者当前main分支代码片段：policy.py将模型action_id映射到剪枝候选；非法输出可以退回首候选或SPT；Direct多候选平票可交由环境评分选择。这些程序决策必须披露。[策略代码](https://github.com/dsbx7/DynaSchedBench/blob/main/src/dsbx/Agents/LLMScheduler/policy.py)。tools.py的simulate_action返回候选动作的短程评估信息，不能仅凭使用工具归为本项目C。[工具代码](https://github.com/dsbx7/DynaSchedBench/blob/main/src/dsbx/Agents/LLMScheduler/tools.py)。官方文档也列出候选数量、机器选择及回退选项；其模型命令示例不能补认表3模型身份。[官方文档](https://dsbx.readthedocs.io/agents.html)。当前代码与v1实验的提交及参数绑定未获确认，补机台、等待和回退实际发生比例仍未知。三个raw源码链接访问失败，改用GitHub页面读取；sampler页面仍失败。本结论仅支持作者报告的描述性比较，未运行复现，也不构成本厂效果或B/C胜负证据。",
+          "queries_executed": [
+            "WebFetch：https://arxiv.org/html/2605.27566v1；读取表3、§7.1、表4、表6、§4.2、§5及附录J",
+            "WebSearch：dynamic flexible job shop scheduling LLM chain-of-thought tool token statistical significance paired；domains=[arxiv.org]",
+            "WebFetch/find：指定v1全文检索Table 3:、70、Table 4:、model、failure、token、paired、fallback",
+            "WebFetch：https://arxiv.org/abs/2605.27566v1；核对Submission history",
+            "WebFetch：https://dsbx7.github.io/；沿作者链接读取公开GitHub仓库和官方文档",
+            "WebFetch：https://dsbx.readthedocs.io/agents.html",
+            "WebFetch：作者main分支LLMScheduler的policy.py、sampler.py、tools.py三个raw链接；均返回Cache miss",
+            "WebFetch：改读GitHub的policy.py和tools.py页面；sampler.py页面返回Internal Error",
+            "WebFetch/find：policy.py检索fallback、select_machine、action_index；tools.py检索simulate_action"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2605.27566v1",
+              "anchor": "表3与§7.1（网页行433–447）；表4（450–456）；表6（477–482）；§4.2、§5；附录J.1/J.2及表j-2",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/main/src/dsbx/Agents/LLMScheduler/policy.py",
+              "anchor": "当前main；CoT action_id映射、非法输出回退与Direct平票环境评分分支（网页行3414–3546）",
+              "access_level": "partial"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/dsbx7/DynaSchedBench/blob/main/src/dsbx/Agents/LLMScheduler/tools.py",
+              "anchor": "当前main；SIMULATE_ACTION_TOOL、execute_tool_call、_impl_simulate_action（网页行1293–1570）",
+              "access_level": "partial"
+            },
+            {
+              "kind": "external",
+              "ref": "https://dsbx.readthedocs.io/agents.html",
+              "anchor": "LLM Agents：模型命令示例、候选与机器选择选项、无API密钥时的回退说明（网页行82–117）",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "未在已读v1相关正文、表格及附录中找到三种L1配置的有效n、失败处理、完整token口径或对应配对检验，也未确认公开main代码与表3实验的提交绑定。raw源码及sampler访问失败不表示文件或相关证据不存在。",
+          "suggested_narrowing": "保留原命题的作者报告、70例子集和表列精度限定；质量均值宜明确为相对最佳已观察排程的makespan差距。不要扩展为统计显著性、工具普遍无效、纯模型决策或本项目B/C效果结论。"
+        },
+        {
+          "claim_id": "R2-C02",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "核查日期：2026-10-12。已实际在线读取指定arXiv v1原文。表3前三行与原命题逐项一致：L1 Direct为2.0%／3.752M，L1 CoT为1.9%／4.016M，L1+Tool为2.0%／12.614M。§7.1说明评估子集含70例，其中Grid 30例、Sweep 40例，并将指标描述为相对每例最佳已观察排程的归一化完工时间及总token消耗。因此，“质量均值”应理解为该完工时间差距指标，较低较好；不能理解为通用质量评分。[原论文v1](https://arxiv.org/html/2605.27566v1)\n\n实际反向尝试包括：使用通用技术词搜索动态柔性作业车间排程、工具增强、CoT、失败、超时与token成本；在原文查找timeout、fallback、invalid、failed和paired，并核对表4、表6及附录J。表4确实存在限制更强结论的例子：工具版相对Direct的p50为0.52对0.63，p90为2.47对2.57，部分分位数更低；但均值为2.03对1.95，且表4没有L1 CoT。这能限制“工具在所有指标上均无收益”的说法，却不能推翻本命题限定于表3均值的描述。表3两项2.0%经四舍五入相同，也不能证明未舍入均值完全相等。\n\n对统计缺口的核查未找到这三个L1配置之间的配对检验。表6检验的是模型与启发式规则；附录J的42个完整案例属于另一组提示机制消融，均不能移用于本比较。§7.1虽列出多个模型家族，却未明确表3对应的基础模型；70是所选子集规模，不能据此确认每配置实际有效n。上述失败和超时关键词未命中，不能推断失败不存在；失败样本如何进入均值、重试如何计入token，以及输入、输出、缓存等统计边界仍未知。token总量更高也不能直接量化货币成本或实际调度延迟。\n\n合法性贡献同样需要限定：§4.2说明环境过滤允许动作，附录J说明工具提供候选详情与模拟完成时间供后续决策。这些机制不能被写成模型独立保证合法，也不能仅凭调用工具就认定为本项目C。此次仅核查作者报告，未运行模拟或复现；没有把同项目解释当作独立实证，也没有把该子集观察外推为本厂效果。未发现推翻原限定命题的证据。",
+          "queries_executed": [
+            "WebFetch：https://arxiv.org/html/2605.27566v1；读取表3、§7.1、表4、表6、§4.2及附录H/J",
+            "WebSearch：dynamic flexible job shop scheduling LLM tool augmentation chain of thought failed timeout token cost；domains=arxiv.org",
+            "原文find：Table 3、70、Table 4、timeout、fallback、invalid、failed、budget、paired",
+            "本地只读：cat inputs/internal-allowlist.json inputs/route-classification-rubric.json inputs/internal-code-baseline.json"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2605.27566v1",
+              "anchor": "表3及§7.1（网页行433—447）；表4（450—456）；表6（477—482）；§4.2（399—401）；附录J.1/J.2（1015—1062）",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": false,
+          "not_found_note": "原命题数字与70例说明均已找到。未找到的仅是已读v1中三个L1配置的配对检验、有效样本数、失败处理及详细token口径；关键词未命中不等于相关情况不存在。",
+          "suggested_narrowing": "保留原有限定，明确质量指标为相对最佳已观察排程的完工时间差距，并将结论限定为表列均值与总token的描述性比较。"
+        },
+        {
+          "claim_id": "R2-C02",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，已在线读取[论文v1原文](https://arxiv.org/html/2605.27566v1)。表3（原文行433—438）逐项报告：L1 Direct为2.0%/3.752M，L1 CoT为1.9%/4.016M，L1+Tool为2.0%/12.614M，均与命题一致。§7.1（行443—447）说明评估子集含70例，其中Grid为30例、Sweep为40例；质量指标相对于各实例最佳已观测排程归一化，成本指标为总token消耗。因此支持表列CoT均值略低、工具版均值没有降低且总Tokens较高的描述。这里的百分比不是相对理论最优解的误差，也不是本厂收益。\n\n反向核查实际检索了该研究的配对显著性、失败处理、基础模型及token核算，并回读表4、表6与附录J。限定于论文及作者公开站点的两条搜索未返回结果，不能据此断言补充资料不存在。表4（行450—456）确实没有L1 CoT；其Direct和Tool的较精细均值不能补出CoT分布。表6检验的是模型与固定派工规则，附录J表j-2的42个完整案例检验的是L2/L3信息机制，均不能充当表3三种L1配置的配对检验或有效样本数。\n\n统计限制仍成立：表3均值仅保留一位小数，CoT差距为表列0.1个百分点；虽有各列标准误，缺少配对差值的不确定性，不能据此判显著。§7.1列出多个模型家族，但未明确表3所用基础模型、逐配置有效n、失败样本纳入方式，以及输入、输出、重试和工具对话的token统计范围。同提示、两例示范、温度0等匹配条件明确用于表5，不能自动移用于表3。因而也不能将总Tokens直接换算成单例费用或实际响应延迟。\n\n迁移审计方面，§5及附录J.1描述的工具提供候选信息或模拟完成时间估计，agent随后作最终决定；仅凭L1+Tool名称不能归为本项目C。§4.2明确环境过滤合法动作，必须披露这一贡献，不能把合法性全部归功于模型；论文信息也不足以确认本厂lot、机台、批次和等待的完整决策归属。附录H说明这是生成实例池的多样性子集，不能当作本厂持出泛化验证或全部工艺约束覆盖证据。本次仅核对作者报告，没有运行或复现；结论不延伸为CoT显著更优、工具必然无效或本厂B/C路线优劣。",
+          "queries_executed": [
+            "WebFetch：https://arxiv.org/html/2605.27566v1",
+            "WebSearch：\"DynaSchedBench\" \"CoT\" \"Table 3\"",
+            "WebSearch：\"DynaSchedBench\" \"failed\" \"tokens\" model",
+            "WebSearch：\"DynaSchedBench\" \"L1 CoT\" paired significance failure tokens；限定arxiv.org、github.com、dsbx7.github.io",
+            "WebSearch：\"DynaSchedBench\" \"Table 3\" model token accounting；限定arxiv.org、github.com、dsbx7.github.io",
+            "原文定位：Table 3、70、L1 CoT、GPT、Table 4、token、failure、complete cases；回读§4—5、§7、附录H及J"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2605.27566v1",
+              "anchor": "表3及§7.1：行433—447；表4：行450—456；表6：行477—482；§4.2—5：行399—407；附录H：行934—963；附录J.1—J.2：行999—1060",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": false,
+          "not_found_note": "命题对应表格和70例子集说明均已找到。未找到表3三种L1配置的配对检验及完整核算口径；限定搜索无结果只表示本次未命中。",
+          "suggested_narrowing": "无需改写原限定命题；继续保留“作者报告”“表列均值”和“总Tokens”，不得升级为显著性、普遍有效性或本厂迁移效果结论。"
+        }
+      ],
+      "retry_attempts": []
+    },
+    "R2-C03": {
+      "original_status": "confirmed",
+      "original_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_status": "confirmed",
+      "effective_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C03",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原限定命题获支持。本次在线读取指定v2原文。§3.4、表2列出JSP 262、RCPSP-SM 400、RCPSP-MM 300、ITC 21、INRC 69、NSPLib 80，合计1,132实例。§4.1及附录B.1说明13模型均经托管API、零样本作答，每个模型—实例对评估一次；B.2要求直接给出完整安排，禁止工具、外部求解器和可执行代码。§4.4记录移除非实质附加文字、解析候选安排、验证硬约束；B.1明确CP-SAT用于验证，§3.3另用于参考解核验，未报告求解器语义修复。[论文v2](https://arxiv.org/html/2608.00991v2)\n\n表3及表10对应v4主实验：15.2%是13模型总体可行率的平均，每个总体率按全部1,132实例汇总；这里的跨家族汇总按实例数加权，并非六家族等权平均。GPT-5.5对应55.9%，附录B.3标明2026-04-23版本。表19为1,132×13=14,716份输出，其中14,660可解析、56不可解析。可行率使用全部实例分母，不能改用仅可解析输出；99.6%只是解析成功率。470实例的配对消融及150实例的渲染种子实验另有协议，不能拼入主实验分母或混用其结果。\n\n实际反向搜索包含修复、求解器和提取器的技术词，并限定论文及作者代码域；另在v2全文查找repair、mask、fallback，未命中这些词。已读Datagen目录及step2_solutions.py：generate_jssp按源实例暂存输入，--bks提取参考值，--solve调用源实例求解脚本；这条链不能充当模型输出修复的证据。[作者代码](https://github.com/SCHEDBench/SCHEDBench_Datagen/blob/main/step2_solutions.py) 但scoring.py、JSP求解脚本及递归树接口访问失败，完整评估解析与验证实现仍未确认；当前main也未绑定为论文实验提交。因此只能确认原文未报告语义修复，不能证明未公开分支绝无修复、补排或回退。\n\n归属依据实际输出：JSP要求各工序开始时间，指定机器来自题面，模型没有FJSP可选机台分配任务。所述协议未报告动作掩码、构造解码器或修复器替模型决定安排，但也不能仅因完整输出就认定覆盖本项目B的全部决策维度。内部rubric行4–5、45允许B多轮delta反馈；对获准interaction.py做rg反向查找并读取_dispatch分支，见显式检查后由后续模型输出选择候选，其文件哈希与清单一致。该文件是审查草案，不是工厂执行效果证据。故这些比例属于论文直接整表作答协议的作者报告，不能外推本厂迭代B合法率。本次未复现实验；论文、README和同仓代码也不构成独立实证。",
+          "queries_executed": [
+            "WebFetch：https://arxiv.org/html/2608.00991v2；读取§3.3–3.4、§4.1–4.4、附录B.1–B.3及表2、3、10、19",
+            "WebSearch：SCHEDBench scheduling benchmark \"repair\" \"solver\"",
+            "WebSearch：SCHEDBench zero shot feasibility 1132 13 models",
+            "WebSearch：\"SCHEDBench\" repair solver extractor；domains=arxiv.org,github.com,huggingface.co",
+            "WebSearch：\"SCHEDBench\" \"15.2\" feasibility；domains=arxiv.org,github.com,huggingface.co",
+            "原文反向查找：repair、mask、fallback，均无匹配；另查Table 19、github.com及实验设置",
+            "WebFetch：作者Datagen仓库根目录、src/domains、utils目录及step2_solutions.py；查找src.domains调用路径",
+            "访问尝试：utils/scoring.py、src/domains/jssp/solve_instances.py及GitHub递归树接口，未成功取得内容",
+            "内部rg：inputs/route-classification-rubric.json、internal-allowlist.json及internal-code-baseline.json中的B_project、C_project、多轮、delta和interaction.py路径",
+            "内部rg：B_base_evidence_v13/workflow/interaction.py及B_feedback_admission.py中的feedback、repair、fallback、check_assembly、apply和候选选择分支；随后读取interaction.py第379–511行相关片段",
+            "只读哈希核对：interaction.py的SHA-256与internal-code-baseline.json对应记录一致"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2608.00991v2",
+              "anchor": "§3.3–3.4；§4.1–4.4；Appendix B.1–B.3；Tables 2、3、10、19",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/SCHEDBench/SCHEDBench_Datagen/blob/main/step2_solutions.py",
+              "anchor": "load_raw_targets、generate_jssp、main中的--solve/--bks分支；当前main，未确认论文实验提交",
+              "access_level": "partial"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/SCHEDBench/SCHEDBench_Datagen",
+              "anchor": "根目录文件列表；README的Compute BKS及Generate all 5 variants段，仅作代码范围说明",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "行4–5：route_definitions.B_project/C_project；行45：允许多轮工具反馈的delta决策",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/interaction.py",
+              "anchor": "行1–5审查草案说明；next_prompt及_dispatch的check_assembly/apply分支；SHA-256=8122fd56a6c89a44b629b0a24fe523380e63d3737b1188a183061f5648428c89，与指定清单一致",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "未在已读原文中找到语义修复、动作掩码或修复回退的报告；部分公开代码链接返回Cache miss/Internal Error，递归树接口不可访问，完整评估解析与验证实现未确认。这些未命中及访问失败不证明相关实现不存在；本次也未复现作者结果。",
+          "suggested_narrowing": "保留原限定结论，并将15.2%的统计口径明确为“13个模型在全部1,132实例上的总体可行率之平均，家族按实例数加权”；继续保留“未报告修复”及“不能外推本厂迭代B”的限制。"
+        },
+        {
+          "claim_id": "R2-C03",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，在线读取[论文v2](https://arxiv.org/html/2608.00991v2)，原限定命题获支持。表2为六个来源家族、合计1,132实例；§4.1和附录B.1/B.2说明13个模型均经托管API访问，零样本，每个模型—实例对作答一次，要求直接输出最终安排。§4.4披露去除非实质性多余文本后解析并验证硬约束，B.1明确使用CP-SAT，因此必须保留评估工具贡献，不能描述成完全没有后处理或求解器参与。\n表3的All行为GPT-5.5可行率55.9%、跨模型平均15.2%。统计口径是每模型在全部1,132实例上的可行率，再跨13模型平均，家族按实例数量加权，并非六家族等权平均。表19明确14,716次主实验输出，其中14,660可解析、56不可解析；99.6%解析成功率不等于合法率。470实例消融属于另行实验，不能并入主实验分母。\n实际反向搜索了SCHEDBench与repair、retry、flexible及Datagen等组合，并在论文全文查找前三词，未命中；但确实命中了文本后处理和CP-SAT验证说明。进一步读取作者[Datagen源码](https://github.com/SCHEDBench/SCHEDBench_Datagen/blob/main/step2_solutions.py)：main及generate_jssp分支从源实例确定目标，提取BKS或求解参考安排，其--solve不是读取并修复模型答案的入口。已查范围未确认完整模型输出解析、验证实现，不能据此证明其他或未公开分支没有修复；README、源码与论文也不是独立效果实证。\n内部用rg反查允许的B工程中repair、fallback、feedback及具体分支。interaction.py的check_assembly编译模型已封存的delta，apply要求在后续独立输出中显式选择候选；这支持“存在多轮检查反馈协议”的范围区别，未证明实际运行效果。分类标准第45行也明确本项目B允许多轮delta决策，故论文单次整表结果不能直接替代本厂合法率。JSP模板预先指定每工序机器，答案只给开始时刻，不能据此证明FJSP机器分配能力。\n负面和成本限定仍须保留：参考解核验有10/20秒预算，超时实例保留BKS；目标质量只在可行输出上统计；附录给出全评估约2,371美元的估算，不能换算成本厂逐决策成本或实时延迟。本轮只做静态证据核查，未复现实验。",
+          "queries_executed": [
+            "WebSearch: SCHEDBench scheduling benchmark repair retry iterative solver validation flexible job shop",
+            "WebSearch: \"SCHEDBench\" \"15.2\" \"55.9\"",
+            "WebSearch: \"SCHEDBench\" \"repair\"",
+            "WebSearch: \"SCHEDBench\" \"Datagen\"",
+            "WebSearch: \"SCHEDBench\" \"flexible\"",
+            "WebSearch: SCHEDBench Datagen code GitHub；限定github.com、huggingface.co、arxiv.org",
+            "WebSearch: SCHEDBench scheduling benchmark repair iterative retry evaluation；限定github.com、huggingface.co、arxiv.org",
+            "WebFetch: https://arxiv.org/html/2608.00991v2；读取主实验、指标、提示、成本、超时与表19；全文find repair、retry、flexible、post-processing、timeout",
+            "WebFetch: 作者Datagen根目录、README、src/domains目录及step2_solutions.py；find def main、repair、model、--solve",
+            "本地rg: 在允许的B_base_evidence_v13/workflow/B_feedback_admission.py与interaction.py中搜索def、retry、repair、fallback、admit、feedback、round，并读取check_assembly/apply分支",
+            "本地读取route-classification-rubric.json、internal-allowlist.json及internal-code-baseline.json；核对interaction.py SHA256与冻结清单一致",
+            "仅对表3舍入百分比和实例桶数量做算术回核：633/1132≈55.9%，2231/14716≈15.2%；未运行排程或求解"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2608.00991v2",
+              "anchor": "Table 2、Table 3 All行；§4.1、§4.2、§4.4；Appendix A.7、B.1、B.2；Table 19",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/SCHEDBench/SCHEDBench_Datagen/blob/main/step2_solutions.py",
+              "anchor": "load_raw_targets、generate_jssp、main；--bks/--solve分支；repair与model查找未命中",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/SCHEDBench/SCHEDBench_Datagen",
+              "anchor": "公开根目录文件列表；README Compute BKS、Generate all 5 variants",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions.B_project/C_project；comparison_required；limits第45—46行",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/interaction.py",
+              "anchor": "_dispatch：check_assembly第468—489行、显式候选选择与apply顺序第501—507行；反馈路径rg命中；SHA256与冻结清单一致",
+              "access_level": "partial"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "在已读论文和Datagen公开根目录、目录列表及step2源码范围内，未确认完整模型答案解析/验证实现或求解器语义修复路径。src/domains页面出现部分加载报错，但目录列表可读；未据此宣称完整仓库审计成功。关键词未命中不证明机制不存在，未公开分支、输出验证超时的具体处理及本厂效果仍未知；本轮未复现。",
+          "suggested_narrowing": "将“跨家族平均”显式标为“按家族实例数加权的全实例可行率，再对13个模型平均”；保留“论文未报告语义修复”，并注明完整评估实现尚未确认。"
+        },
+        {
+          "claim_id": "R2-C03",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，已在线读取指定v2原文。Table 2六族数量为262/400/300/21/69/80，共1,132；§4.1、B.1–B.3说明13个托管API模型零样本、每模型—实例一次完整作答。Table 3总体行及§5.1直接报告15.2%和GPT-5.5的55.9%。统计应明确：每模型总体率以1,132例为分母，15.2%再跨13模型取均值，并非六家族等权平均。按分桶率反算得到633/1,132=55.9187%，全部可行数2,231/14,716=15.1604%；这是表格算术核对，非复跑。Table 19的14,660可解析、56不可解析合计14,716，可解析不等于满足硬约束；主表分母未缩成14,660，失败计分的完整实现仍未知。[论文v2](https://arxiv.org/html/2608.00991v2)。\n§4.4仅描述清除非实质文字、提取安排、验证硬约束；B.2禁止模型调用外部工具/求解器，B.1披露CP-SAT验证。实际反向搜索用了SCHEDBench与repair、extractor、validation等限定词，原文repair检索无命中；搜索未找到可核实的语义修复反例。作者Datagen目录/README和step2 main()的互斥--bks/--solve分支表明其求解用于基准参考解制作，不能据此称主评估由算法安排。[作者代码](https://github.com/SCHEDBench/SCHEDBench_Datagen/blob/main/step2_solutions.py)。完整评估调用链尚未确认，部分代码页访问失败；未命中不证明未公开分支绝无修复。\n内部实际用rg反查rubric的B/C定义、多轮delta及合法动作过滤限制，并查B_delta_prompt.py的feedback/build_prompt路径：252–288行透传反馈与模型记忆，但文件头明确只是未接运行的评审草案。它支持协议区别，不能证明本厂部署或效果。按判据，论文可作直接完整安排的机制证据；不能因使用验证器归C，也不能宣称已验证本厂lot、机台、批次、等待等全部决定权。JSP示例每道工序机器已指定，B.2仅要求开始时间，因此不验证FJSP备选机器分配；RCPSP-MM模式选择也不能替代该验证。\n迁移判断还受静态公开实例、自然语言整表输出限制。470例配对变体和150例渲染种子实验不是持出新厂泛化，也不是多轮合法性反馈消融；BKS不构成本厂同预算B/C基线。目标差距仅在可行输出上统计，不能用其掩盖失败。B.1费用/token覆盖整套评估，未拆主实验单例壁钟，不能除以14,716推成本厂延迟或费用。本次未运行排程或复现，作者论文与同项目代码也不计作独立实证。",
+          "queries_executed": [
+            "WebFetch：https://arxiv.org/html/2608.00991v2；读取§3–§5、Appendix B.1–B.3及Table 19",
+            "WebSearch：SCHEDBench direct schedule repair parser validation solver；限定arxiv.org、github.com",
+            "WebSearch：SCHEDBench Datagen evaluation extractor feasibility；限定github.com",
+            "WebSearch：\"SCHEDBench\" \"repair\"；限定arxiv.org、github.com",
+            "WebSearch：\"SCHEDBench\" \"extractor\"；限定github.com",
+            "论文页内检索：14,716、15.2、Table 19、repair、GitHub",
+            "WebFetch：作者Datagen仓库、step2_solutions.py、src/domains及utils目录；检索def main、add_mutually_exclusive_group、args.solve",
+            "WebFetch尝试：raw.githubusercontent.com上的step2_solutions.py、GitHub上的utils/scoring.py及src/domains/jssp目录",
+            "rg -n -C 3 'route_definitions|B_project|C_project|offline_generation|多轮|合法动作|原始可行率|tokens|持出' inputs/route-classification-rubric.json",
+            "内部rg反向检索：feedback|retry|repair|fallback|machine_id|batch_id|wait_until|compile_delta|assemble；限定获准B_base_evidence_v13/workflow下的B_delta_assembly.py、B_delta_prompt.py、B_feedback_admission.py"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2608.00991v2",
+              "anchor": "Table 2、Table 3总体行；§4.1–4.4、§5.1；Appendix B.1–B.3；Table 19；Figure 2固定工序机器示例",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/SCHEDBench/SCHEDBench_Datagen",
+              "anchor": "main文件列表；README的Compute BKS、Generate all 5 variants及Reproducibility",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/SCHEDBench/SCHEDBench_Datagen/blob/main/step2_solutions.py",
+              "anchor": "main()：互斥--solve/--bks参数、load_raw_targets及generate_*参考解生成分支",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions，行3–7；comparison_required，行26–38；limits，行40–46",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/B_delta_prompt.py",
+              "anchor": "行1–5评审草案/未接运行声明；行20–32请求协议；build_prompt()行252–288反馈与模型记忆透传",
+              "access_level": "partial"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "未确认完整模型输出解析器、验证器及失败计分调用链。raw版step2访问返回Cache miss，随后成功读取GitHub代码页相关分支；utils/scoring.py和jssp目录访问失败。论文repair检索及限定搜索未提供语义修复反例；这些结果不证明未公开实现不存在修复。",
+          "suggested_narrowing": "建议把“跨家族平均可行率”明确为“各模型以全部1,132例计算总体可行率，再对13模型取均值为15.2%”，保留仅限作者主实验协议、未报告修复及不能外推本厂迭代式B的限定。"
+        }
+      ],
+      "retry_attempts": []
+    },
+    "R2-C04": {
+      "original_status": "confirmed",
+      "original_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_status": "confirmed",
+      "effective_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C04",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原命题在其限定范围内得到支持。本次实际在线读取了 Cambridge 官方论文 HTML 和17页 PDF，并用 rg 反查指定分类规则、代码基线清单及本命题抽取快照；后者仅作为本地转述核对，没有替代原文，也不是独立实证。\n方法 Step 3–1 描述分词、词干及词形处理、关键词关系识别和参数提取；Step 3–2 按系统词典查找符号及修改项，组成 ETFN。Steps 4–5 则说明 MATLAB 程序修改数据库内的 Lingo 格式数学规划模型，另一个 MATLAB 函数更新既存 GA 脚本。更直接的限定证据在讨论段：作者称词典增补使查询分析迅速收敛，因此“似乎无需”运行基于 DNN 的 LLM 分析查询。结论也将 ANN/DNN 处理关键词列为未来研究。原文确实出现免于训练或预训练 GPT 的措辞，但这些句子没有交代本地 GPT 调用，不能单独作为使用 LLM 的证据。[Cambridge原文](https://www.cambridge.org/core/journals/ai-edam/article/genai-job-scheduling-system-for-solving-a-flexible-job-shop-scheduling-problem/508C2D5805370719650FC04B2F514197)\n附录B的查询分析输出是适应度函数和用户指定约束；GA 随后生成种群、交叉、变异并按适应度选择染色体。可行性检查会删除违反用户约束的染色体并补入新染色体，因此具体候选生成和替换属于算法贡献。用户还可强制指定机台及工序顺序，不能把用户约束误记为模型决策。LINGO 被描述为验证默认数学模型及目标、约束改动的工具，并无证据表明它负责通用服务比较中的排程。论文没有充分展开机台和时间解码、等待推进、解析失败回退等控制流，不能据伪代码补齐这些细节。\n反向检索主动寻找 ETFN、LLM、MATLAB 实现和公开源码，并复查原文 GPT 出现位置；未找到能将具体 LLM 接入该本地流程的作者实现或接口说明。正文另称尝试 ChatGPT、DeepSeek，表10也将二者与本地系统分别列行，支持其为另列比较对象。它们的实际工具、纠错和决策分工仍不足以核定，不能移植为本地系统的 LLM 证据。\n按内部量规第4–7及40–46行，B要求模型决定具体安排，C要求模型调用构造工具或选择策略参数；自动修改优化模型、程序或离线生成规则不能自动满足这些条件。因此标题中的 GenAI 不足以建立本项目 B/C 归属。HTML、PDF及快照来自同一论文，不能计作多份独立研究；全部实验表现仅属作者报告，本次未运行或复现系统，也未推断本厂效果。",
+          "queries_executed": [
+            "generative artificial intelligence job scheduling MATLAB ChatGPT DeepSeek",
+            "natural language scheduling ETFN MATLAB large language model code generation",
+            "\"GenAI\" \"ETFN\" \"LLM\"（域限定：cambridge.org）",
+            "\"GenAI job scheduling system\" \"language model\"（域限定：cambridge.org）",
+            "\"ETFN\" scheduling LLM MATLAB implementation",
+            "GenAI flexible job shop ETFN MATLAB source code（域限定：github.com）",
+            "rg -n -i 'frozen_at|purpose|cambridge|ETFN|MATLAB|S0890060425100152|genai|dictionary|formulation|offline_generation|limits|B_project|C_project' inputs/internal-code-baseline.json inputs/route-classification-rubric.json",
+            "rg -n -i 'LLM|MATLAB|ChatGPT|DeepSeek|dictionary|replic|复现|2\\.81|代码|伪代码|未公开|未知' m0.5_research/evidence/fetch/agents/0004/result.json",
+            "原文限定查找：GPT、dictionary、Appendix B、there seemed、DeepSeek、Data availability、repair、replaced"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://www.cambridge.org/core/journals/ai-edam/article/genai-job-scheduling-system-for-solving-a-flexible-job-shop-scheduling-problem/508C2D5805370719650FC04B2F514197",
+              "anchor": "方法 Steps 3–1、3–2、4–5；讨论中词典学习与似乎无需LLM的说明；ChatGPT/DeepSeek比较段；结论及数据可用性声明",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/508C2D5805370719650FC04B2F514197/S0890060425100152a.pdf/genai-job-scheduling-system-for-solving-a-flexible-job-shop-scheduling-problem.pdf",
+              "anchor": "印刷页5–7：词典、MATLAB、LINGO及可行性检查；页10：LLM限定；页13–14：比较对象与表10；页17：附录B Figure B1",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions 第4–7行；limits 第40–46行",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/fetch/agents/0004/result.json",
+              "anchor": "第19–20行机制及边界转述；第63行明确为作者报告、未复现；第79行源码未知",
+              "access_level": "snapshot"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "反向检索及所读原文未找到本地LLM的具体版本、调用接口或可核验作者源码；这不证明实现不存在或绝对未使用LLM。DOI跳转初次访问失败，随后官方HTML和PDF文本读取成功；PDF第17页截图返回缓存未命中，附录B依据可读文本核对。底层解码、等待、回退及比较对象的实际控制流仍未知，未做复现。",
+          "suggested_narrowing": "保留原命题“论文明确描述的本地系统”及“机制不足以证明LLM调用”的限定；不要扩展为实现绝对未使用LLM，或据此确定ChatGPT/DeepSeek的B/C归属。"
+        },
+        {
+          "claim_id": "R2-C04",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原限定命题直接受到支持。DOI跳转端点访问失败后，实际读取了对应的Cambridge正文和官方PDF文本；未读取其他核验者结果。[论文](https://doi.org/10.1017/S0890060425100152)\n方法Step 3–1描述分词、词干处理、词形还原、关键词位置关系及参数提取；Step 3–2明确从系统词典查找符号和修改要求，插入ETFN。Step 4–5进一步说明：MATLAB程序修改数据库中的默认Lingo模型，另一个MATLAB函数更新默认GA脚本；变化主要涉及适应度与可行性检查。这里描述的是词典映射和程序自动修改，未说明由LLM生成代码或调用排程构造器。Lingo验证模型与GA形成安排的角色应分别披露。\n主动反向检查了最可能推翻命题的线索：自动代码生成措辞、综述中的GPT模型，以及讨论中无需预训练GPT的表述；同时执行含LLM、代码生成的Cambridge检索和含ETFN、MATLAB、代码的GitHub限定检索。原文表1将本文推理机制列为“Decision rules”，讨论明确认为查询分析似乎无需运行LLM，结论将ANN/DNN处理关键词列为未来扩展。上述线索未形成反例；定向搜索也未定位可确认属于作者的公开实现，不能据此断言实现不存在。\n官方PDF第17页附录B的文字中，query_analysis返回适应度函数和用户约束，随后GA产生种群、交叉、变异并按适应度选择。可行性分支移除违规染色体并加入新染色体，因此合法性筛选及候选替换属于算法贡献；不是语言模型自行保证合法。正文讨论与第14页表10分别列出ChatGPT、DeepSeek及本地系统，支持它们是比较对象而非已披露的内部组件。\n反向检查也发现证据边界：第9页表7展示词典缺项导致查询误解及人工补词修正，不能视为持出泛化验证；主案例为六机台、十作业，不能外推全厂规模。表10报告执行时间，不能读成超时率；已读材料未定位模型版本、调用数或token成本。B1虽有代数上限T，内层可行性替换循环未明示重试上限，不能推出壁钟保证。这些均是原文观察和推断，没有亲跑或复现。\n本地rg反向核查分类规则第4–7、40–46行：直接B须由模型决定具体安排，C须由模型调用构造器或选择策略参数，离线程序生成及模型 formulation均不自动等于C。因此该论文的机制描述不足以作为本项目LLM直接B或LLM调用构造器C的证据。结论仅限论文披露；query_analysis内部和实际MATLAB控制流未知，HTML附录图片及PDF第17页截图访问失败，附录依据可读文字提取，正文与PDF亦不是两份独立实证。",
+          "queries_executed": [
+            "WebSearch：\"job scheduling\" \"ETFN\" MATLAB \"language model\"",
+            "WebSearch：\"generative AI\" \"job scheduling\" MATLAB dictionary",
+            "WebSearch，限定cambridge.org：\"job scheduling\" \"ETFN\" MATLAB",
+            "WebSearch，限定cambridge.org：\"customizable\" \"GenAI\" scheduling \"large language model\"",
+            "WebSearch，限定github.com：\"ETFN\" scheduling MATLAB LLM code",
+            "WebSearch，限定cambridge.org：\"GenAI\" \"job scheduling\" \"LLM\" \"code generation\"",
+            "WebSearch，限定cambridge.org：\"extended three-field notation\" \"LLM\" \"MATLAB\"",
+            "WebSearch，限定github.com：\"job scheduling\" \"ETFN\" \"code\"",
+            "原文限定查找：MATLAB、Step 3–1、ChatGPT、Appendix B、large language、Data availability、iterations、timeout",
+            "官方PDF限定查找：Figure B1、Table 10.、GPT、cost、time limit、terminate、API、token、version、Table 7.",
+            "本地：rg -n -C 3 'B_project|C_project|offline_generation|formulation|工具|解码|过滤|补|limits' inputs/route-classification-rubric.json"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://www.cambridge.org/core/journals/ai-edam/article/genai-job-scheduling-system-for-solving-a-flexible-job-shop-scheduling-problem/508C2D5805370719650FC04B2F514197",
+              "anchor": "Methodology Steps 3–1、3–2、4–5；Discussion关于无需LLM与ChatGPT/DeepSeek比较；Conclusions；Data availability statement",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/508C2D5805370719650FC04B2F514197/S0890060425100152a.pdf/genai-job-scheduling-system-for-solving-a-flexible-job-shop-scheduling-problem.pdf",
+              "anchor": "实际读取PDF文字：第3页表1；第9页表7；第14页表10；第17页附录B图B1，query_analysis、GA_application及feasibility_check分支；第17页截图失败",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions第4–7行；limits第40–46行；已通过rg反向检查离线生成、formulation及工具决策例外",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "限定检索未定位可确认属于作者的公开MATLAB实现；已读机制说明与伪代码未提供本地系统调用LLM的明确证据。未命中不等于不存在，也不证明未披露函数绝无LLM调用。DOI跳转及HTML图片访问失败，但对应Cambridge正文与官方PDF文字读取成功；附录B页面截图失败，未冒称完成视觉核查或代码复现。",
+          "suggested_narrowing": "原命题限定已足够；其限制中的“没有公开实现”宜表述为“截至核查日未定位可供检查的作者公开实现”，以保留搜索覆盖范围的不确定性。"
+        },
+        {
+          "claim_id": "R2-C04",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原限定命题得到直接支持。DOI入口首次跳转失败，随后实际在线读取了Cambridge官方HTML正文及17页PDF文本。表1（第3页）将本方法的推理机制列为“Decision rules”。Steps 2–3描述分词、词干化、词形归并及关键词组合识别，再从系统词典查取符号和修改项，形成ETFN；Steps 4–5明确由MATLAB程序修改Lingo格式的默认数学规划模型，再由另一个MATLAB函数更新默认GA脚本。附录B图B1中，query_analysis返回适应度函数和用户约束，随后由GA初始化、交叉、变异和选择染色体；违规染色体被删除并补入新染色体。因此具体安排及可行性筛选包含算法决策，不能归为LLM直接排程。[论文原文](https://doi.org/10.1017/S0890060425100152)\n\n主动反向检索采用ETFN、LLM、code、transformer、implementation、MATLAB和github等技术词组合，并检查正文中的LLM、MATLAB、词典与附录锚点。第3页确有涉及免去调度员预处理以训练GPT软件的笼统说法，摘要也称生成定制代码；但这些表述没有交代本地LLM调用机制。更具体的第10页说明，查询分析似乎无需运行基于DNN的LLM；第14页将ANN/DNN处理关键词列为未来方向。第13–14页讨论、图13和表10把ChatGPT、DeepSeek与本地系统分别列出，支持它们是另行尝试的比较对象。检索未发现能推翻原命题的公开实现证据；这不等于实现不存在。PDF截图及官方表图读取出现缓存未命中，相关表格和附录依据官方PDF文本核对。\n\n内部通过rg反向核对分类规则第4–7行的B、C、formulation、offline_generation以及第40–46行的限制。B要求模型承担具体安排，C要求模型调用构造器或选择策略参数；已描述的词典映射、程序改写和GA执行没有证明LLM承担任何一种角色。即便后来证实LLM参与生成程序，也须继续区分离线生成与运行时构造器调用，不能自动算C。这是依据实际决定者作出的分类判断。迁移审计中，领域词典和受约束表达是适用条件，可行性筛选属于工具贡献；作者报告的比较不能自动证明本厂约束覆盖、同条件B/C优劣、持出泛化或完整延迟费用。本次没有检查作者MATLAB实现、运行排程或复现效果，也不据此判断另列ChatGPT/DeepSeek的具体决策归属。",
+          "queries_executed": [
+            "\"10.1017/S0890060425100152\"",
+            "\"ETFN\" MATLAB scheduling \"language model\"",
+            "generative artificial intelligence job scheduling MATLAB dictionary ChatGPT DeepSeek genetic algorithm",
+            "\"ETFN\" \"scheduling\" \"LLM\" \"code\"",
+            "\"GenAI job scheduling system\" transformer implementation",
+            "\"GenAI job scheduling\" MATLAB github",
+            "原文find：Step 4.、Step 5.、Appendix B、ChatGPT、DeepSeek、MATLAB、dictionary、no need to run、Supplementary、Data availability statement",
+            "rg -n -C 2 'formulation|offline_generation|C_project|B_project|不能仅因使用工具' inputs/route-classification-rubric.json"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://www.cambridge.org/core/journals/ai-edam/article/genai-job-scheduling-system-for-solving-a-flexible-job-shop-scheduling-problem/508C2D5805370719650FC04B2F514197",
+              "anchor": "Steps 2–5；实验讨论关于无需运行LLM的段落；ChatGPT/DeepSeek比较；结论中的ANN/DNN未来方向",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/508C2D5805370719650FC04B2F514197/S0890060425100152a.pdf/genai_job_scheduling_system_for_solving_a_flexible_job_shop_scheduling_problem.pdf",
+              "anchor": "第3页表1；第7页MATLAB修改流程；第10页LLM说明；第13–14页图13与表10；第17页附录B图B1",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions第4–7行；limits第40–46行",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "在上述公开检索及论文方法、附录范围内，未找到本地系统实际调用LLM的可核对实现证据或作者公开代码；未命中不能证明不存在。官方全文可读，部分截图和表图访问失败。",
+          "suggested_narrowing": "无需缩窄原命题；保留“论文明确描述的本地系统”和“机制描述不足以证明”的限定，不扩展为作者实现绝对未使用LLM。"
+        }
+      ],
+      "retry_attempts": []
+    },
+    "R2-C05": {
+      "original_status": "confirmed",
+      "original_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_status": "confirmed",
+      "effective_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C05",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原限定命题得到支持。v1 §V-A 明确规定训练最多20代、每轮替换一个训练案例，测试保留交叉和变异概率但降为一代；§III 又说明应用阶段利用训练所得规则和提示，经一次框架迭代生成规则。因此这里的一代是规则种群演化轮次，不能理解为仅执行一次冻结规则，更不能换算为一次API请求。[v1原文](https://arxiv.org/html/2410.22657v1)\n\nv2 §V-A 同样写明测试降为一代；§III 描述使用训练所得最佳规则后，再经过一次自进化框架迭代产生规则；§IV-B 的反思、交叉和变异公式明确包含LLM。其§VI所说动态案例仅使用一个HDR，也不能证明该HDR在接触测试案例前已冻结。[v2原文](https://arxiv.org/html/2410.22657v2)\n\n所读main快照中，seevo.py::init_population 的test路径先加载并评价已有规则；evolve随后无条件调用一次_run_single_iteration。该函数执行种群反思、交叉、评价、自反思、自进化及再次评价；相关函数调用multi_chat_completion，update_iter按当前目标值保留最佳规则。值得纠正的是：注释称自进化仅训练执行，但实际条件位于自进化之后，仅挡住长期反思和变异。故测试路径确实包含规则生成和选择，而非只有加载评价。[代码](https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/seevo.py) API封装最终调用chat.completions.create；这证明可达调用路径，不证明实际成功次数、重试量或论文逐样本调用量。[封装](https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/utils/utils.py)\n\n反向尝试包括公开检索冻结规则、无LLM测试，并在两版正文检索frozen、fixed、no LLM、API及仓库名称，同时检查加载规则分支。未找到明确冻结且禁用LLM的持出协议；未命中不能证明不存在。运行时归属也须分开：规则程序算分，环境argmin选作业，按名义时长选机器并推进时间，属于生成规则/程序路线，不能自动归为本项目B或C。[环境代码](https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/problems/jsp_constructive/Real_Time_FJSP.py)\n\n两版已读正文未直接链接该仓库；论文称测试保留变异设置，而此代码测试跳过变异，足以限制版本对应推断。提交API与历史页均访问失败，未取得不可变提交号。上述材料是作者报告和只读快照，不是本次复现；只能支持不足以证明冻结规则零调用泛化或现场派工延迟，不能据此断言全部结果泄漏、无效或本厂有效。",
+          "queries_executed": [
+            "WebFetch：https://arxiv.org/html/2410.22657v1；重点读取§III、§IV、§V-A、§VI",
+            "WebFetch：https://arxiv.org/html/2410.22657v2；重点读取§III、§IV-A/B、§V-A、§V-C、§VI",
+            "WebSearch：SeEvo heuristic scheduling test frozen rules LLM calls single generation inference",
+            "WebSearch：SeEvo scheduling frozen heuristic no LLM testing pretrained single generation；限定arxiv.org、github.com",
+            "WebFind：两版正文中的frozen、fixed、no LLM、API、code、github、LHH_DFJSP；另查online application、single iteration及generations",
+            "WebFetch：https://github.com/huangjin-collab/LHH_DFJSP_SeEvo；读取README测试流程和文件入口",
+            "WebFetch：仓库main的seevo.py；核查init_population、evaluate_population、update_iter、反思与生成函数、_run_single_iteration、evolve",
+            "WebFetch：仓库main的main.py、utils/utils.py、problems/jsp_constructive/eval.py；核查入口、API封装及评价路径",
+            "WebFetch：仓库main的problems/jsp_constructive/Real_Time_FJSP.py、prompts/jsp_constructive/func_signature.txt；核查规则输出、机器选择与输入签名",
+            "WebFetch：https://api.github.com/repos/huangjin-collab/LHH_DFJSP_SeEvo/commits/main；返回Internal Error",
+            "WebFetch：https://github.com/huangjin-collab/LHH_DFJSP_SeEvo/commits/main/；返回Internal Error",
+            "本地只读：inputs/internal-allowlist.json、inputs/route-classification-rubric.json、inputs/internal-code-baseline.json及本命题指定的0005/result.json；未读取其他核验者结果，未执行排程或修改文件"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2410.22657v1",
+              "anchor": "§III应用阶段单次框架迭代；§IV Algorithm 1与反思/交叉/变异；§V-A测试降为一代；§VI动态案例单一HDR",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2410.22657v2",
+              "anchor": "§III应用阶段再次自进化；§IV-B公式(2)—(7)；§V-A测试一代；§V-C生成耗时；§VI单一HDR与外部API限制",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/seevo.py",
+              "anchor": "init_population L126—L165；update_iter L397—L437；模型调用 L653—L692、L811—L859；_run_single_iteration/evolve L905—L989。main可变快照，未取得提交号",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/utils/utils.py",
+              "anchor": "multi_chat_completion→chat_completion→client.chat.completions.create；异常重试循环。网页文本合并为长行，按函数定位",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/problems/jsp_constructive/Real_Time_FJSP.py",
+              "anchor": "RealTimeFJSPDual.step L192—L214：规则评分、argmin选作业、最小名义时长选机器；_forward L219起负责时间推进",
+              "access_level": "snapshot"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "未在实际读取的两版正文及所读测试控制流中找到明确冻结规则且零LLM调用的持出评估协议；这不是不存在证明。提交API和历史页访问失败，当前main的不可变版本与论文实验对应关系未验证；补充材料未取得并核读，实际调用量及现场派工延迟未复现。",
+          "suggested_narrowing": "将“test分支”明确标注为“所读main快照中的mode==test控制分支”，避免误解为Git分支；继续保留论文报告与代码路径不能拼接证明逐样本调用量的限定。"
+        },
+        {
+          "claim_id": "R2-C05",
+          "verdict": "supported",
+          "confidence": "medium",
+          "evidence": "截至2026-10-12，原限定命题受支持。两版§V-A均说训练使用20个随机案例、每轮替换一个，测试仍保留交叉和变异概率，只将代数降至一：[v1](https://arxiv.org/html/2410.22657v1)、[v2](https://arxiv.org/html/2410.22657v2)。结合§III在线阶段及§IV反思、交叉、变异的定义，单代指一次规则演化流程，不能解释成仅加载规则、一次派工或一个API请求。论文的个体是指导工件选择的代码片段，并非完整排程；应按规则生成与适配路线理解，不能据名称自动归入本项目B或C。\n反向检索在arXiv/GitHub限定查找SeEvo与frozen、without LLM、test generation，并查两版正文的冻结说明。最强相反线索是§III应用训练所得最佳规则，以及代码初始化确实加载旧规则；但两版同段又写在线阶段进行一次自演化，未形成明确的冻结、零LLM持出协议。未命中只限本次检索。\n源码反向追踪发现，[seevo.py](https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/seevo.py)初始化加载并评价规则后，evolve的test条件仍调用单轮演化。工具文本L931–953无条件执行反思、交叉、自演化及两轮评价；L955的train条件仅覆盖长期反思与变异，注释称自演化仅训练与实际条件不符。[utils.py](https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/utils/utils.py)的聊天辅助函数实际调用模型接口并有重试；[main.py](https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/main.py)先调用evolve，再写出最佳规则作val验证，不能由后者推导整个测试零调用。评价超时会标无效，全无效或选不到父代会抛错，实际发生率未复现。程序评价的超时阈值也不能直接视作整个模型调用流程的延迟上限，网络等待和失败重试仍须独立计量。\nv2已报告100×20案例上三个模型40、42、122秒及相对API费用，因此不能称没有时间或成本证据；但这是生成整解的报告，未给冻结规则单次派工延迟、逐样本调用及重试账本。两版正文未见指向该仓库的项目链接，且论文测试保留变异、所读代码却跳过变异。代码为可变main的检索快照，未取得提交号，不能证明当日实时HEAD或论文全部结果的实际调用量；补充材料未核实，也未运行实验。规则最终能够独立执行的可能性，与报告中的测试是否继续适配，是两个不同问题；需要冻结规则、断开模型接口的独立持出评估才能直接回答前者。本结论支持证据用途限制，不推出全部结果泄漏、无效或每次派工都调用API。",
+          "queries_executed": [
+            "SeEvo job shop scheduling frozen heuristics test no LLM calls single generation",
+            "SeEvo job shop scheduling inference time offline training online application",
+            "SeEvo scheduling \"frozen\" \"test\"",
+            "SeEvo scheduling \"no LLM\" OR \"without LLM\" OR \"inference\"",
+            "\"SeEvo\" scheduling \"frozen\"；限定arxiv.org、github.com",
+            "\"SeEvo\" scheduling \"without\" \"LLM\"；限定arxiv.org、github.com",
+            "\"SeEvo\" scheduling \"test\" \"generation\"；限定arxiv.org、github.com",
+            "两版论文正文查找：single、generations、frozen、github、seconds、cost、Supplementary",
+            "公开seevo.py控制流反查：init_population、evolve、_run_single_iteration、multi_chat_completion、timeout",
+            "公开main.py与utils/utils.py追踪：测试入口是否绕过evolve；聊天辅助函数是否调用模型接口"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2410.22657v1",
+              "anchor": "§III在线应用阶段；§IV个体编码与演化算子；§V-A单代测试设置",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2410.22657v2",
+              "anchor": "§III单次自演化；§V-A测试保留交叉和变异概率；§V-C的100×20案例生成时间及相对API费用",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/seevo.py",
+              "anchor": "init_population；_run_single_iteration/evolve，工具文本L905–989；反思与生成函数L628–693、L777–867；超时处理L307–316",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/utils/utils.py",
+              "anchor": "multi_chat_completion→chat_completion→client.chat.completions.create；异常重试循环",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/main/main.py",
+              "anchor": "main：初始化客户端和算法，调用algorithm.evolve，再写出最佳规则并调用val验证",
+              "access_level": "snapshot"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "本次两版正文读取和限定反向检索未找到明确冻结规则且测试零LLM调用的持出协议。这不证明其他材料中不存在该协议。补充材料、逐样本调用账本、论文与仓库的精确对应关系及不可变提交号均未核实。",
+          "suggested_narrowing": "将“test分支”明确标为“所读main快照中mode==test的控制流”。保持“不足以直接证明零调用冻结泛化或派工延迟”的限定；实际调用量须另有论文对应版本、调用账本和冻结评估协议支持。"
+        },
+        {
+          "claim_id": "R2-C05",
+          "verdict": "supported",
+          "confidence": "medium",
+          "evidence": "截至2026-10-12，原限定命题受到支持。[v1论文](https://arxiv.org/html/2410.22657v1)§V-A明确写训练最多20代、每轮替换一个训练案例，测试保留交叉和变异概率，仅把演化代数降为一代；§III也描述利用训练所得规则与提示，经一次框架迭代生成规则。[v2论文](https://arxiv.org/html/2410.22657v2)§V-A保留同样的单代测试设置，§IV-B公式明确由LLM完成反思、交叉和规则改进。因此，单代指种群演化轮次，不能解释成一次固定规则执行，也不能等同一次API调用。v2§V-C还报告100工件、20机器测试集上的40、42、122秒生成时间及相对API费用；这是作者报告，不能转换成冻结规则每次派工的延迟。\n反向核查实际搜索了冻结测试、预训练规则及无需额外LLM等技术词，并检索两版正文的frozen、pre-trained和github。最强限定证据是v2§III称在线阶段利用训练所得最佳规则，以及[README](https://github.com/huangjin-collab/LHH_DFJSP_SeEvo)称测试预训练规则；但前者紧接着描述一次自演化迭代，后者Testing Mode明确列出加载规则后在测试集进行一次演化，均未构成冻结零调用的反例。\n[实际读取的main代码快照](https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/refs/heads/main/seevo.py)中，init_population的test条件分支先加载并评价旧规则（L126—165），这一步本身未见LLM生成；但evolve随后调用_run_single_iteration（L980—983），执行反思、交叉、评价以及个体自演化（L931—953），相应方法调用multi_chat_completion。个体自演化实际位于train判断之外，与注释不一致；长期反思和变异才受train判断限制。这里test指main内的运行条件分支，并非已确认的Git分支。\n代码因此独立支持所读分支含规则生成与评价，却不能证明论文所有测试样本的调用量。论文测试保留变异概率，而代码test路径跳过变异，设置确有差异；两版HTML正文检索未见目标仓库直接链接。提交API及历史页访问失败，未取得不可变提交号；代码是工具返回的缓存快照，即时状态仍未知。v2 PDF超时，补充材料未读取，未复现。该工作按实际决定者属于规则程序生成路线：程序与环境形成具体派工，不能自动归为本厂B或C。现有比较也不足以提供冻结零调用对照、逐决策费用分母或本厂效果；这些限制不意味着全部结果泄漏或无效。",
+          "queries_executed": [
+            "WebFetch：https://arxiv.org/html/2410.22657v1",
+            "WebFetch：https://arxiv.org/html/2410.22657v2",
+            "WebFetch：https://github.com/huangjin-collab/LHH_DFJSP_SeEvo",
+            "WebSearch：SeEvo dispatching rules frozen testing single generation LLM calls",
+            "WebSearch：SeEvo job shop scheduling testing pre-trained rules no additional LLM",
+            "正文反向检索：两版论文的frozen、pre-trained、github；v2的training、Supplementary",
+            "代码路径核查：seevo.py的init_population、multi_chat_completion、_run_single_iteration、evolve及test/train条件；main.py的evolve入口",
+            "WebFetch：https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/refs/heads/main/seevo.py",
+            "不可变版本尝试：https://api.github.com/repos/huangjin-collab/LHH_DFJSP_SeEvo/commits/main；https://github.com/huangjin-collab/LHH_DFJSP_SeEvo/commits/main/seevo.py",
+            "补充来源尝试：https://arxiv.org/abs/2410.22657v2；https://arxiv.org/pdf/2410.22657v2",
+            "本地只读：读取指定allowlist、分类rubric与代码基线清单；检索清单未发现SeEvo版本条目"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2410.22657v1",
+              "anchor": "§III，L135—141；§IV及Algorithm 1；§V-A，L220：测试保留交叉、变异概率并降为一代",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2410.22657v2",
+              "anchor": "§III，L116—117；§IV-B公式(2)—(7)；§V-A，L195；§V-C，L272：测试生成时间与相对API费用",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/huangjin-collab/LHH_DFJSP_SeEvo",
+              "anchor": "README：Key Features，L239；Testing Mode，L305—336；配置示例L404；Citation，L605—618",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/huangjin-collab/LHH_DFJSP_SeEvo/refs/heads/main/seevo.py",
+              "anchor": "init_population L126—165；LLM方法调用L654—656、L690—692、L812—814、L858—860；_run_single_iteration/evolve L905—989。动态main缓存快照，无提交号",
+              "access_level": "snapshot"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "已读正文和所读代码未找到明确冻结规则且测试期零LLM调用的评估协议；未命中不代表不存在。两版HTML正文未检出该仓库直接链接。提交API与历史页返回访问错误，v2 PDF超时，补充材料未读取；论文逐样本实际调用数、tokens、费用统计分母及代码与论文完整对应关系仍未验证。",
+          "suggested_narrowing": "原命题的保守结论可保留；引用时把“当前test分支”明确写为“此次读取的main快照内mode=test条件分支”，避免暗示存在名为test的Git分支或已确认即时仓库状态。"
+        }
+      ],
+      "retry_attempts": []
+    },
+    "R2-C06": {
+      "original_status": "refuted",
+      "original_counts": {
+        "supported": 0,
+        "refuted": 2,
+        "abstained": 1
+      },
+      "effective_status": "refuted",
+      "effective_counts": {
+        "supported": 0,
+        "refuted": 3,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C06",
+          "verdict": "refuted",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原命题存在明确的来源归属错误，因此不能整体判 supported：“论文摘要所称2,000”与指定v3原文不符。实际读取的HTML摘要和PDF第1页均未出现该数字；2,000位于§4.2在线装箱结果段，PDF第6页也明确如此。因此，数字属于装箱作者报告、不能转作FSSP生成成本的判断成立，但“摘要所称”的表述被原源直接推翻。[论文v3](https://arxiv.org/html/2401.02051v3)、[v3 PDF](https://arxiv.org/pdf/2401.02051v3)。\n\n路线判断有直接支持。§3.3的模型产物是启发式描述和Python函数；§4.1规定FSSP函数返回更新后的时间矩阵及扰动作业优先信息。Appendix C.1说明GLS交替执行局部搜索和扰动；D.2采用swap、relocate，并展示返回新矩阵与扰动作业的函数。生成程序虽能选择扰动对象，最终排程序列仍由搜索形成。结合本地rubric的offline_generation定义，应归入离线生成启发式路线，不能自动归为在线B或本项目运行时C。\n\n实际在线读取的[main代码](https://github.com/FeiLiu36/EoH/blob/main/examples/fssp_gls_numba/prob.py)进一步披露了算法贡献：neh枚举插入位置并按makespan选初始序列；local_search及local_search_perturb枚举swap/insert并接受改进；gls调用生成函数取得矩阵和作业列表，而非调用LLM选择下一具体排程动作。宿主把作业列表转为整数、超过5项时截断、不足2项或异常时返回1E10失败适应度，并每50轮恢复最佳序列。这些候选限制、失败处理和回退不能归功于模型；makespan按既定机台顺序计算完工时间，未见LLM决定批次或等待的接口。原锚点936–1149对应GitHub网页抽取行，不能当作Python文件源行号。\n\n反向检索实际查询了FSSP的LLM查询数及2024提交映射，并以rg检索允许的本地清单。未找到可核验的FSSP实际调用总量；20代、10个体和1,000次局部搜索上限不能换算实际账单。[v0.1发布页](https://github.com/FeiLiu36/EoH/releases/tag/v0.1)只把4b2338f称为原版本，不能证明它就是2024实验提交；文件历史页及GitHub API访问失败。main含2026版权及3实例、30秒默认值，论文报告64实例、60秒，默认值差异也不能单独证明实验配置。版本对应关系仍未知，未命中不代表不存在。此次只做原文与静态代码审计，未复现作者实验；论文、代码和发布说明也不是三份独立效果证据。",
+          "queries_executed": [
+            "公开反向检索：\"Evolution of Heuristics\" \"FSSP\" \"queries\"",
+            "公开限定检索：site:github.com/FeiLiu36/EoH \"fssp_gls_numba\" \"2024\" \"commit\"",
+            "公开反向检索：\"2401.02051\" \"2000\" \"scheduling\"",
+            "公开限定检索：site:github.com/FeiLiu36/EoH \"FSSP\" \"LLM queries\"",
+            "公开限定检索：site:github.com/FeiLiu36/EoH \"2024\" \"commit\" \"fssp\"",
+            "公开限定检索：site:arxiv.org \"2401.02051\" \"2,000\" \"Abstract\"",
+            "WebFetch：读取arXiv v3 HTML、PDF、v1/v2/v3摘要及PMLR官方摘要；查找D.2、2,000、Algorithm 1、github并读取Appendix C.1",
+            "WebFetch：读取作者仓库main prob.py及raw内容、v0.1发布页；尝试文件提交历史、v0.1目录和公开GitHub提交/tag API",
+            "本地反向检索：rg -n -i 'EoH|fssp|snapshot|commit|route_definitions|ownership_fields|offline_generation|B_project|C_project' inputs/internal-code-baseline.json inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+            "本地限定检索：rg -n 'EoH|fssp_gls_numba|2401\\.02051|4b2338f' inputs/internal-code-baseline.json inputs/internal-allowlist.json inputs/route-classification-rubric.json；无匹配，退出码1"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2401.02051v3",
+              "anchor": "Abstract；§3.3；§4.1 Implementation details；§4.2 Online bin packing；Appendix C.1、D.2",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/pdf/2401.02051v3",
+              "anchor": "第1页Abstract无2,000；第6页§4.2 Online bin packing报告2,000 LLM queries",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/FeiLiu36/EoH/blob/main/examples/fssp_gls_numba/prob.py",
+              "anchor": "在线读取main，未固定SHA；makespan、local_search、local_search_perturb、neh、gls、FSSPGLS.template_program及evaluate_program；936–1149为网页抽取行",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://github.com/FeiLiu36/EoH/releases/tag/v0.1",
+              "anchor": "发布页指向4b2338f并称其为原版本；未说明2024论文实验提交对应关系",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions：B_project、C_project、offline_generation；ownership_fields；limits",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "限定检索及允许清单的rg未找到FSSP实际LLM调用总量或2024论文实验提交的唯一映射。GitHub文件历史页返回Cache miss，公开提交/tag API不可访问；这些失败不证明记录不存在。此次未执行或复现排程。",
+          "suggested_narrowing": "将“论文摘要所称2,000”更正为“v3 §4.2在线装箱结果段报告2,000”；保留离线生成路线判断，并继续将FSSP实际调用成本、main与2024实验提交的对应关系标为未知。"
+        },
+        {
+          "claim_id": "R2-C06",
+          "verdict": "refuted",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原句整体判为 refuted，反证针对“论文摘要所称2,000次”的出处；离线生成路线判断、不得把装箱查询数当作FSSP实际成本，以及2024实验提交对应关系未确认，均得到支持。指定[v3原文](https://arxiv.org/html/2401.02051v3)摘要只称装箱启发式使用较低查询预算，没有2,000这个数字；[正式发表版摘要](https://proceedings.mlr.press/v235/liu24bs.html)同样没有。2,000明确出现在正文§4.2的在线装箱结果段。因此不能先把“摘要”改成“正文”再支持原句。\n\n分类方面，§4.1与D.2说明，LLM产物是更新加工时间矩阵、选择扰动作业的启发式程序，GLS通过swap与relocate形成顺序。D.2程序确实选择具体扰动作业，这是需要披露的决定贡献；但执行这些选择的是离线生成后运行的程序，不能据此认定在线LLM正在逐项安排生产。已读取本地分类规则，其offline_generation定义支持作为第三条路线；若另有部署把模型接入在线动作环，应另行审查，原命题已有这一条件。\n\n实际读取的[作者源码](https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py)提供进一步限定：evaluate_program把生成的callable传入gls；NEH构造初始顺序，local_search及local_search_perturb比较候选makespan并接受移动。生成程序返回加工矩阵和作业列表；gls将编号转为整数、超过五个时截断，少于两个或发生异常时返回1E10。候选限制、失败处理及具体顺序形成均有框架贡献，不能只按论文标题归为B，也不能把返回惩罚值当作模型自行保证合法。\n\n反向源码检查还发现合法性缺口：sum_and_order以max_time=1选作业；若两个作业各机器加工时间分别为[0.1,0.1]和[0.2,0.2]，两轮均选编号0，NEH初始序列重复作业。这是静态分支推演，未执行，不能冒充复现结果；原命题没有承诺任意输入合法，因此该例不推翻路线分类。\n\n规模、超时和成本证据仍有限：论文设置包含64个评估实例、每实例最多1,000轮及60秒，这些是作者实验设置，不能换算成实际调用账单。当前读取的是可变main的网页缓存，文件标注2026，默认评估为3实例、30秒；未固定commit，也未建立与2024实验提交的映射。针对FSSP查询、失败、在线决策及超时的限定检索未取得可核验的调用流水、重试数、tokens或费用；未命中不证明不存在。论文与同项目代码不是独立实证，本次没有运行测试、模型或排程。",
+          "queries_executed": [
+            "本地只读：cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+            "WebFetch：https://arxiv.org/html/2401.02051v3",
+            "WebFetch：https://github.com/FeiLiu36/EoH/blob/main/examples/fssp_gls_numba/prob.py",
+            "WebFetch：https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py",
+            "WebFetch：https://arxiv.org/abs/2401.02051",
+            "WebFetch：https://proceedings.mlr.press/v235/liu24bs.html",
+            "\"Evolution of Heuristics\" \"flow shop\" \"LLM queries\"",
+            "\"Evolution of Heuristics\" FSSP \"online\" \"2000\"",
+            "\"Evolution of Heuristics\" \"FSSP\" \"queries\" \"failure\"；限定arxiv.org、proceedings.mlr.press",
+            "\"fssp_gls_numba\" \"update_time\" \"timeout\"；限定github.com",
+            "\"Evolution of Heuristics\" \"2,000\" abstract；限定arxiv.org、proceedings.mlr.press、openreview.net",
+            "\"Evolution of Heuristics\" \"FSSP\" \"online\" \"decision\"；限定arxiv.org、github.com"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2401.02051v3",
+              "anchor": "摘要；§4.1实现细节；§4.2在线装箱结果；Appendix D.2生成程序",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://proceedings.mlr.press/v235/liu24bs.html",
+              "anchor": "正式发表版Abstract，网页解析L13–16",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py",
+              "anchor": "makespan、local_search、local_search_perturb、sum_and_order、neh、gls、FSSPGLS.evaluate_program；网页解析L40–245；可变main缓存，未固定提交",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions.offline_generation、B_project、C_project及ownership_fields；通过cat只读",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "限定检索未取得FSSP实际LLM调用、重试、tokens及费用记录，也未建立所读main与2024实验提交的对应关系。两项失败/超时限定查询返回空结果；不据此断言记录或对应提交不存在。",
+          "suggested_narrowing": "将“论文摘要所称2,000次”纠正为“论文§4.2在线装箱结果所报2,000次”；保留离线生成路线及在线部署例外，继续将FSSP实际生成成本、2024实验提交映射标为未知。"
+        },
+        {
+          "claim_id": "R2-C06",
+          "verdict": "refuted",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原命题整体判为refuted，错误集中在“论文摘要所称2,000”的出处归因。指定v3的HTML、PDF及摘要页均未在摘要写出该数字；摘要只将低查询预算的优势归于装箱。2,000明确出现在§4.2装箱结果段。因此，“属于装箱、不能作为FSSP实耗”受支持，但不能更正出处后再对原句投supported。[v3摘要](https://arxiv.org/abs/2401.02051v3)、[论文正文](https://arxiv.org/html/2401.02051v3)。\n\n方法归属部分受支持：§4.1及D.2说明模型演化的是修改处理时间矩阵、选择扰动作业的程序；附录函数返回矩阵和作业集合，GLS用交换、移位算子形成序列。程序运行时选择扰动作业，不代表模型在线决定具体排程。本地rg复核rubric第4—6、14—24行，按项目定义属于独立的离线生成路线，不能自动计入B或运行时C；若模型被置入在线具体动作决策环，应重新分类。\n\n此次WebFetch返回的main缓存代码共246行，头部标2026版权，不能沿用指定快照936—1149行的锚点。makespan递推机台完工时间，NEH选择插入位置，两个局部搜索函数决定交换和插入；gls调用生成规则后将扰动作业截至最多5个，每50轮回到最好序列，异常或扰动作业不足两个返回惩罚值。这些算法选择、截断及失败处理都必须披露，不能全部归功于模型。[公开代码快照](https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py)。\n\n反向尝试包括限定检索FSSP与LLM查询、2000与摘要、作者仓库提交，并核对摘要版本；未取得FSSP实际调用总量、token费用或2024实验提交绑定。GitHub该文件提交历史访问返回Cache miss。未命中不证明不存在，也不以种群和代数换算实际账单。\n\n迁移证据限于流水车间和makespan。D.3提供同框架人工扰动ILS2对照及Taillard测试，§4.3组件消融在装箱任务上，不能直接证明本厂再入、可选机、组批和等待约束下的B/C优劣。每实例60秒是算法搜索上限，不是模型在线延迟或实际费用；本厂持出泛化及失败分母未验证。论文、README与同仓代码属于同一研究来源，以上为作者报告和静态阅读，没有亲跑复现。",
+          "queries_executed": [
+            "\"Evolution of Heuristics\" \"flow shop\" \"2000\"",
+            "\"FeiLiu36/EoH\" FSSP \"2024\" commit",
+            "site:github.com/FeiLiu36/EoH \"fssp_gls_numba\" \"commit\"",
+            "site:arxiv.org/abs/2401.02051 \"2000\" \"bin packing\"",
+            "\"Evolution of Heuristics\" \"2000\" \"abstract\"",
+            "site:arxiv.org/html/2401.02051v3 \"FSSP\" \"LLM queries\"",
+            "本地rg：B_project|C_project|offline_generation|ownership_fields|顺序|等待|修复|候选；限定inputs/route-classification-rubric.json",
+            "本地rg：eoh|fssp|source|snapshot|github|commit；限定inputs/internal-code-baseline.json",
+            "WebFetch：指定v3正文、v3 PDF及v1/v2/v3摘要页",
+            "WebFetch：指定GitHub文件、公开raw文件及该文件提交历史；提交历史访问失败"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/html/2401.02051v3",
+              "anchor": "摘要；§4.1实现细节；§4.2装箱结果；§4.3；Appendix D.2与D.3",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://arxiv.org/abs/2401.02051v3",
+              "anchor": "Abstract，第16—18行；摘要未出现2,000",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py",
+              "anchor": "本次返回246行的main缓存文本；makespan、local_search、local_search_perturb、neh、gls、FSSPGLS.evaluate_program；第41—245行",
+              "access_level": "snapshot"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions第4—7行；ownership_fields第14—24行；comparison_required与limits",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "未取得FSSP实际LLM调用总量、token及费用分母，也未确认本次main代码与2024论文实验提交的对应关系；文件提交历史WebFetch失败。检索未命中不等于相关材料不存在。",
+          "suggested_narrowing": "将“论文摘要所称2,000”更正为“v3论文§4.2装箱结果段报告2,000次查询”。其余结论限定于论文FSSP的离线生成扰动程序路线及本次未固定提交SHA的公开代码快照；FSSP实际生成成本和2024实验版本继续保留未知。"
+        }
+      ],
+      "retry_attempts": [
+        {
+          "claim_id": "R2-C06",
+          "original_attempt_label": "R2-C06/v2",
+          "original_agent_id": 17,
+          "role_index": 2,
+          "retry_label": "R2-C06/v2/retry1",
+          "result": {
+            "claim_id": "R2-C06",
+            "verdict": "refuted",
+            "confidence": "high",
+            "evidence": "截至2026-10-12，原句整体判为 refuted，反证针对“论文摘要所称2,000次”的出处；离线生成路线判断、不得把装箱查询数当作FSSP实际成本，以及2024实验提交对应关系未确认，均得到支持。指定[v3原文](https://arxiv.org/html/2401.02051v3)摘要只称装箱启发式使用较低查询预算，没有2,000这个数字；[正式发表版摘要](https://proceedings.mlr.press/v235/liu24bs.html)同样没有。2,000明确出现在正文§4.2的在线装箱结果段。因此不能先把“摘要”改成“正文”再支持原句。\n\n分类方面，§4.1与D.2说明，LLM产物是更新加工时间矩阵、选择扰动作业的启发式程序，GLS通过swap与relocate形成顺序。D.2程序确实选择具体扰动作业，这是需要披露的决定贡献；但执行这些选择的是离线生成后运行的程序，不能据此认定在线LLM正在逐项安排生产。已读取本地分类规则，其offline_generation定义支持作为第三条路线；若另有部署把模型接入在线动作环，应另行审查，原命题已有这一条件。\n\n实际读取的[作者源码](https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py)提供进一步限定：evaluate_program把生成的callable传入gls；NEH构造初始顺序，local_search及local_search_perturb比较候选makespan并接受移动。生成程序返回加工矩阵和作业列表；gls将编号转为整数、超过五个时截断，少于两个或发生异常时返回1E10。候选限制、失败处理及具体顺序形成均有框架贡献，不能只按论文标题归为B，也不能把返回惩罚值当作模型自行保证合法。\n\n反向源码检查还发现合法性缺口：sum_and_order以max_time=1选作业；若两个作业各机器加工时间分别为[0.1,0.1]和[0.2,0.2]，两轮均选编号0，NEH初始序列重复作业。这是静态分支推演，未执行，不能冒充复现结果；原命题没有承诺任意输入合法，因此该例不推翻路线分类。\n\n规模、超时和成本证据仍有限：论文设置包含64个评估实例、每实例最多1,000轮及60秒，这些是作者实验设置，不能换算成实际调用账单。当前读取的是可变main的网页缓存，文件标注2026，默认评估为3实例、30秒；未固定commit，也未建立与2024实验提交的映射。针对FSSP查询、失败、在线决策及超时的限定检索未取得可核验的调用流水、重试数、tokens或费用；未命中不证明不存在。论文与同项目代码不是独立实证，本次没有运行测试、模型或排程。",
+            "queries_executed": [
+              "本地只读：cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+              "WebFetch：https://arxiv.org/html/2401.02051v3",
+              "WebFetch：https://github.com/FeiLiu36/EoH/blob/main/examples/fssp_gls_numba/prob.py",
+              "WebFetch：https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py",
+              "WebFetch：https://arxiv.org/abs/2401.02051",
+              "WebFetch：https://proceedings.mlr.press/v235/liu24bs.html",
+              "\"Evolution of Heuristics\" \"flow shop\" \"LLM queries\"",
+              "\"Evolution of Heuristics\" FSSP \"online\" \"2000\"",
+              "\"Evolution of Heuristics\" \"FSSP\" \"queries\" \"failure\"；限定arxiv.org、proceedings.mlr.press",
+              "\"fssp_gls_numba\" \"update_time\" \"timeout\"；限定github.com",
+              "\"Evolution of Heuristics\" \"2,000\" abstract；限定arxiv.org、proceedings.mlr.press、openreview.net",
+              "\"Evolution of Heuristics\" \"FSSP\" \"online\" \"decision\"；限定arxiv.org、github.com"
+            ],
+            "citations": [
+              {
+                "kind": "external",
+                "ref": "https://arxiv.org/html/2401.02051v3",
+                "anchor": "摘要；§4.1实现细节；§4.2在线装箱结果；Appendix D.2生成程序",
+                "access_level": "full"
+              },
+              {
+                "kind": "external",
+                "ref": "https://proceedings.mlr.press/v235/liu24bs.html",
+                "anchor": "正式发表版Abstract，网页解析L13–16",
+                "access_level": "full"
+              },
+              {
+                "kind": "external",
+                "ref": "https://raw.githubusercontent.com/FeiLiu36/EoH/main/examples/fssp_gls_numba/prob.py",
+                "anchor": "makespan、local_search、local_search_perturb、sum_and_order、neh、gls、FSSPGLS.evaluate_program；网页解析L40–245；可变main缓存，未固定提交",
+                "access_level": "snapshot"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+                "anchor": "route_definitions.offline_generation、B_project、C_project及ownership_fields；通过cat只读",
+                "access_level": "full"
+              }
+            ],
+            "explicit_not_found": true,
+            "not_found_note": "限定检索未取得FSSP实际LLM调用、重试、tokens及费用记录，也未建立所读main与2024实验提交的对应关系。两项失败/超时限定查询返回空结果；不据此断言记录或对应提交不存在。",
+            "suggested_narrowing": "将“论文摘要所称2,000次”纠正为“论文§4.2在线装箱结果所报2,000次”；保留离线生成路线及在线部署例外，继续将FSSP实际生成成本、2024实验提交映射标为未知。"
+          },
+          "original_status": "failed",
+          "original_error": "agent timeout after 600000 ms",
+          "original_path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/verify/agents/0017/events.jsonl",
+          "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-timeouts/agents/0004/result.json",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    "R2-C07": {
+      "original_status": "confirmed",
+      "original_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_status": "confirmed",
+      "effective_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C07",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原限定命题得到直接支持。实际在线读取了[出版社论文全文](https://link.springer.com/article/10.1007/s10696-026-09666-5)，未把本地提取结果冒称在线原源，也未读取其他核验者结果。§6.2明确规定48小时生产仿真、每小时重排，共48次重排，规划时域h为1.5小时。该节随后直接说明：调节α，使平方迟交表现与当前实践匹配，CP1、CP2的performance efficiency收益分别约为1%、2%，并紧接着回顾静态分析中的6.5%、5.5%。因此，数值、模型对应关系及比较条件均有正文支持。\n\n静态结果的独立定位点是§6.1.2、图9前的解释段；动态结果定位于§6.2、图11前的解释段。这些数值不是从表4的计算时间、求解界或多目标均值误读出来的。本文所说的效率也不等于求解速度。这里保留作者使用的百分比表述，不自行改成百分点，不声称已经根据图表复算。作者报告的静态收益高于动态收益，支持该案例的静态估计偏乐观；不能由此推导所有静态研究都必然高估。\n\n归属方面，§4.1–4.2与§6说明具体机台分配、顺序和时间由IBM CP Optimizer求解约束模型形成。§5.1的Dispatcher还检查机台适配性和辅助资源容量，资源不足时阻止派工；§4.1说明资源冲突可能导致实际等待。因此，这是求解器与仿真执行逻辑共同作用的作者报告，不能归为语言模型直接决定排程的B，也不是本项目模型选择构造器参数的C。论文未提供可供本次审计的完整算法代码，只在数据可用性声明中表示可按请求提供；没有核实代码级修复、失败回退或复现实验。\n\n已执行以静态／动态效率高估及缓冲敏感性为方向的反向、限定检索，并回查§6.1、§6.2和§7。找到的关键限定是：CP2静态比较设缓冲为0，动态实验设为1200秒；后续求解上限为240秒。两组结果不能视为完全相同配置下仅改变随机性的因果实验。§7也承认结果依赖该案例，重排周期、规划时域和缓冲参数尚未开展系统敏感性分析。检索未发现推翻原条件性报告的证据，但未命中不证明反例不存在。\n\n访问限制明确保留：图9、图11的独立放大页面抓取返回Cache miss，未据图像测量收益；对应正文和图注可以读取。§5将本研究界定为避免干扰运行生产的DES评估，故支持的是作者仿真报告，而非本次亲跑、独立复现或真实产线部署收益。",
+          "queries_executed": [
+            "WebFetch：https://link.springer.com/article/10.1007/s10696-026-09666-5",
+            "WebSearch：photolithography constraint programming dynamic stochastic static performance efficiency squared tardiness overestimate scheduling",
+            "WebSearch：photolithography constraint programming static dynamic performance efficiency buffer sensitivity limitations",
+            "论文内查找：48；6.5；6.1；CP Optimizer",
+            "论文分段读取：§§3.2.2、4.1–4.2、5.1–5.2、6.1–6.2、7及Data availability",
+            "WebFetch尝试：https://link.springer.com/article/10.1007/s10696-026-09666-5/figures/9；返回Cache miss",
+            "WebFetch尝试：https://link.springer.com/article/10.1007/s10696-026-09666-5/figures/11；返回Cache miss",
+            "本地只读：rg --files -g 'AGENTS.md' -g 'internal-allowlist.json' -g 'route-classification-rubric.json' -g 'internal-code-baseline.json'",
+            "本地只读：cat inputs/internal-allowlist.json inputs/route-classification-rubric.json inputs/internal-code-baseline.json"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://link.springer.com/article/10.1007/s10696-026-09666-5",
+              "anchor": "§6.1.2图9前：静态6.5%/5.5%；§6.2图11前：动态1%/2%及静态高估判断；§6.2开头：48小时、每小时重排、1.5小时规划时域；§§4.1–4.2、5.1：求解和执行归属；§7及Data availability：适用范围与代码获取限制",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": false,
+          "not_found_note": "核心命题已在在线主来源中直接命中。未取得作者算法实现代码，未独立复现；图9、图11独立放大页抓取失败。限定检索未发现推翻原命题的证据，不据此断言不存在反例。",
+          "suggested_narrowing": "原命题无需改写。引用时继续保留作者DES报告和单一fab的范围，并补充240秒求解上限及CP2静态零缓冲、动态1200秒缓冲的配置差异；不要把百分比自行转换为百分点或解释为单因素因果效应。"
+        },
+        {
+          "claim_id": "R2-C07",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "核查日期2026-10-12，已在线读取Springer正式论文正文。§6.2明确设定48小时仿真、每小时重排、1.5小时规划时域；图11讨论明确报告，选择α使平方迟交与当前实践匹配时，CP1、CP2的performance efficiency分别提高约1%、2%。§6.1.2报告对应静态收益约6.5%、5.5%，§6.2再次回指这两个数字并讨论静态分析高估潜在收益。因此，原命题的数字、模型对应关系和案例限定均获直接支持。[论文原文](https://link.springer.com/article/10.1007/s10696-026-09666-5)\n\n实际反向检索加入limitations、conflicts、computational cost，并在原文定位EDD、资源冲突及敏感性讨论。找到两项负面证据：§6.2承认EDD的迟交表现优于CP；§4.1给出静态无冲突计划在随机执行时因reticle占用而等待的例子。这些证据限制“全面胜过派工规则”或“静态合法即可无冲突执行”的扩大解释，却没有推翻本命题限定的当前实践基准及α匹配条件。反向尝试未找到足以否定这组条件性报告的证据；未命中也不证明不存在反例。\n\n进一步核对的规模为13台机器、321个初始任务及1371个新增任务；动态CP2缓冲为1200秒，求解预算为240秒，报告30次重复与95%置信区间。实际安排由CP Optimizer求解器决定，不能将此结果归为大模型直接排程的B效果。§7承认重排间隔、规划时域和缓冲参数的系统敏感性分析尚未展开。作者2023年博士论文第5章印刷页106还明确提醒：仿真不能完全复刻现实，实际收益可能变化，额外复杂性与成本需考虑。这是同一研究线的限定说明，不是独立实证。[作者博士论文](https://pure.tue.nl/ws/portalfiles/portal/307935073/20230922_CO_Deenen_hf.pdf)\n\n本次只核查作者报告，没有运行仿真或求解、读取原始工厂数据，也没有独立复现。图11大图打开失败，数字依据可读取的正文，未声称重新读图计算。真实上线执行延迟、超时或不可行后的处理以及净成本收益仍未确认；这些缺口影响部署价值判断，但不否定原限定命题。结论不能外推到其他fab、其他α或其他重排周期。",
+          "queries_executed": [
+            "WebFetch：https://link.springer.com/article/10.1007/s10696-026-09666-5",
+            "\"photolithography\" \"constraint programming\" \"performance efficiency\" \"conflicts\" \"squared tardiness\"",
+            "\"photolithography\" \"CP1\" \"CP2\" \"static\" \"dynamic\" \"1.5\"",
+            "\"photolithography\" \"constraint programming\" \"squared tardiness\" \"limitations\"",
+            "\"photolithography\" \"CP1\" \"CP2\" \"computational cost\" \"conflicts\"",
+            "Springer正文find：6.1；6.5；48；limitations；3600；pause；replication；conflict；EDD outperform；computation；sensitivity analysis",
+            "WebFetch：https://pure.tue.nl/ws/portalfiles/portal/307935073/20230922_CO_Deenen_hf.pdf",
+            "作者博士论文find：does not perfectly replicate；extra complexity；simulation is paused；By choosing"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://link.springer.com/article/10.1007/s10696-026-09666-5",
+              "anchor": "§6.1.2静态收益；§6.2仿真设定、图10–11讨论与EDD限制；§4.1资源冲突示例；§4.2求解器；§7参数敏感性限制",
+              "access_level": "full"
+            },
+            {
+              "kind": "external",
+              "ref": "https://pure.tue.nl/ws/portalfiles/portal/307935073/20230922_CO_Deenen_hf.pdf",
+              "anchor": "第5章§5.5.2，印刷页106（PDF第117页）：仿真与现实偏差及额外复杂性、成本限定；同一研究线，非独立验证",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": false,
+          "not_found_note": "核心命题的正文证据已找到。图11大图打开返回内部错误；本次未独立复现，真实执行延迟、超时或不可行处理及净成本收益未确认。",
+          "suggested_narrowing": "原命题已有必要限定，无需改写；引用时可补充240秒求解预算、CP2动态缓冲1200秒，并继续注明这是作者的DES条件性结果。"
+        },
+        {
+          "claim_id": "R2-C07",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "核查日期2026-10-12。已实际在线读取[Springer原论文](https://link.springer.com/article/10.1007/s10696-026-09666-5)相关正文。§6.1.2、图9附近明确报告：调α使平方迟交与当前实践相等时，CP1/CP2的performance efficiency收益约为6.5%/5.5%；§6.2、图11附近明确给出动态条件下分别约1%/2%，并以此前静态数字说明静态分析可能高估实践收益。§6.2同时确认48小时仿真、每小时重排及1.5小时规划时域。因此原限定命题直接受作者报告支持；百分号沿用论文表述，未自行改成百分点或产量增幅。\n\n实际反向尝试使用通用技术词搜索静态高估、资源冲突与滚动排程延迟，并回查原文限制。§6.2指出EDD在迟交指标上优于CP，原因涉及CP等待下一次重排；这限定了“优于基线”的目标范围，却不推翻匹配平方迟交时的效率收益。§7明确结果依赖该案例，并将重排周期、规划时域和缓冲参数的系统敏感性分析留作后续工作。检索未发现推翻指定数字的原源证据，但未命中不表示反例不存在。\n\n迁移审计发现：动态实验重放实际观测的确定性到达序列；CP2静态分析缓冲为0，动态分析选1200秒。因此，我将静态高估理解为该案例报告结果的比较，不能进一步当成其他设置完全不变、仅切换随机性的因果消融。30次仿真重复和95%置信区间也不能替代跨fab持出验证。迁移到本厂时，仍需保持目标、观察集合、约束、初始状态及计算预算一致，区分参数选择数据与持出测试，不能拿候选研究收益充作本厂效果。\n\n决策归属方面，§§3.2、4及6显示具体机台、顺序和开始时间由CP求解器形成；CP2还分配具体pod，CP1只约束pod可用容量。这里的CP模型是优化模型。按已读项目分类规则，它不能作为大模型直接决策B的证据，也不能因调用求解器便自动归入本项目C，更不是离线生成规则路线。将合法性过滤、资源约束或求解器选择记到模型名下，会混淆实际贡献。\n\n式(6)的PE按理论最快加工时间与可用设备时间计量，不能直接改解释为全厂产量或利润收益。论文采用240秒求解预算，但这不足以证明端到端执行延迟、仿真是否计入求解等待或调用费用。相关问题保留未知。本次仅核查作者公开报告，未运行仿真、求解或复现，且没有把同项目资料当作独立实证。",
+          "queries_executed": [
+            "WebFetch：https://link.springer.com/article/10.1007/s10696-026-09666-5；实际在线打开并读取相关章节。",
+            "WebSearch：photolithography constraint programming dynamic stochastic static analysis overestimate performance efficiency",
+            "WebSearch：photolithography constraint programming buffer conflicts rolling horizon computation delay simulation",
+            "原文查找：6.1、6.5、48、1.5、paused、computational time、6.1.2、5.1、6.5%、performance efficiency、prototype、implementation、Solving、Deploying、5.3、validation、out-of-sample、wall-clock、sensitivity、cost。",
+            "原文定位读取：行430、485、180、330附近。",
+            "本地只读：rg --files确认指定输入与提取路径；cat读取inputs/internal-allowlist.json、inputs/route-classification-rubric.json和inputs/internal-code-baseline.json。完整性清单输出有截断，未作完整逐项核验；未打开提取结果或其他核验者结果。"
+          ],
+          "citations": [
+            {
+              "kind": "external",
+              "ref": "https://link.springer.com/article/10.1007/s10696-026-09666-5",
+              "anchor": "§6.1.2、图9：静态6.5%/5.5%；§6.2、图11：48小时、每小时重排、1.5小时规划及动态1%/2%；§§3.2、4：求解与资源决策归属；式(6)：PE分母；§7：案例和敏感性限制。",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/inputs/route-classification-rubric.json",
+              "anchor": "route_definitions、ownership_fields、comparison_required、limits；仅作为项目分类与审计规则，不作为效果证据。",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": false,
+          "not_found_note": "主命题直接证据已找到。原文查找out-of-sample、wall-clock、paused无命中；这不能证明相关机制不存在。跨fab持出泛化、端到端延迟计入方式及费用未核实，本次未复现。",
+          "suggested_narrowing": "原限定命题可保留；可附注CP2静态与动态缓冲设置不同，结果不构成控制全部其他条件的因果消融，也不作为本厂B/C效果或跨fab收益承诺。"
+        }
+      ],
+      "retry_attempts": []
+    },
+    "R2-C08": {
+      "original_status": "confirmed",
+      "original_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_status": "confirmed",
+      "effective_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C08",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原限定命题受支持。实际读取白名单中的入口、runtime、schema、README与测试源码；五文件的SHA-256和字节数均与指定冻结清单一致。本结论来自本地源码静态核查，不是在线取源或运行复现。\n入口codex-workflow.mjs的L35-L62参数表没有恢复选项；L79-L81读取的是工作流脚本、调用参数和模型映射。虽然参数文件能提供JSON输入，入口并未将其解释为旧工作流状态。L86-L90在实际执行路径中生成新的时间加随机标识runId，并创建最终运行目录；最终目录创建未设置recursive，也没有处理目录已存在的分支。L107-L121调用runWorkflow，成功或失败后写出runtime.json，未见读取旧runtime的路径。\nruntime的L191-L198重新编译脚本，初始化空调用数组、空待办集合和空阶段；L262从脚本入口执行，L274-L278组装当前运行状态并返回。L80-L101启动新的codex exec子进程，带--ephemeral，没有resume子命令。L175读取的是该次子进程输出的最终消息，随后解析、校验并保存结果，并非加载历史工作流。\n实际反向尝试包括：对五文件用rg检索resume、recover、checkpoint、restore、readFile、runId、mkdir等，再以词边界及--resume、--from-run、--checkpoint检索明确恢复入口。后一检索无命中，退出码为1。广义检索存在两类容易误判的命中：schema的L88-L108中restoreOptional只处理结构化结果的可选字段null；runtime的L123-L130记录同次调用内的重连诊断，且仍须满足L169-L174的正常完成条件。两者都没有还原旧阶段、队列或调用状态。\nREADME的L117-L128要求使用尚不存在的新目录，并明确写明“本次运行没有跨进程恢复/断点续跑能力”。测试L33-L64使用模拟Codex子进程，L154-L159检验同次重连；L178-L188及L215-L228读取runtime用于结果断言，未见利用旧状态启动新进程继续工作流的测试。这些是测试源码中的定义，README既往测试通过及smoke记录属于作者报告；本次未运行测试、模型调用或恢复实验。\n范围仅限这五个授权文件及匹配的冻结版本。未命中不能证明myharness其他未读模块不存在独立恢复功能，也不能排除外层流程自行利用落盘材料续接。本次没有核查Codex CLI自身的session resume能力，更不能据此认定该适配器已实现workflow resume。",
+          "queries_executed": [
+            "rg -n -i -- 'resume|recover|checkpoint|restore|readFile|runId|mkdir|codex.*exec|跨进程|断点|续跑' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/codex-workflow.mjs' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/codex-workflow-runtime.mjs' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/workflow-schema.mjs' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/workflows/codex-workflow.README.md' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/tests/harness_tools/codex_workflow.test.mjs'",
+            "rg -n -i -- '\\b(resume|recover|checkpoint|restore)\\b|--resume|--from-run|--checkpoint' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/codex-workflow.mjs' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/codex-workflow-runtime.mjs' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/workflow-schema.mjs' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/workflows/codex-workflow.README.md' '__LOCAL_HOME__/Downloads/大模型训练营/myharness/tests/harness_tools/codex_workflow.test.mjs'"
+          ],
+          "citations": [
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/codex-workflow.mjs",
+              "anchor": "L35-L62 参数解析；L74-L90 输入读取、新runId及目录创建；L104-L126 执行与状态写出",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/codex-workflow-runtime.mjs",
+              "anchor": "L73-L104 子进程参数；L117-L130 重连诊断；L169-L183 输出读取；L191-L198 状态初始化；L261-L278 执行与状态汇总",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/workflows/codex-workflow.README.md",
+              "anchor": "L117-L128 新目录要求与恢复能力限制；L148-L159 模拟测试说明及作者验证记录",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/workflow-schema.mjs",
+              "anchor": "L88-L108 restoreOptional仅处理可选字段",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/tests/harness_tools/codex_workflow.test.mjs",
+              "anchor": "L33-L64 模拟子进程；L132-L159 参数及重连测试；L178-L188、L215-L228 runtime结果断言",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "在五个授权文件内未找到读取旧runtime并还原工作流状态、显式恢复入口或调用codex resume的实现。该未命中仅适用于已读文件，不能外推到未读模块；本次未执行恢复实验。",
+          "suggested_narrowing": "无需改写原命题；保留其CLI/runtime路径限定，并将版本范围明确为2026-10-12冻结清单匹配的五个授权文件。"
+        },
+        {
+          "claim_id": "R2-C08",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原命题在其明确限定范围内得到支持。实际全文读取了白名单中的入口、runtime、schema、README和测试五文件，重新计算的SHA-256及字节数全部匹配给定冻结清单。这是本地源码审阅与完整性核对，不是在线读取或恢复功能实跑。\n\n入口codex-workflow.mjs的L86-L90用时间戳与随机UUID生成新runId，并对运行目录调用非递归mkdir；L38-L50的参数表没有恢复选项，未知选项直接报错。静态反例尝试是检查指定旧目录能否绕过初始化：该目录仍须经过L90的创建操作，没有读取旧状态或复用目录的分支，按目录创建语义会失败。这一判断来自源码，未实际启动CLI验证。L79-L81的读文件用途分别是工作流正文、参数和模型映射；L108-L121将runtime作为本次执行结果写出，未见反向加载。\n\nruntime的L191-L198每次重新编译工作流，创建信号量、空调用列表、空待处理集合和初始阶段；L262执行脚本，L274-L278在结束时形成runtime，没有旧runtime输入或阶段还原接口。后端L80-L89构造的是带临时会话标志的exec命令，L101启动子进程，未见resume参数或旧session标识；L175的readFile读取的是该调用的最终消息。\n\n真正的反向检索使用rg搜索resume、recover、checkpoint、restore、readFile、restart等词，并追加精确恢复函数与旧runtime读取模式。检索并非全无命中：runtime L125-L130处理重连诊断，schema L90-L108含restoreOptional，测试L183、L212、L226-L227读取runtime.json。逐一追踪后，重连分支只是允许同一子进程出现重连诊断后仍完成有效回合，没有重启工作流或恢复调用队列；restoreOptional只撤销schema适配添加的可选字段空值；测试读取用于检查刚产生的输出。这些候选反例均未推翻命题。\n\nREADME L117-L128明确要求新取证目录，并明示本次运行没有跨进程恢复或断点续跑能力。测试L145-L168、L215-L228覆盖失败、重连、超时和取消的模拟场景，未见退出后重新启动并加载旧工作流状态的案例；这些测试本次仅阅读，未执行。源码中的超时终止和取消审计也未增加恢复分支，不能据此推算实际重跑成本。\n\n结论仅覆盖上述五文件的适配器原生路径。未命中不是全仓不存在功能的证明；未读模块、自定义工作流、外部落盘续接与Codex自身session恢复均不在本次结论内。跨进程故障后的动态表现仍未复现，README与同项目代码也不作为两份独立运行实证。",
+          "queries_executed": [
+            "cat：读取指定的internal-allowlist.json、internal-code-baseline.json和route-classification-rubric.json；完整性清单首次输出截断，随后解析核对五个目标条目。",
+            "nl -ba：全文读取白名单中的codex-workflow.mjs、codex-workflow-runtime.mjs、workflow-schema.mjs、codex-workflow.README.md、codex_workflow.test.mjs。",
+            "rg -n -i 'resume|recover|checkpoint|restore|readFile|runId|runtime\\.json|fresh|existing|EEXIST|retry|spawn|restart|续跑|恢复|断点'：检索上述五文件。",
+            "rg -n -i '\\bresume\\b|\\bcheckpoint\\b|\\brestart\\b|rehydrat|loadRuntime|restoreWorkflow|resumeWorkflow|readFile[^\\n]*runtime'：检索上述五文件，仅命中测试读取runtime.json。",
+            "rg -n 'readFile|JSON\\.parse|runId|mkdir\\(runDir|new Semaphore|const calls =|const pending =|let currentPhase|await execute|const runtime =|workflowRuntime|runtime\\.json|argv.push|spawn\\('：追踪入口、runtime和测试的读取、初始化与写出分支。",
+            "SHA-256核对：首次python3 here-document命令因只读沙箱无法创建临时文件而未执行；改用python3 -c只读计算后，五文件的哈希及字节数均匹配冻结清单。"
+          ],
+          "citations": [
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/codex-workflow.mjs",
+              "anchor": "L35-L62；L74-L90；L104-L126",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/codex-workflow-runtime.mjs",
+              "anchor": "createCodexBackend：L73-L104、L117-L184；runWorkflow：L191-L198、L259-L278",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/workflow-schema.mjs",
+              "anchor": "restoreOptional：L88-L109",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/workflows/codex-workflow.README.md",
+              "anchor": "L117-L128；L148-L151",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/tests/harness_tools/codex_workflow.test.mjs",
+              "anchor": "L132-L168；L178-L188；L206-L228；L247-L259",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "五个授权文件中未找到适配器加载旧runtime、还原工作流阶段或调用队列、调用codex resume的路径；检索命中的重连、schema字段还原和测试输出读取已逐一核查。此未发现仅限指定文件，不证明未读模块或外部实现不存在恢复功能。",
+          "suggested_narrowing": "保留原有限定：结论仅针对这五个授权文件中的适配器原生跨进程工作流恢复，不外推至未读模块、外部续接脚本或Codex自身session恢复。"
+        },
+        {
+          "claim_id": "R2-C08",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，原命题在其限定范围内得到直接支持。本次实际读取白名单内入口、runtime、schema、README及测试源码；五个文件的SHA-256和字节数均与指定完整性清单一致，属于本地源文件核查，未冒称在线读取，也未读取其他核验者结果。\n入口codex-workflow.mjs的L35-L62列出并校验参数，没有恢复入口；L86-L90为工作流执行生成时间加随机UUID的runId，自定义run-dir也必须通过非递归的目录创建，已有目录会导致创建失败。L107-L111创建backend、执行runWorkflow并写入结果和runtime；失败分支L117-L121同样只写出终态记录，没有读入旧runtime的分支。入口L79-L81的读取对象是脚本、参数文件及模型映射；本次仅审查这些读取语句，没有读取其配置内容。\nruntime的L191-L198每次重新编译脚本，新建metadata、calls、pending及空阶段状态，L262从脚本函数入口执行，未接收旧调用记录或持久化阶段游标。backend的L80-L89构造exec调用并加入--ephemeral，没有resume子命令或会话恢复标识；L175读取的是本次子进程的最终消息，L274-L278形成的是结束时的统计记录。因此，保存runtime.json本身并不构成读取和还原工作流的路径。README的L117-L128与代码一致，说明run-dir须为新目录，并明确写道“本次运行没有跨进程恢复/断点续跑能力”。\n反向核查实际对五个文件执行rg，检索resume、recover、checkpoint、restore、readFile及runtime.json等，再限定搜索恢复选项、状态恢复函数和会话标识，并追踪读取及JSON解析位置。相关命中均逐项检查：runtime L123-L130只是允许同一子进程调用在出现重连诊断后仍以有效完成事件成功结束；schema L88-L109的restoreOptional只是处理结构化结果中适配器添加的可选字段null；测试L56的thread_id是模拟事件。测试中读取runtime.json用于检查本次运行输出，未向下一次运行注入状态，也没有旧目录重启并续接的测试。这些命中未构成跨进程工作流恢复的反例。\n本次没有执行测试、CLI调用或恢复实验；README记录的历史测试和smoke属于作者记录，不能写成本次亲跑结果。README、代码和测试来自同一工程，也不作为多份独立实证。结论仅覆盖这五个文件及清单对应版本：其他未读模块、注入脚本或外部编排是否另有恢复机制仍未知；当前调研分阶段落盘续接和Codex session resume均不能据此视为该适配器原生workflow resume。反向未命中不证明整个myharness不存在独立恢复功能。",
+          "queries_executed": [
+            "读取inputs/internal-allowlist.json、inputs/route-classification-rubric.json及inputs/internal-code-baseline.json；rg --files -g AGENTS.md -g '!node_modules' -g '!data' -g '!runs' .",
+            "用nl -ba读取五个白名单源文件，并补读runtime L190-L279。",
+            "对五个白名单文件执行rg -n -i，模式：resume|recover|checkpoint|restore|readFile|runtime\\.json|runId|runDir|codex.*exec|exec.*resume",
+            "对五个白名单文件执行rg -n -i，模式：resume|checkpoint|recover(y)?\\b|restore(state|workflow|runtime)|--(resume|recover|checkpoint)|session[_-]?id|thread_id",
+            "对入口、runtime及schema执行rg -n，模式：readFile|JSON\\.parse|compileWorkflow|execute\\(args|const (calls|pending|metadata)|currentPhase|runtime\\.json",
+            "使用python3 -c只读计算五个白名单文件的SHA-256及字节数，与指定完整性清单逐项比较，全部一致。"
+          ],
+          "citations": [
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/codex-workflow.mjs",
+              "anchor": "L35-L62；L74-L90；L104-L126",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/codex-workflow-runtime.mjs",
+              "anchor": "L73-L89；L117-L130；L169-L184；L191-L198；L259-L278",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/workflows/codex-workflow.README.md",
+              "anchor": "L117-L128；L148-L159",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/workflow-schema.mjs",
+              "anchor": "L88-L109：restoreOptional",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/tests/harness_tools/codex_workflow.test.mjs",
+              "anchor": "L33-L64；L132-L159；L178-L188；L215-L228；L247-L259",
+              "access_level": "full"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "在五个白名单文件中，未发现读取旧runtime并重建工作流状态、消费checkpoint、复用旧runId或调用codex resume的路径。恢复相关词的命中均已检查，属于重连诊断、schema字段处理或模拟测试；未命中仅适用于所读范围。",
+          "suggested_narrowing": "无需改写原命题；继续保留五个授权文件及对应版本的范围限定，不扩展为整个myharness或Codex CLI均无恢复功能。"
+        }
+      ],
+      "retry_attempts": []
+    },
+    "R2-C09": {
+      "original_status": "unverified",
+      "original_counts": {
+        "supported": 1,
+        "refuted": 0,
+        "abstained": 2
+      },
+      "effective_status": "confirmed",
+      "effective_counts": {
+        "supported": 3,
+        "refuted": 0,
+        "abstained": 0
+      },
+      "effective_role_results": [
+        {
+          "claim_id": "R2-C09",
+          "verdict": "supported",
+          "confidence": "high",
+          "evidence": "截至2026-10-12，实际读取的源码直接支持原命题限定的静态决定归属。V15 host 的 L17-L28 将 frozen 加入导入路径，明确导入 V14 Interaction，并检查运行文件哈希；本轮只核对获准源码，未访问实际 campaign/frozen。当前 host、Interaction、组装器、compiler 等文件的 SHA256 均匹配指定本地基线；Interaction L16-L34 又从自身包目录读取三个依赖，核对硬编码哈希并执行同一份字节，不能拿根目录同名文件替代这条依赖链。\n模型实际输出是含 request 的原始 JSON envelope，排程通过明确的 chunk 分次提交。包内 B_delta_assembly L125-L197 只创建容器、复制模型值并验证完整任务、hold 和不可分割的机台顺序；L303-L306 要求所有字段及空数组显式声明，L320-L359 在副本上完成检查后才发布，因此拒绝块不会留下部分安排。\nplan_delta L148-L177 根据模型明确选择的保留、取消、替换、新增机械编译：保留任务复制原值，新增或迁移必须声明受影响机台的完整顺序，未显式改变的机台沿用基准顺序。这不是工具重新排序。L225-L253 对过期开始条件、未知或重复 operation、资格不符、批组不兼容及失效 hold 锚点报错，没有自动抬高 not_before 或迁移 hold。compiler 不保证完整物理可行性，L267-L269 明确要求后续公共校验。\n工具贡献必须披露：动态 response schema 的 L124-L181 固定上下文、哈希和序号，仅开放已有草稿的适用动作以及已检查候选的 ID/哈希组合；候选集合由成功编译形成，草稿和候选容量满时拒绝，属于协议过滤与合法性检查，并非模型独立保证合法。Interaction L469-L510 要求 seal、check、apply 来自先后独立输出；候选按创建顺序列出，没有质量排序或默认候选，apply 必须精确指认候选及哈希。\nhost L94-L104 将原始字节严格解析并送入 handle，运输失败停止；L141-L166 要求最后动作明确为 apply，重放原始输出并比较选择摘要，再将所选 compiled plan 交给公共 commit，核对返回摘要，异常结果保留为未知而不重试。\n反向实际使用 rg 搜索 setdefault、fallback、repair、排序、候选选择与 _selection 赋值，并回读命中分支；主链中的排序用于页或历史展示，选择赋值来自显式 apply。还命中会补字段的参考转换函数 plan_from_action，但限定检索未发现主链调用它，不能把同文件中存在转换器当作链上反例。未发现足以证伪原命题的自动补排、候选代选或语义改写。结论仍仅是条件成立时的源码控制流支持：没有读取原始模型请求、运行明细或批准报告，没有复现，不能证明某次运行逐哈希对应，也不能从合法最终候选推算原始输出合法率。",
+          "queries_executed": [
+            "读取 inputs/internal-allowlist.json、inputs/route-classification-rubric.json，并解析 inputs/internal-code-baseline.json。",
+            "nl -ba B_budget_extension_v15/host.py | sed -n '1,230p'",
+            "nl -ba B_candidate_paths_v14/workflow/interaction.py | sed -n '1,90p;417,570p'",
+            "nl -ba B_candidate_paths_v14/workflow/B_delta_assembly.py | sed -n '1,365p'",
+            "nl -ba plan_delta.py | sed -n '118,271p'",
+            "rg -n 'setdefault|fallback|repair|sort\\(|sorted\\(|\\[0\\]|\\[-1\\]|not_before.*=|candidate.*(min|max)|_selection\\s*=' B_candidate_paths_v14/workflow/interaction.py B_candidate_paths_v14/workflow/B_delta_assembly.py plan_delta.py B_budget_extension_v15/host.py",
+            "rg -n '\\b(plan_from_action|construct_plan|constructor|repair|fallback)\\b|\\bsolve\\s*\\(' B_budget_extension_v15/host.py B_budget_extension_v15/restore.py B_candidate_paths_v14/workflow/interaction.py B_candidate_paths_v14/workflow/B_delta_assembly.py B_candidate_paths_v14/policy.py B_candidate_paths_v14/prompt_schema.py plan_delta.py B_resume_v1/physical_resume.py B_incremental_v3/controller.py B_incremental_v3/transport.py environment.py",
+            "nl -ba B_candidate_paths_v14/prompt_schema.py | sed -n '124,183p'",
+            "读取 V15 restore、V14 policy、physical_resume、controller 和 environment 的相关导入、解析、commit、执行及参考转换分支。",
+            "使用 python3 -c、pathlib 和 hashlib 只读计算所选允许源码的 SHA256，与 internal-code-baseline.json 对照；未导入或执行工程模块。"
+          ],
+          "citations": [
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+              "anchor": "L17-L28、L94-L104、L141-L166",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+              "anchor": "L16-L34、L417-L423、L469-L510、L532-L549",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+              "anchor": "L125-L197、L303-L306、L320-L359",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+              "anchor": "L91-L115、L148-L177、L225-L253、L267-L269",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/prompt_schema.py",
+              "anchor": "L29-L40、L103-L123、L124-L181",
+              "access_level": "partial"
+            }
+          ],
+          "explicit_not_found": false,
+          "not_found_note": "主来源均可读取，限定反向检索未发现链上反例；未命中不证明不存在。最初尝试的 stream_environment.py、stream_physical.py 文件名不存在，随后沿真实导入定位 environment.py。一次哈希读取命令因只读环境禁止 here-document 临时文件而失败，改用 python3 -c 后成功。实际运行的 frozen 来源、原始模型输出及物理审计结果仍未知，且未复现。",
+          "suggested_narrowing": "维持原命题已有的导入、依赖哈希、公共状态校验和静态控制流限定；不得扩展为具体运行已验证、原始输出合法率或本厂效果结论。"
+        },
+        {
+          "claim_id": "R2-C09",
+          "verdict": "supported",
+          "confidence": "medium",
+          "evidence": "截至2026-10-12，原条件性源码命题受支持，本次反向检查未发现指定证伪情形。先读取白名单及分类准则，再沿 V15 host→restore→V14 Interaction→包内组装器→plan_delta 定向读取。host 设置 frozen 导入路径并检查自身位置、运行文件哈希；restore 实例化 V14 Interaction。Interaction 按同目录文件的字节哈希加载三项依赖。使用 Python 标准库只读解析指定完整性清单，仅筛选已打开的10个文件并计算 SHA256，均与基线匹配；三项包内依赖也与代码硬编码哈希一致。这确认的是当前源码与指定基线，实际 campaign/frozen 部署对应仍未知。\n\n组装器从空 delta 开始，只复制模型提交的完整字段并按提交顺序追加数组；创建中间对象容器不生成排程值。seal 要求所有规定路径、包括空数组均显式声明。编译器要求每个待执行基准任务及 hold 有完整保留、取消或替换处分，新增任务必须包含机台、lot、operation、visit 和开始条件。保留任务复制原值；未显式改序时保留原每机顺序，新增或迁移任务则要求受影响机台的完整顺序。这里存在程序展开和约束检查，但未见程序自行选择机台、批组或顺序。\n\n反向检索覆盖补字段、默认值、排序、回退、修复及 selection 赋值。静态候选反例包括缺机台、新增任务却缺完整机序、非冻结任务沿用过期开始条件、hold 锚到已删除任务；相应分支均拒绝，未见自动修补。排序命中主要用于页面、历史反馈和观测索引；候选按成功检查的创建次序展示。环境中的 plan_from_action 确有从状态生成字段的逻辑，但已查调用链没有调用它，不能据此推翻本句，也不能把整个工程概括为绝无自动转换。\n\n检查成功只登记候选。apply 必须在另一次较晚输出中提供精确候选 ID 和完整哈希；host 再验证显式 apply、锚点和逐条原输出重放，然后把选中计划交给公共 commit。公共 commit 复制并校验计划，没有补排程字段的分支。执行器按每机首项和模型给定的开始条件、hold 检查能否启动；物理未就绪会等待，失效或覆盖缺口会停止请求重规划。另有虚拟延迟节点由环境选择组别并推进，须披露为环境贡献；该路径跳过物理生产机台，未改写选中生产计划。\n\n组装器和编译器接受不代表全部动态物理约束已获认证，也不证明模型原始输出合法率。16草稿、32候选、1024次尝试、120000字符提示上限，以及 host 的600秒调用超时配置和停滞阈值，均留下中止与规模成本缺口；结果代码的成本字段为未知。本次没有执行测试、求解、模拟或模型，也未读取运行输出、日志及工厂数据；配置模型标识不能证明实际调用版本，具体部署、实际可行率、质量、耗时和成本均未验证。以上缺口没有推翻原句的限定控制流结论。",
+          "queries_executed": [
+            "cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+            "rg --files：检索白名单源根下 B_candidate_paths_v14 与 B_delta_assembly；再按 (assembly|interaction|delta|session).*\\.py$ 筛选，定位实际包内组装器。",
+            "rg -n 反向检索：模式 (def _dispatch_with_progress|assembly_layer|compile_plan_delta|setdefault|sorted\\(|\\.sort\\(|fallback|repair|auto|default|_selection\\s*=|min\\(|max\\()；目标为 V14 workflow/interaction.py、V15 host.py。",
+            "rg -n 定向检索：函数定义、导入、setdefault、sorted、sort、fallback、repair、auto、default、not_before、machine_orders、keep、hold；目标为包内 B_delta_assembly.py 与 plan_delta.py。",
+            "rg -n 反向检索：模式 (plan_from_action|construct|repair|fallback|fill|\\.sort\\(|sorted\\(|setdefault|not_before.*=|candidate.*(min|max)|_selection\\s*=)；目标为 V15 host/restore、V14 Interaction、包内组装器、plan_delta、physical_resume。",
+            "rg -n：在 environment.py 定位 commit_plan、执行顺序、hold、not_before、修复和排序分支；随后读取对应源码行。",
+            "python3 -B -c：只读解析 inputs/internal-code-baseline.json，筛选已打开的10个源码条目，并计算当前文件字节 SHA256 作比较。"
+          ],
+          "citations": [
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+              "anchor": "L16-L28、L91-L104、L136-L166、L186-L190",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+              "anchor": "L12-L47、L417-L423、L434-L510、L512-L555",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+              "anchor": "L125-L130、L154-L208、L254-L284、L303-L358",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+              "anchor": "L91-L115、L118-L177、L196-L270",
+              "access_level": "full"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/environment.py",
+              "anchor": "L72-L92、L94-L170、L199-L278、L343-L355",
+              "access_level": "partial"
+            }
+          ],
+          "explicit_not_found": false,
+          "not_found_note": "主来源已命中；限定反向检索未找到链内自动补排程字段、默认选择候选或修复模型决定的反例，不能推断所有版本均不存在。初次目录发现中 B_delta_assembly 目录不存在，随后定位实际包内 B_delta_assembly.py。完整性清单首次 heredoc 命令因只读环境禁止临时文件而失败，改用 python3 -B -c 完成只读解析和哈希。实际冻结部署与运行对应关系未查，未复现；原超时失败记录未修改。",
+          "suggested_narrowing": "保留原句的导入、依赖哈希、锚点及物理校验条件和静态范围；具体部署一致性、原始输出合法率、规模表现与成本需另行取证。"
+        },
+        {
+          "claim_id": "R2-C09",
+          "verdict": "supported",
+          "confidence": "medium",
+          "evidence": "截至2026-10-12，原限定命题受本次静态源码审计支持，具体部署实例仍未验证。先读取白名单和分类标准，再沿V15 host→V14 Interaction→同目录B_delta_assembly→plan_delta检查实际导入语句。以只读Python解析指定internal-code-baseline.json，仅筛选当时已打开的11份源码并计算SHA256，全部匹配；Interaction固定的提示、组装、反馈三项包内依赖哈希也匹配。此清单是源码完整性基线，不是运行证据。host把frozen置于导入路径首位并检查来源，但本次没有读取campaign及其frozen清单，不能证明某次部署实际加载了这些文件。\n决定归属有执行分支支持：组装器要求全部15条路径，包括空数组，明确声明后才能seal；新增或替换任务必须包含lot、step、visit、operation、machine和not_before，hold也要求完整字段。chunk在副本上验证，全部通过才发布；失败返回拒绝，不补字段。编译器要求每个旧任务及hold具有明确保留、取消或替换处分；保留项复制原值，未明确改变的机台顺序保留旧序，新增或迁移任务要求受影响机台完整顺序。模型提供开始条件与等待声明，实际派工仍受物理就绪条件限制。\n候选只在模型单独请求check_assembly后产生；32个候选上限会拒绝新检查，没有淘汰后自动择优。列表按检查创建顺序返回。稍后的独立apply必须给出具体候选ID及完整哈希，并匹配当前锚点。host要求最后动作为apply，重放原始输出验证选择一致，再将该候选编译计划交给公共commit；公共commit复制并保存提交计划，没有重新挑lot、机台或批次。执行器按各机台提交顺序检查首任务；发生过期、路线变化或物理不合法时停止并要求重排。\n反向检索覆盖selection赋值、排序、默认值、修复和回退。发现environment中的plan_from_action确实会生成工序、开始条件和等待字段，随后对所列链路文件检索其引用，零命中；不能把这个未见接入的辅助函数当作本链反例。已查到的排序用于哈希、查询元数据或状态表示，编译器的任务重排执行模型明确给出的顺序。未发现链上工具补出新的排程选择、自动选候选或改写模型决策值。\n编译校验覆盖身份、资格、批量界限、完整处分、冻结前缀、范围及hold锚点，但不证明完整物理可行性；公共commit和执行时物理检查的贡献必须披露。本次未运行测试、模拟、求解器或模型，未读取运行明细、此前核验结果或报告。部署对应关系、同条件基线与消融、持出泛化、真实执行延迟和费用分母均未核验；最终合法候选或成功commit不能替代完整原始尝试及失败分母，也不能据此推出B优于C或跨厂可迁移。",
+          "queries_executed": [
+            "cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+            "本地nl -ba/sed：针对V15 host、restore，V14 Interaction及包内组装器、提示与反馈模块，plan_delta、physical_resume、environment和policy的必要函数读取源码。",
+            "本地rg模式：delta|assemble|compile|select|candidate|commit|fallback|repair|sort|hold|start；范围为V14 workflow/interaction.py。",
+            "本地rg模式：def _validate|def _dispatch_with_progress|strict_json|setdefault|sorted\\(|sort\\(|_selection\\s*=|compile_plan_delta|fallback|repair|not_before.*max|policy\\.|construct|planner|solver；限定已打开的核心链路源码。",
+            "本地rg -n 'plan_from_action'：限定V15 host/restore、V14 workflow/policy、plan_delta、physical_resume、controller、delta_session；退出码1，零命中。",
+            "只读python -c：解析指定完整性清单，仅筛选已打开文件计算SHA256；用ast.literal_eval读取Interaction的DEPENDENCIES常量，核对三项包内依赖，未导入或执行工程模块。"
+          ],
+          "citations": [
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+              "anchor": "L17-L28、L91-L104、L141-L177：导入、原始输出传递、显式选择重放及公共commit",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+              "anchor": "L12-L34、L395-L405、L417-L510、L512-L578：包内依赖、精确校验、候选检查及独立apply",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+              "anchor": "L15-L22、L125-L197、L269-L361：完整字段、全部路径声明、副本校验及拒绝",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+              "anchor": "L91-L115、L118-L270：明确处分、完整任务、机台顺序、冻结与hold校验",
+              "access_level": "partial"
+            },
+            {
+              "kind": "internal",
+              "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/environment.py",
+              "anchor": "L94-L170、L172-L248、L343-L355：公共commit、按计划执行及反向核查的字段生成辅助函数",
+              "access_level": "partial"
+            }
+          ],
+          "explicit_not_found": true,
+          "not_found_note": "所列链路中未检索到plan_from_action引用，定向审计未发现命题指定的反例；未命中不证明未读版本或部署中不存在。一次here-doc因只读沙箱无法创建临时文件失败，随后用python -c完成只读哈希复核。",
+          "suggested_narrowing": "无需先改写原句再支持；使用结论时保留实际导入、包内依赖哈希及公共状态校验前提，并明确这是静态控制流结论，具体运行归属、物理效果及原始输出合法率仍未知。"
+        }
+      ],
+      "retry_attempts": [
+        {
+          "claim_id": "R2-C09",
+          "original_attempt_label": "R2-C09/v2",
+          "original_agent_id": 26,
+          "role_index": 2,
+          "retry_label": "R2-C09/v2/retry1",
+          "result": {
+            "claim_id": "R2-C09",
+            "verdict": "supported",
+            "confidence": "medium",
+            "evidence": "截至2026-10-12，原条件性源码命题受支持，本次反向检查未发现指定证伪情形。先读取白名单及分类准则，再沿 V15 host→restore→V14 Interaction→包内组装器→plan_delta 定向读取。host 设置 frozen 导入路径并检查自身位置、运行文件哈希；restore 实例化 V14 Interaction。Interaction 按同目录文件的字节哈希加载三项依赖。使用 Python 标准库只读解析指定完整性清单，仅筛选已打开的10个文件并计算 SHA256，均与基线匹配；三项包内依赖也与代码硬编码哈希一致。这确认的是当前源码与指定基线，实际 campaign/frozen 部署对应仍未知。\n\n组装器从空 delta 开始，只复制模型提交的完整字段并按提交顺序追加数组；创建中间对象容器不生成排程值。seal 要求所有规定路径、包括空数组均显式声明。编译器要求每个待执行基准任务及 hold 有完整保留、取消或替换处分，新增任务必须包含机台、lot、operation、visit 和开始条件。保留任务复制原值；未显式改序时保留原每机顺序，新增或迁移任务则要求受影响机台的完整顺序。这里存在程序展开和约束检查，但未见程序自行选择机台、批组或顺序。\n\n反向检索覆盖补字段、默认值、排序、回退、修复及 selection 赋值。静态候选反例包括缺机台、新增任务却缺完整机序、非冻结任务沿用过期开始条件、hold 锚到已删除任务；相应分支均拒绝，未见自动修补。排序命中主要用于页面、历史反馈和观测索引；候选按成功检查的创建次序展示。环境中的 plan_from_action 确有从状态生成字段的逻辑，但已查调用链没有调用它，不能据此推翻本句，也不能把整个工程概括为绝无自动转换。\n\n检查成功只登记候选。apply 必须在另一次较晚输出中提供精确候选 ID 和完整哈希；host 再验证显式 apply、锚点和逐条原输出重放，然后把选中计划交给公共 commit。公共 commit 复制并校验计划，没有补排程字段的分支。执行器按每机首项和模型给定的开始条件、hold 检查能否启动；物理未就绪会等待，失效或覆盖缺口会停止请求重规划。另有虚拟延迟节点由环境选择组别并推进，须披露为环境贡献；该路径跳过物理生产机台，未改写选中生产计划。\n\n组装器和编译器接受不代表全部动态物理约束已获认证，也不证明模型原始输出合法率。16草稿、32候选、1024次尝试、120000字符提示上限，以及 host 的600秒调用超时配置和停滞阈值，均留下中止与规模成本缺口；结果代码的成本字段为未知。本次没有执行测试、求解、模拟或模型，也未读取运行输出、日志及工厂数据；配置模型标识不能证明实际调用版本，具体部署、实际可行率、质量、耗时和成本均未验证。以上缺口没有推翻原句的限定控制流结论。",
+            "queries_executed": [
+              "cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+              "rg --files：检索白名单源根下 B_candidate_paths_v14 与 B_delta_assembly；再按 (assembly|interaction|delta|session).*\\.py$ 筛选，定位实际包内组装器。",
+              "rg -n 反向检索：模式 (def _dispatch_with_progress|assembly_layer|compile_plan_delta|setdefault|sorted\\(|\\.sort\\(|fallback|repair|auto|default|_selection\\s*=|min\\(|max\\()；目标为 V14 workflow/interaction.py、V15 host.py。",
+              "rg -n 定向检索：函数定义、导入、setdefault、sorted、sort、fallback、repair、auto、default、not_before、machine_orders、keep、hold；目标为包内 B_delta_assembly.py 与 plan_delta.py。",
+              "rg -n 反向检索：模式 (plan_from_action|construct|repair|fallback|fill|\\.sort\\(|sorted\\(|setdefault|not_before.*=|candidate.*(min|max)|_selection\\s*=)；目标为 V15 host/restore、V14 Interaction、包内组装器、plan_delta、physical_resume。",
+              "rg -n：在 environment.py 定位 commit_plan、执行顺序、hold、not_before、修复和排序分支；随后读取对应源码行。",
+              "python3 -B -c：只读解析 inputs/internal-code-baseline.json，筛选已打开的10个源码条目，并计算当前文件字节 SHA256 作比较。"
+            ],
+            "citations": [
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+                "anchor": "L16-L28、L91-L104、L136-L166、L186-L190",
+                "access_level": "partial"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+                "anchor": "L12-L47、L417-L423、L434-L510、L512-L555",
+                "access_level": "partial"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+                "anchor": "L125-L130、L154-L208、L254-L284、L303-L358",
+                "access_level": "partial"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+                "anchor": "L91-L115、L118-L177、L196-L270",
+                "access_level": "full"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/environment.py",
+                "anchor": "L72-L92、L94-L170、L199-L278、L343-L355",
+                "access_level": "partial"
+              }
+            ],
+            "explicit_not_found": false,
+            "not_found_note": "主来源已命中；限定反向检索未找到链内自动补排程字段、默认选择候选或修复模型决定的反例，不能推断所有版本均不存在。初次目录发现中 B_delta_assembly 目录不存在，随后定位实际包内 B_delta_assembly.py。完整性清单首次 heredoc 命令因只读环境禁止临时文件而失败，改用 python3 -B -c 完成只读解析和哈希。实际冻结部署与运行对应关系未查，未复现；原超时失败记录未修改。",
+            "suggested_narrowing": "保留原句的导入、依赖哈希、锚点及物理校验条件和静态范围；具体部署一致性、原始输出合法率、规模表现与成本需另行取证。"
+          },
+          "original_status": "failed",
+          "original_error": "agent timeout after 600000 ms",
+          "original_path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/verify/agents/0026/events.jsonl",
+          "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-timeouts/agents/0001/result.json",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "claim_id": "R2-C09",
+          "original_attempt_label": "R2-C09/v3",
+          "original_agent_id": 27,
+          "role_index": 3,
+          "retry_label": "R2-C09/v3/retry1",
+          "result": {
+            "claim_id": "R2-C09",
+            "verdict": "supported",
+            "confidence": "medium",
+            "evidence": "截至2026-10-12，原限定命题受本次静态源码审计支持，具体部署实例仍未验证。先读取白名单和分类标准，再沿V15 host→V14 Interaction→同目录B_delta_assembly→plan_delta检查实际导入语句。以只读Python解析指定internal-code-baseline.json，仅筛选当时已打开的11份源码并计算SHA256，全部匹配；Interaction固定的提示、组装、反馈三项包内依赖哈希也匹配。此清单是源码完整性基线，不是运行证据。host把frozen置于导入路径首位并检查来源，但本次没有读取campaign及其frozen清单，不能证明某次部署实际加载了这些文件。\n决定归属有执行分支支持：组装器要求全部15条路径，包括空数组，明确声明后才能seal；新增或替换任务必须包含lot、step、visit、operation、machine和not_before，hold也要求完整字段。chunk在副本上验证，全部通过才发布；失败返回拒绝，不补字段。编译器要求每个旧任务及hold具有明确保留、取消或替换处分；保留项复制原值，未明确改变的机台顺序保留旧序，新增或迁移任务要求受影响机台完整顺序。模型提供开始条件与等待声明，实际派工仍受物理就绪条件限制。\n候选只在模型单独请求check_assembly后产生；32个候选上限会拒绝新检查，没有淘汰后自动择优。列表按检查创建顺序返回。稍后的独立apply必须给出具体候选ID及完整哈希，并匹配当前锚点。host要求最后动作为apply，重放原始输出验证选择一致，再将该候选编译计划交给公共commit；公共commit复制并保存提交计划，没有重新挑lot、机台或批次。执行器按各机台提交顺序检查首任务；发生过期、路线变化或物理不合法时停止并要求重排。\n反向检索覆盖selection赋值、排序、默认值、修复和回退。发现environment中的plan_from_action确实会生成工序、开始条件和等待字段，随后对所列链路文件检索其引用，零命中；不能把这个未见接入的辅助函数当作本链反例。已查到的排序用于哈希、查询元数据或状态表示，编译器的任务重排执行模型明确给出的顺序。未发现链上工具补出新的排程选择、自动选候选或改写模型决策值。\n编译校验覆盖身份、资格、批量界限、完整处分、冻结前缀、范围及hold锚点，但不证明完整物理可行性；公共commit和执行时物理检查的贡献必须披露。本次未运行测试、模拟、求解器或模型，未读取运行明细、此前核验结果或报告。部署对应关系、同条件基线与消融、持出泛化、真实执行延迟和费用分母均未核验；最终合法候选或成功commit不能替代完整原始尝试及失败分母，也不能据此推出B优于C或跨厂可迁移。",
+            "queries_executed": [
+              "cat inputs/internal-allowlist.json inputs/route-classification-rubric.json",
+              "本地nl -ba/sed：针对V15 host、restore，V14 Interaction及包内组装器、提示与反馈模块，plan_delta、physical_resume、environment和policy的必要函数读取源码。",
+              "本地rg模式：delta|assemble|compile|select|candidate|commit|fallback|repair|sort|hold|start；范围为V14 workflow/interaction.py。",
+              "本地rg模式：def _validate|def _dispatch_with_progress|strict_json|setdefault|sorted\\(|sort\\(|_selection\\s*=|compile_plan_delta|fallback|repair|not_before.*max|policy\\.|construct|planner|solver；限定已打开的核心链路源码。",
+              "本地rg -n 'plan_from_action'：限定V15 host/restore、V14 workflow/policy、plan_delta、physical_resume、controller、delta_session；退出码1，零命中。",
+              "只读python -c：解析指定完整性清单，仅筛选已打开文件计算SHA256；用ast.literal_eval读取Interaction的DEPENDENCIES常量，核对三项包内依赖，未导入或执行工程模块。"
+            ],
+            "citations": [
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+                "anchor": "L17-L28、L91-L104、L141-L177：导入、原始输出传递、显式选择重放及公共commit",
+                "access_level": "partial"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+                "anchor": "L12-L34、L395-L405、L417-L510、L512-L578：包内依赖、精确校验、候选检查及独立apply",
+                "access_level": "partial"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+                "anchor": "L15-L22、L125-L197、L269-L361：完整字段、全部路径声明、副本校验及拒绝",
+                "access_level": "partial"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+                "anchor": "L91-L115、L118-L270：明确处分、完整任务、机台顺序、冻结与hold校验",
+                "access_level": "partial"
+              },
+              {
+                "kind": "internal",
+                "ref": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/environment.py",
+                "anchor": "L94-L170、L172-L248、L343-L355：公共commit、按计划执行及反向核查的字段生成辅助函数",
+                "access_level": "partial"
+              }
+            ],
+            "explicit_not_found": true,
+            "not_found_note": "所列链路中未检索到plan_from_action引用，定向审计未发现命题指定的反例；未命中不证明未读版本或部署中不存在。一次here-doc因只读沙箱无法创建临时文件失败，随后用python -c完成只读哈希复核。",
+            "suggested_narrowing": "无需先改写原句再支持；使用结论时保留实际导入、包内依赖哈希及公共状态校验前提，并明确这是静态控制流结论，具体运行归属、物理效果及原始输出合法率仍未知。"
+          },
+          "original_status": "failed",
+          "original_error": "agent timeout after 600000 ms",
+          "original_path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/verify/agents/0027/events.jsonl",
+          "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-timeouts/agents/0002/result.json",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    }
+  }
+}

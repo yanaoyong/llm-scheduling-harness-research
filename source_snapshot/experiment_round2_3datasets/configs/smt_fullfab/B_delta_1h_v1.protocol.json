@@ -1,0 +1,90 @@
+{
+  "schema": "smt-fullfab-B-delta-gate-v1-protocol",
+  "status": "implementation_pending_independent_review",
+  "formal": false,
+  "execute_now": false,
+  "purpose": "One new cold-start full-factory B delta one-hour development endpoint; preserve prior B failures, all240 prior model attempts and their original ledger costs. No actual preparation/execution authorized by this file alone.",
+  "run_parameters": {
+    "run_id": "B_1701_1h_delta_v1",
+    "scenario": 1701,
+    "seconds": 3600,
+    "wall_seconds": 21600.0,
+    "max_log_bytes": 17179869184,
+    "max_trace_bytes": 2147483648,
+    "page_chars": 45000
+  },
+  "limits": {
+    "serial_only": true,
+    "external_watchdog_seconds": 22200,
+    "child_complete_wall_seconds": 21600,
+    "readback_seconds": 600,
+    "minimum_free_disk_bytes": 42949672960,
+    "maximum_child_peak_rss_bytes": 8589934592,
+    "rss_is_hard_guard": false,
+    "trace_bytes": 2147483648,
+    "campaign_and_run_bytes": 17179869184,
+    "minimum_preserved_prior_model_attempts": 240,
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "per_call_timeout_seconds": 180,
+    "max_calls": null,
+    "max_tokens": null,
+    "solver_seconds": 0,
+    "constructor_seconds": 0,
+    "plan_seconds": 14400,
+    "lookahead_depth": 2,
+    "period_seconds": 1800,
+    "period_is_absolute": true
+  },
+  "prepare_command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "src.smt_fullfab.B_delta_gate"
+  ],
+  "execute_command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "src.smt_fullfab.B_delta_gate",
+    "--execute"
+  ],
+  "acceptance_readback_command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "src.smt_fullfab.B_delta_gate",
+    "--read-acceptance"
+  ],
+  "freeze": {
+    "source": "All noncache src, vendor simulation, SMT2020_LVHM data and requirements files, per-fileSHA256; source digest exactly controller_delta source_manifest convention.",
+    "extra_configs": [
+      "configs/smt_fullfab/stage2_probe.approved.json",
+      "configs/smt_fullfab/research_limit_waiver.approved.json",
+      "configs/smt_fullfab/B_delta_1h_v1.protocol.json"
+    ],
+    "runtime": "Python executable/hash/version/distributions and external Codex CLI wrapper and actual CodexCLI.app executable paths/bytes hashes. Runtime is verified before/after execution; source remains read-only.",
+    "git": "Origin pointer only, never a clean-checkout assertion.",
+    "actual_write_mappings": "Frozen runs and progress link to original real directories. Child controller ROOT and budget ROOT map to the original project; DEFAULT_LEDGER points to the actual original ledger; APPROVAL uses frozen approved file. Source-manifest defaults remain frozen.",
+    "ledger": "No new ledger or reset. Archived ledger bytes are evidence only, never used as a replacement writable account."
+  },
+  "acceptance": [
+    "Actual complete child exit0/PID/wall<=21600 and outer measured work<=22200; prepare duration is added. Child RSS<=8GiB is measured post-run, not enforced continuously.",
+    "Complete terminal3600 stream bundle with source/opportunity/physical receipts and all913 production machines; hash-bound dependencies and six primary metrics.",
+    "Frozen pure delta attribution reruns original call binding and per-store exact final prefix replay, all chunks/seal/check/apply and actual commit/dispatch links; no automatic repair, solver or constructor.",
+    "Original account closes every admitted call; result counts/costs exactly match. Completed calls with unknown token usage remain unknown and are permitted by the existing approved waiver.",
+    "Current real ledger must preserve archived prefix and contain no appended events of any kind (including nested registration, mapping, finalization or notes) for the same run, registration or original call IDs; unrelated future runs may append.",
+    "Actual checkpoint schema, state hash, source/data/dependencies and complete trace prefix checked. No factory restoration or physical reexecution is claimed.",
+    "Exact original verifier file hashes remain anchors through final collection and later readback; changed/missing/orphan files fail. Keep all raw files on any failure.",
+    "Final combined campaign+run files including frozen source/stdout/stderr/audits/checkpoint/acceptance<=16GiB; complete raw trace<=2GiB; no evidence deletion to fit caps."
+  ],
+  "failure_policy": "Timeout/nonzero/pending/unknown/claimed/interrupted outcome is preserved and never automatically retried, completed, migrated, re-registered, or given larger bounds. Default is prepare only.",
+  "limitations": [
+    "Gate verifies local original channel/ledger consistency, not independent backend identity or invocation.",
+    "PeakRSS describes the controller PID only, not its entire process tree or verifier/parent peak; no hard memory guard.",
+    "Readback fully parses checkpoint and source report and replays bounded durable stores. Existing environment/history and report arrays remain in memory; no long-window capacity claim.",
+    "22200-second outer measurement includes prepare plus execution/verification/hash work, but excludes final acceptance publication and supervisor exit, as explicitly recorded. The final serialization is size-accounted. A separate process supervisor is needed for a hard whole-process outer deadline.",
+    "Watchdog terminates the controller process group; transport opens its own process group. A missing terminal ledger finish blocks any new call pending diagnosis; this is not independent proof that every descendant terminated.",
+    "No actual prepare or run has occurred during implementation; true runtime costs and1h completion remain unmeasured."
+  ]
+}

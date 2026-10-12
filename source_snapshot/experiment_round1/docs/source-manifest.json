@@ -1,0 +1,92 @@
+{
+  "audit_date": "2026-10-08",
+  "repositories": {
+    "FJSP-SMT2020": {
+      "origin": "https://github.com/prosysscience/FJSP-SMT2020.git",
+      "commit": "6253f982df13886ab75d9bc639bfaff045b2829a",
+      "tracked_worktree_clean": true
+    },
+    "clingo-dl": {
+      "origin": "https://github.com/potassco/clingo-dl.git",
+      "commit": "4f91f6233b441864ccc39195b6b7b515d92bd848",
+      "tracked_worktree_clean": true
+    }
+  },
+  "selected_problem_version": "PADL-2023",
+  "fixed_parameters": {
+    "flex": 1,
+    "minimize_variable": "makespan",
+    "minimize_factor": 1,
+    "solver_threads": 1
+  },
+  "dependencies": {
+    "clingo": "5.8.2",
+    "clingo-dl": "1.5.0.post1",
+    "cffi": "2.1.1",
+    "pycparser": "3.1"
+  },
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-26.6-arm64-arm-64bit",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+  "build": {
+    "source_commit": "4f91f6233b441864ccc39195b6b7b515d92bd848",
+    "source_modified": false,
+    "command": [
+      "/usr/bin/clang++",
+      "-std=c++17",
+      "-O2",
+      "-I",
+      "__LOCAL_PROJECT_ROOT__/experiment_round1/.venv/lib/python3.12/site-packages/clingo",
+      "-I",
+      "__LOCAL_PROJECT_ROOT__/experiment_round1/.venv/lib/python3.12/site-packages/clingodl",
+      "-I",
+      "__LOCAL_PROJECT_ROOT__/experiment_round1/vendor/clingo-dl/app/lib",
+      "__LOCAL_PROJECT_ROOT__/experiment_round1/vendor/clingo-dl/app/src/main.cc",
+      "__LOCAL_PROJECT_ROOT__/experiment_round1/vendor/clingo-dl/app/lib/src/app.cc",
+      "__LOCAL_PROJECT_ROOT__/experiment_round1/.venv/lib/python3.12/site-packages/clingo/_clingo.cpython-312-darwin.so",
+      "__LOCAL_PROJECT_ROOT__/experiment_round1/.venv/lib/python3.12/site-packages/clingodl/_clingodl.cpython-312-darwin.so",
+      "-F",
+      "/Library/Frameworks",
+      "-framework",
+      "Python",
+      "-Wl,-rpath,@executable_path/../../../.venv/lib/python3.12/site-packages/clingo",
+      "-Wl,-rpath,@executable_path/../../../.venv/lib/python3.12/site-packages/clingodl",
+      "-o",
+      "__LOCAL_PROJECT_ROOT__/experiment_round1/vendor/clingo-dl/build/clingo-dl"
+    ],
+    "cwd": "__LOCAL_PROJECT_ROOT__/experiment_round1",
+    "version": "clingo-dl version 1.5.0\nAddress model: 64-bit\n\nlibclingo version 5.8.2\nConfiguration: without Python, without Lua\n\nlibclasp version 3.4.1 (libpotassco version 1.2.0)\nConfiguration: WITH_THREADS=1\nCopyright (C) Benjamin Kaufmann\n\nLicense: The MIT License <https://opensource.org/licenses/MIT>\n",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "package_versions": {
+      "clingo": "5.8.2",
+      "clingo-dl": "1.5.0.post1",
+      "cffi": "2.1.1"
+    }
+  },
+  "sha256": {
+    "requirements.lock": "64ed26b8abcf05ce0417a6c54a08e1929e3885b37d7477e8b69c970a81206972",
+    "src/build_solver.py": "3c577e0045107860a2d9f093ecad52ebdacb8171ff65e88b29f901f6e1c2d88c",
+    "src/classical.py": "eb377fa10d17c973fa7eb77d2af61a74fe3efb0860c83c20b66933d74ace2e10",
+    "src/show.lp": "cd92e265dc716fa95ae1e15064781eee4b56b72b714dd51ed750ce2227ce5b9c",
+    "vendor/FJSP-SMT2020/PADL-2023/encoding_msw.lp": "3a55f4ee2994eaac4d7db825380b25859ae6dd22be32213f6f53113a1d9656ed",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance01.lp": "2d64ea10ed8a5446c93b56c96813d43311942f382762ee92b5ccc917a0cf9e2d",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance02.lp": "e8c48d58eacc779d8a7e722e475f8e9d4366fb77bec510df0e980f5a182e5bbd",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance03.lp": "7f1ad94d99def223e23c7b7977ab37505bf2ef94881a86ff4436be306072feda",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance04.lp": "d1055750706a5297af5f0f860dda93f5e6dca208b0e7fc17d16d30eec2aba076",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance05.lp": "270bd4a5d230a2342b323d48cc11b4c8ecfd4db8b743ea83592231b3aebc2ecb",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance06.lp": "27fd16b5f6e9bbc16694a95889902e00cddb12223ef65e3786a282127bffb3b8",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance07.lp": "b77fd0f6cea9d1351addf8e585d243552119547ee533635d5d9e003e8ed322d5",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance08.lp": "312a32aeac2e9f86746358a7c673a2a8d4b35287a9a1b4222d05b5c9f25b7a95",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance09.lp": "a60bffec498fdf273f387ed3400e2eb10463e491ccee78f15f044e1a72da0aa0",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance10.lp": "e65f4a674df32b00c3a7f5e9063315a9363c5010cfb758a104825c7a9255b7bf",
+    "vendor/FJSP-SMT2020/PADL-2023/instances/instance11.lp": "ab5fba2855a24a51cfca035f41e9ec69c962f64696e117666af489e7aeefe8fa",
+    "vendor/FJSP-SMT2020/PADL-2023/machine_selection.lp": "8c6d981ceb1327f7dabdaf1433c948e2b97a5d224a1bb35ca88536580aa9b206",
+    "vendor/FJSP-SMT2020/PADL-2023/parsing.lp": "8fd3d469aac6c7be7605e1214d93a8d2fc67be4715a60566d881608949ab5bfd",
+    "vendor/clingo-dl/LICENSE.md": "1644bfff3e8dee1130756788134bf76ece7ac8070ec5cbe801d46b3a28393beb",
+    "vendor/clingo-dl/app/lib/clingo-dl-app/app.hh": "3992190f4ec6376b7352df3c6cf0029fb94cbc3599bf1328c433f55799bdaaa7",
+    "vendor/clingo-dl/app/lib/src/app.cc": "0e332d3cb0da6fc4d1f9fd747d77386af8cf2d20fc03da4af863e36503b4a77e",
+    "vendor/clingo-dl/app/src/main.cc": "be0e3bf3aa4360d43e772cb6c69040bed580bb97af74d864e98d06bd9ac63bc1"
+  },
+  "topic_license": "No explicit LICENSE found at locked FJSP-SMT2020 commit; source attribution retained.",
+  "solver_license": "MIT"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "fjsp-split-1",
+  "basis": "preselected before any solver/model runs; Hurink grouped by base instance",
+  "splits": {
+    "development": {
+      "brandimarte": [
+        "mk01",
+        "mk02"
+      ],
+      "hurink": [
+        "la01_edata",
+        "la01_rdata",
+        "la01_vdata",
+        "ft06_edata",
+        "ft06_rdata",
+        "ft06_vdata"
+      ]
+    },
+    "formal": {
+      "brandimarte": [
+        "mk03",
+        "mk05",
+        "mk08"
+      ],
+      "hurink": [
+        "la02_edata",
+        "la02_rdata",
+        "la02_vdata",
+        "la06_edata",
+        "la06_rdata",
+        "la06_vdata",
+        "la11_edata",
+        "la11_rdata",
+        "la11_vdata"
+      ]
+    },
+    "reserve": {
+      "brandimarte": [
+        "mk04",
+        "mk06",
+        "mk09"
+      ],
+      "hurink": [
+        "la03_edata",
+        "la03_rdata",
+        "la03_vdata",
+        "la07_edata",
+        "la07_rdata",
+        "la07_vdata",
+        "la12_edata",
+        "la12_rdata",
+        "la12_vdata"
+      ]
+    }
+  },
+  "hurink_base_splits": {
+    "development": [
+      "la01",
+      "ft06"
+    ],
+    "formal": [
+      "la02",
+      "la06",
+      "la11"
+    ],
+    "reserve": [
+      "la03",
+      "la07",
+      "la12"
+    ]
+  }
+}

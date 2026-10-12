@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-12T13:17:45.563656+00:00",
+  "candidate_files": 823,
+  "candidate_content_bytes": 81517708,
+  "secret_pattern_hits": [],
+  "scan_scope": "High-confidence token/private-key patterns in intended Git files; not proof of exhaustive secret detection. No matching values emitted.",
+  "files_over_50_MB": [],
+  "source_git_recheck": [
+    {
+      "name": "experiment_round2_3datasets",
+      "checks": {
+        "head": true,
+        "status": true,
+        "index": true
+      }
+    },
+    {
+      "name": "myharness",
+      "checks": {
+        "head": true,
+        "status": true,
+        "index": true
+      }
+    }
+  ],
+  "source_snapshot_files_rechecked": 581,
+  "source_snapshot_errors": []
+}

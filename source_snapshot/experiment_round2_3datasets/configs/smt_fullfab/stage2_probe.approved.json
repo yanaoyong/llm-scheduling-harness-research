@@ -1,0 +1,34 @@
+{
+  "budget_id": "smt-fullfab-stage2-probe-v1",
+  "authorization": "approved_by_user",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "max_model_attempts": 12,
+  "observed_input_output_token_admission_limit": 240000,
+  "server_output_token_hard_cap": null,
+  "per_call_timeout_seconds": 180,
+  "total_active_wall_seconds": 2700,
+  "max_completed_unknown_usage": 1,
+  "automatic_outer_retries": 0,
+  "max_semantic_revisions_per_decision": 1,
+  "allocation": {
+    "channel_probe": 1,
+    "B": 5,
+    "C": 4,
+    "reserved_recovery_or_revision": 2
+  },
+  "max_solver_requested_seconds_per_arm": 60,
+  "max_log_bytes": 268435456,
+  "scenario": 1701,
+  "window_seconds": 3600,
+  "cost_usd": null,
+  "stop_rules": [
+    "Stop admission at the observed token limit; one admitted time-bounded call may exceed it",
+    "Stop after any completed attempt with unknown usage and preserve evidence",
+    "Stop on isolation violation, schema incompatibility, hard constraint violation or active wall deadline",
+    "No automatic repeat of a claimed attempt; failed and interrupted reservations remain consumed",
+    "No expansion to 8h, 24h or formal matrix under this proposal"
+  ],
+  "approved_at": "2026-10-09T08:37:44.225632+00:00",
+  "approval_text": "批准上述最小探测预算"
+}

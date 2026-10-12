@@ -1,0 +1,64 @@
+{
+  "schema": "archive-verification-v1",
+  "checked_at": "2026-10-12T13:08:00.542559+00:00",
+  "status": "passed",
+  "checks": {
+    "manifest_sha256_matches": true,
+    "tar_sha256_matches": true,
+    "embedded_manifest_matches": true,
+    "tar_manifest_complete": true,
+    "no_source_changes_during_capture": true,
+    "attachment_missing_count": 0,
+    "original_files_rehashed": 121279,
+    "experiment_round2_3datasets_head_index_status_unchanged": true,
+    "myharness_head_index_status_unchanged": true,
+    "git_bundle_clone_head_matches": true,
+    "restore_smoke_sample_count": 9,
+    "restore_smoke_all_hashes_match": true
+  },
+  "tar_regular_files": 121279,
+  "tar_regular_bytes": 50263836618,
+  "conversation_records": 98,
+  "visible_messages": 5035,
+  "source_snapshot_files": 563,
+  "restore_samples": [
+    {
+      "path": "experiment_round2_3datasets/artifacts/final/acceptance.json",
+      "sha256_matches": true
+    },
+    {
+      "path": "experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+      "sha256_matches": true
+    },
+    {
+      "path": "experiment_round2_3datasets/progress/smt_fullfab/ACTIVE_WORK.json",
+      "sha256_matches": true
+    },
+    {
+      "path": "experiment_round2_3datasets/requirements.lock",
+      "sha256_matches": true
+    },
+    {
+      "path": "experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+      "sha256_matches": true
+    },
+    {
+      "path": "research_harness_scheduling_20261012_round2/m0.5_research/evidence/completion.json",
+      "sha256_matches": true
+    },
+    {
+      "path": "research_harness_scheduling_20261012_round2/m0.5_research/summary.md",
+      "sha256_matches": true
+    },
+    {
+      "path": "summary.md",
+      "sha256_matches": true
+    },
+    {
+      "path": "SMT2020_全厂排程_续作_goal_prompt.txt",
+      "sha256_matches": true
+    }
+  ],
+  "errors": [],
+  "scope": "byte preservation and readable export integrity; no experiments/models/solvers invoked; no assertion of production runtime reproducibility; same-disk backup only"
+}

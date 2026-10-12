@@ -1,0 +1,23 @@
+{
+  "source_commit": "6253f982df13886ab75d9bc639bfaff045b2829a",
+  "variant": "PADL-2023",
+  "flex": 1,
+  "locked_at": "2026-10-08T22:02:45.086408+08:00",
+  "development": [
+    "instance01",
+    "instance03"
+  ],
+  "acceptance_v1": [
+    "instance02",
+    "instance05",
+    "instance08"
+  ],
+  "reserve": [
+    "instance04",
+    "instance06",
+    "instance09",
+    "instance11"
+  ],
+  "selection_rationale": "在任何排程结果前，按15/25/30工序及2+1/2+2/3+3机台结构选择；均使用原实例全体剩余工序，不截取或改造。预留仅用于验收后调参导致新版本需独立测试时。",
+  "repetitions": 3
+}

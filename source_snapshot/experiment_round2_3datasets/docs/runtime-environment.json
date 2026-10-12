@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-10-09T02:48:07.374067+00:00",
+  "platform": "macOS-26.6-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "python_executable": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/.venv/bin/python",
+  "codex_binary": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+  "codex_binary_sha256": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8",
+  "ortools": "9.15.6755",
+  "package_versions": {
+    "ortools": "9.15.6755",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "protobuf": "6.33.6",
+    "matplotlib": "3.10.8"
+  },
+  "formal_concurrency": 1,
+  "solver_workers": 1,
+  "background_load": "desktop environment not dedicated benchmark host",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "model_server_snapshot": null,
+  "developer_collaboration_cost": null
+}

@@ -1,0 +1,66 @@
+{
+  "completed_at": "2026-10-12T05:26:06.152869+00:00",
+  "stage": "M0.5",
+  "status": "complete",
+  "exit_verdict": "PASS_M0.5",
+  "review_verdict": "APPROVED",
+  "gates": [
+    {
+      "gate": "G1",
+      "passed": true,
+      "reason": "两份产物完整、非空，必填 frontmatter 齐全，flow_instance 与 run_id 一致；评审输入哈希无变化。"
+    },
+    {
+      "gate": "G2",
+      "passed": true,
+      "reason": "A 源冻结报告及 rg 回退、B 源公开检索与快照取证均有记录；C 源无新增人工策展资料的 N/A 理由合理，未写入策展 corpus。"
+    },
+    {
+      "gate": "G3",
+      "passed": true,
+      "reason": "12 条论断均有相关引用、访问日期和原始会话路径。重点抽样支持限定命题；未发现选定论断之外无来源的新关键断言。"
+    },
+    {
+      "gate": "G4",
+      "passed": true,
+      "reason": "各条均采用证伪方法并保留实际查询、分支检查及范围反证。36 份原始判决与登记一致；确认依据为来源事实，未把模型票数当作独立研究来源。"
+    },
+    {
+      "gate": "G5",
+      "passed": true,
+      "reason": "访问失败、未命中、旧批弃权及未验证范围均有留痕。CL-07/v3 依据本地公开快照及隔离微检，未冒称成功在线读取；工厂语义与迁移缺口未被升级为已验证。"
+    },
+    {
+      "gate": "G6",
+      "passed": true,
+      "reason": "9 项未决问题均有合法去向和说明：7 项移交 M1、1 项 defer-roadmap、1 项 out-of-scope；现场协议与验收的范围外理由充分。"
+    }
+  ],
+  "must_fix": [],
+  "conditions": [],
+  "reviewed_outputs": [
+    {
+      "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012/m0.5_research/dossier.md",
+      "sha256": "aa528338d96d1a0f86a5ed1bd555f1aeff8a8b21fffcd2e2368b3797e3411695",
+      "matches_review_input": true
+    },
+    {
+      "path": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012/m0.5_research/open-questions.md",
+      "sha256": "ccbf792eb3e1b6ae8698e2d2765137c2e30bb9074844899464f4d28459fc5656",
+      "matches_review_input": true
+    }
+  ],
+  "actual_extra_agent_calls": 58,
+  "unused_agent_calls": 2,
+  "known_tokens_input_plus_output": 17308428,
+  "unknown_usage_calls": 1,
+  "open_questions": 9,
+  "handoff_counts": {
+    "M1": 7,
+    "out-of-scope": 1,
+    "defer-roadmap": 1
+  },
+  "M1_started": false,
+  "new_factory_experiments": false,
+  "note": "Completion is for this bounded research run, not production harness acceptance or exhaustive coverage of every candidate route."
+}

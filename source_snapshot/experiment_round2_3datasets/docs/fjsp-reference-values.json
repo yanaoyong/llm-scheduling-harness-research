@@ -1,0 +1,1949 @@
+{
+  "schema_version": "fjsp-references-1",
+  "as_of_date": "2026-10-09",
+  "scope": "offline evaluator only; never model input",
+  "references": [
+    {
+      "instance_id": "mk01",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk01",
+      "independently_verified_optimum": null,
+      "reported_optimum": 40,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 40,
+      "lower_bound_reported": 40,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk01",
+        "size": "10 x 6",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "closed",
+        "lower_bound": 40,
+        "upper_bound": 40,
+        "lb_data": [
+          {
+            "value": 40,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 40,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk01",
+        "jobs": 10,
+        "machines": 6,
+        "optimum": 40,
+        "path": "brandimarte/mk01.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 40,
+        "schedulinglab_lower": 40,
+        "schedulinglab_upper": 40
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "mk02",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk02",
+      "independently_verified_optimum": null,
+      "reported_optimum": 26,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 26,
+      "lower_bound_reported": 26,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk02",
+        "size": "10 x 6",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "closed",
+        "lower_bound": 26,
+        "upper_bound": 26,
+        "lb_data": [
+          {
+            "value": 26,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 26,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk02",
+        "jobs": 10,
+        "machines": 6,
+        "optimum": null,
+        "bounds": {
+          "upper": 26,
+          "lower": 24
+        },
+        "path": "brandimarte/mk02.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": null,
+        "schedulinglab_lower": 24,
+        "schedulinglab_upper": 26
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "mk10",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk10",
+      "independently_verified_optimum": null,
+      "reported_optimum": null,
+      "reference_status": "bks_and_lower_bound",
+      "best_known_feasible_value_reported": 193,
+      "lower_bound_reported": 189,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk10",
+        "size": "20 x 15",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "open",
+        "lower_bound": 189,
+        "upper_bound": 193,
+        "lb_data": [
+          {
+            "value": 189,
+            "date": "2026-08-01",
+            "solver": "DOFP2026a",
+            "time": "?",
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 193,
+            "date": "2026-01-01",
+            "solver": "Quintiq",
+            "time": "?",
+            "hardware": "?",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk10",
+        "jobs": 20,
+        "machines": 15,
+        "optimum": null,
+        "bounds": {
+          "upper": 197,
+          "lower": 175
+        },
+        "path": "brandimarte/mk10.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": null,
+        "schedulinglab_lower": 175,
+        "schedulinglab_upper": 197
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "mk03",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk03",
+      "independently_verified_optimum": null,
+      "reported_optimum": 204,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 204,
+      "lower_bound_reported": 204,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk03",
+        "size": "15 x 8",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "closed",
+        "lower_bound": 204,
+        "upper_bound": 204,
+        "lb_data": [
+          {
+            "value": 204,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 204,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk03",
+        "jobs": 15,
+        "machines": 8,
+        "optimum": 204,
+        "path": "brandimarte/mk03.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 204,
+        "schedulinglab_lower": 204,
+        "schedulinglab_upper": 204
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "mk05",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk05",
+      "independently_verified_optimum": null,
+      "reported_optimum": 172,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 172,
+      "lower_bound_reported": 172,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk05",
+        "size": "15 x 4",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "closed",
+        "lower_bound": 172,
+        "upper_bound": 172,
+        "lb_data": [
+          {
+            "value": 172,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 172,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk05",
+        "jobs": 15,
+        "machines": 4,
+        "optimum": null,
+        "bounds": {
+          "upper": 172,
+          "lower": 168
+        },
+        "path": "brandimarte/mk05.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": null,
+        "schedulinglab_lower": 168,
+        "schedulinglab_upper": 172
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "mk08",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk08",
+      "independently_verified_optimum": null,
+      "reported_optimum": 523,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 523,
+      "lower_bound_reported": 523,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk08",
+        "size": "20 x 10",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "closed",
+        "lower_bound": 523,
+        "upper_bound": 523,
+        "lb_data": [
+          {
+            "value": 523,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 523,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk08",
+        "jobs": 20,
+        "machines": 10,
+        "optimum": 523,
+        "path": "brandimarte/mk08.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 523,
+        "schedulinglab_lower": 523,
+        "schedulinglab_upper": 523
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "mk04",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk04",
+      "independently_verified_optimum": null,
+      "reported_optimum": 60,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 60,
+      "lower_bound_reported": 60,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk04",
+        "size": "15 x 8",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "closed",
+        "lower_bound": 60,
+        "upper_bound": 60,
+        "lb_data": [
+          {
+            "value": 60,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 60,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk04",
+        "jobs": 15,
+        "machines": 8,
+        "optimum": 60,
+        "path": "brandimarte/mk04.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 60,
+        "schedulinglab_lower": 60,
+        "schedulinglab_upper": 60
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "mk06",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk06",
+      "independently_verified_optimum": null,
+      "reported_optimum": 57,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 57,
+      "lower_bound_reported": 57,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk06",
+        "size": "10 x 15",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "closed",
+        "lower_bound": 57,
+        "upper_bound": 57,
+        "lb_data": [
+          {
+            "value": 57,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 60,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 57,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 60,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk06",
+        "jobs": 10,
+        "machines": 15,
+        "optimum": null,
+        "bounds": {
+          "upper": 58,
+          "lower": 33
+        },
+        "path": "brandimarte/mk06.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": null,
+        "schedulinglab_lower": 33,
+        "schedulinglab_upper": 58
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "mk09",
+      "family": "brandimarte",
+      "variant": null,
+      "base_instance": "mk09",
+      "independently_verified_optimum": null,
+      "reported_optimum": 307,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 307,
+      "lower_bound_reported": 307,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "mk09",
+        "size": "20 x 10",
+        "type": "flexible jobshop",
+        "family": "mk",
+        "family_long": "Brandimarte 1993",
+        "status": "closed",
+        "lower_bound": 307,
+        "upper_bound": 307,
+        "lb_data": [
+          {
+            "value": 307,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 307,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "mk09",
+        "jobs": 20,
+        "machines": 10,
+        "optimum": 307,
+        "path": "brandimarte/mk09.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 307,
+        "schedulinglab_lower": 307,
+        "schedulinglab_upper": 307
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la01_edata",
+      "family": "hurink",
+      "variant": "edata",
+      "base_instance": "la01",
+      "independently_verified_optimum": null,
+      "reported_optimum": 609,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 609,
+      "lower_bound_reported": 609,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la01_edata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 609,
+        "upper_bound": 609,
+        "lb_data": [
+          {
+            "value": 609,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 609,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "e-la01",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": 609,
+        "path": "hurink/edata/la01.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 609,
+        "schedulinglab_lower": 609,
+        "schedulinglab_upper": 609
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la01_rdata",
+      "family": "hurink",
+      "variant": "rdata",
+      "base_instance": "la01",
+      "independently_verified_optimum": null,
+      "reported_optimum": 570,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 570,
+      "lower_bound_reported": 570,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la01_rdata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 570,
+        "upper_bound": 570,
+        "lb_data": [
+          {
+            "value": 570,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 60,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 570,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 60,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "r-la01",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": null,
+        "bounds": {
+          "upper": 571,
+          "lower": 570
+        },
+        "path": "hurink/rdata/la01.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": null,
+        "schedulinglab_lower": 570,
+        "schedulinglab_upper": 571
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la01_vdata",
+      "family": "hurink",
+      "variant": "vdata",
+      "base_instance": "la01",
+      "independently_verified_optimum": null,
+      "reported_optimum": 570,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 570,
+      "lower_bound_reported": 570,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la01_vdata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 570,
+        "upper_bound": 570,
+        "lb_data": [
+          {
+            "value": 570,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 570,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "v-la01",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": 570,
+        "path": "hurink/vdata/la01.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 570,
+        "schedulinglab_lower": 570,
+        "schedulinglab_upper": 570
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "ft06_edata",
+      "family": "hurink",
+      "variant": "edata",
+      "base_instance": "ft06",
+      "independently_verified_optimum": null,
+      "reported_optimum": 55,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 55,
+      "lower_bound_reported": 55,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "ft06_edata",
+        "size": "6 x 6",
+        "type": "machine-independent flexible jobshop",
+        "family": "ft",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 55,
+        "upper_bound": 55,
+        "lb_data": [
+          {
+            "value": 55,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 55,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "e-mt06",
+        "jobs": 6,
+        "machines": 6,
+        "optimum": 55,
+        "path": "hurink/edata/mt06.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 55,
+        "schedulinglab_lower": 55,
+        "schedulinglab_upper": 55
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "ft06_rdata",
+      "family": "hurink",
+      "variant": "rdata",
+      "base_instance": "ft06",
+      "independently_verified_optimum": null,
+      "reported_optimum": 47,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 47,
+      "lower_bound_reported": 47,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "ft06_rdata",
+        "size": "6 x 6",
+        "type": "machine-independent flexible jobshop",
+        "family": "ft",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 47,
+        "upper_bound": 47,
+        "lb_data": [
+          {
+            "value": 47,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 47,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "r-mt06",
+        "jobs": 6,
+        "machines": 6,
+        "optimum": 47,
+        "path": "hurink/rdata/mt06.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 47,
+        "schedulinglab_lower": 47,
+        "schedulinglab_upper": 47
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "ft06_vdata",
+      "family": "hurink",
+      "variant": "vdata",
+      "base_instance": "ft06",
+      "independently_verified_optimum": null,
+      "reported_optimum": 47,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 47,
+      "lower_bound_reported": 47,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "ft06_vdata",
+        "size": "6 x 6",
+        "type": "machine-independent flexible jobshop",
+        "family": "ft",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 47,
+        "upper_bound": 47,
+        "lb_data": [
+          {
+            "value": 47,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 47,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "v-mt06",
+        "jobs": 6,
+        "machines": 6,
+        "optimum": 47,
+        "path": "hurink/vdata/mt06.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 47,
+        "schedulinglab_lower": 47,
+        "schedulinglab_upper": 47
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la02_edata",
+      "family": "hurink",
+      "variant": "edata",
+      "base_instance": "la02",
+      "independently_verified_optimum": null,
+      "reported_optimum": 655,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 655,
+      "lower_bound_reported": 655,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la02_edata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 655,
+        "upper_bound": 655,
+        "lb_data": [
+          {
+            "value": 655,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 655,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "e-la02",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": 655,
+        "path": "hurink/edata/la02.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 655,
+        "schedulinglab_lower": 655,
+        "schedulinglab_upper": 655
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la02_rdata",
+      "family": "hurink",
+      "variant": "rdata",
+      "base_instance": "la02",
+      "independently_verified_optimum": null,
+      "reported_optimum": 529,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 529,
+      "lower_bound_reported": 529,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la02_rdata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 529,
+        "upper_bound": 529,
+        "lb_data": [
+          {
+            "value": 529,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 529,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "r-la02",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": 529,
+        "path": "hurink/rdata/la02.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 529,
+        "schedulinglab_lower": 529,
+        "schedulinglab_upper": 529
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la02_vdata",
+      "family": "hurink",
+      "variant": "vdata",
+      "base_instance": "la02",
+      "independently_verified_optimum": null,
+      "reported_optimum": 529,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 529,
+      "lower_bound_reported": 529,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la02_vdata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 529,
+        "upper_bound": 529,
+        "lb_data": [
+          {
+            "value": 529,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 529,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "v-la02",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": 529,
+        "path": "hurink/vdata/la02.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 529,
+        "schedulinglab_lower": 529,
+        "schedulinglab_upper": 529
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la06_edata",
+      "family": "hurink",
+      "variant": "edata",
+      "base_instance": "la06",
+      "independently_verified_optimum": null,
+      "reported_optimum": 833,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 833,
+      "lower_bound_reported": 833,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la06_edata",
+        "size": "15 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 833,
+        "upper_bound": 833,
+        "lb_data": [
+          {
+            "value": 833,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 833,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "e-la06",
+        "jobs": 15,
+        "machines": 5,
+        "optimum": 833,
+        "path": "hurink/edata/la06.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 833,
+        "schedulinglab_lower": 833,
+        "schedulinglab_upper": 833
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la06_rdata",
+      "family": "hurink",
+      "variant": "rdata",
+      "base_instance": "la06",
+      "independently_verified_optimum": null,
+      "reported_optimum": 799,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 799,
+      "lower_bound_reported": 799,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la06_rdata",
+        "size": "15 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 799,
+        "upper_bound": 799,
+        "lb_data": [
+          {
+            "value": 799,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 799,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "r-la06",
+        "jobs": 15,
+        "machines": 5,
+        "optimum": 799,
+        "path": "hurink/rdata/la06.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 799,
+        "schedulinglab_lower": 799,
+        "schedulinglab_upper": 799
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la06_vdata",
+      "family": "hurink",
+      "variant": "vdata",
+      "base_instance": "la06",
+      "independently_verified_optimum": null,
+      "reported_optimum": 799,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 799,
+      "lower_bound_reported": 799,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la06_vdata",
+        "size": "15 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 799,
+        "upper_bound": 799,
+        "lb_data": [
+          {
+            "value": 799,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 799,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "v-la06",
+        "jobs": 15,
+        "machines": 5,
+        "optimum": 799,
+        "path": "hurink/vdata/la06.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 799,
+        "schedulinglab_lower": 799,
+        "schedulinglab_upper": 799
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la11_edata",
+      "family": "hurink",
+      "variant": "edata",
+      "base_instance": "la11",
+      "independently_verified_optimum": null,
+      "reported_optimum": 1103,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 1103,
+      "lower_bound_reported": 1103,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la11_edata",
+        "size": "20 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 1103,
+        "upper_bound": 1103,
+        "lb_data": [
+          {
+            "value": 1103,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 1103,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "e-la11",
+        "jobs": 20,
+        "machines": 5,
+        "optimum": 1103,
+        "path": "hurink/edata/la11.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 1103,
+        "schedulinglab_lower": 1103,
+        "schedulinglab_upper": 1103
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la11_rdata",
+      "family": "hurink",
+      "variant": "rdata",
+      "base_instance": "la11",
+      "independently_verified_optimum": null,
+      "reported_optimum": 1071,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 1071,
+      "lower_bound_reported": 1071,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la11_rdata",
+        "size": "20 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 1071,
+        "upper_bound": 1071,
+        "lb_data": [
+          {
+            "value": 1071,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 1071,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "r-la11",
+        "jobs": 20,
+        "machines": 5,
+        "optimum": 1071,
+        "path": "hurink/rdata/la11.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 1071,
+        "schedulinglab_lower": 1071,
+        "schedulinglab_upper": 1071
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la11_vdata",
+      "family": "hurink",
+      "variant": "vdata",
+      "base_instance": "la11",
+      "independently_verified_optimum": null,
+      "reported_optimum": 1071,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 1071,
+      "lower_bound_reported": 1071,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la11_vdata",
+        "size": "20 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 1071,
+        "upper_bound": 1071,
+        "lb_data": [
+          {
+            "value": 1071,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 1071,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "v-la11",
+        "jobs": 20,
+        "machines": 5,
+        "optimum": 1071,
+        "path": "hurink/vdata/la11.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 1071,
+        "schedulinglab_lower": 1071,
+        "schedulinglab_upper": 1071
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la03_edata",
+      "family": "hurink",
+      "variant": "edata",
+      "base_instance": "la03",
+      "independently_verified_optimum": null,
+      "reported_optimum": 550,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 550,
+      "lower_bound_reported": 550,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la03_edata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 550,
+        "upper_bound": 550,
+        "lb_data": [
+          {
+            "value": 550,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 550,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "e-la03",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": 550,
+        "path": "hurink/edata/la03.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 550,
+        "schedulinglab_lower": 550,
+        "schedulinglab_upper": 550
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la03_rdata",
+      "family": "hurink",
+      "variant": "rdata",
+      "base_instance": "la03",
+      "independently_verified_optimum": null,
+      "reported_optimum": 477,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 477,
+      "lower_bound_reported": 477,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la03_rdata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 477,
+        "upper_bound": 477,
+        "lb_data": [
+          {
+            "value": 477,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 477,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "r-la03",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": null,
+        "bounds": {
+          "upper": 478,
+          "lower": 477
+        },
+        "path": "hurink/rdata/la03.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": null,
+        "schedulinglab_lower": 477,
+        "schedulinglab_upper": 478
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la03_vdata",
+      "family": "hurink",
+      "variant": "vdata",
+      "base_instance": "la03",
+      "independently_verified_optimum": null,
+      "reported_optimum": 477,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 477,
+      "lower_bound_reported": 477,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la03_vdata",
+        "size": "10 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 477,
+        "upper_bound": 477,
+        "lb_data": [
+          {
+            "value": 477,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 477,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "v-la03",
+        "jobs": 10,
+        "machines": 5,
+        "optimum": 477,
+        "path": "hurink/vdata/la03.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 477,
+        "schedulinglab_lower": 477,
+        "schedulinglab_upper": 477
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la07_edata",
+      "family": "hurink",
+      "variant": "edata",
+      "base_instance": "la07",
+      "independently_verified_optimum": null,
+      "reported_optimum": 762,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 762,
+      "lower_bound_reported": 762,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la07_edata",
+        "size": "15 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 762,
+        "upper_bound": 762,
+        "lb_data": [
+          {
+            "value": 762,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 762,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "e-la07",
+        "jobs": 15,
+        "machines": 5,
+        "optimum": 762,
+        "path": "hurink/edata/la07.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 762,
+        "schedulinglab_lower": 762,
+        "schedulinglab_upper": 762
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la07_rdata",
+      "family": "hurink",
+      "variant": "rdata",
+      "base_instance": "la07",
+      "independently_verified_optimum": null,
+      "reported_optimum": 749,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 749,
+      "lower_bound_reported": 749,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la07_rdata",
+        "size": "15 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 749,
+        "upper_bound": 749,
+        "lb_data": [
+          {
+            "value": 749,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 749,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "r-la07",
+        "jobs": 15,
+        "machines": 5,
+        "optimum": null,
+        "bounds": {
+          "upper": 750,
+          "lower": 749
+        },
+        "path": "hurink/rdata/la07.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": null,
+        "schedulinglab_lower": 749,
+        "schedulinglab_upper": 750
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la07_vdata",
+      "family": "hurink",
+      "variant": "vdata",
+      "base_instance": "la07",
+      "independently_verified_optimum": null,
+      "reported_optimum": 749,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 749,
+      "lower_bound_reported": 749,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la07_vdata",
+        "size": "15 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 749,
+        "upper_bound": 749,
+        "lb_data": [
+          {
+            "value": 749,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 749,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "v-la07",
+        "jobs": 15,
+        "machines": 5,
+        "optimum": 749,
+        "path": "hurink/vdata/la07.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 749,
+        "schedulinglab_lower": 749,
+        "schedulinglab_upper": 749
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la12_edata",
+      "family": "hurink",
+      "variant": "edata",
+      "base_instance": "la12",
+      "independently_verified_optimum": null,
+      "reported_optimum": 960,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 960,
+      "lower_bound_reported": 960,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la12_edata",
+        "size": "20 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 960,
+        "upper_bound": 960,
+        "lb_data": [
+          {
+            "value": 960,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 960,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "e-la12",
+        "jobs": 20,
+        "machines": 5,
+        "optimum": 960,
+        "path": "hurink/edata/la12.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 960,
+        "schedulinglab_lower": 960,
+        "schedulinglab_upper": 960
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la12_rdata",
+      "family": "hurink",
+      "variant": "rdata",
+      "base_instance": "la12",
+      "independently_verified_optimum": null,
+      "reported_optimum": 936,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 936,
+      "lower_bound_reported": 936,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la12_rdata",
+        "size": "20 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 936,
+        "upper_bound": 936,
+        "lb_data": [
+          {
+            "value": 936,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 936,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "r-la12",
+        "jobs": 20,
+        "machines": 5,
+        "optimum": 936,
+        "path": "hurink/rdata/la12.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 936,
+        "schedulinglab_lower": 936,
+        "schedulinglab_upper": 936
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    },
+    {
+      "instance_id": "la12_vdata",
+      "family": "hurink",
+      "variant": "vdata",
+      "base_instance": "la12",
+      "independently_verified_optimum": null,
+      "reported_optimum": 936,
+      "reference_status": "reported_optimal_unverified",
+      "best_known_feasible_value_reported": 936,
+      "lower_bound_reported": 936,
+      "proof_independently_checked": false,
+      "feasible_certificate_independently_checked": false,
+      "chosen_source": "scheduleopt",
+      "chosen_source_commit": "f89e5b007c90a1c1a70fa48a28d657a72da05665",
+      "chosen_source_record": {
+        "instance": "la12_vdata",
+        "size": "20 x 5",
+        "type": "machine-independent flexible jobshop",
+        "family": "la",
+        "family_long": "Hurink, Jurisch and Thole 1994",
+        "status": "closed",
+        "lower_bound": 936,
+        "upper_bound": 936,
+        "lb_data": [
+          {
+            "value": 936,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ],
+        "ub_data": [
+          {
+            "value": 936,
+            "date": "2026-01-01",
+            "solver": "OptalCP",
+            "time": 1,
+            "hardware": "Intel 11th Gen Core i7-1185G7",
+            "certificate": "no"
+          }
+        ]
+      },
+      "schedulinglab_record": {
+        "name": "v-la12",
+        "jobs": 20,
+        "machines": 5,
+        "optimum": 936,
+        "path": "hurink/vdata/la12.txt"
+      },
+      "comparison": {
+        "schedulinglab_optimum": 936,
+        "schedulinglab_lower": 936,
+        "schedulinglab_upper": 936
+      },
+      "caution": "A maintenance-table claim, not an independently checked proof or schedule. Runtime agents must not read this file."
+    }
+  ]
+}

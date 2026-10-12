@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "vendor/fjsp-instances/tree.json",
+      "sha256": "1a7eb25b9ff7ddd86d41d31b59a80afffde3b6b67dc54e4e036fb726dc7ea19e",
+      "bytes": 203895,
+      "restore_url": "https://api.github.com/repos/SchedulingLab/fjsp-instances/git/trees/ac4c3402312bfbeafcf4472d78be567d4e6b46ab?recursive=1"
+    },
+    {
+      "path": "vendor/scheduleopt/tree.json",
+      "sha256": "cbe5ee84f73ac78f0be94680d82627feec0167896b8e3df32c3d014de34c0a26",
+      "bytes": 2095799,
+      "restore_url": "https://api.github.com/repos/ScheduleOpt/benchmarks/git/trees/f89e5b007c90a1c1a70fa48a28d657a72da05665?recursive=1"
+    }
+  ]
+}

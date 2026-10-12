@@ -1,0 +1,20 @@
+{
+  "protocol_version": "round2-development-0.1",
+  "phase": "development",
+  "model": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "timeout_seconds": 240,
+    "phase": "development",
+    "grant_id": "dev-static-integration"
+  },
+  "max_model_calls": 3,
+  "wall_seconds": 780,
+  "solver_budget_seconds": 30,
+  "max_solver_calls": 2,
+  "solver_grant_id": "dev-static-solvers",
+  "seed": 11,
+  "workers": 1,
+  "search_branching": "AUTOMATIC_SEARCH",
+  "randomize_search": false
+}

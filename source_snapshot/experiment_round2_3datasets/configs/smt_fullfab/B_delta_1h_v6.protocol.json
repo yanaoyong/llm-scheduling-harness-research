@@ -1,0 +1,164 @@
+{
+  "schema": "smt-fullfab-B-delta-gate-v6-protocol",
+  "status": "root_installed_actual30_tests_passed_independent_review_bound",
+  "formal": false,
+  "execute_now": false,
+  "run_parameters": {
+    "run_id": "B_1701_1h_delta_v6",
+    "scenario": 1701,
+    "seconds": 3600,
+    "wall_seconds": 21600.0,
+    "max_log_bytes": 17179869184,
+    "max_trace_bytes": 2147483648,
+    "page_chars": 45000
+  },
+  "limits": {
+    "child_seconds": 21600,
+    "outer_seconds": 22200,
+    "readback_seconds": 600,
+    "restore_seconds_within_readback": 180,
+    "trace_bytes": 2147483648,
+    "run_scratch_campaign_bytes": 17179869184,
+    "minimum_free_bytes": 42949672960,
+    "maximum_child_peak_rss_bytes": 8589934592,
+    "rss_is_hard_guard": false,
+    "minimum_preserved_prior_model_attempts": 584,
+    "minimum_preserved_prior_unknown_calls": 4,
+    "serial_only": true,
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "global_max_calls": null,
+    "global_max_tokens": null,
+    "per_call_timeout_seconds": 180,
+    "solver_seconds": 0,
+    "constructor_seconds": 0,
+    "plan_seconds": 14400,
+    "lookahead_depth": 2,
+    "period_seconds": 1800,
+    "period_is_absolute": true
+  },
+  "prerequisite_roles": {
+    "endpoint_tests": "artifacts/smt_fullfab_diagnostics/B_v6_activation_v1/tests_result.json",
+    "installation_manifest": "artifacts/smt_fullfab_diagnostics/B_v6_activation_v1/installed_source_manifest.json",
+    "installation_review": "artifacts/smt_fullfab_diagnostics/B_prompt_hash_rejection_review_v1/installation_review.json",
+    "guard_tests": "artifacts/smt_fullfab_diagnostics/guard_process_root_v2/result.json",
+    "transport_tests": "artifacts/smt_fullfab_diagnostics/supervised_transport_root_v2/result.json",
+    "component_first_checks": "artifacts/smt_fullfab_diagnostics/B_incremental_first_checks_v1/execution_01/result.json",
+    "component_remaining": "artifacts/smt_fullfab_diagnostics/B_incremental_execution_repairs_v1/execution_01/result.json",
+    "performance_entry_tests": "artifacts/smt_fullfab_diagnostics/B_original_task_performance_v1/first_checks_01/process_result.json",
+    "measured_decision": "artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/measured_integration_decision.json",
+    "admission_tests": "artifacts/smt_fullfab_diagnostics/B_stopped_pending_root_checks_v1/execution_02/process_result.json",
+    "admission_readonly": "artifacts/smt_fullfab_diagnostics/B_stopped_pending_root_checks_v1/real_readonly_result.json"
+  },
+  "prerequisite_sha256": {
+    "artifacts/smt_fullfab_diagnostics/B_incremental_first_checks_v1/execution_01/result.json": "67bf919f834a50ce4b7455fc622e52b8f035c9d7d0d05edbe56a3c8d49fcdf74",
+    "artifacts/smt_fullfab_diagnostics/B_incremental_execution_repairs_v1/execution_01/result.json": "2f1ac480c8e1dbec0d5e3a3fc7e9ec3279ef809c0f47453a07199921de7fecf8",
+    "artifacts/smt_fullfab_diagnostics/B_original_task_performance_v1/first_checks_01/process_result.json": "9d6e9ad0f5824f82dd16cc221e1ac6850d3122991b80e7348658261a0c535f8a",
+    "artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/measured_integration_decision.json": "cebda1aecae6b8a648b2509f70a194dc7957a3be1846fa56cda31c76cd6a1ddf",
+    "artifacts/smt_fullfab_diagnostics/B_stopped_pending_root_checks_v1/execution_02/process_result.json": "a0f1cf740cab44ac094502e6194c59c84a1688923598047dbbcf6601c0723938",
+    "artifacts/smt_fullfab_diagnostics/B_stopped_pending_root_checks_v1/real_readonly_result.json": "a66ffb4b6ae405073cb6a5472c655097946320c7381f922e2cb54573e0b654fb",
+    "artifacts/smt_fullfab_diagnostics/guard_process_root_v2/result.json": "8c8a3ae669b0482bc3ad27a0330edb082eb1970379453f2d2cb30ce6482c050e",
+    "artifacts/smt_fullfab_diagnostics/supervised_transport_root_v2/result.json": "a00d831778f61de5ad1cce3958afc586619c52cd76c461376fbd9b849d5c9fc4",
+    "artifacts/smt_fullfab_diagnostics/B_v6_activation_v1/tests_result.json": "c68bbae3ae2530f93868121379a46c2abf63af2c619e0c17926ff6474bdc2f0a",
+    "artifacts/smt_fullfab_diagnostics/B_v6_activation_v1/installed_source_manifest.json": "e99e71e065d900a37fe6d036857da49a95772abe05c3a9fbc68f326d1eeec066",
+    "artifacts/smt_fullfab_diagnostics/B_prompt_hash_rejection_review_v1/installation_review.json": "c098a3304ce228b2c0a8c7065b2c664ab7f8aebccfcdd29c64b4467730194998",
+    "artifacts/smt_fullfab_diagnostics/B_v6_activation_v1/real_readonly_result.json": "d2c5a149313ac214fce8345468d6b9045ca935d784e8fc8e847d1dbfb7dd1815"
+  },
+  "additional_frozen_files": [
+    "artifacts/smt_fullfab_diagnostics/B_v6_activation_v1/host_launch.py"
+  ],
+  "purpose": "One new cold full913 B1h with narrow prompt-hash echo rejection feedback. B4 unsettled call and failed B5 original evidence remain immutable. No automatic correction, replay of a model call, solver or scheduling fallback.",
+  "resource_changes_from_v3": [
+    "No numeric resource increase: child21600/outer22200/readback600/trace2GiB/combined16GiB/free40GiB/RSS8GiB unchanged.",
+    "Exact restore at most180s is a sub-budget inside the original combined readback600s, not a time extension.",
+    "584 original model attempts,4 prior unknown completions and one raw B4 pending are preservation facts, not quotas."
+  ],
+  "historical_fact_reference": {
+    "kind": "prior_protocol_minima_not_current_ledger_summary",
+    "attempts_minimum": 584,
+    "unknown_completed_minimum": 4,
+    "is_allowance": false,
+    "current_original_stop_root_completion_sha256": "76bf98f87a67a4f0c713c62b5e57e6707a2627c82379fca6f95026d987460852"
+  },
+  "freeze": {
+    "files": "Exact all noncache src, vendor simulation, input data, requirements, approved configs, this protocol and prerequisite receipts; normalized per-file SHA plus controller-compatible source digest.",
+    "runtime": "Python runtime plus actual CLI wrapper/executable paths, identities and SHA before/after.",
+    "git": "Origin pointer only; dirty source is represented by bytes.",
+    "mapping": "Frozen runs/progress link to original real paths. Only controller ROOT/DEFAULT_LEDGER/APPROVAL and budget ROOT route runtime writes; source defaults remain frozen. No ledger copy is used as a writable account.",
+    "stopped_sources": "Exact original small certificate bytes copied into campaign/stopped_source, with original absolute path/identity and SHA retained; original files are rechecked at final evidence. Both copy and external original byte counts consume the same16GiB."
+  },
+  "supervision": {
+    "chain": "host gate owns serial lock -> common owner-pipe outer supervisor -> separately guarded controller/readback/restore; each model call has its own existing guard.",
+    "evidence": "Every successful phase requires original request/process hashes, terminal lifecycle receipt, actual completed wait and outputs pinned to first guard SHA. Missing owner/cleanup/pending evidence fails.",
+    "deadline": "Preparation counted into outer allowance. Restore shares remaining readback allowance. Final certificate fsync/host return excluded from reported receipt-preparation sample and requires launching-host measurement; no claim of hard coverage for that small host tail.",
+    "memory": "max command/guard process peakRSS per phase, posthoc<=8GiB; not simultaneous tree RSS and not a hard memory guard.",
+    "containment": "POSIX process-group/owner-pipe containment under its documented cooperative topology; not a sandbox against arbitrary setsid/setpgid."
+  },
+  "acceptance": [
+    "Complete success only after outer actual exit, child terminal3600, all913 source coverage and full source/opportunity/physical bundle valid.",
+    "Frozen new controller replays every original action or envelope rejection with exact original schema/raw/guard/ledger/durable prefix; only explicit verified apply commits unchanged compiled.plan; no solver/constructor.",
+    "New run actual account closed; original stopped CID remains raw pending with unknown usage. Original append-only diagnosis, complete prefix/source/stop proof and same-domain suffix guard must validate.",
+    "Same-source snapshot1 hash/implementation/data/fulltrace checks plus actual exact restore without physical advance.",
+    "All first result/trace/cost/process/bundle member/ledger/checkpoint hashes survive final inventory and later readback; acceptance predicates are recomputed.",
+    "Complete raw files including optional cleanup errors retained on failures; no crop/removal/retry to meet caps."
+  ],
+  "limitations": [
+    "30 new distinct installed regressions and real original ledger readonly passed; prior211 version-specific tests retained without rerun. These do not accept a new actual V6 run.",
+    "ProgressObservations is not integrated; timing leaf work counters may be absent. Original history copies/whole DB hashing still exist.",
+    "Only exact unresolved B4 call is excepted after full original B5 closed-prefix verification; no new pending is permitted.",
+    "All old physical/common validator, explicit apply, original guard, actual exit/full costs and independent attribution remain mandatory."
+  ],
+  "planned_commands": {
+    "plan": [
+      ".venv/bin/python",
+      "-B",
+      "-m",
+      "src.smt_fullfab.B_delta_gate_v6"
+    ],
+    "prepare": [
+      ".venv/bin/python",
+      "-B",
+      "-m",
+      "src.smt_fullfab.B_delta_gate_v6",
+      "--prepare"
+    ],
+    "execute": [
+      ".venv/bin/python",
+      "-B",
+      "-m",
+      "src.smt_fullfab.B_delta_gate_v6",
+      "--execute"
+    ],
+    "readback": [
+      ".venv/bin/python",
+      "-B",
+      "-m",
+      "src.smt_fullfab.B_delta_gate_v6",
+      "--read-acceptance"
+    ]
+  },
+  "launch_requirement": "Root completed exact new installation,30 actual tests, original full ledger readonly and independent installed review. Prepare freezes exact bytes; actual run still needs original real exit, complete audits and costs. No automatic restart or old-run rewrite.",
+  "prerequisite_test_counts": {
+    "endpoint_tests": 30,
+    "guard_tests": 21,
+    "transport_tests": 20
+  },
+  "original_ledger_sha256": "e407386eef8364b19dcd4f1d0ec7814d915514e851baa15648d801b730e397f3",
+  "progress_observation": {
+    "method": "Read existing completed request/response metadata, durable journal tails, timing leaves and trace append-only increments; retain small timestamped external observations. No live DB mutation or full replay while running.",
+    "valid_progress": [
+      "new requested pages with distinct continuation or stated gap",
+      "new model-selected tasks or substantive edits",
+      "validation errors reduced or changed with targeted correction",
+      "explicit validated apply appearing as an actual physical trace commit",
+      "physical simulation time advances and subsequent scheduling continues"
+    ],
+    "diagnosis_trigger": "Three consecutive completed responses repeating the same request or same validation error without new useful content, or 15 minutes without substantive draft/validation/commit/simulation progress after excluding normal active model waits and distinct page acquisition; these are diagnosis triggers, not call/token quotas.",
+    "stop_rule": "If original records confirm a cycle without a concrete productive next step, preserve all raw records and safely stop that run; otherwise continue. No automatic restart or old-run rewrite.",
+    "milestones": [
+      "first actual validated plan commit",
+      "subsequent physical progress",
+      "terminal3600 plus actual exit and complete gate evidence"
+    ]
+  }
+}

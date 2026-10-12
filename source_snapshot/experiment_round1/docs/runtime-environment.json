@@ -1,0 +1,11 @@
+{
+  "platform": "macOS-26.6-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.10",
+  "cpu_brand": null,
+  "cpu_brand_note": "sysctl denied by current outer sandbox",
+  "logical_cpu_count": 8,
+  "solver_threads": 1,
+  "batch_concurrency": 1,
+  "recorded_at": "2026-10-08T14:20:36.098251+00:00"
+}

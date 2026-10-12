@@ -1,0 +1,97 @@
+{
+  "schema": "smt-fullfab-offline-A24-gate-v4-protocol",
+  "formal": false,
+  "execute_now": false,
+  "status": "root_reviewed_enabled_pending_actual_freeze_and_launch",
+  "run_parameters": {
+    "arm": "A",
+    "run_id": "A_1701_24h_hybrid_v1",
+    "seconds": 86400,
+    "seed": 1701,
+    "wall_seconds": 10800.0,
+    "max_plans": 3600,
+    "plan_seconds": 14400,
+    "period_seconds": 1800,
+    "lookahead_depth": 2,
+    "solver_seconds": 2.0,
+    "solver_budget_seconds": 96.0,
+    "max_slots": 4,
+    "snapshot_path": null,
+    "solver_method": "hybrid",
+    "max_log_bytes": 34359738368,
+    "constructor_seconds": 5.0,
+    "max_candidate_evaluations": 250000,
+    "max_trace_bytes": 4294967296,
+    "audit_mode": "stream",
+    "snapshot_mode": "stream"
+  },
+  "limits": {
+    "child_seconds": 10800,
+    "outer_seconds": 12600,
+    "readback_seconds": 1200,
+    "restore_seconds_within_readback": 900,
+    "trace_bytes": 4294967296,
+    "all_retained_bytes": 34359738368,
+    "minimum_free_bytes": 68719476736,
+    "maximum_per_pid_peak_rss_bytes": 8589934592,
+    "rss_is_hard_guard": false,
+    "serial_only": true,
+    "model_calls": 0,
+    "periodic_cp_calls": 48,
+    "cp_requested_seconds": 96,
+    "constructor_seconds": 5,
+    "max_candidate_evaluations": 250000,
+    "max_plans": 3600
+  },
+  "prerequisite_roles": {
+    "terminal_report": "artifacts/smt_fullfab_diagnostics/A_8h_hybrid_v3_terminal_v1/report.json",
+    "readback": "artifacts/smt_fullfab_recovery/A_8h_hybrid_v3_acceptance_readback_v1/result.json",
+    "restore": "artifacts/smt_fullfab_recovery/A_8h_hybrid_v3_final_restore_v1/result.json",
+    "readback_process": "artifacts/smt_fullfab_recovery/A_8h_hybrid_v3_acceptance_readback_v1/process_result.json",
+    "restore_process": "artifacts/smt_fullfab_recovery/A_8h_hybrid_v3_final_restore_v1/process_result.json"
+  },
+  "prerequisite_sha256": {
+    "artifacts/smt_fullfab_diagnostics/A_8h_hybrid_v3_terminal_v1/report.json": "3fc61e76f4ca2c3368a3b96cddb71f777b4666f2fccaa9294dc21ebbf9958943",
+    "artifacts/smt_fullfab_recovery/A_8h_hybrid_v3_acceptance_readback_v1/result.json": "2dc2c43c557041ea6e94b0c0742e899da6a2085b39cc3bde245d336a79a9487e",
+    "artifacts/smt_fullfab_recovery/A_8h_hybrid_v3_final_restore_v1/result.json": "a92e8316c7660b76e92ec046d46b4ef129e070d08be7260c700b8f2b53ec268e",
+    "artifacts/smt_fullfab_recovery/A_8h_hybrid_v3_acceptance_readback_v1/process_result.json": "4b149142044e73ccaeb96c00ffeef6aa488b8bc5cf516b965ad4d54248eb97f6",
+    "artifacts/smt_fullfab_recovery/A_8h_hybrid_v3_final_restore_v1/process_result.json": "32b6fa8b65b1d8ec46fceff433c67b25a29ce546bc0802ec69d3ae3d11674638"
+  },
+  "algorithm_sha256": {
+    "src/smt_fullfab/runner.py": "3235ffa2346a887ab294e5696ffd7245150b6707155e0e203bce25e80a200c70",
+    "src/smt_fullfab/hybrid.py": "3c89ea263fdace8cb3636b5119e60374944ae2a2ea8d1e9c558cc0496f9cf6bd",
+    "src/smt_fullfab/optimizer.py": "30a0d40c9d94f7e462447d8496d21237089e12bd66ab142c51f9ae7346f72d60",
+    "src/smt_fullfab/decomposition.py": "0f558c3be26a093f3099ad8c61a2587dda42d85ddef175ed80c425ea3aaf3a4f",
+    "src/smt_fullfab/incumbent.py": "faa6c1e9246f0462ee68d7f9ceb05931c37d461e5f43a6b43f728bf1860a9bd6",
+    "src/smt_fullfab/constructive_tool.py": "824de288425783f0a23b79f617bc3505e42e4b37280ff90617cb15e61b956c86"
+  },
+  "additional_frozen_files": [
+    "artifacts/smt_fullfab_diagnostics/A24_root_observer_v2/root_observer.py",
+    "artifacts/smt_fullfab_diagnostics/A24_host_launch_v1/host_launch.py",
+    "artifacts/smt_fullfab_diagnostics/A24_status_adapter_v1/status_adapter.py",
+    "artifacts/smt_fullfab_diagnostics/A24_root_execution_v1/approved_config.json"
+  ],
+  "purpose": "One new cold-start 24h offline capacity experiment. It is not a paired A/B/C quality ranking, strong-baseline or steady-state claim.",
+  "algorithm": "Exact A8 source hashes; 4h lookahead, depth2, periodic2s CP every absolute30min, between-period shared classical construction5s/250000, slots4 periodic and8 event. No model or automatic fallback.",
+  "cost_scope": "Preparation, freeze, child publication/exit, audits, exact state restoration, guard cleanup, retained scratch and all outputs are within12600s/32GiB. Readback and restore share1200s (restore<=900). Reviewed host/status/root observer bind the actual original tool exit and continuous root clock; final publication and pure-status tail remain separately measured and disclosed.",
+  "rationale": {
+    "observed_A8": {
+      "plans": 635,
+      "periodic_cp_calls": 16,
+      "cp_requested_seconds": 32,
+      "gate_wall_seconds": 1678.2060443330556,
+      "evidence_bytes": 5281913668,
+      "child_peak_rss_bytes": 2568454144,
+      "restore_process_wall_seconds": 113.00271887506824
+    },
+    "simple_3x_extrapolation_not_measurement": {
+      "plans": 1905,
+      "gate_wall_seconds": 5034.618132999167,
+      "evidence_bytes": 15845741004,
+      "restore_seconds": 339.0081566252047
+    },
+    "limits_are_hypotheses": "History growth and restoring full JSON may be nonlinear. Caps are not evidence of feasibility. RSS is posthoc, not a hard memory guard."
+  },
+  "launch_blockers": [],
+  "preservation": "No old A8 files are modified; no retry/resume/repair over an existing claim. Partial failure evidence remains. No shared ledger is read, copied or written by this offline gate."
+}

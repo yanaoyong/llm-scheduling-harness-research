@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+vendor/
+data/raw/
+runs/
+artifacts/large/
+*.log
+.env
+.env.*
+progress/*.lock
+artifacts/.matplotlib/
+data/smt/SMT2020*/
+artifacts/smt_development/
+artifacts/review_static/*.log
+
+**/.matplotlib/
+
+# Full raw model/durable export remains local; audit hashes are versioned.
+artifacts/smt_fullfab_diagnostics/B_v7_resume_semantics_review_v1/parent_durable_export.json
+artifacts/smt_fullfab_diagnostics/B_v7_resume_semantics_review_v1/last_original_memory.json

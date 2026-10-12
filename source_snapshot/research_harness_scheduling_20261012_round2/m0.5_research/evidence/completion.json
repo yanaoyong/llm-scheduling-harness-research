@@ -1,0 +1,47 @@
+{
+  "completed_at": "2026-10-12T11:44:19.795136+00:00",
+  "stage": "M0.5",
+  "status": "APPROVED",
+  "review_verdict": "APPROVED",
+  "review_result": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/review-v1/result.json",
+  "condition_closure": null,
+  "gate_pass": true,
+  "actual_research_sessions": 49,
+  "session_limit": 49,
+  "remaining_sessions_unused": 0,
+  "sessions_by_phase": {
+    "Scope": 1,
+    "Search": 4,
+    "Fetch": 10,
+    "Verify": 31,
+    "Synthesize": 2,
+    "Review": 1
+  },
+  "verification_original_attempts": 27,
+  "verification_retry_attempts": 4,
+  "verification_valid_results": 27,
+  "sessions_by_model": {
+    "gpt-6-luna": 15,
+    "gpt-6.1-sol": 34
+  },
+  "session_statuses": {
+    "completed": 45,
+    "failed": 4
+  },
+  "original_claim_statuses": {
+    "refuted": 2,
+    "confirmed": 6,
+    "unverified": 1
+  },
+  "effective_claim_statuses": {
+    "refuted": 2,
+    "confirmed": 7
+  },
+  "open_questions": 12,
+  "known_input_plus_output_tokens": 36117726,
+  "unknown_usage_sessions": 4,
+  "monetary_cost": null,
+  "prior_run_preserved": true,
+  "internal_source_unchanged": true,
+  "scope": "Research only; no new factory experiment or M1/harness design started."
+}

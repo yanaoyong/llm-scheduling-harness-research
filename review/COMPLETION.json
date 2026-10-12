@@ -1,0 +1,43 @@
+{
+  "status": "complete",
+  "completed_at": "2026-10-12T13:18:45.220800+00:00",
+  "scope": "local project and conversation archive; no harness implementation, new experiment, remote push or sidebar chat archival",
+  "raw_project_files": 121279,
+  "raw_project_content_bytes": 50263836618,
+  "compressed_project_bytes": 6856765291,
+  "persisted_sessions": 98,
+  "visible_messages": 5035,
+  "original_conversation_bytes": 459872706,
+  "attachments": 2,
+  "source_snapshot_files": 581,
+  "delegation": {
+    "model": "gpt-6-luna",
+    "agents": [
+      "archive_project_docs",
+      "archive_conversation_notes",
+      "archive_git_review"
+    ],
+    "owner_review": "review/owner_review.json",
+    "cost": "New archival work is separate from the historical M0.5 49-session budget; monetary usage not available."
+  },
+  "validation": {
+    "full_integrity_and_restore": "review/archive_verification.json",
+    "owner_source_checks": "review/owner_review.json",
+    "additional_snapshots_and_source_git_recheck": "review/final_precommit_checks.json",
+    "restored_sample_files": 9,
+    "source_repositories_unchanged": true
+  },
+  "local_git": {
+    "branch": "archive-main",
+    "private_directory_excluded": true,
+    "remote_publication": false,
+    "author_identity": "Codex Archive <codex-archive@localhost>",
+    "commit_evidence": "Use git log -1 in this archive directory; post-commit audit is saved under private/git/archive-final-check.json."
+  },
+  "limitations": [
+    "Full archive remains on the same local disk as originals.",
+    "Conversation cutoff is fixed at 2026-10-12T12:48:19.877397+00:00; later archival messages are outside the frozen prefix.",
+    "Git alone excludes private raw evidence; copy the entire archive directory for a full backup.",
+    "Byte preservation and recovery checks do not certify production runtime reproducibility."
+  ]
+}

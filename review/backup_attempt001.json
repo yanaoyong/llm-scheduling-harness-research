@@ -1,0 +1,16 @@
+{
+  "status": "failed_before_source_capture",
+  "error": "Python 3.12 streaming gzip requires str filename, PosixPath not supported in gzip header path handling",
+  "preserved": [
+    {
+      "path": "archive/20261012_project_archive/private/project-originals.tar.gz",
+      "bytes": 0
+    },
+    {
+      "path": "archive/20261012_project_archive/manifests/project_files.jsonl",
+      "bytes": 0
+    }
+  ],
+  "fix": "pass str(target) to tarfile.open",
+  "timestamp": "2026-10-12T13:00:00.268351+00:00"
+}

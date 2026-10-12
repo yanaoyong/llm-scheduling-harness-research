@@ -1,0 +1,21 @@
+{
+  "amendment_id": "smt-fullfab-stage2-C-after-timeout-v1",
+  "authorization": "not_yet_approved",
+  "budget_id": "smt-fullfab-stage2-probe-v1",
+  "purpose": "C",
+  "waive_unknown_call_ids": ["544d0153-8b11-4193-b4e3-4461b3a2c178"],
+  "max_new_attempts": 4,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "scenario": 1701,
+  "window_seconds": 3600,
+  "max_model_attempts_unchanged": 12,
+  "known_token_admission_limit_unchanged": 240000,
+  "per_call_timeout_seconds_unchanged": 180,
+  "model_active_seconds_unchanged": 2700,
+  "solver_requested_seconds_C_unchanged": 60,
+  "max_log_bytes_unchanged": 268435456,
+  "automatic_outer_retries": 0,
+  "stop_on_any_new_unknown_usage": true,
+  "cost_usd": null
+}

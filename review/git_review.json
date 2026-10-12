@@ -1,0 +1,52 @@
+{
+  "schema": "archive-git-review-v1",
+  "reviewed_at": "2026-10-12",
+  "scope": "read-only review of source repo preservation, archive boundaries, and recovery risks",
+  "checks": [
+    {
+      "id": "source_repo_dirty_state",
+      "status": "evidence_recorded_owner_verification_required",
+      "evidence": "experiment_round2_3datasets: 4 tracked modified files; 220 untracked items; git diff --stat 4,184 insertions/22 deletions; 642 ignored entries. Preserve HEAD/index/worktree without writes; bundle alone omits dirty and untracked state. See docs/GIT_AND_RESTORE.md#源仓库状态与边界."
+    },
+    {
+      "id": "large_local_evidence_and_capacity",
+      "status": "risk_requires_backup_manifest",
+      "evidence": "experiment_round2_3datasets/runs is approximately 47 GiB; source tree approximately 48 GiB. Full private copy and hash manifest must include ignored/untracked evidence. Available space was reported as 172 GiB; this is same-disk capacity, not an offsite backup."
+    },
+    {
+      "id": "symlink_and_external_dependency_inventory",
+      "status": "risk_requires_explicit_link_manifest",
+      "evidence": "Read-only find identified frozen runs/progress symlinks pointing at absolute source-root paths, plus .venv Python links ending at /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12. Do not recursively follow links silently; record link text, target status, and intended restoration mapping."
+    },
+    {
+      "id": "myharness_minimal_scope",
+      "status": "scope_restricted",
+      "evidence": "../myharness has 2 tracked modified files, approximately 112 untracked entries, and 43.59 MiB packed Git history. It is a personal shared harness repository; archive only files demonstrably referenced by this project and their fingerprints, not personal config or the whole repository."
+    },
+    {
+      "id": "manifest_hash_and_regeneration_constraints",
+      "status": "constraints_documented",
+      "evidence": "experiment_round2_3datasets/README.md and progress/evidence-manifest.json require retaining full logs/evidence; README warns model outputs cannot be regenerated and signed replay/audit bindings must not be overwritten. Recovery guidance requires hash-first read-only verification and fresh output paths."
+    },
+    {
+      "id": "private_data_exclusion_from_git",
+      "status": "owner_acceptance_required",
+      "evidence": "Archive scope requires raw conversations, attachments, large evidence, bundles, dirty/untracked backups to remain local private and gitignored. Before first commit verify git status and git check-ignore for every private root; never push."
+    },
+    {
+      "id": "conversation_attachments_and_external_permissions",
+      "status": "partial_unverified",
+      "evidence": "Filesystem review cannot establish that all chat attachments are present or that external account/service permissions will persist. Record each attachment/reference and availability in the owner manifest; absolute paths and historical grants do not automatically transfer."
+    },
+    {
+      "id": "restore_is_read_only_and_non_replaying",
+      "status": "procedure_documented_owner_script_validation_required",
+      "evidence": "docs/GIT_AND_RESTORE.md specifies bundle plus complete dirty/untracked file backup restoration, hash verification first, no reset/clean on originals, and no automatic model or solver rerun. Owner verify_archive.py must enforce copy/link and no-replay boundaries."
+    }
+  ],
+  "limitations": [
+    "Review did not write to either source repository or perform a Git mutation.",
+    "Archive private copy completeness, actual bundle restoration, and source before/after immutability remain to be verified by the archive owner.",
+    "Same-disk archival does not protect against disk loss; external permissions and conversation attachment availability require separate confirmation."
+  ]
+}

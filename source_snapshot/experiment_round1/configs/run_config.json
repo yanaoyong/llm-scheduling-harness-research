@@ -1,0 +1,25 @@
+{
+  "version": "round1-v1",
+  "model": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "timeout_seconds": 240,
+    "codex_binary": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+    "proxy": "http://127.0.0.1:7897"
+  },
+  "max_model_calls": 4,
+  "max_solver_calls": 2,
+  "solver_total_seconds": 40,
+  "classical_configuration": "frumpy",
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "run_timeout_seconds": 1100,
+  "development_model_call_cap": 24,
+  "formal_model_call_cap": 72,
+  "formal_run_cap": 27,
+  "concurrency": 1,
+  "fallback": "none"
+}

@@ -1,0 +1,3488 @@
+[
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/build_solver.py",
+    "archive_path": "source_snapshot/experiment_round1/src/build_solver.py",
+    "bytes": 3357,
+    "sha256": "3c577e0045107860a2d9f093ecad52ebdacb8171ff65e88b29f901f6e1c2d88c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/classical.py",
+    "archive_path": "source_snapshot/experiment_round1/src/classical.py",
+    "bytes": 7403,
+    "sha256": "eb377fa10d17c973fa7eb77d2af61a74fe3efb0860c83c20b66933d74ace2e10"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/dispatch.py",
+    "archive_path": "source_snapshot/experiment_round1/src/dispatch.py",
+    "bytes": 5911,
+    "sha256": "92516f1b6fea1d3db27c6b3ac01665323ec1efdd200d2442d4fff6a83ef36ea0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/model_transport.py",
+    "archive_path": "source_snapshot/experiment_round1/src/model_transport.py",
+    "bytes": 12018,
+    "sha256": "a2561368f9046ab317a0eab00111baa6c6015b44f45d689beddcd061b5aab602"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/problem.py",
+    "archive_path": "source_snapshot/experiment_round1/src/problem.py",
+    "bytes": 6609,
+    "sha256": "c2493241aeea6f962fa9a46333c5112c391a7013a49081d45a62ec050334e750"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/replay.py",
+    "archive_path": "source_snapshot/experiment_round1/src/replay.py",
+    "bytes": 12143,
+    "sha256": "3e1ccbd3eeb73af4c658a9fea2a42bbab5d26301893e8c3e1e0c74af8ae8d43f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/report.py",
+    "archive_path": "source_snapshot/experiment_round1/src/report.py",
+    "bytes": 11046,
+    "sha256": "bf4cbfb987cde543bd590833148de4ec3945ded7c1e08f36a35241f18eaa5dd2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/runner.py",
+    "archive_path": "source_snapshot/experiment_round1/src/runner.py",
+    "bytes": 15902,
+    "sha256": "3ebdf58748f0859835fd2d6aae1a3143871b8a45169a3c71f380b5935125abbe"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/show.lp",
+    "archive_path": "source_snapshot/experiment_round1/src/show.lp",
+    "bytes": 181,
+    "sha256": "cd92e265dc716fa95ae1e15064781eee4b56b72b714dd51ed750ce2227ce5b9c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/src/validator.py",
+    "archive_path": "source_snapshot/experiment_round1/src/validator.py",
+    "bytes": 10047,
+    "sha256": "cdeb8cb25dc95d0f6e14d83d63d0f64a637bc08a111cd68f065fcd590473728e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/scripts/analyze_results.py",
+    "archive_path": "source_snapshot/experiment_round1/scripts/analyze_results.py",
+    "bytes": 9472,
+    "sha256": "df0519dc488cb30874e99eb52bc97dde4457a9b52e110339f3fc23e9d794765b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/scripts/audit_formal.py",
+    "archive_path": "source_snapshot/experiment_round1/scripts/audit_formal.py",
+    "bytes": 29476,
+    "sha256": "f492f2d5c90e30502b854446bb9e81f03bc7f7c7a22a5882132d2800420230c1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/scripts/probe_model.py",
+    "archive_path": "source_snapshot/experiment_round1/scripts/probe_model.py",
+    "bytes": 3282,
+    "sha256": "8177577988d3951c08a7b8033ab63f39948a9e380e35bad655646079fb450f1d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/tests/test_problem_validator.py",
+    "archive_path": "source_snapshot/experiment_round1/tests/test_problem_validator.py",
+    "bytes": 8462,
+    "sha256": "52a7f3fb33b547f19ae724e2f6c9a6ea34e37f6ca71a95f0acc113b4b09d7fed"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/tests/test_source_equivalence.py",
+    "archive_path": "source_snapshot/experiment_round1/tests/test_source_equivalence.py",
+    "bytes": 8880,
+    "sha256": "bd8292c2a0d1f0562787faf07575d39f74944e2b3a5cf0a1bf45eca270f32915"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/PROTOCOL.md",
+    "archive_path": "source_snapshot/experiment_round1/docs/PROTOCOL.md",
+    "bytes": 7060,
+    "sha256": "73764222d8f14303ce1e17d9deeab7eabe097188286cc5cf196a7dab11162416"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/REPORT_zh.md",
+    "archive_path": "source_snapshot/experiment_round1/docs/REPORT_zh.md",
+    "bytes": 9604,
+    "sha256": "a6449efc3364b4aa796763b718360da0e9c15ffd3b9793551b77f6529fb70cee"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/RESULT_ANALYSIS_zh.md",
+    "archive_path": "source_snapshot/experiment_round1/docs/RESULT_ANALYSIS_zh.md",
+    "bytes": 5584,
+    "sha256": "9ef32e5d08ec5373f90461451a9f60e5c5ae9bc6c8f2537101d682db523874bf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/model-channel.md",
+    "archive_path": "source_snapshot/experiment_round1/docs/model-channel.md",
+    "bytes": 7346,
+    "sha256": "e8abb8e49075ecbc4ae3a325a2643e3f081110ef6d18937da5610fd9fabed6ca"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/preflight-review.md",
+    "archive_path": "source_snapshot/experiment_round1/docs/preflight-review.md",
+    "bytes": 7768,
+    "sha256": "8008a3e751f6dc50fe43c0f6e04f852f69ae32054cf755f2748fd8d8f4b8ed0e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/problem-spec.md",
+    "archive_path": "source_snapshot/experiment_round1/docs/problem-spec.md",
+    "bytes": 8755,
+    "sha256": "f8ddeeb3ceae8af849021cbe176396c20d79d2a3d5a7f858ce843c5fdc590969"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/runtime-environment.json",
+    "archive_path": "source_snapshot/experiment_round1/docs/runtime-environment.json",
+    "bytes": 303,
+    "sha256": "b87b275176fa658c37a25fe42cdaade75bc8c04a779f6464d112c0671c092f5a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/source-audit.md",
+    "archive_path": "source_snapshot/experiment_round1/docs/source-audit.md",
+    "bytes": 10973,
+    "sha256": "d059c5f721587279480f642f770cfdb23f2bf7864be351f7611cf5153bd86c60"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/docs/source-manifest.json",
+    "archive_path": "source_snapshot/experiment_round1/docs/source-manifest.json",
+    "bytes": 5981,
+    "sha256": "ef50bad5999afb2db03506f1260adcef3d7878837b58f58525c4a540a64f1806"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/configs/freeze.json",
+    "archive_path": "source_snapshot/experiment_round1/configs/freeze.json",
+    "bytes": 4874,
+    "sha256": "2d947387518d128d7f19ce45cf39fa649216e50f55da0cdc8ade3076a913345c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/configs/instance_split.json",
+    "archive_path": "source_snapshot/experiment_round1/configs/instance_split.json",
+    "bytes": 639,
+    "sha256": "60f9ebb1d0b8ef09e7acd1be415457305f7efc34786298fe8d0119d95754e3f2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/configs/prompt_B.txt",
+    "archive_path": "source_snapshot/experiment_round1/configs/prompt_B.txt",
+    "bytes": 3428,
+    "sha256": "768007736c0e498307a0b2058fa3ab2b964493f8e11878791f83eaae84686a12"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/configs/prompt_C.txt",
+    "archive_path": "source_snapshot/experiment_round1/configs/prompt_C.txt",
+    "bytes": 1982,
+    "sha256": "23aaa3582b160327c14d095c3e209894a8a67d1dc6de94e448f12d54ee24d41c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/configs/run_config.json",
+    "archive_path": "source_snapshot/experiment_round1/configs/run_config.json",
+    "bytes": 585,
+    "sha256": "fc6af4efeb49b892ce282fb0a5a86562393f1d467573385683c1b0e41c64bc1b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/README.md",
+    "archive_path": "source_snapshot/experiment_round1/README.md",
+    "bytes": 7711,
+    "sha256": "7f605a908710b2e369f86e6b833034ab92086f1cf0787125529539af4eb3c5df"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round1/requirements.lock",
+    "archive_path": "source_snapshot/experiment_round1/requirements.lock",
+    "bytes": 142,
+    "sha256": "64ed26b8abcf05ce0417a6c54a08e1929e3885b37d7477e8b69c970a81206972"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/__init__.py",
+    "bytes": 53,
+    "sha256": "5de895cc2273e38380fb6d9ffe12144cd766b7c1f85590243097f60bc581f55a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/agents/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/agents/__init__.py",
+    "bytes": 79,
+    "sha256": "0cba2ea53ed62a07a8b038e5c44791c07281472ee51d8dbc3a1df515b476a23d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/agents/budget.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/agents/budget.py",
+    "bytes": 12276,
+    "sha256": "aa675160127599dddb18fb88683ebc79f4df1522b9c5bdfdcc166141df783c8a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/agents/model_transport.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/agents/model_transport.py",
+    "bytes": 14119,
+    "sha256": "29f4ea6f6333124a34db48cc3cbec42ac3c487fa89408861f6ae0bb076cb6ced"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/agents/static.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/agents/static.py",
+    "bytes": 18993,
+    "sha256": "8f797bffc43f57b691af29af94564755ddf7a2b3c9ae17a7de7b66cd3ccdb85d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/batch.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/batch.py",
+    "bytes": 2494,
+    "sha256": "2e2a96fa92334a6b7ac9d94f4773b9bb681094875ba8fa0b985e405476d13b54"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/experiment.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/experiment.py",
+    "bytes": 2806,
+    "sha256": "557ad651715fa3661f65f4b3a61d6145f61d714cdceaf3e2e4f0c9f11b42bcad"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/fjsp/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/fjsp/__init__.py",
+    "bytes": 191,
+    "sha256": "1d27e5a98ae190279c29e48be976479c1500d01c34d3b262cb64e55ff7708f6d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/fjsp/problem.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/fjsp/problem.py",
+    "bytes": 3457,
+    "sha256": "90d9b016477aa150e1367999d80cef4465b0c037d086ab707347a057339b7ae4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/fjsp/solver.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/fjsp/solver.py",
+    "bytes": 4881,
+    "sha256": "ba400c94587718a40594ca1aeb74f09ad71383e513605f8fb7fc539448bb3381"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/fjsp/validator.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/fjsp/validator.py",
+    "bytes": 5461,
+    "sha256": "d4f4162bf2f0163b0319f4626b5c1cda1f39321f6f2ab19a66cca83baee5eecb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/replay.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/replay.py",
+    "bytes": 27167,
+    "sha256": "734c68d5d82e4cec7d4e61d6ee4efe4824e7c787005603cfed590c833c7a6296"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/report.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/report.py",
+    "bytes": 7106,
+    "sha256": "83ad9e3885977003913f3154442a88efaedfc9e27c3b5092c20292fe0b2d3f2d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/runner.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/runner.py",
+    "bytes": 10124,
+    "sha256": "419212047819b4ed8c8a2dcf458ddeed1764abc09855c052fbdfeb4ef732e6fe"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt/__init__.py",
+    "bytes": 81,
+    "sha256": "2a0553110db752270170e7f14da1ca6ac36a496dcab4a5495f943e5e41af9f80"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt/audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt/audit.py",
+    "bytes": 17710,
+    "sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt/environment.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt/environment.py",
+    "bytes": 24675,
+    "sha256": "04598803fd84239ec1de464505f5450e9a82dbb6ea0b73d13227a1ab55b8c5c6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt/optimizer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt/optimizer.py",
+    "bytes": 3173,
+    "sha256": "c57a42533c3d941e4a56039af41c6f1d62ee8a51b12062194c7e342c316f9ece"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt/source_check.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt/source_check.py",
+    "bytes": 8324,
+    "sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_control.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_control.py",
+    "bytes": 17188,
+    "sha256": "0157214fb003b98f1e20d0a36743c46cae81589c102a1241cd65419f758d90f5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/__init__.py",
+    "bytes": 73,
+    "sha256": "cf05e16e349c56ef7c98b81e4d3a42d1dd26fc3ae42abcaf087308eb5a094181"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/host.py",
+    "bytes": 20948,
+    "sha256": "572a31551c137c6e41169aeb9f51ff8f12b18e36e98fec6d4c780635665088ec"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/journal.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/journal.py",
+    "bytes": 2323,
+    "sha256": "187f3450ccad5a941e3c7f546c6ef04e06792dcd6eec2b9cfabc7b79c89a4584"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/ledger.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/ledger.py",
+    "bytes": 6502,
+    "sha256": "733db155263478c853b38340fdb1ae7736552d3f1f1685c46bab9cea57fab699"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/outer.py",
+    "bytes": 5770,
+    "sha256": "11ff2216549fe92f380b1f1f1f7f41893528489ce0a78ab0f1e87e3a26c0b73f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/policy.py",
+    "bytes": 10749,
+    "sha256": "e2708b1dbc0f6d28530ee6d734c4639340974109f190e7fa2f9a1e7ee65d3deb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/prompt_schema.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/prompt_schema.py",
+    "bytes": 11525,
+    "sha256": "986370dcf83d622e6cbf5b4efee7c012570930811a7d3678b28beb44bbf7a83f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/recovery.py",
+    "bytes": 5056,
+    "sha256": "d65c9b178f2ae3d996fb2e4196ffe8605dbd5bb86b13a48237b879664a36c761"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/resume_suffix.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/resume_suffix.py",
+    "bytes": 6747,
+    "sha256": "02786b0236029bf4787b17d7c91c6a0a0858c85f4295523c77098376acf5ad66"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/resume_v10.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/resume_v10.py",
+    "bytes": 7738,
+    "sha256": "30870ae8f37d6818d76170830b6a043d368ba285551ea46135c8b8ad676ea572"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/resume_v12.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/resume_v12.py",
+    "bytes": 8816,
+    "sha256": "742eb5d8876f18793af7926cab504d12f45ee2303fc1968bf2d56422dd096a57"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/B_feedback_admission.py",
+    "bytes": 9946,
+    "sha256": "3008d51bb031804e4c92c5526043fbdc3a00a7dfeac2b3b1b43950f43ddecba2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_base_evidence_v13/workflow/interaction.py",
+    "bytes": 56736,
+    "sha256": "8122fd56a6c89a44b629b0a24fe523380e63d3737b1188a183061f5648428c89"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/__init__.py",
+    "bytes": 72,
+    "sha256": "5637a1726ba6ec82edeb33f5ec86692deda8e5606052b5e899beaee8b9d4208d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/host.py",
+    "bytes": 19508,
+    "sha256": "586cc3e095d147d6f83711585d5a9dba4cf06bf3e7ee643d2b7b32782dc9809b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/ledger.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/ledger.py",
+    "bytes": 6825,
+    "sha256": "78bf2c4e5b5d01bccb2394affd3c49828e47f01ae980d8726d787afdab7cf5bc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/outer.py",
+    "bytes": 5780,
+    "sha256": "39162d47ba7e90ef4b975004ec9270446220ab14bd84c6e7dd6cd3c50db2aa1f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/restore.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_budget_extension_v15/restore.py",
+    "bytes": 2940,
+    "sha256": "071dbc912152ec155f277e68fedd57cbf174a8a71f933f1fd22657c61a3b8737"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/__init__.py",
+    "bytes": 73,
+    "sha256": "cf05e16e349c56ef7c98b81e4d3a42d1dd26fc3ae42abcaf087308eb5a094181"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/host.py",
+    "bytes": 21452,
+    "sha256": "011bfc737b1bddf35967c2d9f514565e58902430878e6625845acb7c65ebe384"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/journal.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/journal.py",
+    "bytes": 2323,
+    "sha256": "187f3450ccad5a941e3c7f546c6ef04e06792dcd6eec2b9cfabc7b79c89a4584"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/ledger.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/ledger.py",
+    "bytes": 6504,
+    "sha256": "aa504f815310a4d24efb18702e26e44f61e4b29ffb1e942708a8c0ed6b867ee1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/outer.py",
+    "bytes": 5776,
+    "sha256": "fa796fa598864db1fac7e5525bdefb2503a57b14c6269c61abab3b909d6229f7"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/policy.py",
+    "bytes": 10751,
+    "sha256": "768d16538f684c56e208aa139ac0ef2bc57d72437cb85e77f137d3fe0e784a89"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/prompt_schema.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/prompt_schema.py",
+    "bytes": 11525,
+    "sha256": "986370dcf83d622e6cbf5b4efee7c012570930811a7d3678b28beb44bbf7a83f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/recovery.py",
+    "bytes": 5056,
+    "sha256": "d65c9b178f2ae3d996fb2e4196ffe8605dbd5bb86b13a48237b879664a36c761"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/resume_suffix.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/resume_suffix.py",
+    "bytes": 6749,
+    "sha256": "cc1aa1840e4ea25927134d659bc9ff0002a2e00281f976f62ae588fa4a3220d3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/resume_v10.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/resume_v10.py",
+    "bytes": 7738,
+    "sha256": "30870ae8f37d6818d76170830b6a043d368ba285551ea46135c8b8ad676ea572"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/resume_v12.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/resume_v12.py",
+    "bytes": 8816,
+    "sha256": "742eb5d8876f18793af7926cab504d12f45ee2303fc1968bf2d56422dd096a57"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/resume_v13.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/resume_v13.py",
+    "bytes": 8810,
+    "sha256": "b65572eefd2cf3675a4a31815fd72bd3ebeea86ad572836b10fb41da49536c0f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/B_feedback_admission.py",
+    "bytes": 9948,
+    "sha256": "eb1421c0aae50bf9db2fefe6ff6e20be62f9f64976d42c4922619e8c2caa2d03"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_candidate_paths_v14/workflow/interaction.py",
+    "bytes": 57778,
+    "sha256": "7417551fee6d3ba89642fe45df70b4a16693d195b19882f102f704e423581f5d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/__init__.py",
+    "bytes": 73,
+    "sha256": "cf05e16e349c56ef7c98b81e4d3a42d1dd26fc3ae42abcaf087308eb5a094181"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/host.py",
+    "bytes": 20485,
+    "sha256": "45a31cacf1e9fccd4020cbc8c9169c8ea20f96cf3d641c423ec3fefea04f2bd8"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/journal.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/journal.py",
+    "bytes": 2323,
+    "sha256": "187f3450ccad5a941e3c7f546c6ef04e06792dcd6eec2b9cfabc7b79c89a4584"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/ledger.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/ledger.py",
+    "bytes": 6504,
+    "sha256": "36edce05708200523d980be88ace46ab99f3ab635b3b6d99fdca822af5b0cdbf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/outer.py",
+    "bytes": 5776,
+    "sha256": "3433d8e7493ef7b66c9e2d994f79ff96a705b24da42ea49d5d7d973e282d58c0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/policy.py",
+    "bytes": 10751,
+    "sha256": "bab0074cd8fe21361f12bf0457f234e2b0064fd2eaba1b66b0697775542c6edc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/prompt_schema.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/prompt_schema.py",
+    "bytes": 11525,
+    "sha256": "986370dcf83d622e6cbf5b4efee7c012570930811a7d3678b28beb44bbf7a83f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/recovery.py",
+    "bytes": 5056,
+    "sha256": "d65c9b178f2ae3d996fb2e4196ffe8605dbd5bb86b13a48237b879664a36c761"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/resume_suffix.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/resume_suffix.py",
+    "bytes": 6749,
+    "sha256": "bff27fd18ca7af3c079d208d0ee01d07c56fd6a7466e327f78c4d07b777e207a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/resume_v10.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/resume_v10.py",
+    "bytes": 7738,
+    "sha256": "30870ae8f37d6818d76170830b6a043d368ba285551ea46135c8b8ad676ea572"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/B_feedback_admission.py",
+    "bytes": 8895,
+    "sha256": "8cbf0395988edeabc88657590435288a0e3befb3c456d94bd7dc808712784ed2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_commit_progress_v12/workflow/interaction.py",
+    "bytes": 55345,
+    "sha256": "ab6ff7923f236213ec0d71077a7443794af65d554f57004671f95fe3ff28f1d1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_call_bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_call_bridge.py",
+    "bytes": 25235,
+    "sha256": "30fb805424cec4a8458123c741f306ec1e10767448f4285854a4f65721c0c6c9"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_call_bridge_v4.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_call_bridge_v4.py",
+    "bytes": 28163,
+    "sha256": "84e7840e322e5811d79a3ee78c46800840dd2927e0cf3ae5d939e4e34ad13be9"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_durable.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_durable.py",
+    "bytes": 52081,
+    "sha256": "6e86db4355ee5dd3efdb3429dff01da53f167ee22a59e9c1a6acf36bd1c3aa27"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_durable_v5.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_durable_v5.py",
+    "bytes": 54274,
+    "sha256": "24b063c9dc7854c2fe36b3894ea8f40e63376749bad3591750f4924470ec384f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_envelope_policy_v2.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_envelope_policy_v2.py",
+    "bytes": 10016,
+    "sha256": "1871d40d7dde24674772949b4e1d2a8b0d578668ab7b479bed45071803bd3fc1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate.py",
+    "bytes": 39219,
+    "sha256": "398f18b89cb834f0e01c576a0326e8b8c9c80ef46ff8375e1af115ee3af068dd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v2.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v2.py",
+    "bytes": 39225,
+    "sha256": "1a1477f247b6189306fceebba31ddb3a880179590a5ffe7a5e7a653a8a479f62"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v3.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v3.py",
+    "bytes": 39225,
+    "sha256": "cb2c35e090832fc8da995cb5d5678b30a65cf35cdb3370772a3d96d5bfafac96"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v4.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v4.py",
+    "bytes": 70728,
+    "sha256": "7a02aef809f12c2c75c6f0fd22314e97f8da12c4c504d25e23da08943c1305a2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v5.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v5.py",
+    "bytes": 80218,
+    "sha256": "c073a0e0f08bc36ffef97a617f8ebbf6dfa0ae3b2c0b0649d6cfbbe137fd846f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v6.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v6.py",
+    "bytes": 80443,
+    "sha256": "c768863cd9d0192a0d28047ec6223244ae96b73940fe77f6de1eb2a18d4152fc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v7.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_gate_v7.py",
+    "bytes": 80546,
+    "sha256": "bf40229acd85e872deaec0e28448eeab8e85656f5f60de7fbf213ad7ed5cb899"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_interaction.py",
+    "bytes": 31382,
+    "sha256": "daab865a83659dbf735624f7446251fb2d794f417b4d2054898635f29b7888a4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_interaction_v3.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_interaction_v3.py",
+    "bytes": 32008,
+    "sha256": "025dd4d27fbe96997f66722bac90735c3331b40ff1916109e979e586b1bd665f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_transport_binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_transport_binding.py",
+    "bytes": 26449,
+    "sha256": "ba9f2e2f5d70c7a212d3bb049e0bb8f8e64179fead65fd100d3814d19212c677"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_delta_transport_binding_v3.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_delta_transport_binding_v3.py",
+    "bytes": 27026,
+    "sha256": "f832e8dc8b6e11630bf3f78a10039afdf217a609a049a95728830df866ca5d93"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/__init__.py",
+    "bytes": 82,
+    "sha256": "8366324ec928ca9b746fd4b1c5365df3e719339513832f3e8971af3634f3ce85"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/acceptance.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/acceptance.py",
+    "bytes": 14260,
+    "sha256": "503e69f480c8dd6aef12039c6cb79e4313e57303eca24e9c1515666397b1c76f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/admission.py",
+    "bytes": 28822,
+    "sha256": "7b1d0ee72a7ecac80c80f1c1098e96aec0b1947f5ad5e72092ed528abfde4bbe"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/binding.py",
+    "bytes": 29779,
+    "sha256": "169118e51b8973bce60897d9050b09f34c1ab4f7a25967d95bd08dd7155ca6e9"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/bridge.py",
+    "bytes": 33507,
+    "sha256": "c5f63f4a217373c364860196185e93dcaf28bc75360e833d37e2cfbbbe05ec8a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/durable.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/durable.py",
+    "bytes": 91409,
+    "sha256": "e4e8e601b44c0fbe41598b4e145c77724fea96bf81ddd577baece1ac12507b2c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/fresh_controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/fresh_controller.py",
+    "bytes": 20031,
+    "sha256": "3d6cdf3ab6419cdda0e91c7dc6615939533086cbfd295a7ab5866dc191865e10"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/host.py",
+    "bytes": 10680,
+    "sha256": "6e8197bfaef8a38396959471cda956f7ea0df65eb3c62b33a0e3ace46bb97379"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/outer.py",
+    "bytes": 4198,
+    "sha256": "8e59cd0b2c0a20b3e008cc0d425532f3bd107e5908360b643833f4dcb6a92a17"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/policy.py",
+    "bytes": 10814,
+    "sha256": "69722bd0776a662dc5e0adcadad6fe85f28d1ea0b56a0c5ff20dfc9270e0dfb4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/prompt_schema.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/prompt_schema.py",
+    "bytes": 11329,
+    "sha256": "672aa4f851e6003c41ffa825d19348a7530a9de64a1acba7a98a17f18a852283"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/telemetry.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/telemetry.py",
+    "bytes": 10802,
+    "sha256": "6220ba72e21ad3bcdd2449f1b9d8e2bc8daf68cc958c0b81d931dc85ecd506d3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/timing.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/timing.py",
+    "bytes": 5258,
+    "sha256": "46b8b37c60f45329a037fd9e86ed06562a8553a9afc3ba8844b6317e56a59339"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/B_feedback_admission.py",
+    "bytes": 8827,
+    "sha256": "0e0e20dcc38f60c102eb056a792be8ff8db80103455ae9665a7dce12665d1c1f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_direct_v8/workflow/interaction.py",
+    "bytes": 36322,
+    "sha256": "e30dfa7d5479d04209c9b148939a87d3c26091f12817083397d3ee94d62be571"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/__init__.py",
+    "bytes": 73,
+    "sha256": "cf05e16e349c56ef7c98b81e4d3a42d1dd26fc3ae42abcaf087308eb5a094181"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/host.py",
+    "bytes": 20310,
+    "sha256": "fdc78424593798c37637c8567419ecd61ffad70bde01be5faca8e3a1edde84df"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/journal.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/journal.py",
+    "bytes": 2323,
+    "sha256": "187f3450ccad5a941e3c7f546c6ef04e06792dcd6eec2b9cfabc7b79c89a4584"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/ledger.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/ledger.py",
+    "bytes": 6507,
+    "sha256": "d1a06cf480280beaf7d26d6d06b00d9ea279ced97f7b88b019eab7c486c8d6d5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/outer.py",
+    "bytes": 5791,
+    "sha256": "1f44b78dac5d4406164e7cb2766d8523b27f23dfe08ad2a3ce546911c57f319e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/policy.py",
+    "bytes": 10757,
+    "sha256": "95897b1095315ce1402dd8354f02b3f451b1234aebb75ea3a0faf8d5bafccbed"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/prompt_schema.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/prompt_schema.py",
+    "bytes": 11525,
+    "sha256": "526df04052c203a25511c8fbc6baaf4a297378e7195c5516c8cb111835764e33"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/recovery.py",
+    "bytes": 5056,
+    "sha256": "d65c9b178f2ae3d996fb2e4196ffe8605dbd5bb86b13a48237b879664a36c761"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/resume_suffix.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/resume_suffix.py",
+    "bytes": 6752,
+    "sha256": "5ce75ee1c10d952d7a243951bbfc977ed12f32059d1385499bc3674e6f19ae96"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/resume_v10.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/resume_v10.py",
+    "bytes": 7738,
+    "sha256": "30870ae8f37d6818d76170830b6a043d368ba285551ea46135c8b8ad676ea572"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/B_feedback_admission.py",
+    "bytes": 8898,
+    "sha256": "dba10fad73baf31f897dfa08505d9c96c4ecdfda60ccc87b801589c802560566"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_execution_feedback_v11/workflow/interaction.py",
+    "bytes": 54172,
+    "sha256": "edf62e980707353de997330f771ca198c734af07e0ada5a454e046af19d5551a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_feedback_admission.py",
+    "bytes": 8828,
+    "sha256": "2fa2f1086a24a84c63d8ff2a9f31963536452b556dc93f9fea62582db2b92d54"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/__init__.py",
+    "bytes": 73,
+    "sha256": "5712e3a06eff4d9d2f17fc6a1e2870169a1a8a717cbf94b05ce48b7c45e7f972"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/binding.py",
+    "bytes": 27974,
+    "sha256": "4e5cc310627f452b409f940378e4625eb97bcf3977f0e5f44f601e1e35495a27"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/bridge.py",
+    "bytes": 33315,
+    "sha256": "f3d62f574fc9bacebc849ebe99675c682e68654579fa9746ae6977676ff8a47e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/controller.py",
+    "bytes": 71064,
+    "sha256": "c994ce9a57fada49641773d4f9446a294d229aa6082e5b84ba60eb979cbd0fd6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/durable.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/durable.py",
+    "bytes": 89133,
+    "sha256": "60f6bccfb3182daf739b738cec7683be1336e3a6925dc4d421b590a58fcab626"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/stopped_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/stopped_admission.py",
+    "bytes": 24343,
+    "sha256": "6cff2bb05ec62c091884276c66dc2ec23b86d0c1955efdbdc9a5cec24efcf28c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/telemetry.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/telemetry.py",
+    "bytes": 10802,
+    "sha256": "6220ba72e21ad3bcdd2449f1b9d8e2bc8daf68cc958c0b81d931dc85ecd506d3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/timing.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/timing.py",
+    "bytes": 5258,
+    "sha256": "46b8b37c60f45329a037fd9e86ed06562a8553a9afc3ba8844b6317e56a59339"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/transport.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/transport.py",
+    "bytes": 27056,
+    "sha256": "f4da8e8beae0f9da3ecd3b546d6980139259229e23264a98d60928ca7b81e504"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/B_feedback_admission.py",
+    "bytes": 8828,
+    "sha256": "2fa2f1086a24a84c63d8ff2a9f31963536452b556dc93f9fea62582db2b92d54"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v1/workflow/interaction.py",
+    "bytes": 34772,
+    "sha256": "39e5b9d3d01a5494aeb8a9f90b55a2cc1adfee5b0a692869a7b2499adc56234f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/__init__.py",
+    "bytes": 73,
+    "sha256": "5712e3a06eff4d9d2f17fc6a1e2870169a1a8a717cbf94b05ce48b7c45e7f972"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/binding.py",
+    "bytes": 27968,
+    "sha256": "380bbd677f1794bea725a9f0ff948c61ac4ca9565ca939f5f82662ff31103281"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/bridge.py",
+    "bytes": 33320,
+    "sha256": "d51900a81fd5649d6422ade35da5ccbf3e40d7694bfa8dc8f886d59cb7ac0b5f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/controller.py",
+    "bytes": 71466,
+    "sha256": "3674095ff4c3e1f4911de3e967d427211e142ad326c631acdfa8f1c46e7e1dda"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/durable.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/durable.py",
+    "bytes": 89362,
+    "sha256": "cbce5785c843550183efaaba808dafd893506938bade0e340694ccca3fb0db7c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/policy.py",
+    "bytes": 10817,
+    "sha256": "b18544c51fc430783cc2a79a4cdd09efe0a53c493c821c482042b6192d80a88a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/stopped_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/stopped_admission.py",
+    "bytes": 22615,
+    "sha256": "7571354c08a101a2d7d1297cd6e79df17bb5439f3e58eb5f0c09f8b7645d03fe"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/telemetry.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/telemetry.py",
+    "bytes": 10802,
+    "sha256": "6220ba72e21ad3bcdd2449f1b9d8e2bc8daf68cc958c0b81d931dc85ecd506d3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/timing.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/timing.py",
+    "bytes": 5258,
+    "sha256": "46b8b37c60f45329a037fd9e86ed06562a8553a9afc3ba8844b6317e56a59339"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/transport.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/transport.py",
+    "bytes": 27056,
+    "sha256": "f4da8e8beae0f9da3ecd3b546d6980139259229e23264a98d60928ca7b81e504"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/B_feedback_admission.py",
+    "bytes": 8828,
+    "sha256": "2fa2f1086a24a84c63d8ff2a9f31963536452b556dc93f9fea62582db2b92d54"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v2/workflow/interaction.py",
+    "bytes": 34772,
+    "sha256": "39e5b9d3d01a5494aeb8a9f90b55a2cc1adfee5b0a692869a7b2499adc56234f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/__init__.py",
+    "bytes": 73,
+    "sha256": "5712e3a06eff4d9d2f17fc6a1e2870169a1a8a717cbf94b05ce48b7c45e7f972"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/binding.py",
+    "bytes": 27954,
+    "sha256": "2c39da4a8275a43afa238fbf653d3c0abc8e1020163d2624f17acd1cc08c9f1d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/bridge.py",
+    "bytes": 33306,
+    "sha256": "ae0be90ec1f4398e4ab38cda1267d5598c6db8c686f84f213956a95c27b51740"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/controller.py",
+    "bytes": 71603,
+    "sha256": "642ab83539ae8162981cdd5e42b501b0831a74ceaabcc5a89b54dc2c85f935e6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/durable.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/durable.py",
+    "bytes": 89422,
+    "sha256": "16fa8a168c78d51bb7aeab05feb64339e88714e13baeaf8366d29cc52af3d954"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/policy.py",
+    "bytes": 10817,
+    "sha256": "b18544c51fc430783cc2a79a4cdd09efe0a53c493c821c482042b6192d80a88a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/stopped_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/stopped_admission.py",
+    "bytes": 26846,
+    "sha256": "276ce9043619a813e4db60c01ba100e352b51d386aa54852d930beec4f0e58f2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/telemetry.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/telemetry.py",
+    "bytes": 10802,
+    "sha256": "6220ba72e21ad3bcdd2449f1b9d8e2bc8daf68cc958c0b81d931dc85ecd506d3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/timing.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/timing.py",
+    "bytes": 5258,
+    "sha256": "46b8b37c60f45329a037fd9e86ed06562a8553a9afc3ba8844b6317e56a59339"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/transport.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/transport.py",
+    "bytes": 27056,
+    "sha256": "fbd42413a323407e3d7bde67ed5edb33466c83794a732ba6a69f266c16eb61c2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/B_feedback_admission.py",
+    "bytes": 8828,
+    "sha256": "2fa2f1086a24a84c63d8ff2a9f31963536452b556dc93f9fea62582db2b92d54"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_incremental_v3/workflow/interaction.py",
+    "bytes": 34772,
+    "sha256": "39e5b9d3d01a5494aeb8a9f90b55a2cc1adfee5b0a692869a7b2499adc56234f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/__init__.py",
+    "bytes": 73,
+    "sha256": "cf05e16e349c56ef7c98b81e4d3a42d1dd26fc3ae42abcaf087308eb5a094181"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/host.py",
+    "bytes": 19263,
+    "sha256": "7a9f996e0901a18c29c37f6c0e9f95c3262f80262e50ae61f08715829854b1e8"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/journal.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/journal.py",
+    "bytes": 2323,
+    "sha256": "187f3450ccad5a941e3c7f546c6ef04e06792dcd6eec2b9cfabc7b79c89a4584"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/ledger.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/ledger.py",
+    "bytes": 6500,
+    "sha256": "57ab6edb7617eed40f26835944cfc5f0266776f82b32eb123b097eefe42c750f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/outer.py",
+    "bytes": 5768,
+    "sha256": "3515f658fc5dcd73c1c397b3fdf8a6b8fe9edc6b8ad592ee749a0fc96a0667c7"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/policy.py",
+    "bytes": 10641,
+    "sha256": "81b288c5e7eb09610a8ec546f798f01a6fd6515fa00c7fcbccf078a489cdd877"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/prompt_schema.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/prompt_schema.py",
+    "bytes": 11433,
+    "sha256": "e8aa584294571bef8c999def98971bc08d4532ae8b15408a2dd6751dc1ef569d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/recovery.py",
+    "bytes": 5056,
+    "sha256": "d65c9b178f2ae3d996fb2e4196ffe8605dbd5bb86b13a48237b879664a36c761"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/B_feedback_admission.py",
+    "bytes": 8870,
+    "sha256": "09fa46bc87aac0221fe781f3019a379dcaedafe20bc7e81f207e316300d2fb1b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v10/workflow/interaction.py",
+    "bytes": 49154,
+    "sha256": "8732ef818e4d673df92adeb1c2b7f2d8b3a9cc595c39f557dcaade7648c2bdb6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/__init__.py",
+    "bytes": 73,
+    "sha256": "cf05e16e349c56ef7c98b81e4d3a42d1dd26fc3ae42abcaf087308eb5a094181"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/host.py",
+    "bytes": 17954,
+    "sha256": "676425375a4c036545623569d3fbd6f2f5dc21c70849f9501a32f20015832202"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/journal.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/journal.py",
+    "bytes": 2323,
+    "sha256": "187f3450ccad5a941e3c7f546c6ef04e06792dcd6eec2b9cfabc7b79c89a4584"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/ledger.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/ledger.py",
+    "bytes": 6503,
+    "sha256": "dca1e0a6b29189108947b950dbf12c8dd525d859a96e54308ccdee68e55248ba"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/outer.py",
+    "bytes": 5771,
+    "sha256": "5574f87f70b5ebe7222ec1047590cd6c90979fc209fa34ce567d31088cff3eb8"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/policy.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/policy.py",
+    "bytes": 10657,
+    "sha256": "c4321462330c7b68a5d50bf8d7f0ff3454f84fbec0d90748111d6b9fd525374e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/prompt_schema.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/prompt_schema.py",
+    "bytes": 11350,
+    "sha256": "938a319462a47bcc575c299aea3cf19240f2514f3afb8b7cbf05244d2e2262cf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/recovery.py",
+    "bytes": 5056,
+    "sha256": "d65c9b178f2ae3d996fb2e4196ffe8605dbd5bb86b13a48237b879664a36c761"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/resume_suffix.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/resume_suffix.py",
+    "bytes": 5381,
+    "sha256": "5d09f1aea908d612c23943f0af8467d2e40cc8881712a323f654e5b61ee6fe84"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/B_delta_assembly.py",
+    "bytes": 18637,
+    "sha256": "6e1086caa2e5446d97f78541e3978355da5e39876261051fbbed140c2c50ccdf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/B_delta_prompt.py",
+    "bytes": 17959,
+    "sha256": "806aa12b6d7d27d0772d7c8aa64145fe6fffbeab2f618f43f20adeaf6792fdac"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/B_feedback_admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/B_feedback_admission.py",
+    "bytes": 8857,
+    "sha256": "a4083ce974544d63f4e3de0c4e4a5e3aac793cc858d11941fc1a7eb5018a2f79"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/__init__.py",
+    "bytes": 57,
+    "sha256": "5d69e3316a0005d0ccdca19553d9e2d3a6dbd4f2a5c6405ac47f41d3b3e1ca9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_memory_progress_v9/workflow/interaction.py",
+    "bytes": 44733,
+    "sha256": "e4ff7b27b37187c03c923dfa19f2ddcec4c05ca198086b2c8cbab51c6d4a1629"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/__init__.py",
+    "bytes": 80,
+    "sha256": "2c003b41ac0e284337a9f5f6479cadcacbd9da127abfb9fac9faa0a2b3706898"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/acceptance.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/acceptance.py",
+    "bytes": 14062,
+    "sha256": "344c561eb1f0ea2347c6ab07d421661ad5b3bcb6355d829e8d03fe726fb4d392"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/admission.py",
+    "bytes": 30450,
+    "sha256": "be44cb50376d3c34b62b85b25816e38f84184e7b799f153e6c80d2740b58b6d5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/fork_store.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/fork_store.py",
+    "bytes": 21165,
+    "sha256": "c542235d4a86ffc5755a0afd80c1f361d9814dcb13a52056f156ec54dd8ed492"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/fresh_bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/fresh_bridge.py",
+    "bytes": 32747,
+    "sha256": "104eb3fdbd44537d86b1bcbb78d5a5db0a7083040aa372297139e98f29d109df"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/host.py",
+    "bytes": 9771,
+    "sha256": "76d3bcae1401b1a2a10a891b4f4ea5b20504be644b02daad75dc6265fe2da55d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/outer.py",
+    "bytes": 4204,
+    "sha256": "a790fb9d675328efbda1ed73c718dba9f6e7e4ec0cf7fd45ed2c00e2c5a04cf5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/physical_resume.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/physical_resume.py",
+    "bytes": 8457,
+    "sha256": "0a368bea047ba88196196408d2d665b2d31df36555d345cfab7bccdb37d0f08d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/resume_binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/resume_binding.py",
+    "bytes": 28586,
+    "sha256": "e0a1cca6872b6d2abfc794cf484d5dfe866db6277a738818c78ce2910ba01686"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/resume_bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/resume_bridge.py",
+    "bytes": 33219,
+    "sha256": "372d80d2ccf80b6d4a769969fc4cf02c04e4c314cd0d5b94b90489160bdd3a1f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/resume_controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_resume_v1/resume_controller.py",
+    "bytes": 20234,
+    "sha256": "6bd49c7e188b444c98667bec6632abfbfe1e1687d8c3b6c18a883489b37139be"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/__init__.py",
+    "bytes": 88,
+    "sha256": "1d7aadd31bba73dafc67c9b13555a53a71d659d9e6c7d5711bd6f10ee31c92a2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/acceptance.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/acceptance.py",
+    "bytes": 14258,
+    "sha256": "51634368c03ee2e57ebcde20631f0b8568ba9b914fc2c44c07758eb339d076c3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/admission.py",
+    "bytes": 29367,
+    "sha256": "79ea86254c01cb1ff079e2926ee070b697bda91679dbf3900129724467aad5a8"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/fresh_controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/fresh_controller.py",
+    "bytes": 20348,
+    "sha256": "ebb56fd4989a847d6129556a30339cd83a41e16b1993493a32e8bf0ae76be726"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/host.py",
+    "bytes": 10752,
+    "sha256": "590c48eb83d08dbe4fc4bba81aae1031b2a4847a7cc6fee1648593d843bf980d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_launch_recovery/outer.py",
+    "bytes": 4245,
+    "sha256": "fde7b3a80d6238cefd09ed2e09180146e068be8c5828afdeb4993b255618f8ad"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/__init__.py",
+    "bytes": 76,
+    "sha256": "8a74178125919a01f9c409798ba9670fec8668b8814fb0a7cec7c91d69e8c3f8"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/admission.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/admission.py",
+    "bytes": 48207,
+    "sha256": "134080f46bfc6cba6090b86308989b68e3e85963a3c1522c0058928b82d6b151"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/continuation_acceptance.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/continuation_acceptance.py",
+    "bytes": 44837,
+    "sha256": "43eac81d5d25b4300db51554c7aed345d34c6f04456a6cd715d4d46b892ec87a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/continuation_binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/continuation_binding.py",
+    "bytes": 30323,
+    "sha256": "3b23701fc7bfee17526dd32b7c9760187ce2d28056471f0b9f86cf64e18020ea"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/continuation_bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/continuation_bridge.py",
+    "bytes": 35664,
+    "sha256": "4af320a452a7c38f6fa90a2f7cfe65c892b1f8f81a929017d2344138dbf8012e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/continuation_store.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/continuation_store.py",
+    "bytes": 41109,
+    "sha256": "706ef440a12509a26100fcdd5d6ccec1973fb84365d8277ba48560295fa6a33b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/controller.py",
+    "bytes": 27673,
+    "sha256": "0c06093024a78fdc67ae8945220b1987007a07bd914a2eb85a2baa74d5bcbd96"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/host.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/host.py",
+    "bytes": 23474,
+    "sha256": "da75bc3849c099e619893a1e26f51301ec45cbb620808567e8127f08a99c3e67"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/outer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/B_v8_preserved_resume_v1/outer.py",
+    "bytes": 5700,
+    "sha256": "d8de48afde521a7ff76ca26759930f0a4a90fbe03300365d087b1127f09a5812"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/C_plan_archive.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/C_plan_archive.py",
+    "bytes": 7161,
+    "sha256": "c669737b15a8eb98a925f24f146c0da54ec0358ad63686462f388d182e8f2b53"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_stage.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_stage.py",
+    "bytes": 7242,
+    "sha256": "57878a00ca054e9428c952176bbab2abe5638c75eea6703d491cc55a42497b96"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_v2/audit_candidate.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_v2/audit_candidate.py",
+    "bytes": 55107,
+    "sha256": "80e201fa0849e1bdcdc26fb2b28e59dd8357f9938356db03f90479d9868de8df"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_v2/constructor_stream.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_v2/constructor_stream.py",
+    "bytes": 25009,
+    "sha256": "181f9819bab37e0f60da03cd06f67505d9849336f0326632372903d41c896a60"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_v2/legacy_checks.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_v2/legacy_checks.py",
+    "bytes": 55411,
+    "sha256": "9288d4d630b921d39fc9775a40928e4a0109a9bdf579fe3409ea3550619471eb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_v2/storage.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/C_stream_attribution_v2/storage.py",
+    "bytes": 11397,
+    "sha256": "bf2145395dc1e19371c0c64bdf165b4bf11356622ccec9551fb69e2f7642d17a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/C_stream_controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/C_stream_controller.py",
+    "bytes": 38867,
+    "sha256": "4d14f75cf1485877ad41b3e9b71b948b5ef9a81f8dd78b4d183b3868df9a056a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/C_stream_gate.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/C_stream_gate.py",
+    "bytes": 74958,
+    "sha256": "2887e87c2c6f9667cd24c1f81921c6f2bf3d28fe283ac582a5b523cd528a0ba5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/__init__.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/__init__.py",
+    "bytes": 85,
+    "sha256": "ae2f281ee979093b6693967f64a4faca0818eb1830585bd594833b71de88aa08"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/audit.py",
+    "bytes": 40011,
+    "sha256": "4aa7bc3fe8abd70d40eb4037e2f7113754a8b8483a875a0c1a8ff2d1625242f2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/budget.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/budget.py",
+    "bytes": 62536,
+    "sha256": "276758bf311483795e317dec0a24389fd246a3e39727ab7065cb1ee79e9aac33"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/channel.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/channel.py",
+    "bytes": 2184,
+    "sha256": "76ca87df5a530444e8376054f20e0081eae224027993cc97b86f267b904d0457"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/constructive_tool.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/constructive_tool.py",
+    "bytes": 5883,
+    "sha256": "824de288425783f0a23b79f617bc3505e42e4b37280ff90617cb15e61b956c86"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/constructor_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/constructor_audit.py",
+    "bytes": 22195,
+    "sha256": "27c2b9252b95d90908156a12bbe4776ae732bfb8f58179e212bc8e594bb6c4e5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/controller.py",
+    "bytes": 34587,
+    "sha256": "5dc7526322adc98e5e783652d0cae703a4d7293828eb892451165ec8700345c9"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/controller_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/controller_audit.py",
+    "bytes": 98350,
+    "sha256": "bb3e85716ca799d016836dad73959d6d2c53fd534a26047e76b28c12dc049137"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/controller_delta.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/controller_delta.py",
+    "bytes": 56802,
+    "sha256": "fd98dd2332fa2b21a82dc41c32c2e1473c81e9649e08c536680a279078524868"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/controller_delta_v4.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/controller_delta_v4.py",
+    "bytes": 61491,
+    "sha256": "c821a3406d340e7a9193ef7c0ae72381ee5d2477d0279e69482a2a01cfed09d6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/controller_recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/controller_recovery.py",
+    "bytes": 25667,
+    "sha256": "7b97687c7df92468c89f67ce298cb80601e8f362c121aeca19a2b48cf4a837f1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/controller_resume.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/controller_resume.py",
+    "bytes": 33727,
+    "sha256": "cfbaf98f85b97bb796f279552cbb6eb038a0615b7d5178354b23a81be901ad75"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/controller_resume_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/controller_resume_audit.py",
+    "bytes": 34770,
+    "sha256": "60cb3feac2583ca5664b9a553de52f0f03bf4618fc84c8b92f7c86dd8f6b479e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/decomposition.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/decomposition.py",
+    "bytes": 18948,
+    "sha256": "0f558c3be26a093f3099ad8c61a2587dda42d85ddef175ed80c425ea3aaf3a4f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/delta_session.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/delta_session.py",
+    "bytes": 20215,
+    "sha256": "4528d0b51a24ac8fc336551b793006e06c0ad5aaa0438c5d5391e88a673b59da"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/discrimination.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/discrimination.py",
+    "bytes": 4969,
+    "sha256": "34357b2941c0f07111fc125ee355336aa5f14acf973f5f3f80c7430b4eff7f73"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/environment.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/environment.py",
+    "bytes": 19415,
+    "sha256": "acb0aa3f26c0327125a0e39e723757361b2e9e598542e14e980229dde2ff21b2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/guarded_status.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/guarded_status.py",
+    "bytes": 30673,
+    "sha256": "1de50ec28cb90572f304e9cebe3e4da8ab604755a8a69d88327e57592f226eab"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/hybrid.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/hybrid.py",
+    "bytes": 9321,
+    "sha256": "3c89ea263fdace8cb3636b5119e60374944ae2a2ea8d1e9c558cc0496f9cf6bd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/incumbent.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/incumbent.py",
+    "bytes": 21372,
+    "sha256": "faa6c1e9246f0462ee68d7f9ceb05931c37d461e5f43a6b43f728bf1860a9bd6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/interface.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/interface.py",
+    "bytes": 14520,
+    "sha256": "2176cde44d2ed8e3348d53524bc1844ad9942fd56e1817ab0ab8cb66b6fd6f0c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/metrics.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/metrics.py",
+    "bytes": 11986,
+    "sha256": "c954c83a51d3ebff7614b469086c916357ef7424d8f92bae25c9c0e533a962cc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/model_process_guard.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/model_process_guard.py",
+    "bytes": 32001,
+    "sha256": "b421a4872206e4f1322961efbf26001396a23b7aa17d9dbf39ece97d470db5bc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/model_transport.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/model_transport.py",
+    "bytes": 22700,
+    "sha256": "a0f276af9a3395860954cbb7154ab4255a36371c9009800fe368abdc96f4d0e3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/model_transport_supervised.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/model_transport_supervised.py",
+    "bytes": 26930,
+    "sha256": "b184e7977b1fa920041c825c790303196ea6913b6ef552cda797931159655de7"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/observation.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/observation.py",
+    "bytes": 13085,
+    "sha256": "007b96fa87aca72752b2765bcfefb28e8ef9b705a24bdd5bd6579ae5c72a1512"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/offline_A_gate.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/offline_A_gate.py",
+    "bytes": 26896,
+    "sha256": "5059038bc0137919ca9864859776d9ec13b18bf8b94a30f03f4b27efefb8a3ff"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/offline_A_gate_v3.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/offline_A_gate_v3.py",
+    "bytes": 37859,
+    "sha256": "3b51b2cb8ded5826b27bfebc5714242084416b91170f642d6ae06ee770ea937f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/offline_A_gate_v4.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/offline_A_gate_v4.py",
+    "bytes": 67276,
+    "sha256": "d594c136e6bd29c13954d9da3dd706039373b1a13168651fc9f5ad234b0eb48a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/offline_pilot.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/offline_pilot.py",
+    "bytes": 17713,
+    "sha256": "8b1abcc5c7fc9007b20ec14d1e22e6db4c3285601006a18b61c28d3c97f0fec3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/optimizer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/optimizer.py",
+    "bytes": 34935,
+    "sha256": "30a0d40c9d94f7e462447d8496d21237089e12bd66ab142c51f9ae7346f72d60"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/plan_delta.py",
+    "bytes": 19343,
+    "sha256": "0581ab7c7829401dcff56ad453b4f768a5a5d1cf92e7f6e3f216a2a8f86990b9"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/recovery_check.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/recovery_check.py",
+    "bytes": 5245,
+    "sha256": "30fc5ed029372a1f545bf95744c077c3d205aa1b99397bb741d1d2f1efbdbb52"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/reference.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/reference.py",
+    "bytes": 5486,
+    "sha256": "220499785c9af5055940f93087171962d6481a317d0cf277a89aa18a4632059a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/runner.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/runner.py",
+    "bytes": 23833,
+    "sha256": "3235ffa2346a887ab294e5696ffd7245150b6707155e0e203bce25e80a200c70"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/runner_shared.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/runner_shared.py",
+    "bytes": 26974,
+    "sha256": "d28239a2f40b727dedbc79c8df2d95fbbaa6d29c9009532dd141f3a73b55298d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/shared_controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/shared_controller.py",
+    "bytes": 26121,
+    "sha256": "5186e2cdc1a136ff6f80c02543e34ba87b9ff3ad375f10df2f5f68e7d2847e0d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/shared_prefix_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/shared_prefix_audit.py",
+    "bytes": 26107,
+    "sha256": "b7ada3a21ae762161748f6c549012eda7bcf033351427d7ff4485d9b1225ec8d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/shared_start.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/shared_start.py",
+    "bytes": 34152,
+    "sha256": "e3f29061d5cd619dc320d53b97846d1fc5cf0d839deffaf6065e2116358cc34e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/source_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/source_audit.py",
+    "bytes": 14351,
+    "sha256": "1192b975c0859ff8861b0c1c5714394840c25e850025e7c4facd5b22e6014dc0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/status.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/status.py",
+    "bytes": 27538,
+    "sha256": "adecef521252dd96965b0f0198a1ca7ceac36c9f1dde4f48b68d8611317ca3dd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/stream_audit_bundle.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/stream_audit_bundle.py",
+    "bytes": 10217,
+    "sha256": "072b4bc9c5da49d95beaad767b2ef3fab806a64ccaeab29124b5813241f3e44d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/stream_metrics.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/stream_metrics.py",
+    "bytes": 12713,
+    "sha256": "00c6ccb42581f2412d12f10934f940403bdcd4745e438a7acc60173cb1cc2d35"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/stream_opportunity_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/stream_opportunity_audit.py",
+    "bytes": 26844,
+    "sha256": "f17b2648720f5a971849df1326a02fa457aca755f8ac8bfe6691f08d7ce45bcd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/stream_physical_binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/stream_physical_binding.py",
+    "bytes": 13722,
+    "sha256": "db8ce98dccd7b004b9da595eab93d5eeac1b308ca50af62f961e9f23865877a2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/stream_physical_core.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/stream_physical_core.py",
+    "bytes": 29345,
+    "sha256": "ab431c0f22386be951cbf2b6f2441feb5e0171909b56cf97bdb1c73d7c79e00d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/stream_physical_projection.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/stream_physical_projection.py",
+    "bytes": 18567,
+    "sha256": "7ecc12b316e0ac9f146f5b4189fd00f4069d5f0486783d1bdd309e00f476b582"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/stream_snapshot.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/stream_snapshot.py",
+    "bytes": 6456,
+    "sha256": "19f9c9c4592ec0e6a9d36d926f2de9dd3647f020114950951dbfa30d6e444dcd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/stream_source_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/stream_source_audit.py",
+    "bytes": 22084,
+    "sha256": "1d2b55073b17d851239d0df0317447bed1b2e45176e882e514fee75b7f0f7463"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_fullfab/trace_source.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_fullfab/trace_source.py",
+    "bytes": 12402,
+    "sha256": "915b2447ed19ad99676b6a2f1b1ef2f807001885e1d3513c034dc4c670bd93b4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_replay.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_replay.py",
+    "bytes": 39658,
+    "sha256": "f92d2cabe0c43d1f8493e62018f7259bba9827a3225f37501d0cd9325a837edb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/src/smt_report.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/src/smt_report.py",
+    "bytes": 27844,
+    "sha256": "2c8aeaee52a3f2aa24cbc2c160e0479adee289991a69bffb041e2cf3704b6ac5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/acquire_fjsp.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/acquire_fjsp.py",
+    "bytes": 13359,
+    "sha256": "ab3e56a02d5f21982cba960b105af07821f948d2067c624e6470d801167b8c73"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/acquire_smt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/acquire_smt.py",
+    "bytes": 4702,
+    "sha256": "a46d1f8c96b1ed27ea5f502da43d7fa76a71953ad5e6b60133d22a0a081a6ed0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/analysis_tables.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/analysis_tables.py",
+    "bytes": 22646,
+    "sha256": "1844ef82b46c6335d44e8fa3606ab9867f0d8805adf8a0561d2e298bec88d596"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/audit_static_recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/audit_static_recovery.py",
+    "bytes": 30215,
+    "sha256": "9b19fb5e267f1cb3f093d12abe52fbd31bbcf7847f9cd6a5ab19ded9bc7a9af4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/campaign_status.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/campaign_status.py",
+    "bytes": 6872,
+    "sha256": "3702c77daa87833f8273fc4e6dbf196259b62236c29bb818abb1af952a28c3de"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/final_acceptance.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/final_acceptance.py",
+    "bytes": 28859,
+    "sha256": "4458609a8396c106a2258bbb098a6e98bb91a4f4bdc89c5d8b5c3e7302d157ef"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/final_budget_review.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/final_budget_review.py",
+    "bytes": 31996,
+    "sha256": "d199aa08ef0ba7ca25f17e1391d9aed9b07af0b3634691c6d46c3ccb26a0820f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/final_figures.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/final_figures.py",
+    "bytes": 20884,
+    "sha256": "cff786e8fc57660c3bc9014d1186ab868fc8e9e2ab775b72da0ee91a1ff4e65a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/final_freeze_review.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/final_freeze_review.py",
+    "bytes": 18647,
+    "sha256": "b72d5d4e79c25b9512ad5f673f27bb61cd09831967e3eca461b925467ad27d28"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/final_main_review.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/final_main_review.py",
+    "bytes": 7367,
+    "sha256": "98c1845c1fa5f281ced1d07402dfa1e325b8e79d4bc839ebd707d97cb3b23b08"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/final_plot_polish.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/final_plot_polish.py",
+    "bytes": 4494,
+    "sha256": "4b0787fb525d953da6255ed6a3b00f6feeaf3cb662a55eab21162647e735363b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/final_supplementary_tables.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/final_supplementary_tables.py",
+    "bytes": 3069,
+    "sha256": "9568804e2c070be981f0ead5f8c4d565541ff7b847f4c295697114ed3a61051f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/freeze_smt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/freeze_smt.py",
+    "bytes": 2435,
+    "sha256": "b09b893f386d9f0433c66a944821b87705a6277b532b0269dacc749b75c48b89"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/freeze_static.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/freeze_static.py",
+    "bytes": 2367,
+    "sha256": "11d63852e25f1524ee4c614047b615effce31d2f911ece12444caeeffd633011"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/inventory.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/inventory.py",
+    "bytes": 2269,
+    "sha256": "2b3a1e7cd205bf212bd3dd57a0450a07c8d3cd6815acbb0505ce042629e11c24"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/probe_model.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/probe_model.py",
+    "bytes": 1286,
+    "sha256": "decc79ac8f6150ec6f6299605dcbc79bb1b298deb1c20850264bd67926aa3eb9"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/probe_smt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/probe_smt.py",
+    "bytes": 1854,
+    "sha256": "9998290f1feac938a6234829acd4e825664c21398bc6b45667d3f197049de14d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/recover_static_channel.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/recover_static_channel.py",
+    "bytes": 11678,
+    "sha256": "d673a9a0d126d65954139ec9107c27ee678138a610e598d86c1cde29443c8a3c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/scripts/smt_fullfab_observe_guarded_run.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/scripts/smt_fullfab_observe_guarded_run.py",
+    "bytes": 5234,
+    "sha256": "ca29fc4b902c9e440cb78aeecb0a25878ab84be3790a02f76b227e8170c72972"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_agents.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_agents.py",
+    "bytes": 8594,
+    "sha256": "65919dba9a5435bedd15254e4581fe4fb4bfabd96da7bdeaa66ac17dc16ccdd7"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_budget_tokens.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_budget_tokens.py",
+    "bytes": 8340,
+    "sha256": "43d23e35a5951858dcb0255bd52ff08d75bd3dffa212c35095db45a82df7bfa3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_compact_actions.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_compact_actions.py",
+    "bytes": 846,
+    "sha256": "94982e09c0c556ac35e829bd52b50c14089131c6759b61057bd4ca02e9856467"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_fjsp_validation.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_fjsp_validation.py",
+    "bytes": 10418,
+    "sha256": "d5b131124042b147dbb6cc045d2b37f5cd78ed7d32ea930afd95f0e6a9f9f102"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_replay.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_replay.py",
+    "bytes": 13120,
+    "sha256": "3c3621dfa88fb762bef7720e2c0af72eeaa32d0c2af4ebed7cb495988d0bfca3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt.py",
+    "bytes": 11959,
+    "sha256": "011ab9dc9b40fcde1d2a3f77165dcdc84ff233d6389b2a1411a5ada71522c118"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_assembly.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_assembly.py",
+    "bytes": 22846,
+    "sha256": "d9e3715a368fff6bfb4d9bb3c7f49747d0f2618282c327283e979dfa18532fc7"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_call_bridge.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_call_bridge.py",
+    "bytes": 22461,
+    "sha256": "1c74d339c95a173c4d2bcd362de1ce931a8dfca8134eedb4f6d1b88fd67fae06"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_durable.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_durable.py",
+    "bytes": 29805,
+    "sha256": "4484983c9242e4d0269cb7a21772dbf5c1bccfc3afb03f90948a64a23ea3d9e2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_durable_usage.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_durable_usage.py",
+    "bytes": 13079,
+    "sha256": "23d8508480c37b6133102741a02d34f8dff74cf209d8796fbed1ebd7d06ae524"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_gate.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_gate.py",
+    "bytes": 31364,
+    "sha256": "0df5357a10cfa1c96894ffeafd8398b9c6c41d127e72e0cf6a4dea5e8fed12ca"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_gate_v2.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_gate_v2.py",
+    "bytes": 34081,
+    "sha256": "4b7cde9854f076da3488263b3bdb5c3325deb672f3055646dea4d543801b3569"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_gate_v3.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_gate_v3.py",
+    "bytes": 34559,
+    "sha256": "16f5d32bc99021a6270861388ce461d03c32cff515853c10d53e6ed8bfac26b4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_gate_v4.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_gate_v4.py",
+    "bytes": 49505,
+    "sha256": "42d536b78e7298ddf6721ecac8214f808b70b1c67c062e409fb58aca99e9d32f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_interaction.py",
+    "bytes": 27204,
+    "sha256": "7bb5657e8ee2cca2414c3df59f48c29e2c437b24f2e2b4df5cb2a93d6c115c59"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_prompt.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_prompt.py",
+    "bytes": 17894,
+    "sha256": "ee39bd0902416fdd9fdf9ee390ed72d0c89d20fc7e4384499b64f2617e612319"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_transport_binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_transport_binding.py",
+    "bytes": 19204,
+    "sha256": "96c44992175c30af02a42c46c4c6558ca021c31a6229c7d961d0dee00ded1653"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_v4_chain.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_v4_chain.py",
+    "bytes": 26088,
+    "sha256": "4ac88a18fb3a7512fc4ef15442aa3f6a0a0a81542fcaf232faf369a2c73ed6c3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_v4_endpoint.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_v4_endpoint.py",
+    "bytes": 14698,
+    "sha256": "39848f5e92353e96392f45feea0805cd2ff5aa5d6dbd28152ebcbb2df90d511b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_v4_interaction.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_v4_interaction.py",
+    "bytes": 32750,
+    "sha256": "12693cfbbe532bb6b8a33ee6b503d7a2b044697b4d56f7de9137bc3b1f43e71c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_v4_support.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_B_delta_v4_support.py",
+    "bytes": 15482,
+    "sha256": "63913688d47fef991fff2e1baa02a0bc506d3d625d320b2a7292d01aae935fd6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_contracts.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_contracts.py",
+    "bytes": 459,
+    "sha256": "d74af42c265e50426a9db533b120a956890d10f9267c03e0173cf717af1fcdc5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_fixture_loader.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_fixture_loader.py",
+    "bytes": 1934,
+    "sha256": "3bb2ec2aa1eb0e56f17ffb6cc2e5050b274e1add14b298b14f57c3cd2d47186d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_gate.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_gate.py",
+    "bytes": 29353,
+    "sha256": "163d34e682d098e080e727010bde1e56b086aabbb192d49189bb10e1e868de54"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_installation.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_installation.py",
+    "bytes": 4872,
+    "sha256": "02d6fad076cdd30c9cb3672df535987017f958cf29b3ee998e14406f2505e867"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_private_wire.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_private_wire.py",
+    "bytes": 457,
+    "sha256": "655d8417429167cef8ff61495dad0555a25a9fae050090f1c23e7902dd2c8b61"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_stage.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_stage.py",
+    "bytes": 455,
+    "sha256": "c2cdbc30842ce4d21dd63ee64c880d0511399c7bc04f5cc0d2989ff2dc52113b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_terminal_boundaries.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_C_stream_terminal_boundaries.py",
+    "bytes": 18377,
+    "sha256": "da91fc3eaaa47507d632358afdaf7e017d965e87e8a7f9f174d172b3db3f2581"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_audit.py",
+    "bytes": 10161,
+    "sha256": "30d0f43b56098190a7df071aefa9d52b83113f9fcc7eff6c3cf72634a934fe53"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_budget.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_budget.py",
+    "bytes": 19002,
+    "sha256": "f88f21a0a85433b6573a45f37db8817ccc7ec250336659c437a1652299aceb27"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_constructive_acceptance.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_constructive_acceptance.py",
+    "bytes": 4447,
+    "sha256": "42709f6e1959482cd3dba206406acc80e708c5667e4d0015006cd76dc2731356"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_constructive_controller_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_constructive_controller_audit.py",
+    "bytes": 16227,
+    "sha256": "a162e6fd5a4fa33f77d5453ef13cc24bae5a3387be46044ad61b07df0da07722"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_constructive_tool.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_constructive_tool.py",
+    "bytes": 13202,
+    "sha256": "fc7af459f4f2e8885f0b2ec3854281504fd2e3389a9cbe41f1913bc94bf8f466"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_constructor_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_constructor_audit.py",
+    "bytes": 7543,
+    "sha256": "b1ed499d2d28237090cab7e5c75e6edfccff412d1ee47df53b949c99593f2d51"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_constructor_budget.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_constructor_budget.py",
+    "bytes": 6397,
+    "sha256": "f662e4fd19b71ae4764d0073396998a60ac7ad2b3f4a923a41add6f30faaea4b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_controller_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_controller_audit.py",
+    "bytes": 49014,
+    "sha256": "6ba45e43e673c162db3ba287ebff0714b71ba1f6ccf60770672fb39e90ced49f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_controller_constructive.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_controller_constructive.py",
+    "bytes": 22755,
+    "sha256": "6ff19bfce2f486e6f2669ecdddf99e137905bcecb8642437d9b4d8f5930de9e6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_controller_delta.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_controller_delta.py",
+    "bytes": 52421,
+    "sha256": "1dedfb5802192790970449ec67b4c33c3d73fd11985b956e4732fc76357065e2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_controller_resume.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_controller_resume.py",
+    "bytes": 24128,
+    "sha256": "e3b636a546005e6e1ea29fb45377bae52f879ca866ab49bdf27ca12cc76f92d3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_controller_resume_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_controller_resume_audit.py",
+    "bytes": 8285,
+    "sha256": "6e9f295910818772c5e1f747b0c4ee63d9d77ecc8ec72022ef2246e1aaed7f3a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_controller_review.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_controller_review.py",
+    "bytes": 4099,
+    "sha256": "5afcf5a2391744514cccf7cd0e98f323ce5a333512c18c22f27486ddc6196da9"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_decomposition.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_decomposition.py",
+    "bytes": 8055,
+    "sha256": "5cf8a1ee4d09c119af3243ade830a2bd5e8fd1f0db27d6b2c507fc0f80f824d2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_delta_session.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_delta_session.py",
+    "bytes": 25049,
+    "sha256": "f2867c19ab0fd258ea64975d608755ede5d0fc7ec0a6c40ead43ef4f2c7e375f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_delta_status.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_delta_status.py",
+    "bytes": 7170,
+    "sha256": "51aa308878c4700aa97a461c1784c0378a23e108bec3fdc6648cbc0f2465ec9e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_environment_review.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_environment_review.py",
+    "bytes": 6070,
+    "sha256": "6029e6ca900bd64f18baf4d27315cab8c44f389c5d387db40adc6a541c3ce4f6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_freeze_deadline.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_freeze_deadline.py",
+    "bytes": 9578,
+    "sha256": "6b8ea873772ddb00a91e53a691d20ae6c6c33c4e23d10b6394bdf644e03e42cc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_guarded_status.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_guarded_status.py",
+    "bytes": 33167,
+    "sha256": "7174f515512b7dd8b0e7212f3c8f71b9b981c9ff7d0cb876466ec413c2dd1fcd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_hybrid.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_hybrid.py",
+    "bytes": 23427,
+    "sha256": "4bb64105d7c587c006e56961b1a4e20c88c91edb20a9f786259e841632563397"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_incumbent.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_incumbent.py",
+    "bytes": 7817,
+    "sha256": "b5449d407e1c9b5b5e8ec943f86a00b5375fd1aba5af6c96053a7b00852f44a6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_interface.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_interface.py",
+    "bytes": 7883,
+    "sha256": "0df088793c34aaf43f7de26c8b80f027948b2824cf6413526519a52101818b87"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_metrics.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_metrics.py",
+    "bytes": 4164,
+    "sha256": "ad469e26f09fbd322bbe9ef2c877745041f9b35be9a3d5c94c3f763b845ec01c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_model_process_guard.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_model_process_guard.py",
+    "bytes": 20978,
+    "sha256": "5d9865a7e7be44011e0e0b9e052d367a6b7083a81329ee845cfebc1349fc3834"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_not_before_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_not_before_audit.py",
+    "bytes": 5496,
+    "sha256": "29ff8c7720414309b7046f322eed429d65fd6fc7db47e552147ec7beee1737bc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_observation.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_observation.py",
+    "bytes": 7863,
+    "sha256": "10c24b6d46eaa48bf1b80f2e7d606506dd3a627cc4ee7263bc2876d63d8a5344"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_gate.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_gate.py",
+    "bytes": 19779,
+    "sha256": "2c7dc8d41b6bc2cc25bbe3ef83ba25ca42f7f56b673f782ad9dbcf4beb496313"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_gate_v3.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_gate_v3.py",
+    "bytes": 41002,
+    "sha256": "5d5664f5d0f7b4c9395411127258d04d6b244b1c70c4a47704e8f04b1171f7da"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_gate_v4.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_gate_v4.py",
+    "bytes": 22251,
+    "sha256": "2bb702a88d5c9d774b5f8021ce834f6e320fcf84742bc5fc6d7881e91381e751"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_status.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_status.py",
+    "bytes": 3988,
+    "sha256": "9e24c645e3204845f985f067c6d2a8a814b02dbdbe25a5d6d9bffcd678d0f616"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_status_v3.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_offline_A_status_v3.py",
+    "bytes": 906,
+    "sha256": "0d2d7553d77301c6afab53ffbbf63886c9dc4ecaa8efbd79af3d83139dccda42"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_offline_pilot.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_offline_pilot.py",
+    "bytes": 11003,
+    "sha256": "ee170367f4f4462d1c31c258ec299ad2a068f592deaab19aaac9797fa3093202"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_optimizer.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_optimizer.py",
+    "bytes": 10730,
+    "sha256": "594150f36cfcb647682e72774397a4d2732bd95cf27186a4751beca20d505bb7"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_page_recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_page_recovery.py",
+    "bytes": 17441,
+    "sha256": "d07ad2a7094f1709eb434018c5a756a6a0d189e33617d4f9935cb1e6e141d0dd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_plan_delta.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_plan_delta.py",
+    "bytes": 19637,
+    "sha256": "a952078dd4556ca32b243fff027223444ec7323fd5d190af83a8d94832e9701a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_recovery_budget.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_recovery_budget.py",
+    "bytes": 11261,
+    "sha256": "e1258afa10cf891a51cb23d449244e960745b2c3e59da53088df77aec465490e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_restore_timeout.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_restore_timeout.py",
+    "bytes": 3454,
+    "sha256": "35be3fb853ea972f9b7f6b317798529c074802f8f71000d0cf2b525bb350153b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_resume_horizon.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_resume_horizon.py",
+    "bytes": 3209,
+    "sha256": "05823acbc25b45d4f77c96bf71296682472f2358892d0cbffae07353f4f4622d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_runner_capacity.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_runner_capacity.py",
+    "bytes": 8860,
+    "sha256": "e45d99f22d8721f131a841306bed1bb19254ddf509f6f3c9ac560d74f455f1fd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_shared_A_controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_shared_A_controller.py",
+    "bytes": 29413,
+    "sha256": "03490ebbad1ec5d5bf2d216b9c8c26917353d5ea7028c6bee3a19a8918048846"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_shared_controller.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_shared_controller.py",
+    "bytes": 28573,
+    "sha256": "08cd12dfb25117df85bf304a6203e9cab6b3b1f0455a36c06746cd11a530b858"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_shared_prefix_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_shared_prefix_audit.py",
+    "bytes": 23134,
+    "sha256": "bcad3b50981498cb9a0d76809a21bb6b765161435015c9b5b2156440d01df000"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_shared_start.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_shared_start.py",
+    "bytes": 25827,
+    "sha256": "0b2e9aac416d2ef62ba40f4e1217ca242b6d01ef50ccda637bc06c3bcdfded75"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_source.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_source.py",
+    "bytes": 3167,
+    "sha256": "fc1b30d7aaed0910e66f0d9b9bf8862a3766526fdc78da8d2f191589e50d13eb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_status.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_status.py",
+    "bytes": 4431,
+    "sha256": "2f775d16bea3f3070b1a25807b0a3473555e1a665d17ab67700ec047689eb190"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_status_compute_cost.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_status_compute_cost.py",
+    "bytes": 1561,
+    "sha256": "44e8c12dcbe7b1928d3eef501b1ccd48f7c75b3d01b006a271ddee412bbeb294"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_audit_bundle.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_audit_bundle.py",
+    "bytes": 7378,
+    "sha256": "d667c6b622caacbd8d62486ec2df96caa9ea415e470e6d8c823ed2aa12d623ea"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_metrics.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_metrics.py",
+    "bytes": 12590,
+    "sha256": "d8c0d5d69e0999d34fd62bc2c8f49df266419e3e80bc2f3697f15aea99d83710"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_metrics_binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_metrics_binding.py",
+    "bytes": 2831,
+    "sha256": "d5462b70557e9706d44819cddbd65271ead6ce1d51f68908485a0d91b07e7007"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_opportunity_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_opportunity_audit.py",
+    "bytes": 28892,
+    "sha256": "cf7f596d308991c77b4420b1932996fcf5c14079bf990bc05fa725cfa5c781df"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_physical_binding.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_physical_binding.py",
+    "bytes": 17114,
+    "sha256": "83c2476395654e1d1930d426b97158d251ea8c34d4b13067cfcc3b54d10ad386"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_physical_core.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_physical_core.py",
+    "bytes": 23001,
+    "sha256": "1baaf3f83a63e438cb329c35a6cc08954308854451dc858f70ebcce051f98410"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_physical_projection.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_physical_projection.py",
+    "bytes": 21390,
+    "sha256": "8c92b71d3740c4e11157474fec30ae7a82f6d68768ed3ab202a98c7e733295c6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_snapshot.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_snapshot.py",
+    "bytes": 15296,
+    "sha256": "3a148149ce5fc099d4561a23b1ac25628b25f296bed3488422679dbb51a8615c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_stream_source_audit.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_stream_source_audit.py",
+    "bytes": 25978,
+    "sha256": "7df0b72cb004fa1ea7fe1f209882b23afe74a177df440fdcfb01853f22e34924"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_supervised_transport.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_supervised_transport.py",
+    "bytes": 18309,
+    "sha256": "9602791a5d6d69d12e39e85ac909b63c2d4196234f2ff4151ef4b371a6414776"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_trace_source.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_trace_source.py",
+    "bytes": 14152,
+    "sha256": "cbb01910699803f562165aacefba3b72efb45b99f384ae1d91bf12919489dc08"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_transport_recovery.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_transport_recovery.py",
+    "bytes": 17860,
+    "sha256": "67105fc2da57d0848177a6d6f38f617c929d5261a0be856f102479934499d45f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_fullfab_transport_usage.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_fullfab_transport_usage.py",
+    "bytes": 2786,
+    "sha256": "898ffc10e1e2d578c1b120a06ff5e2253bfecd9f952e6ec7f9beaa5a8a9c1699"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_smt_replay.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_smt_replay.py",
+    "bytes": 17997,
+    "sha256": "46cb7edc5cdd95953f6efb7116917a30f3de280e75dfdb0e19bd5c457d6e9ce0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/tests/test_solver.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/tests/test_solver.py",
+    "bytes": 2071,
+    "sha256": "9d1bd59f7e3881ad6141e66c60bf9d64334373ac46e2dcbcd5aeb7d4e7dfb011"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/ACCEPTANCE.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/ACCEPTANCE.md",
+    "bytes": 1914,
+    "sha256": "e2d0b2cdde23f3d6919bf5a7d093fb5bdf82ee7cf1156c123f14e9a17e9094be"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/INTERFACES.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/INTERFACES.md",
+    "bytes": 2800,
+    "sha256": "519e2780842221a5d4d2d0f2f9a824fa129ac9618da7f1ba09c0b6114edb866a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/PLAN.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/PLAN.md",
+    "bytes": 1038,
+    "sha256": "ff9ee11c1584de2719690bcfd0045948a2562ea28ad9f04590b4d4804b9089fd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/PROTOCOL_SMT_v1.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/PROTOCOL_SMT_v1.md",
+    "bytes": 7212,
+    "sha256": "5abd55d16eee09479bd22c36f9ccb2a4965d72dda66d9403b05e4f0d8ea83a18"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/PROTOCOL_STATIC_CHANNEL_RECOVERY_v1.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/PROTOCOL_STATIC_CHANNEL_RECOVERY_v1.md",
+    "bytes": 4802,
+    "sha256": "9d5304deddfc5e2902f6803c97a84f94d98a9c5ea75ff23f572df468c9e3c3ab"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/PROTOCOL_STATIC_v1.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/PROTOCOL_STATIC_v1.md",
+    "bytes": 7338,
+    "sha256": "bc1a315a99d9fa96bf83a20c90611ef9214e0e097307c3aafeecd231d46c1e00"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/REPORT_zh.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/REPORT_zh.md",
+    "bytes": 24372,
+    "sha256": "17ee9167ce6cfa6f187701723bda9aed056677cf695eaf11b5c8481dc4175bd5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/TASK.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/TASK.md",
+    "bytes": 19599,
+    "sha256": "d791e4ba07894161fa259d25c3ff41bfa457ba477f5539fa0e425653dbbb3553"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/classical-model.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/classical-model.md",
+    "bytes": 1731,
+    "sha256": "ebff65688b9c3447bdb3c3e874d6d7993e0fc9fb41f0edbdf8741c7f8a2e645e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/final-acceptance-gate.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/final-acceptance-gate.md",
+    "bytes": 11651,
+    "sha256": "95e09cbceec2e6a6c526a65e95f8794ca03b83c74b66ded840e3ac02c61d520d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-LICENSE-scheduleopt.txt",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-LICENSE-scheduleopt.txt",
+    "bytes": 20137,
+    "sha256": "23ee78c8bae49cf08ea2f0c84945c66b987ebe4520881fb51b3dad4fb43d07c2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-LICENSE-schedulinglab.txt",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-LICENSE-schedulinglab.txt",
+    "bytes": 1070,
+    "sha256": "920f816a1ba1efe5de8fdaea9df5d865c268667ebd6596cbdbc5b4c989a85709"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-evidence-lock.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-evidence-lock.json",
+    "bytes": 638,
+    "sha256": "e466659dbde27872d067b94d6a193f76c8978fae782bfc5c14cd70a5fffb561b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-reference-summary.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-reference-summary.md",
+    "bytes": 3742,
+    "sha256": "3ea7315fc2b242fbd06a1184b8f9385c8838b5d8af6aced78ac228b4483e93f4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-reference-values.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-reference-values.json",
+    "bytes": 61435,
+    "sha256": "c329dc1e94f54b4f1dc4380a48583ef4279eae26c53d60d9b49ca4432fe24079"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-selection-change.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-selection-change.md",
+    "bytes": 688,
+    "sha256": "581252934112db8b6332fce68be1fecbac3722b87f971718688cae9c42028359"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-selection-v1/fjsp-reference-values.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-selection-v1/fjsp-reference-values.json",
+    "bytes": 59576,
+    "sha256": "5025c9f9b5e0e034159c17310fa65d7cc474bad7a571c39a305e063fbec08110"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-selection-v1/manifest.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-selection-v1/manifest.json",
+    "bytes": 33776,
+    "sha256": "ce53abfa4babb503f782dba90fb6eec6ebf7cd55e348dbc685190ae47bdab484"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-selection-v1/source-lock.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-selection-v1/source-lock.json",
+    "bytes": 69131,
+    "sha256": "e26f46c5c6f5dda8ea4e41ae80232e880c40a7ccb1ac953a93c4b2d24170cc5a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-selection-v1/split.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-selection-v1/split.json",
+    "bytes": 1258,
+    "sha256": "41caeb42218e949518e86c8ff85204da10a39a4474cf10080b075dbff2e80d94"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/fjsp-source-audit.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/fjsp-source-audit.md",
+    "bytes": 8967,
+    "sha256": "435ddae32d8e0588d85a6588e783d90a85a0f531a3aef525e4587e16aadcd9af"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/freeze-corrections.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/freeze-corrections.md",
+    "bytes": 636,
+    "sha256": "6c42c47c7e2ff708ee1966f0206ef5f39140215dded937ad18ac50b4407b1a67"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/model-channel.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/model-channel.md",
+    "bytes": 9347,
+    "sha256": "8b5dc8ff5f04e9c532da46644172643c6246bc2ed5d7a702d54f5dbf4e2bff66"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/ortools-reference-model.py",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/ortools-reference-model.py",
+    "bytes": 7580,
+    "sha256": "ed9484f61c0d8064204b3aad32958a0e4e6eaeb377abe58a3b85f8681034c44f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/recovery-options.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/recovery-options.md",
+    "bytes": 9583,
+    "sha256": "4fbd159f2e5d2169819543c5cfba30a96dc63ce9a1922856c19459cb74fc4a27"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/report-methods-draft.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/report-methods-draft.md",
+    "bytes": 10223,
+    "sha256": "a03f2725c1427308c3aabea6053d6090a63dff8c870f282cd92da53d59a4a56b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-final-budget.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-final-budget.md",
+    "bytes": 4639,
+    "sha256": "faf4919b836734a966ab9b05572e9f8325f4ce978ee10ac420742c25789012aa"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-final-freezes.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-final-freezes.md",
+    "bytes": 3923,
+    "sha256": "5145dc6b7716f3fb6554e43acdbf63a6e44df5551a0fd0e0ccfb2765773f3bd5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-report-final-data.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-report-final-data.md",
+    "bytes": 12314,
+    "sha256": "114b3fa317bf0333b74b15a03d56fcff9a4ff2a12a7463d03add57b7b34952cf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-report-final-signoff.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-report-final-signoff.md",
+    "bytes": 7817,
+    "sha256": "8b9902c787c4703dfa5b5ccc546c8e7802ee6b7a265f1ab0d710fe468862f53e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-report-static-draft.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-report-static-draft.md",
+    "bytes": 8568,
+    "sha256": "416cd8193b874c775a0da4409a4801f1aaab21e1dca40a0b6868acf35794346b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-runtime.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-runtime.md",
+    "bytes": 10024,
+    "sha256": "f0f0461bc82e0f59f297b13c0859cdab813fcb73f2ec87afc54c79d514abda04"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-smt-controller.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-smt-controller.md",
+    "bytes": 7966,
+    "sha256": "e480c217bd34553685559e1a982bb7b8c130a0ebaecd0e4c9dab88ded5322516"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-smt.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-smt.md",
+    "bytes": 14667,
+    "sha256": "8afaccc8e77e79789b9f32033ca030092174d75329b2c132f68c27c64fdc05ad"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/review-static.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/review-static.md",
+    "bytes": 10276,
+    "sha256": "6a050710c2be1afce55885852692d4dc7bd0c6306acc10bf69f6cfd2b84ab329"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/runtime-environment.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/runtime-environment.json",
+    "bytes": 977,
+    "sha256": "621a32ac77a845fcacca5055abc929cdc9dc10ffff023df3748274b90a93f27b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt-interface.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt-interface.md",
+    "bytes": 3831,
+    "sha256": "4f0d381a6751cf41b49e2ec5af6e727ddd09c70d533b5cf79c6bd4edaa3e9290"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt-metrics.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt-metrics.md",
+    "bytes": 8297,
+    "sha256": "f0756c07d3507b17ce4c3e1c3625e8fb3435ff2e6e18fae642c9a9e4b2841fd1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt-semantics.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt-semantics.md",
+    "bytes": 10487,
+    "sha256": "52fc3cb42018cbe2883acc5d548bcf28304ae649d7fbe0e206202c3b067d8fa0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/A-8h-preregistration.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/A-8h-preregistration.md",
+    "bytes": 11921,
+    "sha256": "374c7107424304f7dbbdf5e27035c6f655826a34c57489986235b57f2edde8f4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/A-development.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/A-development.md",
+    "bytes": 17870,
+    "sha256": "479820973a09819763b8d47b6679c989db918ff9d7e5bb236062b5f1066b0772"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/A8-capacity-v3.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/A8-capacity-v3.md",
+    "bytes": 9184,
+    "sha256": "f5b63d255f31fa8b15e817ad4af2e53c524be4657b8ca731b3998abc0679b539"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/ABC_1h_plan_comparison_20261012.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/ABC_1h_plan_comparison_20261012.md",
+    "bytes": 10253,
+    "sha256": "bf80732b100ac7b11783f6f2c177c594b429607f9d6e87cddd1b5081044c74fe"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B-delta-1h.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B-delta-1h.md",
+    "bytes": 5905,
+    "sha256": "81a567c03a65c1b1ac832c9560a1023f132e830cc05352c9d05cdd663e8e1d38"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B-delta-development.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B-delta-development.md",
+    "bytes": 13293,
+    "sha256": "27f1a43cb602c6a427a1fc8f82d47748c9c55ecb7bb4eb535396ca185ef09cf6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B-delta-session.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B-delta-session.md",
+    "bytes": 10772,
+    "sha256": "fb19cbcce4fe2085440f3f8a3325b5e709f2f6274acf194ec414c556d818a471"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B-later-state-recovery-design.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B-later-state-recovery-design.md",
+    "bytes": 15702,
+    "sha256": "0ab9a98dc1a9ffec772d85f8339bec61bfeb1569671d472665ac8b410088ddc9"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B-recovery-001.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B-recovery-001.md",
+    "bytes": 4291,
+    "sha256": "c8429021b5bec8184cc6adb01605837dbad7ea25d620842e714c39b0e8308275"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B-recovery-design.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B-recovery-design.md",
+    "bytes": 18131,
+    "sha256": "012a50d996c5b5f65dd8918b9e839e6273d9ce295db95f7f87496bb41e91d8f3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B-recovery-egress-review.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B-recovery-egress-review.md",
+    "bytes": 2343,
+    "sha256": "64c7c9b8cd2d861f0ac1c448cddda54e7d323398328d6f991fd1855270fb9134"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/BUDGET_AMENDMENT_C.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/BUDGET_AMENDMENT_C.md",
+    "bytes": 3177,
+    "sha256": "a087f3043007c4ad0a3e3f5b1a5941fb4c063b49eb730c86d038420b7822e537"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/BUDGET_PROPOSAL.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/BUDGET_PROPOSAL.md",
+    "bytes": 2127,
+    "sha256": "f0055a3a1c30c0c3349fc70130975b4be0e318605184c646c12a52c23c506cb1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/BUDGET_RESEARCH_WAIVER.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/BUDGET_RESEARCH_WAIVER.md",
+    "bytes": 5629,
+    "sha256": "bc04e801ba36599730526a1365a2a5be5b831a66647c9c5eba1899516a3f8eec"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+    "bytes": 20537,
+    "sha256": "4dab503668eeef55f792cb82a7e26d6a82ffd7a24811846f5e14a4f77ac073c8"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B_PRESERVED_CONTINUATION.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B_PRESERVED_CONTINUATION.md",
+    "bytes": 2412,
+    "sha256": "9e55f6a8f26f4d8bc08107b950a1c02b7c785ad248352a83af932869ad3e1f17"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B_V8_LAUNCH_RECOVERY.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B_V8_LAUNCH_RECOVERY.md",
+    "bytes": 1290,
+    "sha256": "7c1b960daa372e9c056d25e3cb55b7a76493742cd608924d5430221b04ad221d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/B_V8_PROTOCOL.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B_V8_PROTOCOL.md",
+    "bytes": 2927,
+    "sha256": "91ded10b334e9f08fe5de1a926762d4558ed18f2904dedd9c49d2cea433e91d0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/C-constructive-development-v2.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/C-constructive-development-v2.md",
+    "bytes": 6630,
+    "sha256": "a6fc8a197a3e7f110cdc643ef0ec00c4085985ca193d4f6e2b7a1be04f42387f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/C8-development.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/C8-development.md",
+    "bytes": 3110,
+    "sha256": "2cbcbde971fb246511e9aad0ed9d0b80407b1867cd0b0a8a572a9546c07a7422"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/PROTOCOL_DRAFT.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/PROTOCOL_DRAFT.md",
+    "bytes": 7692,
+    "sha256": "4f306a667a25fc2277809068a2960f8fa402b82e4fccedd78e9396c694e3b167"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/README.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/README.md",
+    "bytes": 8932,
+    "sha256": "a4a66464c7c566f0875e0669a49e1727f8795d2b7b1010c735a12eabd1fc097a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/REPORT_zh.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/REPORT_zh.md",
+    "bytes": 39577,
+    "sha256": "ee4e7791178de9ddfeb831954f9edc46ff173970a32244b88e67df6a841625df"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/RESEARCH_ACCEPTANCE_MATRIX.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/RESEARCH_ACCEPTANCE_MATRIX.md",
+    "bytes": 21502,
+    "sha256": "0cb177696db6c9a9292ff82a629bf5e330c3ba992a9f81430a66067a346de095"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/RESEARCH_ACCEPTANCE_MATRIX_v2.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/RESEARCH_ACCEPTANCE_MATRIX_v2.md",
+    "bytes": 23787,
+    "sha256": "ef9913f2a3e5d76a0fb2c7921d9e8748919f01484dd8cb4d3c5ef75ca770499d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/SPECIFICATION.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/SPECIFICATION.md",
+    "bytes": 3483,
+    "sha256": "b1d2b57a479f0bbd9e3677c6f50aed24bb98f4470c71299e2075f37b1f2d34ab"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/TASK.txt",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/TASK.txt",
+    "bytes": 15813,
+    "sha256": "eb99783e47832183f256e9a7c7d4d4969ec3c8feb16dcfd530f183e27db229ff"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/calibration-20261009.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/calibration-20261009.md",
+    "bytes": 7661,
+    "sha256": "c68163e5fa952773430185b9be90bbfed9afb37a24de69b157ed7bffbe88c600"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/decomposition.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/decomposition.md",
+    "bytes": 8615,
+    "sha256": "c21952930ba1130c784d4885ea48ac7a5645043347cec7e91fc5ea09515912c3"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/discrimination-development.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/discrimination-development.md",
+    "bytes": 11555,
+    "sha256": "a3c7bdec47c419b55f0fde06a055629db44558260e6fe3c23f273bc65fc2975b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/freeze-deadline-fix.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/freeze-deadline-fix.md",
+    "bytes": 3038,
+    "sha256": "3d857d0d3acd7d9b899a20c999831a375b398a5940e17c2eb76d49d474aa3c15"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/historical_review.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/historical_review.md",
+    "bytes": 3532,
+    "sha256": "7e4bd2d592c15881075229d2f8d026377828fe5212ce02a9db8435c94b85d9d0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/incumbent.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/incumbent.md",
+    "bytes": 7308,
+    "sha256": "5c35798d3375745118c3088dd56063c7fb1c8129748a9af903eb03993041669a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/long-window-storage-review.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/long-window-storage-review.md",
+    "bytes": 31694,
+    "sha256": "9bedef3c4e926aa0c1a38aae3f095b0a50d3ccb63b0638e16b7d7f6c22edda8d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/metrics.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/metrics.md",
+    "bytes": 7783,
+    "sha256": "d20676060a4aa63d4b104dbf69ab863afd4bdceecb6d9ccfe153b66586702ece"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/offline-design-next.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/offline-design-next.md",
+    "bytes": 20729,
+    "sha256": "ec6011ac60bc1719877bfe08bac38073145cdb227da53af66d2cf0562c37a415"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/optimizer.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/optimizer.md",
+    "bytes": 11346,
+    "sha256": "c4180be45bd743e745c1930d1435710bac72e15c470e4a534e5ead4a7374da17"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/repair-design.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/repair-design.md",
+    "bytes": 23431,
+    "sha256": "a66fbc6f97e531a18f687a0e61c5f11016ae5bb302a7d1370e752d98ec4887c4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/review_controller.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/review_controller.md",
+    "bytes": 11108,
+    "sha256": "05580e2f46c597432337a6701b3223ab50633a38bdadea375436efab5e80c634"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/review_environment.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/review_environment.md",
+    "bytes": 7886,
+    "sha256": "2dd5f8e4830f7a7c9305cf54c2ee34c9430c75271ec265aa9f4d608922197d0f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/semantics-20261009.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/semantics-20261009.md",
+    "bytes": 6782,
+    "sha256": "5503290e6320342deb8095e5f4444962b41d3b52696b58e9dc57cef924658d5a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/docs/smt_fullfab/shared-controller-integration-review.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/shared-controller-integration-review.md",
+    "bytes": 8053,
+    "sha256": "4f5cf1bfa7844924c5bd0dbdfe5042b64ea6c6b4c50e150135ef7c9154beb352"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/development-aux.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/development-aux.json",
+    "bytes": 522,
+    "sha256": "375e513a612b98fc030b1d4347780b1aa4bab5892bb549c8110706cd844c1606"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/development-compact-c.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/development-compact-c.json",
+    "bytes": 517,
+    "sha256": "dc6d16a87d6281ccad8d00a55158060f46611550bf2c8c98585561e3f50246b5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/development-portfolio.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/development-portfolio.json",
+    "bytes": 528,
+    "sha256": "3beb720387000443a5aec4928470e887177fcf32b5be7d3661d30e59d0f45988"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/development-v2.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/development-v2.json",
+    "bytes": 526,
+    "sha256": "715cefbd8f6b6042496116aac38e96e3a904e5e2dc9261c80a2aa364a757093e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/development.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/development.json",
+    "bytes": 501,
+    "sha256": "0b4d03278cff2a6de33f9c49690184429c2956b9feba7ce30cb47b228179cd29"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/freezes/deprecated/static-aux-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/freezes/deprecated/static-aux-v1.json",
+    "bytes": 13517,
+    "sha256": "ac2909d8412c724bc3f4528953da3de820b03cbea2a1ad8d0d8d28e92e656859"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/freezes/smt-aux-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/freezes/smt-aux-v1.json",
+    "bytes": 8201,
+    "sha256": "7d4f8eb0a102d3282c4846ce77765ee724ffe4352a31478485360191c4c33e1f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/freezes/smt-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/freezes/smt-v1.json",
+    "bytes": 8963,
+    "sha256": "681b77603e0f94bb82d10bcb337ec9f21d5b94a3c10ae9e3d3a55ed083789f38"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/freezes/static-aux-v2.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/freezes/static-aux-v2.json",
+    "bytes": 9882,
+    "sha256": "211ec2da8a50aa8264e2358b69398a51a2bec686150e23c7a47ed02fcb7d5092"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/freezes/static-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/freezes/static-v1.json",
+    "bytes": 13506,
+    "sha256": "06a6b775bdb2754dd4433f7a6ad7441a998d8eb2a838c313e210a28907c5bbfb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/model.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/model.json",
+    "bytes": 264,
+    "sha256": "871a8242b9e79ef424cf33e45cf7f6045543fe0e6fee48cc77b1ce65edf195b6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt-aux-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt-aux-v1.json",
+    "bytes": 955,
+    "sha256": "54098331561d07c719c433707cb13e159e4b012133defe870e7e166955e3d18e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt-development.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt-development.json",
+    "bytes": 569,
+    "sha256": "0c03198c6438f795ea5ceca0e8707efecc8320a13f64e98230f2c3342aca166e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt-scenarios-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt-scenarios-v1.json",
+    "bytes": 389,
+    "sha256": "64f73f572c409df453b84d78d7b64aac7d8311207efbffec9ad9ab95e633ffbe"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt-v1.json",
+    "bytes": 951,
+    "sha256": "ce3c2f66f38f649c635e1efff065ef223d9089d75c3d74eed367ba8cb4aed66e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/A_hybrid_24h_v1.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/A_hybrid_24h_v1.protocol.json",
+    "bytes": 5341,
+    "sha256": "2e71ca8e8c541f9c28824b242d4f1273c2bef90b4112b55c1dba396ec274ffdb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/A_hybrid_8h_v2.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/A_hybrid_8h_v2.protocol.json",
+    "bytes": 10590,
+    "sha256": "fe5e991a418fb411487b7920e9bd058dd1ea12ae6e3fc3179ccec8f77dbb0ce2"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/A_hybrid_8h_v3.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/A_hybrid_8h_v3.protocol.json",
+    "bytes": 7396,
+    "sha256": "c8034814f332d87a9299526e88ad8c85c738398136898bff54ec9c5a5ded25e0"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/A_v3_development.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/A_v3_development.json",
+    "bytes": 2659,
+    "sha256": "859826f1ff1551ee7efcd4502ac26088e919040742ae33b9e2ab97f7e35cda25"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/A_v4_development.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/A_v4_development.json",
+    "bytes": 4842,
+    "sha256": "621edf15188c3129e0fe2033b93e2a83038f7a031579751747bc9d582ecd27f5"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/A_v4_recovery_budget_guard.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/A_v4_recovery_budget_guard.json",
+    "bytes": 403,
+    "sha256": "2450cd3368d7e9477b76ba948fbf383f190449cebb2ee057debfa36156837ccc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v1.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v1.protocol.json",
+    "bytes": 5679,
+    "sha256": "f9e7138601c01257541df5028d7729e4d629ba7534d91760fedff712c9126e94"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v2.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v2.protocol.json",
+    "bytes": 6964,
+    "sha256": "a6c95dac8921b8f5853af6d6e6f87fefcef1efdbf8ec95f9a0427d8a5ecb7741"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v3.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v3.protocol.json",
+    "bytes": 7402,
+    "sha256": "f3211e5ffda6d6a9395e8d35ad85a9371921c745ea5881e215a0ab2f81fefe77"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v4.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v4.protocol.json",
+    "bytes": 7758,
+    "sha256": "d914d868c11569072ba79e8b4a3209a4ea6662eff0ef2980645bdc0ebbf1c096"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v5.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v5.protocol.json",
+    "bytes": 11572,
+    "sha256": "cff721e001d3251493058c744590f8a1c340bc30f33b11e23a5493023a3734b6"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v6.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v6.protocol.json",
+    "bytes": 11517,
+    "sha256": "d1727035e4018e2d06a668df2deff1ac7b1c9fcc322089f66ae84fec5045d1bb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v7.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_delta_1h_v7.protocol.json",
+    "bytes": 11718,
+    "sha256": "1ca2104c3638b004cb45f3ebb885788500d0de48542909c910df6214bac0696f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_timeout_600.approved.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_timeout_600.approved.json",
+    "bytes": 1109,
+    "sha256": "a82bf66c27204551a7655edff8de90c3f01155830cb2bc066710b44df5e9569d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/B_v2_recovery_001.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/B_v2_recovery_001.protocol.json",
+    "bytes": 1794,
+    "sha256": "83a81ed37fbb4cf9ec5b91f0f1f0778ab20fd7b2d52c0cf4d9a45f34f646c27e"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/C_1701_1h_probe_v1.preregistered.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/C_1701_1h_probe_v1.preregistered.json",
+    "bytes": 921,
+    "sha256": "3e67302cff048aba7d275841e90bf2ca8ea203ff1c212cc4060ef9b0c5d25a1b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/C_constructive_1h_v2.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/C_constructive_1h_v2.protocol.json",
+    "bytes": 3217,
+    "sha256": "805c2085c0ad4a0b90113eb9f4c36385121ff7a58e0cce51162374beb66105e1"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/C_stream_8h_v1.protocol.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/C_stream_8h_v1.protocol.json",
+    "bytes": 11703,
+    "sha256": "8b8cca42944919d17019814e2620cb5377eb1463532dfc4adc78f81300c4ed47"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/offline_development_next_v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/offline_development_next_v1.json",
+    "bytes": 1789,
+    "sha256": "eb1cd7a7a89e228e39894fcdc8bd85f1e5b55ce14a4f9ecfaba31231ac092bb8"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/research_limit_waiver.approved.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/research_limit_waiver.approved.json",
+    "bytes": 551,
+    "sha256": "877e27d040316f6532d89bcb960f2cd149d472487bc600827d53ce2602cf009d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/stage2_B_v2.registration.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/stage2_B_v2.registration.json",
+    "bytes": 1750,
+    "sha256": "de9a77bd3788c23cd3cc76d9ee7f4ed89e025381f969c8a046598da82b8911fd"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/stage2_C_amendment.proposed.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/stage2_C_amendment.proposed.json",
+    "bytes": 719,
+    "sha256": "a875c201362393a191ef011322a625e5ef441153f1a36f0cb614478791ab9393"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/stage2_C_waiver.approved.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/stage2_C_waiver.approved.json",
+    "bytes": 323,
+    "sha256": "e6304d9a7043fe6cd5385c750c0c106e22fbf46a6dbe53c441243c32aef3864a"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/stage2_probe.approved.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/stage2_probe.approved.json",
+    "bytes": 1291,
+    "sha256": "d5460d8afeac6f1101c5adb30d73a530167741533f0932995feb438f6b675c1f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/smt_fullfab/stage2_probe.proposed.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/smt_fullfab/stage2_probe.proposed.json",
+    "bytes": 1170,
+    "sha256": "0d4033ec02f51909e8097852c560595b9b103db2cce5b01607a08205ada53b13"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/static-aux-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/static-aux-v1.json",
+    "bytes": 632,
+    "sha256": "14a0d489c1a459c9e218e0c00a77c7cd6cba7e315cb4a15a18a2b8de17036d5b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/configs/static-v1.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/configs/static-v1.json",
+    "bytes": 628,
+    "sha256": "0c1259041ecaad8d3a37bd819a07522ced50a18cdb0b4420154fc07d91961b7c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/prompts/static_b.txt",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/prompts/static_b.txt",
+    "bytes": 888,
+    "sha256": "31463750bfa69ee35f750fc940de6ff2dd16e66c7c21862ae4a541cd09e47c01"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/prompts/static_b_compact.txt",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/prompts/static_b_compact.txt",
+    "bytes": 978,
+    "sha256": "0c960ef7d94039a6cac9bb8812a140b011080bf361f03d2a71de5a13a86fe097"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/prompts/static_c.txt",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/prompts/static_c.txt",
+    "bytes": 720,
+    "sha256": "66f9f408b23e4aa9b1fe7cae05977cbcb754f0d3b245f68f25f7ba11bc2d39cc"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/README.md",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/README.md",
+    "bytes": 10330,
+    "sha256": "c7318e92b486ee86f24edbdb6beab8b512823e6c911148dbe05112775dcb9bff"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/requirements.lock",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/requirements.lock",
+    "bytes": 301,
+    "sha256": "a356a738d3d5a3a9811a9deb86de3b7efc4e22aa86bd3b8f6092ceb9408a5f6f"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/.gitignore",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/.gitignore",
+    "bytes": 492,
+    "sha256": "af7f9284bc3ea960422be1c89be3a956b0d742fd50a28b317a427ff536317668"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/codex-workflow.mjs",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/codex-workflow.mjs",
+    "bytes": 7740,
+    "sha256": "0ada15263eaa1b054f25e2a24757dcb31c99f87983ad83451d3515a77f4e2d55"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/codex-workflow-runtime.mjs",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/lib/codex-workflow-runtime.mjs",
+    "bytes": 13174,
+    "sha256": "6441fed3f4d19278e79d1fa11fae3811538f59de274d9b14bbeb095ca0cbc2a8"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/frontmatter.sh",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/lib/frontmatter.sh",
+    "bytes": 1688,
+    "sha256": "c83c3158c85d58f7523b6fbd9255e733b694334721fbc018c0652bd46a27f1ba"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/merged_detect.sh",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/lib/merged_detect.sh",
+    "bytes": 2424,
+    "sha256": "f37b1db44e7e7f7895a2aa20ecdb09372d604bfd132d2ce88ac1a51ca5dc161b"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/mirror_sync_lib.sh",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/lib/mirror_sync_lib.sh",
+    "bytes": 22716,
+    "sha256": "f2759d00eb4896c5f91b4c662b65a4b6b4c01cf533cbf272d9b4f075f9eda80a"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/shell-utils.sh",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/lib/shell-utils.sh",
+    "bytes": 6280,
+    "sha256": "4910e1f74e7cba826f1648a6e8db9fd6a620cbdf85a67a8d0516cdf2ac429c1d"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/transcript_index.py",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/lib/transcript_index.py",
+    "bytes": 11810,
+    "sha256": "d29e58632e177fc03c6bcced8fc8de01dcd6f70ea4a0634835f1e5845e0dd5a2"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/transcript_lean.py",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/lib/transcript_lean.py",
+    "bytes": 28712,
+    "sha256": "4ea6c148cf687c0125d7358c8e31bf8933eeba6dad6796cdb1cdc3ab6e49db55"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/scripts/lib/workflow-schema.mjs",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/scripts/lib/workflow-schema.mjs",
+    "bytes": 5414,
+    "sha256": "af50da88be2c11a9445cfdb5d2ce389a2b24de273e9db080d94e4759c2434a1e"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/workflows/m05-web-research.js",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/workflows/m05-web-research.js",
+    "bytes": 24500,
+    "sha256": "9e202901cd4c965cd40bf1c3da07ed9f2b90f4fafc541b1d961828bcebdd7764"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/workflows/m05-web-research.README.md",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/workflows/m05-web-research.README.md",
+    "bytes": 11091,
+    "sha256": "c7a8374a066cb87155e72504891a12cccd3761a07f0e1281bccdd2ab66ad6233"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/plugins/harness-core/workflows/codex-workflow.README.md",
+    "archive_path": "source_snapshot/myharness/plugins/harness-core/workflows/codex-workflow.README.md",
+    "bytes": 9296,
+    "sha256": "31a4bcc093eff59af2d49e3c809303e14e83f1df9d9d21f12453db28c8b5f1c2"
+  },
+  {
+    "source": "__LOCAL_HOME__/Downloads/大模型训练营/myharness/tests/harness_tools/codex_workflow.test.mjs",
+    "archive_path": "source_snapshot/myharness/tests/harness_tools/codex_workflow.test.mjs",
+    "bytes": 16096,
+    "sha256": "182539b1d7a7024ed4f5f01847a0acf3a69659a5376c8209ea55abbc27294d8b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/SMT2020_全厂排程_续作_goal_prompt.txt",
+    "archive_path": "source_snapshot/SMT2020_全厂排程_续作_goal_prompt.txt",
+    "bytes": 15813,
+    "sha256": "eb99783e47832183f256e9a7c7d4d4969ec3c8feb16dcfd530f183e27db229ff"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/experiment_round2_3datasets/artifacts/final/acceptance.json",
+    "archive_path": "source_snapshot/experiment_round2_3datasets/artifacts/final/acceptance.json",
+    "bytes": 31270,
+    "sha256": "d1a483fe180766830af5417cb834f6cc1761156bbb0267c0e9d69ac541df7bff"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/m0.5_research/dossier.md",
+    "archive_path": "source_snapshot/m0.5_research/dossier.md",
+    "bytes": 39875,
+    "sha256": "7dbf6cd0a1b46998d78f35471d3ca2652986dd9534db00020864726e045e593c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/m0.5_research/open-questions.md",
+    "archive_path": "source_snapshot/m0.5_research/open-questions.md",
+    "bytes": 7597,
+    "sha256": "f1be0431be86ea8704cbac5929cfc583fc4de4d6aefcc305d2e5f669713f0c05"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012/m0.5_research/dossier.md",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012/m0.5_research/dossier.md",
+    "bytes": 94056,
+    "sha256": "aa528338d96d1a0f86a5ed1bd555f1aeff8a8b21fffcd2e2368b3797e3411695"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012/m0.5_research/evidence/adoption-scopes.json",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012/m0.5_research/evidence/adoption-scopes.json",
+    "bytes": 3459,
+    "sha256": "01586418f4930eff98b1f48dd3f5badb47eedc52cd6311c6172610144ac87e67"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012/m0.5_research/evidence/completion.json",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012/m0.5_research/evidence/completion.json",
+    "bytes": 2688,
+    "sha256": "3f575192f701f463b683167e7aae3b94f0cc4ab01294b009f7ebe4c6c65f913c"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012/m0.5_research/open-questions.md",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012/m0.5_research/open-questions.md",
+    "bytes": 3976,
+    "sha256": "ccbf792eb3e1b6ae8698e2d2765137c2e30bb9074844899464f4d28459fc5656"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012/m0.5_research/review_v1.md",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012/m0.5_research/review_v1.md",
+    "bytes": 5535,
+    "sha256": "b68abca8f5c45a81a2cfd34116acfaf2ffa64277ae266bfbd90326e8182e92bf"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012/m0.5_research/summary.md",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012/m0.5_research/summary.md",
+    "bytes": 3761,
+    "sha256": "8bb73a817d05ea6618150cbd72bddf4a294ff52b22d7a53e911a2f73b19e9a64"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/dossier.md",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/dossier.md",
+    "bytes": 327925,
+    "sha256": "14eba01dda4d644630983af29935c4e7e3f52b2641669a42f1c6cdbb91d1f945"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/adoption-scopes.json",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/evidence/adoption-scopes.json",
+    "bytes": 7739,
+    "sha256": "56538b388d7451a759d0fe8152e080437b88462f9e079eddbbcb12ed1c5b714d"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/completion.json",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/evidence/completion.json",
+    "bytes": 1283,
+    "sha256": "fe3035fa522950b838e88eadf81125068e6e691fad0164d2142e3b63a0cf78bb"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-register.json",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/evidence/retry-register.json",
+    "bytes": 223430,
+    "sha256": "f000b1fdb74f0bf4de6a591561ba5823735a1ea960e37492952f60c4d4e261ef"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/open-questions.md",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/open-questions.md",
+    "bytes": 3993,
+    "sha256": "eade681ed11933c8d8ad3d40a42ab8623595df66a77872db8a895225246ca76b"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/review_v1.md",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/review_v1.md",
+    "bytes": 6987,
+    "sha256": "78ff4ada72f9691672fb9a9368399a6e6967d1dfc81ef52e664915a1f4bdbae4"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/research_harness_scheduling_20261012_round2/m0.5_research/summary.md",
+    "archive_path": "source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/summary.md",
+    "bytes": 7608,
+    "sha256": "77fa0b448e31436d688b9acef7bc47bb4adab31faf22a94c2ab72e6d74db6e05"
+  },
+  {
+    "source": "__LOCAL_PROJECT_ROOT__/summary.md",
+    "archive_path": "source_snapshot/summary.md",
+    "bytes": 3868,
+    "sha256": "5e2da9a3c174f8fe8f5f6eaf0af111445df00e04a25465526815e0a341f2c4b9"
+  }
+]

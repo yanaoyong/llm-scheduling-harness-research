@@ -1,0 +1,13 @@
+{
+  "amendment_id": "smt-fullfab-research-count-token-waiver-v1",
+  "budget_id": "smt-fullfab-stage2-probe-v1",
+  "authorization": "approved_by_user",
+  "approval_text": "记得将调用次数与额度放开",
+  "allowed_purposes": ["B", "C"],
+  "waived_limits": ["attempt_count", "reported_tokens", "unknown_usage_admission", "total_active_wall_seconds"],
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "per_call_timeout_seconds": 180,
+  "allowed_stage2_window_seconds": [3600, 28800, 86400],
+  "formal_requires_preregistration": true
+}

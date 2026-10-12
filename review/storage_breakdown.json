@@ -1,0 +1,296 @@
+{
+  "measured_at": "2026-10-12T13:17:09.578308+00:00",
+  "units": "decimal bytes; GB=1e9; MB=1e6",
+  "original_content_bytes": 50263836618,
+  "by_source_directory": [
+    {
+      "path": "experiment_round2_3datasets/runs",
+      "files": 99707,
+      "bytes": 48215954960,
+      "share": 0.959257
+    },
+    {
+      "path": "experiment_round2_3datasets/artifacts",
+      "files": 4899,
+      "bytes": 941376384,
+      "share": 0.018729
+    },
+    {
+      "path": "experiment_round2_3datasets/.venv",
+      "files": 7822,
+      "bytes": 254092118,
+      "share": 0.005055
+    },
+    {
+      "path": "experiment_round2_3datasets/data",
+      "files": 111,
+      "bytes": 244312611,
+      "share": 0.004861
+    },
+    {
+      "path": "experiment_round1/runs",
+      "files": 2429,
+      "bytes": 228053193,
+      "share": 0.004537
+    },
+    {
+      "path": "experiment_round1/artifacts",
+      "files": 533,
+      "bytes": 207740600,
+      "share": 0.004133
+    },
+    {
+      "path": "experiment_round2_3datasets/vendor",
+      "files": 312,
+      "bytes": 48422593,
+      "share": 0.000963
+    },
+    {
+      "path": "experiment_round1/.venv",
+      "files": 1951,
+      "bytes": 31531045,
+      "share": 0.000627
+    },
+    {
+      "path": "experiment_round2_3datasets/.git",
+      "files": 1057,
+      "bytes": 24865040,
+      "share": 0.000495
+    },
+    {
+      "path": "research_harness_scheduling_20261012_round2/m0.5_research",
+      "files": 301,
+      "bytes": 19140662,
+      "share": 0.000381
+    },
+    {
+      "path": "experiment_round2_3datasets/progress",
+      "files": 48,
+      "bytes": 15148391,
+      "share": 0.000301
+    },
+    {
+      "path": "experiment_round1/vendor",
+      "files": 686,
+      "bytes": 10246454,
+      "share": 0.000204
+    },
+    {
+      "path": "experiment_round2_3datasets/src",
+      "files": 342,
+      "bytes": 7240973,
+      "share": 0.000144
+    },
+    {
+      "path": "research_harness_scheduling_20261012/m0.5_research",
+      "files": 351,
+      "bytes": 6831720,
+      "share": 0.000136
+    },
+    {
+      "path": "m0.5_research/evidence",
+      "files": 267,
+      "bytes": 2626201,
+      "share": 5.2e-05
+    },
+    {
+      "path": "experiment_round2_3datasets/tests",
+      "files": 134,
+      "bytes": 2520872,
+      "share": 5e-05
+    },
+    {
+      "path": "experiment_round2_3datasets/docs",
+      "files": 81,
+      "bytes": 942841,
+      "share": 1.9e-05
+    },
+    {
+      "path": "research_harness_scheduling_20261012_round2/inputs",
+      "files": 37,
+      "bytes": 442833,
+      "share": 9e-06
+    },
+    {
+      "path": "experiment_round2_3datasets/scripts",
+      "files": 26,
+      "bytes": 417937,
+      "share": 8e-06
+    },
+    {
+      "path": "research_harness_scheduling_20261012/inputs",
+      "files": 12,
+      "bytes": 394453,
+      "share": 8e-06
+    },
+    {
+      "path": "inputs/user-job-posting.png",
+      "files": 1,
+      "bytes": 365268,
+      "share": 7e-06
+    },
+    {
+      "path": "experiment_round1/src",
+      "files": 18,
+      "bytes": 204805,
+      "share": 4e-06
+    },
+    {
+      "path": "experiment_round2_3datasets/configs",
+      "files": 42,
+      "bytes": 181229,
+      "share": 4e-06
+    },
+    {
+      "path": "research_harness_scheduling_20261012_round2/workflows",
+      "files": 21,
+      "bytes": 143135,
+      "share": 3e-06
+    },
+    {
+      "path": "experiment_round1/data",
+      "files": 12,
+      "bytes": 120735,
+      "share": 2e-06
+    },
+    {
+      "path": "research_harness_scheduling_20261012/workflows",
+      "files": 16,
+      "bytes": 96768,
+      "share": 2e-06
+    },
+    {
+      "path": "experiment_round1/scripts",
+      "files": 5,
+      "bytes": 91955,
+      "share": 2e-06
+    },
+    {
+      "path": "experiment_round1/progress",
+      "files": 21,
+      "bytes": 68395,
+      "share": 1e-06
+    },
+    {
+      "path": "experiment_round1/docs",
+      "files": 9,
+      "bytes": 63374,
+      "share": 1e-06
+    },
+    {
+      "path": "experiment_round1/tests",
+      "files": 4,
+      "bytes": 47046,
+      "share": 1e-06
+    },
+    {
+      "path": "m0.5_research/dossier.md",
+      "files": 1,
+      "bytes": 39875,
+      "share": 1e-06
+    },
+    {
+      "path": "relocation.json",
+      "files": 1,
+      "bytes": 37586,
+      "share": 1e-06
+    },
+    {
+      "path": "SMT2020_全厂排程_续作_goal_prompt.txt",
+      "files": 1,
+      "bytes": 15813,
+      "share": 0.0
+    },
+    {
+      "path": "experiment_round1/configs",
+      "files": 5,
+      "bytes": 11508,
+      "share": 0.0
+    },
+    {
+      "path": "experiment_round2_3datasets/README.md",
+      "files": 1,
+      "bytes": 10330,
+      "share": 0.0
+    },
+    {
+      "path": "m0.5_research/review",
+      "files": 1,
+      "bytes": 9324,
+      "share": 0.0
+    },
+    {
+      "path": "experiment_round1/README.md",
+      "files": 1,
+      "bytes": 7711,
+      "share": 0.0
+    },
+    {
+      "path": "m0.5_research/open-questions.md",
+      "files": 1,
+      "bytes": 7597,
+      "share": 0.0
+    },
+    {
+      "path": "summary.md",
+      "files": 1,
+      "bytes": 3868,
+      "share": 0.0
+    },
+    {
+      "path": "experiment_round2_3datasets/prompts",
+      "files": 3,
+      "bytes": 2586,
+      "share": 0.0
+    },
+    {
+      "path": "inputs/engine-binding.json",
+      "files": 1,
+      "bytes": 2063,
+      "share": 0.0
+    },
+    {
+      "path": "inputs/question-set.json",
+      "files": 1,
+      "bytes": 1815,
+      "share": 0.0
+    },
+    {
+      "path": "inputs/confirmation.json",
+      "files": 1,
+      "bytes": 558,
+      "share": 0.0
+    },
+    {
+      "path": "experiment_round2_3datasets/.gitignore",
+      "files": 1,
+      "bytes": 492,
+      "share": 0.0
+    },
+    {
+      "path": "experiment_round2_3datasets/requirements.lock",
+      "files": 1,
+      "bytes": 301,
+      "share": 0.0
+    },
+    {
+      "path": "inputs/input-integrity.json",
+      "files": 1,
+      "bytes": 287,
+      "share": 0.0
+    },
+    {
+      "path": "experiment_round2_3datasets/.gitattributes",
+      "files": 1,
+      "bytes": 171,
+      "share": 0.0
+    },
+    {
+      "path": "experiment_round1/requirements.lock",
+      "files": 1,
+      "bytes": 142,
+      "share": 0.0
+    }
+  ],
+  "explanation": "Full raw preservation includes successful and failed runs, intermediate products, ignored environments and original Git; private originals are excluded from archive Git."
+}
