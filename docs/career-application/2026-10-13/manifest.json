@@ -1,0 +1,29 @@
+{
+  "schema": "career-application-report-v1",
+  "title": "从制造排产经验到 AI Agent 落地",
+  "author": "鄢澳勇",
+  "document_date": "2026-10-13",
+  "archived_at": "2026-10-13",
+  "pages": 7,
+  "status": "职业实践与拟开展工作；智能排程项目仍在进行中",
+  "repository": "https://github.com/yanaoyong/llm-scheduling-harness-research",
+  "evidence_base_commit": "86a0a3acf02680a17ae316726140d88969c71583",
+  "files": [
+    {
+      "path": "career-scheduling-agent-report.pdf",
+      "bytes": 998847,
+      "sha256": "33735146c1f40c2ef5f28cd28927768f2812111e16a05ffab5e51641ae798293"
+    },
+    {
+      "path": "career-scheduling-agent-report.docx",
+      "bytes": 148158,
+      "sha256": "49e93399e8b1647ad2013fe85a058fa2d6bb979797f9c54c18fa51ad8948f13a"
+    }
+  ],
+  "verification": {
+    "source_bytes_preserved": true,
+    "all_pages_visually_reviewed": true,
+    "pdf_embedded_links": 5
+  },
+  "scope": "Final PDF and DOCX only, with reading guide and checksums. No private career source files or production work files included."
+}
