@@ -8,6 +8,8 @@
 
 ## 当前交付与推荐阅读顺序
 
+当前最新稿：[作品说明（半导体智能排程 Agent）](2026-10-13-semiconductor-agent-portfolio/README.md)，面向 HR 与面试官，含 PDF / Word / Markdown。上一版 [面试交流报告第二版](2026-10-13-interview-v2/interview-report.md) 保留作技术追问时的详细依据。
+
 1. [本次会话深查结论](HISTORY_VERIFICATION.md)：排程候选轮次对照、第二个计划提交记录、团队分发原话和自用验收摘录；先看这页，避免重复追问已检索的材料。
 2. [四项补充素材](INTERVIEW_MATERIALS.md)：有证据的受阻／恢复链、3 个本人决策、冷轧规则与同事反馈的缺口。
 3. [后续写作框架](INTERVIEW_OUTLINE.md)：可以继续起草的结构。
