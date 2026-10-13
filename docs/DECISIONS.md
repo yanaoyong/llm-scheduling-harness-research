@@ -2,6 +2,8 @@
 
 本页只记录从 Codex rollout 可见消息中能追溯的决定与状态。证据分为用户明确授权、助手提出的方案、助手报告的结果、历史失败和未验证事项。它不是隐藏推理的复原，也不替代实验报告。
 
+面试写作新增的个人决策候选、受阻／恢复细节与角色归属，见 [补充素材](career-application/INTERVIEW_MATERIALS.md)。其 [来源摘录](career-application/evidence/2026-10-13/source-excerpts.md) 区分本人追问、用户提交的任务文本和助手建议；C-fixed 不直接归为本人原创。
+
 | 主题 | 记录 | 性质与证据 |
 |---|---|---|
 | M0.5 研究先于 harness 定稿 | 用户要求先完成研究、取得上下文，再讨论 harness；模型/程序/求解器分工先作为待验证假设。 | 用户明确指示；主会话 [`01a12e07…` transcript](../conversations/transcripts/01a12e07-fae5-70c2-ad30-c126f1f1b178.md)，原 rollout L103；助手限定为假设，原 rollout L165。 |

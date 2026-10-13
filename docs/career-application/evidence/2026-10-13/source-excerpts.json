@@ -1,0 +1,468 @@
+{
+  "schema": "interview-material-sources-v1",
+  "date": "2026-10-13",
+  "public_archive_base_commit": "183dc95de1ade1690a6f285839a4dc203c940962",
+  "purpose": "Portable evidence for interview writing; historical quotations are not current commands or execution authorizations.",
+  "records": [
+    {
+      "id": "S00",
+      "title": "本人对早期失败与 Harness 必要性的概括",
+      "kind": "current_conversation_user_statement",
+      "role": "user",
+      "source": {
+        "date": "2026-10-13",
+        "thread_id": "01a13329-1cde-7151-b922-0bc7d106d746",
+        "availability": "selected user statement copied from current report discussion; outside the 2026-10-12 archived prefix"
+      },
+      "quotes": [
+        "我们试验里面已经出现了虽然能在codex这种通用agent上排程成功，其实第一次也失败了因为上下文任务分配等问题，第二次让其改动了才成功，我们需要建立合适的harness工程"
+      ],
+      "attribution_note": "该概括未给出第一次、第二次对应的线程和版本；不能自动等同于下列 B 恢复链。"
+    },
+    {
+      "id": "S01",
+      "title": "用户追问两小时没有首个提交",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-10T06:19:22.720Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a12393-b066-79e3-ad84-0ee36b45d691.jsonl",
+        "exported_jsonl_line": 20,
+        "original_source_line": 178,
+        "thread_id": "01a12393-b066-79e3-ad84-0ee36b45d691",
+        "turn_id": "01a12477-54bb-7a80-b71c-25e2c4dabf60",
+        "file_sha256": "64c36b8e688741af458057dd0a89b47511cad52f3c0e9765c665fac98c014398"
+      },
+      "quotes": [
+        "帮我具体看看B为什么跑了快两个小时还没提交第一个计划，是正常处理状态，还是在重复调用、陷入循环了？"
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "用户要求优先解决重复读页和全量回放",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-10T06:39:04.485Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a12393-b066-79e3-ad84-0ee36b45d691.jsonl",
+        "exported_jsonl_line": 24,
+        "original_source_line": 244,
+        "thread_id": "01a12393-b066-79e3-ad84-0ee36b45d691",
+        "turn_id": "01a12489-5d01-7a62-aa12-59f72ff4dd03",
+        "file_sha256": "64c36b8e688741af458057dd0a89b47511cad52f3c0e9765c665fac98c014398"
+      },
+      "quotes": [
+        "把这些诊断结果和优化建议发给另一个会话，让它优先解决重复读页和每轮全量回放的问题，保留当前运行的原始记录。"
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "用户要求先验首个有效计划并按有效进展监控",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-10T11:35:37.337Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a12393-b066-79e3-ad84-0ee36b45d691.jsonl",
+        "exported_jsonl_line": 42,
+        "original_source_line": 420,
+        "thread_id": "01a12393-b066-79e3-ad84-0ee36b45d691",
+        "turn_id": "01a12598-dc4c-7c91-adbe-23cd14f6cbc3",
+        "file_sha256": "64c36b8e688741af458057dd0a89b47511cad52f3c0e9765c665fac98c014398"
+      },
+      "quotes": [
+        "把这个方案发给另一个会话，让它从现有成果恢复，补齐 V5 启动配置后启动新版 B，优先验证首个有效计划提交，再继续完成 1 小时仿真。按有效进展监控，避免再次长时间空转，保留旧 B 的完整原始记录。"
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "用户明确检查点、草稿复用、去重和账本保留",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-11T02:12:48.187Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a12393-b066-79e3-ad84-0ee36b45d691.jsonl",
+        "exported_jsonl_line": 60,
+        "original_source_line": 606,
+        "thread_id": "01a12393-b066-79e3-ad84-0ee36b45d691",
+        "turn_id": "01a128bb-f1a3-7570-a385-1f7392a86af4",
+        "file_sha256": "64c36b8e688741af458057dd0a89b47511cad52f3c0e9765c665fac98c014398"
+      },
+      "quotes": [
+        "把这个恢复方案发给另一个会话，让它先解决模型通道问题，再建立独立恢复段，从 803.25 秒的检查点接着跑，尽量复用第二轮草稿，避免重复执行已完成任务，保留原 V7 的完整记录和费用，继续完成 1 小时仿真。"
+      ]
+    },
+    {
+      "id": "S05",
+      "title": "用户决定停止旧会话并将诊断交给新会话",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-11T07:16:44.444Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a12393-b066-79e3-ad84-0ee36b45d691.jsonl",
+        "exported_jsonl_line": 78,
+        "original_source_line": 776,
+        "thread_id": "01a12393-b066-79e3-ad84-0ee36b45d691",
+        "turn_id": "01a129d2-34e4-72e3-9e06-f722074d199e",
+        "file_sha256": "64c36b8e688741af458057dd0a89b47511cad52f3c0e9765c665fac98c014398"
+      },
+      "quotes": [
+        "先停止正在工作的会话，把这些诊断和建议发给另一个新会话，让它优先解决记忆超限和重复读页问题，保留当前草稿、检查点、原始记录和全部费用，修复后从803.25秒继续，优先完成第二个有效计划提交，不要再单纯延长等待时间。"
+      ]
+    },
+    {
+      "id": "S06",
+      "title": "助手报告记忆与动作共用拒绝门槛",
+      "kind": "archived_message",
+      "role": "assistant",
+      "timestamp": "2026-10-11T07:28:51.269Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+        "exported_jsonl_line": 3,
+        "original_source_line": 37,
+        "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+        "turn_id": "01a129dc-8eb7-73f0-9ad7-5c82d88ef266",
+        "file_sha256": "82a142f17d7403aaee1afd572a4991c4e64984c9d02fa3a3b3313bca7d4dc286"
+      },
+      "quotes": [
+        "已确认旧段在调用 236 处理完后退出，没有调用 237；当前仍是 803.25 秒、仅一个已提交计划。根因也更明确了：记忆更新与动作共用一个拒绝门槛，超限会连下一页查询一起作废；下一轮只见错误和旧记忆，容易再读上一页。新版本需要把这两条状态分开，并显式提供已读页与草稿进度。"
+      ]
+    },
+    {
+      "id": "S07",
+      "title": "助手提出 V9 的记忆解耦与状态供给",
+      "kind": "archived_message",
+      "role": "assistant",
+      "timestamp": "2026-10-11T07:29:57.071Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+        "exported_jsonl_line": 4,
+        "original_source_line": 83,
+        "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+        "turn_id": "01a129dc-8eb7-73f0-9ad7-5c82d88ef266",
+        "file_sha256": "82a142f17d7403aaee1afd572a4991c4e64984c9d02fa3a3b3313bca7d4dc286"
+      },
+      "quotes": [
+        "修复会独立命名为 V9，旧 V8 源码和原始输出保持原样。具体采用两项变化：超限记忆单独记录并拒收，合法排程动作仍可处理；每轮提示加入绑定当前快照的读页记录、精确缓存引用和草稿任务索引。重复读取需要说明原因，工具不会自动选下一页或替模型补任务。"
+      ]
+    },
+    {
+      "id": "S08",
+      "title": "助手报告读页和草稿上下文的实际交接内容",
+      "kind": "archived_message",
+      "role": "assistant",
+      "timestamp": "2026-10-11T07:45:10.894Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+        "exported_jsonl_line": 9,
+        "original_source_line": 301,
+        "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+        "turn_id": "01a129dc-8eb7-73f0-9ad7-5c82d88ef266",
+        "file_sha256": "82a142f17d7403aaee1afd572a4991c4e64984c9d02fa3a3b3313bca7d4dc286"
+      },
+      "quotes": [
+        "V9 的实际恢复和新段登记已完成，物理时钟仍准确停在 803.25 秒，原草稿已接入。接下来的首轮会直接看到“已成功读到第 12 页、下一未读页为 13”和 20 条已保存任务，不再依赖自由记忆重述这些进度。"
+      ]
+    },
+    {
+      "id": "S09",
+      "title": "助手报告第 237 次调用后的宿主统计错误",
+      "kind": "archived_message",
+      "role": "assistant",
+      "timestamp": "2026-10-11T07:47:13.108Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+        "exported_jsonl_line": 10,
+        "original_source_line": 325,
+        "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+        "turn_id": "01a129dc-8eb7-73f0-9ad7-5c82d88ef266",
+        "file_sha256": "82a142f17d7403aaee1afd572a4991c4e64984c9d02fa3a3b3313bca7d4dc286"
+      },
+      "quotes": [
+        "第 237 次真实调用已把记忆从 8,004 字符压到 1,857 字符，并完成一次精确任务查询。随后我的新增进度统计代码把 Python 元组送进了严格 JSON 哈希函数，导致宿主停止；动作已落盘，物理状态未推进。我会修正这处统计错误，验证后从 238 继续，保留 237 的输出和费用，不重复调用。"
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "助手报告读页进展与另一个观测接口错误",
+      "kind": "archived_message",
+      "role": "assistant",
+      "timestamp": "2026-10-11T07:56:39.519Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+        "exported_jsonl_line": 13,
+        "original_source_line": 409,
+        "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+        "turn_id": "01a129dc-8eb7-73f0-9ad7-5c82d88ef266",
+        "file_sha256": "82a142f17d7403aaee1afd572a4991c4e64984c9d02fa3a3b3313bca7d4dc286"
+      },
+      "quotes": [
+        "第 238 次已成功读取第 13 页，记忆保持在 1,713 字符，没有重读旧页。第 239 次动作也已落盘，但进度记录又遇到一个接口差异：目录查询的返回值没有 `status` 字段，宿主因此停止。我正在把观测代码改为兼容各类原始响应，并从已处理的 239 后继续；这两次调用都不会重放或重复收费。"
+      ]
+    },
+    {
+      "id": "S11",
+      "title": "用户同意向同一模型展示已提交的完整基准计划",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-11T14:27:40.479Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+        "exported_jsonl_line": 154,
+        "original_source_line": 3842,
+        "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+        "turn_id": "01a129dc-8eb7-73f0-9ad7-5c82d88ef266",
+        "file_sha256": "82a142f17d7403aaee1afd572a4991c4e64984c9d02fa3a3b3313bca7d4dc286"
+      },
+      "question_context": "自动审批要求额外确认：是否允许继续使用原 Codex 模型通道（gpt-6-astra / medium），把同一模型已生成并提交的完整基准计划（设备范围、任务、时间及等待安排）放入后续提示，以减少重复查询？目的地、模型和累计预算均不变。",
+      "quotes": [
+        "同意完整展示并继续"
+      ],
+      "attribution_note": "question 为提问背景；仅 answer 是用户答复，不能把问题全文视为用户原创。"
+    },
+    {
+      "id": "S12",
+      "title": "B 一小时开发窗口的结果和成本范围",
+      "kind": "repository_report",
+      "source": {
+        "repository_path": "source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md",
+        "file_sha256": "4dab503668eeef55f792cb82a7e26d6a82ffd7a24811846f5e14a4f77ac073c8",
+        "availability": "in_repository"
+      },
+      "quotes": [
+        "B 在场景 1701 的原始 0—3600 秒窗口内完成全厂直接排程，承担全部 **913 台生产设备**的排程责任。累计 95 次真实计划提交，实际发生 1,071 次生产派工，涉及 841 台生产设备；913 是责任范围，不代表每台设备在此小时都发生生产。",
+        "独立来源、物理、机会审计、输入哈希与模型输出归属检查均通过。全部实际生产派工可追溯到被评测模型的明确决定；B 的构造器和求解器调用为 0。最终继续使用 gpt-6-astra / medium，每次调用 600 秒，无自动重试。原失败、恢复过程和费用全部保留，旧段没有被改写成成功。",
+        "| B 整个一小时开发沿革 | 1,362 | 44,666,702 | 17.21 小时 | 原始 0→3600 秒 |",
+        "B 沿革仍有 **3 条历史调用用量未知**，待结调用为 0。因此 44,666,702 是已知 token 总量，不是精确完整账单。模型活动时间是调用包装器记录的持续时间，并非服务器纯推理算力。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 7,
+          "end": 7
+        },
+        {
+          "start": 9,
+          "end": 9
+        },
+        {
+          "start": 21,
+          "end": 21
+        },
+        {
+          "start": 25,
+          "end": 25
+        }
+      ],
+      "attribution_note": "项目报告，支持试验结果口径，不独立证明个人原创设计。"
+    },
+    {
+      "id": "S13",
+      "title": "用户质疑固定 911 台设备的实验依据",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-09T08:11:36.335Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a11e71-9b95-76c1-97d9-db087c25bc4c.jsonl",
+        "exported_jsonl_line": 183,
+        "original_source_line": 4330,
+        "thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+        "turn_id": "01a11fb7-b7e8-79b0-9bb1-c5d7975452e7",
+        "file_sha256": "d82e84c6df4e604f8b5bb241f3359cb313ce896aa3dc136a0141968aa68a2a78"
+      },
+      "quotes": [
+        "那你凭什么固定了911的机器呢？不能说你想固定就固定，并且你没有依据的固定是否会导致剩下的2台的排产基本上没有活动空间导致三个方案得不到比较"
+      ]
+    },
+    {
+      "id": "S14",
+      "title": "用户选择全厂 A/B/C 对比目标",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-09T08:15:28.424Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a11e71-9b95-76c1-97d9-db087c25bc4c.jsonl",
+        "exported_jsonl_line": 188,
+        "original_source_line": 4374,
+        "thread_id": "01a11e71-9b95-76c1-97d9-db087c25bc4c",
+        "turn_id": "01a11fba-eab0-7bb2-b248-ae79b74ab10d",
+        "file_sha256": "d82e84c6df4e604f8b5bb241f3359cb313ce896aa3dc136a0141968aa68a2a78"
+      },
+      "question_context": "这轮全厂实验，你最希望优先验证哪种能力？我会据此安排主目标与预算，其他指标仍保留。",
+      "quotes": [
+        "A/B/C 的全厂排程能力对比（推荐）"
+      ],
+      "attribution_note": "question 为提问背景；仅 answer 是用户答复，不能把问题全文视为用户原创。"
+    },
+    {
+      "id": "S15",
+      "title": "用户要求先调研，再考虑 Harness 设计",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-12T03:13:27.299Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl",
+        "exported_jsonl_line": 10,
+        "original_source_line": 103,
+        "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+        "turn_id": "01a12e19-d4ec-7660-b879-8c443d1a5b8e",
+        "file_sha256": "5938891a74d5abace7cf52443c4cdf0ee3c81e6c4da29ea372cf3f4dc46f1808"
+      },
+      "quotes": [
+        "你先去看一下myharness里面的M0.5了解一下，我想要先进行调研获得充足的上下文之后再来考虑如何设计这套harness工程系统"
+      ]
+    },
+    {
+      "id": "S16",
+      "title": "用户加入直接排程专题并区分调研角色",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-12T07:33:14.809Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl",
+        "exported_jsonl_line": 102,
+        "original_source_line": 1976,
+        "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+        "turn_id": "01a12f07-ad96-7613-b7af-07f0544c2205",
+        "file_sha256": "5938891a74d5abace7cf52443c4cdf0ee3c81e6c4da29ea372cf3f4dc46f1808"
+      },
+      "quotes": [
+        "可以，就按这三个专题再跑一轮 M0.5，上限 32 次会话，继续用 Luna 做拆题、检索和提取，Sol 做核验、综合和评审。调研要详细，保留上一轮结果，完成后我们再讨论 harness 的设计。还有加一个大家使用大模型直接进行排程的研究也需要探究一下（这个对于我们的路线很重要，可能来决定我们是使用方案C还是B），因为加入新的专题将上限放松到45次"
+      ]
+    },
+    {
+      "id": "S17",
+      "title": "用户要求先讨论职责、复用与公平比较",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-12T12:14:38.990Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl",
+        "exported_jsonl_line": 177,
+        "original_source_line": 3918,
+        "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+        "turn_id": "01a13009-4f34-7fd3-8d4f-7154efd3cfb8",
+        "file_sha256": "5938891a74d5abace7cf52443c4cdf0ee3c81e6c4da29ea372cf3f4dc46f1808"
+      },
+      "quotes": [
+        "来，那我们现在讨论 harness 应该怎么设计。结合 myharness 和现有排程代码，先讲清楚模型决策与机械操作怎么划分、哪些能力可以复用，以及怎么支持 B、C 和离线规则的公平对照，先讨论方案，不急着写代码。"
+      ]
+    },
+    {
+      "id": "S18",
+      "title": "C-fixed 是现有记录中的助手建议",
+      "kind": "archived_message",
+      "role": "assistant",
+      "timestamp": "2026-10-12T02:01:44.969Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+        "exported_jsonl_line": 714,
+        "original_source_line": 12927,
+        "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+        "turn_id": "01a12dcb-c458-7a80-9cda-f8647d8e1fad",
+        "file_sha256": "82a142f17d7403aaee1afd572a4991c4e64984c9d02fa3a3b3313bca7d4dc286"
+      },
+      "quotes": [
+        "下一轮应统一物理版本、初始快照、随机事件、指标和资源口径；A/C 共用经典工具库，B/C 使用相同模型设置。另加 **C-fixed**：固定工具策略、不调用模型，用于判断 C 的自适应决策是否真正带来收益。"
+      ]
+    },
+    {
+      "id": "S19",
+      "title": "用户提交的首轮任务与验收条件",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-08T13:57:54.711Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a11bce-5043-7871-b0e3-cd5f4e9f2393.jsonl",
+        "exported_jsonl_line": 3,
+        "original_source_line": 13,
+        "thread_id": "01a11bce-5043-7871-b0e3-cd5f4e9f2393",
+        "turn_id": "01a11bce-6205-7eb3-8332-48e2aa934ce1",
+        "file_sha256": "6327e8c8ae41449a3c0f14e889509400184430af27239257238ddee47f0cfe06"
+      },
+      "quotes": [
+        "工具可以查询数据、计算时间、维护状态、检查约束和提供反馈。不得暗中使用求解器、预先计算的最优解或固定启发式替 Agent 完成核心决策。",
+        "不得为了成功而削弱校验器、删除失败实例、暗中改变目标，或让 B 降级为求解器方案。回退方案必须单独标记，不能计为原方案成功。"
+      ],
+      "attribution_note": "这是用户提交的长任务文本；提交与采纳可以确认，提示词各条款的原创起草者不能仅凭 role=user 判定。"
+    },
+    {
+      "id": "S20",
+      "title": "冷轧规则工作已确认，具体规则仍缺记录",
+      "kind": "career_material_excerpt",
+      "source": {
+        "logical_origin_path": "ResumeInterviewOptimization/docs/interview-prep/v12/06-cpp-guide.md",
+        "file_sha256": "d4e264528bb5fea131a2cd6956c16ce6d1c2d39eea5c7d50e2fc37a587459e32",
+        "availability": "selected_excerpts_only; full local origin not published"
+      },
+      "quotes": [
+        "我的职责包含四部分：C++/MFC 页面、跟专家梳理人工排产判断、排产逻辑及数据库配置、与现场人员开展测试。页面是使用入口，规则是业务实现，测试用于核对两者是否满足实际需求。这几部分结合起来才是我的贡献，单独概括成页面开发会漏掉业务梳理和规则实现。",
+        "我能确认自己参与了专家规则梳理和代码实现，但当前能核对的资料没有保留一条完整的具体规则、参数及例外条件。准确的规则实例需要回查当时资料，不能临时编造钢种、厚度或机组约束来替代。我可以先把当时负责的规则到代码这条链路讲清楚，也可以根据你给出的业务条件现场做规则建模。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 104,
+          "end": 104
+        },
+        {
+          "start": 112,
+          "end": 112
+        }
+      ],
+      "attribution_note": "本人职业项目材料中的整理记录；不是本次新增的原始同事反馈或现场工艺记录。"
+    },
+    {
+      "id": "S21",
+      "title": "个人自用与团队分发事实，以及一处容易误读的表述",
+      "kind": "career_material_excerpt",
+      "source": {
+        "logical_origin_path": "ResumeInterviewOptimization/docs/interview-prep/v12/11-harness-evolution-and-confirmed-facts.md",
+        "file_sha256": "ecb3cdfe541381e64a6b02d39f27f42ee2308cdd6c1c90b0d093bf75ad9f4776",
+        "availability": "selected_excerpts_only; full local origin not published"
+      },
+      "quotes": [
+        "3. 本人既自用，也以团队分发的形式提供给公司人员使用。没有新增采用人数、团队效率、商业收入或企业平台规模的量化确认。",
+        "9. “大家都没有采用该方法”已明确指“参考的其他项目通常用 Skill 等方式组织方法”。不能改写为公司人员没有使用、所有 Agent 都不遵守，或全行业没人用 `CLAUDE.md`。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 28,
+          "end": 28
+        },
+        {
+          "start": 34,
+          "end": 34
+        }
+      ],
+      "attribution_note": "本人职业项目材料中的整理记录；不是本次新增的原始同事反馈或现场工艺记录。"
+    },
+    {
+      "id": "S22",
+      "title": "可替代展开的自用与复测案例，不是同事反馈",
+      "kind": "career_material_excerpt",
+      "source": {
+        "logical_origin_path": "ResumeInterviewOptimization/docs/interview-prep/v12/01-harness-guide.md",
+        "file_sha256": "4e88cd11d419b31b0d06ebad60e162a265e01ecac4d48d96db390680f949b33e",
+        "availability": "selected_excerpts_only; full local origin not published"
+      },
+      "quotes": [
+        "**情境。** Wiki 已经建成，但模型没有按预期主动使用。我研读 CodeGraph 开源项目源码与作者的工具采用经验，整理出“踩坑”“解决方案”两份文档，作为后续设计输入。问题由“再做一个查询工具”转为“怎样让工具进入实际工作”。",
+        "**本人判断。** 先看入口是否容易选择、输出是否足够完成下一步，再判断外部经验能否迁移。CodeGraph 提供源码与代码关系，Wiki 提供提炼知识与引用，不能因为都属于检索就照搬整套机制。我的工作是研究和取舍，AI 根据设计实现并协助复测。",
+        "**动作与结果。** CodeGraph 接入纠正了“explore 只能走 MCP”的旧说明，显式透传原生 explore/node；Wiki 把多步查询收敛成单命令，提供引用和标注清楚的原文回退。但 WQA-02 仍出现规则在场、Agent 说查 Wiki 却实际 grep 的情况。后续把 Wiki 的使用重点放到跨文档综合，增加非阻塞提醒，并让主会话委派前默认预查、低收益小改可跳过。WQAR-04 观察到预查结果被提炼进任务材料，自由采用仍有缺口。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 205,
+          "end": 205
+        },
+        {
+          "start": 207,
+          "end": 207
+        },
+        {
+          "start": 209,
+          "end": 209
+        }
+      ],
+      "attribution_note": "本人职业项目材料中的整理记录；不是本次新增的原始同事反馈或现场工艺记录。"
+    }
+  ]
+}

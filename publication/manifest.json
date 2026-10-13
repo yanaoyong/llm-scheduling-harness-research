@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 840,
+  "public_file_count_excluding_this_manifest": 845,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -15,7 +15,8 @@
     "terminal_account": 188,
     "machine_email": 80,
     "contact_email": 2,
-    "career_application_report_archive": 5
+    "career_application_report_archive": 5,
+    "interview_evidence_handoff": 8
   },
   "transformed_source_files": 229,
   "private_files_included": 0,
@@ -40,13 +41,14 @@
     },
     {
       "path": "README.md",
-      "bytes": 7944,
-      "public_sha256": "a8d2b686a989486656737a8d3d6b39be5123c0c9d2ae1c36fe82f2256e46d748",
+      "bytes": 8475,
+      "public_sha256": "cc9fb2c613b2b2328e2f029fa88a101b379e418dc8364d2da96a02017a687c68",
       "source_tracked_sha256": "34cdd9e8dafd075821f823de7f93351891d785fa12f81c289a5eba45185d221e",
       "transformations": {
         "public_release_notice": 1,
         "public_lean_release_documentation": 1,
-        "career_application_report_archive": 1
+        "career_application_report_archive": 1,
+        "interview_evidence_handoff": 1
       }
     },
     {
@@ -2293,9 +2295,12 @@
     },
     {
       "path": "docs/DECISIONS.md",
-      "bytes": 4525,
-      "public_sha256": "93a6edfc9eb3b1752cda90b348b44bc832ff75fea66e84abe7ceb0575f25fc3c",
-      "source_tracked_sha256": "93a6edfc9eb3b1752cda90b348b44bc832ff75fea66e84abe7ceb0575f25fc3c"
+      "bytes": 4854,
+      "public_sha256": "b87ec4eb9b1578622e5740f9715447d9594b40f27d0c04440d4949a3a0ea6f3b",
+      "source_tracked_sha256": "93a6edfc9eb3b1752cda90b348b44bc832ff75fea66e84abe7ceb0575f25fc3c",
+      "transformations": {
+        "interview_evidence_handoff": 1
+      }
     },
     {
       "path": "docs/EVIDENCE_INDEX.md",
@@ -2350,10 +2355,11 @@
     },
     {
       "path": "docs/career-application/2026-10-13/README.md",
-      "bytes": 2327,
-      "public_sha256": "cc24d79c13e6498306a654967e9d557247ed053681cf4c5ab599f3c01eab9a5f",
+      "bytes": 2730,
+      "public_sha256": "30744456dca48cf311e1bfbc34d2c4d500740288a4536b0d1ad19c016dc47ed6",
       "transformations": {
-        "career_application_report_archive": 1
+        "career_application_report_archive": 1,
+        "interview_evidence_handoff": 1
       }
     },
     {
@@ -2378,6 +2384,46 @@
       "public_sha256": "4ec6c7b0e6648ec93fe61af820020ac52b087de4c8ba7102b8b26d3d61450efc",
       "transformations": {
         "career_application_report_archive": 1
+      }
+    },
+    {
+      "path": "docs/career-application/CONTINUE_WITH_CLAUDE.md",
+      "bytes": 5204,
+      "public_sha256": "8e9ae93bdc229dce94ddc79672ce3b1e8950facc6f49fb9e8695aade3e8f5294",
+      "transformations": {
+        "interview_evidence_handoff": 1
+      }
+    },
+    {
+      "path": "docs/career-application/INTERVIEW_MATERIALS.md",
+      "bytes": 14166,
+      "public_sha256": "23b6618b76d35a62160eb1bf968cadf0e67b34c3c4f2b1eaa49163708de52a66",
+      "transformations": {
+        "interview_evidence_handoff": 1
+      }
+    },
+    {
+      "path": "docs/career-application/INTERVIEW_OUTLINE.md",
+      "bytes": 4101,
+      "public_sha256": "8fb4c7def3da4abe55ef9e21a42a693fc29d1c712328be91f8f1fad0db04b003",
+      "transformations": {
+        "interview_evidence_handoff": 1
+      }
+    },
+    {
+      "path": "docs/career-application/evidence/2026-10-13/source-excerpts.json",
+      "bytes": 25200,
+      "public_sha256": "5372fcbf1bfe28d5fce647e5c40da8acf9a794579bb875736589955f8143a375",
+      "transformations": {
+        "interview_evidence_handoff": 1
+      }
+    },
+    {
+      "path": "docs/career-application/evidence/2026-10-13/source-excerpts.md",
+      "bytes": 16757,
+      "public_sha256": "9e694e394f12929c8844f0fa05119bdccce19ad056f6272b6d9ae243d68f2769",
+      "transformations": {
+        "interview_evidence_handoff": 1
       }
     },
     {
@@ -6185,5 +6231,13 @@
     "pages": 7,
     "files": 2,
     "original_evidence_snapshot_changed": false
+  },
+  "latest_interview_evidence_handoff": {
+    "date": "2026-10-13",
+    "entry": "docs/career-application/CONTINUE_WITH_CLAUDE.md",
+    "source_records": 23,
+    "status": "sourced_materials_and_outline_with_explicit_gaps",
+    "original_report_bytes_changed": false,
+    "experiments_rerun": false
   }
 }
