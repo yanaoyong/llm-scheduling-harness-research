@@ -21,13 +21,13 @@
 6. [续作指南](docs/RESUME.md)与[Git及恢复说明](docs/GIT_AND_RESTORE.md)。
 7. [精简证据包使用说明](docs/LEAN_EVIDENCE.md)：公开下载、校验、恢复，以及与本地私有包的区别。
 8. [职业实践与智能排程 Agent 应用报告](docs/career-application/2026-10-13/README.md)：从已有职业经验出发，说明 Harness 工程、现场规则共建与使用者培训；提供 7 页 PDF 和可编辑 Word。
-9. [面试素材与 Claude Code 续作入口](docs/career-application/CONTINUE_WITH_CLAUDE.md)：四项补充素材、个人决策候选、23 项来源摘录、写作框架及待补细节。
+9. [面试素材与 Claude Code 续作入口](docs/career-application/CONTINUE_WITH_CLAUDE.md)：四项补充素材、个人决策候选、23 项原来源及 8 项深查来源、写作框架与待补细节。
 
 ## 2026-10-13：职业实践与智能排程应用报告
 
 新增 [《从制造排产经验到 AI Agent 落地》](docs/career-application/2026-10-13/README.md)，面向面试交流，连接已有制造排产、企业知识应用和个人 Harness 实践，说明如何推进排程 Agent 的工程建设与现场应用。报告区分已有工作、当前试验局限与拟开展的工作；它是本次新增的说明材料，原实验与会话快照的截止时间保持不变。
 
-后续写作可从 [Claude Code 续作说明](docs/career-application/CONTINUE_WITH_CLAUDE.md) 开始：已补入可追溯的受阻／恢复案例及本人关键决策，并明确冷轧具体规则、同事反馈和“两次尝试”版本对应的证据缺口。原报告 PDF／Word 保留，新增素材可在其他电脑直接阅读。
+后续写作可从 [Claude Code 续作说明](docs/career-application/CONTINUE_WITH_CLAUDE.md) 开始。[会话深查](docs/career-application/HISTORY_VERIFICATION.md) 已区分排程修订、通道补跑与全厂恢复，新增第二个计划提交、本人团队分发原话和自用验收记录；“两次尝试”仍未唯一对应，已查范围未发现同事反馈链。可直接用已核实案例继续写作。原报告 PDF／Word 保留，新增素材可在其他电脑直接阅读。
 
 ## 2026-10-13：公开精简证据包
 

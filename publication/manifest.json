@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 845,
+  "public_file_count_excluding_this_manifest": 847,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -16,7 +16,8 @@
     "machine_email": 80,
     "contact_email": 2,
     "career_application_report_archive": 5,
-    "interview_evidence_handoff": 8
+    "interview_evidence_handoff": 8,
+    "interview_history_verification": 8
   },
   "transformed_source_files": 229,
   "private_files_included": 0,
@@ -41,14 +42,15 @@
     },
     {
       "path": "README.md",
-      "bytes": 8475,
-      "public_sha256": "cc9fb2c613b2b2328e2f029fa88a101b379e418dc8364d2da96a02017a687c68",
+      "bytes": 8650,
+      "public_sha256": "71a46e59391d1e26727e251943053a82ca4041bf9de9e65631fb789918c406ce",
       "source_tracked_sha256": "34cdd9e8dafd075821f823de7f93351891d785fa12f81c289a5eba45185d221e",
       "transformations": {
         "public_release_notice": 1,
         "public_lean_release_documentation": 1,
         "career_application_report_archive": 1,
-        "interview_evidence_handoff": 1
+        "interview_evidence_handoff": 1,
+        "interview_history_verification": 1
       }
     },
     {
@@ -2295,11 +2297,12 @@
     },
     {
       "path": "docs/DECISIONS.md",
-      "bytes": 4854,
-      "public_sha256": "b87ec4eb9b1578622e5740f9715447d9594b40f27d0c04440d4949a3a0ea6f3b",
+      "bytes": 5209,
+      "public_sha256": "eb9f1aaa5f6a41212687eccd6eb7f56a802f1b8cdb4ecfd912c24d640c41028f",
       "source_tracked_sha256": "93a6edfc9eb3b1752cda90b348b44bc832ff75fea66e84abe7ceb0575f25fc3c",
       "transformations": {
-        "interview_evidence_handoff": 1
+        "interview_evidence_handoff": 1,
+        "interview_history_verification": 1
       }
     },
     {
@@ -2355,11 +2358,12 @@
     },
     {
       "path": "docs/career-application/2026-10-13/README.md",
-      "bytes": 2730,
-      "public_sha256": "30744456dca48cf311e1bfbc34d2c4d500740288a4536b0d1ad19c016dc47ed6",
+      "bytes": 3042,
+      "public_sha256": "7569338e7a72e07706d5d51b580ea45f8bba1ab80f9906ce29e8a57e5b92d0cd",
       "transformations": {
         "career_application_report_archive": 1,
-        "interview_evidence_handoff": 1
+        "interview_evidence_handoff": 1,
+        "interview_history_verification": 1
       }
     },
     {
@@ -2388,26 +2392,45 @@
     },
     {
       "path": "docs/career-application/CONTINUE_WITH_CLAUDE.md",
-      "bytes": 5204,
-      "public_sha256": "8e9ae93bdc229dce94ddc79672ce3b1e8950facc6f49fb9e8695aade3e8f5294",
+      "bytes": 5981,
+      "public_sha256": "d17260d8dbec45ed67b56d424a88cd5ba05321012ac1ff4c122ca131d474f3d1",
       "transformations": {
-        "interview_evidence_handoff": 1
+        "interview_evidence_handoff": 1,
+        "interview_history_verification": 1
+      }
+    },
+    {
+      "path": "docs/career-application/HISTORY_VERIFICATION.md",
+      "bytes": 12151,
+      "public_sha256": "9f5351462a22877ea1d0c8f3fbbe96f912fe97ed79b2b07480fb7e7ff1f6af8d",
+      "transformations": {
+        "interview_history_verification": 1
       }
     },
     {
       "path": "docs/career-application/INTERVIEW_MATERIALS.md",
-      "bytes": 14166,
-      "public_sha256": "23b6618b76d35a62160eb1bf968cadf0e67b34c3c4f2b1eaa49163708de52a66",
+      "bytes": 15456,
+      "public_sha256": "b1663d8ec7bf2d617d0de7c6f528af873d722bf50760614fa8f4b9e2a1265120",
       "transformations": {
-        "interview_evidence_handoff": 1
+        "interview_evidence_handoff": 1,
+        "interview_history_verification": 1
       }
     },
     {
       "path": "docs/career-application/INTERVIEW_OUTLINE.md",
-      "bytes": 4101,
-      "public_sha256": "8fb4c7def3da4abe55ef9e21a42a693fc29d1c712328be91f8f1fad0db04b003",
+      "bytes": 4420,
+      "public_sha256": "d683161907235c296b85d7f2e5faea0c8ff262e5e4d30b5dc5e6291e6c029ab9",
       "transformations": {
-        "interview_evidence_handoff": 1
+        "interview_evidence_handoff": 1,
+        "interview_history_verification": 1
+      }
+    },
+    {
+      "path": "docs/career-application/evidence/2026-10-13/history-verification.json",
+      "bytes": 13471,
+      "public_sha256": "fcde264bcb2dd6789cefa7e400712676217b027d5189806569d14b426471d0fe",
+      "transformations": {
+        "interview_history_verification": 1
       }
     },
     {
