@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 836,
+  "public_file_count_excluding_this_manifest": 840,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -14,7 +14,8 @@
     "opaque_encrypted_blob": 772,
     "terminal_account": 188,
     "machine_email": 80,
-    "contact_email": 2
+    "contact_email": 2,
+    "career_application_report_archive": 5
   },
   "transformed_source_files": 229,
   "private_files_included": 0,
@@ -39,12 +40,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 7234,
-      "public_sha256": "064e14732db0475ee4a26ce1a984eb78b3ac416665c480359ac810c3ee74feee",
+      "bytes": 7944,
+      "public_sha256": "a8d2b686a989486656737a8d3d6b39be5123c0c9d2ae1c36fe82f2256e46d748",
       "source_tracked_sha256": "34cdd9e8dafd075821f823de7f93351891d785fa12f81c289a5eba45185d221e",
       "transformations": {
         "public_release_notice": 1,
-        "public_lean_release_documentation": 1
+        "public_lean_release_documentation": 1,
+        "career_application_report_archive": 1
       }
     },
     {
@@ -2345,6 +2347,38 @@
       "bytes": 4438,
       "public_sha256": "215dab7c01c3065c2ef991808675c10863d65555827c0be7e3e90da7a8fb78e1",
       "source_tracked_sha256": "215dab7c01c3065c2ef991808675c10863d65555827c0be7e3e90da7a8fb78e1"
+    },
+    {
+      "path": "docs/career-application/2026-10-13/README.md",
+      "bytes": 2327,
+      "public_sha256": "cc24d79c13e6498306a654967e9d557247ed053681cf4c5ab599f3c01eab9a5f",
+      "transformations": {
+        "career_application_report_archive": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13/career-scheduling-agent-report.docx",
+      "bytes": 148158,
+      "public_sha256": "49e93399e8b1647ad2013fe85a058fa2d6bb979797f9c54c18fa51ad8948f13a",
+      "transformations": {
+        "career_application_report_archive": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13/career-scheduling-agent-report.pdf",
+      "bytes": 998847,
+      "public_sha256": "33735146c1f40c2ef5f28cd28927768f2812111e16a05ffab5e51641ae798293",
+      "transformations": {
+        "career_application_report_archive": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13/manifest.json",
+      "bytes": 1066,
+      "public_sha256": "4ec6c7b0e6648ec93fe61af820020ac52b087de4c8ba7102b8b26d3d61450efc",
+      "transformations": {
+        "career_application_report_archive": 1
+      }
     },
     {
       "path": "manifests/archive_scope.json",
@@ -6143,5 +6177,13 @@
     },
     "private_packages_uploaded": false,
     "source_experiments_rerun": false
+  },
+  "latest_career_application_report": {
+    "date": "2026-10-13",
+    "directory": "docs/career-application/2026-10-13",
+    "manifest": "docs/career-application/2026-10-13/manifest.json",
+    "pages": 7,
+    "files": 2,
+    "original_evidence_snapshot_changed": false
   }
 }

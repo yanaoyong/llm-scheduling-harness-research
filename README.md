@@ -20,6 +20,11 @@
 5. [证据索引](docs/EVIDENCE_INDEX.md)与[未决问题](docs/OPEN_QUESTIONS.md)。
 6. [续作指南](docs/RESUME.md)与[Git及恢复说明](docs/GIT_AND_RESTORE.md)。
 7. [精简证据包使用说明](docs/LEAN_EVIDENCE.md)：公开下载、校验、恢复，以及与本地私有包的区别。
+8. [职业实践与智能排程 Agent 应用报告](docs/career-application/2026-10-13/README.md)：从已有职业经验出发，说明 Harness 工程、现场规则共建与使用者培训；提供 7 页 PDF 和可编辑 Word。
+
+## 2026-10-13：职业实践与智能排程应用报告
+
+新增 [《从制造排产经验到 AI Agent 落地》](docs/career-application/2026-10-13/README.md)，面向面试交流，连接已有制造排产、企业知识应用和个人 Harness 实践，说明如何推进排程 Agent 的工程建设与现场应用。报告区分已有工作、当前试验局限与拟开展的工作；它是本次新增的说明材料，原实验与会话快照的截止时间保持不变。
 
 ## 2026-10-13：公开精简证据包
 
