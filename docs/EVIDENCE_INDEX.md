@@ -1,6 +1,8 @@
 # 证据索引
 
-以下链接指向归档内 `source_snapshot/` 的字节一致副本，便于离开原工作目录后阅读。原始来源路径和 SHA256 见 `manifests/source_snapshot.json`；标注的 L 行号用于定位源文件。
+**2026-10-13 补充：**[精简证据包使用说明](LEAN_EVIDENCE.md) 提供公开 Release 的下载、校验、目录还原、SQLite 查询与私有版边界。下文保留原始归档的历史说明。
+
+以下链接指向归档内 `source_snapshot/` 的公开脱敏副本，便于离开原工作目录后阅读。历史原始来源和 SHA256 见 `manifests/source_snapshot.json`；它们不能用来校验脱敏后的字节。当前公开哈希见 `publication/manifest.json`；标注的 L 行号用于定位原始源文件。
 
 | 主题 | 证据及行号 | 使用方式 / 边界 |
 |---|---|---|

@@ -1,0 +1,55 @@
+{
+  "schema": "privacy-review-v1",
+  "created_at": "2026-10-13T01:54:30.785390+00:00",
+  "status": "passed",
+  "scan": {
+    "unique_public_sha_sources": 58656,
+    "unique_sources_scanned": 58656,
+    "bytes_scanned": 30896044782,
+    "chunk_size_bytes": 1048576,
+    "overlap_bytes": 8192,
+    "sql_blob_hex_decoded": true,
+    "private_inventory_entries": 0,
+    "unreadable_or_blocked_sources": 0,
+    "utf16_inputs_decoded": true,
+    "initial_full_scan_objects": 58618,
+    "followup_objects_scanned": 40,
+    "followup_paths_scanned": 78
+  },
+  "detectors": [
+    "bearer_credential",
+    "current_username",
+    "encoded_local_users_path",
+    "fernet_blob",
+    "github_personal_access_token",
+    "local_users_path",
+    "mac_host_email",
+    "openai_or_anthropic_key",
+    "pem_private_key_header",
+    "raw_analysis_channel",
+    "raw_analysis_role",
+    "raw_session_meta"
+  ],
+  "allowed_exception": "current username only within an exact public GitHub repository URL; exception counts are not findings",
+  "findings": [],
+  "resolved_findings": [
+    {
+      "path": "project/experiment_round1/vendor/clingo-dl/scratch/release-wv.sh",
+      "previous_public_sha256": "13138612b8665152d66142f1c9613e895cad06715fe2774a3b0efb6a532f62fc",
+      "final_public_sha256": "d11fac28d124ac4ccfed75a039dcf9a8958094046869351f46058be351a61606",
+      "redactions": 3
+    },
+    {
+      "path": "project/experiment_round1/vendor/clingo-dl/scratch/release.sh",
+      "previous_public_sha256": "61d6ce473c3655d19ee14ac88d9a024e71e2bb91777da0ff89bba9b19a5aafb4",
+      "final_public_sha256": "f50da8994af4e745d21f304238e1072c2c9671a7f6467b4e01f78bb515d7c5a9",
+      "redactions": 1
+    }
+  ],
+  "review_method": "Full scan of initial 58,618 unique objects; then independent decoded scan of 38 added UTF-16 objects and both Linux-home redactions. Other object bytes unchanged; archive pack verifies final SHA mappings again.",
+  "metadata_review": {
+    "status": "passed",
+    "files_scanned_excluding_self": 11,
+    "explicit_public_repo_slug_allowed": true
+  }
+}

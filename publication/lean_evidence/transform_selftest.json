@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checks": {
+    "home_cross_boundary": true,
+    "opaque_30kb_cross_boundary": true,
+    "unicode_cross_boundary": true,
+    "secret_near_boundary": true,
+    "secret_30kb_cross_boundary": true
+  }
+}

@@ -1,11 +1,11 @@
 # 智能排程与 Harness 调研归档（公开版）
 
 
-这是本地阶段归档的公开发布副本，保留研究报告、代码快照、决策记录和 98 个会话的可读导出。个人目录、机器身份及消息中的不透明密文已替换为占位符；本地完整归档保持不变。
+这是本地阶段归档的公开发布副本，保留研究报告、代码快照、决策记录和 98 个会话的可读导出。个人目录、机器身份及消息中的不透明密文已替换为占位符；本地原始证据包保持不变，归档使用文档的补充通过新提交保存。
 
-**本仓库不包含 `private/`：6.86 GB 原始项目压缩包、原始会话 JSONL、附件和源 Git bundle 均未上传。** 历史 `manifests/`、`review/` 记录描述本地归档；经过脱敏的文件不能再按历史原文哈希验证。公开文件的哈希与转换记录见 [发布清单](publication/manifest.json)，发布范围见 [PUBLICATION.md](PUBLICATION.md)。本仓库使用全新 Git 历史，未发布包含原始个人路径的本地提交历史。
+**本仓库不包含 `private/`：6.86 GB 原始项目包、1.12 GB 私有精简包、原始会话 JSONL、附件和源 Git bundle 均未上传。另有 [公开精简证据 Release](docs/LEAN_EVIDENCE.md)，保存经脱敏的实验运行证据。** 历史 `manifests/`、`review/` 记录描述本地归档；经过脱敏的文件不能再按历史原文哈希验证。公开文件的哈希与转换记录见 [发布清单](publication/manifest.json)，发布范围见 [PUBLICATION.md](PUBLICATION.md)。本仓库使用全新 Git 历史，未发布包含原始个人路径的本地提交历史。
 
-公开副本校验命令：`python3 scripts/verify_public_release.py`。下文的完整恢复命令仅适用于同时持有本地 `private/` 的完整归档。
+公开副本校验命令：`python3 scripts/verify_public_release.py`。公开包按 [精简包使用说明](docs/LEAN_EVIDENCE.md) 恢复；下文旧的完整恢复命令仅适用于同时持有本地 `private/` 的完整归档。
 
 本归档保存截至 2026-10-12 的实验、研究结论、Codex 会话关键内容和实际代码版本。全厂 B 已完成一个开发场景的一小时窗口，完整全厂正式对照仍未完成；B、C、离线规则的路线选择和 harness 方案尚未定稿。
 
@@ -19,6 +19,11 @@
 4. [会话地图](docs/CONVERSATION_MAP.md)：8 个主会话摘要，及完整规范导出入口。
 5. [证据索引](docs/EVIDENCE_INDEX.md)与[未决问题](docs/OPEN_QUESTIONS.md)。
 6. [续作指南](docs/RESUME.md)与[Git及恢复说明](docs/GIT_AND_RESTORE.md)。
+7. [精简证据包使用说明](docs/LEAN_EVIDENCE.md)：公开下载、校验、恢复，以及与本地私有包的区别。
+
+## 2026-10-13：公开精简证据包
+
+[GitHub Release](https://github.com/yanaoyong/llm-scheduling-harness-research/releases/tag/evidence-20261013-v1) 已补充可恢复的脱敏实验证据，压缩大小 **0.776 GB**。下载、校验与还原步骤见 [使用说明](docs/LEAN_EVIDENCE.md)。本地 1.12 GB 私有精简包与 6.86 GB 原始项目包继续保留。以下保存范围描述原始归档快照；后续公开处理以新版说明为准。
 
 ## 保存范围
 

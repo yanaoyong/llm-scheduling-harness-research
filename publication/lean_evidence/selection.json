@@ -1,0 +1,56 @@
+{
+  "schema": "public-lean-v1",
+  "date": "2026-10-13",
+  "private_lean_sha256": "e41d35550c6ff76c7f2071eb17dbe06eaad4005fcd91dc0bf9e4b291eb56b88c",
+  "public_archive_snapshot_commit": "d9605ee658488bf3b2c403d621d149b1ceeebc24",
+  "selected_files": 94733,
+  "selected_bytes": 38581693821,
+  "unique_objects": 58656,
+  "unique_content_bytes": 30896044782,
+  "symlinks": 20,
+  "sqlite_exports": 38,
+  "transformed_files": 19842,
+  "public_exclusions": {
+    "binary_attachment_or_upstream_download_use_source_references": {
+      "files": 226,
+      "bytes": 379311687
+    },
+    "rebuildable_compiler_cache": {
+      "files": 206,
+      "bytes": 205950252
+    },
+    "credential_or_local_environment_file": {
+      "files": 1,
+      "bytes": 143
+    },
+    "compiled_executable_or_upstream_model_checkpoint": {
+      "files": 5,
+      "bytes": 1190108
+    },
+    "upstream_tracking_state": {
+      "files": 56,
+      "bytes": 32502922
+    },
+    "personal_initial_context_and_attachment": {
+      "files": 5,
+      "bytes": 369991
+    },
+    "replaced_by_already_public_archive_snapshot": {
+      "files": 825,
+      "bytes": 81521736
+    },
+    "private_conversation_attachment_or_git_history": {
+      "files": 110,
+      "bytes": 486630994
+    }
+  },
+  "limits": [
+    "Public sanitized derivative, not the byte-identical private package.",
+    "SQLite is a logical SQL export; restore does not automatically recreate databases.",
+    "Original signatures/hashes and absolute paths in old audits describe private evidence and may not verify against transformed public files.",
+    "No model, solver or historical experiment was rerun.",
+    "Original raw Codex conversations, attachments and source Git history remain private.",
+    "Excluded third-party binary downloads and images are documented; source URLs, hashes and existing licenses remain."
+  ],
+  "utf16_original_inputs_retained": 76
+}

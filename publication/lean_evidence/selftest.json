@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": {
+    "deduplicated_restore": true,
+    "restrictive_directory_permissions_and_timestamps": true,
+    "portable_symlink": true,
+    "restored_aliases_independent": true,
+    "existing_destination_rejected": true,
+    "corrupt_object_rejected": true,
+    "path_traversal_rejected": true,
+    "independent_package_hash_mismatch_rejected": true
+  }
+}

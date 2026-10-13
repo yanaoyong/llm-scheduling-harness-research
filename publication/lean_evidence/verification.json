@@ -1,0 +1,17 @@
+{
+  "stage": "restore-check",
+  "checked_at": "2026-10-13T02:05:43.769185+00:00",
+  "archive_sha256": "32f0c84b1f4e79d98d9b3ff3dfbc4f35200ab4e59d28a88d358cbaa3190b40bd",
+  "independent_package_hash_checked": true,
+  "objects_verified": 58656,
+  "unique_content_bytes": 30896044782,
+  "inventory_files": 94733,
+  "deferred_external_symlinks": 0,
+  "restored_files_rehashed": 94733,
+  "restored_bytes_rehashed": 38581693821,
+  "portable_symlinks_verified": 20,
+  "directory_modes_and_mtimes_verified": 11286,
+  "temporary_restoration_removed": true,
+  "status": "passed",
+  "elapsed_seconds": 118.45951324980706
+}

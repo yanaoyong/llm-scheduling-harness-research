@@ -1,0 +1,21 @@
+{
+  "schema": "public-lean-publication-v1",
+  "date": "2026-10-13",
+  "release_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/tag/evidence-20261013-v1",
+  "tag": "evidence-20261013-v1",
+  "asset": "public-evidence.cas.tar.zst",
+  "sha256": "32f0c84b1f4e79d98d9b3ff3dfbc4f35200ab4e59d28a88d358cbaa3190b40bd",
+  "compressed_bytes": 776111570,
+  "selected_files": 94733,
+  "logical_bytes": 38581693821,
+  "unique_objects": 58656,
+  "sqlite_logical_exports": 38,
+  "verification": {
+    "full_restore": "passed",
+    "files_rehashed": 94733,
+    "privacy_scan": "passed",
+    "sqlite_import": "passed"
+  },
+  "private_packages_uploaded": false,
+  "source_experiments_rerun": false
+}

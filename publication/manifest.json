@@ -3,9 +3,10 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 827,
+  "public_file_count_excluding_this_manifest": 836,
   "transformation_totals": {
     "public_exclusions": 1,
+    "public_lean_release_documentation": 13,
     "public_release_notice": 1,
     "project_root": 10221,
     "home_path": 2090,
@@ -15,7 +16,7 @@
     "machine_email": 80,
     "contact_email": 2
   },
-  "transformed_source_files": 228,
+  "transformed_source_files": 229,
   "private_files_included": 0,
   "source_history_included": false,
   "files": [
@@ -30,16 +31,20 @@
     },
     {
       "path": "PUBLICATION.md",
-      "bytes": 1991,
-      "public_sha256": "91ef54772dc563c12a2ba644a324e2f83cb266c8a24aea3589caf21a94c5c800"
+      "bytes": 2509,
+      "public_sha256": "301f24941e4bd69be3a7b122ec914344efffcdd176d98cce9c48a74bc5c5bb04",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      }
     },
     {
       "path": "README.md",
-      "bytes": 6403,
-      "public_sha256": "749d14d87e67c50ba247922f9abdeebb386c986f9f19a7d64baaff55b52e6313",
+      "bytes": 7234,
+      "public_sha256": "064e14732db0475ee4a26ce1a984eb78b3ac416665c480359ac810c3ee74feee",
       "source_tracked_sha256": "34cdd9e8dafd075821f823de7f93351891d785fa12f81c289a5eba45185d221e",
       "transformations": {
-        "public_release_notice": 1
+        "public_release_notice": 1,
+        "public_lean_release_documentation": 1
       }
     },
     {
@@ -2292,18 +2297,30 @@
     },
     {
       "path": "docs/EVIDENCE_INDEX.md",
-      "bytes": 3628,
-      "public_sha256": "646f0c3fed7e3f9499aa465369a0bd2874bef528a41cf0a365de92dd7f994323",
-      "source_tracked_sha256": "646f0c3fed7e3f9499aa465369a0bd2874bef528a41cf0a365de92dd7f994323"
+      "bytes": 3938,
+      "public_sha256": "c2817483f07afc47f0ba0bf07085fc49b39d7ab3b33cc110890349241f2991c8",
+      "source_tracked_sha256": "646f0c3fed7e3f9499aa465369a0bd2874bef528a41cf0a365de92dd7f994323",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      }
     },
     {
       "path": "docs/GIT_AND_RESTORE.md",
-      "bytes": 5008,
-      "public_sha256": "98216b01a7ee3374951555583e9f22ec827339647b34bb65d4ec05b818f1878b",
+      "bytes": 5215,
+      "public_sha256": "00f3e72ec50149cdecb098bcb7ac9d8b8c822ba1ce0387917995d9f9917d59b4",
       "source_tracked_sha256": "43ff2525086ae7c1bc97f054b9b478e846183942c6ca8aea05b33feafa2c3280",
       "transformations": {
-        "home_path": 1
+        "home_path": 1,
+        "public_lean_release_documentation": 1
       }
+    },
+    {
+      "path": "docs/LEAN_EVIDENCE.md",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 8511,
+      "public_sha256": "13fae9616c4257806442bf84cd0d32a774adec2c913d2b42d921042bdfe23055"
     },
     {
       "path": "docs/OPEN_QUESTIONS.md",
@@ -2375,6 +2392,62 @@
         "project_root": 568,
         "home_path": 13
       }
+    },
+    {
+      "path": "publication/lean_evidence/privacy_review.json",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 2063,
+      "public_sha256": "fa2453089c8a89996bb81cad11accdfeaff1a81eb63f4393f363b3665c277911"
+    },
+    {
+      "path": "publication/lean_evidence/selection.json",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 1898,
+      "public_sha256": "47dc74abbc81de1185c3d15a23df6600e38facbb31c96228bda6e25b0ab886b6"
+    },
+    {
+      "path": "publication/lean_evidence/selftest.json",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 384,
+      "public_sha256": "967cdf9dd6c66e49cf3ce54ebabb9fbfeabbd382cda304c17a54ddb8cfc10030"
+    },
+    {
+      "path": "publication/lean_evidence/sqlite_verification.json",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 27777,
+      "public_sha256": "31e213c9cd9950ec5cb84d193ba1896feb830b0fca06851fb291db839214276a"
+    },
+    {
+      "path": "publication/lean_evidence/transform_selftest.json",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 226,
+      "public_sha256": "c1c36b3435704ca01dcf06d560c21c7f84340c8d8cf6b9e800e908de0dbc7163"
+    },
+    {
+      "path": "publication/lean_evidence/verification.json",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 612,
+      "public_sha256": "0fdfa28dd24972a8ad85eecfee1c0692bdb71a0135c21d5ea522fba440de0c42"
+    },
+    {
+      "path": "publication/lean_evidence_v1.json",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 709,
+      "public_sha256": "b9797ec19cc929b2eb736d28f62308f93673ef065bef8347d8cee144b0417f78"
     },
     {
       "path": "review/COMPLETION.json",
@@ -2462,6 +2535,14 @@
       "transformations": {
         "home_path": 2
       }
+    },
+    {
+      "path": "scripts/evidence_store.py",
+      "transformations": {
+        "public_lean_release_documentation": 1
+      },
+      "bytes": 16777,
+      "public_sha256": "889532a79537f28d0b40db3b1ff6e8d4d024e3cc892fc433a1e533b068d41c89"
     },
     {
       "path": "scripts/verify_archive.py",
@@ -6040,5 +6121,27 @@
       "public_sha256": "5e2da9a3c174f8fe8f5f6eaf0af111445df00e04a25465526815e0a341f2c4b9",
       "source_tracked_sha256": "5e2da9a3c174f8fe8f5f6eaf0af111445df00e04a25465526815e0a341f2c4b9"
     }
-  ]
+  ],
+  "last_updated": "2026-10-13",
+  "latest_evidence_release": {
+    "schema": "public-lean-publication-v1",
+    "date": "2026-10-13",
+    "release_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/tag/evidence-20261013-v1",
+    "tag": "evidence-20261013-v1",
+    "asset": "public-evidence.cas.tar.zst",
+    "sha256": "32f0c84b1f4e79d98d9b3ff3dfbc4f35200ab4e59d28a88d358cbaa3190b40bd",
+    "compressed_bytes": 776111570,
+    "selected_files": 94733,
+    "logical_bytes": 38581693821,
+    "unique_objects": 58656,
+    "sqlite_logical_exports": 38,
+    "verification": {
+      "full_restore": "passed",
+      "files_rehashed": 94733,
+      "privacy_scan": "passed",
+      "sqlite_import": "passed"
+    },
+    "private_packages_uploaded": false,
+    "source_experiments_rerun": false
+  }
 }

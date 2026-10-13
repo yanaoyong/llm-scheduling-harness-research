@@ -1,0 +1,758 @@
+{
+  "status": "passed",
+  "exports_checked": 38,
+  "unique_exports_restored": 33,
+  "checks": [
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/correctness_prefix_1/incremental/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/correctness_prefix_1/incremental/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 6,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 13,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 6,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/correctness_prefix_1/reference/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/correctness_prefix_1/reference/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 6,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 13,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 6,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/incremental_prefix_1/store/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/incremental_prefix_1/store/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 6,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 13,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 6,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/incremental_prefix_16/store/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/incremental_prefix_16/store/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 96,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 178,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 66,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/incremental_prefix_8/store/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/incremental_prefix_8/store/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 48,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 90,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 34,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/reference_prefix_1/store/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/reference_prefix_1/store/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 6,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 13,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 6,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/reference_prefix_16/store/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/reference_prefix_16/store/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 96,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 178,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 66,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/reference_prefix_8/store/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_actual_original_task_comparison_v1/reference_prefix_8/store/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 48,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 90,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 34,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_v8_preserved_root_integration_v1/optimizer/real_execution_01/diagnostic_segment_not_a_run/durable/active/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_v8_preserved_root_integration_v1/optimizer/real_execution_01/diagnostic_segment_not_a_run/durable/active/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 198,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 397,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 135,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_v8_preserved_root_integration_v1/optimizer/real_execution_01/diagnostic_segment_not_a_run/durable/parent_complete.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_v8_preserved_root_integration_v1/optimizer/real_execution_01/diagnostic_segment_not_a_run/durable/parent_complete.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 198,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 397,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 134,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_v8_preserved_root_integration_v1/optimizer/real_execution_02/diagnostic_segment_not_a_run/durable/active/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_v8_preserved_root_integration_v1/optimizer/real_execution_02/diagnostic_segment_not_a_run/durable/active/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 198,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 397,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 135,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_v8_preserved_root_integration_v1/optimizer/real_execution_02/diagnostic_segment_not_a_run/durable/parent_complete.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/B_v8_preserved_root_integration_v1/optimizer/real_execution_02/diagnostic_segment_not_a_run/durable/parent_complete.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 198,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 397,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 134,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/C8_saved_C1_parity_v2/attempt_001/scratch/candidate/constructor/constructor_work.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/C8_saved_C1_parity_v2/attempt_001/scratch/candidate/constructor/constructor_work.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 0,
+      "tables": [
+        {
+          "table": "payloads",
+          "rows": 230,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/C8_saved_C1_parity_v2/attempt_001/scratch/candidate/scratch.sqlite",
+      "public_path": "project/experiment_round2_3datasets/artifacts/smt_fullfab_diagnostics/C8_saved_C1_parity_v2/attempt_001/scratch/candidate/scratch.sqlite.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 717,
+      "tables": [
+        {
+          "table": "records",
+          "rows": 9342,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v1/plan_00000/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v1/plan_00000/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 5,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 11,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 5,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v10__working_set_001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v10__working_set_001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 54,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 112,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 53,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v11__execution_feedback_001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v11__execution_feedback_001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 44,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 89,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 43,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v11__execution_feedback_002/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v11__execution_feedback_002/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 40,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 80,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 39,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v12__commit_progress_001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v12__commit_progress_001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 68,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 152,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 67,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v13__base_evidence_002/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v13__base_evidence_002/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 112,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 260,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 111,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v14__candidate_paths_001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v14__candidate_paths_001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 708,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 1700,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 707,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 73,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 181,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 72,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v2/plan_00000/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v2/plan_00000/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 6,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 13,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 6,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v3/plan_00000/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v3/plan_00000/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 105,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 195,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 72,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v4/plan_00000/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v4/plan_00000/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 435,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 800,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 292,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v5/plan_00000/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v5/plan_00000/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 99,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 184,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 68,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v6/plan_00000/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v6/plan_00000/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 30,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 55,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 21,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7/plan_00000/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7/plan_00000/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 474,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 874,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 320,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7/plan_00001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7/plan_00001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 318,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 583,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 213,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7__recovery_001/plan_00001/fork/active/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7__recovery_001/plan_00001/fork/active/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 645,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 1180,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 429,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7__recovery_001/plan_00001/fork/parent_complete.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7__recovery_001/plan_00001/fork/parent_complete.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 318,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 583,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 213,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v8/plan_00001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v8/plan_00001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 5,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 11,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 5,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v8__launch_recovery_001/plan_00001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v8__launch_recovery_001/plan_00001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 198,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 397,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 134,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v8__preserved_001/plan_00001/durable/active/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v8__preserved_001/plan_00001/durable/active/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 294,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 589,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 199,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v8__preserved_001/plan_00001/durable/parent_complete.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v8__preserved_001/plan_00001/durable/parent_complete.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 198,
+      "tables": [
+        {
+          "table": "blobs",
+          "rows": 397,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "journal",
+          "rows": 134,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v9__memory_progress_001/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v9__memory_progress_001/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 2,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 4,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 1,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v9__memory_progress_002/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v9__memory_progress_002/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 3,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 6,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 2,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    },
+    {
+      "source_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v9__memory_progress_003/durable/ledger.sqlite3",
+      "public_path": "project/experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v9__memory_progress_003/durable/ledger.sqlite3.public.sql",
+      "status": "passed",
+      "schema_matches": true,
+      "restored_integrity": "ok",
+      "changed_rows": 30,
+      "tables": [
+        {
+          "table": "events",
+          "rows": 60,
+          "sanitized_row_multiset_matches": true
+        },
+        {
+          "table": "processed",
+          "rows": 29,
+          "sanitized_row_multiset_matches": true
+        }
+      ]
+    }
+  ],
+  "limits": "Logical SQL values match their sanitized source cells. Original hash-chain values are preserved as provenance and are not re-signed after transformations."
+}
