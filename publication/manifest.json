@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 847,
+  "public_file_count_excluding_this_manifest": 855,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -17,7 +17,9 @@
     "contact_email": 2,
     "career_application_report_archive": 5,
     "interview_evidence_handoff": 8,
-    "interview_history_verification": 8
+    "interview_history_verification": 8,
+    "interview_report_draft": 4,
+    "portfolio_document": 8
   },
   "transformed_source_files": 229,
   "private_files_included": 0,
@@ -42,15 +44,17 @@
     },
     {
       "path": "README.md",
-      "bytes": 8650,
-      "public_sha256": "71a46e59391d1e26727e251943053a82ca4041bf9de9e65631fb789918c406ce",
+      "bytes": 9212,
+      "public_sha256": "3af3205efacfcbac1c23155e9a39e18743a34ebc872ca78e260fcfad1dd4a498",
       "source_tracked_sha256": "34cdd9e8dafd075821f823de7f93351891d785fa12f81c289a5eba45185d221e",
       "transformations": {
         "public_release_notice": 1,
         "public_lean_release_documentation": 1,
         "career_application_report_archive": 1,
         "interview_evidence_handoff": 1,
-        "interview_history_verification": 1
+        "interview_history_verification": 1,
+        "interview_report_draft": 1,
+        "portfolio_document": 1
       }
     },
     {
@@ -2357,6 +2361,70 @@
       "source_tracked_sha256": "215dab7c01c3065c2ef991808675c10863d65555827c0be7e3e90da7a8fb78e1"
     },
     {
+      "path": "docs/career-application/2026-10-13-interview-v2/README.md",
+      "bytes": 1555,
+      "public_sha256": "54c1e2269df147771ea2d167e3b4754b5d23ae2e479f9ba5c6c77742408e88d9",
+      "transformations": {
+        "interview_report_draft": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13-interview-v2/interview-report.md",
+      "bytes": 21260,
+      "public_sha256": "13e4d7c4edd2cf73ae67008f7726cf5c304414f9502afe6281aee3e38db73fc3",
+      "transformations": {
+        "interview_report_draft": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13-semiconductor-agent-portfolio/README.md",
+      "bytes": 854,
+      "public_sha256": "36e7a1a75923efadf5ff00dc0dd6d4930239481efbd9afdd3a060e696a42e329",
+      "transformations": {
+        "portfolio_document": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13-semiconductor-agent-portfolio/figures/roadmap.png",
+      "bytes": 109955,
+      "public_sha256": "2f2c2a7352b3db58135c21e2979d819f0f78d98dcdaeea024562d09d42b76025",
+      "transformations": {
+        "portfolio_document": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13-semiconductor-agent-portfolio/manifest.json",
+      "bytes": 1483,
+      "public_sha256": "d011ebb98fdedf5ab8b7ebe18be0c5d2d2dde44f22a2fbd1d316d6e1472ac43e",
+      "transformations": {
+        "portfolio_document": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13-semiconductor-agent-portfolio/portfolio.docx",
+      "bytes": 149541,
+      "public_sha256": "f74887bc7fc3aaaa9db47ef2cd16229ea10220cb2196dcd0e40bc4f08dc5072a",
+      "transformations": {
+        "portfolio_document": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13-semiconductor-agent-portfolio/portfolio.md",
+      "bytes": 12067,
+      "public_sha256": "c428837e9795a421012279d01d8d2a6cbce322f681260f9680ec0cfa0906573a",
+      "transformations": {
+        "portfolio_document": 1
+      }
+    },
+    {
+      "path": "docs/career-application/2026-10-13-semiconductor-agent-portfolio/portfolio.pdf",
+      "bytes": 240777,
+      "public_sha256": "d2319f8272d8a56e964b2c430131dcf42e61e68c50b9c7f77cc5d4faa33f5e33",
+      "transformations": {
+        "portfolio_document": 1
+      }
+    },
+    {
       "path": "docs/career-application/2026-10-13/README.md",
       "bytes": 3042,
       "public_sha256": "7569338e7a72e07706d5d51b580ea45f8bba1ab80f9906ce29e8a57e5b92d0cd",
@@ -2392,11 +2460,13 @@
     },
     {
       "path": "docs/career-application/CONTINUE_WITH_CLAUDE.md",
-      "bytes": 5981,
-      "public_sha256": "d17260d8dbec45ed67b56d424a88cd5ba05321012ac1ff4c122ca131d474f3d1",
+      "bytes": 6283,
+      "public_sha256": "b8e8c8604a1727c5b6f9100cf7b369d591ab646ba8a41cc35e38bdb6bb36204b",
       "transformations": {
         "interview_evidence_handoff": 1,
-        "interview_history_verification": 1
+        "interview_history_verification": 1,
+        "interview_report_draft": 1,
+        "portfolio_document": 1
       }
     },
     {

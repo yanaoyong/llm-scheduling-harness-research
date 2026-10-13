@@ -22,6 +22,8 @@
 7. [精简证据包使用说明](docs/LEAN_EVIDENCE.md)：公开下载、校验、恢复，以及与本地私有包的区别。
 8. [职业实践与智能排程 Agent 应用报告](docs/career-application/2026-10-13/README.md)：从已有职业经验出发，说明 Harness 工程、现场规则共建与使用者培训；提供 7 页 PDF 和可编辑 Word。
 9. [面试素材与 Claude Code 续作入口](docs/career-application/CONTINUE_WITH_CLAUDE.md)：四项补充素材、个人决策候选、23 项原来源及 8 项深查来源、写作框架与待补细节。
+10. [面试交流报告第二版](docs/career-application/2026-10-13-interview-v2/README.md)：围绕 Harness 工程、现场规则共建、人员培训与持续改进三条工作线，说明入职后怎样着手、推进和判断是否有效；附事实来源。
+11. [作品说明：半导体智能排程 Agent 的 Harness 工程与现场落地](docs/career-application/2026-10-13-semiconductor-agent-portfolio/README.md)：面向 HR 与面试官的 3 页作品说明（PDF / Word / Markdown），说明职业判断、Harness 工程化与 Agent 落地做法。
 
 ## 2026-10-13：职业实践与智能排程应用报告
 
