@@ -12,6 +12,10 @@
 
 PDF 与 Word 均保存本次报告的原始交付字节。后续内容修订应另建带日期的版本，保留这份历史快照。
 
+## 后续写作素材
+
+2026-10-13 补充了 [四项面试素材](../INTERVIEW_MATERIALS.md)、[写作框架](../INTERVIEW_OUTLINE.md)及 [23 项来源摘录](../evidence/2026-10-13/source-excerpts.md)。这些材料进一步区分本人要求、Codex 实现与未确认细节；未改动本页归档 PDF／Word。跨电脑继续工作请先读 [Claude Code 续作入口](../CONTINUE_WITH_CLAUDE.md)。
+
 ## 阅读顺序
 
 | 页码 | 内容 |
