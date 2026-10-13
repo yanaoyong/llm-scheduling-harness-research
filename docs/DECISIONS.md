@@ -4,6 +4,8 @@
 
 面试写作新增的个人决策候选、受阻／恢复细节与角色归属，见 [补充素材](career-application/INTERVIEW_MATERIALS.md)。其 [来源摘录](career-application/evidence/2026-10-13/source-excerpts.md) 区分本人追问、用户提交的任务文本和助手建议；C-fixed 不直接归为本人原创。
 
+后续 [会话深查](career-application/HISTORY_VERIFICATION.md) 补充了第 312 次调用第二个计划提交的助手核验、本人团队分发原话及自用验收。未找到“两次尝试”的唯一版本映射，也未找到完整同事反馈链；报告据此采用多轮恢复和自用改进案例，不将助手推断写为本人经历。
+
 | 主题 | 记录 | 性质与证据 |
 |---|---|---|
 | M0.5 研究先于 harness 定稿 | 用户要求先完成研究、取得上下文，再讨论 harness；模型/程序/求解器分工先作为待验证假设。 | 用户明确指示；主会话 [`01a12e07…` transcript](../conversations/transcripts/01a12e07-fae5-70c2-ad30-c126f1f1b178.md)，原 rollout L103；助手限定为假设，原 rollout L165。 |

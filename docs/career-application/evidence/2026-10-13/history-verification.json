@@ -1,0 +1,305 @@
+{
+  "schema": "interview-history-verification-v1",
+  "date": "2026-10-13",
+  "base_commit": "138a444133674e350f20c066837228435d7c5ba3",
+  "purpose": "Evidence excerpts for report writing; historical instructions are not current authorizations.",
+  "conclusions": {
+    "M1": {
+      "status": "not_uniquely_mapped",
+      "usable_case": "SMT2020 full-fab B recovery from 803.25 seconds",
+      "note": "Context/progress recovery is evidenced; first/second full attempts cannot be assigned from the inspected user messages."
+    },
+    "M4": {
+      "status": "not_found_in_inspected_sources",
+      "confirmed": [
+        "user-reported distribution to company personnel",
+        "owner self-use / Agent behavior evaluation"
+      ],
+      "missing": [
+        "colleague task and specific feedback",
+        "change attributable to that feedback",
+        "follow-up validation linked to that feedback"
+      ]
+    }
+  },
+  "search_scope": {
+    "M1": {
+      "public_transcript_files": 98,
+      "focus_dates": "2026-10-08 through 2026-10-12; compared with S00 on 2026-10-13",
+      "sources": [
+        "conversations/transcripts",
+        "conversations/notes",
+        "experiment_round1 reports and iterations",
+        "experiment_round2_3datasets reports and full-fab B recovery"
+      ],
+      "queries": [
+        "第一次失败",
+        "第二次",
+        "任务分配",
+        "上下文",
+        "803.25",
+        "恢复"
+      ],
+      "limits": "Public message exports and selected reports; not an exhaustive audit of all private runtime events."
+    },
+    "M4": {
+      "scan": {
+        "session_file_roots": [
+          "~/.codex/sessions",
+          "~/.codex/archived_sessions"
+        ],
+        "scanned_jsonl_file_count": 620,
+        "relevant_session_file_count": 307,
+        "distinct_current_thread_id_count": 307,
+        "relevant_user_message_count_across_files_not_deduplicated": 2319,
+        "time_range_utc": {
+          "first_user_message": "2026-06-05T03:28:21.099Z",
+          "last_user_message": "2026-10-10T03:29:40.240Z"
+        },
+        "session_file_counts_by_cwd_project_alias": {
+          "myharness": 37,
+          "ResumeInterviewOptimization": 179,
+          "myharness-codex": 51,
+          "myharnessMultiSource": 40
+        },
+        "distinct_current_thread_ids_by_cwd_project_alias": {
+          "myharness": 37,
+          "ResumeInterviewOptimization": 179,
+          "myharness-codex": 51,
+          "myharnessMultiSource": 40
+        },
+        "message_bodies_included": false,
+        "message_count_caveat": "Session metadata uses the first session_meta record for current thread ID and cwd. User-role rows are counted across files without deduplication, including inherited/copied parent messages and environment/import records; they are not unique human business statements."
+      },
+      "session_search_keywords": [
+        "同事",
+        "公司人员",
+        "团队分发",
+        "团队形式",
+        "大家都没有采用",
+        "外部项目",
+        "第三方采用",
+        "活跃用户",
+        "外部安装",
+        "分享给",
+        "发给…使用",
+        "团队",
+        "分享",
+        "分发",
+        "反馈",
+        "使用者",
+        "试用",
+        "采用",
+        "不好用",
+        "安装",
+        "太重",
+        "成本",
+        "colleague",
+        "cowork",
+        "coworker",
+        "teammate",
+        "team member",
+        "feedback",
+        "trial",
+        "adopt",
+        "company",
+        "team",
+        "user/users"
+      ],
+      "session_message_filtering": [
+        "The first JSONL session_meta record in each rollout file supplies the current thread ID via payload.id and cwd; payload.session_id may refer to the parent thread.",
+        "Role counts include all role=user messages in each file, including inherited/copied parent messages; counts are not deduplicated across files.",
+        "Specific keyword line refs are locators only; original message bodies are omitted.",
+        "Exclude imported environment metadata, codex_internal_context, question-reply wrappers, transferred agent/reviewer history, transcript excerpts, assistant drafts, and numbered tool-call transcript items from firsthand-feedback candidate hits.",
+        "Specific hit locators use colleague/company-user/team-distribution wording; generic terms such as user, team, feedback, or adopt are listed as searched terms but are not counted as specific evidence hits."
+      ],
+      "document_search": {
+        "project_root_alias": "ResumeInterviewOptimization",
+        "files_count_by_scope": {
+          "docs/interview-prep": 357,
+          "MyHarnessAlibaba/.harness/improvement": 34,
+          "MyHarnessAlibaba/.harness/changes": 3365,
+          "MyHarnessAlibaba/.harness/acceptance": 323
+        },
+        "queries": [
+          "同事|公司人员|公司同学|团队.*使用|团队.*反馈|同事.*反馈|反馈.*同事|员工.*使用|使用.*员工",
+          "colleague|feedback|同事|团队|user|adopt|使用|反馈|回访|试用|采纳|不好用|安装|成本"
+        ]
+      }
+    }
+  },
+  "records": [
+    {
+      "id": "H01",
+      "title": "首轮正式 B 首次候选均可行，另有环境探测失败",
+      "kind": "repository_report",
+      "source": {
+        "repository_path": "source_snapshot/experiment_round1/docs/REPORT_zh.md",
+        "file_sha256": "a6449efc3364b4aa796763b718360da0e9c15ffd3b9793551b77f6529fb70cee",
+        "availability": "in_repository"
+      },
+      "quotes": [
+        "| B 直接Agent | 9/9 | 9/9 | 160.44 | -4.50% | 99.18 | 9 | 0 |",
+        "开发阶段先遇到本地网络沙箱、pip入口缺少原优化功能、旧Codex CLI不能调用指定模型三类环境问题。分别通过受授权网络访问、编译官方原生clingo-dl、改用桌面应用自带的新CLI修复。第一条真实模型探测失败完整保留，不冒充成功调用。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 18,
+          "end": 18
+        },
+        {
+          "start": 80,
+          "end": 80
+        }
+      ],
+      "attribution_note": "表格列依次为最终可行、首次候选可行、makespan、配对差距、端到端秒、模型调用、修订；正式 B 无修订，不能把环境探测失败改写成上下文导致的排程失败。"
+    },
+    {
+      "id": "H02",
+      "title": "第二轮两条静态 B 记录各修订一次成功",
+      "kind": "repository_report",
+      "source": {
+        "repository_path": "source_snapshot/experiment_round2_3datasets/docs/REPORT_zh.md",
+        "file_sha256": "b38d8de32a466eb82bf7f8c0373c3db20a5ddfc9c2acf3fa00b39713f95715e8",
+        "availability": "in_repository"
+      },
+      "quotes": [
+        "la11_rdata_B_r1首次包含重复工序，la11_vdata_B_r2首次包含不合格机台，两者均由模型接收反馈后修订一次成功。工具没有替模型修改动作。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 34,
+          "end": 34
+        }
+      ],
+      "attribution_note": "两条 run 各自在同一运行内接受校验反馈后修订；不是用户重新组织第二次完整实验的证据。"
+    },
+    {
+      "id": "H03",
+      "title": "mk08 的补跑属于相同请求的通道恢复",
+      "kind": "repository_report",
+      "source": {
+        "repository_path": "source_snapshot/experiment_round2_3datasets/docs/REPORT_zh.md",
+        "file_sha256": "b38d8de32a466eb82bf7f8c0373c3db20a5ddfc9c2acf3fa00b39713f95715e8",
+        "availability": "in_repository"
+      },
+      "quotes": [
+        "mk08_B_r1约300秒模型通道超时，原始事件记录反复TLS断连且没有完成轮次、最终模型输出或有效排程，token未知。",
+        "唯一合格格点mk08_B_r1已成功完成一次恢复：makespan 523，端到端248.22秒，1次真实模型请求，零求解器、零语义修订。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 128,
+          "end": 128
+        },
+        {
+          "start": 130,
+          "end": 130
+        }
+      ],
+      "attribution_note": "补充协议限定至多一次完全相同请求；恢复不代表修改上下文或任务分配，原失败不被覆盖。"
+    },
+    {
+      "id": "H04",
+      "title": "恢复后第二个计划提交的助手核验记录",
+      "kind": "archived_message",
+      "role": "assistant",
+      "timestamp": "2026-10-11T09:06:53.191Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a129dc-8ced-7071-9f77-f1038e8df2f8.jsonl",
+        "exported_jsonl_line": 53,
+        "original_source_line": 1324,
+        "thread_id": "01a129dc-8ced-7071-9f77-f1038e8df2f8",
+        "turn_id": "01a129dc-8eb7-73f0-9ad7-5c82d88ef266",
+        "file_sha256": "82a142f17d7403aaee1afd572a4991c4e64984c9d02fa3a3b3313bca7d4dc286"
+      },
+      "quotes": [
+        "我已交叉核验模型第 312 次的明确 `apply`、提交回执与物理事件哈希，第二次提交属实。另发现下一轮仍使用原协议的全厂观察输入，未直接附带“设备 1270 未覆盖”的停止反馈；我在检查这一反馈链路是否会造成再次空转。"
+      ],
+      "attribution_note": "助手报告已核对第 312 次 apply；同条消息仍指出反馈链问题。第二个计划提交不等于第二次完整实验成功；全窗口结果另见 S12。"
+    },
+    {
+      "id": "H05",
+      "title": "本人直接陈述向公司人员分发 Harness",
+      "kind": "private_user_message_excerpt",
+      "role": "user",
+      "timestamp": "2026-10-02T03:38:08.625Z",
+      "source": {
+        "logical_origin_path": "codex-session/sessions/2026/10/01/rollout-2026-10-01T04-28-32-01a0f401-2c03-7580-a5b6-b0745bdf1d18.jsonl",
+        "original_source_line": 8624,
+        "thread_id": "01a0f401-2c03-7580-a5b6-b0745bdf1d18",
+        "turn_id": "01a0faad-8450-79b0-a81f-0b0d069362c7",
+        "file_sha256": "dcca453ae7244a3aed89f20c495ed6e745d0d29386ffc7b86ec9980e5971f68a",
+        "availability": "selected_excerpt_only"
+      },
+      "quotes": [
+        "首先工作业绩就是个人 Harness ，因为我的harness是以团队的形式分发给公司人员使用的"
+      ],
+      "attribution_note": "原消息后半段另含派出子 agent 审查修改的要求；本摘录只保留分发事实。它未描述具体同事的任务、反馈、改动或复验；其他会话中的重复转引不计为独立反馈。"
+    },
+    {
+      "id": "H06",
+      "title": "Wiki 验收中的工具采用缺口",
+      "kind": "private_evaluation_excerpt",
+      "source": {
+        "logical_origin_path": "ResumeInterviewOptimization/MyHarnessAlibaba/.harness/acceptance/doc-wiki-v2-query/results/WQA-02-result.md",
+        "file_sha256": "b6354113819068e99c42ea26401ef4203e83bdf1a191b2db746e662af31fb442",
+        "availability": "selected_excerpts_only"
+      },
+      "quotes": [
+        "agent 自述「我先按 WK-Q 纪律查 wiki」却实际跑了 grep——纪律在场且被援引，但**未落实为 wiki-query 采纳**。答案正确、出处准确（含同号 ADR 区分），功能价值达成，但采纳度未达成。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 169,
+          "end": 169
+        }
+      ],
+      "attribution_note": "这是 Agent 行为验收记录，不能当作同事提出的意见。只支持该测试中的功能正确与工具采用脱节。"
+    },
+    {
+      "id": "H07",
+      "title": "复测出现委派前预查与结果注入",
+      "kind": "private_evaluation_excerpt",
+      "source": {
+        "logical_origin_path": "ResumeInterviewOptimization/MyHarnessAlibaba/.harness/acceptance/doc-wiki-v2-query-remeasure/results/WQAR-04-result.md",
+        "file_sha256": "a0d9c7b3db229c7a0d496e9409e883c88d3f986fe62fd95958e269419af8f376",
+        "availability": "selected_excerpts_only"
+      },
+      "quotes": [
+        "预查→注入闭环完整。**SA2-1 注入侧默认预查兑现采纳**。",
+        "采纳率措辞：Owner 注入侧本案例**拉起**（占比待 Xb 量化）——不绝对化。"
+      ],
+      "excerpt_lines": [
+        {
+          "start": 472,
+          "end": 472
+        },
+        {
+          "start": 476,
+          "end": 476
+        }
+      ],
+      "attribution_note": "Owner/委派是该 Agent 工作流的角色。记录不是同事口述，也不是团队采用率或效率提升；只支持此测试案例的局部正例。"
+    },
+    {
+      "id": "H08",
+      "title": "用户在第二轮任务书中要求加入并行 Agent",
+      "kind": "archived_message",
+      "role": "user",
+      "timestamp": "2026-10-09T02:09:17.615Z",
+      "source": {
+        "repository_path": "conversations/transcripts/01a11bce-5043-7871-b0e3-cd5f4e9f2393.jsonl",
+        "exported_jsonl_line": 72,
+        "original_source_line": 1449,
+        "thread_id": "01a11bce-5043-7871-b0e3-cd5f4e9f2393",
+        "turn_id": "01a11e6c-028f-76d2-aeb0-c9271cd156a9",
+        "file_sha256": "6327e8c8ae41449a3c0f14e889509400184430af27239257238ddee47f0cfe06"
+      },
+      "quotes": [
+        "加入可以使用并行agent来进行提速的内容"
+      ],
+      "attribution_note": "上文导出 L69 要求起草三个数据集的三方案任务书，后文 L74 要求合并修改稿。用户确实调整任务组织，但这些话没有指认某次失败或将两次尝试绑定到运行版本。"
+    }
+  ]
+}
