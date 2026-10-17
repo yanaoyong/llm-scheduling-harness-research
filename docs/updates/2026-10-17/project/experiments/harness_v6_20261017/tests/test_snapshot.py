@@ -64,3 +64,13 @@ def test_mac_tokenizer():
     pytest.importorskip('tiktoken', reason='Mac-only pinned tokenizer dependency is absent')
     counter = tiktoken_counter()
     assert counter('hello world') == 2
+
+
+def test_default_encoding_is_v5_comparable(monkeypatch):
+    import sys
+    from types import SimpleNamespace
+    names=[]
+    monkeypatch.setitem(sys.modules,'tiktoken',SimpleNamespace(get_encoding=lambda name:
+        (names.append(name) or SimpleNamespace(encode=lambda text,**kw:[1]))))
+    assert tiktoken_counter()('text')==1
+    assert names==['o200k_base']

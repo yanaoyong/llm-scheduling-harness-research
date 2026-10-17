@@ -1,21 +1,21 @@
 # Mac 验收清单
 
-本阶段没有导入数据/vendor/tiktoken/SQLite，没有运行模型。以下命令均从本实验目录运行。
+以下 A–E 记录为历史阶段说明。Phase F 已获准使用预装公开 SMT2020/vendor/tiktoken；没有读取封存证据或运行模型。最新状态见文末 Phase F 表。以下命令均从本实验目录运行。
 后续阶段应添加下列测试文件和同名测试；Phase A 尚未实现这些适配器，不能声称已通过。
 这些集成测试缺依赖时须 pytest.skip 并说明缺失项；Mac 正式验收必须实际通过，不能计 skip。
 
-| 阶段 / 精确命令 | 通过条件 |
-|---|---|
-| 当前底座：`python3 -m pytest -q` | 所有纯函数测试通过；隔离来源与目标 SHA256 匹配 |
-| D / M2：`python3 -m pytest -q tests/test_mac_environment.py -k time_semantics` | 修改原 environment.commit_plan :132/:158：过去下界保留、过期 hold 无效；d34-421 原上下文保留任务即通过 |
-| D / M2：`python3 -m pytest -q tests/test_mac_environment.py -k frozen_invalidated` | 修改原 :164–168：宿主失效冻结任务可取消，不破坏其他冻结前缀；可继续推进，无零进展死锁 |
-| D / M2：`python3 -m pytest -q tests/test_mac_environment.py -k when_ready` | 默认及显式 when_ready、not_before 两种模式均按物料/机组就绪派工；硬下界不提前；严格队序；batch_min/max、专用/min-run、运输、停机受物理约束；与纯 executor 对账 |
-| D / M2：`python3 -m pytest -q tests/test_mac_audit.py -k time_semantics` | 独立修改 audit :103/:136，同步过去下界和过期 hold；不调用 normalize/ledger 作为审计实现；接受合法保留并拒绝其余硬约束违规 |
-| D / M0b：`python3 -m pytest -q tests/test_mac_replay.py -k equivalence` | 关闭新锚点/越级，用原时刻已提交计划验证到 1603.10s 的 dispatch/operation_complete/downtime 逐事件相同；不得外推新轨迹调用次数 |
-| D / M0b：`python3 -m pytest -q tests/test_mac_factory.py -k roundtrip` | mixed_702 通过 factory.restore 导入，不伪装兼容旧实现指纹；v6 capture/restore 哈希往返一致 |
-| 后续 M1：`python3 -m pytest -q tests/test_mac_ledger.py` | has_legal 对账；复现旧口径 10/15/4；静态分类逐条列例外；w1703:86:1 纳入 avoidable_idle 或 explicit_wait_idle；机会损失独立报告 |
-| 后续 M3：`python3 -m pytest -q tests/test_mac_snapshot.py` | 固定版本 tiktoken；G0 1649.82s 全部任务 26/26；预算失败关闭；稳态 WIP 规模测量 |
-| 后续 M5：`python3 -m pytest -q tests/test_mac_session.py` | 仅本地模拟 Responses 端点，验证 F6 的 MCP 配置、approval、schema、事件字段、超时、压缩、环境继承及大型结果截断；无真实模型调用 |
+| 阶段 / 精确命令 | 通过条件 | Phase F 状态 |
+|---|---|---|
+| 当前底座：`python3 -m pytest -q` | 所有纯函数测试通过；隔离来源与目标 SHA256 匹配 | 通过（最终数量见 Phase F 报告） |
+| D / M2：`python3 -m pytest -q tests/test_mac_environment.py -k time_semantics` | 修改原 environment.commit_plan :132/:158：过去下界保留、过期 hold 无效；d34-421 原上下文保留任务即通过 | 公开时间语义通过；d34-421 待封存证据 |
+| D / M2：`python3 -m pytest -q tests/test_mac_environment.py -k frozen_invalidated` | 修改原 :164–168：宿主失效冻结任务可取消，不破坏其他冻结前缀；可继续推进，无零进展死锁 | 公开失效冻结取消通过 |
+| D / M2：`python3 -m pytest -q tests/test_mac_environment.py -k when_ready` | 默认及显式 when_ready、not_before 两种模式均按物料/机组就绪派工；硬下界不提前；严格队序；batch_min/max、专用/min-run、运输、停机受物理约束；与纯 executor 对账 | 公开 when_ready/硬下界通过；组合覆盖范围见报告 |
+| D / M2：`python3 -m pytest -q tests/test_mac_audit.py -k time_semantics` | 独立修改 audit :103/:136，同步过去下界和过期 hold；不调用 normalize/ledger 作为审计实现；接受合法保留并拒绝其余硬约束违规 | 公开来源/时间语义审计通过 |
+| D / M0b：`python3 -m pytest -q tests/test_mac_replay.py -k equivalence` | 关闭新锚点/越级，用原时刻已提交计划验证到 1603.10s 的 dispatch/operation_complete/downtime 逐事件相同；不得外推新轨迹调用次数 | 待封存 G0 证据，明确跳过 |
+| D / M0b：`python3 -m pytest -q tests/test_mac_factory.py -k roundtrip` | mixed_702 通过 factory.restore 导入，不伪装兼容旧实现指纹；v6 capture/restore 哈希往返一致 | 公开 round-trip 通过；mixed_702 待封存证据 |
+| 后续 M1：`python3 -m pytest -q tests/test_mac_ledger.py` | has_legal 对账；复现旧口径 10/15/4；静态分类逐条列例外；w1703:86:1 纳入 avoidable_idle 或 explicit_wait_idle；机会损失独立报告 | 公开 has_legal 对账通过；M1(a–d) 待封存证据 |
+| 后续 M3：`python3 -m pytest -q tests/test_mac_snapshot.py` | 固定版本 tiktoken；G0 1649.82s 全部任务 26/26；预算失败关闭；稳态 WIP 规模测量 | 真实 o200k_base 通过；G0 26/26 待封存证据 |
+| 后续 M5：`python3 -m pytest -q tests/test_mac_session.py` | 仅本地模拟 Responses 端点，验证 F6 的 MCP 配置、approval、schema、事件字段、超时、压缩、环境继承及大型结果截断；无真实模型调用 | 待 Codex F6 探针证据，明确跳过 |
 
 物理适配器与审计同步前，本阶段成功的纯校验不能当作物理或来源认证。
 长时间运行须验证 breakdown 开关、检查点、预算闸门及漂移停止，CQT 仍未实现。
@@ -48,7 +48,7 @@ M6 / E1、P2 实际试验另行授权预算，不属于本次验收。
    python3 -m pytest -q tests/test_snapshot.py::test_mac_tokenizer tests/test_sealed_contexts.py::test_mac_snapshot_26_pending
    ```
 
-   通过：cl100k_base 基础计数通过；G0 1649.82 所有 26 个待执行任务逐字段保留，所有 hold
+   通过：o200k_base 基础计数通过；G0 1649.82 所有 26 个待执行任务逐字段保留，所有 hold
    原样保留，100% 未预留就绪工序有行。用实际规则/工具/路由静态表和生产预算再调用
    build_snapshot，记录实际 token 数；本测试大预算仅验证完整性，不代表生产预算可满足。
 
@@ -89,8 +89,9 @@ python3 -m pytest -q tests/test_cycle_submit.py tests/test_metrics_checkpoint.py
 
 ## Phase D 当前入口（覆盖前文“未来文件”的状态说明）
 
-以下测试文件现已存在。未配置 Mac 数据时明确 skip；配置后缺字段、缺依赖或断言失败
-均报错，不会转换为 skip。所有命令从 V6 执行，设置 `PYTHONPATH="$PWD/src:<物理项目根>"`，
+以下测试文件现已存在。未配置 Mac 数据时明确 skip；Phase F 将 bundle 的场景/证据键改为可选。
+缺封存键时明确 skip（sealed evidence not provided）；已提供场景内部缺字段、缺依赖或断言失败
+仍报错，不会转换为 skip。所有命令从 V6 执行，设置 `PYTHONPATH="$PWD/src:<物理项目根>"`，
 物理项目须包含已固定的 src/smt/environment.py、vendor、SMT2020 数据。
 当前仓库没有执行这些验收，也没有运行 Codex 或开启 loopback 服务。
 
@@ -196,3 +197,28 @@ state、plan、until、expected_time；需让已有计划运行后第一次可�
 另人工验证 w1462 类仅已预留等待不触发，以及失败后 decision_after 阻止同刻
 重试、下一物理事件再决策。未提供 Mac 夹具时这些检查明确 skip。
 此前 M0b/M1/M2/M3/M5 与长运行门槛仍全部适用；CQT/Q-time 仍未实现。
+
+## Phase F：公开物理环境最终状态（权威更新）
+
+授权 Linux 预装环境运行公开数据测试；没有读取封存证据或执行 Codex。
+详细数字与逐周期表见 [公开验证报告](reports/public_physics_validation_20261017.md)。
+
+| MAC_VALIDATION 项 | Phase F 状态 / 证据 |
+|---|---|
+| 完整 plain suite | 通过：249 passed / 38 skipped / 42 subtests |
+| 完整 configured suite | 通过：270 passed / 17 evidence-only skipped / 42 subtests |
+| M0b factory / Store | 公开 capture/restore、只读预检、真实 SQLite CAS/陈旧版本拒绝通过；mixed_702 导入及 G0 等价回放仍待封存 |
+| M1 ledger / has_legal / 独立积分 | 公开初始态及全部轨迹步骤通过；M1(a–d) 的 10/15/4、封存机会分类及共同终点见证仍待封存 |
+| M2 时间 / when_ready / 冻结 | 公开过去下界、过期条件 hold、默认/显式 when_ready、未来硬下界、latest_start、冻结默认观察、失效取消、故障开关通过；d34-421 原上下文两个检查仍跳过 |
+| M3 snapshot / tokenizer | tiktoken 0.14.0 / o200k_base、公开 ready 行 100%、任务/hold 完整、真实预算失败关闭和小时规模测量通过；G0 1649.82 的 26/26 仍待封存 |
+| M4 周期 / 提交 | 真实 periodic/event 推进与原子 Submitter、逐步独立审计通过；窗口内无 plan_horizon 缺陷 |
+| M4b segment_recovery | 三条轨迹的正常检查点恢复、状态/账本/周期/积分/token 行及压缩观察哈希通过；真实进程崩溃、完整 MCP/JSONL 轮转链仍待后续 |
+| long_run_metrics / 漂移 | 完成一小时机制/规模测量；生产迟交、产出、排队、换型的独立物理口径及四小时漂移未完成 |
+| M5(a) / M6 synthetic | 全 suite 中假规划器、四组机制、失败/预算、登记模板检查通过 |
+| M5(b) / F6 / single_action | 九项 MCP 探针、三项 single_action 探针未提供：12 skips；没有执行 Codex |
+| M6 public / live gates | 公开 E1/P2 机制完成；真实 E1/P2 ×3 预算、质量底线与 F6 仍未满足，不进入实际实验结果 |
+
+17 个 configured skips = 5 个封存检查（G0 回放、d34-421 两项、静态分类、G0 26/26）+12 个 Codex 探针。没有数据/vendor/tokenizer 缺失导致的 skip。
+
+复跑：README Phase F 的 fixture/driver 命令；`tests/test_mac_snapshot.py` 现已实现公开完整性/真实预算检查。
+`tests/test_public_physics.py::test_public_run` 读取三条完整结果及压缩证据，负责真实正常检查点验收；不是此前计划的真实崩溃/漂移全验收。

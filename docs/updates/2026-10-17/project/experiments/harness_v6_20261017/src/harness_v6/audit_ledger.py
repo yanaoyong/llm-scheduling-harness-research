@@ -1,8 +1,8 @@
-"""Independent, deliberately exponential fixture/reference audit.
+"""Independent reference audit.
 
-No ledger helpers are imported. Enumerates all minimum-size combinations and
+No ledger helpers are imported. Selects the first minimum-size combination per equivalence class and
 then implements the documented deterministic greedy consumption policy. This
-checks that policy, not maximum matching; use only small contexts/subsets.
+checks that policy, not maximum matching; does not import production ledger helpers.
 """
 import itertools
 import json
@@ -26,26 +26,37 @@ def audit_ledger(problem, plan=None, receipts=None):
                 or op.get('predecessor_ids') or op.get('release_time', now) > now):
             continue
         candidates.append((op, state))
+    # Independent inverted qualification index; each operation appears once per
+    # machine even if an input qualification list contains duplicate IDs.
+    qualified = {}
+    for op, state in candidates:
+        for mid in set(op['eligible_machines']):
+            qualified.setdefault(mid, []).append((op, state))
     used = set(); matches = []; waits = []
     for machine in sorted(problem['machines'], key=lambda m: m['machine']):
         mid = machine['machine']
         if (machine.get('currently_busy') or machine.get('currently_down') or not machine.get('available', True)
                 or any(a <= now < b for a, b in machine.get('unavailable_intervals', []))):
             continue
-        legal = [(o, s) for o, s in candidates if mid in o['eligible_machines']
-                 and not o.get('qualification_uncertain') and not o.get('same_machine_as')
+        legal = [(o, s) for o, s in qualified.get(mid, []) if not o.get('qualification_uncertain') and not o.get('same_machine_as')
                  and (machine.get('min_left', 0) <= 0 or machine.get('min_setup') == o.get('setup'))]
         def enumerate_batches(items):
             batches = []
-            sizes = sorted({o['batch_min'] for o in items if 1 <= o['batch_min'] <= o['batch_max']})
-            for n in sizes:
-                for combo in itertools.combinations(sorted(items, key=lambda o: o['operation_id']), n):
-                    a = combo[0]
-                    if n != a['batch_min']: continue
-                    signature = [a['batch_key'], a['batch_min'], a['batch_max']]
-                    if all([b['batch_key'], b['batch_min'], b['batch_max']] == signature for b in combo):
-                        batches.append((json.dumps(signature, sort_keys=True, separators=(',', ':')),
-                                        [o['operation_id'] for o in combo]))
+            # Only the lexicographically first combination of each equivalence
+            # class can win. Filtering by a representative is independent of
+            # ledger bucketing and avoids enumerating C(WIP, batch_min) losers.
+            seen = set()
+            for a in sorted(items, key=lambda o: o['operation_id']):
+                signature = [a['batch_key'], a['batch_min'], a['batch_max']]
+                key = json.dumps(signature, sort_keys=True, separators=(',', ':'))
+                if key in seen: continue
+                seen.add(key)
+                n = a['batch_min']
+                if not 1 <= n <= a['batch_max']: continue
+                compatible = sorted(o['operation_id'] for o in items
+                    if [o['batch_key'], o['batch_min'], o['batch_max']] == signature)
+                first = next(itertools.combinations(compatible, n), None)
+                if first is not None: batches.append((key, list(first)))
             return sorted(batches)
         batches = enumerate_batches([o for o, s in legal if s == 'ready_unreserved' and o['operation_id'] not in used])
         if batches:

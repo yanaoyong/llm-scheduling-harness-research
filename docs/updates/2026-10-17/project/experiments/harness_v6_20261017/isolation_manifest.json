@@ -48,9 +48,9 @@
       "source_sha256": "518b42367dab09ca70a1831f3dc0b0b7964f621734b8c249bfd9acc9a58bd26d"
     },
     {
-      "copy_sha256": "4f739da8892793764b05f53b1d3349fefb00e4ac4adfad2a3425986f2515af92",
+      "copy_sha256": "1d126cc20c9c763aad5a77068058a63ba727f03b768ed5ca929a35712e0f531c",
       "initial_copy_sha256": "4f739da8892793764b05f53b1d3349fefb00e4ac4adfad2a3425986f2515af92",
-      "modified": false,
+      "modified": true,
       "path": "src/harness_v6/observation.py",
       "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/observation.py",
       "source_sha256": "4f739da8892793764b05f53b1d3349fefb00e4ac4adfad2a3425986f2515af92"
@@ -80,7 +80,7 @@
       "source_sha256": "cc8b852d0116d29c5add3fe20989104b3f390f5164ed2a0a49163864b1d26b00"
     },
     {
-      "copy_sha256": "403c71e7d6f8b94a0642cbca264c11d2349780f4d23d77beccdb685d485fdca8",
+      "copy_sha256": "d980c28da92027c84dabafc8a1bc7b4416d38444ce81e69457727014d5254e2b",
       "initial_copy_sha256": "2f9cca3b76fb8546fb9e191b1a5994b858cbf38303195a0c524c11a6362993b7",
       "modified": true,
       "path": "src/harness_v6/env_adapter.py",
@@ -88,7 +88,7 @@
       "source_sha256": "2f9cca3b76fb8546fb9e191b1a5994b858cbf38303195a0c524c11a6362993b7"
     },
     {
-      "copy_sha256": "0c1bbdf0761c197ad31c2a1b6fe695c19919c4f1b56eddc73e0a25bc2eef5d5e",
+      "copy_sha256": "de07ae0fd70973e4864b502f930a575fce3ae6005904b238cc3c906f92872d57",
       "initial_copy_sha256": "492002610e5068cb28da02cdda3c9d6145aefd09dfbb45257ee9fd97c5828e84",
       "modified": true,
       "path": "src/harness_v6/audit_v6.py",

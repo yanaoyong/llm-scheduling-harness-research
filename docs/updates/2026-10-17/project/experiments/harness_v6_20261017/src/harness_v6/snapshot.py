@@ -18,7 +18,7 @@ def estimate_tokens(text):
     return (len(text) + 3) // 4
 
 
-def tiktoken_counter(encoding_name='cl100k_base'):
+def tiktoken_counter(encoding_name='o200k_base'):
     """Mac-only lazy adapter; caller records installed version and encoding."""
     import tiktoken
     encoding = tiktoken.get_encoding(encoding_name)

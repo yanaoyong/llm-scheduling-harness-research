@@ -10,6 +10,21 @@ from copy import deepcopy
 from weakref import WeakKeyDictionary
 
 _HISTORY = WeakKeyDictionary()
+_ROUTE_TABLES = WeakKeyDictionary()
+
+def _route_tables(env):
+    """Cache immutable route facts; preserve original left-to-right float sums."""
+    cached = _ROUTE_TABLES.get(env)
+    if cached is None:
+        cached = {}
+        for name, route in env.routes.items():
+            steps = route.steps
+            cached[name] = [(sum(_mean(s.processing_time) for s in steps[i+1:]),
+                [s for s in steps[:i] if s.lot_to_lens_dedication == step.order])
+                for i, step in enumerate(steps)]
+        _ROUTE_TABLES[env] = cached
+    return cached
+
 
 
 def _mean(distribution):
@@ -122,6 +137,7 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
     if plan_seconds<=0 or type(lookahead_depth) is not int or lookahead_depth<1:
         raise ValueError('positive planning window and lookahead depth required')
     history=_history(env)
+    route_tables=_route_tables(env)
     pm_by_key={c['key']:c['length'] for cs in env.pm_counters.values() for c in cs}
     forecasts={jid:_job_forecast(env,history,jid,pm_by_key)
                for jid,job in env.jobs.items() if not job['done']}
@@ -187,7 +203,7 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
                 'transport_seconds':next_transport,'batch_key':[lot['part'],step.order,step.step_name],
                 'batch_min':step.batch_min,'batch_max':step.batch_max,
                 'setup':step.setup_needed,'setup_time':step.setup_time,'priority':lot['priority'],'due':lot['due'],
-                'remaining_work_seconds':sum(_mean(s.processing_time) for s in route[si+1:]),
+                'remaining_work_seconds':route_tables[lot['route']][si][0],
                 'terminal':si==len(route)-1,'waiting_since':lot['ready_since'],
                 'conditional':si!=lot['step'] or lot['status']!='waiting',
                 'readiness_basis':('exported_predecessor' if previous is not None else
@@ -195,7 +211,7 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
                     'observed_ready' if si==lot['step'] and lot['status']=='waiting' else 'nominal_unplanned_route'),
                 'sampling_percent':step.sampling_percent,'rework_percent':step.rework_percent,
                 'initial_virtual_predecessors':deepcopy(conditional_virtual) if previous is None else []}
-            binding_sources=[source for source in route[:si] if source.lot_to_lens_dedication==step.order]
+            binding_sources=route_tables[lot['route']][si][1]
             if known is not None:
                 op['qualification_basis']='observed binding'
             elif binding_sources:
@@ -214,13 +230,13 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
     frozen=[]
     if env.plan and env.t<env.plan['freeze_until']:
         frozen=[deepcopy(task) for task in env.plan['tasks']
-                if (env.plan['version'],task['id']) not in env.executed_tasks and task['not_before']<env.plan['freeze_until']]
+                if (env.plan['version'],task['id']) not in env.executed_tasks and task.get('not_before',env.plan['created_at'])<env.plan['freeze_until']]
         for task in frozen:
             task.setdefault('operation_ids',[f'{lid}:{step}:{visit}' for lid,step,visit in zip(task['lot_ids'],task['steps'],task['visits'])])
-            task['original_not_before']=task['not_before']
+            task['original_not_before']=task.get('not_before',env.plan['created_at'])
             # A missed earliest-start condition cannot force a start in the past.
             # The executor still requires preservation of the original task record.
-            task['start']=max(env.t,task.get('start',task['not_before']))
+            task['start']=max(env.t,task.get('start',task.get('not_before',env.plan['created_at'])))
     return {'schema':'smt-fullfab-problem-2','time':env.t,'horizon_end':env.t+plan_seconds,
         'machines':machine_rows,'operations':operations,'setup_transitions':deepcopy(env.manifest['setups']),
         'min_runs':dict(env.min_runs),'lookahead_depth':lookahead_depth,'frozen_tasks':frozen,

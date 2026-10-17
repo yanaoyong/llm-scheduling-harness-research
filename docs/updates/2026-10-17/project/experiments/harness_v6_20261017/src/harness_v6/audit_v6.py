@@ -141,7 +141,7 @@ def audit_plan_sources(source):
                     check(hold_key not in hold_keys, f"{index}: duplicate hold activation condition")
                     check(_number(hold["until"]) and hold["until"] <= plan["valid_until"], f"{index}: invalid hold interval")
                     check(bool(hold.get("reason")), f"{index}: hold missing reason")
-                    if hold.get("after_task_id") is not None:
+                    if hold["until"] > t and hold.get("after_task_id") is not None:
                         task = tasks.get(hold["after_task_id"])
                         check(task is not None and task["machine"] == hold["machine"], f"{index}: conditional hold refers to no task on its machine")
                     hold_keys.add(hold_key)
@@ -225,8 +225,8 @@ def audit_opportunity_coverage(source):
             dt=e['to']-e['time']
             if dt<0: errors.append(f'{index}: negative interval');continue
             for key in ('avoidable_idle','explicit_wait_idle'):
-                integrals[key]=integrals.get(key,0)+dt*audit_ledger(snapshot['problem'],snapshot.get('plan'),snapshot.get('receipts'))[key]
-            reservations=audit_reservations(snapshot['problem'],snapshot.get('plan'),snapshot.get('receipts'))
+                integrals[key]=integrals.get(key,0)+dt*expected[key]
+            reservations=expected
             integrals['reserved_but_earlier_startable']=integrals.get('reserved_but_earlier_startable',0)+dt*len(reservations['reserved_but_earlier_startable'])
             snapshot=None
     return {'valid':not errors,'errors':errors,'integrals':integrals,'steps':steps,
@@ -256,6 +256,8 @@ def audit_reservations(problem, plan=None, receipts=None):
             reserved.add(oid);ages[oid]=max([0]+[max(0,now-t.get('assigned_at',plan.get('created_at',0))) for t in ts if t in pending])
         if state in ('ready_unreserved','reserved_not_started') and not o.get('conditional') and not o.get('predecessor_ids') and o.get('release_time',now)<=now:available.append(o)
     witnesses=[]
+    if not reserved:
+        return {'assigned_not_started_age':ages,'reserved_but_earlier_startable':witnesses}
     for mid,m in sorted(machines.items()):
         if not idle(m) or held(mid):continue
         for o in sorted(available,key=lambda x:x['operation_id']):

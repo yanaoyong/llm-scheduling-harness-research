@@ -1,6 +1,7 @@
-# Harness v6：独立纯函数底座
+# Harness v6：账本、周期与物理机制验证
 
-本目录实现 Phase A（M0、M2），不导入原实验的模拟器，不调用模型或网络。
+本目录保存 Phase A–F 的独立实验实现；默认纯函数 suite 不需要模拟器，所有测试均不调用模型或网络。
+获准的公开 SMT2020 物理机制验证与复跑入口见文末 Phase F。
 权威依据：`research/2026-10-17-codex-search/HARNESS_V6_PLAN_reviewed.md` 第二部分
 及 `HARNESS_V6_LONG_RUN_ADDENDUM.md`（冲突时以后者和 COMMON 的最终决定为准）。
 
@@ -84,9 +85,10 @@ reserved_but_earlier_startable 只报告其他空闲合格机组上的提前机�
 机会秒数来自公开 available_at/not_before 预测差，不是实际空闲积分；没有可用预测时为零，
 不代表没有机会。静态分类按同一上下文/工序取最大差，避免多个替代机组重复计秒。
 
-`audit_ledger.audit_ledger` 不导入账本或 normalize 辅助函数，独立枚举最小合法批次组合，
-复算相同贪心口径；`reconcile` 返回所有指标差异。枚举复杂度高，仅用于小夹具/抽样审计，
-不能直接当作大规模实时算法。它验证公开近似口径，不替代真实物理审计。
+`audit_ledger.audit_ledger` 不导入账本或 normalize 辅助函数，独立筛选兼容类并取首个
+最小合法组合，复算相同贪心口径；`reconcile` 返回所有指标差异。Phase F 用独立资格
+索引避免逐机组扫描整个 WIP，并与穷举 oracle 对照；仍是全量读取，不是物理增量更新。
+它验证公开近似口径，不替代真实物理审计。
 
 快照前缀由规则、工具描述、路由和机组静态表构建一次，并在各周期复用原始 bytes。
 当前区包含全部 pending task/hold（包括失效和过期条目）、机组当前状态、全部调用者提供的
@@ -237,3 +239,41 @@ codex exec --ephemeral --json --output-schema ... -c mcp_servers={}。
 begin(..., avoidable_idle=...) 输入（event 参数留空），其他越级原因照传。
 decision_after 防止失败后在同一时刻重复中断。物理接入和真实 Codex 能力仍须
 按 MAC_VALIDATION 在 Mac 验证；当前不是已获授权的实跑启动器。
+
+### Phase F：公开 SMT2020 物理机制验收
+
+本阶段获准使用预装的公开 Dataset2 LVHM 与固定 vendor，所有生成夹具、checkpoint、
+轨迹均留在仓库外。`scripts/build_public_fixture.py` 从 0 运行到 702 秒：按机组 ID
+升序，按 lot ID 排序的首个合法批次选 batch_min 个，避免重复占用 lot；每个物理事件
+重新决策。标记为 **非模型预热，仅机制验证**，与封存 mixed_702 不可比。
+
+```bash
+export PYTHONPATH="$PWD/src:/workspace/v6-mac-env/physical"
+export TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache
+/workspace/v6-mac-env/venv/bin/python scripts/build_public_fixture.py \
+  --data-dir /workspace/v6-mac-env/physical/data/smt/SMT2020_LVHM \
+  --output /workspace/v6-mac-env/work/public.json
+/workspace/v6-mac-env/venv/bin/python scripts/run_public_physics.py \
+  --fixture /workspace/v6-mac-env/work/public.json --group P2 --until 1603.10 \
+  --output /workspace/v6-mac-env/work/p2.json
+# E1: 将 group 改为 E1；一小时 P2: --until 4302 --delta 300 --breakdowns
+V6_MAC_FIXTURE=/workspace/v6-mac-env/work/public.json \
+  /workspace/v6-mac-env/venv/bin/python -m pytest -q
+```
+
+公开 bundle 使用 `public_702` / `public_time_semantics`，不冒用 mixed_702 / d34_421。
+缺少封存键的测试明确跳过；已有键结构损坏仍失败。真实 Codex F6 探针仍未执行。
+`tiktoken_counter()` 默认 **o200k_base**，与 v5 local_tokens 一致；本次固定 tiktoken
+0.14.0。未注入 tokenizer 的纯函数 build_snapshot 仍使用明确标注的字符估算器。
+公开脚本使用直接 Submitter 机制接口，两组只验证触发模式，不声称验证 Codex
+single_action/MCP 线协议，也不报告虚构的请求数或费用。
+
+公开机制 driver 在每个推进步骤先独立对账，再把完整 ledger_snapshot 写到仓库外
+`.ledger.jsonl.gz`；内存历史只保留同一序号/时刻及 SHA256，物理事件不删减。
+检查点保存工厂、账本、周期、零模型成本、已累计积分和测量行；恢复段另写 evidence，
+比较物理状态、周期状态、积分、步数及逐周期快照测量。输出路径须全新，避免拼接旧证据。
+
+Phase F 修复：过期条件 hold 不要求已消失的锚任务；冻结 when_ready 任务缺省硬下界时
+观察不再崩溃；回执排序确定。静态 route 缓存保持原浮点求和顺序，并与原观察逐字段核对。
+`ledger_read_view` 只供拥有当前不可变输入的即时读取使用；持久化和可变调用者仍使用
+深复制的 ledger_from_scratch。上述优化未把物理观察变成 O(变化量) 增量维护。

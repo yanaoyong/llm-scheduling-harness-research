@@ -174,7 +174,7 @@ class FullFabEnvironment(SmtEnvironment):
             hold_key=(h['machine'],h.get('after_task_id'))
             if h['machine'] not in self.physical or hold_key in held or not math.isfinite(h['until']) or h['until'] > plan['valid_until'] or not h.get('reason'):
                 raise ValueError('invalid explicit wait')
-            if h.get('after_task_id') is not None and not any(t['id']==h['after_task_id'] and t['machine']==h['machine'] for t in plan['tasks']):
+            if h['until'] > self.t and h.get('after_task_id') is not None and not any(t['id']==h['after_task_id'] and t['machine']==h['machine'] for t in plan['tasks']):
                 raise ValueError('conditional hold must refer to a task on its machine')
             held.add(hold_key)
         # Frozen but unstarted tasks survive revisions identically.
@@ -344,16 +344,16 @@ class FullFabEnvironment(SmtEnvironment):
         return self.advance_cycle(until, original_triggers=True)
 
     def ledger_snapshot(self):
-        from .ledger import ledger_from_scratch
+        from .ledger import ledger_read_view
         problem = self.problem()
-        receipts = {tid:'done' for version,tid in self.executed_tasks if self.plan and version == self.plan['version']}
-        receipts.update({tid:'invalid' for tid in self.invalidated_task_ids})
+        receipts = {tid:'done' for version,tid in sorted(self.executed_tasks) if self.plan and version == self.plan['version']}
+        receipts.update({tid:'invalid' for tid in sorted(self.invalidated_task_ids)})
         receipts = {'tasks':[{'task_id':k,'state':v} for k,v in receipts.items()]}
         projection = deepcopy(self.plan)
         if projection:
             for task in projection['tasks']:
                 task.setdefault('operation_ids', [f'{lid}:{step}:{visit}' for lid,step,visit in zip(task['lot_ids'],task['steps'],task['visits'])])
-        ledger = ledger_from_scratch(problem, projection, receipts)
+        ledger = ledger_read_view(problem, projection, receipts)
         return {'problem':problem,'plan':projection,'receipts':receipts,'metrics':ledger.metrics()}
 
     def snapshot(self, path):

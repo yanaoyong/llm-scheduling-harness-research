@@ -99,28 +99,34 @@ class Ledger:
         available = {oid: self.operations[oid] for oid, r in rows.items()
                      if r['ready'] and r['state'] in ('ready_unreserved', 'reserved_not_started')}
         unreserved = {oid: op for oid, op in available.items() if rows[oid]['state'] == 'ready_unreserved'}
+        by_machine = {}
+        for oid, op in available.items():
+            for mid in op['eligible_machines']:
+                by_machine.setdefault(mid, {})[oid] = op
         matches, waits, opportunities, used = [], [], [], set()
         pending = self.pending_tasks()
         dispatched = {t for t, r in self.task_receipts.items() if r.get('state') in ('running', 'done')}
         for mid, machine in sorted(self.machines.items()):
             if not idle(machine, self.now):
                 continue
-            batch = choose_batch(unreserved, machine, used)
+            candidates = by_machine.get(mid, {})
+            free = {oid: op for oid, op in candidates.items() if oid in unreserved}
+            batch = choose_batch(free, machine, used)
             if batch:
                 matches.append({'machine': mid, 'operation_ids': batch}); used.update(batch)
             queue = [t for t in pending if t['machine'] == mid]
             held = active_holds(self.holds.values(), machine=mid, now=self.now,
                                 pending_tasks=queue, dispatched_task_ids=dispatched)
-            batch = choose_batch(available, machine)
+            batch = choose_batch(candidates, machine)
             if held and batch:
                 waits.append({'machine': mid, 'operation_ids': batch})
             if held:
                 continue
             # Opportunity witnesses are diagnostic, not proposed task batches.
-            for oid, op in sorted(available.items()):
+            for oid, op in sorted(candidates.items()):
                 if rows[oid]['state'] != 'reserved_not_started' or not eligible(op, machine):
                     continue
-                compatible = {k: v for k, v in available.items() if batch_signature(v) == batch_signature(op)}
+                compatible = {k: v for k, v in candidates.items() if batch_signature(v) == batch_signature(op)}
                 if not choose_batch(compatible, machine):
                     continue
                 for tid in rows[oid]['task_ids']:
@@ -202,3 +208,23 @@ def ledger_from_scratch(problem, plan=None, receipts=None):
         'task_receipts': {'upsert': receipts.get('tasks', [])}})
     ledger.holds = {h.get('id', f'hold:{i}'): deepcopy(h) for i, h in enumerate(plan.get('holds', []))}
     return ledger
+
+
+def ledger_read_view(problem, plan=None, receipts=None):
+    """Ephemeral read-only projection of caller-owned immutable observations.
+
+    Use only for rows/metrics/snapshot reads while inputs remain unchanged. The
+    mutable/persistent API remains ledger_from_scratch and copies all records.
+    Tables and ownership indices are fresh; nested observation records are shared.
+    """
+    plan=plan or {};receipts=receipts or {}
+    result=Ledger(problem['time'],plan_created_at=plan.get('created_at',problem['time']))
+    for name,key,rows in (
+        ('operations','operation_id',problem['operations']),('machines','machine',problem['machines']),
+        ('tasks','id',plan.get('tasks',[])),('receipts','operation_id',receipts.get('operations',[])),
+        ('task_receipts','task_id',receipts.get('tasks',[]))):
+        setattr(result,name,{r[key]:r for r in rows})
+    result.holds={h.get('id',f'hold:{i}'):h for i,h in enumerate(plan.get('holds',[]))}
+    for tid,task in result.tasks.items():
+        for oid in task['operation_ids']:result.owners.setdefault(oid,set()).add(tid)
+    return result
