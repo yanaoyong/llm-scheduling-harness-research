@@ -1,0 +1,57 @@
+{
+  "cached_input_weight": 0.1,
+  "counting_basis": "cumulative_session_usage; requests >= tool_rounds + 1",
+  "delta_min_seconds": 60,
+  "delta_seconds": 60,
+  "dry_run": true,
+  "failure": {
+    "adopt_crashed_submission": false,
+    "k_fail": 2,
+    "keep_old_plan": true,
+    "retry": false,
+    "unknown_usage_cap": 2
+  },
+  "group_configs": {
+    "E1": {
+      "interaction": "single_action",
+      "trigger": "event"
+    },
+    "P2": {
+      "interaction": "mcp_session",
+      "trigger": "periodic"
+    }
+  },
+  "groups": [
+    "E1",
+    "P2"
+  ],
+  "horizon_seconds": 900,
+  "is_result": false,
+  "label": "非模型、仅机制测试",
+  "per_sim_hour_request_cap": null,
+  "per_sim_hour_token_cap": null,
+  "plan_source": "scripted",
+  "primary_metrics": [
+    "uncached_equivalent_input_tokens_per_sim_hour",
+    "model_request_lower_bound_per_sim_hour"
+  ],
+  "quality": {
+    "avoidable_idle_integral": {
+      "floor": null,
+      "tolerance": null
+    },
+    "throughput": {
+      "floor": null,
+      "tolerance": null
+    },
+    "weighted_tardiness": {
+      "floor": null,
+      "tolerance": null
+    }
+  },
+  "stage": "S0",
+  "steady_state_window": {
+    "exclude_first_hours": 0
+  },
+  "trajectories_per_group": 3
+}

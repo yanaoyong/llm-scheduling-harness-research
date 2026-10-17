@@ -1,0 +1,2 @@
+主题三：Agent harness / 上下文工程的工程实践。
+检索：Anthropic、OpenAI 等关于 agent 设计与 context engineering 的官方指南和工程博客（如 Building effective agents、Effective context engineering for AI agents、长任务 harness、工具设计）；单次调用内多工具调用/并行工具调用 vs 每次调用一个动作；会话复用与提示缓存(prompt caching)降低重复上下文成本；状态表示（完整状态快照 + 增量 diff vs 引用分页）、记忆/压缩(compaction)；工具结果的保留策略；校验器设计：硬约束拒绝 vs 可规范化输入自动修正并回报；两阶段提交（提案+确认）是否必要、替代方案；事件批处理与触发器设计；Codex CLI exec 的会话/恢复(resume)与 MCP 工具接入能力。

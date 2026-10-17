@@ -1,0 +1,100 @@
+{
+  "baseline_validation": {
+    "before_M2": true,
+    "command": "python3 -m pytest -q tests/test_plan_delta.py",
+    "plan_delta_verbatim": true,
+    "result": "29 passed, 42 subtests passed in 0.63s"
+  },
+  "files": [
+    {
+      "copy_sha256": "636f0e872318ebac1c3551142ffd00e6038f7c762304e7b017e232eb796f2b3a",
+      "initial_copy_sha256": "0581ab7c7829401dcff56ad453b4f768a5a5d1cf92e7f6e3f216a2a8f86990b9",
+      "modified": true,
+      "path": "src/harness_v6/plan_delta.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/plan_delta.py",
+      "source_sha256": "0581ab7c7829401dcff56ad453b4f768a5a5d1cf92e7f6e3f216a2a8f86990b9"
+    },
+    {
+      "copy_sha256": "d05cdd65cc9e3a0bd31270eb9770e480264cfb0b3e412caf69ae6f79d8f1aa29",
+      "initial_copy_sha256": "d05cdd65cc9e3a0bd31270eb9770e480264cfb0b3e412caf69ae6f79d8f1aa29",
+      "modified": false,
+      "path": "src/harness_v6/facts.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/facts.py",
+      "source_sha256": "d05cdd65cc9e3a0bd31270eb9770e480264cfb0b3e412caf69ae6f79d8f1aa29"
+    },
+    {
+      "copy_sha256": "4b13c4231f66e5e6fb98c589080608d86d714ddfd446dbf3c99fdc9bf24fb8e4",
+      "initial_copy_sha256": "ce1ccb34b6d766e63e0e6f5b899f9d81271a71dd50f9cf575a33fdfac918031b",
+      "modified": true,
+      "path": "src/harness_v6/contracts.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/contracts.py",
+      "source_sha256": "ce1ccb34b6d766e63e0e6f5b899f9d81271a71dd50f9cf575a33fdfac918031b"
+    },
+    {
+      "copy_sha256": "f657c180c50a2f6f7822b8082949e5ea1324afd71570498f29fda51ae5e7b1b6",
+      "initial_copy_sha256": "a952078dd4556ca32b243fff027223444ec7323fd5d190af83a8d94832e9701a",
+      "modified": true,
+      "path": "tests/test_plan_delta.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/tests/test_smt_fullfab_plan_delta.py",
+      "source_sha256": "a952078dd4556ca32b243fff027223444ec7323fd5d190af83a8d94832e9701a"
+    },
+    {
+      "adaptation": "Extracted pure T11 filtering/pagination assertions; excluded runtime/transport/schema integration assertions. Added synthetic reconstruction/cache/encoding tests.",
+      "copy_sha256": "835d0ecab211bb4f4f7d128f043af22814c6870d7fbceb5323d3142f4a8d1b67",
+      "initial_copy_sha256": "518b42367dab09ca70a1831f3dc0b0b7964f621734b8c249bfd9acc9a58bd26d",
+      "modified": true,
+      "path": "tests/test_facts.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/tests/test_smt_fullfab_harness_bounded_facts.py",
+      "source_sha256": "518b42367dab09ca70a1831f3dc0b0b7964f621734b8c249bfd9acc9a58bd26d"
+    },
+    {
+      "copy_sha256": "1d126cc20c9c763aad5a77068058a63ba727f03b768ed5ca929a35712e0f531c",
+      "initial_copy_sha256": "4f739da8892793764b05f53b1d3349fefb00e4ac4adfad2a3425986f2515af92",
+      "modified": true,
+      "path": "src/harness_v6/observation.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/observation.py",
+      "source_sha256": "4f739da8892793764b05f53b1d3349fefb00e4ac4adfad2a3425986f2515af92"
+    },
+    {
+      "copy_sha256": "d91b7ec31340c9974f7dff040ad48e131ec0b79aa67c0a7f4dc544eff9b3a432",
+      "initial_copy_sha256": "1d2de5a7f9aba0556f56c0d62dbb997df43868c7c4d91ff3f542982fa199414e",
+      "modified": true,
+      "path": "src/harness_v6/factory_v6.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/factory.py",
+      "source_sha256": "1d2de5a7f9aba0556f56c0d62dbb997df43868c7c4d91ff3f542982fa199414e"
+    },
+    {
+      "copy_sha256": "d91b7ec31340c9974f7dff040ad48e131ec0b79aa67c0a7f4dc544eff9b3a432",
+      "initial_copy_sha256": "19f9c9c4592ec0e6a9d36d926f2de9dd3647f020114950951dbfa30d6e444dcd",
+      "modified": true,
+      "path": "src/harness_v6/factory_v6.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/stream_snapshot.py",
+      "source_sha256": "19f9c9c4592ec0e6a9d36d926f2de9dd3647f020114950951dbfa30d6e444dcd"
+    },
+    {
+      "copy_sha256": "9a01349f2e1afe2abdc59ed997d69be6bf48606050655f9ef7d55dfe11702162",
+      "initial_copy_sha256": "cc8b852d0116d29c5add3fe20989104b3f390f5164ed2a0a49163864b1d26b00",
+      "modified": true,
+      "path": "src/harness_v6/store_v6.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/store.py",
+      "source_sha256": "cc8b852d0116d29c5add3fe20989104b3f390f5164ed2a0a49163864b1d26b00"
+    },
+    {
+      "copy_sha256": "d171777489e8272b13055a2a43e656061f6410f8514488548e9f5e2a90e9b196",
+      "initial_copy_sha256": "2f9cca3b76fb8546fb9e191b1a5994b858cbf38303195a0c524c11a6362993b7",
+      "modified": true,
+      "path": "src/harness_v6/env_adapter.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/environment.py",
+      "source_sha256": "2f9cca3b76fb8546fb9e191b1a5994b858cbf38303195a0c524c11a6362993b7"
+    },
+    {
+      "copy_sha256": "de07ae0fd70973e4864b502f930a575fce3ae6005904b238cc3c906f92872d57",
+      "initial_copy_sha256": "492002610e5068cb28da02cdda3c9d6145aefd09dfbb45257ee9fd97c5828e84",
+      "modified": true,
+      "path": "src/harness_v6/audit_v6.py",
+      "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/audit.py",
+      "source_sha256": "492002610e5068cb28da02cdda3c9d6145aefd09dfbb45257ee9fd97c5828e84"
+    }
+  ],
+  "schema": "harness-v6-isolation-v1"
+}
