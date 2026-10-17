@@ -1,6 +1,7 @@
 {
   "cached_input_weight": 0.1,
   "counting_basis": "cumulative_session_usage; requests >= tool_rounds + 1",
+  "delta_min_seconds": 60,
   "delta_seconds": 60,
   "dry_run": true,
   "failure": {
@@ -9,6 +10,16 @@
     "keep_old_plan": true,
     "retry": false,
     "unknown_usage_cap": 2
+  },
+  "group_configs": {
+    "E1": {
+      "interaction": "single_action",
+      "trigger": "event"
+    },
+    "P2": {
+      "interaction": "mcp_session",
+      "trigger": "periodic"
+    }
   },
   "groups": [
     "E1",

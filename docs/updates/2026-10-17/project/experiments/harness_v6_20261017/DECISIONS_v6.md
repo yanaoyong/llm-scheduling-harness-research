@@ -60,3 +60,22 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
 - token 上限是会话累计验收门槛，最后一轮可能超额；不能冒充模型供应商硬预算。
 - Mac 物理 trace 每步记录完整公开账本输入；事件增量优化尚未完成，登记为性能限制。
 - M6 模板默认空跑、非结果；质量和预算空值阻止实际结果登记。
+
+## Phase E：2×2 因素补齐
+
+- 对应 reviewed plan §二「实验设计」：E1=(event,single_action)，
+  P1=(periodic,single_action)，E2=(event,mcp_session)，P2=(periodic,mcp_session)。
+  trigger 与 interaction 进入 CycleConfig/checkpoint；登记校验逐组映射，
+  并登记 delta_min_seconds。机制允许四组，首轮实际授权范围仍只有 E1/P2。
+- event 无锚点。匹配派生的正 avoidable_idle 或允许的越级事件触发；
+  reserved_but_earlier_startable 只进指标/快照。失败在下一物理事件再判断，
+  不在暂停的模拟时刻重试，K_fail 默认 2。terminal 可以在同一时刻终止。
+  非递减空闲和无成功提交的停滞规则跨物理时间推进保持有效。
+- event 有效期严格大于 now+delta_min（默认 60）；periodic 保留原下限。
+  plan_horizon 防御性缺陷停止仍保留，宿主不得把它当正常决策事件。
+- single_action 不允许工具，最后一条 completed agent_message 是唯一提交
+  来源。共享 Submitter 校验和 CAS，失败退出不采纳；证据保存原 JSONL 并重编译
+  核对 production，可信 base 的继承字段保持原来源。schema 与 MCP 参数同源。
+- 两种交互都使用累计 token 与相同缓存权重。单动作每进程 1 请求，MCP
+  计保守下界；真实网络重试/请求计数必须通过 Mac 本地 mock 的 F6 检查，
+  不能由合成轨迹推出。无 live budget 或质量阈值的新决定。

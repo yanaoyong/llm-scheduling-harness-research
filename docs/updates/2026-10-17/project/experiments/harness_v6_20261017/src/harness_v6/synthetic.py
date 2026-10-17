@@ -102,7 +102,7 @@ class SyntheticFactory:
             metrics.execution(self.now, starts=1, start_offset=self.now-task.get('not_before', self.now))
             metrics.production(self.now, queue_wait=sum(self.now-self.lots[l]['ready_at'] for l in task['lot_ids']), setups=1)
 
-    def advance(self, target, metrics):
+    def advance(self, target, metrics, *, stop_on_event=False):
         if target < self.now:
             raise ValueError('backwards simulation')
         while self.now < target:
@@ -128,6 +128,8 @@ class SyntheticFactory:
                     else:
                         lot['step'] = 2
                     lot['ready_at'] = self.now
+            if stop_on_event:
+                return
 
     def capture(self):
         return deepcopy(vars(self))
@@ -165,7 +167,10 @@ from .checkpoint import capture_ledger as ledger_capture
 
 
 class SyntheticRun:
-    def __init__(self, *, seed=1, config=None, drift_rule=None):
+    def __init__(self, *, seed=1, config=None, drift_rule=None, group=None):
+        if group is not None:
+            from .groups import config_for
+            config = config_for(group, config)
         self.factory = SyntheticFactory(seed)
         self.cycle = CycleMachine(config=config or CycleConfig())
         self.metrics = Metrics(exclude_first_hours=1)
@@ -180,7 +185,20 @@ class SyntheticRun:
         if c.stop_reason:
             return None
         if event is None:
-            f.advance(c.anchor, self.metrics)
+            if c.config.trigger == 'periodic':
+                f.advance(c.anchor, self.metrics)
+            else:
+                # Dispatch already-chosen queue heads before measuring idle.
+                # Subsequent decisions require a real physical time advance.
+                if c.last_record is not None:
+                    f.advance(f.now + c.config.horizon, self.metrics, stop_on_event=True)
+                f._dispatch(self.metrics)
+                while f.ledger().metrics()['avoidable_idle'] <= 0 and not f.invalid:
+                    before = f.now
+                    f.advance(f.now + c.config.horizon, self.metrics, stop_on_event=True)
+                    f._dispatch(self.metrics)
+                    if f.now == before:
+                        raise RuntimeError('synthetic event clock stalled')
         ledger = f.ledger()
         record = c.begin(f.now, avoidable_idle=ledger.metrics()['avoidable_idle'], invalid_tasks=f.invalid,
                          valid_until=f.plan['valid_until'], event=event)
@@ -191,12 +209,36 @@ class SyntheticRun:
             self.max_snapshot_bytes = max(self.max_snapshot_bytes, len(payload))
             self.min_snapshot_bytes = min(self.min_snapshot_bytes or len(payload), len(payload))
             submit = Submitter(f.plan, f.problem(), f.execution_state(), state_version=c.cycles,
-                               next_anchor=c.anchor, delta_seconds=c.config.delta, source_sha256=SOURCE)
-            receipt = submit.submit_plan(c.cycles, str(c.cycles), scripted_delta(f, c.cycles))
-            f.adopt(submit.finalize(process_ok=True))
-            c.finish(submitted=receipt['accepted'], cost=injected_usage, model_note=LABEL)
-            self.metrics.session(f.now, tool_calls=1, tool_rounds=1, input_tokens=injected_usage,
-                                 submit_attempts=1, submit_rejections=int(not receipt['accepted']), failed=not receipt['accepted'])
+                               next_anchor=c.anchor, delta_seconds=c.config.delta, source_sha256=SOURCE,
+                               trigger=c.config.trigger, delta_min=c.config.delta_min)
+            if c.config.interaction == 'single_action':
+                from .single_action import run, command
+                from .session import RunResult
+                args = {'expected_state_version': c.cycles, 'submission_id': str(c.cycles),
+                        'delta': scripted_delta(f, c.cycles)}
+                class ScriptedRunner:
+                    def run(self, argv, prompt, *, timeout):
+                        events = [
+                            {'type': 'item.completed', 'item': {'type': 'agent_message',
+                             'text': canonical(args).decode()}},
+                            {'type': 'turn.completed', 'usage': {'input_tokens': injected_usage,
+                             'cached_input_tokens': 0, 'output_tokens': 0}}]
+                        return RunResult('\n'.join(canonical(e).decode() for e in events))
+                def commit(version, plan):
+                    if version != c.cycles:
+                        return False
+                    f.adopt(plan)
+                    return True
+                outcome = run(ScriptedRunner(), command('.', 'submit.schema.json', model='scripted'),
+                              payload.decode(), submitter=submit, commit=commit, metrics=self.metrics,
+                              now=f.now, cycle=c, model_note=LABEL)
+                receipt = outcome['evidence']['receipt'] if outcome['evidence'] else {'accepted': False}
+            else:
+                receipt = submit.submit_plan(c.cycles, str(c.cycles), scripted_delta(f, c.cycles))
+                f.adopt(submit.finalize(process_ok=True))
+                c.finish(submitted=receipt['accepted'], cost=injected_usage, model_note=LABEL)
+                self.metrics.session(f.now, tool_calls=1, tool_rounds=1, input_tokens=injected_usage,
+                                     submit_attempts=1, submit_rejections=int(not receipt['accepted']), failed=not receipt['accepted'])
             self.history = self.history.append(receipt)
         completed_hour = int((f.now-c.origin)//3600)-1
         while self.last_hour < completed_hour:

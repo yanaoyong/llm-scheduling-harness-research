@@ -21,12 +21,18 @@ class CycleConfig:
     cost_cap: float | None = None
     hourly_cost_cap: float | None = None
 
+    trigger: str = 'periodic'
+    interaction: str = 'mcp_session'
+    delta_min: float = 60
+
     def __post_init__(self):
+        if self.trigger not in ('event', 'periodic') or self.interaction not in ('single_action', 'mcp_session'):
+            raise ValueError('unknown experiment mode')
         if self.horizon is None:
             object.__setattr__(self, 'horizon', max(3 * self.delta, 900))
         if self.stage not in ('S0', 'S1', 'S2', 'S3', 'S4'):
             raise ValueError('unknown stage')
-        for key in ('delta', 'horizon', 'segment_seconds', 'segment_cycles', 'k_fail', 'stall_cycles', 'unknown_usage_cap'):
+        for key in ('delta_min', 'delta', 'horizon', 'segment_seconds', 'segment_cycles', 'k_fail', 'stall_cycles', 'unknown_usage_cap'):
             value = getattr(self, key)
             if not math.isfinite(value) or value <= 0:
                 raise ValueError(key + ' must be positive and finite')
@@ -53,7 +59,7 @@ class CycleMachine:
         self.config = config or CycleConfig()
         self.origin = origin
         self.now = origin
-        self.anchor = origin
+        self.anchor = origin if self.config.trigger == 'periodic' else None
         self.cycles = self.sessions = self.empty_cycles = self.interrupts = 0
         self.failures = self.without_submit = self.idle_streak = self.unknown_usage = 0
         self.previous_idle = None
@@ -79,12 +85,29 @@ class CycleMachine:
             return {'kind': 'defect', 'reason': self.stop_reason, 'session': False}
         if event == 'breakdown':
             event = 'plan_invalidated' if self.config.breakdowns and invalid_tasks else None
-            if event is None and now < self.anchor:
+            if event is None and self.anchor is not None and now < self.anchor:
                 return {'kind': 'ignored', 'session': False}
         if event == 'no_plan' and (valid_until is not None and valid_until > now or avoidable_idle <= 0):
             return {'kind': 'ignored', 'session': False}
         if event is not None and event not in ('plan_invalidated', 'expired_task', 'no_plan', 'terminal'):
             raise ValueError('unsupported interrupt')
+        if self.config.trigger == 'event':
+            # Observe every physical event, never manufacture periodic anchors or
+            # retry a failed process at the same paused simulation instant.
+            if self.last_record and now == self.last_record['time'] and event != 'terminal':
+                return {'kind': 'waiting', 'session': False}
+            if not event and avoidable_idle <= 0 and not invalid_tasks:
+                self.idle_streak = 0
+                self.previous_idle = avoidable_idle
+                self._boundary(now)
+                return {'kind': 'waiting', 'session': False}
+            self.cycles += 1
+            self.sessions += 1
+            self.interrupts += bool(event)
+            self.inflight = {'cycle': self.cycles, 'time': now, 'kind': 'interrupt' if event else 'event',
+                             'event': event, 'session': True, 'avoidable_idle': avoidable_idle,
+                             'next_anchor': None, 'merged_anchor': None}
+            return dict(self.inflight)
         if event is None and now < self.anchor:
             return {'kind': 'waiting', 'session': False}
         if event is None and now != self.anchor:
@@ -131,7 +154,7 @@ class CycleMachine:
                             and (self.previous_idle is None or idle >= self.previous_idle) else 0)
         self.previous_idle = idle
         self.unresolved_failure = not success
-        if record['event'] and record['merged_anchor'] is None and self.anchor - now < self.config.delta / 2:
+        if self.config.trigger == 'periodic' and record['event'] and record['merged_anchor'] is None and self.anchor - now < self.config.delta / 2:
             record['merged_anchor'] = self.anchor
             self.anchor += self.config.delta
         record.update(success=success, cost=cost, wall_seconds=wall_seconds, usage_known=usage_known)

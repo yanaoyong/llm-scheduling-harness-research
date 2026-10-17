@@ -41,3 +41,13 @@ def test_submit_precheck():
     from harness_v6.factory_v6 import prepare,capture
     before=capture(env);clone=prepare(env,b['d34_421']['plan'])
     assert capture(env)==before and clone.plan==b['d34_421']['plan']
+
+
+def test_event_trigger():
+    env, b = environment('event_trigger')
+    fixture = b['event_trigger']
+    env.commit_plan(fixture['plan'])
+    result = env.advance_cycle(fixture['until'], trigger='event')
+    assert result['reason'] == 'avoidable_idle'
+    assert env.t == fixture['expected_time']
+    assert env.ledger_snapshot()['metrics']['avoidable_idle'] > 0

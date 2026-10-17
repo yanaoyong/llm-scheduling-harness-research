@@ -194,3 +194,46 @@ Mac-only 的 mac_probe 提供脚本化 loopback Responses 服务，不连接真�
 生成目前按事件重建公开观察，尚未优化成物理事件增量；大型工厂的单步成本须测量。
 独立机会审计证明公开输入的匹配口径，私有物理合法性仍须单独复核。CQT/Q-time 未实现，
 模型随机性不能用固定 seed 消除，组批变化会改变加工时长。空跑不能证明生产质量或成本。
+
+### Phase E：四组共同底座
+
+| 组 | trigger | interaction |
+|---|---|---|
+| E1 | event | single_action |
+| P1 | periodic | single_action |
+| E2 | event | mcp_session |
+| P2 | periodic | mcp_session |
+
+groups.config_for("E1", CycleConfig(...)) 选择因素；登记必须给出每个组的
+group_configs，映射不一致即拒绝。模板仍只登记首轮 E1/P2，不授权其他实跑。
+所有组共享账本匹配、when_ready、不改写时间字段、完整快照和原子提交。
+
+event 模式 anchor=None，宿主每个物理事件后读取账本；正的 avoidable_idle
+立即启动决策，未满足组批下限的 ready 行及已预留机会均不触发。失效、到期、
+no_plan、terminal 和开启后的故障失效路径保留。同一模拟时刻不重复决策
+（terminal 除外）；失败保留旧计划，推进到下一物理事件，按同一 K_fail/
+无成功提交/空闲不下降规则停止。没有事件锚点，也不因“上次失败”自造定时请求。
+event 提交要求 valid_until > now + delta_min（默认 60 秒，严格大于）；
+periodic 仍要求 valid_until >= next_anchor + delta。
+
+single_action.write_schema(path) 写出与 MCP submit_plan 参数一致的 schema；
+single_action.command(input_dir, schema_path, model=...) 仅构造
+codex exec --ephemeral --json --output-schema ... -c mcp_servers={}。
+宿主调用注入 Runner 的 single_action.run，每次决策只运行一次，无重试。
+最终 completed agent_message 必须是参数 JSON；任何工具 item、压缩、未知
+事件、失败退出、未知用量均不能采纳。原 JSONL、哈希、最终参数、编译计划和
+回执组成 evidence，可用 single_action.audit_provenance 独立重编译核对。
+保留字段来自可信冻结 base，新字段必须来自最终模型输出，不能补造生产选择。
+宿主须持久化返回 evidence；可选 checkpoint 参数沿用 in-flight/完成后清除协议。
+
+计数统一经 Metrics：每个单动作进程计 1 session、1 request；MCP 仍用工具轮次
+加一的保守下界。缓存权重、未缓存等价输入和模拟小时分母相同；周期预算也按
+缓存加权输入计费。SyntheticRun(group="E1") 等支持全部四组，始终标记
+“非模型、仅机制测试”。合成 MCP 路径沿用直接调用 Submitter 的机制驱动；
+真实 MCP 双通道另由 test_mcp_session 检验，不把脚本成本当模型结果。
+
+物理适配器 advance_cycle(..., trigger="event", decision_after=上次决策时刻)
+按步检查账本并返回 avoidable_idle；宿主将该原因作为普通 event-mode
+begin(..., avoidable_idle=...) 输入（event 参数留空），其他越级原因照传。
+decision_after 防止失败后在同一时刻重复中断。物理接入和真实 Codex 能力仍须
+按 MAC_VALIDATION 在 Mac 验证；当前不是已获授权的实跑启动器。

@@ -53,7 +53,9 @@ def command(input_dir, output_dir, *, model, budget=Budget(), binary='codex', py
     for key,value in settings.items(): argv+=['-c',key+'='+json.dumps(value)]
     return argv+['-']
 
-def classify(jsonl):
+def classify(jsonl, *, interaction="mcp_session"):
+    if interaction not in ("single_action", "mcp_session"):
+        raise ValueError("unknown interaction")
     calls=[];errors=[];usage=None;completed=False;ids=set();pending=set()
     for line in jsonl.splitlines():
         try:
@@ -64,6 +66,7 @@ def classify(jsonl):
             elif kind in EVENT_TYPES['item_events']:
                 item=e['item'];typ=item['type']
                 if typ in EVENT_TYPES['passive_items']: pass
+                elif interaction == 'single_action': errors.append('forbidden_item:'+str(typ))
                 elif typ==EVENT_TYPES['mcp_item']:
                     if item.get('server')!='harness_v6': errors.append('foreign_mcp')
                     if item.get('tool') not in TOOLS: errors.append('unknown_tool')
@@ -110,7 +113,7 @@ def finish(result, *, rows, submission, initial_state, commit, metrics, now, bud
         except Exception as exc: errors.append('commit_failed:'+str(exc))
     usage=u or {};known=u is not None
     metrics.session(now,tool_calls=len(rows),tool_rounds=int(bool(rows)),input_tokens=usage.get('input_tokens',0),cached_tokens=usage.get('cached_input_tokens',0),output_tokens=usage.get('output_tokens',0),model_seconds=result.model_seconds,wall_seconds=result.wall_seconds,failed=not adopted,usage_known=known,submit_attempts=sum(r['tool']=='submit_plan' for r in rows),submit_rejections=sum(r['tool']=='submit_plan' and not r['result'].get('accepted') for r in rows))
-    if cycle is not None: cycle.finish(submitted=adopted,process_ok=not errors,usage_known=known,cost=usage.get('input_tokens',0),wall_seconds=result.wall_seconds)
+    if cycle is not None: cycle.finish(submitted=adopted,process_ok=not errors,usage_known=known,cost=usage.get('input_tokens',0)-usage.get('cached_input_tokens',0)*(1-metrics.cached_input_weight),wall_seconds=result.wall_seconds)
     return {'adopted':adopted,'errors':errors,'usage_unknown':not known}
 
 def run_session(runner, argv, prompt, *, budget=Budget(), checkpoint=None,

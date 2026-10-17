@@ -17,7 +17,12 @@ def coverage_report(plan, problem):
 
 class Submitter:
     def __init__(self, base_plan, problem, execution_state, *, state_version, next_anchor,
-                 delta_seconds=60, source_sha256, physical_precheck=None):
+                 delta_seconds=60, source_sha256, physical_precheck=None,
+                 trigger="periodic", delta_min=60):
+        if trigger not in ("event", "periodic") or not number(delta_min) or delta_min <= 0:
+            raise ValueError("invalid submission trigger / delta_min")
+        self.trigger = trigger
+        self.delta_min = delta_min
         self.base_plan = deepcopy(base_plan)
         self.problem = deepcopy(problem)
         self.execution_state = deepcopy(execution_state)
@@ -74,8 +79,12 @@ class Submitter:
             end = plan.get('valid_until') if plan is not None else (
                 delta.get('plan_header', {}).get('valid_until') if isinstance(delta, dict)
                 and isinstance(delta.get('plan_header', {}), dict) else None)
-            if not number(end) or end < self.next_anchor + self.delta_seconds:
-                errors.append({'code': 'valid_until_lower_bound', 'detail': 'requires next_anchor + delta'})
+            event_mode = getattr(self, 'trigger', 'periodic') == 'event'
+            lower = (self.execution_state['time'] + self.delta_min if event_mode
+                     else self.next_anchor + self.delta_seconds)
+            if not number(end) or (end <= lower if event_mode else end < lower):
+                errors.append({'code': 'valid_until_lower_bound',
+                               'detail': 'requires > now + delta_min' if event_mode else 'requires next_anchor + delta'})
             if plan is not None and self.physical_precheck is not None:
                 errors.extend(self.physical_precheck(deepcopy(plan), deepcopy(self.problem), deepcopy(self.execution_state)))
         receipt = {'submission_id': submission_id, 'request_sha256': signature,

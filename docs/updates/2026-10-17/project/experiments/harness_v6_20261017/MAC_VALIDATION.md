@@ -158,3 +158,41 @@ test_mac_session 是探针证据验收入口，不会自动产生或独立认证
 物理增量 O(变化量) 性能目标；测量后接入物理事件增量。真实 segment_recovery、故障、
 生产 tardiness/throughput/setup 与 token 漂移测试仍须扩展实际夹具，前文对应未来命令
 不代表已有可执行验收。现有 checkpoint/恢复测试仅证明合成机制。
+
+## Phase E：single_action 与事件触发补充
+
+在 V6 执行：
+
+    python3 -m pytest -q tests/test_groups.py
+    V6_SINGLE_ACTION_PROBE_DIR=/绝对路径/single-action-probes python3 -m pytest -q tests/test_mac_single_action.py
+    python3 -m pytest -q tests/test_mac_environment.py::test_event_trigger
+
+第一项纯合成：四组各 55 次决策成功、checkpoint 恢复一致；E1 精确在首次
+匹配空闲出现的物理完成时刻触发，组批不足/预留机会不触发；故障、失败、
+停滞、严格有效期、最终输出来源和工具拒绝均通过。不作为 SMT2020 质量结果。
+
+第二项只读 Mac 保存的本地 mock 证据，不启动 Codex。先用前文 mac_probe
+端点及固定版本 Codex 手工产生三份独立请求日志，每个日志只有一次请求：
+
+- single_schema_no_mcp：使用 single_action.command 构造命令，schema 用
+  single_action.write_schema 写入。必须带 --ephemeral --json --output-schema
+  和 mcp_servers={}，不得有 MCP server 子项；请求 tools 为空，最终消息参数
+  与 expected_arguments 完全一致，共享 Submitter 可接受。
+- single_tool_rejection：模拟非法工具 item，分类器必须拒绝；
+  宿主保留旧计划。禁止开启真实工具执行来构造此证据。
+- single_usage：最终 turn.completed 累计 input/cached/output 与请求记录一致，
+  一进程一请求；禁用 provider 自动重试，失败不得生成额外请求。
+
+目录 manifest.json 沿用 endpoint（仅 127.0.0.1）、codex_version、
+real_model_requests=0、checks。每项含 passed、expected、command（argv 数组）、
+schema/jsonl/requests（目录内文件名），成功项另含 expected_arguments。
+requests 使用 mac_probe 输出格式，body 是 JSON 字符串。保存实际 schema、
+原始 JSONL、完整请求日志；人工核对本地 provider 配置、token 及失败旧计划保留。
+任何配置/事件字段不兼容先修订适配器再复验，passed 标记不能代替原始证据。
+
+第三项使用现有 V6 Mac bundle 增加 event_trigger 夹具：
+state、plan、until、expected_time；需让已有计划运行后第一次可避免空闲出现，
+断言 advance_cycle(trigger="event") 恰停在 expected_time，匹配指标为正。
+另人工验证 w1462 类仅已预留等待不触发，以及失败后 decision_after 阻止同刻
+重试、下一物理事件再决策。未提供 Mac 夹具时这些检查明确 skip。
+此前 M0b/M1/M2/M3/M5 与长运行门槛仍全部适用；CQT/Q-time 仍未实现。

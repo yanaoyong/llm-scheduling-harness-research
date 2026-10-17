@@ -292,8 +292,11 @@ class FullFabEnvironment(SmtEnvironment):
                 result[h['machine']]=max(result.get(h['machine'],self.t),h['until'])
         return result
 
-    def advance_cycle(self, until=None, *, ledger_snapshot=None, original_triggers=False):
+    def advance_cycle(self, until=None, *, ledger_snapshot=None, original_triggers=False,
+                      trigger="periodic", decision_after=None):
         """Execute submitted orders until a revision trigger or the requested time."""
+        if trigger not in ("periodic", "event"):
+            raise ValueError("unknown trigger")
         until = min(self.horizon, self.horizon if until is None else float(until))
         self.last_stop = None
         while self.t < until:
@@ -302,6 +305,9 @@ class FullFabEnvironment(SmtEnvironment):
                 return self.last_stop
             self._outside()
             self._run_planned_now()
+            eligible = decision_after is None or self.t > decision_after
+            if self.last_stop and not eligible:
+                self.last_stop = None
             if self.last_stop:
                 self._emit('ledger_snapshot', **(ledger_snapshot(self) if ledger_snapshot else self.ledger_snapshot()))
                 return self.last_stop
@@ -312,7 +318,10 @@ class FullFabEnvironment(SmtEnvironment):
                 self.last_stop = {'reason': 'uncovered_demand', 'machines': gaps, 'time': self.t}
                 self._emit('coverage_gap', plan_version=self.plan['version'] if self.plan else None, machines=gaps)
                 return self.last_stop
-            if not self.plan and snapshot['metrics']['avoidable_idle'] > 0:
+            if trigger == 'event' and eligible and snapshot['metrics']['avoidable_idle'] > 0:
+                self.last_stop = {'reason': 'avoidable_idle', 'time': self.t}
+                return self.last_stop
+            if eligible and not self.plan and snapshot['metrics']['avoidable_idle'] > 0:
                 self.last_stop = {'reason':'no_plan','time':self.t}
                 return self.last_stop
             times = [until, self.q[0][0] if self.q else until]

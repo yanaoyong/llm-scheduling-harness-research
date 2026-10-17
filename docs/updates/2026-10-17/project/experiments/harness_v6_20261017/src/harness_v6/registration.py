@@ -2,6 +2,7 @@
 import math
 from pathlib import Path
 from .contracts import strict_json
+from .groups import GROUPS, validate_mapping
 LABEL='非模型、仅机制测试'
 
 def validate(value, *, results=False):
@@ -13,7 +14,19 @@ def validate(value, *, results=False):
     check(positive(value.get('delta_seconds')),'delta_seconds')
     check(positive(value.get('horizon_seconds')),'horizon_seconds')
     check(value.get('primary_metrics')==['uncached_equivalent_input_tokens_per_sim_hour','model_request_lower_bound_per_sim_hour'],'primary_metrics')
-    check(set(value.get('groups',[])) in ({'E1','P2'},{'E1','P1','P2'}),'groups')
+    groups = value.get('groups', [])
+    if not isinstance(groups, list) or not all(isinstance(g, str) for g in groups):
+        errors.append('groups')
+        groups = []
+    check(isinstance(groups, list) and bool(groups) and all(g in GROUPS for g in groups)
+          and len(set(groups)) == len(groups), 'groups')
+    mappings = value.get('group_configs', {})
+    if not isinstance(mappings, dict):
+        errors.append('group_configs')
+        mappings = {}
+    for group in groups:
+        check(validate_mapping(group, mappings.get(group, {})), 'group_config:' + group)
+    check(positive(value.get('delta_min_seconds')), 'delta_min_seconds')
     f=value.get('failure',{})
     check(f.get('keep_old_plan') is True and f.get('adopt_crashed_submission') is False and f.get('retry') is False,'failure_semantics')
     check(type(f.get('k_fail')) is int and f['k_fail']>0,'k_fail')
