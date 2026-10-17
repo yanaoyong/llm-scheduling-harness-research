@@ -108,3 +108,120 @@ def test_mcp_log_authoritative_even_with_more_jsonl_calls(live_dir):
     row = run.metrics.report()[0]
     assert not run.outcome['adopted']
     assert row['tool_calls'] == 0 and row['model_request_lower_bound'] == 4
+
+
+@pytest.mark.parametrize('failure, expected', [
+    ('before_checkpoint', 1), ('after_checkpoint', 1),
+    ('before_append', 1), ('torn_append', 1), ('missing_newline', 1),
+    ('after_append', 2), ('before_hint', 2), ('after_hint', 2),
+    ('before_prune', 2), ('after_prune', 2),
+])
+def test_save_crash_keeps_chain_recoverable(tmp_path, monkeypatch, failure, expected):
+    from harness_v6 import checkpoint
+    store = checkpoint.CheckpointStore(tmp_path)
+
+    def save(segment):
+        return store.save(segment, state={'value': segment}, cycle={}, ledger={}, cumulative_costs={})
+
+    save(0)
+    save(1)
+    original_write = checkpoint.atomic_write
+    original_open = Path.open
+    original_unlink = Path.unlink
+
+    def crash():
+        raise RuntimeError('injected crash')
+
+    def atomic_write(path, data):
+        kind = 'checkpoint' if path.name.startswith('checkpoint-') else 'hint'
+        if failure == 'before_' + kind:
+            crash()
+        original_write(path, data)
+        if failure == 'after_' + kind:
+            crash()
+
+    class InterruptedAppend:
+        def __init__(self, stream):
+            self.stream = stream
+
+        def __enter__(self):
+            self.stream.__enter__()
+            return self
+
+        def __exit__(self, *args):
+            return self.stream.__exit__(*args)
+
+        def __getattr__(self, name):
+            return getattr(self.stream, name)
+
+        def write(self, data):
+            if failure == 'before_append':
+                crash()
+            if failure in ('torn_append', 'missing_newline', 'after_append'):
+                end = len(data) // 2 if failure == 'torn_append' else len(data) - (failure == 'missing_newline')
+                self.stream.write(data[:end])
+                self.stream.flush()
+                checkpoint.os.fsync(self.stream.fileno())
+                crash()
+            return self.stream.write(data)
+
+    def open_path(path, mode='r', *args, **kwargs):
+        stream = original_open(path, mode, *args, **kwargs)
+        return InterruptedAppend(stream) if path.name == 'chain.jsonl' and mode == 'a+b' else stream
+
+    def unlink(path, *args, **kwargs):
+        pruning = path.name.startswith('checkpoint-')
+        if pruning and failure == 'before_prune':
+            crash()
+        result = original_unlink(path, *args, **kwargs)
+        if pruning and failure == 'after_prune':
+            crash()
+        return result
+
+    with monkeypatch.context() as patch:
+        patch.setattr(checkpoint, 'atomic_write', atomic_write)
+        patch.setattr(Path, 'open', open_path)
+        patch.setattr(Path, 'unlink', unlink)
+        with pytest.raises(RuntimeError, match='injected crash'):
+            save(2)
+
+    store = checkpoint.CheckpointStore(tmp_path)
+    reads = []
+    original_read = Path.read_bytes
+
+    def read(path):
+        if path.name.startswith('checkpoint-'):
+            reads.append(path)
+        return original_read(path)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, 'read_bytes', read)
+        payload = store.latest()
+    assert len(reads) == 1
+    assert payload['state'] == {'value': expected}
+    assert (tmp_path / payload['previous']['file']).exists()
+    # A stale compatibility hint must not influence the next link.
+    (tmp_path / 'latest.json').write_text('{}')
+    save(3)
+    assert store.latest()['state'] == {'value': 3}
+    assert store.latest()['previous']['segment'] == expected
+    entries = [json.loads(line) for line in (tmp_path / 'chain.jsonl').read_bytes().splitlines()]
+    assert [entry['segment'] for entry in entries] == ([0, 1, 2, 3] if expected == 2 else [0, 1, 3])
+    assert {path.name for path in tmp_path.glob('checkpoint-*.json')} == {entry['file'] for entry in entries[-2:]}
+
+
+def test_first_torn_record_and_committed_corruption(tmp_path):
+    from harness_v6.checkpoint import CheckpointStore
+    store = CheckpointStore(tmp_path)
+    chain = tmp_path / 'chain.jsonl'
+    chain.write_bytes(b'{"segment":0')
+    with pytest.raises(FileNotFoundError, match='no complete checkpoint'):
+        store.latest()
+    store.save(0, state={}, cycle={}, ledger={}, cumulative_costs={})
+    assert store.latest()['segment'] == 0
+    with chain.open('ab') as stream:
+        stream.write(b'{broken}\n')
+    with pytest.raises(ValueError):
+        store.latest()
+    with pytest.raises(ValueError):
+        store.save(1, state={}, cycle={}, ledger={}, cumulative_costs={})

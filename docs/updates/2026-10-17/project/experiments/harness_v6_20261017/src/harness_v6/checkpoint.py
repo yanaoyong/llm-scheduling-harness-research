@@ -43,8 +43,7 @@ class CheckpointStore:
     def save(self, segment, *, state, cycle, ledger, cumulative_costs, extra=None):
         payload = {'schema': 'harness-v6-checkpoint-1', 'segment': segment, 'state': state,
                    'cycle': cycle, 'ledger': ledger, 'cumulative_costs': cumulative_costs, 'extra': extra or {}}
-        previous = self.directory / 'latest.json'
-        payload['previous'] = json.loads(previous.read_bytes()) if previous.exists() else None
+        payload['previous'], chain_size = self._chain_tail()
         if payload['previous'] is None and segment != 0:
             raise ValueError('checkpoint chain must start at segment 0')
         data = canonical(payload)
@@ -52,8 +51,11 @@ class CheckpointStore:
         atomic_write(self.directory / name, data)
         entry = {'segment': segment, 'file': name, 'sha256': sha(data),
                  'previous_sha256': payload['previous']['sha256'] if payload['previous'] else None}
-        with (self.directory / 'chain.jsonl').open('ab') as stream:
+        with (self.directory / 'chain.jsonl').open('a+b') as stream:
+            # A newline commits a record; discard an interrupted final append.
+            stream.truncate(chain_size)
             stream.write(canonical(entry) + b'\n'); stream.flush(); os.fsync(stream.fileno())
+        # Compatibility hint for LiveRun initialization only, never authoritative.
         atomic_write(self.directory / 'latest.json', canonical(entry))
         keep = {name}
         if payload['previous']:
@@ -63,20 +65,26 @@ class CheckpointStore:
                 path.unlink()
         return payload
 
-    def latest(self):
-        manifest = json.loads((self.directory / 'latest.json').read_bytes())
-        previous = None
-        found = False
-        for line in (self.directory / 'chain.jsonl').read_bytes().splitlines():
+    def _chain_tail(self):
+        """Verify committed metadata links, ignoring an unterminated final line."""
+        chain = self.directory / 'chain.jsonl'
+        raw = chain.read_bytes() if chain.exists() else b''
+        size = raw.rfind(b'\n') + 1
+        tail = None
+        for line in raw[:size].splitlines():
             entry = json.loads(line)
-            if entry['previous_sha256'] != previous or (previous is None and entry['segment'] != 0):
+            previous = tail['sha256'] if tail else None
+            if entry['previous_sha256'] != previous or (tail is None and entry['segment'] != 0):
                 raise ValueError('checkpoint chain hash mismatch')
-            previous = entry['sha256']
-            if entry == manifest:
-                found = True
-                break
-        if not found or Path(manifest['file']).name != manifest['file']:
-            raise ValueError('invalid checkpoint chain manifest')
+            if Path(entry['file']).name != entry['file']:
+                raise ValueError('invalid checkpoint chain manifest')
+            tail = entry
+        return tail, size
+
+    def latest(self):
+        manifest, _ = self._chain_tail()
+        if manifest is None:
+            raise FileNotFoundError('no complete checkpoint chain record')
         data = (self.directory / manifest['file']).read_bytes()
         if sha(data) != manifest['sha256']:
             raise ValueError('checkpoint hash mismatch')
