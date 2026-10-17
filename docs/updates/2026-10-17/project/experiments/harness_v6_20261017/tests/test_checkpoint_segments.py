@@ -113,7 +113,7 @@ def test_mcp_log_authoritative_even_with_more_jsonl_calls(live_dir):
 @pytest.mark.parametrize('failure, expected', [
     ('before_checkpoint', 1), ('after_checkpoint', 1),
     ('before_append', 1), ('torn_append', 1), ('missing_newline', 1),
-    ('after_append', 2), ('before_hint', 2), ('after_hint', 2),
+    ('after_append', 2),
     ('before_prune', 2), ('after_prune', 2),
 ])
 def test_save_crash_keeps_chain_recoverable(tmp_path, monkeypatch, failure, expected):
@@ -133,11 +133,10 @@ def test_save_crash_keeps_chain_recoverable(tmp_path, monkeypatch, failure, expe
         raise RuntimeError('injected crash')
 
     def atomic_write(path, data):
-        kind = 'checkpoint' if path.name.startswith('checkpoint-') else 'hint'
-        if failure == 'before_' + kind:
+        if failure == 'before_checkpoint':
             crash()
         original_write(path, data)
-        if failure == 'after_' + kind:
+        if failure == 'after_checkpoint':
             crash()
 
     class InterruptedAppend:
@@ -200,8 +199,6 @@ def test_save_crash_keeps_chain_recoverable(tmp_path, monkeypatch, failure, expe
     assert len(reads) == 1
     assert payload['state'] == {'value': expected}
     assert (tmp_path / payload['previous']['file']).exists()
-    # A stale compatibility hint must not influence the next link.
-    (tmp_path / 'latest.json').write_text('{}')
     save(3)
     assert store.latest()['state'] == {'value': 3}
     assert store.latest()['previous']['segment'] == expected
@@ -214,14 +211,34 @@ def test_first_torn_record_and_committed_corruption(tmp_path):
     from harness_v6.checkpoint import CheckpointStore
     store = CheckpointStore(tmp_path)
     chain = tmp_path / 'chain.jsonl'
+    assert not store.has_checkpoint()
     chain.write_bytes(b'{"segment":0')
+    assert not store.has_checkpoint()
     with pytest.raises(FileNotFoundError, match='no complete checkpoint'):
         store.latest()
     store.save(0, state={}, cycle={}, ledger={}, cumulative_costs={})
     assert store.latest()['segment'] == 0
+    assert store.has_checkpoint()
     with chain.open('ab') as stream:
         stream.write(b'{broken}\n')
+    with pytest.raises(ValueError):
+        store.has_checkpoint()
     with pytest.raises(ValueError):
         store.latest()
     with pytest.raises(ValueError):
         store.save(1, state={}, cycle={}, ledger={}, cumulative_costs={})
+
+
+def test_live_initialization_uses_committed_chain(live_dir):
+    directory = live_dir / 'checkpoints'
+    directory.mkdir(parents=True)
+    chain = directory / 'chain.jsonl'
+    chain.write_bytes(b'{"segment":0')
+    run = SyntheticRun(directory=live_dir)
+    assert run.store.has_checkpoint()
+    assert {path.name for path in directory.iterdir()} == {
+        'chain.jsonl', json.loads(chain.read_bytes().splitlines()[-1])['file']}
+    committed = chain.read_bytes()
+    reopened = SyntheticRun(directory=live_dir)
+    assert reopened.store.has_checkpoint()
+    assert chain.read_bytes() == committed

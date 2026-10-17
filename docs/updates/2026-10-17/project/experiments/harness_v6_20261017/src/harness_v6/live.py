@@ -35,7 +35,7 @@ class LiveRun:
         self.min_snapshot_bytes = None
         self.drift = DriftMonitor(drift_rule) if drift_rule else None
         self.last_hour = -1
-        if not (self.store.directory / 'latest.json').exists():
+        if not self.store.has_checkpoint():
             self.checkpoint(self.store)
 
     def step(self, *, event=None):

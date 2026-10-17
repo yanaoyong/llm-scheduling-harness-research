@@ -55,8 +55,6 @@ class CheckpointStore:
             # A newline commits a record; discard an interrupted final append.
             stream.truncate(chain_size)
             stream.write(canonical(entry) + b'\n'); stream.flush(); os.fsync(stream.fileno())
-        # Compatibility hint for LiveRun initialization only, never authoritative.
-        atomic_write(self.directory / 'latest.json', canonical(entry))
         keep = {name}
         if payload['previous']:
             keep.add(payload['previous']['file'])
@@ -80,6 +78,11 @@ class CheckpointStore:
                 raise ValueError('invalid checkpoint chain manifest')
             tail = entry
         return tail, size
+
+    def has_checkpoint(self):
+        """Return whether the authoritative chain has a committed record."""
+        tail, _ = self._chain_tail()
+        return tail is not None
 
     def latest(self):
         manifest, _ = self._chain_tail()
