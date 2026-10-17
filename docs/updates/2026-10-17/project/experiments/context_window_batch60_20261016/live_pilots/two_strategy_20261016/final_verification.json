@@ -1,0 +1,37 @@
+{
+  "G1": {
+    "phase": "CLOSED",
+    "evidence_sha256": "3e05164a1a0fb9965e225e2f1c8d29a5b45bc8dde3bac958e935e237c2e02695",
+    "sealed_objects_verified": 5718,
+    "post_run_executable_changes": {
+      "src/smt_fullfab/harness/evaluation.py": {
+        "at_run": "5316afb5743a0d064f129f416b06eb84c246c3b841280a51768c02e102e3d96d",
+        "after_run": "f3acc3171ec5ae930aa0ba44303278bd64a422494e199faaa09194bd9657d4c8"
+      }
+    }
+  },
+  "G2": {
+    "phase": "CLOSED",
+    "evidence_sha256": "783a962497cde3522a1f8e40a856e9d89c45ef8d4508cef5d1efda46ebdf3837",
+    "sealed_objects_verified": 5641,
+    "post_run_executable_changes": {
+      "src/smt_fullfab/harness/evaluation.py": {
+        "at_run": "5316afb5743a0d064f129f416b06eb84c246c3b841280a51768c02e102e3d96d",
+        "after_run": "f3acc3171ec5ae930aa0ba44303278bd64a422494e199faaa09194bd9657d4c8"
+      }
+    }
+  },
+  "shared_frozen_runtime": true,
+  "runner_unchanged": true,
+  "initial_fixture_unchanged": true,
+  "original_B_files_checked": 803,
+  "original_B_changed_files": [],
+  "changed_fixtures": [],
+  "original_B_database_opened": false,
+  "models_called_during_verification": 0,
+  "audit_regression_tests": {
+    "passed": 3,
+    "log": "audit_regression_tests.txt"
+  },
+  "scope": "Only post-run receipt audit compatibility changed; no scheduling, model input, output, plan or sealed trace edits."
+}

@@ -1,0 +1,127 @@
+{
+  "status": "proposed_not_applied",
+  "new_evaluation_model_calls": 0,
+  "preserve_current_run": true,
+  "priorities": [
+    {
+      "priority": 1,
+      "change": "Coverage-oriented prompt, factory-wide public coverage digest and direct execution/call feedback",
+      "source_files": [
+        "src/smt_fullfab/harness/transport.py",
+        "src/smt_fullfab/harness/runtime.py"
+      ],
+      "digest_fields": [
+        "every_family_id",
+        "ready_operation_count",
+        "conditional_operation_count",
+        "known_machine_bindings",
+        "pending_order_count",
+        "machines_nominally_available_within_model_selected_window",
+        "availability_basis",
+        "full_fact_pagination_refs"
+      ],
+      "execution_feedback": [
+        "last_advanced_seconds",
+        "last_dispatch_count",
+        "last_stop_reason",
+        "calls_and_tokens_since_previous_commit",
+        "rolling_actual_seconds_per_commit"
+      ],
+      "rules": [
+        "Group all families in fixed source order; no top-k, scoring or suggested assignments.",
+        "Use only public observations and already observed execution history.",
+        "Separate ready backlog, future operation status and route uncertainty; a conditional boolean is not a complete risk taxonomy.",
+        "Validate facts against current context; old exact facts stay historical unless dependency validity is established.",
+        "No minimum task quota, artificial holds, suppressed demand or changed trigger timing."
+      ]
+    },
+    {
+      "priority": 2,
+      "change": "Read-only candidate coverage diagnostics based on selected tasks and public nominal forecasts",
+      "source_files": [
+        "src/smt_fullfab/harness/runtime.py"
+      ],
+      "outputs": [
+        "queue_depth_by_machine",
+        "already_ready_work_without_a_selected_queue_on_relevant_resources",
+        "nominal_queue_empty_times",
+        "unresolved_route_or_qualification_assumptions",
+        "reported_coverage_target"
+      ],
+      "rules": [
+        "Do not choose jobs, machines, batches or order.",
+        "Label nominal estimates; never simulate hidden RNG outcomes for model feedback.",
+        "Treat coverage diagnostics as advisory; legality and production quality remain primary."
+      ]
+    },
+    {
+      "priority": 3,
+      "change": "Versioned preservation of original earliest-start lower bounds for retained pending tasks",
+      "source_files": [
+        "src/smt_fullfab/plan_delta.py",
+        "src/smt_fullfab/environment.py",
+        "src/smt_fullfab/harness/transport.py"
+      ],
+      "rules": [
+        "Retain exact original not_before when it is a lower bound rather than a deadline.",
+        "Require original task identity and explicit keep, actual readiness, unchanged freezes and no re-dispatch.",
+        "Do not silently clamp timestamps or alter order.",
+        "Compare separately because this expands accepted plan revisions; apply common semantics across arms."
+      ]
+    },
+    {
+      "priority": 4,
+      "change": "Optional explicitly model-authorized atomic propose-and-commit action",
+      "source_files": [
+        "src/smt_fullfab/harness/transport.py",
+        "src/smt_fullfab/harness/runtime.py",
+        "src/smt_fullfab/harness/contracts.py"
+      ],
+      "rules": [
+        "The model must explicitly request conditional commit of its exact proposal.",
+        "Compile and validate; commit only on success with revision/context check and an idempotent request ID.",
+        "Failure has no physical effect. No alternative selection, repair or generated schedule.",
+        "Separate this protocol experiment from coverage improvements to measure its contribution."
+      ]
+    }
+  ],
+  "evaluation": {
+    "status": "not_run",
+    "states": "Three saved states spanning startup, multi-task queues and the recent singleton phase; compare identical public context and identical declared inherited model memory within each pair.",
+    "variants": [
+      "existing baseline",
+      "prompt guidance only",
+      "same guidance plus public coverage context and feedback"
+    ],
+    "model": "Keep current B model and reasoning effort fixed.",
+    "public_planning_window_seconds": 300,
+    "window_note": "An exploratory nominal target, not a guaranteed advancement or a minimum task quota.",
+    "keep_fixed": [
+      "physical semantics",
+      "event-trigger rules",
+      "production objective",
+      "available factual information",
+      "model budget and stop rules within each paired comparison"
+    ],
+    "metrics": [
+      "model calls/tokens per simulated minute",
+      "calls/tokens per physical dispatch",
+      "observed seconds between replans",
+      "pending queue depth",
+      "ready waiting",
+      "throughput and weighted tardiness",
+      "rejection/invalidation count",
+      "mandatory uncovered-demand exposure"
+    ],
+    "success": "Reduce model resource consumption at comparable legality, service and production quality; report failures, unknown usage and full costs. No savings percentage is asserted before measurement."
+  },
+  "focused_existing_tests": {
+    "passed": 3,
+    "names": [
+      "test_exact_carry_preserves_full_values_and_machine_order_without_sorting",
+      "test_new_task_requires_explicit_complete_machine_order",
+      "test_past_start_is_not_implicitly_clamped_and_explicit_replace_can_change_it"
+    ],
+    "meaning": "Confirms existing mechanics only, not performance of the proposed prompt or context."
+  }
+}

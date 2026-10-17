@@ -1,0 +1,371 @@
+基线 24 次重排逐次归因（只读分析，不启动新实验）
+
+对象：B_context_2x2_20261016 的 baseline，公共窗口 t=2403→2703。
+这里的24次是24个 uncovered_demand 停止/重新规划点，不是24次模型调用。
+全程有25份已提交计划；最后在t=2703结束的periodic_replan是评估边界，不纳入这24次。
+表中所有时间均为仿真秒，不是模型或本地处理的实际墙钟耗时。
+
+主要结论
+1. 7次已有ready任务等设备释放，是最明确的提前排队候选；4次是公开可见的后继工序变为ready，具备条件预排的可能；13次涉及抽样保留或跳步，真实分支必须等事件确认。
+2. “执行必须等新事件”不等于“必须重新调用模型”。7+4=11是应优先核查的提前覆盖候选数，不是已经证明能省掉11次重排。13次分支类也不能一概判成不可避免的模型重排。
+3. 27个后续实际派工的operation_id在紧邻上一轮公共目录中全部存在，且当时已列出后来选择的合法机台。没有发现必须等新实体到达才能知道任务身份的案例。
+4. 基线24个触发点都没有剩余已排任务；没有取消、替换、hold或计划失效，计划还剩56.462～119.913仿真秒。现有证据支持“覆盖没有预先建立”，不支持“队列任务丢失”或“有效期太短”。
+5. 已有filter_projection轨迹提供一条实际提前覆盖证据：w460:31:1在2550.910已入队，2686.682自动派工，未出现基线第21次对应的模型重排。该组因此是23次需求触发；但全组模型调用并未更少，不能把单条覆盖效果说成总成本改善。
+6. 同一预排队列还暴露了维护负担：两项等待任务在6轮已有重排中共被替换10次，仅更新not_before。没有证据证明这10次替换额外触发模型，也未观察到w460被这些时间改写延误。
+
+分类口径
+A：上一轮conditional=false，任务已就绪，所选机台仍忙；可明确指定任务并等待设备真实可用。
+B：上一轮已有后继身份、资格和条件状态；本次因前序完工变为ready，因果转换中未观察到抽样跳步。不是对所有未来分支的确定性保证。
+C：目标工序本身sampling_percent<100，本次抽样后实际保留；执行前必须确认该工序存在。预排该工序可能在另一条轨迹被skip并失效。
+D：目标之前的抽样工序被skip，后继因而提早变为ready；上一轮可知候选路径，但不能预知抽样结果。预排后继可能在本条轨迹生效；不等于当前接口已支持完整if/else分支。
+
+逐次总表（格式：编号 | 上轮时间→触发时间 | 推进秒 | 分类 | 实际后续任务→机台 | 触发归因）
+01 | 2403.000→2442.786 | 39.786 | B | w709:111:1→1295 | 工序110完工→工序111就绪
+02 | 2442.786→2446.369 | 3.583 | D | w130:279:1→1279 | 工序277完工→跳过278→工序279就绪；前序抽样率278:37%
+03 | 2446.369→2487.372 | 41.003 | D | w100:230:1→1248 | 工序228完工→跳过229→工序230就绪；前序抽样率229:37%
+04 | 2487.372→2550.910 | 63.538 | A | w458:31:1→936 | 已有ready任务；机台占用结束后出现合法派工缺口
+05 | 2550.910→2563.475 | 12.565 | C | w638:229:1→316 | 工序228完工→工序229就绪；目标抽样率55%
+06 | 2563.475→2593.674 | 30.199 | C | w1198:102:1→320 | 工序101完工→工序102就绪；目标抽样率59%
+07 | 2593.674→2594.770 | 1.096 | D | w495:479:1→1234 | 工序477完工→跳过478→工序479就绪；前序抽样率478:10%
+08 | 2594.770→2598.069 | 3.299 | C | w1091:314:1→312 | 工序313完工→工序314就绪；目标抽样率10%
+09 | 2598.069→2598.156 | 0.087 | A | w1413:225:1→747 | 已有ready任务；机台占用结束后出现合法派工缺口
+10 | 2598.156→2599.200 | 1.044 | A | w507:476:1→746 | 已有ready任务；机台占用结束后出现合法派工缺口
+11 | 2599.200→2599.452 | 0.252 | A | w280:354:1→738; w1563:307:1→739; w1093:312:1→741; w1266:218:1→744 | 已有ready任务；机台占用结束后出现合法派工缺口
+12 | 2599.452→2608.951 | 9.499 | A | w1462:132:1→1055 | 已有ready任务；机台占用结束后出现合法派工缺口
+13 | 2608.951→2616.015 | 7.065 | D | w1269:234:1→994 | 工序232完工→跳过233→工序234就绪；前序抽样率233:10%
+14 | 2616.015→2623.042 | 7.027 | B | w1519:54:1→1296 | 工序53完工→工序54就绪
+15 | 2623.042→2633.835 | 10.793 | D | w1953:362:1→1235 | 工序360完工→跳过361→工序362就绪；前序抽样率361:10%
+16 | 2633.835→2645.305 | 11.470 | C | w1197:102:1→321 | 工序101完工→工序102就绪；目标抽样率59%
+17 | 2645.305→2668.068 | 22.763 | D | w248:51:1→766 | 工序49完工→跳过50→工序51就绪；前序抽样率50:56%
+18 | 2668.068→2672.851 | 4.783 | D | w33:410:1→1165 | 工序408完工→跳过409→工序410就绪；前序抽样率409:10%
+19 | 2672.851→2681.517 | 8.666 | D | w240:51:1→767 | 工序49完工→跳过50→工序51就绪；前序抽样率50:56%
+20 | 2681.517→2682.879 | 1.361 | A | w1460:146:1→1026 | 已有ready任务；机台占用结束后出现合法派工缺口
+21 | 2682.879→2686.682 | 3.803 | A | w460:31:1→925 | 已有ready任务；机台占用结束后出现合法派工缺口
+22 | 2686.682→2686.961 | 0.279 | B | w1617:214:1→1281 | 工序213完工→工序214就绪
+23 | 2686.961→2698.534 | 11.573 | B | w1386:293:1→1236 | 工序292完工→工序293就绪
+24 | 2698.534→2699.006 | 0.472 | D | w1758:325:1→1238 | 工序323完工→跳过324→工序325就绪；前序抽样率324:10%
+
+逐次证据与能否提前覆盖
+
+第01次：B 已知后继变就绪：条件预排候选，未观察到分支
+上一轮 context=context:6483ff6a5b064c71ab35a084；已提交 candidate=candidate:08a1a0127d3c48af81df9c29
+下一轮 context=context:4b1c8719f8d14e8d9f5b259b；实际派工 candidate=candidate:19cd0202d26d481fbbafa531
+原始physical事件区间（Python切片）=[6491,6510)；完整内容见attribution.json rows[0]。
+任务 w709:111:1，family=WE_FE_84，选择机台=1295，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2404.000000，sampling=100%；机台busy=False，available_at=2403.000000。
+实际事件：工序110完工→工序111就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：可讨论明确后继的条件预排；实际启动仍须前序完成及lot/machine ready。静态身份、资格和批量检查通过，不代表已验证反事实计划的全过程与质量。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩80.214秒。
+
+第02次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:4b1c8719f8d14e8d9f5b259b；已提交 candidate=candidate:19cd0202d26d481fbbafa531
+下一轮 context=context:2df05a0bf66a4a50bd38250f；实际派工 candidate=candidate:05845d32743146078ac8642b
+原始physical事件区间（Python切片）=[6511,6520)；完整内容见attribution.json rows[1]。
+任务 w130:279:1，family=WE_FE_41，选择机台=1279，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2442.786212，sampling=100%；机台busy=False，available_at=2442.786212。
+实际事件：工序277完工→跳过278→工序279就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩116.417秒。
+
+第03次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:2df05a0bf66a4a50bd38250f；已提交 candidate=candidate:05845d32743146078ac8642b
+下一轮 context=context:d99972de5fbc4cf6bd7e76f3；实际派工 candidate=candidate:1a97dd43cea642239d1fbe41
+原始physical事件区间（Python切片）=[6521,6539)；完整内容见attribution.json rows[2]。
+任务 w100:230:1，family=WE_FE_108，选择机台=1248，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2446.369201，sampling=100%；机台busy=False，available_at=2446.369201。
+实际事件：工序228完工→跳过229→工序230就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩78.997秒。
+
+第04次：A 已就绪任务等设备：明确的提前排队候选
+上一轮 context=context:d99972de5fbc4cf6bd7e76f3；已提交 candidate=candidate:1a97dd43cea642239d1fbe41
+下一轮 context=context:04ab559e00264fe78870fdd0；实际派工 candidate=candidate:e870325d28ea4d54b4bcd0c1
+原始physical事件区间（Python切片）=[6540,6564)；完整内容见attribution.json rows[3]。
+任务 w458:31:1，family=Litho_FE_111，选择机台=936，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2487.371790，sampling=100%；机台busy=True，available_at=2658.000000。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩56.462秒。
+
+第05次：C 抽样工序实际被保留：须确认分支，不能当作确定需求
+上一轮 context=context:04ab559e00264fe78870fdd0；已提交 candidate=candidate:e870325d28ea4d54b4bcd0c1
+下一轮 context=context:93e5a569bb4b4e79ba4cb48e；实际派工 candidate=candidate:3500cb37cdd647ec9b400689
+原始physical事件区间（Python切片）=[6565,6574)；完整内容见attribution.json rows[4]。
+任务 w638:229:1，family=DefMet_FE_10，选择机台=316，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2627.700271，sampling=55%；机台busy=False，available_at=2550.910049。
+实际事件：工序228完工→工序229就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩107.435秒。
+
+第06次：C 抽样工序实际被保留：须确认分支，不能当作确定需求
+上一轮 context=context:93e5a569bb4b4e79ba4cb48e；已提交 candidate=candidate:3500cb37cdd647ec9b400689
+下一轮 context=context:8fccbbf49109403c8aa73193；实际派工 candidate=candidate:93481435e06640acaf40e92b
+原始physical事件区间（Python切片）=[6575,6589)；完整内容见attribution.json rows[5]。
+任务 w1198:102:1，family=DefMet_FE_34，选择机台=320，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2601.611795，sampling=59%；机台busy=False，available_at=2563.474977。
+实际事件：工序101完工→工序102就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩89.801秒。
+
+第07次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:8fccbbf49109403c8aa73193；已提交 candidate=candidate:93481435e06640acaf40e92b
+下一轮 context=context:a224006f97fb4054bbcb5434；实际派工 candidate=candidate:1f0b51d04a574ba8801652b6
+原始physical事件区间（Python切片）=[6590,6596)；完整内容见attribution.json rows[6]。
+任务 w495:479:1，family=WE_BE_82，选择机台=1234，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2593.673905，sampling=100%；机台busy=False，available_at=2593.673905。
+实际事件：工序477完工→跳过478→工序479就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩118.904秒。
+
+第08次：C 抽样工序实际被保留：须确认分支，不能当作确定需求
+上一轮 context=context:a224006f97fb4054bbcb5434；已提交 candidate=candidate:1f0b51d04a574ba8801652b6
+下一轮 context=context:aaa1ec0804d5428188c7c4fd；实际派工 candidate=candidate:0d618154f8f348bf9e09b65c
+原始physical事件区间（Python切片）=[6597,6602)；完整内容见attribution.json rows[7]。
+任务 w1091:314:1，family=DefMet_BE_33，选择机台=312，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2715.594861，sampling=10%；机台busy=False，available_at=2594.770154。
+实际事件：工序313完工→工序314就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩116.701秒。
+
+第09次：A 已就绪任务等设备：明确的提前排队候选
+上一轮 context=context:aaa1ec0804d5428188c7c4fd；已提交 candidate=candidate:0d618154f8f348bf9e09b65c
+下一轮 context=context:fa03ef528c4d45a0a19f1d0e；实际派工 candidate=candidate:07a6ec99a7f14b6b80739638
+原始physical事件区间（Python切片）=[6603,6606)；完整内容见attribution.json rows[8]。
+任务 w1413:225:1，family=Dielectric_BE_27，选择机台=747，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2598.068879，sampling=100%；机台busy=True，available_at=2599.068879。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩119.913秒。
+
+第10次：A 已就绪任务等设备：明确的提前排队候选
+上一轮 context=context:fa03ef528c4d45a0a19f1d0e；已提交 candidate=candidate:07a6ec99a7f14b6b80739638
+下一轮 context=context:e4db1bb96e7f47ba9829e979；实际派工 candidate=candidate:be2c245fe67c433c940d0778
+原始physical事件区间（Python切片）=[6607,6610)；完整内容见attribution.json rows[9]。
+任务 w507:476:1，family=Dielectric_BE_27，选择机台=746，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2598.156000，sampling=100%；机台busy=True，available_at=2599.200000。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：保存的上一轮请求中有当前8项关键字段，调用序号=31,32。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩118.956秒。
+
+第11次：A 已就绪任务等设备：明确的提前排队候选
+上一轮 context=context:e4db1bb96e7f47ba9829e979；已提交 candidate=candidate:be2c245fe67c433c940d0778
+下一轮 context=context:04bc8380ecf84a3d97c81ced；实际派工 candidate=candidate:a5c21dc4fc1c4d8789d51fdb
+原始physical事件区间（Python切片）=[6611,6614)；完整内容见attribution.json rows[10]。
+任务 w280:354:1，family=Dielectric_BE_27，选择机台=738，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2599.200000，sampling=100%；机台busy=True，available_at=2600.200000。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：上一轮请求有历史完整记录，但关键字段与当前不同：{"release_time": {"shown": 2598.156, "current": 2599.2}}。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+任务 w1563:307:1，family=Dielectric_BE_27，选择机台=739，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2599.200000，sampling=100%；机台busy=True，available_at=2600.200000。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：保存的上一轮请求中有当前8项关键字段，调用序号=33,34,35。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+任务 w1093:312:1，family=Dielectric_BE_27，选择机台=741，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2599.200000，sampling=100%；机台busy=True，available_at=2600.200000。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：保存的上一轮请求中有当前8项关键字段，调用序号=33,34,35。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+任务 w1266:218:1，family=Dielectric_BE_27，选择机台=744，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2599.200000，sampling=100%；机台busy=True，available_at=2600.200000。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：保存的上一轮请求中有当前8项关键字段，调用序号=33,34,35。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩119.748秒。
+
+第12次：A 已就绪任务等设备：明确的提前排队候选
+上一轮 context=context:04bc8380ecf84a3d97c81ced；已提交 candidate=candidate:a5c21dc4fc1c4d8789d51fdb
+下一轮 context=context:7357fbe26ac04701a23670b3；实际派工 candidate=candidate:4c71ffe437ef4467840b22eb
+原始physical事件区间（Python切片）=[6615,6624)；完整内容见attribution.json rows[11]。
+任务 w1462:132:1，family=LithoTrack_FE_115，选择机台=1055，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2599.452000，sampling=100%；机台busy=True，available_at=2604.000000。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+队列检查：上一轮新计划4项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩110.501秒。
+
+第13次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:7357fbe26ac04701a23670b3；已提交 candidate=candidate:4c71ffe437ef4467840b22eb
+下一轮 context=context:51b6ec5fed8c4547ad06e00c；实际派工 candidate=candidate:9766dae89ad148bdbfefea02
+原始physical事件区间（Python切片）=[6625,6632)；完整内容见attribution.json rows[12]。
+任务 w1269:234:1，family=LithoMet_BE_18，选择机台=994，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2608.950517，sampling=100%；机台busy=False，available_at=2608.950517。
+实际事件：工序232完工→跳过233→工序234就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩112.935秒。
+
+第14次：B 已知后继变就绪：条件预排候选，未观察到分支
+上一轮 context=context:51b6ec5fed8c4547ad06e00c；已提交 candidate=candidate:9766dae89ad148bdbfefea02
+下一轮 context=context:13bc018387534fd4b0c5b7d3；实际派工 candidate=candidate:447a672f3e3b48d0b91c5883
+原始physical事件区间（Python切片）=[6633,6639)；完整内容见attribution.json rows[13]。
+任务 w1519:54:1，family=WE_FE_84，选择机台=1296，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2617.015178，sampling=100%；机台busy=False，available_at=2616.015178。
+实际事件：工序53完工→工序54就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：可讨论明确后继的条件预排；实际启动仍须前序完成及lot/machine ready。静态身份、资格和批量检查通过，不代表已验证反事实计划的全过程与质量。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩112.973秒。
+
+第15次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:13bc018387534fd4b0c5b7d3；已提交 candidate=candidate:447a672f3e3b48d0b91c5883
+下一轮 context=context:4b7fdf2899984208a0a4fb5a；实际派工 candidate=candidate:b2467090c7dc45f1bda0ac01
+原始physical事件区间（Python切片）=[6640,6648)；完整内容见attribution.json rows[14]。
+任务 w1953:362:1，family=WE_BE_82，选择机台=1235，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2623.042153，sampling=100%；机台busy=False，available_at=2623.042153。
+实际事件：工序360完工→跳过361→工序362就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩109.207秒。
+
+第16次：C 抽样工序实际被保留：须确认分支，不能当作确定需求
+上一轮 context=context:4b7fdf2899984208a0a4fb5a；已提交 candidate=candidate:b2467090c7dc45f1bda0ac01
+下一轮 context=context:bbbca222988945c7a8e7f527；实际派工 candidate=candidate:883c046e87ac4611819d92c7
+原始physical事件区间（Python切片）=[6649,6654)；完整内容见attribution.json rows[15]。
+任务 w1197:102:1，family=DefMet_FE_34，选择机台=321，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2634.835432，sampling=59%；机台busy=False，available_at=2633.835432。
+实际事件：工序101完工→工序102就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩108.530秒。
+
+第17次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:bbbca222988945c7a8e7f527；已提交 candidate=candidate:883c046e87ac4611819d92c7
+下一轮 context=context:23321138cb014d3c9acb6605；实际派工 candidate=candidate:e8edaaa23beb423b96afebf8
+原始physical事件区间（Python切片）=[6655,6664)；完整内容见attribution.json rows[16]。
+任务 w248:51:1，family=Dielectric_FE_112，选择机台=766，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2645.305063，sampling=100%；机台busy=False，available_at=2645.305063。
+实际事件：工序49完工→跳过50→工序51就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩97.237秒。
+
+第18次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:23321138cb014d3c9acb6605；已提交 candidate=candidate:e8edaaa23beb423b96afebf8
+下一轮 context=context:70088795d0ae4da0b10e5802；实际派工 candidate=candidate:e3f521bc3722489da48b68cb
+原始physical事件区间（Python切片）=[6665,6674)；完整内容见attribution.json rows[17]。
+任务 w33:410:1，family=TF_BE_26，选择机台=1165，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2668.067830，sampling=100%；机台busy=False，available_at=2668.067830。
+实际事件：工序408完工→跳过409→工序410就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩115.217秒。
+
+第19次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:70088795d0ae4da0b10e5802；已提交 candidate=candidate:e3f521bc3722489da48b68cb
+下一轮 context=context:9641fa4505094f16a658ce67；实际派工 candidate=candidate:f9c0a565db4343ec80404509
+原始physical事件区间（Python切片）=[6675,6682)；完整内容见attribution.json rows[18]。
+任务 w240:51:1，family=Dielectric_FE_112，选择机台=767，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2672.850902，sampling=100%；机台busy=False，available_at=2672.850902。
+实际事件：工序49完工→跳过50→工序51就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩111.334秒。
+
+第20次：A 已就绪任务等设备：明确的提前排队候选
+上一轮 context=context:9641fa4505094f16a658ce67；已提交 candidate=candidate:f9c0a565db4343ec80404509
+下一轮 context=context:fad18a63bfee41a988a5d5e4；实际派工 candidate=candidate:b48daa3cb82d444b945d38d7
+原始physical事件区间（Python切片）=[6683,6686)；完整内容见attribution.json rows[19]。
+任务 w1460:146:1，family=LithoTrack_FE_115，选择机台=1026，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2681.517295，sampling=100%；机台busy=True，available_at=2682.517295。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩118.639秒。
+
+第21次：A 已就绪任务等设备：明确的提前排队候选
+上一轮 context=context:fad18a63bfee41a988a5d5e4；已提交 candidate=candidate:b48daa3cb82d444b945d38d7
+下一轮 context=context:7efbced5b0ae48a3b1e76072；实际派工 candidate=candidate:e8484bb4c106431b83ba4cb4
+原始physical事件区间（Python切片）=[6687,6690)；完整内容见attribution.json rows[20]。
+任务 w460:31:1，family=Litho_FE_111，选择机台=925，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=False，release_time=2682.878530，sampling=100%；机台busy=True，available_at=2683.878530。
+实际事件：已有ready任务；机台占用结束后出现合法派工缺口。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：任务本身已就绪，只须等设备真实可用；是上一轮明确多排一个任务的候选。名义available_at并非承诺释放时刻，不能据此硬编码实际开工。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩116.197秒。
+
+第22次：B 已知后继变就绪：条件预排候选，未观察到分支
+上一轮 context=context:7efbced5b0ae48a3b1e76072；已提交 candidate=candidate:e8484bb4c106431b83ba4cb4
+下一轮 context=context:91c1b89068624d2c83919e67；实际派工 candidate=candidate:0dd8ce3f0fc24cf08cd59699
+原始physical事件区间（Python切片）=[6691,6696)；完整内容见attribution.json rows[21]。
+任务 w1617:214:1，family=WE_FE_47，选择机台=1281，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2688.520637，sampling=100%；机台busy=False，available_at=2686.681794。
+实际事件：工序213完工→工序214就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：可讨论明确后继的条件预排；实际启动仍须前序完成及lot/machine ready。静态身份、资格和批量检查通过，不代表已验证反事实计划的全过程与质量。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩119.721秒。
+
+第23次：B 已知后继变就绪：条件预排候选，未观察到分支
+上一轮 context=context:91c1b89068624d2c83919e67；已提交 candidate=candidate:0dd8ce3f0fc24cf08cd59699
+下一轮 context=context:d4a1d2a412a94ee68aaf7217；实际派工 candidate=candidate:8e6de52dda4d45c28d7975e4
+原始physical事件区间（Python切片）=[6697,6704)；完整内容见attribution.json rows[22]。
+任务 w1386:293:1，family=WE_BE_82，选择机台=1236，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2687.960572，sampling=100%；机台busy=False，available_at=2686.960572。
+实际事件：工序292完工→工序293就绪。
+事实呈现：未匹配到上一轮请求中的完整8项关键字段；不能把目录可查当作模型已看见。
+判断：可讨论明确后继的条件预排；实际启动仍须前序完成及lot/machine ready。静态身份、资格和批量检查通过，不代表已验证反事实计划的全过程与质量。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩108.427秒。
+
+第24次：D 抽样前序被跳过：须确认分支，不能预知跳步
+上一轮 context=context:d4a1d2a412a94ee68aaf7217；已提交 candidate=candidate:8e6de52dda4d45c28d7975e4
+下一轮 context=context:4db5d3a58f97466e94bc2c83；实际派工 candidate=candidate:62d95325766048f8ac883aae
+原始physical事件区间（Python切片）=[6705,6711)；完整内容见attribution.json rows[23]。
+任务 w1758:325:1，family=WE_BE_82，选择机台=1238，该机台已在上一轮eligible_machines中。
+上一轮公开事实：conditional=True，release_time=2698.533505，sampling=100%；机台busy=False，available_at=2698.533505。
+实际事件：工序323完工→跳过324→工序325就绪。
+事实呈现：保存的上一轮请求中有当前8项关键字段，调用序号=73,74,75。
+判断：抽样分支必须等运行事件确认；上一轮能表达已知候选后继，但不能假装已知保留或跳步。是否能减少模型重排还取决于条件承诺、失效与队首等待语义。
+队列检查：上一轮新计划1项均已派工；触发时剩余0项，继承未派任务0项，取消/替换/hold/失效均0；有效期还剩119.528秒。
+
+事实目录、实际呈现与模型选择的区别
+27个后续派工任务在上一轮公开目录全部可查询。但严格匹配operation_id、eligible_machines、conditional、release_time、predecessor_ids、sampling_percent、rework_percent、qualification_basis这8项关键字段，只有5个任务在上一轮实际保存的请求中呈现当前值，另1个仅呈现历史记录。
+5个当前记录分布在第10、11、24次；第11次的w280另有历史记录，仅release_time不同。只有第10次存在上一轮read_entities直接返回该任务实体的记录。
+这是事实呈现层的证据，不是模型注意力或理解程度的测量；摘要或字符串里出现任务ID不等同于呈现完整资格/依赖。
+因此暂不能把“一次只新增一个任务”唯一归因于模型规划能力。默认呈现与查询多围绕当前缺口，未来可排候选可能在目录里却未被带入；第10、11次则说明“有部分事实可见”本身也不保证模型会扩大覆盖。
+
+队列维护核查与现有跨组见证
+baseline：24次均因未覆盖需求停止，未发现已排队任务丢失、取消或失效；一次scope提交拒绝（调用43）与队列维护无关。
+filter_projection：2550.910提交d132-w460、d132-w468，not_before均为2658，分别绑定机台925和927。w460于2686.681794实际按原任务ID派工；该时刻未触发模型。w468在2703评估边界仍未派工，此时机台927仍busy，不能判定为丢任务。
+实际维护记录（仿真时刻 | 替换任务 | not_before前值→后值）：
+2668.067830 | d132-w460 | 2658.000000→2669.067830
+2668.067830 | d132-w468 | 2658.000000→2669.067830
+2672.850902 | d132-w460 | 2669.067830→2673.850902
+2672.850902 | d132-w468 | 2669.067830→2673.850902
+2681.517295 | d132-w460 | 2673.850902→2682.517295
+2681.517295 | d132-w468 | 2673.850902→2682.517295
+2682.878530 | d132-w460 | 2682.517295→2683.878530
+2682.878530 | d132-w468 | 2682.517295→2683.878530
+2686.960572 | d132-w468 | 2683.878530→2687.960572
+2698.533505 | d132-w468 | 2687.960572→2699.533505
+源码原因：plan_delta.py的past_start检查要求非冻结任务not_before>=当前时刻；已提交且尚未派工的旧任务一旦跨过not_before，后续提交必须显式替换。上述10项替换只变了not_before，属于可确认的维护负担。
+边界：6轮本来就在为别的需求重排，不能将10项替换计成10次额外模型调用。w460最后的not_before=2683.878530早于实际可派工2686.681794，没有证据表明此维护延误了它。
+另一个静态风险：environment._gaps只要机台存在pending或hold就不报缺口，而_run_planned_now仅尝试该机台队首。因此“有队列”不自动等于“有有效可执行覆盖”；扩大预排后可能出现队首未就绪遮住其他ready任务。基线本次没有pending，所以这不是本轮24次的已证实原因。
+环境已有跳步/访问变化失效检测，能阻止被skip的旧任务继续隐藏缺口；它请求模型重排，不会自行选择替代任务。
+
+与M0.5结论的关系及讨论范围
+M0.5 HE-Q02/03区分多任务承诺、物理就绪和模型重入；这次证据与该区分一致。现有propose_delta数组支持多机多任务，第11次也一次新增并派工4项，协议没有单任务硬上限。
+后续讨论应分别围绕：7次ready候选的事实呈现与预排范围；4次已知后继的条件承诺；13次抽样/跳步的分支语义；已承诺等待任务的时间维护。先区分这些原因，再决定具体改法。
+本次没有修改提示词、接口、调度或触发规则；没有启动模型、求解器、模拟器或新实验。
+本报告没有声称能确定减少11次或任何固定比例的重排，也没有作质量不退化、统计显著或长期产线效果的结论。
+
+可复核证据
+__PROJECT_ROOT__/analysis/B_replan_attribution_20261016/attribution.json：24行因果链、公共事实、请求可见性、原始事件和队列核查。
+__PROJECT_ROOT__/analysis/B_replan_attribution_20261016/queue_witness.json：filter_projection预排、10次替换、实际派工与源文件哈希。
+__PROJECT_ROOT__/analysis/B_replan_attribution_20261016/source_objects.json：baseline已读取内容对象的SHA-256和字节长度。
+__PROJECT_ROOT__/analysis/B_replan_attribution_20261016/queue_source_objects.json：filter_projection已读取内容对象的SHA-256和字节长度。
+__PROJECT_ROOT__/analysis/B_context_2x2_20261016/completion_verification.json：原实验最终核验。
+__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/environment.py：_run_planned_now、_gaps和advance_plan。
+__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/plan_delta.py：past_start及保留任务编译规则。
+__PROJECT_ROOT__/research_harness_efficiency_20261016/m0.5_research/dossier.md：HE-Q02/03与多任务/重排触发研究。
+
+只读校验：baseline内容对象7096个、filter_projection内容对象6816个，解压内容SHA-256全部匹配；被跟踪源文件分析前后哈希一致。SQLite使用mode=ro&immutable=1且WAL为空。
+最终审计已通过物理/来源与已报告成本核验，但原实验存在未知token用量；本分析没有改变该边界。

@@ -1,0 +1,9 @@
+{
+  "calls": 92,
+  "known_input_tokens": 1042448,
+  "known_output_tokens": 9188,
+  "recorded_model_seconds": 2030.4876469532028,
+  "status_success": 92,
+  "action_apply": 46,
+  "action_solve": 46
+}

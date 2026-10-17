@@ -1,0 +1,219 @@
+{
+  "prior_cutoff_utc": "2026-10-12T12:48:19.877397+00:00",
+  "cutoff_utc": "2026-10-17T06:02:18+00:00",
+  "raw_sessions_preserved_privately": 73,
+  "visible_threads": 19,
+  "visible_messages": 2419,
+  "sessions": [
+    {
+      "thread_id": "01a12e07-fae5-70c2-ad30-c126f1f1b178",
+      "title": "分析 Codex 工厂数据排程的缺陷",
+      "classification": "root",
+      "visible_messages": 58,
+      "raw_prefix_sha256": "e5f442b06afd39f4ca7c739fbf4908661d9a405594255beeb7bdea736be14f98",
+      "last_record_timestamp": "2026-10-13T02:47:31.592Z",
+      "transcript_md": "01a12e07-fae5-70c2-ad30-c126f1f1b178.md",
+      "transcript_jsonl": "01a12e07-fae5-70c2-ad30-c126f1f1b178.jsonl",
+      "tool_index": "01a12e07-fae5-70c2-ad30-c126f1f1b178.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13029-0b11-7502-9c9c-6ee138c28cfc",
+      "title": "相关委派会话 01a13029-0b11-7502-9c9c-6ee138c28cfc",
+      "classification": "delegated_subagent",
+      "visible_messages": 11,
+      "raw_prefix_sha256": "6d5b2a90772b22eac22bd8b5a3fd7ca2ffed95390fbb2c7a45c3b9d0ce70f8b2",
+      "last_record_timestamp": "2026-10-13T01:14:31.629Z",
+      "transcript_md": "01a13029-0b11-7502-9c9c-6ee138c28cfc.md",
+      "transcript_jsonl": "01a13029-0b11-7502-9c9c-6ee138c28cfc.jsonl",
+      "tool_index": "01a13029-0b11-7502-9c9c-6ee138c28cfc.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13029-9569-7ae3-b167-e8219fad567d",
+      "title": "相关委派会话 01a13029-9569-7ae3-b167-e8219fad567d",
+      "classification": "delegated_subagent",
+      "visible_messages": 12,
+      "raw_prefix_sha256": "eb2229ba4ee0470c4ce30065a93e67390dec61ca37c71edc278aa3691784b7c7",
+      "last_record_timestamp": "2026-10-13T01:15:32.471Z",
+      "transcript_md": "01a13029-9569-7ae3-b167-e8219fad567d.md",
+      "transcript_jsonl": "01a13029-9569-7ae3-b167-e8219fad567d.jsonl",
+      "tool_index": "01a13029-9569-7ae3-b167-e8219fad567d.tools.jsonl"
+    },
+    {
+      "thread_id": "01a1302a-064a-7cc2-9866-2dfb9176903d",
+      "title": "相关委派会话 01a1302a-064a-7cc2-9866-2dfb9176903d",
+      "classification": "delegated_subagent",
+      "visible_messages": 20,
+      "raw_prefix_sha256": "b874da75c41fc09aa77409320550d82982fc368946fde021b121ad5c2b537985",
+      "last_record_timestamp": "2026-10-13T01:00:13.229Z",
+      "transcript_md": "01a1302a-064a-7cc2-9866-2dfb9176903d.md",
+      "transcript_jsonl": "01a1302a-064a-7cc2-9866-2dfb9176903d.jsonl",
+      "tool_index": "01a1302a-064a-7cc2-9866-2dfb9176903d.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13329-1cde-7151-b922-0bc7d106d746",
+      "title": "整理岗位 JD 与项目成果",
+      "classification": "root",
+      "visible_messages": 69,
+      "raw_prefix_sha256": "731bb4a9ab7466e954b30128a8a1fb726d141a3da43297f85855f060472cc138",
+      "last_record_timestamp": "2026-10-13T08:55:20.905Z",
+      "transcript_md": "01a13329-1cde-7151-b922-0bc7d106d746.md",
+      "transcript_jsonl": "01a13329-1cde-7151-b922-0bc7d106d746.jsonl",
+      "tool_index": "01a13329-1cde-7151-b922-0bc7d106d746.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13332-e2ab-7313-afe4-bf03a57c476b",
+      "title": "相关委派会话 01a13332-e2ab-7313-afe4-bf03a57c476b",
+      "classification": "delegated_subagent",
+      "visible_messages": 3,
+      "raw_prefix_sha256": "4d678f3dcc1cb218cef93a9d25a1fec56533ac1f543ff8998d613cc378193ce0",
+      "last_record_timestamp": "2026-10-13T03:01:19.695Z",
+      "transcript_md": "01a13332-e2ab-7313-afe4-bf03a57c476b.md",
+      "transcript_jsonl": "01a13332-e2ab-7313-afe4-bf03a57c476b.jsonl",
+      "tool_index": "01a13332-e2ab-7313-afe4-bf03a57c476b.tools.jsonl"
+    },
+    {
+      "thread_id": "01a133de-2baa-7b43-9255-4505ed76a83f",
+      "title": "相关委派会话 01a133de-2baa-7b43-9255-4505ed76a83f",
+      "classification": "delegated_subagent",
+      "visible_messages": 3,
+      "raw_prefix_sha256": "ba26e8e73705bb8695b38b6a3670bace5678535acfa422304707cfac8340a8a1",
+      "last_record_timestamp": "2026-10-13T06:09:15.640Z",
+      "transcript_md": "01a133de-2baa-7b43-9255-4505ed76a83f.md",
+      "transcript_jsonl": "01a133de-2baa-7b43-9255-4505ed76a83f.jsonl",
+      "tool_index": "01a133de-2baa-7b43-9255-4505ed76a83f.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13464-9d4d-7681-a505-6975a987b7a5",
+      "title": "相关委派会话 01a13464-9d4d-7681-a505-6975a987b7a5",
+      "classification": "delegated_subagent",
+      "visible_messages": 3,
+      "raw_prefix_sha256": "c793b658a9938d1f7c3fd38dc98b19f46aee8cf08f057ef12fb9e7608d537fb4",
+      "last_record_timestamp": "2026-10-13T08:44:32.102Z",
+      "transcript_md": "01a13464-9d4d-7681-a505-6975a987b7a5.md",
+      "transcript_jsonl": "01a13464-9d4d-7681-a505-6975a987b7a5.jsonl",
+      "tool_index": "01a13464-9d4d-7681-a505-6975a987b7a5.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13464-e435-7da3-92d7-739345adaea2",
+      "title": "相关委派会话 01a13464-e435-7da3-92d7-739345adaea2",
+      "classification": "delegated_subagent",
+      "visible_messages": 4,
+      "raw_prefix_sha256": "d532aa0c044523de63abae6a6e10bab57551ece9bf0175544b7c1fa6e59ce51e",
+      "last_record_timestamp": "2026-10-13T08:47:41.881Z",
+      "transcript_md": "01a13464-e435-7da3-92d7-739345adaea2.md",
+      "transcript_jsonl": "01a13464-e435-7da3-92d7-739345adaea2.jsonl",
+      "tool_index": "01a13464-e435-7da3-92d7-739345adaea2.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13486-cf63-7280-a273-edb7586b20b8",
+      "title": "复查工厂数据 A/B/C 一小时仿真",
+      "classification": "root",
+      "visible_messages": 24,
+      "raw_prefix_sha256": "eb936de6fd6e0f5e4564bdc08988ac9bc1f2e7e1298b5a68e0cebfeaa1019838",
+      "last_record_timestamp": "2026-10-13T13:50:12.577Z",
+      "transcript_md": "01a13486-cf63-7280-a273-edb7586b20b8.md",
+      "transcript_jsonl": "01a13486-cf63-7280-a273-edb7586b20b8.jsonl",
+      "tool_index": "01a13486-cf63-7280-a273-edb7586b20b8.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13496-af86-7051-8f17-d034c7ed699b",
+      "title": "拉取最新推送到本地",
+      "classification": "root",
+      "visible_messages": 16,
+      "raw_prefix_sha256": "8959ffd468dd7439e86b1c9c3fb3bcdd43ef18885e94d211e9a7daef8f85b7d3",
+      "last_record_timestamp": "2026-10-13T09:45:45.749Z",
+      "transcript_md": "01a13496-af86-7051-8f17-d034c7ed699b.md",
+      "transcript_jsonl": "01a13496-af86-7051-8f17-d034c7ed699b.jsonl",
+      "tool_index": "01a13496-af86-7051-8f17-d034c7ed699b.tools.jsonl"
+    },
+    {
+      "thread_id": "01a1359d-9f30-7b11-9da2-0fbfaced77d5",
+      "title": "完善 Harness 设计",
+      "classification": "root",
+      "visible_messages": 27,
+      "raw_prefix_sha256": "e2ec8a94b033654dc6137047b78fcd6507a9097a8ff17f413b9d5971d06c23d2",
+      "last_record_timestamp": "2026-10-14T00:48:12.692Z",
+      "transcript_md": "01a1359d-9f30-7b11-9da2-0fbfaced77d5.md",
+      "transcript_jsonl": "01a1359d-9f30-7b11-9da2-0fbfaced77d5.jsonl",
+      "tool_index": "01a1359d-9f30-7b11-9da2-0fbfaced77d5.tools.jsonl"
+    },
+    {
+      "thread_id": "01a135a3-efc0-7860-bb8f-850df3d5affe",
+      "title": "相关委派会话 01a135a3-efc0-7860-bb8f-850df3d5affe",
+      "classification": "delegated_subagent",
+      "visible_messages": 5,
+      "raw_prefix_sha256": "c5ef16581aff4fec93652b1808ccafa15db44f735125068b8dce9dff2e705254",
+      "last_record_timestamp": "2026-10-13T14:24:49.349Z",
+      "transcript_md": "01a135a3-efc0-7860-bb8f-850df3d5affe.md",
+      "transcript_jsonl": "01a135a3-efc0-7860-bb8f-850df3d5affe.jsonl",
+      "tool_index": "01a135a3-efc0-7860-bb8f-850df3d5affe.tools.jsonl"
+    },
+    {
+      "thread_id": "01a135d0-ec18-7243-a9c9-0aee9f47c35d",
+      "title": "Read Codex goal objective",
+      "classification": "root",
+      "visible_messages": 115,
+      "raw_prefix_sha256": "58fa77d3b21dd86b22621feeed369d8e547d5609b3f733809723aabf5c43c38a",
+      "last_record_timestamp": "2026-10-14T02:59:49.250Z",
+      "transcript_md": "01a135d0-ec18-7243-a9c9-0aee9f47c35d.md",
+      "transcript_jsonl": "01a135d0-ec18-7243-a9c9-0aee9f47c35d.jsonl",
+      "tool_index": "01a135d0-ec18-7243-a9c9-0aee9f47c35d.tools.jsonl"
+    },
+    {
+      "thread_id": "01a137e7-e616-7640-88ea-995e55ede37c",
+      "title": "查看 harness 构建进展",
+      "classification": "root",
+      "visible_messages": 1366,
+      "raw_prefix_sha256": "e67e390677194b9c7a4ac9817736e217cd3cba19c92b3657c634314cce3095bf",
+      "last_record_timestamp": "2026-10-16T01:47:27.292Z",
+      "transcript_md": "01a137e7-e616-7640-88ea-995e55ede37c.md",
+      "transcript_jsonl": "01a137e7-e616-7640-88ea-995e55ede37c.jsonl",
+      "tool_index": "01a137e7-e616-7640-88ea-995e55ede37c.tools.jsonl"
+    },
+    {
+      "thread_id": "01a139c5-d433-7962-99c9-11dc439b2440",
+      "title": "查看 Codex 开发进度",
+      "classification": "root",
+      "visible_messages": 27,
+      "raw_prefix_sha256": "ff90c4109406a6655936722597f41964bf3c20e97c7dc76f25c25fd888725bce",
+      "last_record_timestamp": "2026-10-15T05:33:31.586Z",
+      "transcript_md": "01a139c5-d433-7962-99c9-11dc439b2440.md",
+      "transcript_jsonl": "01a139c5-d433-7962-99c9-11dc439b2440.jsonl",
+      "tool_index": "01a139c5-d433-7962-99c9-11dc439b2440.tools.jsonl"
+    },
+    {
+      "thread_id": "01a13f88-0a83-70a3-b69f-948c3087ef60",
+      "title": "确认机组完成后排程触发方式",
+      "classification": "root",
+      "visible_messages": 316,
+      "raw_prefix_sha256": "4030a2d43dc5e9605420699aa57176e5d221ef2dc2c6439b4fecdc8ff658d039",
+      "last_record_timestamp": "2026-10-16T07:17:50.756Z",
+      "transcript_md": "01a13f88-0a83-70a3-b69f-948c3087ef60.md",
+      "transcript_jsonl": "01a13f88-0a83-70a3-b69f-948c3087ef60.jsonl",
+      "tool_index": "01a13f88-0a83-70a3-b69f-948c3087ef60.tools.jsonl"
+    },
+    {
+      "thread_id": "01a14356-437b-7562-a5da-27cb4824b518",
+      "title": "查看实验进展",
+      "classification": "root",
+      "visible_messages": 30,
+      "raw_prefix_sha256": "572cbba3a4b2903977af0d8497315b1555a62267ca86902508ed11f4d484ba24",
+      "last_record_timestamp": "2026-10-16T07:32:25.853Z",
+      "transcript_md": "01a14356-437b-7562-a5da-27cb4824b518.md",
+      "transcript_jsonl": "01a14356-437b-7562-a5da-27cb4824b518.jsonl",
+      "tool_index": "01a14356-437b-7562-a5da-27cb4824b518.tools.jsonl"
+    },
+    {
+      "thread_id": "01a14391-778b-7b82-8db6-f23d775e8e71",
+      "title": "查找 Codex 会话最后输出",
+      "classification": "root",
+      "visible_messages": 310,
+      "raw_prefix_sha256": "c70feca1574b12be1e78a328c6332610369df7b0befd5ca7b1deb065edcbfba0",
+      "last_record_timestamp": "2026-10-17T05:50:57.817Z",
+      "transcript_md": "01a14391-778b-7b82-8db6-f23d775e8e71.md",
+      "transcript_jsonl": "01a14391-778b-7b82-8db6-f23d775e8e71.jsonl",
+      "tool_index": "01a14391-778b-7b82-8db6-f23d775e8e71.tools.jsonl"
+    }
+  ],
+  "scope": "Incremental visible messages only; private raw prefixes preserve source line references. No raw rollout or operational guardian content is public."
+}

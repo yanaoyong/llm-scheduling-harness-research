@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "archive": "followup-evidence-20261017.cas.tar.zst",
+  "archive_sha256": "a518bb950e8a52dd2687ae753251a0c80fd96f5226b6b9af1e0185a11c7fb003",
+  "compressed_bytes": 3389840451,
+  "objects": 128088,
+  "logical_file_paths": 1509863,
+  "elapsed_seconds": 42.53699707984924
+}

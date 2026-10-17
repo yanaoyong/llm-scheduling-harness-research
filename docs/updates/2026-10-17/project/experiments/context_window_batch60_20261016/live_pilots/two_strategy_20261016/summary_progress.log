@@ -1,0 +1,53 @@
+{
+  "common_window": [
+    702.0,
+    768.0
+  ],
+  "both_reached_target": false,
+  "groups": {
+    "G1": {
+      "total_calls": 8,
+      "observed_seconds": 66.0,
+      "model_commits": 2,
+      "planning_stop_counts": {
+        "plan_runway": 2
+      },
+      "common_window_quality": {
+        "observed_seconds": 66.0,
+        "weighted_tardy_lot_seconds": 660.0,
+        "throughput_lots": 0,
+        "throughput_wafers": 0,
+        "setup_loss_seconds": 4488.0,
+        "batch_fill_mean": null,
+        "terminal_wip_lots": 2177,
+        "queue_wait_lot_seconds": 67125.0,
+        "production_dispatches": 5,
+        "operation_lots_dispatched": 5,
+        "unreserved_machine_seconds": 6784.499999999999,
+        "executable_unplanned_machine_seconds": 52.499999999999886
+      }
+    },
+    "G2": {
+      "total_calls": 6,
+      "observed_seconds": 66.0,
+      "model_commits": 2,
+      "planning_stop_counts": {
+        "plan_runway": 2
+      },
+      "common_window_quality": {
+        "observed_seconds": 66.0,
+        "weighted_tardy_lot_seconds": 660.0,
+        "throughput_lots": 0,
+        "throughput_wafers": 0,
+        "setup_loss_seconds": 4488.0,
+        "batch_fill_mean": null,
+        "terminal_wip_lots": 2177,
+        "queue_wait_lot_seconds": 67072.5,
+        "production_dispatches": 5,
+        "operation_lots_dispatched": 5,
+        "unreserved_machine_seconds": 6732.0,
+        "executable_unplanned_machine_seconds": 0.0
+      }
+    }
+  }
+}

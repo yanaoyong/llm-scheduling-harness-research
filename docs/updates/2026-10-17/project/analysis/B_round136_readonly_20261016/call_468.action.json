@@ -1,0 +1,7 @@
+{
+  "tool": "apply_candidate",
+  "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+  "request_id": "apply-136",
+  "candidate_ref": "candidate:4b059ab957c7437ba77b5132",
+  "selection_note": "Dispatch ready operation w1091:314:1 on idle eligible machine 312; reassess by 2718.0688794189255. Dynamic feasibility remains uncertified."
+}

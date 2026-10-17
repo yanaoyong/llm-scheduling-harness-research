@@ -1,5 +1,7 @@
 # 证据索引
 
+> 2026-10-17 更新：后续会话、Harness 验收与窗口实验见 [增量归档](updates/2026-10-17/README.md)。下文继续保留原历史快照及其日期。
+
 **2026-10-13 补充：**[精简证据包使用说明](LEAN_EVIDENCE.md) 提供公开 Release 的下载、校验、目录还原、SQLite 查询与私有版边界。下文保留原始归档的历史说明。
 
 以下链接指向归档内 `source_snapshot/` 的公开脱敏副本，便于离开原工作目录后阅读。历史原始来源和 SHA256 见 `manifests/source_snapshot.json`；它们不能用来校验脱敏后的字节。当前公开哈希见 `publication/manifest.json`；标注的 L 行号用于定位原始源文件。

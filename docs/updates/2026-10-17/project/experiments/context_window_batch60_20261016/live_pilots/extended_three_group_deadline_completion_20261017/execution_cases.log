@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/extract_execution_cases.py", line 31, in <module>
+    assert out['G2']['model_calls_between_boundaries']==[40,41,42,43]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

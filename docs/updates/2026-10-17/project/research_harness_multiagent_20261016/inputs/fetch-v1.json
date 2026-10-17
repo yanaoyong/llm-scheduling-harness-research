@@ -1,0 +1,112 @@
+{
+  "phase": "fetch",
+  "sources": [
+    {
+      "source_id": "F01",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q04"
+      ],
+      "project": "Manager delegation: Anthropic research and OpenAI ownership",
+      "refs": [
+        "https://www.anthropic.com/engineering/multi-agent-research-system",
+        "https://developers.openai.com/api/docs/guides/agents/orchestration"
+      ],
+      "focus": "角色/委派消息、上下文压缩、artifact引用、同步障碍；90.2%与15x分母；handoff不等于全局冲突解决。最多两条限定机制命题，不把厂商案例当等预算排程实验。"
+    },
+    {
+      "source_id": "F02",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q02",
+        "MA-Q03"
+      ],
+      "project": "Deep Agents / LangGraph shared state mechanics",
+      "refs": [
+        "https://docs.langchain.com/oss/python/deepagents/subagents",
+        "https://docs.langchain.com/oss/python/langgraph/use-subgraphs",
+        "https://docs.langchain.com/oss/python/langgraph/errors/INVALID_CONCURRENT_GRAPH_UPDATE"
+      ],
+      "focus": "独立子上下文/结果回传，共享或转换state keys，reducer并发更新；区分上下文合并与业务资源冲突仲裁，不能把append reducer当全局计划可行性。按官方文档实际路径回退。"
+    },
+    {
+      "source_id": "F03",
+      "q_ids": [
+        "MA-Q02",
+        "MA-Q04"
+      ],
+      "project": "Shared context empirical evidence: CoMemBench and DeLM",
+      "refs": [
+        "https://arxiv.org/html/2609.32192v2",
+        "https://yuzhenmao.github.io/DeLM/"
+      ],
+      "focus": "主线CoMemBench共享/隔离边界、过期信息、拓扑条件与token；补DeLM具体共享任务队列、FACT/FAIL/DONE及cost/task vs cost/submission。必要时作者页直链论文/code。限定样本/版本，不把每提交成本冒充每任务成本，选定任务偏差/独立完整提交语义须披露。"
+    },
+    {
+      "source_id": "F04",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q03"
+      ],
+      "project": "Classic non-LLM manufacturing coordination",
+      "refs": [
+        "https://publications.ri.cmu.edu/storage/publications/pub_files/pub3/liu_jyi_shane_1996_1/liu_jyi_shane_1996_1.pdf",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0205445",
+        "https://bibliotecadigital.ipb.pt/bitstream/10198/1529/1/2006-CompIndustry.pdf"
+      ],
+      "focus": "重点精读PLOS局部排程-全局冲突识别-资源协调循环；CMU/ADACOR补跨区耦合、循环冲突、监督与异构切换。明确哪些传统算法实际选任务/排序、不能当LLM调用节省。最多8打开，读不完标partial。"
+    },
+    {
+      "source_id": "F05",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q02",
+        "MA-Q03",
+        "MA-Q04"
+      ],
+      "project": "ALAS transactional dynamic planning",
+      "refs": [
+        "https://arxiv.org/html/2511.03094v1"
+      ],
+      "focus": "重点§3、§4表格、必要附录。validator隔离、版本日志、局部修复；具体JSSP分工与决策者、共享资源如何协调、确定性修复是否选择具体排程。83.7%/60%/1.82x分别对应什么任务/基线/分母？成功定义、makespan、重试及代码可得性。不要把摘要总值默认为全部JSSP。"
+    },
+    {
+      "source_id": "F06",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q04"
+      ],
+      "project": "CP model generation single vs multi-agent scheduling study",
+      "refs": [
+        "https://arxiv.org/html/2610.10184v1"
+      ],
+      "focus": "2026-10-07 v1；三workflow映射及54设置x3replicate；建模/编码agent职责、CP真实调度者。14.8/59.3的正确率定义非仅脚本运行。精读表8/9总input/output/时间/工具调用、缺失5run token的处置。不把一次direct LLM当等能力单agent，不把建模正确率等于本厂排程质量。"
+    },
+    {
+      "source_id": "F07",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q04"
+      ],
+      "project": "Agent scaling controlled study and version corrections",
+      "refs": [
+        "https://arxiv.org/html/2512.08296v3",
+        "https://github.com/ybkim95/agent-scaling"
+      ],
+      "focus": "v3 260配置6基准，旧v1/博客180/4不可混。仓库README称Nature论文改题、v2.2.3修分析脚本vs稿件v2.1.3，核对CHANGELOG具体修正是否影响关键结论。找名义与实际预算、协调开销、顺序任务退化及质量-费用。不同版本差异留痕，优先范围有限机制结论，勿把45%当通用阈值。"
+    },
+    {
+      "source_id": "F08",
+      "q_ids": [
+        "MA-Q04"
+      ],
+      "project": "Equal-inference and equal-thinking counter-evidence",
+      "refs": [
+        "https://arxiv.org/abs/2609.04217",
+        "https://arxiv.org/abs/2604.02460"
+      ],
+      "focus": "进入原文HTML/PDF；查两论文比较设计、预算到底匹配什么、单agent是否相同模型/工具/角色预算、任务样本、重试/成本、统计限制。重点反证：matched calls不等于matched tokens/cost/latency；不要用非排程结果断言排程必败。"
+    }
+  ],
+  "internal_brief": "本厂B为模型直接决定lot、机台、批次、顺序、等待的排程路线。已有隔离快照支持单次propose_delta含多机多任务。旧实验观察：宽读取造成翻页/上下文压力，两个改动组74次成功调用全为读取且0提案；等长回放未完成，不能下收益结论。历史单任务短覆盖常因未覆盖需求重入模。此次只做研究，不读原始工厂数据、不访问live B、不跑排程。需比较单agent与辅助分析、局部提案统一裁决、分布式协商；所有具体排程决策者都须披露。旧证据仅是继承背景，不能冒充新复现。\n"
+}

@@ -1,0 +1,77 @@
+{
+  "all_pass": true,
+  "epoch": 1792132433.805994,
+  "remote_model_calls_in_verification": 0,
+  "all_four_initial_bytes_and_configs_equal": true,
+  "frozen_active_control_source_verified": true,
+  "original_source_files_unchanged": 498,
+  "live_B_write_or_process_actions": 0,
+  "rows": [
+    {
+      "case": "singleton_2403__baseline",
+      "result_sha256": "3dca1e066ce4b8d8960545a04998daaeb9cde58c9df47a1698dbdb79b7742ed4",
+      "original_result_sha256": "862a71a776d483122dfc8594e612f47c575c08ab13c16064d565f917ba1636e7",
+      "audit_metadata_only_repair_verified": true,
+      "evidence_sha256": "fd3f9bde85bf1131c72359bbb8bb0bea8f5e187370341786726a6c5377f4ac87",
+      "actual_calls": 78,
+      "known_reported_tokens": 2962796,
+      "unknown_usage": 1,
+      "complete_common_window": true,
+      "physical_and_provenance_valid": true,
+      "strict_zero_unknown_cost_audit": false,
+      "known_accounting_and_closed_failures_verified": true
+    },
+    {
+      "case": "singleton_2403__filter_projection",
+      "result_sha256": "19d072a9b5b943893ae10b6e4110920a2f7784bd840c2f6d3b4e538d795e5f9c",
+      "original_result_sha256": "db23112412e1c6c6c27dec557ecd642d37bfbdca8c7d71b12dfa22ab7f8d6948",
+      "audit_metadata_only_repair_verified": true,
+      "evidence_sha256": "f9af2b160fda6cde047b1e6d37b0fa4f54c9457235d9b9345a7bd04105d6b718",
+      "actual_calls": 80,
+      "known_reported_tokens": 2422176,
+      "unknown_usage": 6,
+      "complete_common_window": true,
+      "physical_and_provenance_valid": true,
+      "strict_zero_unknown_cost_audit": false,
+      "known_accounting_and_closed_failures_verified": true
+    },
+    {
+      "case": "singleton_2403__targeted_recovery",
+      "result_sha256": "6883abc538ff642447a6d5cf59fdf6cf02b7b103c68c89e9b1664e482a2bde4d",
+      "original_result_sha256": "bf72730323afcde18eadb2c475c7a19cd182b088d29c9a16b170bad059f188bb",
+      "audit_metadata_only_repair_verified": true,
+      "evidence_sha256": "c45bc54f12d501bb8591fbcbd2facf6577c92cae098fb8ecec399727998d8aef",
+      "actual_calls": 88,
+      "known_reported_tokens": 2845518,
+      "unknown_usage": 2,
+      "complete_common_window": true,
+      "physical_and_provenance_valid": true,
+      "strict_zero_unknown_cost_audit": false,
+      "known_accounting_and_closed_failures_verified": true
+    },
+    {
+      "case": "singleton_2403__combined",
+      "result_sha256": "9ae1b2a5c695ee7feeb555767ed5fe3479f01bf859578b68f9e93fa48be2e484",
+      "original_result_sha256": "d37fa58f0b7ced88c5beda341df110fb71b35caf86b96f00b27a65c7fc18c705",
+      "audit_metadata_only_repair_verified": true,
+      "evidence_sha256": "09945552511ac3f50ac3325c792708e0e0b7af61298e843904d5637cf23a4ddd",
+      "actual_calls": 81,
+      "known_reported_tokens": 2505967,
+      "unknown_usage": 4,
+      "complete_common_window": true,
+      "physical_and_provenance_valid": true,
+      "strict_zero_unknown_cost_audit": false,
+      "known_accounting_and_closed_failures_verified": true
+    }
+  ],
+  "analysis_artifact_sha256": {
+    "完整实验结论.txt": "fc0a8791c9f45e68723b2065f8b1fa31ddd71e28a79affd232da243ebfd1e842",
+    "实验结果.txt": "442c1fac40dbc33779b38ed3ca941124d236aab184edfda862d8535f5b7a3ca3",
+    "behavior_diagnostics.json": "7d67dcb840afeaf3b0178e77e5694657914b0d0fee08724b2ccd6194cf9597fc",
+    "dispatch_diagnostics.json": "b3b5317b7dff60f2ff95ea71b2a241a5ae5640dbaa1621a8d4405a0b5d873db2",
+    "context_input_breakdown.json": "c1f29dd852a12ce5353f3a61826a94293d5dd48644f3e12a9b7164b7cba2a2cb"
+  },
+  "summary_sha256": "dc88fb4edbae5eceff2452b8989088e6d4b8ad0c0ebe15b6c6ce6b758e13a747",
+  "registration_sha256": "74a18fbca93199c354a346aa8e02d9bdd212efe2d3c6eaa2bff91e819560fd9d",
+  "recovery_amendment_sha256": "638f7f7065586b31ff31683635fb378754250cfc4ed0ebefc97ff44925c80d38"
+}

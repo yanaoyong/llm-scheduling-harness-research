@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "archive_sha256": "a518bb950e8a52dd2687ae753251a0c80fd96f5226b6b9af1e0185a11c7fb003",
+  "objects_verified": 128088,
+  "unique_bytes": 5644858887,
+  "file_paths": 1509863,
+  "nonfile_inventory_records": 0,
+  "scope": "Regular-file bytes, hashes, modes and modification times; symlinks and directories recorded in private inventory are not materialized. No scripts, models, solvers or SQL are executed.",
+  "verification_performed_during": "restore smoke check; every package object and inventory reference was verified before selected restoration"
+}

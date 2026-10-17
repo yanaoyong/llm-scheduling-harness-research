@@ -1,0 +1,12 @@
+test_cutoff_preserves_original_horizon_and_offline_default (tests.test_capacity_live_pilot.LiveAdmissionTests.test_cutoff_preserves_original_horizon_and_offline_default) ... ok
+test_flag_alone_is_not_authority (tests.test_capacity_live_pilot.LiveAdmissionTests.test_flag_alone_is_not_authority) ... ok
+test_frozen_config_and_registration (tests.test_capacity_live_pilot.LiveAdmissionTests.test_frozen_config_and_registration) ... ok
+test_registration_tamper_rejected (tests.test_capacity_live_pilot.LiveAdmissionTests.test_registration_tamper_rejected) ... ok
+test_saved_state_and_source_are_bound (tests.test_capacity_live_pilot.LiveAdmissionTests.test_saved_state_and_source_are_bound) ... ok
+test_model_and_original_store_rejected_before_effects (tests.test_capacity_batch60_experiment.CapacityAndIsolationTests.test_model_and_original_store_rejected_before_effects) ... ok
+test_production_entrypoint_cannot_reserve_model_attempt (tests.test_capacity_batch60_experiment.RuntimeIntegrationTests.test_production_entrypoint_cannot_reserve_model_attempt) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 4.758s
+
+OK

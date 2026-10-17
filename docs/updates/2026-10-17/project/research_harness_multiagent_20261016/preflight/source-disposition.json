@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-16T00:32:22.864929+00:00",
+  "source_A": {
+    "wiki_exists": false,
+    "wiki_background_exists": false,
+    "fallback": "rg prior reports and named isolated transport.py",
+    "actual_owner_code_reads": [
+      "transport.py rg for propose_delta/machine_queues/plan/action/version/snapshot/validate/commit",
+      "transport.py lines20-64; no import or execution"
+    ],
+    "prior_research": "dossier/open-questions inherited from completed efficiency study; no simulation rerun"
+  },
+  "source_C": {
+    "coverage": "explicit_na",
+    "na_reason": "No new user-curated external source documents supplied; previous research is A",
+    "corpus_write": "none"
+  },
+  "execution_declaration": "Only this new research directory mutated; no live B access, simulation, factory imports or process control. This is executor scope declaration, not independent environment certification."
+}

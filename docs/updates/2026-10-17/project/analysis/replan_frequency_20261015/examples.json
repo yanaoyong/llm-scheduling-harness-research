@@ -1,0 +1,381 @@
+{
+  "captured_local": "2026-10-15T20:34:14.549919+08:00",
+  "examples": [
+    {
+      "execution_interval": {
+        "ordinal": 135,
+        "feedback_ref": "89c543aa2b4ce5d2bbed01e5e83a5631a27844848ee0fe7a1721950b9302c439",
+        "commit_id": "commit:40341fa916214fc0a7f9d155",
+        "plan_version": "dispatch-135",
+        "context_ref": "context:bc93baaf3ba044ac91d4ab16",
+        "from": 2594.7701543790963,
+        "to": 2598.0688794189255,
+        "advanced_seconds": 3.2987250398291508,
+        "stop_reason": "uncovered_demand",
+        "trigger_entering_context": {
+          "machines": [
+            {
+              "candidate_count": 1,
+              "family": "WE_BE_82",
+              "machine": 1234
+            },
+            {
+              "candidate_count": 1,
+              "family": "WE_BE_82",
+              "machine": 1235
+            },
+            {
+              "candidate_count": 1,
+              "family": "WE_BE_82",
+              "machine": 1236
+            },
+            {
+              "candidate_count": 1,
+              "family": "WE_BE_82",
+              "machine": 1238
+            },
+            {
+              "candidate_count": 1,
+              "family": "WE_BE_82",
+              "machine": 1240
+            },
+            {
+              "candidate_count": 1,
+              "family": "WE_BE_82",
+              "machine": 1241
+            }
+          ],
+          "reason": "uncovered_demand",
+          "time": 2594.7701543790963
+        },
+        "gap_count": 2,
+        "gap_machines": [
+          {
+            "candidate_count": 1,
+            "family": "DefMet_BE_33",
+            "machine": 312
+          },
+          {
+            "candidate_count": 1,
+            "family": "DefMet_BE_33",
+            "machine": 313
+          }
+        ],
+        "calls": 3,
+        "call_numbers": [
+          463,
+          464,
+          465
+        ],
+        "known_tokens": 101062,
+        "model_seconds": 147.53047312400304,
+        "plan_valid_seconds": 120.0,
+        "plan_remaining_at_stop": 116.70127496017085,
+        "plan_task_count": 1,
+        "plan_machine_count": 1,
+        "max_machine_queue_depth": 1,
+        "plan_hold_count": 0,
+        "holds_expiring_at_stop": [],
+        "tasks_starting_after_commit": 0,
+        "tasks_remaining_at_stop": 0,
+        "dispatch_count": 1,
+        "completed_operations": 1,
+        "end_event_kinds": {
+          "operation_complete": 1,
+          "ready": 1,
+          "coverage_gap": 1
+        },
+        "reason_text": "Dispatch sole ready nonconditional WE_BE_82 operation w495:479:1 on idle eligible machine 1234 now; reassess within 120 seconds."
+      },
+      "prior_context_object_ref": "d56e05714aa303fea678780fd3d8fa968c69ab72f0bb6c72c0cc87137e081e33",
+      "prior_public_gap_machine_observations": [
+        {
+          "availability_basis": "observed state + source means + elapsed past downtime; unknown future events excluded",
+          "available_at": 2594.7701543790963,
+          "cascading": false,
+          "current_setup": "",
+          "currently_busy": false,
+          "currently_down": false,
+          "family": "DefMet_BE_33",
+          "machine": 312,
+          "min_left": 0,
+          "min_setup": "",
+          "processing_until": [],
+          "unavailable_intervals": []
+        },
+        {
+          "availability_basis": "observed state + source means + elapsed past downtime; unknown future events excluded",
+          "available_at": 2594.7701543790963,
+          "cascading": false,
+          "current_setup": "",
+          "currently_busy": false,
+          "currently_down": false,
+          "family": "DefMet_BE_33",
+          "machine": 313,
+          "min_left": 0,
+          "min_setup": "",
+          "processing_until": [],
+          "unavailable_intervals": []
+        }
+      ],
+      "matching_public_operations_count": 2,
+      "sample_operations": [
+        {
+          "batch_key": [
+            "part_4",
+            314,
+            "611_Def_Met"
+          ],
+          "batch_max": 1,
+          "batch_min": 1,
+          "conditional": true,
+          "conditional_virtual_successors": [],
+          "due": 295215.0,
+          "eligible_machines": [
+            312,
+            313
+          ],
+          "family": "DefMet_BE_33",
+          "initial_virtual_predecessors": [],
+          "lot_id": "w1091",
+          "occupation_seconds": 830.28,
+          "operation_id": "w1091:314:1",
+          "predecessor_ids": [],
+          "priority": 10,
+          "processing_seconds": 830.28,
+          "qualification_basis": "source family eligibility",
+          "release_time": 2715.594861104115,
+          "remaining_work_seconds": 108524.88,
+          "rework_percent": 0,
+          "sampling_percent": 10.0,
+          "setup": "",
+          "setup_time": null,
+          "step": 314,
+          "terminal": false,
+          "transport_seconds": 450.0,
+          "visit": 1,
+          "waiting_since": 0.0
+        },
+        {
+          "batch_key": [
+            "part_4",
+            315,
+            "612_Wet_Etch"
+          ],
+          "batch_max": 1,
+          "batch_min": 1,
+          "conditional": true,
+          "due": 295215.0,
+          "eligible_machines": [
+            1233,
+            1234,
+            1235,
+            1236,
+            1237,
+            1238,
+            1239,
+            1240,
+            1241
+          ],
+          "family": "WE_BE_82",
+          "initial_virtual_predecessors": [],
+          "lot_id": "w1091",
+          "occupation_seconds": 749.25,
+          "operation_id": "w1091:315:1",
+          "predecessor_ids": [
+            "w1091:314:1"
+          ],
+          "priority": 10,
+          "processing_seconds": 879.24,
+          "qualification_basis": "source family eligibility",
+          "release_time": 2594.7701543790963,
+          "remaining_work_seconds": 107765.64,
+          "rework_percent": 0,
+          "sampling_percent": 100,
+          "setup": "",
+          "setup_time": null,
+          "step": 315,
+          "terminal": false,
+          "transport_seconds": 450.0,
+          "visit": 1,
+          "waiting_since": 0.0
+        }
+      ]
+    },
+    {
+      "execution_interval": {
+        "ordinal": 136,
+        "feedback_ref": "2ce00eaf409d364ecb649b6912e833b3b9bcbc95c2c6973d13a83c0b3181acc4",
+        "commit_id": "commit:c4535b4ff1b34b46aa1f05ce",
+        "plan_version": "dispatch-136",
+        "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+        "from": 2598.0688794189255,
+        "to": 2598.156,
+        "advanced_seconds": 0.08712058107448684,
+        "stop_reason": "uncovered_demand",
+        "trigger_entering_context": {
+          "machines": [
+            {
+              "candidate_count": 1,
+              "family": "DefMet_BE_33",
+              "machine": 312
+            },
+            {
+              "candidate_count": 1,
+              "family": "DefMet_BE_33",
+              "machine": 313
+            }
+          ],
+          "reason": "uncovered_demand",
+          "time": 2598.0688794189255
+        },
+        "gap_count": 1,
+        "gap_machines": [
+          {
+            "candidate_count": 74,
+            "family": "Dielectric_BE_27",
+            "machine": 747
+          }
+        ],
+        "calls": 3,
+        "call_numbers": [
+          466,
+          467,
+          468
+        ],
+        "known_tokens": 102376,
+        "model_seconds": 121.91771583398804,
+        "plan_valid_seconds": 120.0,
+        "plan_remaining_at_stop": 119.91287941892551,
+        "plan_task_count": 1,
+        "plan_machine_count": 1,
+        "max_machine_queue_depth": 1,
+        "plan_hold_count": 0,
+        "holds_expiring_at_stop": [],
+        "tasks_starting_after_commit": 0,
+        "tasks_remaining_at_stop": 0,
+        "dispatch_count": 1,
+        "completed_operations": 0,
+        "end_event_kinds": {
+          "coverage_gap": 1
+        },
+        "reason_text": "Dispatch sole ready nonconditional DefMet_BE_33 operation w1091:314:1 on idle eligible machine 312 now; reassess within 120 seconds."
+      },
+      "prior_context_object_ref": "0cc0fe1cbb133efa24790822073833cc2adf0d659c3294a1e2091fa00367c9db",
+      "prior_public_gap_machine_observations": [
+        {
+          "availability_basis": "observed state + source means + elapsed past downtime; unknown future events excluded",
+          "available_at": 2599.0688794189255,
+          "cascading": true,
+          "current_setup": "",
+          "currently_busy": true,
+          "currently_down": false,
+          "family": "Dielectric_BE_27",
+          "machine": 747,
+          "min_left": 0,
+          "min_setup": "",
+          "processing_until": [
+            3006.8399999999997
+          ],
+          "unavailable_intervals": []
+        }
+      ],
+      "matching_public_operations_count": 74,
+      "sample_operations": [
+        {
+          "batch_key": [
+            "part_4",
+            312,
+            "609_Dielectric"
+          ],
+          "batch_max": 1,
+          "batch_min": 1,
+          "conditional": false,
+          "conditional_virtual_successors": [],
+          "due": 326230.0,
+          "eligible_machines": [
+            738,
+            739,
+            740,
+            741,
+            742,
+            743,
+            744,
+            745,
+            746,
+            747,
+            748,
+            749
+          ],
+          "family": "Dielectric_BE_27",
+          "initial_virtual_predecessors": [],
+          "lot_id": "w1093",
+          "occupation_seconds": 2949.372,
+          "operation_id": "w1093:312:1",
+          "predecessor_ids": [],
+          "priority": 10,
+          "processing_seconds": 3397.08,
+          "qualification_basis": "source family eligibility",
+          "release_time": 2598.0688794189255,
+          "remaining_work_seconds": 111387.6,
+          "rework_percent": 0,
+          "sampling_percent": 100,
+          "setup": "",
+          "setup_time": null,
+          "step": 312,
+          "terminal": false,
+          "transport_seconds": 450.0,
+          "visit": 1,
+          "waiting_since": 0.0
+        },
+        {
+          "batch_key": [
+            "part_4",
+            296,
+            "585_Dielectric"
+          ],
+          "batch_max": 1,
+          "batch_min": 1,
+          "conditional": false,
+          "conditional_virtual_successors": [],
+          "due": 403768.0,
+          "eligible_machines": [
+            738,
+            739,
+            740,
+            741,
+            742,
+            743,
+            744,
+            745,
+            746,
+            747,
+            748,
+            749
+          ],
+          "family": "Dielectric_BE_27",
+          "initial_virtual_predecessors": [],
+          "lot_id": "w1098",
+          "occupation_seconds": 2598.156,
+          "operation_id": "w1098:296:1",
+          "predecessor_ids": [],
+          "priority": 10,
+          "processing_seconds": 3006.8399999999997,
+          "qualification_basis": "source family eligibility",
+          "release_time": 2598.0688794189255,
+          "remaining_work_seconds": 158896.8,
+          "rework_percent": 0,
+          "sampling_percent": 100,
+          "setup": "",
+          "setup_time": null,
+          "step": 296,
+          "terminal": false,
+          "transport_seconds": 450.0,
+          "visit": 1,
+          "waiting_since": 0.0
+        }
+      ]
+    }
+  ],
+  "interpretation_limit": "Public forecast times are not exact future completions. Conditional operations can require new observations. These examples do not quantify avoidable replans or prove a counterfactual savings."
+}

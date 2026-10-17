@@ -1,0 +1,7 @@
+{
+  "error": "KeyError stop_reason in Runtime.check_admission; context recovery had removed required nullable control field",
+  "new_model_calls": 0,
+  "affected_case": "singleton_2403__filter_projection",
+  "fix": "Preserve stop_reason=None on reopening. Physical state, original attempts, limits unchanged.",
+  "epoch": 1792117017.562731
+}

@@ -1,0 +1,639 @@
+{
+  "schema": "two-strategy-live-summary-v1",
+  "common_window": [
+    702.0,
+    768.0
+  ],
+  "target_window": [
+    702,
+    882
+  ],
+  "per_group_call_cap": 8,
+  "results": {
+    "G1": {
+      "total_calls": 8,
+      "calls_to_reach_common_endpoint": 6,
+      "completed_responses": 8,
+      "unknown_usage_calls": 0,
+      "call_types": {
+        "propose_delta": 3,
+        "apply_candidate": 2,
+        "read_artifact": 2,
+        "read_entities": 1
+      },
+      "usage": {
+        "actual_model_attempts": 8,
+        "offline_outputs": 0,
+        "input_tokens": 1536396,
+        "cached_input_tokens": 1152,
+        "output_tokens": 9735,
+        "unknown_usage": 0,
+        "reserved_tokens": 0,
+        "model_seconds": 462.7007954157889,
+        "pending_attempts": 0,
+        "elapsed_wall_seconds": 872.5110611915588,
+        "cost_usd": null
+      },
+      "query_details": [
+        {
+          "index": 2,
+          "kind": "problem",
+          "path": [],
+          "format": "value",
+          "offset": 0,
+          "count": 0
+        },
+        {
+          "index": 3,
+          "kind": "base_plan",
+          "path": [
+            "tasks"
+          ],
+          "format": "page",
+          "offset": 0,
+          "count": 10
+        },
+        {
+          "index": 6,
+          "queries": [
+            {
+              "kind": "operations",
+              "cursor": null,
+              "count": 40,
+              "where": [
+                {
+                  "field": "eligible_machines",
+                  "op": "contains",
+                  "value": 1295
+                },
+                {
+                  "field": "conditional",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "kind": "operations",
+              "cursor": null,
+              "count": 20,
+              "where": [
+                {
+                  "field": "eligible_machines",
+                  "op": "contains",
+                  "value": 1229
+                },
+                {
+                  "field": "conditional",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "kind": "operations",
+              "cursor": null,
+              "count": 30,
+              "where": [
+                {
+                  "field": "eligible_machines",
+                  "op": "contains",
+                  "value": 1239
+                },
+                {
+                  "field": "conditional",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "transport_errors": [],
+      "model_commits": 2,
+      "decisions": [
+        {
+          "time": 702.0,
+          "plan_tasks": 10,
+          "added_tasks": 9,
+          "added_tasks_on_busy_machines": 8,
+          "kept_tasks": 1,
+          "cancelled_tasks": 0,
+          "replaced_tasks": 0,
+          "holds": 0,
+          "batch_id": "batch-1"
+        },
+        {
+          "time": 761.2499999999999,
+          "plan_tasks": 18,
+          "added_tasks": 10,
+          "added_tasks_on_busy_machines": 9,
+          "kept_tasks": 8,
+          "cancelled_tasks": 0,
+          "replaced_tasks": 0,
+          "holds": 0,
+          "batch_id": "batch-2"
+        }
+      ],
+      "observed_seconds": 66.0,
+      "observed_end": 768.0,
+      "target_reached": false,
+      "final_stop_reason": "pilot_attempt_cap",
+      "initial_backlog": {
+        "uncovered_executable_machine_count": 1,
+        "pending_demand_machine_count": 904,
+        "pending_demand_operation_count": 4348,
+        "uncovered_executable_machines": [
+          1250
+        ],
+        "ready_wait_ages": {
+          "1250": 0.0
+        },
+        "accepted_pending_task_count": 1,
+        "active_hold_count": 0,
+        "public_operations_total": 4349,
+        "unoffered_operation_count": 4348,
+        "last_batch_id": null
+      },
+      "final_backlog_at_own_endpoint": {
+        "uncovered_executable_machine_count": 0,
+        "pending_demand_machine_count": 890,
+        "pending_demand_operation_count": 4320,
+        "uncovered_executable_machines": [],
+        "ready_wait_ages": {},
+        "accepted_pending_task_count": 15,
+        "active_hold_count": 0,
+        "public_operations_total": 4349,
+        "unoffered_operation_count": 1738,
+        "last_batch_id": "batch-2"
+      },
+      "final_unassigned_public_operations": 4334,
+      "final_unassigned_nonconditional_operations": 999,
+      "committed_added_tasks": 19,
+      "committed_added_tasks_on_busy_machines": 17,
+      "first_packet": {
+        "budgeted_input_tokens": 187305,
+        "demand_operations": 1369,
+        "encoding": "o200k_base",
+        "inline_machines": 777,
+        "inline_operations": 1369,
+        "input_budget": 220000,
+        "local_prompt_tokens": 177305,
+        "measured_epoch": 1792159957.401557,
+        "oversized_bundle_requires_paged_read": false,
+        "paged_details": false,
+        "schema_and_system_tokens": 1781,
+        "server_model_mapping_confirmed": false,
+        "server_tokenizer_verified": false,
+        "total_operations": 4349,
+        "wrapper_reserve_tokens": 10000
+      },
+      "planning_batches": [
+        {
+          "batch_id": "batch-1",
+          "opened_at": 702.0,
+          "strategy": "continuation",
+          "offered_operation_count": 1369,
+          "not_yet_offered_count": 2980,
+          "cohort_operation_count": 4348
+        },
+        {
+          "batch_id": "batch-2",
+          "opened_at": 761.2499999999999,
+          "strategy": "continuation",
+          "offered_operation_count": 1245,
+          "not_yet_offered_count": 1737,
+          "cohort_operation_count": 4333
+        },
+        {
+          "batch_id": "batch-3",
+          "opened_at": 768.0,
+          "strategy": "continuation",
+          "offered_operation_count": 1315,
+          "not_yet_offered_count": 429,
+          "cohort_operation_count": 4320
+        }
+      ],
+      "planning_stops": [
+        {
+          "from": 702.0,
+          "to": 761.2499999999999,
+          "advanced_seconds": 59.249999999999886,
+          "reason": "plan_runway",
+          "dispatches": 2,
+          "pending_demand_count": 897,
+          "incoming_operation_count": 4,
+          "forecast_trigger_machines": [
+            1229
+          ],
+          "forecast_machines_without_offered_operations": [],
+          "forecast_demands": [
+            {
+              "machine": 1229,
+              "forecast_available_at": 776.2499999999999,
+              "candidate_operations": 11,
+              "nonconditional_operations": 0,
+              "offered_candidates": 4
+            }
+          ],
+          "next_batch": {
+            "batch_id": "batch-2",
+            "cohort_operation_count": 4333,
+            "not_yet_offered_count": 1737,
+            "offered_operation_count": 1245,
+            "strategy": "continuation"
+          }
+        },
+        {
+          "from": 761.2499999999999,
+          "to": 768.0,
+          "advanced_seconds": 6.750000000000114,
+          "reason": "plan_runway",
+          "dispatches": 3,
+          "pending_demand_count": 890,
+          "incoming_operation_count": 6,
+          "forecast_trigger_machines": [
+            1295,
+            1296
+          ],
+          "forecast_machines_without_offered_operations": [],
+          "forecast_demands": [
+            {
+              "machine": 1295,
+              "forecast_available_at": 783.0,
+              "candidate_operations": 188,
+              "nonconditional_operations": 0,
+              "offered_candidates": 50
+            },
+            {
+              "machine": 1296,
+              "forecast_available_at": 783.0,
+              "candidate_operations": 188,
+              "nonconditional_operations": 0,
+              "offered_candidates": 50
+            }
+          ],
+          "next_batch": {
+            "batch_id": "batch-3",
+            "cohort_operation_count": 4320,
+            "not_yet_offered_count": 429,
+            "offered_operation_count": 1315,
+            "strategy": "continuation"
+          }
+        }
+      ],
+      "planning_stop_counts": {
+        "plan_runway": 2
+      },
+      "zero_time_stops": [],
+      "old_capacity_immediate_retrigger_count": 0,
+      "common_window_quality": {
+        "observed_seconds": 66.0,
+        "weighted_tardy_lot_seconds": 660.0,
+        "throughput_lots": 0,
+        "throughput_wafers": 0,
+        "setup_loss_seconds": 4488.0,
+        "batch_fill_mean": null,
+        "terminal_wip_lots": 2177,
+        "queue_wait_lot_seconds": 67125.0,
+        "production_dispatches": 5,
+        "operation_lots_dispatched": 5,
+        "unreserved_machine_seconds": 6784.499999999999,
+        "executable_unplanned_machine_seconds": 52.499999999999886
+      },
+      "provenance_audit": {
+        "valid": true,
+        "commits": 2,
+        "algorithm_production_tasks": 0,
+        "checked_batch_receipts": 2,
+        "B_algorithm_calls": 0,
+        "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+      },
+      "physical_prefix_errors": [
+        "physical: missing terminal event"
+      ],
+      "opportunity_audit_valid": true,
+      "service_input_tokens_per_response": [
+        182791,
+        196917,
+        196914,
+        183084,
+        186869,
+        199612,
+        199820,
+        190389
+      ],
+      "attempt_errors": []
+    },
+    "G2": {
+      "total_calls": 6,
+      "calls_to_reach_common_endpoint": 4,
+      "completed_responses": 5,
+      "unknown_usage_calls": 1,
+      "call_types": {
+        "propose_delta": 2,
+        "apply_candidate": 2,
+        "read_artifact": 1,
+        "transport_failure": 1
+      },
+      "usage": {
+        "actual_model_attempts": 6,
+        "offline_outputs": 0,
+        "input_tokens": 1055057,
+        "cached_input_tokens": 0,
+        "output_tokens": 7706,
+        "unknown_usage": 1,
+        "reserved_tokens": 0,
+        "model_seconds": 331.9085709573701,
+        "pending_attempts": 0,
+        "elapsed_wall_seconds": 868.1441249847412,
+        "cost_usd": null
+      },
+      "query_details": [
+        {
+          "index": 4,
+          "kind": "problem",
+          "path": [],
+          "format": "value",
+          "offset": 0,
+          "count": 0
+        }
+      ],
+      "transport_errors": [
+        {
+          "index": 5,
+          "call_number": 6,
+          "message": "Connection failed: error sending request"
+        }
+      ],
+      "model_commits": 2,
+      "decisions": [
+        {
+          "time": 702.0,
+          "plan_tasks": 22,
+          "added_tasks": 21,
+          "added_tasks_on_busy_machines": 20,
+          "kept_tasks": 1,
+          "cancelled_tasks": 0,
+          "replaced_tasks": 0,
+          "holds": 0,
+          "batch_id": "batch-1"
+        },
+        {
+          "time": 761.2499999999999,
+          "plan_tasks": 35,
+          "added_tasks": 16,
+          "added_tasks_on_busy_machines": 16,
+          "kept_tasks": 19,
+          "cancelled_tasks": 0,
+          "replaced_tasks": 0,
+          "holds": 0,
+          "batch_id": "batch-2"
+        }
+      ],
+      "observed_seconds": 66.0,
+      "observed_end": 768.0,
+      "target_reached": false,
+      "final_stop_reason": "model_transport_or_unknown_usage",
+      "initial_backlog": {
+        "uncovered_executable_machine_count": 1,
+        "pending_demand_machine_count": 904,
+        "pending_demand_operation_count": 4348,
+        "uncovered_executable_machines": [
+          1250
+        ],
+        "ready_wait_ages": {
+          "1250": 0.0
+        },
+        "accepted_pending_task_count": 1,
+        "active_hold_count": 0,
+        "public_operations_total": 4349,
+        "unoffered_operation_count": 4348,
+        "last_batch_id": null
+      },
+      "final_backlog_at_own_endpoint": {
+        "uncovered_executable_machine_count": 0,
+        "pending_demand_machine_count": 875,
+        "pending_demand_operation_count": 4233,
+        "uncovered_executable_machines": [],
+        "ready_wait_ages": {},
+        "accepted_pending_task_count": 33,
+        "active_hold_count": 0,
+        "public_operations_total": 4349,
+        "unoffered_operation_count": 4,
+        "last_batch_id": "batch-2"
+      },
+      "final_unassigned_public_operations": 4316,
+      "final_unassigned_nonconditional_operations": 981,
+      "committed_added_tasks": 37,
+      "committed_added_tasks_on_busy_machines": 36,
+      "first_packet": {
+        "budgeted_input_tokens": 374409,
+        "demand_operations": 3917,
+        "encoding": "o200k_base",
+        "inline_machines": 884,
+        "inline_operations": 3917,
+        "input_budget": 440000,
+        "local_prompt_tokens": 364409,
+        "measured_epoch": 1792160060.624053,
+        "oversized_bundle_requires_paged_read": false,
+        "paged_details": false,
+        "schema_and_system_tokens": 1781,
+        "server_model_mapping_confirmed": false,
+        "server_tokenizer_verified": false,
+        "total_operations": 4349,
+        "wrapper_reserve_tokens": 10000
+      },
+      "planning_batches": [
+        {
+          "batch_id": "batch-1",
+          "opened_at": 702.0,
+          "strategy": "continuation",
+          "offered_operation_count": 3917,
+          "not_yet_offered_count": 432,
+          "cohort_operation_count": 4348
+        },
+        {
+          "batch_id": "batch-2",
+          "opened_at": 761.2499999999999,
+          "strategy": "continuation",
+          "offered_operation_count": 438,
+          "not_yet_offered_count": 0,
+          "cohort_operation_count": 4323
+        },
+        {
+          "batch_id": "batch-3",
+          "opened_at": 768.0,
+          "strategy": "continuation",
+          "offered_operation_count": 4,
+          "not_yet_offered_count": 0,
+          "cohort_operation_count": 4233
+        }
+      ],
+      "planning_stops": [
+        {
+          "from": 702.0,
+          "to": 761.2499999999999,
+          "advanced_seconds": 59.249999999999886,
+          "reason": "plan_runway",
+          "dispatches": 3,
+          "pending_demand_count": 888,
+          "incoming_operation_count": 6,
+          "forecast_trigger_machines": [
+            1229
+          ],
+          "forecast_machines_without_offered_operations": [],
+          "forecast_demands": [
+            {
+              "machine": 1229,
+              "forecast_available_at": 776.2499999999999,
+              "candidate_operations": 11,
+              "nonconditional_operations": 0,
+              "offered_candidates": 6
+            }
+          ],
+          "next_batch": {
+            "batch_id": "batch-2",
+            "cohort_operation_count": 4323,
+            "not_yet_offered_count": 0,
+            "offered_operation_count": 438,
+            "strategy": "continuation"
+          }
+        },
+        {
+          "from": 761.2499999999999,
+          "to": 768.0,
+          "advanced_seconds": 6.750000000000114,
+          "reason": "plan_runway",
+          "dispatches": 2,
+          "pending_demand_count": 875,
+          "incoming_operation_count": 4,
+          "forecast_trigger_machines": [
+            1295,
+            1296
+          ],
+          "forecast_machines_without_offered_operations": [
+            1295,
+            1296
+          ],
+          "forecast_demands": [
+            {
+              "machine": 1295,
+              "forecast_available_at": 783.0,
+              "candidate_operations": 188,
+              "nonconditional_operations": 0,
+              "offered_candidates": 0
+            },
+            {
+              "machine": 1296,
+              "forecast_available_at": 783.0,
+              "candidate_operations": 188,
+              "nonconditional_operations": 0,
+              "offered_candidates": 0
+            }
+          ],
+          "next_batch": {
+            "batch_id": "batch-3",
+            "cohort_operation_count": 4233,
+            "not_yet_offered_count": 0,
+            "offered_operation_count": 4,
+            "strategy": "continuation"
+          }
+        }
+      ],
+      "planning_stop_counts": {
+        "plan_runway": 2
+      },
+      "zero_time_stops": [],
+      "old_capacity_immediate_retrigger_count": 0,
+      "common_window_quality": {
+        "observed_seconds": 66.0,
+        "weighted_tardy_lot_seconds": 660.0,
+        "throughput_lots": 0,
+        "throughput_wafers": 0,
+        "setup_loss_seconds": 4488.0,
+        "batch_fill_mean": null,
+        "terminal_wip_lots": 2177,
+        "queue_wait_lot_seconds": 67072.5,
+        "production_dispatches": 5,
+        "operation_lots_dispatched": 5,
+        "unreserved_machine_seconds": 6732.0,
+        "executable_unplanned_machine_seconds": 0.0
+      },
+      "provenance_audit": {
+        "valid": true,
+        "commits": 2,
+        "algorithm_production_tasks": 0,
+        "checked_batch_receipts": 2,
+        "B_algorithm_calls": 0,
+        "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+      },
+      "physical_prefix_errors": [
+        "physical: missing terminal event"
+      ],
+      "opportunity_audit_valid": true,
+      "service_input_tokens_per_response": [
+        369895,
+        403694,
+        139821,
+        116335,
+        25312
+      ],
+      "attempt_errors": []
+    }
+  },
+  "isolation_after": {
+    "files_checked": 803,
+    "changed_source_files": [],
+    "changed_fixtures": [],
+    "original_run_database_opened": false,
+    "valid": true
+  },
+  "audit_compatibility": {
+    "G1": {
+      "valid": true,
+      "commits": 2,
+      "algorithm_production_tasks": 0,
+      "checked_batch_receipts": 2,
+      "B_algorithm_calls": 0,
+      "independence": "raw JSON reconstruction; production compiler and commit functions not called",
+      "forged_receipt_rejected": true,
+      "missing_receipt_rejected": true
+    },
+    "G2": {
+      "valid": true,
+      "commits": 2,
+      "algorithm_production_tasks": 0,
+      "checked_batch_receipts": 2,
+      "B_algorithm_calls": 0,
+      "independence": "raw JSON reconstruction; production compiler and commit functions not called",
+      "forged_receipt_rejected": true,
+      "missing_receipt_rejected": true
+    },
+    "legacy_G1": {
+      "valid": true,
+      "commits": 1,
+      "algorithm_production_tasks": 0,
+      "checked_batch_receipts": 0,
+      "B_algorithm_calls": 0,
+      "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+    },
+    "scope": "Post-run audit compatibility correction only; sealed model inputs, outputs, plans, costs and traces unchanged.",
+    "auditor_sha256": "f3acc3171ec5ae930aa0ba44303278bd64a422494e199faaa09194bd9657d4c8"
+  },
+  "both_reached_target": false,
+  "limitations": [
+    "One paired saved-state pilot; not a statistical quality conclusion.",
+    "Production choices affect random draw order, so the shared initial RNG is not a guarantee of identical realized processing times.",
+    "Simulation pauses for decisions; model latency is reported separately from simulated machine waiting.",
+    "A 60-second demand deadline triggers planning; it does not guarantee a successful model schedule within 60 seconds.",
+    "No terminal is fabricated for a partial observation; original horizon is retained.",
+    "Local o200k token estimates and requested windows are distinct from service-reported input tokens.",
+    "Final backlog is measured at each own endpoint; compare directly only if endpoints match.",
+    "Unreserved machine time includes downtime and absence of feasible work; it is not all avoidable scheduling delay.",
+    "Executable-unplanned machine seconds can count alternative machines for the same operation; it is not a count of unique orders.",
+    "Pending demand ledger excludes machines already covered by queues/holds; its operation count is not the full unscheduled backlog. Global unassigned public operations are reported separately and include future conditional work.",
+    "Short-window tardiness and finished-lot throughput may be insensitive; dispatch and ready-wait measures supplement them."
+  ]
+}

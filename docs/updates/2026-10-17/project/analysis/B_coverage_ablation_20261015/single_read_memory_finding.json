@@ -1,0 +1,8 @@
+{
+  "finding": "A single oversized read_entities action is excluded from retained fact-memory rendering until there are at least two successful read_entities actions in the same context. Multiple queries inside that first action still count as one read. read_artifact pagination does not increase this count.",
+  "source": "workspace/src/smt_fullfab/harness/fact_memory.py:230",
+  "observed_case": "singleton_2403__prompt",
+  "evidence": "First action requests 512 machine rows plus an operation catalog. Calls 2 through 7 page results[0].entities. At calls 4 and 5 no same_context_fact_memory is inline; combined variant gets inline memory after its second read_entities action.",
+  "scope": "Existing inherited default presentation behavior, unchanged in this registered cohort. It can inflate the cost of prompt-only broad scans.",
+  "potential_followup": "For a separate version, allow one oversized read result to use the existing lossless memory presentation when its current preview is incomplete, retaining exact facts and capacity fallback. Do not change frozen running branches."
+}

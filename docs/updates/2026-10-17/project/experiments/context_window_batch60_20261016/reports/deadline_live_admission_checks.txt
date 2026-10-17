@@ -1,0 +1,19 @@
+test_current_instruction_has_separate_bound_authorization (tests.test_capacity_live_pilot.LiveAdmissionTests.test_current_instruction_has_separate_bound_authorization) ... ok
+test_cutoff_preserves_original_horizon_and_offline_default (tests.test_capacity_live_pilot.LiveAdmissionTests.test_cutoff_preserves_original_horizon_and_offline_default) ... ok
+test_flag_alone_is_not_authority (tests.test_capacity_live_pilot.LiveAdmissionTests.test_flag_alone_is_not_authority) ... ok
+test_frozen_config_and_registration (tests.test_capacity_live_pilot.LiveAdmissionTests.test_frozen_config_and_registration) ... ok
+test_live_pilot_exposes_reviews_on_existing_apply_action (tests.test_capacity_live_pilot.LiveAdmissionTests.test_live_pilot_exposes_reviews_on_existing_apply_action) ... ok
+test_registration_tamper_rejected (tests.test_capacity_live_pilot.LiveAdmissionTests.test_registration_tamper_rejected) ... ok
+test_saved_state_and_source_are_bound (tests.test_capacity_live_pilot.LiveAdmissionTests.test_saved_state_and_source_are_bound) ... ok
+test_all_three_current_groups_are_authorized_and_bound (tests.test_deadline_live_admission.DeadlineAdmissionTests.test_all_three_current_groups_are_authorized_and_bound) ... ok
+test_cannot_extend_observation_or_call_cap (tests.test_deadline_live_admission.DeadlineAdmissionTests.test_cannot_extend_observation_or_call_cap) ... ok
+test_model_flag_and_current_config_remain_required (tests.test_deadline_live_admission.DeadlineAdmissionTests.test_model_flag_and_current_config_remain_required) ... ok
+test_no_model_or_cli_run_in_offline_admission_checks (tests.test_deadline_live_admission.DeadlineAdmissionTests.test_no_model_or_cli_run_in_offline_admission_checks) ... ok
+test_old_two_group_instruction_cannot_authorize_deadline_policy (tests.test_deadline_live_admission.DeadlineAdmissionTests.test_old_two_group_instruction_cannot_authorize_deadline_policy) ... ok
+test_original_group_cannot_silently_use_new_execution (tests.test_deadline_live_admission.DeadlineAdmissionTests.test_original_group_cannot_silently_use_new_execution) ... ok
+test_v5_cannot_enter_model_transport_even_with_flag (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_v5_cannot_enter_model_transport_even_with_flag) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.174s
+
+OK

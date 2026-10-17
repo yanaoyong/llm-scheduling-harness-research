@@ -1,0 +1,39 @@
+{
+  "source_evidence": "live_pilots/extended_three_group_completion_20261017/G0",
+  "evidence_sha256": "0857c0025963b5c8d3319179c7a0ee4cec33b209ceb2e1d488949758fe3b8a8f",
+  "context_ref": "context:d935b580cec0470c963f84a1",
+  "feedback": {
+    "from": 1628.8623616754553,
+    "to": 1628.8623616754553,
+    "dispatch_count_delta": 0,
+    "stop_reason": {
+      "machines": [
+        {
+          "candidate_count": 1,
+          "family": "Litho_REG_FE_64",
+          "machine": 988
+        }
+      ],
+      "reason": "uncovered_demand",
+      "time": 1628.8623616754553
+    }
+  },
+  "already_committed_task": {
+    "id": "d36-e",
+    "lot_ids": [
+      "w1942"
+    ],
+    "machine": 985,
+    "not_before": 1636.6799999999998,
+    "operation_ids": [
+      "w1942:15:1"
+    ],
+    "steps": [
+      15
+    ],
+    "visits": [
+      1
+    ]
+  },
+  "all_production_model_chosen": true
+}

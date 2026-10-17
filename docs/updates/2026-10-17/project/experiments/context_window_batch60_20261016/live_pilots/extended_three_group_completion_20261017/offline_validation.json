@@ -1,0 +1,207 @@
+{
+  "all_pass": true,
+  "groups": {
+    "G0": {
+      "resource": {
+        "valid": true,
+        "inherited_calls": 28,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": []
+      },
+      "inheritance": {
+        "valid": true,
+        "inherited_calls": 4,
+        "inherited_commits": 2,
+        "physical_prefix_events": 5400,
+        "omitted_presentation_events": 1,
+        "production_decisions_changed": false,
+        "source_changed_files": [
+          "src/smt_fullfab/harness/capacity_pilot.py",
+          "src/smt_fullfab/harness/network.py"
+        ],
+        "legitimate_model_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:b3f6291ff900419892cba34f",
+              "attempt:a00df1048c33408d80affc03",
+              "attempt:4d2ff186f955416e81bada5b",
+              "attempt:43a47178dbd94dca9ddde712",
+              "attempt:02affde4e16b4a85976ffe65",
+              "attempt:0064b14403294312863c4015",
+              "attempt:6af8274f593f40419cd5cd48",
+              "attempt:26395a2baf4143409f85ef03",
+              "attempt:598850adc1dd4ca1b966613e"
+            ],
+            "old_version": 2,
+            "new_version": 11
+          }
+        ],
+        "immutable_ledgers_exact": true
+      },
+      "production": {
+        "valid": true,
+        "commits": 11,
+        "algorithm_production_tasks": 0,
+        "checked_batch_receipts": 11,
+        "B_algorithm_calls": 0,
+        "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+      },
+      "known_cost_audit": {
+        "valid": true,
+        "actual_attempts": 28,
+        "input_tokens": 5830452,
+        "output_tokens": 36880,
+        "cached_input_tokens": 219520,
+        "total_reported_tokens": 5867332,
+        "unknown_usage": 0,
+        "pending_attempts": 0,
+        "model_seconds": 1186.3502592062578,
+        "experiment_through_seal_wall_seconds": 4961.343142271042,
+        "classical_attempts": 0,
+        "classical_unknown": 0,
+        "classical_seconds": 0,
+        "monetary_cost": null,
+        "token_hard_cap": false
+      },
+      "new_model_calls": 0,
+      "time_unchanged": 1357.8993034662105
+    },
+    "G1": {
+      "resource": {
+        "valid": true,
+        "inherited_calls": 28,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": []
+      },
+      "inheritance": {
+        "valid": true,
+        "inherited_calls": 4,
+        "inherited_commits": 2,
+        "physical_prefix_events": 5429,
+        "omitted_presentation_events": 1,
+        "production_decisions_changed": false,
+        "source_changed_files": [
+          "src/smt_fullfab/harness/capacity_pilot.py",
+          "src/smt_fullfab/harness/network.py"
+        ],
+        "legitimate_model_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:30724787f8f24d27ae9ae650",
+              "attempt:fc4720b595c9404f890eba29",
+              "attempt:751f25d429ff49c3942a000f",
+              "attempt:0832341ba6b046f1ba863867",
+              "attempt:57d4ec3401804088b001b759",
+              "attempt:2ba85fb3fff047808fce9638",
+              "attempt:02d6c4ede6874878b2accfac",
+              "attempt:37aed79e2f054439b23d35b9"
+            ],
+            "old_version": 2,
+            "new_version": 10
+          }
+        ],
+        "immutable_ledgers_exact": true
+      },
+      "production": {
+        "valid": true,
+        "commits": 10,
+        "algorithm_production_tasks": 0,
+        "checked_batch_receipts": 10,
+        "B_algorithm_calls": 0,
+        "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+      },
+      "known_cost_audit": {
+        "valid": false,
+        "actual_attempts": 28,
+        "input_tokens": 5579574,
+        "output_tokens": 32787,
+        "cached_input_tokens": 6912,
+        "total_reported_tokens": 5612361,
+        "unknown_usage": 1,
+        "pending_attempts": 0,
+        "model_seconds": 1069.7834973349236,
+        "experiment_through_seal_wall_seconds": 4979.037209749222,
+        "classical_attempts": 0,
+        "classical_unknown": 0,
+        "classical_seconds": 0,
+        "monetary_cost": null,
+        "token_hard_cap": false
+      },
+      "new_model_calls": 0,
+      "time_unchanged": 1337.8412733326247
+    },
+    "G2": {
+      "resource": {
+        "valid": true,
+        "inherited_calls": 28,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": []
+      },
+      "inheritance": {
+        "valid": true,
+        "inherited_calls": 4,
+        "inherited_commits": 2,
+        "physical_prefix_events": 5427,
+        "omitted_presentation_events": 1,
+        "production_decisions_changed": false,
+        "source_changed_files": [
+          "src/smt_fullfab/harness/capacity_pilot.py",
+          "src/smt_fullfab/harness/network.py"
+        ],
+        "legitimate_model_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:a6f75675f7344afbabd92419",
+              "attempt:10934f245c4d469e86c9f0e9",
+              "attempt:32698eac12ee40f8b204642d",
+              "attempt:bbe20bb56efa4b95b3d37d58",
+              "attempt:b555ee4de4144b3ca037b4c2",
+              "attempt:bfd9392e00fb419b9f531b9b",
+              "attempt:53796ca5aedd41638bca1f88",
+              "attempt:d89e1ba0c37745a2b101a5f9",
+              "attempt:9bbab3544a024cd7bd064a61"
+            ],
+            "old_version": 2,
+            "new_version": 11
+          }
+        ],
+        "immutable_ledgers_exact": true
+      },
+      "production": {
+        "valid": true,
+        "commits": 11,
+        "algorithm_production_tasks": 0,
+        "checked_batch_receipts": 11,
+        "B_algorithm_calls": 0,
+        "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+      },
+      "known_cost_audit": {
+        "valid": true,
+        "actual_attempts": 28,
+        "input_tokens": 11593073,
+        "output_tokens": 37067,
+        "cached_input_tokens": 1024,
+        "total_reported_tokens": 11630140,
+        "unknown_usage": 0,
+        "pending_attempts": 0,
+        "model_seconds": 1287.5505880392157,
+        "experiment_through_seal_wall_seconds": 4996.725030899048,
+        "classical_attempts": 0,
+        "classical_unknown": 0,
+        "classical_seconds": 0,
+        "monetary_cost": null,
+        "token_hard_cap": false
+      },
+      "new_model_calls": 0,
+      "time_unchanged": 1337.8412733326247
+    }
+  },
+  "no_model_calls": true,
+  "original_B_unchanged": true
+}

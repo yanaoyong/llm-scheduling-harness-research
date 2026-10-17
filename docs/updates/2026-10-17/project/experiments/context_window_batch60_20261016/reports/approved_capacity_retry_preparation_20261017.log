@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/run_approved_capacity_retry.py", line 87, in <module>
+    if __name__=='__main__':{'prepare':prepare,'run':run}[sys.argv[1]]()
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/run_approved_capacity_retry.py", line 48, in prepare
+    proof=audit_retry(ev);lineage=verify_inheritance(ev);production=audit_provenance(ev,trace);cost=audit_cost(ev)
+                                  ~~~~~~~~~~~~~~~~~~^^^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/extended_pilot_support.py", line 122, in verify_inheritance
+    require(all(ev.value['records'].get(ns,{}).get(k)==v for k,v in rows.items()),
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            'extension_audit','Inherited '+ns+' changed')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/contracts.py", line 60, in require
+    raise HarnessError(code, detail, **evidence)
+src.smt_fullfab.harness.contracts.HarnessError: extension_audit: Inherited notes changed

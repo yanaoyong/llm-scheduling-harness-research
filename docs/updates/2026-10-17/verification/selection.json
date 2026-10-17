@@ -1,0 +1,56 @@
+{
+  "schema": "followup-public-increment-v1",
+  "date": "2026-10-17",
+  "baseline_public_commit": "3c20c92f06796313d392fcc74668e78d4f4b7211",
+  "baseline_private_cutoff": "2026-10-12T12:48:19.877397+00:00",
+  "conversation_cutoff_utc": "2026-10-17T06:02:18+00:00",
+  "private_source_archive_sha256": "1022cddc231475eeb7155b9dce33426ced9f3d31fa85279f29935e83aebab8bb",
+  "unchanged_source_paths_in_prior_archive": 104649,
+  "selected_files": 1509863,
+  "logical_public_bytes": 8762049848,
+  "unique_public_objects": 128088,
+  "unique_public_bytes": 5644858887,
+  "git_snapshot_files": 1339,
+  "private_objects_verified": 209389,
+  "excluded_categories": {
+    "rebuildable_runtime_cache_or_git_metadata": {
+      "files": 474,
+      "bytes": 6537919
+    },
+    "codex_runtime_private_only": {
+      "files": 13593,
+      "bytes": 10344879852
+    },
+    "binary_attachment_or_rebuildable_artifact_private_only": {
+      "files": 69,
+      "bytes": 587639578
+    },
+    "personal_inputs_or_career_assets_private_only": {
+      "files": 59,
+      "bytes": 22219160
+    },
+    "non_text_binary": {
+      "files": 3,
+      "bytes": 208135
+    }
+  },
+  "transformations": {
+    "local_identity": 316671,
+    "email_matches": 32,
+    "private_field": 84
+  },
+  "database_exports": 252,
+  "database_exports_unavailable": 0,
+  "limits": [
+    "Incremental public derivative; original complete snapshot remains private.",
+    "Unchanged paths stay in the prior archive; deletion list is historical data, never automatically applied.",
+    "Public transformations invalidate historical raw-byte signatures; no experiment was rerun.",
+    "Raw Codex runtime state, private conversations, credentials, caches and binary attachments are not public.",
+    "Harness compressed objects were decompressed, sanitized and re-compressed as .z.public.json.z; original object names are provenance only.",
+    "Database logical exports include copied WAL state where present; original Codex runtime databases are private-only.",
+    "Public file inventory excludes private symlink metadata; restore never follows original external symlinks."
+  ],
+  "compressed_harness_object_paths": 1465564,
+  "compressed_harness_unique_objects": 95008,
+  "runtime_prefixes_excluded": 1865
+}

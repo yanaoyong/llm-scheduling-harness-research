@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "public_objects_checked": 128088,
+  "compressed_objects_decoded_for_scan": 95008,
+  "sql_objects_with_blob_scan": 252,
+  "findings": [],
+  "scope": "High-confidence patterns; values never printed. Visible conversation exports exclude internal reasoning. Automatic scanning is not a guarantee of identifying every possible private detail."
+}

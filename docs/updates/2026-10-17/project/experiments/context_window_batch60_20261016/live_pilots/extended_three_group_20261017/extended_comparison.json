@@ -1,0 +1,5881 @@
+{
+  "common_window": [
+    702,
+    1337.8412733326247
+  ],
+  "extension_window": [
+    882,
+    1337.8412733326247
+  ],
+  "results": {
+    "G0": {
+      "planning_cycles": [
+        {
+          "context_ref": "context:d65a4f4fd77849bf931259a0",
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 90.78741683391854,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:a203ec8c17f94ebbabf0ffcc",
+          "time": 1357.8993034662105,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 110.13681479077786,
+          "unknown_usage": 0,
+          "committed": false
+        },
+        {
+          "context_ref": "context:bc1fda6b2986465fbc89874f",
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 78.38594645797275,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:c016532a5c1349aba81813f2",
+          "time": 1343.6907074665332,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 83.64844112494029,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:01f0c1451306403c9d53e363",
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 103.2202427086886,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:52ca92f8e21d481086b610df",
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 80.66291595832445,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:6488daa02ca94f23929e14f7",
+          "time": 1337.8412733326247,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 116.40157983405516,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:1e33f2f06b494bbd9e24e4fa",
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 165.49932524887845,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:ec28d5e9023b4087b0d7a56d",
+          "time": 863.9999999999999,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 92.03354045795277,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:895b7ab58dcc4056b5848de2",
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 93.99661995796487,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:6d3f3c3a5ded4330b30c4e0d",
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 91.68558262474835,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:a9f261020ccf4399bfa59b4d",
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 79.89183320803568,
+          "unknown_usage": 0,
+          "committed": true
+        }
+      ],
+      "maximum_completed_cycle_model_seconds": 165.49932524887845,
+      "completed_cycles_over_135_real_seconds": 1,
+      "previous_calls": 4,
+      "cumulative_calls": 28,
+      "calls_to_common_endpoint": 20,
+      "common_call_types": {
+        "propose_delta": 9,
+        "apply_candidate": 9,
+        "read_entities": 2
+      },
+      "common_usage": {
+        "input_tokens": 4138482,
+        "output_tokens": 27557,
+        "cached_input_tokens": 217088,
+        "unknown_usage": 0,
+        "model_seconds": 876.1634234564845
+      },
+      "new_calls": 24,
+      "new_calls_to_common_endpoint": 16,
+      "previous_window_quality_unchanged": true,
+      "early_window": {
+        "window": [
+          702,
+          882
+        ],
+        "calls_to_reach_end": 4,
+        "quality": {
+          "weighted_tardy_lot_seconds": 1800.0,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12240.0,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 182418.75,
+          "production_dispatches": 11,
+          "operation_lots_dispatched": 11,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 863.9999999999999,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 882.0,
+            "reason": "periodic_replan"
+          }
+        ]
+      },
+      "actual_gap_diagnosis": [
+        {
+          "time": 910.117397147927,
+          "context_ref": "context:52ca92f8e21d481086b610df",
+          "machines": [
+            {
+              "machine": 305,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 306,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 307,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 308,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 311,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1161.8061422329447,
+          "context_ref": "context:a9f261020ccf4399bfa59b4d",
+          "machines": [
+            {
+              "machine": 1294,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1295,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1296,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1297,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1298,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1300,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1302,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1162.894538226919,
+          "context_ref": "context:895b7ab58dcc4056b5848de2",
+          "machines": [
+            {
+              "machine": 1215,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1961:331:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1217,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1961:331:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1203.848415689957,
+          "context_ref": "context:1e33f2f06b494bbd9e24e4fa",
+          "machines": [
+            {
+              "machine": 1008,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1038:47:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1038:47:1",
+                  "task": {
+                    "id": "d33-o",
+                    "lot_ids": [
+                      "w1038"
+                    ],
+                    "machine": 1012,
+                    "not_before": 1210.44,
+                    "operation_ids": [
+                      "w1038:47:1"
+                    ],
+                    "steps": [
+                      47
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1260.0680213006715,
+          "context_ref": "context:bc1fda6b2986465fbc89874f",
+          "machines": [
+            {
+              "machine": 306,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 307,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 308,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 311,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1266.621357039288,
+          "context_ref": "context:d65a4f4fd77849bf931259a0",
+          "machines": [
+            {
+              "machine": 322,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w150:239:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 325,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w150:239:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 326,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w150:239:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1266.6510146855849,
+          "context_ref": "context:01f0c1451306403c9d53e363",
+          "machines": [
+            {
+              "machine": 1222,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1269:232:1",
+                  "task": {
+                    "id": "d36-g",
+                    "lot_ids": [
+                      "w1269"
+                    ],
+                    "machine": 1226,
+                    "not_before": 1413.3534112567436,
+                    "operation_ids": [
+                      "w1269:232:1"
+                    ],
+                    "steps": [
+                      232
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1223,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1269:232:1",
+                  "task": {
+                    "id": "d36-g",
+                    "lot_ids": [
+                      "w1269"
+                    ],
+                    "machine": 1226,
+                    "not_before": 1413.3534112567436,
+                    "operation_ids": [
+                      "w1269:232:1"
+                    ],
+                    "steps": [
+                      232
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1224,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1269:232:1",
+                  "task": {
+                    "id": "d36-g",
+                    "lot_ids": [
+                      "w1269"
+                    ],
+                    "machine": 1226,
+                    "not_before": 1413.3534112567436,
+                    "operation_ids": [
+                      "w1269:232:1"
+                    ],
+                    "steps": [
+                      232
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1337.8412733326247,
+          "context_ref": "context:6488daa02ca94f23929e14f7",
+          "machines": [
+            {
+              "machine": 1218,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1806:269:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1806:269:1",
+                  "task": {
+                    "id": "d37-a",
+                    "lot_ids": [
+                      "w1806"
+                    ],
+                    "machine": 1217,
+                    "not_before": 1356.6083239172187,
+                    "operation_ids": [
+                      "w1806:269:1"
+                    ],
+                    "steps": [
+                      269
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        }
+      ],
+      "extension_window": {
+        "window": [
+          882,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 20,
+        "quality": {
+          "weighted_tardy_lot_seconds": 4558.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12170.031833315616,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 455118.1207204454,
+          "production_dispatches": 26,
+          "operation_lots_dispatched": 26,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      },
+      "whole_window": {
+        "window": [
+          702,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 20,
+        "quality": {
+          "weighted_tardy_lot_seconds": 6358.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 24410.031833315614,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 637536.8707204454,
+          "production_dispatches": 37,
+          "operation_lots_dispatched": 37,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 863.9999999999999,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 882.0,
+            "reason": "periodic_replan"
+          },
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      },
+      "true_replan_count": 9,
+      "extension_replan_count": 8,
+      "replans_per_simulated_hour": 50.95611335543287,
+      "extension_trigger_intervals": [
+        28.117397147927022,
+        251.68874508501767,
+        1.0883959939742454,
+        40.953877463038,
+        56.21960561071455,
+        6.553335738616397,
+        0.02965764629698242,
+        71.19025864703985
+      ],
+      "extension_intervals_below_1_second": 1,
+      "extension_intervals_below_10_seconds": 3,
+      "extension_trigger_times": [
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1337.8412733326247,
+        910.117397147927,
+        1161.8061422329447,
+        1162.894538226919
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 8
+      },
+      "first_new_trigger": 910.117397147927,
+      "inherited_pending_task_count": 20,
+      "inherited_pending_task_dispatch_count": 18,
+      "inherited_task_dispatches": [
+        {
+          "id": "d33-c",
+          "machine": 1232,
+          "time": 918.0,
+          "planned_not_before": 918,
+          "operation_ids": [
+            "w346:274:1"
+          ],
+          "original_machine": 1232,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-c",
+            "lot_ids": [
+              "w346"
+            ],
+            "machine": 1232,
+            "not_before": 918,
+            "operation_ids": [
+              "w346:274:1"
+            ],
+            "steps": [
+              274
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-e",
+          "machine": 1243,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w791:501:1"
+          ],
+          "original_machine": 1243,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-e",
+            "lot_ids": [
+              "w791"
+            ],
+            "machine": 1243,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w791:501:1"
+            ],
+            "steps": [
+              501
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-f",
+          "machine": 1245,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w792:501:1"
+          ],
+          "original_machine": 1245,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-f",
+            "lot_ids": [
+              "w792"
+            ],
+            "machine": 1245,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w792:501:1"
+            ],
+            "steps": [
+              501
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-j",
+          "machine": 877,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w1678:123:1"
+          ],
+          "original_machine": 877,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-j",
+            "lot_ids": [
+              "w1678"
+            ],
+            "machine": 877,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w1678:123:1"
+            ],
+            "steps": [
+              123
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-k",
+          "machine": 878,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w1679:123:1"
+          ],
+          "original_machine": 878,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-k",
+            "lot_ids": [
+              "w1679"
+            ],
+            "machine": 878,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w1679:123:1"
+            ],
+            "steps": [
+              123
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d31-1278",
+          "machine": 1278,
+          "time": 958.5000000000001,
+          "planned_not_before": 958.5000000000001,
+          "operation_ids": [
+            "w130:277:1"
+          ],
+          "original_machine": 1278,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d31-1278",
+            "lot_ids": [
+              "w130"
+            ],
+            "machine": 1278,
+            "not_before": 958.5000000000001,
+            "operation_ids": [
+              "w130:277:1"
+            ],
+            "steps": [
+              277
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-d",
+          "machine": 1230,
+          "time": 992.25,
+          "planned_not_before": 992.25,
+          "operation_ids": [
+            "w86:382:1"
+          ],
+          "original_machine": 1230,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-d",
+            "lot_ids": [
+              "w86"
+            ],
+            "machine": 1230,
+            "not_before": 992.25,
+            "operation_ids": [
+              "w86:382:1"
+            ],
+            "steps": [
+              382
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-h",
+          "machine": 1289,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w709:110:1"
+          ],
+          "original_machine": 1289,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-h",
+            "lot_ids": [
+              "w709"
+            ],
+            "machine": 1289,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w709:110:1"
+            ],
+            "steps": [
+              110
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-i",
+          "machine": 1290,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w240:49:1"
+          ],
+          "original_machine": 1290,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-i",
+            "lot_ids": [
+              "w240"
+            ],
+            "machine": 1290,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w240:49:1"
+            ],
+            "steps": [
+              49
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-j",
+          "machine": 1291,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w248:49:1"
+          ],
+          "original_machine": 1291,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-j",
+            "lot_ids": [
+              "w248"
+            ],
+            "machine": 1291,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w248:49:1"
+            ],
+            "steps": [
+              49
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-k",
+          "machine": 1292,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w257:29:1"
+          ],
+          "original_machine": 1292,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-k",
+            "lot_ids": [
+              "w257"
+            ],
+            "machine": 1292,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w257:29:1"
+            ],
+            "steps": [
+              29
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-g",
+          "machine": 1246,
+          "time": 1120.5,
+          "planned_not_before": 1120.5,
+          "operation_ids": [
+            "w1421:233:1"
+          ],
+          "original_machine": 1246,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-g",
+            "lot_ids": [
+              "w1421"
+            ],
+            "machine": 1246,
+            "not_before": 1120.5,
+            "operation_ids": [
+              "w1421:233:1"
+            ],
+            "steps": [
+              233
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-m",
+          "machine": 1005,
+          "time": 1134.1200000000001,
+          "planned_not_before": 1134.1200000000001,
+          "operation_ids": [
+            "w1937:22:1"
+          ],
+          "original_machine": 1005,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-m",
+            "lot_ids": [
+              "w1937"
+            ],
+            "machine": 1005,
+            "not_before": 1134.1200000000001,
+            "operation_ids": [
+              "w1937:22:1"
+            ],
+            "steps": [
+              22
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-l",
+          "machine": 1228,
+          "time": 1147.5,
+          "planned_not_before": 1147.5,
+          "operation_ids": [
+            "w572:362:1"
+          ],
+          "original_machine": 1228,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-l",
+            "lot_ids": [
+              "w572"
+            ],
+            "machine": 1228,
+            "not_before": 1147.5,
+            "operation_ids": [
+              "w572:362:1"
+            ],
+            "steps": [
+              362
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-n",
+          "machine": 1007,
+          "time": 1202.4318898428314,
+          "planned_not_before": 1194.6,
+          "operation_ids": [
+            "w1941:14:1"
+          ],
+          "original_machine": 1007,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-n",
+            "lot_ids": [
+              "w1941"
+            ],
+            "machine": 1007,
+            "not_before": 1194.6,
+            "operation_ids": [
+              "w1941:14:1"
+            ],
+            "steps": [
+              14
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-o",
+          "machine": 1008,
+          "time": 1203.848415689957,
+          "planned_not_before": 1210.44,
+          "operation_ids": [
+            "w1038:47:1"
+          ],
+          "original_machine": 1012,
+          "unchanged_from_882": false,
+          "committed_task_at_dispatch": {
+            "id": "d33-o",
+            "lot_ids": [
+              "w1038"
+            ],
+            "machine": 1008,
+            "not_before": 1203.848415689957,
+            "operation_ids": [
+              "w1038:47:1"
+            ],
+            "steps": [
+              47
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-h",
+          "machine": 1244,
+          "time": 1221.75,
+          "planned_not_before": 1221.75,
+          "operation_ids": [
+            "w1113:264:1"
+          ],
+          "original_machine": 1244,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-h",
+            "lot_ids": [
+              "w1113"
+            ],
+            "machine": 1244,
+            "not_before": 1221.75,
+            "operation_ids": [
+              "w1113:264:1"
+            ],
+            "steps": [
+              264
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-i",
+          "machine": 1242,
+          "time": 1255.5,
+          "planned_not_before": 1255.5,
+          "operation_ids": [
+            "w511:484:1"
+          ],
+          "original_machine": 1242,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-i",
+            "lot_ids": [
+              "w511"
+            ],
+            "machine": 1242,
+            "not_before": 1255.5,
+            "operation_ids": [
+              "w511:484:1"
+            ],
+            "steps": [
+              484
+            ],
+            "visits": [
+              1
+            ]
+          }
+        }
+      ],
+      "unchanged_inherited_task_dispatch_count": 17,
+      "rescheduled_inherited_task_dispatch_count": 1,
+      "inherited_dispatches_before_first_new_trigger": 0,
+      "packets": [
+        {
+          "call_number": 1,
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 795,
+          "focus_information_status": {
+            "complete": 51,
+            "partial": 354,
+            "not_offered": 390
+          },
+          "inline_operations": 700
+        },
+        {
+          "call_number": 2,
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 795,
+          "focus_information_status": {
+            "complete": 51,
+            "partial": 354,
+            "not_offered": 390
+          },
+          "inline_operations": 700
+        },
+        {
+          "call_number": 3,
+          "time": 863.9999999999999,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 779,
+          "focus_information_status": {
+            "complete": 30,
+            "partial": 285,
+            "not_offered": 464
+          },
+          "inline_operations": 572
+        },
+        {
+          "call_number": 4,
+          "time": 863.9999999999999,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 779,
+          "focus_information_status": {
+            "complete": 42,
+            "partial": 294,
+            "not_offered": 443
+          },
+          "inline_operations": 788
+        },
+        {
+          "call_number": 5,
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 769,
+          "focus_information_status": {
+            "complete": 119,
+            "partial": 191,
+            "not_offered": 459
+          },
+          "inline_operations": 632
+        },
+        {
+          "call_number": 6,
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 769,
+          "focus_information_status": {
+            "complete": 122,
+            "partial": 232,
+            "not_offered": 415
+          },
+          "inline_operations": 812
+        },
+        {
+          "call_number": 7,
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 757,
+          "focus_information_status": {
+            "complete": 37,
+            "partial": 330,
+            "not_offered": 390
+          },
+          "inline_operations": 476
+        },
+        {
+          "call_number": 8,
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 757,
+          "focus_information_status": {
+            "complete": 37,
+            "partial": 409,
+            "not_offered": 311
+          },
+          "inline_operations": 574
+        },
+        {
+          "call_number": 9,
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 750,
+          "focus_information_status": {
+            "complete": 34,
+            "partial": 214,
+            "not_offered": 502
+          },
+          "inline_operations": 560
+        },
+        {
+          "call_number": 10,
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 750,
+          "focus_information_status": {
+            "complete": 43,
+            "partial": 265,
+            "not_offered": 442
+          },
+          "inline_operations": 772
+        },
+        {
+          "call_number": 11,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 745,
+          "focus_information_status": {
+            "complete": 34,
+            "partial": 205,
+            "not_offered": 506
+          },
+          "inline_operations": 636
+        },
+        {
+          "call_number": 12,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 745,
+          "focus_information_status": {
+            "complete": 34,
+            "partial": 235,
+            "not_offered": 476
+          },
+          "inline_operations": 900
+        },
+        {
+          "call_number": 13,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 745,
+          "focus_information_status": {
+            "complete": 34,
+            "partial": 235,
+            "not_offered": 476
+          },
+          "inline_operations": 900
+        },
+        {
+          "call_number": 14,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 742,
+          "focus_information_status": {
+            "complete": 118,
+            "partial": 155,
+            "not_offered": 469
+          },
+          "inline_operations": 574
+        },
+        {
+          "call_number": 15,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 742,
+          "focus_information_status": {
+            "complete": 134,
+            "partial": 165,
+            "not_offered": 443
+          },
+          "inline_operations": 830
+        },
+        {
+          "call_number": 16,
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 730,
+          "focus_information_status": {
+            "complete": 13,
+            "partial": 360,
+            "not_offered": 357
+          },
+          "inline_operations": 383
+        },
+        {
+          "call_number": 17,
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 730,
+          "focus_information_status": {
+            "complete": 19,
+            "partial": 434,
+            "not_offered": 277
+          },
+          "inline_operations": 581
+        },
+        {
+          "call_number": 18,
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 722,
+          "focus_information_status": {
+            "complete": 11,
+            "partial": 237,
+            "not_offered": 474
+          },
+          "inline_operations": 417
+        },
+        {
+          "call_number": 19,
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 722,
+          "focus_information_status": {
+            "complete": 16,
+            "partial": 407,
+            "not_offered": 299
+          },
+          "inline_operations": 689
+        },
+        {
+          "call_number": 20,
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 722,
+          "focus_information_status": {
+            "complete": 16,
+            "partial": 407,
+            "not_offered": 299
+          },
+          "inline_operations": 689
+        },
+        {
+          "call_number": 21,
+          "time": 1337.8412733326247,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 705,
+          "focus_information_status": {
+            "complete": 29,
+            "partial": 174,
+            "not_offered": 502
+          },
+          "inline_operations": 540
+        },
+        {
+          "call_number": 22,
+          "time": 1337.8412733326247,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 705,
+          "focus_information_status": {
+            "complete": 29,
+            "partial": 325,
+            "not_offered": 351
+          },
+          "inline_operations": 740
+        },
+        {
+          "call_number": 23,
+          "time": 1337.8412733326247,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 705,
+          "focus_information_status": {
+            "complete": 29,
+            "partial": 325,
+            "not_offered": 351
+          },
+          "inline_operations": 740
+        },
+        {
+          "call_number": 24,
+          "time": 1343.6907074665332,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 703,
+          "focus_information_status": {
+            "complete": 7,
+            "partial": 259,
+            "not_offered": 437
+          },
+          "inline_operations": 486
+        },
+        {
+          "call_number": 25,
+          "time": 1343.6907074665332,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 703,
+          "focus_information_status": {
+            "complete": 12,
+            "partial": 305,
+            "not_offered": 386
+          },
+          "inline_operations": 782
+        },
+        {
+          "call_number": 26,
+          "time": 1357.8993034662105,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 723,
+          "focus_information_status": {
+            "complete": 29,
+            "not_offered": 468,
+            "partial": 226
+          },
+          "inline_operations": 542
+        },
+        {
+          "call_number": 27,
+          "time": 1357.8993034662105,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 723,
+          "focus_information_status": {
+            "complete": 29,
+            "partial": 312,
+            "not_offered": 382
+          },
+          "inline_operations": 808
+        },
+        {
+          "call_number": 28,
+          "time": 1357.8993034662105,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 723,
+          "focus_information_status": {
+            "complete": 29,
+            "partial": 312,
+            "not_offered": 382
+          },
+          "inline_operations": 808
+        }
+      ],
+      "busy_added_tasks": 49,
+      "added_tasks": 77,
+      "final_unassigned_public_operations": 4310,
+      "final_unassigned_nonconditional_operations": 987,
+      "final_backlog": {
+        "uncovered_executable_machine_count": 24,
+        "pending_demand_machine_count": 863,
+        "pending_demand_operation_count": 4203,
+        "uncovered_executable_machines": [
+          1247,
+          1248,
+          1249,
+          1251,
+          1253,
+          1254,
+          1255,
+          1257,
+          1258,
+          1259,
+          1260,
+          1261,
+          1262,
+          1263,
+          1264,
+          1265,
+          1266,
+          1267,
+          1270,
+          1271,
+          1272,
+          1273,
+          1274,
+          1275
+        ],
+        "ready_wait_ages": {
+          "1247": 0.0,
+          "1248": 0.0,
+          "1249": 0.0,
+          "1251": 0.0,
+          "1253": 0.0,
+          "1254": 0.0,
+          "1255": 0.0,
+          "1257": 0.0,
+          "1258": 0.0,
+          "1259": 0.0,
+          "1260": 0.0,
+          "1261": 0.0,
+          "1262": 0.0,
+          "1263": 0.0,
+          "1264": 0.0,
+          "1265": 0.0,
+          "1266": 0.0,
+          "1267": 0.0,
+          "1270": 0.0,
+          "1271": 0.0,
+          "1272": 0.0,
+          "1273": 0.0,
+          "1274": 0.0,
+          "1275": 0.0
+        },
+        "accepted_pending_task_count": 39,
+        "active_hold_count": 0,
+        "public_operations_total": 4349,
+        "unoffered_operation_count": 1693,
+        "last_batch_id": "batch-11"
+      },
+      "common_backlog": {
+        "time": 1337.8412733326247,
+        "context_ref": "context:6488daa02ca94f23929e14f7",
+        "accepted_pending_task_count": 33,
+        "unassigned_public_operations": 4316,
+        "unassigned_nonconditional_operations": 986,
+        "pending_demand_machine_count": 869,
+        "program_reported_gap_machines": 1,
+        "measurement": "first observation at the common endpoint, before planning at that endpoint"
+      },
+      "strict_ready_backlog": {
+        "available": true,
+        "time": 1337.8412733326247,
+        "global_backlog": {
+          "time": 1337.8412733326247,
+          "accepted_pending_task_count": 33,
+          "unassigned_public_operations": 4316,
+          "unassigned_nonconditional_operations": 986,
+          "pending_demand_machine_count": 869,
+          "program_reported_gap_machines": 1,
+          "measurement": "Preserved common-boundary factory state before any new planning at that boundary"
+        },
+        "method": "Use an exact snapshot or replay only the already committed plan inside a recorded execution batch; verify physical events against the actual trace.",
+        "unassigned_immediately_executable_unique_operations": 0,
+        "unassigned_immediately_executable_operation_ids": [],
+        "machines_with_an_unassigned_legal_batch": [],
+        "program_reported_gap_machine_count": 1,
+        "gap_machines_whose_candidates_are_all_already_assigned": [
+          1218
+        ],
+        "gap_machines_without_enough_unassigned_lots_to_form_a_batch": [],
+        "production_tasks_selected": 0,
+        "actual_simulation_advanced_seconds": 0,
+        "offline_replay_seconds": 0.0
+      },
+      "zero_time_stops": [],
+      "old_capacity_retrigger": 0,
+      "attempt_errors": [],
+      "transport_errors": []
+    },
+    "G1": {
+      "planning_cycles": [
+        {
+          "context_ref": "context:75194c6fe880410980d939cc",
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 99.89448016695678,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:5238247fd2214f67a3cd4932",
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 120.63473500101827,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:8746fde71880456e9647969d",
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 109.52839583391324,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:43041b29983a4cfb9ef3d850",
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 93.50213537574746,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:67641310482949e0ab1e8bb0",
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "calls": 4,
+          "model_seconds": 118.50030637392774,
+          "unknown_usage": 1,
+          "committed": true
+        },
+        {
+          "context_ref": "context:bc0dc0bb9936428a82b467aa",
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 109.32947666593827,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:bc2f304ef2ad476ab9a20a40",
+          "time": 1092.1200000000001,
+          "trigger": "plan_runway",
+          "calls": 2,
+          "model_seconds": 101.92329395911656,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:0bbe380124204cab9822a61d",
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 105.84783808304928,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:150ae09840bd472cb2ee0ca8",
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 87.63289516698569,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:160e7b81d9e54227b490df34",
+          "time": 728.9999999999999,
+          "trigger": "plan_runway",
+          "calls": 2,
+          "model_seconds": 90.53677870822139,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:7abea0035b124d1cb8691e61",
+          "time": 1337.8412733326247,
+          "trigger": "uncovered_demand",
+          "calls": 1,
+          "model_seconds": 32.453162000048906,
+          "unknown_usage": 0,
+          "committed": false
+        }
+      ],
+      "maximum_completed_cycle_model_seconds": 120.63473500101827,
+      "completed_cycles_over_135_real_seconds": 0,
+      "previous_calls": 4,
+      "cumulative_calls": 28,
+      "calls_to_common_endpoint": 27,
+      "common_call_types": {
+        "propose_delta": 10,
+        "apply_candidate": 10,
+        "read_entities": 6,
+        "transport_failure": 1
+      },
+      "common_usage": {
+        "input_tokens": 5363881,
+        "output_tokens": 32671,
+        "cached_input_tokens": 6912,
+        "unknown_usage": 1,
+        "model_seconds": 1037.3303353348747
+      },
+      "new_calls": 24,
+      "new_calls_to_common_endpoint": 23,
+      "previous_window_quality_unchanged": true,
+      "early_window": {
+        "window": [
+          702,
+          882
+        ],
+        "calls_to_reach_end": 4,
+        "quality": {
+          "weighted_tardy_lot_seconds": 1800.0,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12240.0,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 182418.75,
+          "production_dispatches": 11,
+          "operation_lots_dispatched": 11,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 728.9999999999999,
+            "reason": "plan_runway"
+          }
+        ]
+      },
+      "actual_gap_diagnosis": [
+        {
+          "time": 910.117397147927,
+          "context_ref": "context:43041b29983a4cfb9ef3d850",
+          "machines": [
+            {
+              "machine": 305,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 306,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 307,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 308,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 311,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1161.8061422329447,
+          "context_ref": "context:0bbe380124204cab9822a61d",
+          "machines": [
+            {
+              "machine": 1294,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1295,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1296,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1297,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1298,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1300,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1302,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1462",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1299,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1162.894538226919,
+          "context_ref": "context:8746fde71880456e9647969d",
+          "machines": [
+            {
+              "machine": 1217,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1961:331:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1961:331:1",
+                  "task": {
+                    "id": "d35-1961",
+                    "lot_ids": [
+                      "w1961"
+                    ],
+                    "machine": 1218,
+                    "not_before": 1259.2122958692557,
+                    "operation_ids": [
+                      "w1961:331:1"
+                    ],
+                    "steps": [
+                      331
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1203.848415689957,
+          "context_ref": "context:67641310482949e0ab1e8bb0",
+          "machines": [
+            {
+              "machine": 1008,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1038:47:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1038:47:1",
+                  "task": {
+                    "id": "d33-1038",
+                    "lot_ids": [
+                      "w1038"
+                    ],
+                    "machine": 1012,
+                    "not_before": 1210.44,
+                    "operation_ids": [
+                      "w1038:47:1"
+                    ],
+                    "steps": [
+                      47
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1260.0680213006715,
+          "context_ref": "context:5238247fd2214f67a3cd4932",
+          "machines": [
+            {
+              "machine": 307,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w2013:226:1",
+                  "task": {
+                    "id": "d34-2013",
+                    "lot_ids": [
+                      "w2013"
+                    ],
+                    "machine": 306,
+                    "not_before": 1267.28041112536,
+                    "operation_ids": [
+                      "w2013:226:1"
+                    ],
+                    "steps": [
+                      226
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 308,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w2013:226:1",
+                  "task": {
+                    "id": "d34-2013",
+                    "lot_ids": [
+                      "w2013"
+                    ],
+                    "machine": 306,
+                    "not_before": 1267.28041112536,
+                    "operation_ids": [
+                      "w2013:226:1"
+                    ],
+                    "steps": [
+                      226
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w2013:226:1",
+                  "task": {
+                    "id": "d34-2013",
+                    "lot_ids": [
+                      "w2013"
+                    ],
+                    "machine": 306,
+                    "not_before": 1267.28041112536,
+                    "operation_ids": [
+                      "w2013:226:1"
+                    ],
+                    "steps": [
+                      226
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w2013:226:1",
+                  "task": {
+                    "id": "d34-2013",
+                    "lot_ids": [
+                      "w2013"
+                    ],
+                    "machine": 306,
+                    "not_before": 1267.28041112536,
+                    "operation_ids": [
+                      "w2013:226:1"
+                    ],
+                    "steps": [
+                      226
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 311,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w2013:226:1",
+                  "task": {
+                    "id": "d34-2013",
+                    "lot_ids": [
+                      "w2013"
+                    ],
+                    "machine": 306,
+                    "not_before": 1267.28041112536,
+                    "operation_ids": [
+                      "w2013:226:1"
+                    ],
+                    "steps": [
+                      226
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1266.621357039288,
+          "context_ref": "context:75194c6fe880410980d939cc",
+          "machines": [
+            {
+              "machine": 325,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w150:239:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w150:239:1",
+                  "task": {
+                    "id": "d39-150",
+                    "lot_ids": [
+                      "w150"
+                    ],
+                    "machine": 322,
+                    "not_before": 1303.3596032319342,
+                    "operation_ids": [
+                      "w150:239:1"
+                    ],
+                    "steps": [
+                      239
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 326,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w150:239:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w150:239:1",
+                  "task": {
+                    "id": "d39-150",
+                    "lot_ids": [
+                      "w150"
+                    ],
+                    "machine": 322,
+                    "not_before": 1303.3596032319342,
+                    "operation_ids": [
+                      "w150:239:1"
+                    ],
+                    "steps": [
+                      239
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1266.6510146855849,
+          "context_ref": "context:bc0dc0bb9936428a82b467aa",
+          "machines": [
+            {
+              "machine": 1222,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1269:232:1",
+                  "task": {
+                    "id": "d36-1269",
+                    "lot_ids": [
+                      "w1269"
+                    ],
+                    "machine": 1226,
+                    "not_before": 1413.3534112567436,
+                    "operation_ids": [
+                      "w1269:232:1"
+                    ],
+                    "steps": [
+                      232
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1223,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1269:232:1",
+                  "task": {
+                    "id": "d36-1269",
+                    "lot_ids": [
+                      "w1269"
+                    ],
+                    "machine": 1226,
+                    "not_before": 1413.3534112567436,
+                    "operation_ids": [
+                      "w1269:232:1"
+                    ],
+                    "steps": [
+                      232
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1224,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1269:232:1",
+                  "task": {
+                    "id": "d36-1269",
+                    "lot_ids": [
+                      "w1269"
+                    ],
+                    "machine": 1226,
+                    "not_before": 1413.3534112567436,
+                    "operation_ids": [
+                      "w1269:232:1"
+                    ],
+                    "steps": [
+                      232
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1337.8412733326247,
+          "context_ref": "context:7abea0035b124d1cb8691e61",
+          "machines": [
+            {
+              "machine": 1218,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1806:269:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1806:269:1",
+                  "task": {
+                    "id": "d35-1806",
+                    "lot_ids": [
+                      "w1806"
+                    ],
+                    "machine": 1215,
+                    "not_before": 1356.6083239172187,
+                    "operation_ids": [
+                      "w1806:269:1"
+                    ],
+                    "steps": [
+                      269
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        }
+      ],
+      "extension_window": {
+        "window": [
+          882,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 27,
+        "quality": {
+          "weighted_tardy_lot_seconds": 4558.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12170.031833315616,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 455118.1207204454,
+          "production_dispatches": 26,
+          "operation_lots_dispatched": 26,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1092.1200000000001,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      },
+      "whole_window": {
+        "window": [
+          702,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 27,
+        "quality": {
+          "weighted_tardy_lot_seconds": 6358.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 24410.031833315614,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 637536.8707204454,
+          "production_dispatches": 37,
+          "operation_lots_dispatched": 37,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 728.9999999999999,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1092.1200000000001,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      },
+      "true_replan_count": 10,
+      "extension_replan_count": 9,
+      "replans_per_simulated_hour": 56.617903728258746,
+      "extension_trigger_intervals": [
+        28.117397147927022,
+        182.0026028520731,
+        69.68614223294458,
+        1.0883959939742454,
+        40.953877463038,
+        56.21960561071455,
+        6.553335738616397,
+        0.02965764629698242,
+        71.19025864703985
+      ],
+      "extension_intervals_below_1_second": 1,
+      "extension_intervals_below_10_seconds": 3,
+      "extension_trigger_times": [
+        1162.894538226919,
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1337.8412733326247,
+        910.117397147927,
+        1092.1200000000001,
+        1161.8061422329447
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 8,
+        "plan_runway": 1
+      },
+      "first_new_trigger": 910.117397147927,
+      "inherited_pending_task_count": 21,
+      "inherited_pending_task_dispatch_count": 18,
+      "inherited_task_dispatches": [
+        {
+          "id": "d33-346",
+          "machine": 1232,
+          "time": 918.0,
+          "planned_not_before": 918,
+          "operation_ids": [
+            "w346:274:1"
+          ],
+          "original_machine": 1232,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-346",
+            "lot_ids": [
+              "w346"
+            ],
+            "machine": 1232,
+            "not_before": 918,
+            "operation_ids": [
+              "w346:274:1"
+            ],
+            "steps": [
+              274
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1678",
+          "machine": 877,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w1678:123:1"
+          ],
+          "original_machine": 877,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1678",
+            "lot_ids": [
+              "w1678"
+            ],
+            "machine": 877,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w1678:123:1"
+            ],
+            "steps": [
+              123
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1679",
+          "machine": 878,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w1679:123:1"
+          ],
+          "original_machine": 878,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1679",
+            "lot_ids": [
+              "w1679"
+            ],
+            "machine": 878,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w1679:123:1"
+            ],
+            "steps": [
+              123
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-791",
+          "machine": 1243,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w791:501:1"
+          ],
+          "original_machine": 1243,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-791",
+            "lot_ids": [
+              "w791"
+            ],
+            "machine": 1243,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w791:501:1"
+            ],
+            "steps": [
+              501
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-792",
+          "machine": 1245,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w792:501:1"
+          ],
+          "original_machine": 1245,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-792",
+            "lot_ids": [
+              "w792"
+            ],
+            "machine": 1245,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w792:501:1"
+            ],
+            "steps": [
+              501
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d31-1278",
+          "machine": 1278,
+          "time": 958.5000000000001,
+          "planned_not_before": 958.5000000000001,
+          "operation_ids": [
+            "w130:277:1"
+          ],
+          "original_machine": 1278,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d31-1278",
+            "lot_ids": [
+              "w130"
+            ],
+            "machine": 1278,
+            "not_before": 958.5000000000001,
+            "operation_ids": [
+              "w130:277:1"
+            ],
+            "steps": [
+              277
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-86",
+          "machine": 1230,
+          "time": 992.25,
+          "planned_not_before": 992.25,
+          "operation_ids": [
+            "w86:382:1"
+          ],
+          "original_machine": 1230,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-86",
+            "lot_ids": [
+              "w86"
+            ],
+            "machine": 1230,
+            "not_before": 992.25,
+            "operation_ids": [
+              "w86:382:1"
+            ],
+            "steps": [
+              382
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-709",
+          "machine": 1289,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w709:110:1"
+          ],
+          "original_machine": 1289,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-709",
+            "lot_ids": [
+              "w709"
+            ],
+            "machine": 1289,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w709:110:1"
+            ],
+            "steps": [
+              110
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-240",
+          "machine": 1290,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w240:49:1"
+          ],
+          "original_machine": 1290,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-240",
+            "lot_ids": [
+              "w240"
+            ],
+            "machine": 1290,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w240:49:1"
+            ],
+            "steps": [
+              49
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-248",
+          "machine": 1291,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w248:49:1"
+          ],
+          "original_machine": 1291,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-248",
+            "lot_ids": [
+              "w248"
+            ],
+            "machine": 1291,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w248:49:1"
+            ],
+            "steps": [
+              49
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-257",
+          "machine": 1292,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w257:29:1"
+          ],
+          "original_machine": 1292,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-257",
+            "lot_ids": [
+              "w257"
+            ],
+            "machine": 1292,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w257:29:1"
+            ],
+            "steps": [
+              29
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1421",
+          "machine": 1246,
+          "time": 1120.5,
+          "planned_not_before": 1120.5,
+          "operation_ids": [
+            "w1421:233:1"
+          ],
+          "original_machine": 1246,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1421",
+            "lot_ids": [
+              "w1421"
+            ],
+            "machine": 1246,
+            "not_before": 1120.5,
+            "operation_ids": [
+              "w1421:233:1"
+            ],
+            "steps": [
+              233
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1937",
+          "machine": 1005,
+          "time": 1134.1200000000001,
+          "planned_not_before": 1134.1200000000001,
+          "operation_ids": [
+            "w1937:22:1"
+          ],
+          "original_machine": 1005,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1937",
+            "lot_ids": [
+              "w1937"
+            ],
+            "machine": 1005,
+            "not_before": 1134.1200000000001,
+            "operation_ids": [
+              "w1937:22:1"
+            ],
+            "steps": [
+              22
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-572",
+          "machine": 1228,
+          "time": 1147.5,
+          "planned_not_before": 1147.5,
+          "operation_ids": [
+            "w572:362:1"
+          ],
+          "original_machine": 1228,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-572",
+            "lot_ids": [
+              "w572"
+            ],
+            "machine": 1228,
+            "not_before": 1147.5,
+            "operation_ids": [
+              "w572:362:1"
+            ],
+            "steps": [
+              362
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1941",
+          "machine": 1007,
+          "time": 1202.4318898428314,
+          "planned_not_before": 1194.6,
+          "operation_ids": [
+            "w1941:14:1"
+          ],
+          "original_machine": 1007,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1941",
+            "lot_ids": [
+              "w1941"
+            ],
+            "machine": 1007,
+            "not_before": 1194.6,
+            "operation_ids": [
+              "w1941:14:1"
+            ],
+            "steps": [
+              14
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1038",
+          "machine": 1008,
+          "time": 1203.848415689957,
+          "planned_not_before": 1210.44,
+          "operation_ids": [
+            "w1038:47:1"
+          ],
+          "original_machine": 1012,
+          "unchanged_from_882": false,
+          "committed_task_at_dispatch": {
+            "id": "d33-1038",
+            "lot_ids": [
+              "w1038"
+            ],
+            "machine": 1008,
+            "not_before": 1203.848415689957,
+            "operation_ids": [
+              "w1038:47:1"
+            ],
+            "steps": [
+              47
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1113",
+          "machine": 1244,
+          "time": 1221.75,
+          "planned_not_before": 1221.75,
+          "operation_ids": [
+            "w1113:264:1"
+          ],
+          "original_machine": 1244,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1113",
+            "lot_ids": [
+              "w1113"
+            ],
+            "machine": 1244,
+            "not_before": 1221.75,
+            "operation_ids": [
+              "w1113:264:1"
+            ],
+            "steps": [
+              264
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-511",
+          "machine": 1242,
+          "time": 1255.5,
+          "planned_not_before": 1255.5,
+          "operation_ids": [
+            "w511:484:1"
+          ],
+          "original_machine": 1242,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-511",
+            "lot_ids": [
+              "w511"
+            ],
+            "machine": 1242,
+            "not_before": 1255.5,
+            "operation_ids": [
+              "w511:484:1"
+            ],
+            "steps": [
+              484
+            ],
+            "visits": [
+              1
+            ]
+          }
+        }
+      ],
+      "unchanged_inherited_task_dispatch_count": 17,
+      "rescheduled_inherited_task_dispatch_count": 1,
+      "inherited_dispatches_before_first_new_trigger": 0,
+      "packets": [
+        {
+          "call_number": 1,
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 795,
+          "focus_information_status": {
+            "complete": 51,
+            "partial": 354,
+            "not_offered": 390
+          },
+          "inline_operations": 700
+        },
+        {
+          "call_number": 2,
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 795,
+          "focus_information_status": {
+            "complete": 51,
+            "partial": 354,
+            "not_offered": 390
+          },
+          "inline_operations": 700
+        },
+        {
+          "call_number": 3,
+          "time": 728.9999999999999,
+          "trigger": "plan_runway",
+          "forecast_trigger_machines": [
+            1312
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 9,
+              "deadline": 728.9999999999999,
+              "forecast_latest_start": 728.9999999999999,
+              "forecast_need_at": 863.9999999999999,
+              "forecast_notice_key": "1b3307aca5d79e51971698bfaf8924be56824a91fe66b0394d78d4ac3de2e1e9",
+              "information_status": "complete",
+              "inline_candidates": 9,
+              "machine": 1312,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 784,
+          "focus_information_status": {
+            "complete": 30,
+            "partial": 286,
+            "not_offered": 468
+          },
+          "inline_operations": 554
+        },
+        {
+          "call_number": 4,
+          "time": 728.9999999999999,
+          "trigger": "plan_runway",
+          "forecast_trigger_machines": [
+            1312
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 9,
+              "deadline": 728.9999999999999,
+              "forecast_latest_start": 728.9999999999999,
+              "forecast_need_at": 863.9999999999999,
+              "forecast_notice_key": "1b3307aca5d79e51971698bfaf8924be56824a91fe66b0394d78d4ac3de2e1e9",
+              "information_status": "complete",
+              "inline_candidates": 9,
+              "machine": 1312,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 784,
+          "focus_information_status": {
+            "complete": 31,
+            "partial": 307,
+            "not_offered": 446
+          },
+          "inline_operations": 768
+        },
+        {
+          "call_number": 5,
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 769,
+          "focus_information_status": {
+            "complete": 119,
+            "partial": 191,
+            "not_offered": 459
+          },
+          "inline_operations": 632
+        },
+        {
+          "call_number": 6,
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 769,
+          "focus_information_status": {
+            "complete": 122,
+            "partial": 232,
+            "not_offered": 415
+          },
+          "inline_operations": 792
+        },
+        {
+          "call_number": 7,
+          "time": 1092.1200000000001,
+          "trigger": "plan_runway",
+          "forecast_trigger_machines": [
+            986
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 65,
+              "deadline": 1092.1200000000001,
+              "forecast_latest_start": 1152.1200000000001,
+              "forecast_need_at": 1287.1200000000001,
+              "forecast_notice_key": "d5d136d2cd983ee0a5356250dcf947c99e99fd2e9dcee290b052c54824be38ad",
+              "information_status": "complete",
+              "inline_candidates": 65,
+              "machine": 986,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 743,
+          "focus_information_status": {
+            "complete": 26,
+            "partial": 365,
+            "not_offered": 352
+          },
+          "inline_operations": 404
+        },
+        {
+          "call_number": 8,
+          "time": 1092.1200000000001,
+          "trigger": "plan_runway",
+          "forecast_trigger_machines": [
+            986
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 65,
+              "deadline": 1092.1200000000001,
+              "forecast_latest_start": 1152.1200000000001,
+              "forecast_need_at": 1287.1200000000001,
+              "forecast_notice_key": "d5d136d2cd983ee0a5356250dcf947c99e99fd2e9dcee290b052c54824be38ad",
+              "information_status": "complete",
+              "inline_candidates": 65,
+              "machine": 986,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 743,
+          "focus_information_status": {
+            "complete": 40,
+            "partial": 394,
+            "not_offered": 309
+          },
+          "inline_operations": 604
+        },
+        {
+          "call_number": 9,
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 749,
+          "focus_information_status": {
+            "complete": 21,
+            "partial": 308,
+            "not_offered": 420
+          },
+          "inline_operations": 438
+        },
+        {
+          "call_number": 10,
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 749,
+          "focus_information_status": {
+            "complete": 27,
+            "partial": 376,
+            "not_offered": 346
+          },
+          "inline_operations": 710
+        },
+        {
+          "call_number": 11,
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 749,
+          "focus_information_status": {
+            "complete": 27,
+            "partial": 376,
+            "not_offered": 346
+          },
+          "inline_operations": 710
+        },
+        {
+          "call_number": 12,
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 742,
+          "focus_information_status": {
+            "complete": 23,
+            "partial": 196,
+            "not_offered": 523
+          },
+          "inline_operations": 512
+        },
+        {
+          "call_number": 13,
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 742,
+          "focus_information_status": {
+            "complete": 23,
+            "partial": 364,
+            "not_offered": 355
+          },
+          "inline_operations": 726
+        },
+        {
+          "call_number": 14,
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 742,
+          "focus_information_status": {
+            "complete": 23,
+            "partial": 364,
+            "not_offered": 355
+          },
+          "inline_operations": 726
+        },
+        {
+          "call_number": 15,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 735,
+          "focus_information_status": {
+            "complete": 16,
+            "partial": 162,
+            "not_offered": 557
+          },
+          "inline_operations": 470
+        },
+        {
+          "call_number": 16,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 735,
+          "focus_information_status": {
+            "complete": 16,
+            "partial": 162,
+            "not_offered": 557
+          },
+          "inline_operations": 470
+        },
+        {
+          "call_number": 17,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 735,
+          "focus_information_status": {
+            "complete": 16,
+            "partial": 328,
+            "not_offered": 391
+          },
+          "inline_operations": 754
+        },
+        {
+          "call_number": 18,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 735,
+          "focus_information_status": {
+            "complete": 16,
+            "partial": 328,
+            "not_offered": 391
+          },
+          "inline_operations": 754
+        },
+        {
+          "call_number": 19,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 724,
+          "focus_information_status": {
+            "complete": 125,
+            "partial": 198,
+            "not_offered": 401
+          },
+          "inline_operations": 433
+        },
+        {
+          "call_number": 20,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 724,
+          "focus_information_status": {
+            "complete": 131,
+            "partial": 312,
+            "not_offered": 281
+          },
+          "inline_operations": 597
+        },
+        {
+          "call_number": 21,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 724,
+          "focus_information_status": {
+            "complete": 131,
+            "partial": 312,
+            "not_offered": 281
+          },
+          "inline_operations": 597
+        },
+        {
+          "call_number": 22,
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 711,
+          "focus_information_status": {
+            "complete": 4,
+            "partial": 303,
+            "not_offered": 404
+          },
+          "inline_operations": 406
+        },
+        {
+          "call_number": 23,
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 711,
+          "focus_information_status": {
+            "complete": 19,
+            "partial": 357,
+            "not_offered": 335
+          },
+          "inline_operations": 714
+        },
+        {
+          "call_number": 24,
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 711,
+          "focus_information_status": {
+            "complete": 19,
+            "partial": 357,
+            "not_offered": 335
+          },
+          "inline_operations": 714
+        },
+        {
+          "call_number": 25,
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 711,
+          "focus_information_status": {
+            "complete": 21,
+            "partial": 201,
+            "not_offered": 489
+          },
+          "inline_operations": 534
+        },
+        {
+          "call_number": 26,
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 711,
+          "focus_information_status": {
+            "complete": 46,
+            "partial": 225,
+            "not_offered": 440
+          },
+          "inline_operations": 836
+        },
+        {
+          "call_number": 27,
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 711,
+          "focus_information_status": {
+            "complete": 46,
+            "partial": 225,
+            "not_offered": 440
+          },
+          "inline_operations": 836
+        },
+        {
+          "call_number": 28,
+          "time": 1337.8412733326247,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 691,
+          "focus_information_status": {
+            "complete": 31,
+            "partial": 249,
+            "not_offered": 411
+          },
+          "inline_operations": 554
+        }
+      ],
+      "busy_added_tasks": 73,
+      "added_tasks": 93,
+      "final_unassigned_public_operations": 4292,
+      "final_unassigned_nonconditional_operations": 979,
+      "final_backlog": {
+        "uncovered_executable_machine_count": 1,
+        "pending_demand_machine_count": 845,
+        "pending_demand_operation_count": 4144,
+        "uncovered_executable_machines": [
+          1218
+        ],
+        "ready_wait_ages": {
+          "1218": 0.0
+        },
+        "accepted_pending_task_count": 57,
+        "active_hold_count": 0,
+        "public_operations_total": 4349,
+        "unoffered_operation_count": 1423,
+        "last_batch_id": "batch-10"
+      },
+      "common_backlog": {
+        "time": 1337.8412733326247,
+        "context_ref": "context:7abea0035b124d1cb8691e61",
+        "accepted_pending_task_count": 57,
+        "unassigned_public_operations": 4292,
+        "unassigned_nonconditional_operations": 979,
+        "pending_demand_machine_count": 845,
+        "program_reported_gap_machines": 1,
+        "measurement": "first observation at the common endpoint, before planning at that endpoint"
+      },
+      "strict_ready_backlog": {
+        "available": true,
+        "time": 1337.8412733326247,
+        "global_backlog": {
+          "time": 1337.8412733326247,
+          "accepted_pending_task_count": 57,
+          "unassigned_public_operations": 4292,
+          "unassigned_nonconditional_operations": 979,
+          "pending_demand_machine_count": 845,
+          "program_reported_gap_machines": 1,
+          "measurement": "Preserved common-boundary factory state before any new planning at that boundary"
+        },
+        "method": "Use an exact snapshot or replay only the already committed plan inside a recorded execution batch; verify physical events against the actual trace.",
+        "unassigned_immediately_executable_unique_operations": 0,
+        "unassigned_immediately_executable_operation_ids": [],
+        "machines_with_an_unassigned_legal_batch": [],
+        "program_reported_gap_machine_count": 1,
+        "gap_machines_whose_candidates_are_all_already_assigned": [
+          1218
+        ],
+        "gap_machines_without_enough_unassigned_lots_to_form_a_batch": [],
+        "production_tasks_selected": 0,
+        "actual_simulation_advanced_seconds": 0,
+        "offline_replay_seconds": 0.0
+      },
+      "zero_time_stops": [],
+      "old_capacity_retrigger": 0,
+      "attempt_errors": [],
+      "transport_errors": [
+        {
+          "index": 14,
+          "call_number": 15,
+          "message": "Selected model is at capacity. Please try a different model."
+        }
+      ]
+    },
+    "G2": {
+      "planning_cycles": [
+        {
+          "context_ref": "context:25400f494bcb4732bb9a54ca",
+          "time": 1124.2122958692557,
+          "trigger": "plan_runway",
+          "calls": 2,
+          "model_seconds": 100.45004949904978,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:8a5fdb183da64995a1e279ff",
+          "time": 783.0,
+          "trigger": "plan_runway",
+          "calls": 2,
+          "model_seconds": 107.96637262497097,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:11e0b4a4c6ce48ef80216603",
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 114.956818748964,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:0d8bf3b85706494f879dbffe",
+          "time": 1337.8412733326247,
+          "trigger": "uncovered_demand",
+          "calls": 1,
+          "model_seconds": 60.71643374999985,
+          "unknown_usage": 0,
+          "committed": false
+        },
+        {
+          "context_ref": "context:baa8bf958a93440aa0908c2e",
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 121.67274199915119,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:ef56b6b9996040e784af2ac1",
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 105.01618266617879,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:58435827aa0a42f5a78fa76a",
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 100.48616737406701,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:9131d798bf3243848d2b7b89",
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "calls": 4,
+          "model_seconds": 177.40776333305985,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:5238fa543f8e4f548c324f3f",
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "calls": 3,
+          "model_seconds": 115.5491450841073,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:0f9b6f1c1e80452c802cc4c4",
+          "time": 1334.7854863566047,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 97.2896916673053,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:3e204d9d6bbb450f9863f0f6",
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 104.24088929127902,
+          "unknown_usage": 0,
+          "committed": true
+        },
+        {
+          "context_ref": "context:16e62bebe54243fd9c5d5e40",
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "calls": 2,
+          "model_seconds": 81.7983320010826,
+          "unknown_usage": 0,
+          "committed": true
+        }
+      ],
+      "maximum_completed_cycle_model_seconds": 177.40776333305985,
+      "completed_cycles_over_135_real_seconds": 1,
+      "previous_calls": 4,
+      "cumulative_calls": 28,
+      "calls_to_common_endpoint": 27,
+      "common_call_types": {
+        "propose_delta": 12,
+        "apply_candidate": 11,
+        "read_entities": 4
+      },
+      "common_usage": {
+        "input_tokens": 11158256,
+        "output_tokens": 34655,
+        "cached_input_tokens": 1024,
+        "unknown_usage": 0,
+        "model_seconds": 1226.8341542892158
+      },
+      "new_calls": 24,
+      "new_calls_to_common_endpoint": 23,
+      "previous_window_quality_unchanged": true,
+      "early_window": {
+        "window": [
+          702,
+          882
+        ],
+        "calls_to_reach_end": 4,
+        "quality": {
+          "weighted_tardy_lot_seconds": 1800.0,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12240.0,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 182418.75,
+          "production_dispatches": 11,
+          "operation_lots_dispatched": 11,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 783.0,
+            "reason": "plan_runway"
+          }
+        ]
+      },
+      "actual_gap_diagnosis": [
+        {
+          "time": 910.117397147927,
+          "context_ref": "context:3e204d9d6bbb450f9863f0f6",
+          "machines": [
+            {
+              "machine": 305,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 306,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 307,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 308,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 311,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1900:90:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1161.8061422329447,
+          "context_ref": "context:baa8bf958a93440aa0908c2e",
+          "machines": [
+            {
+              "machine": 1294,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1295",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1295,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1296,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1295",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1295,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1297,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1295",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1295,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1298,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1295",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1295,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1300,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1295",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1295,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1302,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1295",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1295,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1295",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1295,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            },
+            {
+              "machine": 1310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1462:131:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1462:131:1",
+                  "task": {
+                    "id": "d35-1295",
+                    "lot_ids": [
+                      "w1462"
+                    ],
+                    "machine": 1295,
+                    "not_before": 1289.2718187072946,
+                    "operation_ids": [
+                      "w1462:131:1"
+                    ],
+                    "steps": [
+                      131
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1162.894538226919,
+          "context_ref": "context:11e0b4a4c6ce48ef80216603",
+          "machines": [
+            {
+              "machine": 1217,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1961:331:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1961:331:1",
+                  "task": {
+                    "id": "d35-1215",
+                    "lot_ids": [
+                      "w1961"
+                    ],
+                    "machine": 1215,
+                    "not_before": 1259.2122958692557,
+                    "operation_ids": [
+                      "w1961:331:1"
+                    ],
+                    "steps": [
+                      331
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1203.848415689957,
+          "context_ref": "context:5238fa543f8e4f548c324f3f",
+          "machines": [
+            {
+              "machine": 1008,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1038:47:1"
+              ],
+              "already_queued": [
+                {
+                  "operation_id": "w1038:47:1",
+                  "task": {
+                    "id": "d33-1012",
+                    "lot_ids": [
+                      "w1038"
+                    ],
+                    "machine": 1012,
+                    "not_before": 1210.44,
+                    "operation_ids": [
+                      "w1038:47:1"
+                    ],
+                    "steps": [
+                      47
+                    ],
+                    "visits": [
+                      1
+                    ]
+                  }
+                }
+              ],
+              "all_reported_candidates_already_queued": true
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": true
+        },
+        {
+          "time": 1260.0680213006715,
+          "context_ref": "context:9131d798bf3243848d2b7b89",
+          "machines": [
+            {
+              "machine": 306,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 307,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 308,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 309,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 310,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 311,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w2013:226:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1266.621357039288,
+          "context_ref": "context:58435827aa0a42f5a78fa76a",
+          "machines": [
+            {
+              "machine": 322,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w150:239:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 325,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w150:239:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 326,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w150:239:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1266.6510146855849,
+          "context_ref": "context:16e62bebe54243fd9c5d5e40",
+          "machines": [
+            {
+              "machine": 1219,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1222,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1223,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1224,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1225,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1226,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1269:232:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1334.7854863566047,
+          "context_ref": "context:0f9b6f1c1e80452c802cc4c4",
+          "machines": [
+            {
+              "machine": 971,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w243:72:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        },
+        {
+          "time": 1337.8412733326247,
+          "context_ref": "context:0d8bf3b85706494f879dbffe",
+          "machines": [
+            {
+              "machine": 1217,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1806:269:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            },
+            {
+              "machine": 1218,
+              "reported_candidate_count": 1,
+              "public_ready_candidates": [
+                "w1806:269:1"
+              ],
+              "already_queued": [],
+              "all_reported_candidates_already_queued": false
+            }
+          ],
+          "all_gap_machines_only_see_already_queued_work": false
+        }
+      ],
+      "extension_window": {
+        "window": [
+          882,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 27,
+        "quality": {
+          "weighted_tardy_lot_seconds": 4558.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12170.031833315616,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 455078.1052506393,
+          "production_dispatches": 27,
+          "operation_lots_dispatched": 27,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1124.2122958692557,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1334.7854863566047,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      },
+      "whole_window": {
+        "window": [
+          702,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 27,
+        "quality": {
+          "weighted_tardy_lot_seconds": 6358.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 24410.031833315614,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 637496.8552506394,
+          "production_dispatches": 38,
+          "operation_lots_dispatched": 38,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 783.0,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1124.2122958692557,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1334.7854863566047,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      },
+      "true_replan_count": 11,
+      "extension_replan_count": 10,
+      "replans_per_simulated_hour": 62.279694101084615,
+      "extension_trigger_intervals": [
+        28.117397147927022,
+        214.09489872132872,
+        37.593846363688954,
+        1.0883959939742454,
+        40.953877463038,
+        56.21960561071455,
+        6.553335738616397,
+        0.02965764629698242,
+        68.13447167101981,
+        3.0557869760200447
+      ],
+      "extension_intervals_below_1_second": 1,
+      "extension_intervals_below_10_seconds": 4,
+      "extension_trigger_times": [
+        1162.894538226919,
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1334.7854863566047,
+        1337.8412733326247,
+        910.117397147927,
+        1124.2122958692557,
+        1161.8061422329447
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 9,
+        "plan_runway": 1
+      },
+      "first_new_trigger": 910.117397147927,
+      "inherited_pending_task_count": 17,
+      "inherited_pending_task_dispatch_count": 17,
+      "inherited_task_dispatches": [
+        {
+          "id": "d33-1232",
+          "machine": 1232,
+          "time": 918.0,
+          "planned_not_before": 918,
+          "operation_ids": [
+            "w346:274:1"
+          ],
+          "original_machine": 1232,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1232",
+            "lot_ids": [
+              "w346"
+            ],
+            "machine": 1232,
+            "not_before": 918,
+            "operation_ids": [
+              "w346:274:1"
+            ],
+            "steps": [
+              274
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-877",
+          "machine": 877,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w1678:123:1"
+          ],
+          "original_machine": 877,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-877",
+            "lot_ids": [
+              "w1678"
+            ],
+            "machine": 877,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w1678:123:1"
+            ],
+            "steps": [
+              123
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-878",
+          "machine": 878,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w1679:123:1"
+          ],
+          "original_machine": 878,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-878",
+            "lot_ids": [
+              "w1679"
+            ],
+            "machine": 878,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w1679:123:1"
+            ],
+            "steps": [
+              123
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1243",
+          "machine": 1243,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w791:501:1"
+          ],
+          "original_machine": 1243,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1243",
+            "lot_ids": [
+              "w791"
+            ],
+            "machine": 1243,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w791:501:1"
+            ],
+            "steps": [
+              501
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1245",
+          "machine": 1245,
+          "time": 924.75,
+          "planned_not_before": 924.75,
+          "operation_ids": [
+            "w792:501:1"
+          ],
+          "original_machine": 1245,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1245",
+            "lot_ids": [
+              "w792"
+            ],
+            "machine": 1245,
+            "not_before": 924.75,
+            "operation_ids": [
+              "w792:501:1"
+            ],
+            "steps": [
+              501
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d31-1278",
+          "machine": 1278,
+          "time": 958.5000000000001,
+          "planned_not_before": 958.5000000000001,
+          "operation_ids": [
+            "w130:277:1"
+          ],
+          "original_machine": 1278,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d31-1278",
+            "lot_ids": [
+              "w130"
+            ],
+            "machine": 1278,
+            "not_before": 958.5000000000001,
+            "operation_ids": [
+              "w130:277:1"
+            ],
+            "steps": [
+              277
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1230",
+          "machine": 1230,
+          "time": 992.25,
+          "planned_not_before": 992.25,
+          "operation_ids": [
+            "w86:382:1"
+          ],
+          "original_machine": 1230,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1230",
+            "lot_ids": [
+              "w86"
+            ],
+            "machine": 1230,
+            "not_before": 992.25,
+            "operation_ids": [
+              "w86:382:1"
+            ],
+            "steps": [
+              382
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-1289",
+          "machine": 1289,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w709:110:1"
+          ],
+          "original_machine": 1289,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-1289",
+            "lot_ids": [
+              "w709"
+            ],
+            "machine": 1289,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w709:110:1"
+            ],
+            "steps": [
+              110
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-1290",
+          "machine": 1290,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w240:49:1"
+          ],
+          "original_machine": 1290,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-1290",
+            "lot_ids": [
+              "w240"
+            ],
+            "machine": 1290,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w240:49:1"
+            ],
+            "steps": [
+              49
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-1291",
+          "machine": 1291,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w248:49:1"
+          ],
+          "original_machine": 1291,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-1291",
+            "lot_ids": [
+              "w248"
+            ],
+            "machine": 1291,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w248:49:1"
+            ],
+            "steps": [
+              49
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d32-1292",
+          "machine": 1292,
+          "time": 1005.75,
+          "planned_not_before": 1005.75,
+          "operation_ids": [
+            "w257:29:1"
+          ],
+          "original_machine": 1292,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d32-1292",
+            "lot_ids": [
+              "w257"
+            ],
+            "machine": 1292,
+            "not_before": 1005.75,
+            "operation_ids": [
+              "w257:29:1"
+            ],
+            "steps": [
+              29
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1246",
+          "machine": 1246,
+          "time": 1120.5,
+          "planned_not_before": 1120.5,
+          "operation_ids": [
+            "w1421:233:1"
+          ],
+          "original_machine": 1246,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1246",
+            "lot_ids": [
+              "w1421"
+            ],
+            "machine": 1246,
+            "not_before": 1120.5,
+            "operation_ids": [
+              "w1421:233:1"
+            ],
+            "steps": [
+              233
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1005",
+          "machine": 1005,
+          "time": 1124.2122958692557,
+          "planned_not_before": 1134.1200000000001,
+          "operation_ids": [
+            "w1937:22:1"
+          ],
+          "original_machine": 1005,
+          "unchanged_from_882": false,
+          "committed_task_at_dispatch": {
+            "id": "d33-1005",
+            "lot_ids": [
+              "w1937"
+            ],
+            "machine": 1005,
+            "not_before": 1124.2122958692557,
+            "operation_ids": [
+              "w1937:22:1"
+            ],
+            "steps": [
+              22
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1007",
+          "machine": 1007,
+          "time": 1202.4318898428314,
+          "planned_not_before": 1194.6,
+          "operation_ids": [
+            "w1941:14:1"
+          ],
+          "original_machine": 1007,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1007",
+            "lot_ids": [
+              "w1941"
+            ],
+            "machine": 1007,
+            "not_before": 1194.6,
+            "operation_ids": [
+              "w1941:14:1"
+            ],
+            "steps": [
+              14
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1012",
+          "machine": 1008,
+          "time": 1203.848415689957,
+          "planned_not_before": 1210.44,
+          "operation_ids": [
+            "w1038:47:1"
+          ],
+          "original_machine": 1012,
+          "unchanged_from_882": false,
+          "committed_task_at_dispatch": {
+            "id": "d33-1012",
+            "lot_ids": [
+              "w1038"
+            ],
+            "machine": 1008,
+            "not_before": 1203.848415689957,
+            "operation_ids": [
+              "w1038:47:1"
+            ],
+            "steps": [
+              47
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1244",
+          "machine": 1244,
+          "time": 1221.75,
+          "planned_not_before": 1221.75,
+          "operation_ids": [
+            "w1113:264:1"
+          ],
+          "original_machine": 1244,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1244",
+            "lot_ids": [
+              "w1113"
+            ],
+            "machine": 1244,
+            "not_before": 1221.75,
+            "operation_ids": [
+              "w1113:264:1"
+            ],
+            "steps": [
+              264
+            ],
+            "visits": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "d33-1242",
+          "machine": 1242,
+          "time": 1255.5,
+          "planned_not_before": 1255.5,
+          "operation_ids": [
+            "w511:484:1"
+          ],
+          "original_machine": 1242,
+          "unchanged_from_882": true,
+          "committed_task_at_dispatch": {
+            "id": "d33-1242",
+            "lot_ids": [
+              "w511"
+            ],
+            "machine": 1242,
+            "not_before": 1255.5,
+            "operation_ids": [
+              "w511:484:1"
+            ],
+            "steps": [
+              484
+            ],
+            "visits": [
+              1
+            ]
+          }
+        }
+      ],
+      "unchanged_inherited_task_dispatch_count": 15,
+      "rescheduled_inherited_task_dispatch_count": 2,
+      "inherited_dispatches_before_first_new_trigger": 0,
+      "packets": [
+        {
+          "call_number": 1,
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 795,
+          "focus_information_status": {
+            "complete": 217,
+            "partial": 522,
+            "not_offered": 56
+          },
+          "inline_operations": 2491
+        },
+        {
+          "call_number": 2,
+          "time": 702.0,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 795,
+          "focus_information_status": {
+            "complete": 217,
+            "partial": 522,
+            "not_offered": 56
+          },
+          "inline_operations": 2491
+        },
+        {
+          "call_number": 3,
+          "time": 783.0,
+          "trigger": "plan_runway",
+          "forecast_trigger_machines": [
+            1232
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 10,
+              "deadline": 783.0,
+              "forecast_latest_start": 783.0,
+              "forecast_need_at": 918.0,
+              "forecast_notice_key": "00ced7c6ab5e9788997519fa42a1016678c9fbbdd4ecb9fc74869406aa157336",
+              "information_status": "complete",
+              "inline_candidates": 10,
+              "machine": 1232,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 782,
+          "focus_information_status": {
+            "complete": 180,
+            "partial": 502,
+            "not_offered": 100
+          },
+          "inline_operations": 2237
+        },
+        {
+          "call_number": 4,
+          "time": 783.0,
+          "trigger": "plan_runway",
+          "forecast_trigger_machines": [
+            1232
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 10,
+              "deadline": 783.0,
+              "forecast_latest_start": 783.0,
+              "forecast_need_at": 918.0,
+              "forecast_notice_key": "00ced7c6ab5e9788997519fa42a1016678c9fbbdd4ecb9fc74869406aa157336",
+              "information_status": "complete",
+              "inline_candidates": 10,
+              "machine": 1232,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 782,
+          "focus_information_status": {
+            "complete": 200,
+            "partial": 539,
+            "not_offered": 43
+          },
+          "inline_operations": 2477
+        },
+        {
+          "call_number": 5,
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 772,
+          "focus_information_status": {
+            "complete": 208,
+            "partial": 419,
+            "not_offered": 145
+          },
+          "inline_operations": 2228
+        },
+        {
+          "call_number": 6,
+          "time": 910.117397147927,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 772,
+          "focus_information_status": {
+            "complete": 270,
+            "partial": 436,
+            "not_offered": 66
+          },
+          "inline_operations": 2435
+        },
+        {
+          "call_number": 7,
+          "time": 1124.2122958692557,
+          "trigger": "plan_runway",
+          "forecast_trigger_machines": [
+            1218
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 49,
+              "deadline": 1124.2122958692557,
+              "forecast_latest_start": 1124.2122958692557,
+              "forecast_need_at": 1259.2122958692557,
+              "forecast_notice_key": "39b2b7c107d3f9e040bb75e4850575d5f190784163f53d88bbda039ba4ce5af3",
+              "information_status": "complete",
+              "inline_candidates": 49,
+              "machine": 1218,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 752,
+          "focus_information_status": {
+            "complete": 110,
+            "partial": 601,
+            "not_offered": 41
+          },
+          "inline_operations": 2009
+        },
+        {
+          "call_number": 8,
+          "time": 1124.2122958692557,
+          "trigger": "plan_runway",
+          "forecast_trigger_machines": [
+            1218
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 49,
+              "deadline": 1124.2122958692557,
+              "forecast_latest_start": 1124.2122958692557,
+              "forecast_need_at": 1259.2122958692557,
+              "forecast_notice_key": "39b2b7c107d3f9e040bb75e4850575d5f190784163f53d88bbda039ba4ce5af3",
+              "information_status": "complete",
+              "inline_candidates": 49,
+              "machine": 1218,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 752,
+          "focus_information_status": {
+            "complete": 142,
+            "partial": 579,
+            "not_offered": 31
+          },
+          "inline_operations": 2381
+        },
+        {
+          "call_number": 9,
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 758,
+          "focus_information_status": {
+            "complete": 113,
+            "partial": 596,
+            "not_offered": 49
+          },
+          "inline_operations": 1937
+        },
+        {
+          "call_number": 10,
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 758,
+          "focus_information_status": {
+            "complete": 146,
+            "partial": 581,
+            "not_offered": 31
+          },
+          "inline_operations": 2359
+        },
+        {
+          "call_number": 11,
+          "time": 1161.8061422329447,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 758,
+          "focus_information_status": {
+            "complete": 146,
+            "partial": 581,
+            "not_offered": 31
+          },
+          "inline_operations": 2359
+        },
+        {
+          "call_number": 12,
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 752,
+          "focus_information_status": {
+            "complete": 107,
+            "partial": 598,
+            "not_offered": 47
+          },
+          "inline_operations": 1969
+        },
+        {
+          "call_number": 13,
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 752,
+          "focus_information_status": {
+            "complete": 140,
+            "partial": 581,
+            "not_offered": 31
+          },
+          "inline_operations": 2399
+        },
+        {
+          "call_number": 14,
+          "time": 1162.894538226919,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 752,
+          "focus_information_status": {
+            "complete": 140,
+            "partial": 581,
+            "not_offered": 31
+          },
+          "inline_operations": 2399
+        },
+        {
+          "call_number": 15,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 747,
+          "focus_information_status": {
+            "complete": 100,
+            "partial": 565,
+            "not_offered": 82
+          },
+          "inline_operations": 1989
+        },
+        {
+          "call_number": 16,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 747,
+          "focus_information_status": {
+            "complete": 120,
+            "partial": 590,
+            "not_offered": 37
+          },
+          "inline_operations": 2375
+        },
+        {
+          "call_number": 17,
+          "time": 1203.848415689957,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 747,
+          "focus_information_status": {
+            "complete": 120,
+            "partial": 590,
+            "not_offered": 37
+          },
+          "inline_operations": 2375
+        },
+        {
+          "call_number": 18,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 747,
+          "focus_information_status": {
+            "complete": 189,
+            "partial": 473,
+            "not_offered": 85
+          },
+          "inline_operations": 1931
+        },
+        {
+          "call_number": 19,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 747,
+          "focus_information_status": {
+            "complete": 247,
+            "partial": 468,
+            "not_offered": 32
+          },
+          "inline_operations": 2359
+        },
+        {
+          "call_number": 20,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 747,
+          "focus_information_status": {
+            "complete": 247,
+            "partial": 468,
+            "not_offered": 32
+          },
+          "inline_operations": 2359
+        },
+        {
+          "call_number": 21,
+          "time": 1260.0680213006715,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 747,
+          "focus_information_status": {
+            "complete": 247,
+            "partial": 468,
+            "not_offered": 32
+          },
+          "inline_operations": 2359
+        },
+        {
+          "call_number": 22,
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 745,
+          "focus_information_status": {
+            "complete": 72,
+            "not_offered": 86,
+            "partial": 587
+          },
+          "inline_operations": 1859
+        },
+        {
+          "call_number": 23,
+          "time": 1266.621357039288,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 745,
+          "focus_information_status": {
+            "complete": 139,
+            "partial": 572,
+            "not_offered": 34
+          },
+          "inline_operations": 2407
+        },
+        {
+          "call_number": 24,
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [
+            1220
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 99,
+              "deadline": 1266.6510146855849,
+              "forecast_latest_start": 1134.0,
+              "forecast_need_at": 1269.0,
+              "forecast_notice_key": "a5bcf31dcb5e306d6c2305fcfb392f31beb3da6c333c0f9ddd8a171cbea16655",
+              "information_status": "complete",
+              "inline_candidates": 99,
+              "machine": 1220,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 749,
+          "focus_information_status": {
+            "complete": 74,
+            "partial": 581,
+            "not_offered": 94
+          },
+          "inline_operations": 1829
+        },
+        {
+          "call_number": 25,
+          "time": 1266.6510146855849,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [
+            1220
+          ],
+          "forecast_trigger_coverage": [
+            {
+              "candidate_count": 99,
+              "deadline": 1266.6510146855849,
+              "forecast_latest_start": 1134.0,
+              "forecast_need_at": 1269.0,
+              "forecast_notice_key": "a5bcf31dcb5e306d6c2305fcfb392f31beb3da6c333c0f9ddd8a171cbea16655",
+              "information_status": "complete",
+              "inline_candidates": 99,
+              "machine": 1220,
+              "rank": 1,
+              "reason": "triggering_machine"
+            }
+          ],
+          "focus_count": 749,
+          "focus_information_status": {
+            "complete": 143,
+            "partial": 572,
+            "not_offered": 34
+          },
+          "inline_operations": 2377
+        },
+        {
+          "call_number": 26,
+          "time": 1334.7854863566047,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 729,
+          "focus_information_status": {
+            "complete": 91,
+            "partial": 528,
+            "not_offered": 110
+          },
+          "inline_operations": 1826
+        },
+        {
+          "call_number": 27,
+          "time": 1334.7854863566047,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 729,
+          "focus_information_status": {
+            "complete": 127,
+            "partial": 571,
+            "not_offered": 31
+          },
+          "inline_operations": 2387
+        },
+        {
+          "call_number": 28,
+          "time": 1337.8412733326247,
+          "trigger": "uncovered_demand",
+          "forecast_trigger_machines": [],
+          "forecast_trigger_coverage": [],
+          "focus_count": 721,
+          "focus_information_status": {
+            "complete": 74,
+            "partial": 537,
+            "not_offered": 110
+          },
+          "inline_operations": 1816
+        }
+      ],
+      "busy_added_tasks": 39,
+      "added_tasks": 47,
+      "final_unassigned_public_operations": 4339,
+      "final_unassigned_nonconditional_operations": 988,
+      "final_backlog": {
+        "uncovered_executable_machine_count": 2,
+        "pending_demand_machine_count": 891,
+        "pending_demand_operation_count": 4339,
+        "uncovered_executable_machines": [
+          1217,
+          1218
+        ],
+        "ready_wait_ages": {
+          "1217": 0.0,
+          "1218": 0.0
+        },
+        "accepted_pending_task_count": 10,
+        "active_hold_count": 0,
+        "public_operations_total": 4349,
+        "unoffered_operation_count": 1064,
+        "last_batch_id": "batch-11"
+      },
+      "common_backlog": {
+        "time": 1337.8412733326247,
+        "context_ref": "context:0d8bf3b85706494f879dbffe",
+        "accepted_pending_task_count": 10,
+        "unassigned_public_operations": 4339,
+        "unassigned_nonconditional_operations": 988,
+        "pending_demand_machine_count": 891,
+        "program_reported_gap_machines": 2,
+        "measurement": "first observation at the common endpoint, before planning at that endpoint"
+      },
+      "strict_ready_backlog": {
+        "available": true,
+        "time": 1337.8412733326247,
+        "global_backlog": {
+          "time": 1337.8412733326247,
+          "accepted_pending_task_count": 10,
+          "unassigned_public_operations": 4339,
+          "unassigned_nonconditional_operations": 988,
+          "pending_demand_machine_count": 891,
+          "program_reported_gap_machines": 2,
+          "measurement": "Preserved common-boundary factory state before any new planning at that boundary"
+        },
+        "method": "Use an exact snapshot or replay only the already committed plan inside a recorded execution batch; verify physical events against the actual trace.",
+        "unassigned_immediately_executable_unique_operations": 1,
+        "unassigned_immediately_executable_operation_ids": [
+          "w1806:269:1"
+        ],
+        "machines_with_an_unassigned_legal_batch": [
+          1217,
+          1218
+        ],
+        "program_reported_gap_machine_count": 2,
+        "gap_machines_whose_candidates_are_all_already_assigned": [],
+        "gap_machines_without_enough_unassigned_lots_to_form_a_batch": [],
+        "production_tasks_selected": 0,
+        "actual_simulation_advanced_seconds": 0,
+        "offline_replay_seconds": 0.0
+      },
+      "zero_time_stops": [],
+      "old_capacity_retrigger": 0,
+      "attempt_errors": [
+        {
+          "index": 18,
+          "error": {
+            "code": "scope",
+            "detail": "scope: full current/base responsibility must match with exact integer identities"
+          }
+        }
+      ],
+      "transport_errors": []
+    }
+  },
+  "verification": {
+    "all_groups_reached_target": false,
+    "paired_randomness": {
+      "mechanism": "event-keyed processing/cadence/transport draws, not a shared mutable RNG stream",
+      "shared_operation_batch_keys": 40,
+      "shared_keys_with_different_random_durations": 0
+    },
+    "previous_files_checked": 17214,
+    "previous_files_changed": [],
+    "original_B_unchanged": true,
+    "source_unchanged_during_live": false,
+    "runner_unchanged": true,
+    "support_unchanged": true,
+    "resource_continuation_audits": [
+      null,
+      null,
+      null
+    ],
+    "all_inheritance_audits_pass": true,
+    "approved_retry_audit": {
+      "valid": true,
+      "failed_attempt_retained": "attempt:1fb3f2d29c414e4d89258dbf",
+      "unknown_usage_retained": true,
+      "source_checkpoint_unchanged": true,
+      "new_actual_calls": 13,
+      "same_model_and_production_rules": true,
+      "legitimate_note_updates": [
+        {
+          "record": "notes/current",
+          "model_updates": [
+            "attempt:57d4ec3401804088b001b759",
+            "attempt:2ba85fb3fff047808fce9638",
+            "attempt:02d6c4ede6874878b2accfac",
+            "attempt:37aed79e2f054439b23d35b9"
+          ],
+          "old_version": 6,
+          "new_version": 10
+        }
+      ]
+    },
+    "all_cost_audits_pass": false,
+    "all_production_choices_from_model": true,
+    "all_physical_prefix_checks_pass": true,
+    "all_opportunity_audits_pass": true,
+    "actual_new_calls": 72,
+    "cumulative_actual_calls": 84,
+    "unknown_usage_calls": 1
+  }
+}

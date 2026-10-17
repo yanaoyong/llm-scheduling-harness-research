@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "common_window": [
+    702,
+    1603.1013031725258
+  ],
+  "common_calls": [
+    56,
+    69,
+    69
+  ],
+  "all_actual_calls": [
+    79,
+    72,
+    76
+  ],
+  "unknown_usage_calls": 4,
+  "all_production_choices_from_model": true,
+  "original_B_unchanged_in_experiment": true,
+  "source_public_comparison_sha256": "b29ef81cee509a5cd2e2b323fe9d75554f86ebf32d35054d5906e9fdfc6946ff"
+}

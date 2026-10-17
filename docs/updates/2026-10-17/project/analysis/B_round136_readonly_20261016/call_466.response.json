@@ -1,0 +1,162 @@
+{
+  "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+  "protocol_progress": {
+    "action_sha256": "64fa1bb81b03b76e08cf9e0707ac2231a174ececafc3482c4abad809c562af62",
+    "detail": "Identical consecutive reads at this revision count toward the frozen stop limit; original result remains readable.",
+    "first_result_ref": "artifact:ae892b10192046c1bc54e1da",
+    "limit": 3,
+    "repeated_reads": 1,
+    "status": "new_read"
+  },
+  "results": [
+    {
+      "catalog_total": 913,
+      "complete_requested_slice": true,
+      "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+      "entities": [
+        {
+          "absent_fields": [],
+          "dependencies": "complete_public_observation_including_clock_and_competing_resources",
+          "dependency_epoch": "663e7721bb66dfc0ca63a27f750d501c2d0a9ee9052e1c765737083bb2cb4cb2",
+          "entity_revision": "6df2165ddf6a553e6057be884b1bab8634c7d9b6efbbd331159381f91afb5b06",
+          "id": "312",
+          "kind": "machines",
+          "original_ref": {
+            "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+            "id": "312",
+            "kind": "machines"
+          },
+          "projection_fields": null,
+          "source_index": 312,
+          "source_version": "66de873ff20c83c0046253696922f7416d50856b799b8722cb02d554ab9d72a5",
+          "value": {
+            "availability_basis": "observed state + source means + elapsed past downtime; unknown future events excluded",
+            "available_at": 2598.0688794189255,
+            "cascading": false,
+            "current_setup": "",
+            "currently_busy": false,
+            "currently_down": false,
+            "family": "DefMet_BE_33",
+            "machine": 312,
+            "min_left": 0,
+            "min_setup": "",
+            "processing_until": [],
+            "unavailable_intervals": []
+          }
+        },
+        {
+          "absent_fields": [],
+          "dependencies": "complete_public_observation_including_clock_and_competing_resources",
+          "dependency_epoch": "663e7721bb66dfc0ca63a27f750d501c2d0a9ee9052e1c765737083bb2cb4cb2",
+          "entity_revision": "a49bb6945239f01016d12898807cd1c6932198690f6420c1f5766e2f7059dee5",
+          "id": "313",
+          "kind": "machines",
+          "original_ref": {
+            "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+            "id": "313",
+            "kind": "machines"
+          },
+          "projection_fields": null,
+          "source_index": 313,
+          "source_version": "145da8b15e622a72f8d253afa87b48ca3578054d7be4f36e181b8bebd08567b5",
+          "value": {
+            "availability_basis": "observed state + source means + elapsed past downtime; unknown future events excluded",
+            "available_at": 2598.0688794189255,
+            "cascading": false,
+            "current_setup": "",
+            "currently_busy": false,
+            "currently_down": false,
+            "family": "DefMet_BE_33",
+            "machine": 313,
+            "min_left": 0,
+            "min_setup": "",
+            "processing_until": [],
+            "unavailable_intervals": []
+          }
+        }
+      ],
+      "next_cursor": null,
+      "order": "requested_ID_order_or_fixed_source_order",
+      "returned": 2,
+      "status": "ok"
+    },
+    {
+      "catalog_total": 4349,
+      "complete_requested_slice": true,
+      "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+      "entities": [
+        {
+          "absent_fields": [],
+          "dependencies": "complete_public_observation_including_clock_and_competing_resources",
+          "dependency_epoch": "663e7721bb66dfc0ca63a27f750d501c2d0a9ee9052e1c765737083bb2cb4cb2",
+          "entity_revision": "f194db79d6f0f149d5b880a59259d1f48f617884d71916abfd30eae37b559be3",
+          "id": "w1091:314:1",
+          "kind": "operations",
+          "original_ref": {
+            "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+            "id": "w1091:314:1",
+            "kind": "operations"
+          },
+          "projection_fields": null,
+          "source_index": 250,
+          "source_version": "74e8e7ce48df07e053adeaed7477212a99ea6a5736174ff9986622642ea2caa2",
+          "value": {
+            "batch_key": [
+              "part_4",
+              314,
+              "611_Def_Met"
+            ],
+            "batch_max": 1,
+            "batch_min": 1,
+            "conditional": false,
+            "conditional_virtual_successors": [],
+            "due": 295215.0,
+            "eligible_machines": [
+              312,
+              313
+            ],
+            "family": "DefMet_BE_33",
+            "initial_virtual_predecessors": [],
+            "lot_id": "w1091",
+            "occupation_seconds": 830.28,
+            "operation_id": "w1091:314:1",
+            "predecessor_ids": [],
+            "priority": 10,
+            "processing_seconds": 830.28,
+            "qualification_basis": "source family eligibility",
+            "release_time": 2598.0688794189255,
+            "remaining_work_seconds": 108524.88,
+            "rework_percent": 0,
+            "sampling_percent": 10.0,
+            "setup": "",
+            "setup_time": null,
+            "step": 314,
+            "terminal": false,
+            "transport_seconds": 450.0,
+            "visit": 1,
+            "waiting_since": 2598.0688794189255
+          }
+        }
+      ],
+      "filtering": "exact_model_predicates_only_no_ranking",
+      "matching_total": 1,
+      "next_cursor": null,
+      "order": "requested_ID_order_or_fixed_source_order",
+      "returned": 1,
+      "status": "ok",
+      "where": [
+        {
+          "field": "family",
+          "op": "eq",
+          "value": "DefMet_BE_33"
+        },
+        {
+          "field": "conditional",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    }
+  ],
+  "status": "ok"
+}

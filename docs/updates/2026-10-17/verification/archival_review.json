@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "curated_links_valid": true,
+  "copied_project_files_hash_checked": 1339,
+  "conversation_prefixes_verified": 73,
+  "source_python_files_parsed": 612,
+  "original_B_unchanged": true,
+  "models_solvers_experiments_executed_by_archival": 0,
+  "release_asset_verification_available": true,
+  "scope": "File/packaging checks only; not a new scientific acceptance or performance claim."
+}

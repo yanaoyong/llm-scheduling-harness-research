@@ -1,0 +1,48 @@
+{
+  "all_groups_reached_target": false,
+  "paired_randomness": {
+    "mechanism": "event-keyed processing/cadence/transport draws, not a shared mutable RNG stream",
+    "shared_operation_batch_keys": 40,
+    "shared_keys_with_different_random_durations": 0
+  },
+  "previous_files_checked": 17214,
+  "previous_files_changed": [],
+  "original_B_unchanged": true,
+  "source_unchanged_during_live": false,
+  "runner_unchanged": true,
+  "support_unchanged": true,
+  "resource_continuation_audits": [
+    null,
+    null,
+    null
+  ],
+  "all_inheritance_audits_pass": true,
+  "approved_retry_audit": {
+    "valid": true,
+    "failed_attempt_retained": "attempt:1fb3f2d29c414e4d89258dbf",
+    "unknown_usage_retained": true,
+    "source_checkpoint_unchanged": true,
+    "new_actual_calls": 13,
+    "same_model_and_production_rules": true,
+    "legitimate_note_updates": [
+      {
+        "record": "notes/current",
+        "model_updates": [
+          "attempt:57d4ec3401804088b001b759",
+          "attempt:2ba85fb3fff047808fce9638",
+          "attempt:02d6c4ede6874878b2accfac",
+          "attempt:37aed79e2f054439b23d35b9"
+        ],
+        "old_version": 6,
+        "new_version": 10
+      }
+    ]
+  },
+  "all_cost_audits_pass": false,
+  "all_production_choices_from_model": true,
+  "all_physical_prefix_checks_pass": true,
+  "all_opportunity_audits_pass": true,
+  "actual_new_calls": 72,
+  "cumulative_actual_calls": 84,
+  "unknown_usage_calls": 1
+}

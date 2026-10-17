@@ -1,0 +1,13 @@
+test_T01_T23_prior_bounded_unknown_carry_requires_original_proofs_and_finite_grant (tests.test_smt_fullfab_harness_lossless_presentation.LosslessPresentationTests.test_T01_T23_prior_bounded_unknown_carry_requires_original_proofs_and_finite_grant) ... ok
+test_T11_T14_hard_fragment_complete_query_fits_without_reread (tests.test_smt_fullfab_harness_lossless_presentation.LosslessPresentationTests.test_T11_T14_hard_fragment_complete_query_fits_without_reread) ... ok
+test_T23_all_three_failed_groups_remain_in_cumulative_costs (tests.test_smt_fullfab_harness_bounded_facts.BoundedFactTests.test_T23_all_three_failed_groups_remain_in_cumulative_costs) ... ok
+test_T06_T09_old_extra_actions_blocked_alternative_and_explicit_commit_preserved (tests.test_smt_fullfab_harness_candidate_stage.CandidateStageTests.test_T06_T09_old_extra_actions_blocked_alternative_and_explicit_commit_preserved) ... ok
+test_T06_invalid_optional_note_does_not_reject_valid_commit (tests.test_smt_fullfab_harness_candidate_stage.CandidateStageTests.test_T06_invalid_optional_note_does_not_reject_valid_commit) ... ok
+test_T23_finite_time_grant_retains_canary_and_rejects_further_expansion (tests.test_smt_fullfab_harness_candidate_stage.CandidateStageTests.test_T23_finite_time_grant_retains_canary_and_rejects_further_expansion) ... ok
+test_T15_T16_actual_transport_and_guard_bind_ordered_schema_bytes (tests.test_smt_fullfab_harness_schema_order.SchemaOrderTests.test_T15_T16_actual_transport_and_guard_bind_ordered_schema_bytes) ... ok
+test_T12_T14_every_retained_real_feedback_has_exact_roundtrip (tests.test_smt_fullfab_harness_lossless_presentation.LosslessPresentationTests.test_T12_T14_every_retained_real_feedback_has_exact_roundtrip) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 33.709s
+
+OK

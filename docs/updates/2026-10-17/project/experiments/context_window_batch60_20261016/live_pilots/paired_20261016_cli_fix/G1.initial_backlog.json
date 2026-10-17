@@ -1,0 +1,14 @@
+{
+  "uncovered_executable_machine_count": 1,
+  "pending_demand_machine_count": 904,
+  "pending_demand_operation_count": 4348,
+  "uncovered_executable_machines": [
+    1250
+  ],
+  "ready_wait_ages": {
+    "1250": 0.0
+  },
+  "accepted_pending_task_count": 2,
+  "active_hold_count": 0,
+  "public_operations_total": 4349
+}

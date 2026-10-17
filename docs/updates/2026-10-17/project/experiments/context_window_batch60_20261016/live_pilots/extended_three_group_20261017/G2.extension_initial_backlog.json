@@ -1,0 +1,12 @@
+{
+  "uncovered_executable_machine_count": 0,
+  "pending_demand_machine_count": 888,
+  "pending_demand_operation_count": 4289,
+  "uncovered_executable_machines": [],
+  "ready_wait_ages": {},
+  "accepted_pending_task_count": 17,
+  "active_hold_count": 0,
+  "public_operations_total": 4349,
+  "unoffered_operation_count": 1841,
+  "last_batch_id": "batch-2"
+}

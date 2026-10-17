@@ -1,0 +1,15 @@
+[
+  {
+    "path": ".models[0].model_messages.collaboration_modes.default",
+    "before": {
+      "type": "string",
+      "length": 879,
+      "sha256": "c1ed5ce0a3a49ba35b9eeba9774e0bd8ebd10eddec13b2dac564e7170513356c"
+    },
+    "after": {
+      "type": "string",
+      "length": 1015,
+      "sha256": "fe48388213363ce4658ab312cf36b2d32bac04b4fb285124dc694553910751d0"
+    }
+  }
+]

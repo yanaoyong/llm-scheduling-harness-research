@@ -1,0 +1,3 @@
+B raw calls verified 1362
+B first plan pure replay verified
+{'valid': True, 'plans_verified': 95, 'raw_calls_verified': 1362, 'cost': {'attempts': 1362, 'status_success': 1359, 'model_active_seconds': 61950.43586494948, 'known_tokens': 44666702, 'status_failed': 3}, 'classical_calls': 0}

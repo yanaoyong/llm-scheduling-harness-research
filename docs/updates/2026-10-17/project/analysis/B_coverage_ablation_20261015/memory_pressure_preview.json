@@ -1,0 +1,88 @@
+[
+  {
+    "case": "mixed_702__baseline",
+    "attempt_index": 11,
+    "prompt_chars": 63525,
+    "fact_count": null,
+    "all_values_inline": null,
+    "memory_schema": null
+  },
+  {
+    "case": "mixed_702__prompt",
+    "attempt_index": 11,
+    "prompt_chars": 116094,
+    "fact_count": 1047,
+    "all_values_inline": false,
+    "memory_schema": "same-context-fact-value-tables-v1",
+    "size_with_full_known_values": 148759,
+    "size_with_full_values_without_extra_coverage_feedback": 148759
+  },
+  {
+    "case": "mixed_702__prompt_context_feedback",
+    "attempt_index": 11,
+    "prompt_chars": 112192,
+    "fact_count": 1521,
+    "all_values_inline": false,
+    "memory_schema": "same-context-fact-value-tables-v1",
+    "size_with_full_known_values": 186565,
+    "size_with_full_values_without_extra_coverage_feedback": 174849
+  },
+  {
+    "case": "singleton_2403__baseline",
+    "attempt_index": 11,
+    "prompt_chars": 67940,
+    "fact_count": null,
+    "all_values_inline": null,
+    "memory_schema": null
+  },
+  {
+    "case": "singleton_2403__prompt",
+    "attempt_index": 11,
+    "prompt_chars": 90964,
+    "fact_count": 1425,
+    "all_values_inline": false,
+    "memory_schema": "same-context-fact-value-tables-v1",
+    "size_with_full_known_values": 164229,
+    "size_with_full_values_without_extra_coverage_feedback": 164229
+  },
+  {
+    "case": "singleton_2403__prompt_context_feedback",
+    "attempt_index": 11,
+    "prompt_chars": 91074,
+    "fact_count": 1235,
+    "all_values_inline": false,
+    "memory_schema": "same-context-fact-value-tables-v1",
+    "size_with_full_known_values": 147455,
+    "size_with_full_values_without_extra_coverage_feedback": 132449
+  },
+  {
+    "case": "transition_1800__baseline",
+    "attempt_index": 10,
+    "prompt_chars": 90490,
+    "fact_count": 342,
+    "all_values_inline": true,
+    "memory_schema": "same-context-fact-value-tables-v1",
+    "size_with_full_known_values": 90490,
+    "size_with_full_values_without_extra_coverage_feedback": 90490
+  },
+  {
+    "case": "transition_1800__prompt",
+    "attempt_index": 9,
+    "prompt_chars": 118896,
+    "fact_count": 1513,
+    "all_values_inline": false,
+    "memory_schema": "same-context-fact-value-tables-v1",
+    "size_with_full_known_values": 200549,
+    "size_with_full_values_without_extra_coverage_feedback": 200549
+  },
+  {
+    "case": "transition_1800__prompt_context_feedback",
+    "attempt_index": 10,
+    "prompt_chars": 119856,
+    "fact_count": 1181,
+    "all_values_inline": false,
+    "memory_schema": "same-context-fact-value-tables-v1",
+    "size_with_full_known_values": 176489,
+    "size_with_full_values_without_extra_coverage_feedback": 162218
+  }
+]

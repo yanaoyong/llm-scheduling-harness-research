@@ -1,0 +1,48 @@
+{"event": "call_start", "group": "G1", "round": 1, "sim_time": 702.0}
+{"event": "call_end", "group": "G1", "round": 1, "status": "candidate_checked", "error": null, "usage": {"actual_model_attempts": 1, "offline_outputs": 0, "input_tokens": 182791, "cached_input_tokens": 0, "output_tokens": 3055, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 99.75044820806943, "pending_attempts": 0, "elapsed_wall_seconds": 114.14427304267883, "cost_usd": null}}
+{"event": "call_start", "group": "G2", "round": 1, "sim_time": 702.0}
+{"event": "call_end", "group": "G2", "round": 1, "status": "candidate_checked", "error": null, "usage": {"actual_model_attempts": 1, "offline_outputs": 0, "input_tokens": 369895, "cached_input_tokens": 0, "output_tokens": 3853, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 117.8187864581123, "pending_attempts": 0, "elapsed_wall_seconds": 229.08331489562988, "cost_usd": null}}
+{"event": "call_start", "group": "G1", "round": 2, "sim_time": 702.0}
+{"event": "call_end", "group": "G1", "round": 2, "status": "accepted", "error": null, "usage": {"actual_model_attempts": 2, "offline_outputs": 0, "input_tokens": 379708, "cached_input_tokens": 0, "output_tokens": 3154, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 134.84969870815985, "pending_attempts": 0, "elapsed_wall_seconds": 274.5582311153412, "cost_usd": null}}
+{"event": "advance", "group": "G1", "from": 702.0, "to": 761.2499999999999, "dispatches": 2, "reason": "plan_runway"}
+{"event": "call_start", "group": "G2", "round": 2, "sim_time": 702.0}
+{"event": "call_end", "group": "G2", "round": 2, "status": "accepted", "error": null, "usage": {"actual_model_attempts": 2, "offline_outputs": 0, "input_tokens": 773589, "cached_input_tokens": 0, "output_tokens": 3967, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 150.1418743331451, "pending_attempts": 0, "elapsed_wall_seconds": 309.8564910888672, "cost_usd": null}}
+{"event": "advance", "group": "G2", "from": 702.0, "to": 761.2499999999999, "dispatches": 3, "reason": "plan_runway"}
+{"event": "call_start", "group": "G1", "round": 3, "sim_time": 761.2499999999999}
+{"event": "call_end", "group": "G1", "round": 3, "status": "ok", "error": null, "usage": {"actual_model_attempts": 3, "offline_outputs": 0, "input_tokens": 576622, "cached_input_tokens": 0, "output_tokens": 3295, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 182.12260683299974, "pending_attempts": 0, "elapsed_wall_seconds": 370.47599816322327, "cost_usd": null}}
+{"event": "call_start", "group": "G2", "round": 3, "sim_time": 761.2499999999999}
+{"event": "call_end", "group": "G2", "round": 3, "status": "candidate_checked", "error": null, "usage": {"actual_model_attempts": 3, "offline_outputs": 0, "input_tokens": 913410, "cached_input_tokens": 0, "output_tokens": 7432, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 247.07870866614394, "pending_attempts": 0, "elapsed_wall_seconds": 463.9628300666809, "cost_usd": null}}
+{"event": "call_start", "group": "G1", "round": 4, "sim_time": 761.2499999999999}
+{"event": "call_end", "group": "G1", "round": 4, "status": "ok", "error": null, "usage": {"actual_model_attempts": 4, "offline_outputs": 0, "input_tokens": 759706, "cached_input_tokens": 0, "output_tokens": 3529, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 216.91797637497075, "pending_attempts": 0, "elapsed_wall_seconds": 508.59211015701294, "cost_usd": null}}
+{"event": "call_start", "group": "G2", "round": 4, "sim_time": 761.2499999999999}
+{"event": "call_end", "group": "G2", "round": 4, "status": "accepted", "error": null, "usage": {"actual_model_attempts": 4, "offline_outputs": 0, "input_tokens": 1029745, "cached_input_tokens": 0, "output_tokens": 7535, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 275.0835399162024, "pending_attempts": 0, "elapsed_wall_seconds": 534.2395792007446, "cost_usd": null}}
+{"event": "advance", "group": "G2", "from": 761.2499999999999, "to": 768.0, "dispatches": 2, "reason": "plan_runway"}
+{"event": "call_start", "group": "G1", "round": 5, "sim_time": 761.2499999999999}
+{"event": "call_end", "group": "G1", "round": 5, "status": "candidate_checked", "error": null, "usage": {"actual_model_attempts": 5, "offline_outputs": 0, "input_tokens": 946575, "cached_input_tokens": 0, "output_tokens": 6711, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 309.5633132078219, "pending_attempts": 0, "elapsed_wall_seconds": 640.1602492332458, "cost_usd": null}}
+{"event": "call_start", "group": "G2", "round": 5, "sim_time": 768.0}
+{"event": "call_end", "group": "G2", "round": 5, "status": "ok", "error": null, "usage": {"actual_model_attempts": 5, "offline_outputs": 0, "input_tokens": 1055057, "cached_input_tokens": 0, "output_tokens": 7706, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 313.1165114992764, "pending_attempts": 0, "elapsed_wall_seconds": 674.0259001255035, "cost_usd": null}}
+{"event": "call_start", "group": "G1", "round": 6, "sim_time": 761.2499999999999}
+{"event": "call_end", "group": "G1", "round": 6, "status": "accepted", "error": null, "usage": {"actual_model_attempts": 6, "offline_outputs": 0, "input_tokens": 1146187, "cached_input_tokens": 0, "output_tokens": 6810, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 337.4968597907573, "pending_attempts": 0, "elapsed_wall_seconds": 712.8572239875793, "cost_usd": null}}
+{"event": "advance", "group": "G1", "from": 761.2499999999999, "to": 768.0, "dispatches": 3, "reason": "plan_runway"}
+{"event": "call_start", "group": "G2", "round": 6, "sim_time": 768.0}
+{"event": "call_end", "group": "G2", "round": 6, "status": "stopped", "error": null, "usage": {"actual_model_attempts": 6, "offline_outputs": 0, "input_tokens": 1055057, "cached_input_tokens": 0, "output_tokens": 7706, "unknown_usage": 1, "reserved_tokens": 0, "model_seconds": 331.9085709573701, "pending_attempts": 0, "elapsed_wall_seconds": 733.173828125, "cost_usd": null}}
+{"event": "call_start", "group": "G1", "round": 7, "sim_time": 768.0}
+{"event": "call_end", "group": "G1", "round": 7, "status": "ok", "error": null, "usage": {"actual_model_attempts": 7, "offline_outputs": 0, "input_tokens": 1346007, "cached_input_tokens": 0, "output_tokens": 7144, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 381.8982983736787, "pending_attempts": 0, "elapsed_wall_seconds": 787.0614018440247, "cost_usd": null}}
+{"event": "call_start", "group": "G1", "round": 8, "sim_time": 768.0}
+{"event": "call_end", "group": "G1", "round": 8, "status": "candidate_checked", "error": null, "usage": {"actual_model_attempts": 8, "offline_outputs": 0, "input_tokens": 1536396, "cached_input_tokens": 1152, "output_tokens": 9735, "unknown_usage": 0, "reserved_tokens": 0, "model_seconds": 462.7007954157889, "pending_attempts": 0, "elapsed_wall_seconds": 871.3083131313324, "cost_usd": null}}
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/run_two_strategy_pilot.py", line 215, in <module>
+    {'prepare':prepare,'run':run,'report':report}[sys.argv[1]]()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/run_two_strategy_pilot.py", line 181, in run
+    report()
+    ~~~~~~^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/run_two_strategy_pilot.py", line 193, in report
+    result['provenance_audit']=audit_provenance(ev,trace)
+                               ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/evaluation.py", line 217, in audit_provenance
+    require(trace[commit["trace_start"]] == event and commit["trace_end"] == commit["trace_start"] + 1, "commit_events", "Commit trace boundary differs")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/contracts.py", line 60, in require
+    raise HarnessError(code, detail, **evidence)
+src.smt_fullfab.harness.contracts.HarnessError: commit_events: Commit trace boundary differs

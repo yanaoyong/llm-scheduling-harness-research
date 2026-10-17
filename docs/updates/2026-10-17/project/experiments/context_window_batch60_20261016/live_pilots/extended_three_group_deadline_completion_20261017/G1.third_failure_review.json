@@ -1,0 +1,14 @@
+{
+  "attempt_id": "attempt:9e6f5392f191497d96230569",
+  "attempt_sha256": "8a512bf10dd50c8049688f17df0dca57e82ac4a1363145f67abb3a43619b3417",
+  "call_number": 72,
+  "context_ref": "context:14e7616bd0b34fc7b26145f3",
+  "failure_kind": "connection",
+  "terminal_errors": [
+    "Connection failed: error sending request"
+  ],
+  "closed_process_and_no_model_output_validated": true,
+  "duration_seconds": 74.24018187494949,
+  "usage": null,
+  "new_retry_authorized": false
+}

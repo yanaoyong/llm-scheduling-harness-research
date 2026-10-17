@@ -1,0 +1,16 @@
+======================================================================
+ERROR: test_model_and_original_store_rejected_before_effects (tests.test_capacity_batch60_experiment.CapacityAndIsolationTests.test_model_and_original_store_rejected_before_effects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/tests/test_capacity_batch60_experiment.py", line 152, in test_model_and_original_store_rejected_before_effects
+    with self.assertRaises(HarnessError) as caught:fn(None)
+                                                   ~~^^^^^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/transport.py", line 429, in call
+    if capacity_pilot.is_pilot(runtime.manifest.get('admission')):
+                               ^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'manifest'
+
+----------------------------------------------------------------------
+Ran 30 tests in 82.780s
+
+FAILED (errors=1)

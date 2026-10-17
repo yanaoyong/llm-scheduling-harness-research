@@ -1,5 +1,7 @@
 # 项目时间线
 
+> 2026-10-17 更新：后续会话、Harness 验收与窗口实验见 [增量归档](updates/2026-10-17/README.md)。下文继续保留原历史快照及其日期。
+
 | 日期 / 截止 | 事件 | 状态与证据边界 |
 |---|---|---|
 | 2026-10-08 | 首轮实验阶段记录与来源审计日期 | 首轮数据/代码语义审计标注审计日期为 2026-10-08；该日期作为首轮实验阶段的已证时间锚点，不外推具体开跑时刻。 [来源审计](../source_snapshot/experiment_round1/docs/source-audit.md)（原文 L1-L5） [首轮实验 README](../source_snapshot/experiment_round1/README.md)（原文 L1-L8） |

@@ -15,3 +15,9 @@
 公开版自检：`python3 scripts/verify_public_release.py`。原 `scripts/verify_archive.py` 依赖未公开的完整私有包，只适用于原本地归档；公开版没有承诺重新运行实验，也没有重新调用模型或求解器。
 
 公开精简包由其 Release 的 SHA-256 与包内清单单独校验，不进入普通 Git。恢复工具见 `scripts/evidence_store.py`，发布摘要见 `publication/lean_evidence_v1.json`，核验记录见 `publication/lean_evidence/`。旧 `manifests/` 不被替换为公开文件哈希；这些历史证据仍供追溯。
+
+## 2026-10-17 增量发布
+
+本次按用户明确要求归档、推送、创建 PR 并合并，补充 `docs/updates/2026-10-17/`。会话截止北京时间 2026-10-17 14:02:18，19 个有可见消息的会话共 2,419 条；原始 73 份会话前缀和完整项目快照只保存在本地。公开派生文件继续移除个人路径、凭据、内部推理和不透明密文。
+
+新增科学运行证据通过独立 Release 保存，包含解压脱敏后的 Harness 对象和经过回导核验的 SQLite 逻辑导出。它是相对于旧快照的增量，不替换旧包。Git 中的代码与报告是用于阅读的当前增量副本，原 B 代码、Git 状态、运行库及旧封存结果未改写。公开哈希对应发布字节，旧签名链对应私有原字节。详情与核验见 [新增证据说明](docs/updates/2026-10-17/EVIDENCE.md)。

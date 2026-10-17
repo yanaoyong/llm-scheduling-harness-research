@@ -1,0 +1,297 @@
+{
+  "same_started_production_by_time_machine_lot_step_visit": false,
+  "matching_dispatches": 9,
+  "same_machine_start_times": true,
+  "dispatches": {
+    "G1": [
+      {
+        "time": 702.0,
+        "machine": 1250,
+        "lots": [
+          "w717"
+        ],
+        "steps": [
+          91
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 708.75,
+        "machine": 1288,
+        "lots": [
+          "w1519"
+        ],
+        "steps": [
+          53
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 722.25,
+        "machine": 1252,
+        "lots": [
+          "w723"
+        ],
+        "steps": [
+          91
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 762.75,
+        "machine": 1268,
+        "lots": [
+          "w725"
+        ],
+        "steps": [
+          58
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 762.75,
+        "machine": 1269,
+        "lots": [
+          "w736"
+        ],
+        "steps": [
+          42
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 803.25,
+        "machine": 1256,
+        "lots": [
+          "w738"
+        ],
+        "steps": [
+          42
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 830.25,
+        "machine": 1214,
+        "lots": [
+          "w1138"
+        ],
+        "steps": [
+          240
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 830.25,
+        "machine": 1216,
+        "lots": [
+          "w1807"
+        ],
+        "steps": [
+          269
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 850.5,
+        "machine": 1293,
+        "lots": [
+          "w449"
+        ],
+        "steps": [
+          81
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 864,
+        "machine": 1311,
+        "lots": [
+          "w1155"
+        ],
+        "steps": [
+          208
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 864,
+        "machine": 1312,
+        "lots": [
+          "w104"
+        ],
+        "steps": [
+          350
+        ],
+        "visits": [
+          1
+        ]
+      }
+    ],
+    "G2": [
+      {
+        "time": 702.0,
+        "machine": 1250,
+        "lots": [
+          "w717"
+        ],
+        "steps": [
+          91
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 708.75,
+        "machine": 1288,
+        "lots": [
+          "w1519"
+        ],
+        "steps": [
+          53
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 722.25,
+        "machine": 1252,
+        "lots": [
+          "w723"
+        ],
+        "steps": [
+          91
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 762.75,
+        "machine": 1268,
+        "lots": [
+          "w725"
+        ],
+        "steps": [
+          58
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 762.75,
+        "machine": 1269,
+        "lots": [
+          "w736"
+        ],
+        "steps": [
+          42
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 803.25,
+        "machine": 1256,
+        "lots": [
+          "w738"
+        ],
+        "steps": [
+          42
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 830.25,
+        "machine": 1214,
+        "lots": [
+          "w1138"
+        ],
+        "steps": [
+          240
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 830.25,
+        "machine": 1216,
+        "lots": [
+          "w1807"
+        ],
+        "steps": [
+          269
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 850.5,
+        "machine": 1293,
+        "lots": [
+          "w449"
+        ],
+        "steps": [
+          81
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 864,
+        "machine": 1311,
+        "lots": [
+          "w1463"
+        ],
+        "steps": [
+          145
+        ],
+        "visits": [
+          1
+        ]
+      },
+      {
+        "time": 864,
+        "machine": 1312,
+        "lots": [
+          "w1155"
+        ],
+        "steps": [
+          208
+        ],
+        "visits": [
+          1
+        ]
+      }
+    ]
+  }
+}

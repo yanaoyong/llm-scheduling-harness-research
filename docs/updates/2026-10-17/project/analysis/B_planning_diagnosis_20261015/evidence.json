@@ -1,0 +1,1580 @@
+{
+  "summary": {
+    "baseline_snapshot_local": "2026-10-15T20:34:14.549919+08:00",
+    "scope": "Completed rounds 128–136 and their 28 public model actions; earlier rounds used only to check capability and queue history.",
+    "live_runtime_modified": false,
+    "new_evaluation_model_calls": 0,
+    "recent_rounds": 9,
+    "recent_calls": 28,
+    "recent_operation_queries": 7,
+    "recent_operation_queries_explicitly_excluding_conditional": 7,
+    "recent_prompt_characters": {
+      "min": 59129,
+      "max": 104624,
+      "cap": 120000
+    },
+    "recent_prompts_with_direct_execution_delta_feedback": 0,
+    "recent_proposals_one_new_task": 9,
+    "largest_actual_accepted_candidates": [
+      {
+        "call": 28,
+        "added": 111,
+        "candidate_ref": "candidate:f3b081cb09df4c118ba5de41",
+        "reason": "Start all 111 observed ready DE_FE_86 singleton operations on distinct verified idle eligible machines. Capacity exceeds ready demand, so no ready operation needs to wait. Preserve dispatched work and reassess by 1200."
+      },
+      {
+        "call": 103,
+        "added": 61,
+        "candidate_ref": "candidate:4e13c388b90e4b81af0c3399",
+        "reason": "Start 61 ready wet-etch operations on observed idle eligible machines. Where demand exceeds machines, favor earlier due lots; reassess by 1200."
+      },
+      {
+        "call": 84,
+        "added": 41,
+        "candidate_ref": "candidate:266d68c4a5b24282928815f1",
+        "reason": "Start all 41 ready LithoTrack_FE_115 operations on 41 idle eligible machines, avoiding ready waiting. Reassess by 1200."
+      }
+    ],
+    "all_rejections": [
+      {
+        "call": 137,
+        "response": {
+          "error": {
+            "code": "scope",
+            "detail": "scope: full current/base responsibility must match with exact integer identities"
+          },
+          "status": "rejected"
+        }
+      }
+    ],
+    "public_state_at_last_commit": {
+      "time": 2598.0688794189255,
+      "all_operations": 4349,
+      "conditional_operations": 3305,
+      "conditional_operations_without_sampling_or_rework_on_own_step": 2579,
+      "conditional_count_note": "Own-step checks do not guarantee an entire route; upstream branches and random timing may remain.",
+      "busy_machines_nominally_available_within_300_seconds": 47,
+      "machine747": {
+        "availability_basis": "observed state + source means + elapsed past downtime; unknown future events excluded",
+        "available_at": 2599.0688794189255,
+        "cascading": true,
+        "current_setup": "",
+        "currently_busy": true,
+        "currently_down": false,
+        "family": "Dielectric_BE_27",
+        "machine": 747,
+        "min_left": 0,
+        "min_setup": "",
+        "processing_until": [
+          3006.8399999999997
+        ],
+        "unavailable_intervals": []
+      },
+      "nonconditional_operation_candidates_for_747": 74,
+      "machine747_in_current_gap": false,
+      "machine747_in_recent_plan": false
+    },
+    "trajectory": [
+      {
+        "ordinal": 33,
+        "from": 708.75,
+        "plan_task_count": 12,
+        "tasks_remaining_at_stop": 7,
+        "max_machine_queue_depth": 2,
+        "reason_text": "Assign seven ready wet-etch lots to earliest available capacity in due-date order, preserving existing pending work."
+      },
+      {
+        "ordinal": 38,
+        "from": 924.75,
+        "plan_task_count": 17,
+        "tasks_remaining_at_stop": 6,
+        "max_machine_queue_depth": 2,
+        "reason_text": "Start earliest-due ready wet-etch and implant lots immediately; queue remaining wet-etch work at observed availability and the next implant pair at 1849.5. Preserve pending work."
+      },
+      {
+        "ordinal": 94,
+        "from": 1825.4930601844385,
+        "plan_task_count": 3,
+        "tasks_remaining_at_stop": 0,
+        "max_machine_queue_depth": 1,
+        "reason_text": "Start the sole ready WE_FE_84 lot on available qualified machine 1297 to avoid waiting; preserve implant commitments."
+      },
+      {
+        "ordinal": 95,
+        "from": 1875.638304601851,
+        "plan_task_count": 1,
+        "tasks_remaining_at_stop": 0,
+        "max_machine_queue_depth": 1,
+        "reason_text": "Start the sole ready Litho_REG_FE_64 lot on idle qualified machine 981 to reduce ready waiting."
+      },
+      {
+        "ordinal": 128,
+        "from": 2403.0,
+        "plan_task_count": 1,
+        "tasks_remaining_at_stop": 0,
+        "max_machine_queue_depth": 1,
+        "reason_text": "Dispatch the ready operation with least due-minus-remaining-work slack among the equal-priority candidates on available cascading machine 856; reassess within 120 seconds."
+      },
+      {
+        "ordinal": 136,
+        "from": 2598.0688794189255,
+        "plan_task_count": 1,
+        "tasks_remaining_at_stop": 0,
+        "max_machine_queue_depth": 1,
+        "reason_text": "Dispatch sole ready nonconditional DefMet_BE_33 operation w1091:314:1 on idle eligible machine 312 now; reassess within 120 seconds."
+      }
+    ],
+    "findings": [
+      {
+        "claim": "The tools accept many tasks and explicit machine queues in one candidate.",
+        "strength": "verified by source and accepted saved candidates"
+      },
+      {
+        "claim": "Recent operation reads deliberately discard conditional operations and focus on current gap families.",
+        "strength": "verified model action pattern"
+      },
+      {
+        "claim": "Current-gap-focused inline context, absent direct efficiency feedback, and repeated one-task history favor reactive dispatch.",
+        "strength": "mechanism supported by source and inputs; contribution sizes require ablations"
+      },
+      {
+        "claim": "conditional=true includes future/unready operations; it is not a feasibility prohibition.",
+        "strength": "verified observation builder semantics"
+      },
+      {
+        "claim": "Past not_before checks increase explicit maintenance of pending queues across replans.",
+        "strength": "verified rule; not proven sole cause of model behavior"
+      },
+      {
+        "claim": "Increasing only plan validity cannot fix missing queues on other resources.",
+        "strength": "supported by prior frequency audit"
+      }
+    ],
+    "source_sha256": {
+      "experiment_round2_3datasets/src/smt_fullfab/harness/transport.py": "87d039e69b28fa49caaf8dd16db9be2324b344fd419bb7a7721db63d30bfb71f",
+      "experiment_round2_3datasets/src/smt_fullfab/harness/runtime.py": "67b1192c33f949986aa26c96c5713007355bbd30bc95fcbe46228cd5d4c468fe",
+      "experiment_round2_3datasets/src/smt_fullfab/harness/fact_memory.py": "db0900815b74268c58d7127540fd5353925be8b8dcadcf8344aa74aec7634c24",
+      "experiment_round2_3datasets/src/smt_fullfab/harness/facts.py": "d05cdd65cc9e3a0bd31270eb9770e480264cfb0b3e412caf69ae6f79d8f1aa29",
+      "experiment_round2_3datasets/src/smt_fullfab/plan_delta.py": "0581ab7c7829401dcff56ad453b4f768a5a5d1cf92e7f6e3f216a2a8f86990b9",
+      "experiment_round2_3datasets/src/smt_fullfab/observation.py": "007b96fa87aca72752b2765bcfefb28e8ef9b705a24bdd5bd6579ae5c72a1512",
+      "experiment_round2_3datasets/src/smt_fullfab/environment.py": "acb0aa3f26c0327125a0e39e723757361b2e9e598542e14e980229dde2ff21b2"
+    },
+    "no_counterfactual_savings_claim": true
+  },
+  "recent_calls": [
+    {
+      "call": 441,
+      "round": 128,
+      "context_ref": "context:1a272763b89e48cc9d596430",
+      "prompt_sha256": "3959c3ac55d4a40b01ab2f12b61a70824a04721a6638d92e058c990181835866",
+      "raw_action_sha256": "1e38ba69b3a7fc2a10cf923ff951fe2c670ef40052bd864fa5094b0a963b5ad2",
+      "prompt_characters": 61531,
+      "tool": "read_entities",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "EPI_38": 48
+      },
+      "inline_nonconditional_operations": 45,
+      "pertinent_total": 73,
+      "pertinent_omitted": 25,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        856
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:91f3cae51283403e8b7d783c",
+        "authority": "model_notes_only",
+        "text": "Dispatch w449 on available cascading machine 1294 now; reassess by 2490.759607586571. Dynamic feasibility remains uncertified.",
+        "version": 127
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "856"
+          ]
+        },
+        {
+          "kind": "operations",
+          "cursor": null,
+          "count": 100,
+          "where": [
+            {
+              "field": "eligible_machines",
+              "op": "contains",
+              "value": 856
+            },
+            {
+              "field": "conditional",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": 442,
+      "round": 128,
+      "context_ref": "context:1a272763b89e48cc9d596430",
+      "prompt_sha256": "2d30d447f5b74c91a3fa1945580daedac6da6c72a0746433ec22ab5da0452162",
+      "raw_action_sha256": "c198ee2ccf5b95b59d8ed62fbda1ff8529741f104bc2b9efccfb3a8e0087d36b",
+      "prompt_characters": 75694,
+      "tool": "propose_delta",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "EPI_38": 48
+      },
+      "inline_nonconditional_operations": 45,
+      "pertinent_total": 73,
+      "pertinent_omitted": 25,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        856
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:91f3cae51283403e8b7d783c",
+        "authority": "model_notes_only",
+        "text": "Dispatch w449 on available cascading machine 1294 now; reassess by 2490.759607586571. Dynamic feasibility remains uncertified.",
+        "version": 127
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-128",
+        "created_at": 2403,
+        "valid_until": 2523,
+        "freeze_until": 2403,
+        "reason": "Dispatch the ready operation with least due-minus-remaining-work slack among the equal-priority candidates on available cascading machine 856; reassess within 120 seconds."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 856,
+          "task_ids": [
+            "d128-w2057"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 443,
+      "round": 128,
+      "context_ref": "context:1a272763b89e48cc9d596430",
+      "prompt_sha256": "72fa8a6463089d2a002ab6cf0e4ad426950823f98770f1a5e02c5036f1da6372",
+      "raw_action_sha256": "8be275b4fae7b4f9e30666324de3f3e75a20a08d350a4a83f69a3b17006cf3a1",
+      "prompt_characters": 80642,
+      "tool": "apply_candidate",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "EPI_38": 48
+      },
+      "inline_nonconditional_operations": 45,
+      "pertinent_total": 73,
+      "pertinent_omitted": 25,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        856
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:91f3cae51283403e8b7d783c",
+        "authority": "model_notes_only",
+        "text": "Dispatch w449 on available cascading machine 1294 now; reassess by 2490.759607586571. Dynamic feasibility remains uncertified.",
+        "version": 127
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    },
+    {
+      "call": 444,
+      "round": 129,
+      "context_ref": "context:608b4a6f9bea42c09dc3b337",
+      "prompt_sha256": "3630a782b10928cc1571a1d58f8d09e01b5e993f615d709e8fa1a81a2c216504",
+      "raw_action_sha256": "8e970bc886d74d3551ca54b4228374f5bcac0d8170847c49264429ff04f5b091",
+      "prompt_characters": 79664,
+      "tool": "read_entities",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_84": 48
+      },
+      "inline_nonconditional_operations": 0,
+      "pertinent_total": 186,
+      "pertinent_omitted": 138,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1295,
+        1298,
+        1299,
+        1300,
+        1301,
+        1302,
+        1303,
+        1304,
+        1305,
+        1306,
+        1307,
+        1308,
+        1309,
+        1310
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:d5b7b8e26445435bb904b2aa",
+        "authority": "model_notes_only",
+        "text": "Dispatch w2057 on available cascading machine 856 using least remaining-work slack among equal-priority ready candidates. Reassess by 2523; dynamic feasibility remains uncertified.",
+        "version": 128
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "1295"
+          ]
+        },
+        {
+          "kind": "operations",
+          "cursor": null,
+          "count": 100,
+          "where": [
+            {
+              "field": "eligible_machines",
+              "op": "contains",
+              "value": 1295
+            },
+            {
+              "field": "conditional",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": 445,
+      "round": 129,
+      "context_ref": "context:608b4a6f9bea42c09dc3b337",
+      "prompt_sha256": "70ee57e59bbbb24681fd15c0bc5fd4e06acbfca1fdca121423668c755ec9f1af",
+      "raw_action_sha256": "0b30aa613924495c21b97fb53dc84a3f5ad19a0fbbfb5c79f3ad3ae0477f95a8",
+      "prompt_characters": 77353,
+      "tool": "propose_delta",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_84": 48
+      },
+      "inline_nonconditional_operations": 0,
+      "pertinent_total": 186,
+      "pertinent_omitted": 138,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1295,
+        1298,
+        1299,
+        1300,
+        1301,
+        1302,
+        1303,
+        1304,
+        1305,
+        1306,
+        1307,
+        1308,
+        1309,
+        1310
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:d5b7b8e26445435bb904b2aa",
+        "authority": "model_notes_only",
+        "text": "Dispatch w2057 on available cascading machine 856 using least remaining-work slack among equal-priority ready candidates. Reassess by 2523; dynamic feasibility remains uncertified.",
+        "version": 128
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-129",
+        "created_at": 2442.7862121077574,
+        "valid_until": 2562.7862121077574,
+        "freeze_until": 2442.7862121077574,
+        "reason": "Dispatch the sole ready nonconditional wet-etch operation on idle machine 1295; reassess within 120 seconds."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 1295,
+          "task_ids": [
+            "d129-w709"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 446,
+      "round": 129,
+      "context_ref": "context:608b4a6f9bea42c09dc3b337",
+      "prompt_sha256": "51d3af56b01648831982f4685b11736529bcd2f4212ee896649494a01f656646",
+      "raw_action_sha256": "f3821d3eab19df2575db604aabab912a246f0e2a38112caaee4c8d67cd32102e",
+      "prompt_characters": 82348,
+      "tool": "apply_candidate",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_84": 48
+      },
+      "inline_nonconditional_operations": 0,
+      "pertinent_total": 186,
+      "pertinent_omitted": 138,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1295,
+        1298,
+        1299,
+        1300,
+        1301,
+        1302,
+        1303,
+        1304,
+        1305,
+        1306,
+        1307,
+        1308,
+        1309,
+        1310
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:d5b7b8e26445435bb904b2aa",
+        "authority": "model_notes_only",
+        "text": "Dispatch w2057 on available cascading machine 856 using least remaining-work slack among equal-priority ready candidates. Reassess by 2523; dynamic feasibility remains uncertified.",
+        "version": 128
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    },
+    {
+      "call": 447,
+      "round": 130,
+      "context_ref": "context:bc48b9b038ae4b0f90579d89",
+      "prompt_sha256": "1c90b74cbf75afb14f3f8105cc7e2e060ae656f8ad078daa6aeb4789b19e6457",
+      "raw_action_sha256": "f78651bcea2aa0ef6a79bfa71e690ac42efbbda0a2286a64aa499381e57454a7",
+      "prompt_characters": 79319,
+      "tool": "read_entities",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_41": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 62,
+      "pertinent_omitted": 14,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1279,
+        1280
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:40a03d0fb96840aeb598bb87",
+        "authority": "model_notes_only",
+        "text": "Dispatch sole ready wet-etch operation w709 on idle machine 1295 now; reassess by 2562.7862121077574. Dynamic feasibility remains uncertified.",
+        "version": 129
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "1279",
+            "1280"
+          ]
+        },
+        {
+          "kind": "operations",
+          "cursor": null,
+          "count": 100,
+          "where": [
+            {
+              "field": "eligible_machines",
+              "op": "contains",
+              "value": 1279
+            },
+            {
+              "field": "conditional",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": 448,
+      "round": 130,
+      "context_ref": "context:bc48b9b038ae4b0f90579d89",
+      "prompt_sha256": "27caedc59640573a986b12499c403d5c2df696f1a052372fd96e1a6276fe7d83",
+      "raw_action_sha256": "d022e699385eab87f6a3bcaddd7a655ca13ec93dcb872cb2c78c1b0662adab9b",
+      "prompt_characters": 77640,
+      "tool": "propose_delta",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_41": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 62,
+      "pertinent_omitted": 14,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1279,
+        1280
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:40a03d0fb96840aeb598bb87",
+        "authority": "model_notes_only",
+        "text": "Dispatch sole ready wet-etch operation w709 on idle machine 1295 now; reassess by 2562.7862121077574. Dynamic feasibility remains uncertified.",
+        "version": 129
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-130",
+        "created_at": 2446.369200718176,
+        "valid_until": 2566.369200718176,
+        "freeze_until": 2446.369200718176,
+        "reason": "Dispatch the sole ready nonconditional operation on idle eligible machine 1279; reassess within 120 seconds."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 1279,
+          "task_ids": [
+            "d130-w130"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 449,
+      "round": 130,
+      "context_ref": "context:bc48b9b038ae4b0f90579d89",
+      "prompt_sha256": "909929e3a3a21bb308f88a3984148d89fd2dfed4357284a3c39cb6314a149d2b",
+      "raw_action_sha256": "bdf7a1d49df1440b8bda5621fe1b34f28320a3d5af71ce89584d077c4ad0f226",
+      "prompt_characters": 82672,
+      "tool": "apply_candidate",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_41": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 62,
+      "pertinent_omitted": 14,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1279,
+        1280
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:40a03d0fb96840aeb598bb87",
+        "authority": "model_notes_only",
+        "text": "Dispatch sole ready wet-etch operation w709 on idle machine 1295 now; reassess by 2562.7862121077574. Dynamic feasibility remains uncertified.",
+        "version": 129
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    },
+    {
+      "call": 450,
+      "round": 131,
+      "context_ref": "context:1fa31457bb0f4b759289707f",
+      "prompt_sha256": "34ca905bc766d60566a12d18b64369a39f7ce82e1628b378eeab09879698d464",
+      "raw_action_sha256": "133348bc1d02e295330dc48a2443484ebfa37062aec3e9405c5971fc2c50c4ed",
+      "prompt_characters": 64852,
+      "tool": "read_entities",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_108": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 292,
+      "pertinent_omitted": 244,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1248,
+        1249,
+        1251,
+        1252,
+        1253,
+        1254,
+        1255,
+        1256,
+        1257,
+        1258,
+        1259,
+        1260,
+        1261,
+        1262,
+        1263,
+        1264,
+        1265,
+        1266,
+        1267,
+        1268,
+        1269,
+        1270,
+        1271,
+        1272,
+        1273,
+        1274,
+        1275
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:24df9039dc074f01bcc593a9",
+        "authority": "model_notes_only",
+        "text": "Dispatch sole ready nonconditional operation w130:279:1 on idle machine 1279 now; reassess by 2566.369200718176. Dynamic feasibility remains uncertified.",
+        "version": 130
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "1248"
+          ]
+        },
+        {
+          "kind": "operations",
+          "cursor": null,
+          "count": 100,
+          "where": [
+            {
+              "field": "eligible_machines",
+              "op": "contains",
+              "value": 1248
+            },
+            {
+              "field": "conditional",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": 451,
+      "round": 131,
+      "context_ref": "context:1fa31457bb0f4b759289707f",
+      "prompt_sha256": "efcd776c5c0baef948e9f50b19218581bac94689f22282ddcf68102122ce1b02",
+      "raw_action_sha256": "a79cccab51a6dcd14fa310d699ba3e62b47614961103a015725001f4da688286",
+      "prompt_characters": 62861,
+      "tool": "propose_delta",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_108": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 292,
+      "pertinent_omitted": 244,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1248,
+        1249,
+        1251,
+        1252,
+        1253,
+        1254,
+        1255,
+        1256,
+        1257,
+        1258,
+        1259,
+        1260,
+        1261,
+        1262,
+        1263,
+        1264,
+        1265,
+        1266,
+        1267,
+        1268,
+        1269,
+        1270,
+        1271,
+        1272,
+        1273,
+        1274,
+        1275
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:24df9039dc074f01bcc593a9",
+        "authority": "model_notes_only",
+        "text": "Dispatch sole ready nonconditional operation w130:279:1 on idle machine 1279 now; reassess by 2566.369200718176. Dynamic feasibility remains uncertified.",
+        "version": 130
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-131",
+        "created_at": 2487.3717901978953,
+        "valid_until": 2607.3717901978953,
+        "freeze_until": 2487.3717901978953,
+        "reason": "Dispatch the sole ready nonconditional wet-etch operation on idle eligible machine 1248; reassess within 120 seconds."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 1248,
+          "task_ids": [
+            "d131-w100"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 452,
+      "round": 131,
+      "context_ref": "context:1fa31457bb0f4b759289707f",
+      "prompt_sha256": "5e6f32cd203b9998709c2c29e8d7cfcaf3733262abeaa54cbf86f10c588f2b7c",
+      "raw_action_sha256": "24b2c02c15aa8d85fa1f9c3088b8aee4e2dad726696c190c5cbb2e4007c128a1",
+      "prompt_characters": 67869,
+      "tool": "apply_candidate",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_FE_108": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 292,
+      "pertinent_omitted": 244,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1248,
+        1249,
+        1251,
+        1252,
+        1253,
+        1254,
+        1255,
+        1256,
+        1257,
+        1258,
+        1259,
+        1260,
+        1261,
+        1262,
+        1263,
+        1264,
+        1265,
+        1266,
+        1267,
+        1268,
+        1269,
+        1270,
+        1271,
+        1272,
+        1273,
+        1274,
+        1275
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:24df9039dc074f01bcc593a9",
+        "authority": "model_notes_only",
+        "text": "Dispatch sole ready nonconditional operation w130:279:1 on idle machine 1279 now; reassess by 2566.369200718176. Dynamic feasibility remains uncertified.",
+        "version": 130
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    },
+    {
+      "call": 453,
+      "round": 132,
+      "context_ref": "context:25013b64f69d4344bbd362dd",
+      "prompt_sha256": "90c413d95f3bb734954388ad761cab0f5712aae8618af0c2411a9a2b9dacb566",
+      "raw_action_sha256": "fc911cad096fb77f1cbe5b36abbccf5537c6945cb4d5f87e8873da05041ffbfa",
+      "prompt_characters": 65826,
+      "tool": "read_entities",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "Litho_FE_111": 48
+      },
+      "inline_nonconditional_operations": 46,
+      "pertinent_total": 118,
+      "pertinent_omitted": 70,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        936
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:89b89b80e58046f0be9d8b8a",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w100:230:1 on idle eligible machine 1248 now; reassess by 2607.3717901978953. Dynamic feasibility remains uncertified.",
+        "version": 131
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "936"
+          ]
+        },
+        {
+          "kind": "operations",
+          "cursor": null,
+          "count": 128,
+          "where": [
+            {
+              "field": "eligible_machines",
+              "op": "contains",
+              "value": 936
+            },
+            {
+              "field": "conditional",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": 454,
+      "round": 132,
+      "context_ref": "context:25013b64f69d4344bbd362dd",
+      "prompt_sha256": "1b649c456426d064c77dc7744a6f70371621c2041c8e24c1f1b408ebaa23f765",
+      "raw_action_sha256": "671841207335e33307b5afcb4258e842d77917762bf185e18be8552e6c7ad0b9",
+      "prompt_characters": 100448,
+      "tool": "read_entities",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "Litho_FE_111": 48
+      },
+      "inline_nonconditional_operations": 46,
+      "pertinent_total": 118,
+      "pertinent_omitted": 70,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        936
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:89b89b80e58046f0be9d8b8a",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w100:230:1 on idle eligible machine 1248 now; reassess by 2607.3717901978953. Dynamic feasibility remains uncertified.",
+        "version": 131
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "920",
+            "921",
+            "922",
+            "923",
+            "924",
+            "925",
+            "926",
+            "927",
+            "928",
+            "929",
+            "930",
+            "931",
+            "932",
+            "933",
+            "934",
+            "935",
+            "937",
+            "938",
+            "939"
+          ],
+          "fields": [
+            "machine",
+            "currently_busy",
+            "currently_down",
+            "available_at",
+            "processing_until"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 455,
+      "round": 132,
+      "context_ref": "context:25013b64f69d4344bbd362dd",
+      "prompt_sha256": "cde3cd2155a7d183ad2abd53eecb44eec314b87155b124e649b3317f2289af66",
+      "raw_action_sha256": "baa24407f45f5f4f484135bfb531533a7dda485d662991f66eeb264682a36ce7",
+      "prompt_characters": 104624,
+      "tool": "propose_delta",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "Litho_FE_111": 48
+      },
+      "inline_nonconditional_operations": 46,
+      "pertinent_total": 118,
+      "pertinent_omitted": 70,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        936
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:89b89b80e58046f0be9d8b8a",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w100:230:1 on idle eligible machine 1248 now; reassess by 2607.3717901978953. Dynamic feasibility remains uncertified.",
+        "version": 131
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-132",
+        "created_at": 2550.9100490178785,
+        "valid_until": 2670.9100490178785,
+        "freeze_until": 2550.9100490178785,
+        "reason": "Dispatch w458, the earliest-due ready operation with source family qualification, on idle machine 936. Reassess within 120 seconds; do not assume missing historical bindings."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 936,
+          "task_ids": [
+            "d132-w458"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 456,
+      "round": 132,
+      "context_ref": "context:25013b64f69d4344bbd362dd",
+      "prompt_sha256": "9b89d81a7f521001a8cbf129a383ddb0ad8ef342d5f6a8971f364bb207ab6c27",
+      "raw_action_sha256": "1fa11c5213b1a0b360ed006ceb80e616ad14c0084fe71b4b38826bc1742df311",
+      "prompt_characters": 100910,
+      "tool": "apply_candidate",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "Litho_FE_111": 48
+      },
+      "inline_nonconditional_operations": 46,
+      "pertinent_total": 118,
+      "pertinent_omitted": 70,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        936
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:89b89b80e58046f0be9d8b8a",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w100:230:1 on idle eligible machine 1248 now; reassess by 2607.3717901978953. Dynamic feasibility remains uncertified.",
+        "version": 131
+      },
+      "history_entries": 7,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    },
+    {
+      "call": 457,
+      "round": 133,
+      "context_ref": "context:c7e45e093372449aa097227d",
+      "prompt_sha256": "8a9bde2b9fdef91a97383b968b29d1dabb1590975ff06939fe08036d84e71e95",
+      "raw_action_sha256": "bc5720580fe0478cc0f1b1ef5a4610480f7961a0ca7196f27cdadfe0bfa3def6",
+      "prompt_characters": 94007,
+      "tool": "read_entities",
+      "inline_operations": 18,
+      "inline_operation_families": {
+        "DefMet_FE_10": 18
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 18,
+      "pertinent_omitted": 0,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        316
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:7a036e025cc5486090f6525d",
+        "authority": "model_notes_only",
+        "text": "Dispatch w458:31:1 on idle eligible machine 936 now; reassess by 2670.9100490178785. Missing historical bindings are not assumed; dynamic feasibility remains uncertified.",
+        "version": 132
+      },
+      "history_entries": 7,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "315",
+            "316"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 458,
+      "round": 133,
+      "context_ref": "context:c7e45e093372449aa097227d",
+      "prompt_sha256": "d03b62b60dbf02797f98401511c2b5b4347ed9dd57a9cdc842b1f0039cc46ba8",
+      "raw_action_sha256": "a90f5e2acd2d4edb44d6bcefba3f050eed0bb2176f314879c42549ae6c1afdca",
+      "prompt_characters": 92611,
+      "tool": "propose_delta",
+      "inline_operations": 18,
+      "inline_operation_families": {
+        "DefMet_FE_10": 18
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 18,
+      "pertinent_omitted": 0,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        316
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:7a036e025cc5486090f6525d",
+        "authority": "model_notes_only",
+        "text": "Dispatch w458:31:1 on idle eligible machine 936 now; reassess by 2670.9100490178785. Missing historical bindings are not assumed; dynamic feasibility remains uncertified.",
+        "version": 132
+      },
+      "history_entries": 7,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-133",
+        "created_at": 2563.4749769579557,
+        "valid_until": 2683.4749769579557,
+        "freeze_until": 2563.4749769579557,
+        "reason": "Dispatch the sole ready nonconditional operation w638:229:1 on idle eligible machine 316; reassess within 120 seconds."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 316,
+          "task_ids": [
+            "d133-w638"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 459,
+      "round": 133,
+      "context_ref": "context:c7e45e093372449aa097227d",
+      "prompt_sha256": "c8e68a4682a18def1d49688ab441be7a803d8aa482c816250bf916eb3b42045d",
+      "raw_action_sha256": "0898a9d963e596499ffb4177805fbf6e57f3acab532a1c1f7567f0881965c184",
+      "prompt_characters": 93040,
+      "tool": "apply_candidate",
+      "inline_operations": 18,
+      "inline_operation_families": {
+        "DefMet_FE_10": 18
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 18,
+      "pertinent_omitted": 0,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        316
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:7a036e025cc5486090f6525d",
+        "authority": "model_notes_only",
+        "text": "Dispatch w458:31:1 on idle eligible machine 936 now; reassess by 2670.9100490178785. Missing historical bindings are not assumed; dynamic feasibility remains uncertified.",
+        "version": 132
+      },
+      "history_entries": 7,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    },
+    {
+      "call": 460,
+      "round": 134,
+      "context_ref": "context:3e8d19bcbae646f99abd0762",
+      "prompt_sha256": "4d12a109d0bacab2d65149cd398820bd81e03d7338e2a757d5fab58e6b060993",
+      "raw_action_sha256": "6296adc23d6c3fabffeb7083e43a748e0cab7fdb849602aeffa9043cf4c65b12",
+      "prompt_characters": 93726,
+      "tool": "read_entities",
+      "inline_operations": 18,
+      "inline_operation_families": {
+        "DefMet_FE_34": 18
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 18,
+      "pertinent_omitted": 0,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        320,
+        321
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:df3da21e64fc4badb8e1ff80",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w638:229:1 on idle eligible machine 316; reassess by 2683.4749769579557. Dynamic feasibility remains uncertified.",
+        "version": 133
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "320",
+            "321"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 461,
+      "round": 134,
+      "context_ref": "context:3e8d19bcbae646f99abd0762",
+      "prompt_sha256": "3c480baee7f8805ae390ea796a65581eb447acbf77274a4af8617ae06b06c92d",
+      "raw_action_sha256": "6c1aa79c511248691f906127eade244eb5465f0ba4e441c6357a795023b56723",
+      "prompt_characters": 94875,
+      "tool": "propose_delta",
+      "inline_operations": 18,
+      "inline_operation_families": {
+        "DefMet_FE_34": 18
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 18,
+      "pertinent_omitted": 0,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        320,
+        321
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:df3da21e64fc4badb8e1ff80",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w638:229:1 on idle eligible machine 316; reassess by 2683.4749769579557. Dynamic feasibility remains uncertified.",
+        "version": 133
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-134",
+        "created_at": 2593.67390530684,
+        "valid_until": 2713.67390530684,
+        "freeze_until": 2593.67390530684,
+        "reason": "Dispatch ready nonconditional operation w1198:102:1 immediately on idle eligible machine 320; reassess within 120 seconds."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 320,
+          "task_ids": [
+            "d134-w1198"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 462,
+      "round": 134,
+      "context_ref": "context:3e8d19bcbae646f99abd0762",
+      "prompt_sha256": "26d11a927d068e7a27aa37b6894217c78d6b99132b7dc2480722fa1dd56e7e01",
+      "raw_action_sha256": "7bc10fac72e333f245311ceaaf9418f5e491e43e0b30a435cf62aca468998689",
+      "prompt_characters": 60683,
+      "tool": "apply_candidate",
+      "inline_operations": 18,
+      "inline_operation_families": {
+        "DefMet_FE_34": 18
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 18,
+      "pertinent_omitted": 0,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        320,
+        321
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:df3da21e64fc4badb8e1ff80",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w638:229:1 on idle eligible machine 316; reassess by 2683.4749769579557. Dynamic feasibility remains uncertified.",
+        "version": 133
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    },
+    {
+      "call": 463,
+      "round": 135,
+      "context_ref": "context:bc93baaf3ba044ac91d4ab16",
+      "prompt_sha256": "e9880eba15d910c3914f0b69b4c6f3326658c678eabb8d552ce4521df39c595c",
+      "raw_action_sha256": "57e6d6cfa9cc0832470017d28eda3d64fba1951bdb8a572c8b60d47b21c6e975",
+      "prompt_characters": 60212,
+      "tool": "read_entities",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_BE_82": 48
+      },
+      "inline_nonconditional_operations": 0,
+      "pertinent_total": 76,
+      "pertinent_omitted": 28,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1234,
+        1235,
+        1236,
+        1238,
+        1240,
+        1241
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:a92f15fe827a47c6a0d7e951",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w1198:102:1 on idle eligible machine 320; reassess by 2713.67390530684. Dynamic feasibility remains uncertified.",
+        "version": 134
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "operations",
+          "cursor": null,
+          "count": 100,
+          "where": [
+            {
+              "field": "family",
+              "op": "eq",
+              "value": "WE_BE_82"
+            },
+            {
+              "field": "conditional",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        },
+        {
+          "kind": "machines",
+          "ids": [
+            "1234",
+            "1235",
+            "1236",
+            "1238",
+            "1240",
+            "1241"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 464,
+      "round": 135,
+      "context_ref": "context:bc93baaf3ba044ac91d4ab16",
+      "prompt_sha256": "82d3d1e26ccc0a99aa6d4a61663f044b3a6137b726d2d40f743bd29febab12d2",
+      "raw_action_sha256": "abadfc8e742a07091edc536cfcdea97b9602a6a144d270044106d5e781e13744",
+      "prompt_characters": 59129,
+      "tool": "propose_delta",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_BE_82": 48
+      },
+      "inline_nonconditional_operations": 0,
+      "pertinent_total": 76,
+      "pertinent_omitted": 28,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1234,
+        1235,
+        1236,
+        1238,
+        1240,
+        1241
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:a92f15fe827a47c6a0d7e951",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w1198:102:1 on idle eligible machine 320; reassess by 2713.67390530684. Dynamic feasibility remains uncertified.",
+        "version": 134
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-135",
+        "created_at": 2594.7701543790963,
+        "valid_until": 2714.7701543790963,
+        "freeze_until": 2594.7701543790963,
+        "reason": "Dispatch sole ready nonconditional WE_BE_82 operation w495:479:1 on idle eligible machine 1234 now; reassess within 120 seconds."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 1234,
+          "task_ids": [
+            "d135-w495"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 465,
+      "round": 135,
+      "context_ref": "context:bc93baaf3ba044ac91d4ab16",
+      "prompt_sha256": "68fce0e1c0ea1ae1b7d2c462a82d1a6508ee10fc1f9b6b30b929678372895f39",
+      "raw_action_sha256": "c494de3acc5be53df07dc25254f89a37d35269985167a498939a6f87de404d67",
+      "prompt_characters": 64147,
+      "tool": "apply_candidate",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "WE_BE_82": 48
+      },
+      "inline_nonconditional_operations": 0,
+      "pertinent_total": 76,
+      "pertinent_omitted": 28,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        1234,
+        1235,
+        1236,
+        1238,
+        1240,
+        1241
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:a92f15fe827a47c6a0d7e951",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w1198:102:1 on idle eligible machine 320; reassess by 2713.67390530684. Dynamic feasibility remains uncertified.",
+        "version": 134
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    },
+    {
+      "call": 466,
+      "round": 136,
+      "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+      "prompt_sha256": "3f2ab6f9ea945a0580eb7dc86b55db9747b46d5efe0f1b6bf722a9ebcfd94402",
+      "raw_action_sha256": "717d193101da4429c994a8cf89d5ee4c745c62b6c6b2f5f3da7d3971fa812590",
+      "prompt_characters": 61893,
+      "tool": "read_entities",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "DefMet_BE_33": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 61,
+      "pertinent_omitted": 13,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        312,
+        313
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:a8b8b509ccf84e848248ca85",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w495:479:1 on idle eligible machine 1234; reassess by 2714.7701543790963. Dynamic feasibility remains uncertified.",
+        "version": 135
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "queries": [
+        {
+          "kind": "machines",
+          "ids": [
+            "312",
+            "313"
+          ]
+        },
+        {
+          "kind": "operations",
+          "cursor": null,
+          "count": 100,
+          "where": [
+            {
+              "field": "family",
+              "op": "eq",
+              "value": "DefMet_BE_33"
+            },
+            {
+              "field": "conditional",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "call": 467,
+      "round": 136,
+      "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+      "prompt_sha256": "47bd0260c26e04396a0daaf2ebfb085b50a813ad60282e68e24bf981f121175e",
+      "raw_action_sha256": "40e638d18e373c739a60fbf212a7e7cb0b6388932c77d3ea3a8d0729502aaecf",
+      "prompt_characters": 60176,
+      "tool": "propose_delta",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "DefMet_BE_33": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 61,
+      "pertinent_omitted": 13,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        312,
+        313
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:a8b8b509ccf84e848248ca85",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w495:479:1 on idle eligible machine 1234; reassess by 2714.7701543790963. Dynamic feasibility remains uncertified.",
+        "version": 135
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null,
+      "header": {
+        "version": "dispatch-136",
+        "created_at": 2598.0688794189255,
+        "valid_until": 2718.0688794189255,
+        "freeze_until": 2598.0688794189255,
+        "reason": "Dispatch sole ready nonconditional DefMet_BE_33 operation w1091:314:1 on idle eligible machine 312 now; reassess within 120 seconds."
+      },
+      "added_task_count": 1,
+      "explicit_orders": [
+        {
+          "machine": 312,
+          "task_ids": [
+            "d136-w1091"
+          ]
+        }
+      ]
+    },
+    {
+      "call": 468,
+      "round": 136,
+      "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+      "prompt_sha256": "321a809696c4c7bc4503a51f3c978d9ed2766ea9f594b86ac525bdabef6cffc9",
+      "raw_action_sha256": "468d2c466123d1530f763a487aef016cfff83815ee12ff787d63446e6b693e98",
+      "prompt_characters": 65231,
+      "tool": "apply_candidate",
+      "inline_operations": 48,
+      "inline_operation_families": {
+        "DefMet_BE_33": 48
+      },
+      "inline_nonconditional_operations": 1,
+      "pertinent_total": 61,
+      "pertinent_omitted": 13,
+      "total_public_operations": 4349,
+      "gap_machine_ids": [
+        312,
+        313
+      ],
+      "pending_task_count": 0,
+      "notes": {
+        "attempt_id": "attempt:a8b8b509ccf84e848248ca85",
+        "authority": "model_notes_only",
+        "text": "Dispatch ready operation w495:479:1 on idle eligible machine 1234; reassess by 2714.7701543790963. Dynamic feasibility remains uncertified.",
+        "version": 135
+      },
+      "history_entries": 8,
+      "contains_advanced_seconds_feedback": false,
+      "contains_dispatch_count_delta_feedback": false,
+      "contains_lookahead_depth": false,
+      "task": null
+    }
+  ]
+}

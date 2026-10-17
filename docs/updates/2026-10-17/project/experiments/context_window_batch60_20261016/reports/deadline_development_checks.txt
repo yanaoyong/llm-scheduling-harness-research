@@ -1,0 +1,32 @@
+test_cold_start_partitions_all_2000_without_loss_or_duplicate (tests.test_capacity_deadline_collection.DeadlineCapacityTests.test_cold_start_partitions_all_2000_without_loss_or_duplicate) ... ok
+test_more_future_content_fits_large_budget_with_honest_overflow (tests.test_capacity_deadline_collection.DeadlineCapacityTests.test_more_future_content_fits_large_budget_with_honest_overflow) ... ok
+test_actual_gap_is_immediate_and_does_not_erase_existing_tasks (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_actual_gap_is_immediate_and_does_not_erase_existing_tasks) ... ok
+test_configs_preserve_capacity_and_only_expected_treatment_differences (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_configs_preserve_capacity_and_only_expected_treatment_differences) ... ok
+test_deadline_delivery_suppresses_same_episode_but_not_earlier_or_new_episode (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_deadline_delivery_suppresses_same_episode_but_not_earlier_or_new_episode) ... ok
+test_early_delivery_deadline_and_real_ready_are_distinct (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_early_delivery_deadline_and_real_ready_are_distinct) ... ok
+test_invalid_plan_still_stops_immediately (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_invalid_plan_still_stops_immediately) ... ok
+test_original_dispatch_and_gap_methods_are_unchanged (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_original_dispatch_and_gap_methods_are_unchanged) ... FAIL
+test_original_ignores_forecast_and_capacity_but_stops_for_real_gap (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_original_ignores_forecast_and_capacity_but_stops_for_real_gap) ... ok
+test_overdue_restore_handles_immediately_without_claiming_deadline_met (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_overdue_restore_handles_immediately_without_claiming_deadline_met) ... ok
+test_recent_commit_cannot_push_reminder_beyond_deadline (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_recent_commit_cannot_push_reminder_beyond_deadline) ... ok
+test_submitted_executable_task_runs_before_another_machine_gap_stops (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_submitted_executable_task_runs_before_another_machine_gap_stops) ... ok
+test_unoffered_machine_is_never_acknowledged (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_unoffered_machine_is_never_acknowledged) ... ok
+test_v5_cannot_enter_model_transport_even_with_flag (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_v5_cannot_enter_model_transport_even_with_flag) ... ok
+test_same_saved_plan_replay_restore_and_independent_audits (tests.test_capacity_deadline_collection.DeadlineSavedReplayTests.test_same_saved_plan_replay_restore_and_independent_audits) ... ok
+
+======================================================================
+FAIL: test_original_dispatch_and_gap_methods_are_unchanged (tests.test_capacity_deadline_collection.DeadlineRulesTests.test_original_dispatch_and_gap_methods_are_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/tests/test_capacity_deadline_collection.py", line 135, in test_original_dispatch_and_gap_methods_are_unchanged
+    self.assertEqual(ast.dump(ast.Module(body=new['advance_plan'].body[1:],type_ignores=[])),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     ast.dump(ast.Module(body=old['advance_plan'].body,type_ignores=[])))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Module(body=[If(test=BoolOp(op=And(), values=[Call(fun[8095 chars]))])" != "Module(body=[Expr(value=Constant(value='Execute submit[7535 chars]))])"
+Diff is 15753 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 15 tests in 108.739s
+
+FAILED (failures=1)

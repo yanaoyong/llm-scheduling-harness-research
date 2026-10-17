@@ -1,0 +1,30 @@
+{
+  "tool": "read_entities",
+  "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+  "queries": [
+    {
+      "kind": "machines",
+      "ids": [
+        "312",
+        "313"
+      ]
+    },
+    {
+      "kind": "operations",
+      "cursor": null,
+      "count": 100,
+      "where": [
+        {
+          "field": "family",
+          "op": "eq",
+          "value": "DefMet_BE_33"
+        },
+        {
+          "field": "conditional",
+          "op": "eq",
+          "value": false
+        }
+      ]
+    }
+  ]
+}

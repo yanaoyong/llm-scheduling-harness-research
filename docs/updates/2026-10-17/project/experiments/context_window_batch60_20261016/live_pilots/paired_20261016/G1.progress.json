@@ -1,0 +1,84 @@
+{
+  "group": "G1",
+  "head": {
+    "context_ref": "context:298137040a084e3b99004472",
+    "first_read_result_ref": null,
+    "phase": "STOPPED",
+    "previous_error_signature": null,
+    "previous_read_signature": null,
+    "previous_zero_signature": null,
+    "revision": 0,
+    "same_error_count": 0,
+    "same_read_count": 0,
+    "segment": 1,
+    "state_ref": "8511de1b2ed866e8e9d934541f98c383d8f3143f7c80980278f60f10c860c4bd",
+    "stop_reason": "model_transport_or_unknown_usage",
+    "time": 702.0,
+    "zero_progress": 0
+  },
+  "usage": {
+    "actual_model_attempts": 1,
+    "offline_outputs": 0,
+    "input_tokens": 0,
+    "cached_input_tokens": 0,
+    "output_tokens": 0,
+    "unknown_usage": 1,
+    "reserved_tokens": 0,
+    "model_seconds": 0.36539562488906085,
+    "pending_attempts": 0,
+    "elapsed_wall_seconds": 10.864716053009033,
+    "cost_usd": null
+  },
+  "attempts": [
+    {
+      "index": 0,
+      "attempt_id": "attempt:db978ee72efb4d888090b16c",
+      "tool": null,
+      "status": "responded",
+      "result_status": null,
+      "error": null,
+      "usage": null,
+      "duration_seconds": 0.36539562488906085,
+      "packet": {
+        "budgeted_input_tokens": 219956,
+        "demand_operations": 4349,
+        "encoding": "o200k_base",
+        "inline_machines": 851,
+        "inline_operations": 1818,
+        "input_budget": 220000,
+        "local_prompt_tokens": 209956,
+        "measured_epoch": 1792144601.174946,
+        "oversized_bundle_requires_paged_read": false,
+        "paged_details": false,
+        "schema_and_system_tokens": 1781,
+        "server_model_mapping_confirmed": false,
+        "server_tokenizer_verified": false,
+        "total_operations": 4349,
+        "wrapper_reserve_tokens": 10000
+      },
+      "transport_valid": false
+    }
+  ],
+  "call_types": {
+    "transport_failure": 1
+  },
+  "model_commits": 0,
+  "production_dispatches": 0,
+  "committed_task_counts": [],
+  "stop_reasons": {},
+  "backlog": {
+    "uncovered_executable_machine_count": 1,
+    "pending_demand_machine_count": 904,
+    "pending_demand_operation_count": 4348,
+    "uncovered_executable_machines": [
+      1250
+    ],
+    "ready_wait_ages": {
+      "1250": 0.0
+    },
+    "accepted_pending_task_count": 2,
+    "active_hold_count": 0,
+    "public_operations_total": 4349
+  },
+  "observed_seconds": 0.0
+}

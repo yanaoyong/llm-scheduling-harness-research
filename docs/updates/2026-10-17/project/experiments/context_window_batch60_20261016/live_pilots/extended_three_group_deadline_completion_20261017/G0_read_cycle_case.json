@@ -1,0 +1,212 @@
+{
+  "time": 1649.8155803370928,
+  "calls": [
+    {
+      "call_number": 68,
+      "attempt_id": "attempt:5484bf971c7042e1aee33f7d",
+      "prompt_ref": "732711e80a8d38e82718bd0a6a6bbf2a4dca0a95c89a43ec00d55f3ffacb49d8",
+      "action": {
+        "tool": "read_artifact",
+        "artifact_ref": "artifact:6fb9c0f3f6344bf0b419f4ec",
+        "path": [],
+        "format": "value",
+        "offset": 0,
+        "count": 0
+      },
+      "inline_task_count": 14,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 67,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 69,
+      "attempt_id": "attempt:7bf804408ba547bea5f2e849",
+      "prompt_ref": "f95f81994c299408f0e8320c96fe1f501e595eb9c42dc20aa6796153f651cdf0",
+      "action": {
+        "tool": "read_entities",
+        "context_ref": "context:30872dadac0f4aaf8e3799de",
+        "queries": [
+          {
+            "kind": "tasks",
+            "cursor": "",
+            "count": 64
+          },
+          {
+            "kind": "operations",
+            "ids": [
+              "w1881:138:1",
+              "w1234:26:1",
+              "w1536:16:1"
+            ]
+          }
+        ]
+      },
+      "inline_task_count": 15,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 68,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 70,
+      "attempt_id": "attempt:be47e234950e473c8d609721",
+      "prompt_ref": "cca49f2a57a3947a1a54a87aabe4c0b4cdef63356181cd78a0eb8c24cc81c3d5",
+      "action": {
+        "tool": "read_artifact",
+        "artifact_ref": "artifact:89a5bf2297544642ba1105a2",
+        "path": [
+          "tasks"
+        ],
+        "format": "page",
+        "offset": 0,
+        "count": 64
+      },
+      "inline_task_count": 15,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 69,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 71,
+      "attempt_id": "attempt:f6f1b6fef13548f193aec043",
+      "prompt_ref": "d5af5691070ff85abd66f70e3d2f7566b33d326e018a575ca7e535b40e49f448",
+      "action": {
+        "tool": "read_artifact",
+        "artifact_ref": "artifact:6fb9c0f3f6344bf0b419f4ec",
+        "path": [],
+        "format": "value",
+        "offset": 0,
+        "count": 0
+      },
+      "inline_task_count": 15,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 70,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 72,
+      "attempt_id": "attempt:b9e2715ca526432191538160",
+      "prompt_ref": "3d7b11e8409c5eeda15520665c0e4e83cffeb62fe0cef1e5e34ad5a14dbd1911",
+      "action": {
+        "tool": "read_artifact",
+        "artifact_ref": "artifact:7f82114411284d36a13322ea",
+        "path": [],
+        "format": "value",
+        "offset": 0,
+        "count": 0
+      },
+      "inline_task_count": 15,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 71,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 73,
+      "attempt_id": "attempt:305f2aef96cc4ff792a67544",
+      "prompt_ref": "8fa8f4cbb30ebe3dafdc7c8344c6503aabb60a0c2143cdf350a3f3110b0a541a",
+      "action": {
+        "tool": "read_artifact",
+        "artifact_ref": "artifact:6fb9c0f3f6344bf0b419f4ec",
+        "path": [],
+        "format": "value",
+        "offset": 0,
+        "count": 0
+      },
+      "inline_task_count": 14,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 72,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 74,
+      "attempt_id": "attempt:96b7566330c84fa884cd329a",
+      "prompt_ref": "d9b6c7924f00c0163ed7f0ca06317ada9c1a738625d4b78af35c6794f6c338cc",
+      "action": {
+        "tool": "read_entities",
+        "context_ref": "context:30872dadac0f4aaf8e3799de",
+        "queries": [
+          {
+            "kind": "tasks",
+            "cursor": "",
+            "count": 64
+          }
+        ]
+      },
+      "inline_task_count": 15,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 73,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 75,
+      "attempt_id": "attempt:912116a6c70e460ca57fe90f",
+      "prompt_ref": "dc18484d672aae4d219ab9dbe5c82e63bec9679872a50dc5cfb5af3a123533ca",
+      "action": {
+        "tool": "read_artifact",
+        "artifact_ref": "artifact:6fb9c0f3f6344bf0b419f4ec",
+        "path": [],
+        "format": "value",
+        "offset": 0,
+        "count": 0
+      },
+      "inline_task_count": 15,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 74,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 76,
+      "attempt_id": "attempt:8d57495680354e59bd32bdf2",
+      "prompt_ref": "76e854d7e20dbcbfa8ea1fe1a34de184212e242f876ee140bf2d12763206e0aa",
+      "action": {
+        "tool": "read_artifact",
+        "artifact_ref": "artifact:7f82114411284d36a13322ea",
+        "path": [],
+        "format": "value",
+        "offset": 0,
+        "count": 0
+      },
+      "inline_task_count": 15,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 75,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    },
+    {
+      "call_number": 77,
+      "attempt_id": "attempt:e57bf16459d94b7db836dc31",
+      "prompt_ref": "236b09002681b933d7d01391bce6f7d131755c0a1ceb5609b1b68a9dc33e3969",
+      "action": {
+        "tool": "read_artifact",
+        "artifact_ref": "artifact:30eabf0e0cad4484b318fb9d",
+        "path": [],
+        "format": "value",
+        "offset": 0,
+        "count": 0
+      },
+      "inline_task_count": 14,
+      "total_task_count": 26,
+      "inline_execution_state_complete": false,
+      "last_feedback_call": 76,
+      "last_feedback_contains_result": true,
+      "history_entries_have_no_full_results": true
+    }
+  ],
+  "interpretation_limit": "Repeated requests are observed. Partial inline views and only latest full tool output can contribute; this does not establish that every reread is necessary."
+}

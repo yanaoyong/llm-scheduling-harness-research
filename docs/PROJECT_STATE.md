@@ -1,5 +1,7 @@
 # 项目状态（截至 2026-10-12）
 
+> 2026-10-17 更新：后续会话、Harness 验收与窗口实验见 [增量归档](updates/2026-10-17/README.md)。下文继续保留原历史快照及其日期。
+
 ## 当前结论
 
 项目同时包含三数据集正式对照、SMT2020 全厂直接排程开发研究，以及两轮 M0.5 文献/工程调研。它们是不同范围、不同证据等级的工作，不能合并成“全厂研究已完成”。三数据集正式验收已通过，但其 SMT 八小时方案只由 2/913 台设备接受控制，其余设备沿用统一固定策略；这不等于完整全厂自主排程。[实验 README](../source_snapshot/experiment_round2_3datasets/README.md)（原文 L1-L5） [范围说明](../source_snapshot/experiment_round2_3datasets/README.md)（原文 L28-L36）

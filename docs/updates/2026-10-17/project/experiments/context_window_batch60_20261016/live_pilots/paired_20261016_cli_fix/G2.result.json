@@ -1,0 +1,121 @@
+{
+  "group": "G2",
+  "head": {
+    "context_ref": "context:ceb180951a484c279343c69b",
+    "first_read_result_ref": null,
+    "phase": "STOPPED",
+    "previous_error_signature": "5814078abf45bf4779d2346096740626c1583335c16cf725613daba5a9f33f6a",
+    "previous_read_signature": null,
+    "previous_zero_signature": null,
+    "revision": 0,
+    "same_error_count": 1,
+    "same_read_count": 0,
+    "segment": 1,
+    "state_ref": "107e3fac3a0fe3dff664383afc6160b36f7846a1d5bae671679c8ea1b02c3ce7",
+    "stop_reason": "model_transport_or_unknown_usage",
+    "time": 702.0,
+    "zero_progress": 0
+  },
+  "usage": {
+    "actual_model_attempts": 2,
+    "offline_outputs": 0,
+    "input_tokens": 393402,
+    "cached_input_tokens": 0,
+    "output_tokens": 3370,
+    "unknown_usage": 1,
+    "reserved_tokens": 0,
+    "model_seconds": 262.6027402081527,
+    "pending_attempts": 0,
+    "elapsed_wall_seconds": 2906.9592790603638,
+    "cost_usd": null
+  },
+  "attempts": [
+    {
+      "index": 0,
+      "attempt_id": "attempt:af6e7a1756774ea09ee977aa",
+      "tool": "propose_delta",
+      "status": "processed",
+      "result_status": "rejected",
+      "error": {
+        "code": "start",
+        "detail": "start: invalid unchanged start: d31-1278"
+      },
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 393402,
+        "output_tokens": 3370
+      },
+      "duration_seconds": 102.2959330000449,
+      "packet": {
+        "budgeted_input_tokens": 397916,
+        "demand_operations": 4349,
+        "encoding": "o200k_base",
+        "inline_machines": 905,
+        "inline_operations": 4349,
+        "input_budget": 440000,
+        "local_prompt_tokens": 387916,
+        "measured_epoch": 1792144748.90566,
+        "oversized_bundle_requires_paged_read": false,
+        "paged_details": false,
+        "schema_and_system_tokens": 1781,
+        "server_model_mapping_confirmed": false,
+        "server_tokenizer_verified": false,
+        "total_operations": 4349,
+        "wrapper_reserve_tokens": 10000
+      },
+      "transport_valid": true
+    },
+    {
+      "index": 1,
+      "attempt_id": "attempt:b859ae5277f4411ba6d12e85",
+      "tool": null,
+      "status": "responded",
+      "result_status": null,
+      "error": null,
+      "usage": null,
+      "duration_seconds": 160.30680720810778,
+      "packet": {
+        "budgeted_input_tokens": 400916,
+        "demand_operations": 4349,
+        "encoding": "o200k_base",
+        "inline_machines": 905,
+        "inline_operations": 4349,
+        "input_budget": 440000,
+        "local_prompt_tokens": 390916,
+        "measured_epoch": 1792144952.9682739,
+        "oversized_bundle_requires_paged_read": false,
+        "paged_details": false,
+        "schema_and_system_tokens": 1781,
+        "server_model_mapping_confirmed": false,
+        "server_tokenizer_verified": false,
+        "total_operations": 4349,
+        "wrapper_reserve_tokens": 10000
+      },
+      "transport_valid": false
+    }
+  ],
+  "call_types": {
+    "propose_delta": 1,
+    "transport_failure": 1
+  },
+  "model_commits": 0,
+  "production_dispatches": 0,
+  "committed_task_counts": [],
+  "stop_reasons": {},
+  "backlog": {
+    "uncovered_executable_machine_count": 1,
+    "pending_demand_machine_count": 904,
+    "pending_demand_operation_count": 4348,
+    "uncovered_executable_machines": [
+      1250
+    ],
+    "ready_wait_ages": {
+      "1250": 0.0
+    },
+    "accepted_pending_task_count": 2,
+    "active_hold_count": 0,
+    "public_operations_total": 4349
+  },
+  "observed_seconds": 0.0,
+  "evidence_sha256": "19a1b7f383952c9620caa431874e4c8ebbdc528f3fa08f8441e5f28e830cf249"
+}

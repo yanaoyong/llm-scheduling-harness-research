@@ -1,0 +1,27 @@
+{
+  "flow_instance": "research_harness_multiagent_20261016",
+  "run_id": "harness-multiagent-m05-20261016",
+  "scope_note": "补充多agent路线：分工、共享信息、全局排程冲突，与单agent比较全体模型调用、完整成本和排程质量。只研究不改B。",
+  "questions": [
+    {
+      "q_id": "MA-Q01",
+      "question": "多agent按职能、机组/区域、订单/资源或时间窗口如何分工？何时辅助读取、局部提案+统一裁决或分布式协商适用，任务耦合与分工粒度如何影响效果？",
+      "risk_hint": "high"
+    },
+    {
+      "q_id": "MA-Q02",
+      "question": "多agent怎样共享带版本的事实、约束、计划与进度，同时隔离上下文、避免重复读取/摘要遗漏/过时状态？需要哪些消息和工件契约？",
+      "risk_hint": "high"
+    },
+    {
+      "q_id": "MA-Q03",
+      "question": "如何处理共享机台/批次/订单的全局竞争、跨区域依赖、死锁、局部最优和并发提交冲突？最终谁决定具体安排，约束检查、求解器与全局裁决各承担什么？",
+      "risk_hint": "high"
+    },
+    {
+      "q_id": "MA-Q04",
+      "question": "原始研究怎样与单agent公平比较全体模型调用、token、延迟/费用和排程质量？哪些实证支持多agent、哪些反例反对；如何设计本厂隔离配对验证且不影响运行B？",
+      "risk_hint": "high"
+    }
+  ]
+}

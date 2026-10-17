@@ -1,0 +1,4 @@
+{"event": "offline_pass", "group": "G0", "calls_retained": 72, "new_model_calls": 0}
+{"event": "offline_pass", "group": "G1", "calls_retained": 70, "new_model_calls": 0}
+{"event": "offline_pass", "group": "G2", "calls_retained": 71, "new_model_calls": 0}
+{"event": "prepared", "target": 1800, "same_call_cap": 96}

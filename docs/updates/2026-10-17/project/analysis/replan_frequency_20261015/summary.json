@@ -1,0 +1,2007 @@
+{
+  "captured_local": "2026-10-15T20:34:14.549919+08:00",
+  "run_id": "run:807710f971804da69f18b099",
+  "live_prefix_not_completed_window": true,
+  "simulation_seconds": 2598.156,
+  "target_seconds": 3600.0,
+  "config": {
+    "period_seconds": 1800,
+    "plan_seconds": 14400,
+    "lookahead_depth": 2,
+    "time_mode": "paused_during_decision"
+  },
+  "all": {
+    "commits": 136,
+    "stop_counts": {
+      "uncovered_demand": 131,
+      "periodic_replan": 1,
+      "plan_horizon": 4
+    },
+    "advance_seconds": {
+      "n": 136,
+      "sum": 2598.156,
+      "mean": 19.104088235294117,
+      "median": 5.488965237089019,
+      "p90_nearest_rank": 39.786212107757365,
+      "min": 0,
+      "max": 681.75
+    },
+    "advance_le_1": 35,
+    "advance_le_10": 84,
+    "advance_le_30": 113,
+    "calls": 468,
+    "calls_per_commit": {
+      "n": 136,
+      "sum": 468,
+      "mean": 3.4411764705882355,
+      "median": 3.0,
+      "p90_nearest_rank": 4,
+      "min": 3,
+      "max": 22
+    },
+    "plan_valid_seconds": {
+      "n": 136,
+      "sum": 73239.05975849462,
+      "mean": 538.5224982242252,
+      "median": 430.96201239267737,
+      "p90_nearest_rank": 1200,
+      "min": 2.0,
+      "max": 1291.25
+    },
+    "plan_task_count": {
+      "n": 136,
+      "sum": 1243,
+      "mean": 9.139705882352942,
+      "median": 5.0,
+      "p90_nearest_rank": 24,
+      "min": 0,
+      "max": 111
+    },
+    "all_machine_queues_at_most_one": 132,
+    "no_tasks_remaining_at_stop": 68,
+    "gap_machine_count": {
+      "n": 131,
+      "sum": 12884,
+      "mean": 98.35114503816794,
+      "median": 3,
+      "p90_nearest_rank": 457,
+      "min": 1,
+      "max": 872
+    },
+    "one_family_gap": 101
+  },
+  "positive": {
+    "commits": 108,
+    "stop_counts": {
+      "uncovered_demand": 103,
+      "periodic_replan": 1,
+      "plan_horizon": 4
+    },
+    "advance_seconds": {
+      "n": 108,
+      "sum": 2598.156,
+      "mean": 24.057,
+      "median": 8.842079505685774,
+      "p90_nearest_rank": 48.172271224625774,
+      "min": 0.02965764629698242,
+      "max": 681.75
+    },
+    "advance_le_1": 7,
+    "advance_le_10": 56,
+    "advance_le_30": 85,
+    "calls": 364,
+    "calls_per_commit": {
+      "n": 108,
+      "sum": 364,
+      "mean": 3.3703703703703702,
+      "median": 3.0,
+      "p90_nearest_rank": 4,
+      "min": 3,
+      "max": 22
+    },
+    "plan_valid_seconds": {
+      "n": 108,
+      "sum": 39639.05975849462,
+      "mean": 367.02833109717244,
+      "median": 237.104830438691,
+      "p90_nearest_rank": 837.1054617730811,
+      "min": 2.0,
+      "max": 1291.25
+    },
+    "plan_task_count": {
+      "n": 108,
+      "sum": 436,
+      "mean": 4.037037037037037,
+      "median": 4.0,
+      "p90_nearest_rank": 8,
+      "min": 0,
+      "max": 17
+    },
+    "all_machine_queues_at_most_one": 104,
+    "no_tasks_remaining_at_stop": 40,
+    "gap_machine_count": {
+      "n": 103,
+      "sum": 509,
+      "mean": 4.941747572815534,
+      "median": 2,
+      "p90_nearest_rank": 14,
+      "min": 1,
+      "max": 27
+    },
+    "one_family_gap": 101
+  },
+  "zero_progress": {
+    "commits": 28,
+    "stop_counts": {
+      "uncovered_demand": 28
+    },
+    "advance_seconds": {
+      "n": 28,
+      "sum": 0,
+      "mean": 0,
+      "median": 0.0,
+      "p90_nearest_rank": 0,
+      "min": 0,
+      "max": 0
+    },
+    "advance_le_1": 28,
+    "advance_le_10": 28,
+    "advance_le_30": 28,
+    "calls": 104,
+    "calls_per_commit": {
+      "n": 28,
+      "sum": 104,
+      "mean": 3.7142857142857144,
+      "median": 3.0,
+      "p90_nearest_rank": 6,
+      "min": 3,
+      "max": 7
+    },
+    "plan_valid_seconds": {
+      "n": 28,
+      "sum": 33600,
+      "mean": 1200,
+      "median": 1200.0,
+      "p90_nearest_rank": 1200,
+      "min": 1200,
+      "max": 1200
+    },
+    "plan_task_count": {
+      "n": 28,
+      "sum": 807,
+      "mean": 28.821428571428573,
+      "median": 24.0,
+      "p90_nearest_rank": 41,
+      "min": 11,
+      "max": 111
+    },
+    "all_machine_queues_at_most_one": 28,
+    "no_tasks_remaining_at_stop": 28,
+    "gap_machine_count": {
+      "n": 28,
+      "sum": 12375,
+      "mean": 441.9642857142857,
+      "median": 450.5,
+      "p90_nearest_rank": 822,
+      "min": 7,
+      "max": 872
+    },
+    "one_family_gap": 0
+  },
+  "positive_gaps": {
+    "commits": 103,
+    "stop_counts": {
+      "uncovered_demand": 103
+    },
+    "advance_seconds": {
+      "n": 103,
+      "sum": 2517.9143989765626,
+      "mean": 24.445770863850125,
+      "median": 9.342000000000098,
+      "p90_nearest_rank": 46.117397147927136,
+      "min": 0.02965764629698242,
+      "max": 681.75
+    },
+    "advance_le_1": 7,
+    "advance_le_10": 52,
+    "advance_le_30": 81,
+    "calls": 342,
+    "calls_per_commit": {
+      "n": 103,
+      "sum": 342,
+      "mean": 3.320388349514563,
+      "median": 3,
+      "p90_nearest_rank": 3,
+      "min": 3,
+      "max": 22
+    },
+    "plan_valid_seconds": {
+      "n": 103,
+      "sum": 39358.818157471185,
+      "mean": 382.12444813078827,
+      "median": 289.71254626687914,
+      "p90_nearest_rank": 837.1054617730811,
+      "min": 10.563511441647279,
+      "max": 1291.25
+    },
+    "plan_task_count": {
+      "n": 103,
+      "sum": 424,
+      "mean": 4.116504854368932,
+      "median": 4,
+      "p90_nearest_rank": 8,
+      "min": 0,
+      "max": 17
+    },
+    "all_machine_queues_at_most_one": 99,
+    "no_tasks_remaining_at_stop": 38,
+    "gap_machine_count": {
+      "n": 103,
+      "sum": 509,
+      "mean": 4.941747572815534,
+      "median": 2,
+      "p90_nearest_rank": 14,
+      "min": 1,
+      "max": 27
+    },
+    "one_family_gap": 101
+  },
+  "last_20": {
+    "commits": 20,
+    "stop_counts": {
+      "uncovered_demand": 17,
+      "plan_horizon": 3
+    },
+    "advance_seconds": {
+      "n": 20,
+      "sum": 355.2015575546666,
+      "mean": 17.76007787773333,
+      "median": 8.884569447942567,
+      "p90_nearest_rank": 41.00258947971906,
+      "min": 0.08712058107448684,
+      "max": 63.538258819983184
+    },
+    "advance_le_1": 1,
+    "advance_le_10": 10,
+    "advance_le_30": 14,
+    "calls": 74,
+    "calls_per_commit": {
+      "n": 20,
+      "sum": 74,
+      "mean": 3.7,
+      "median": 3.0,
+      "p90_nearest_rank": 6,
+      "min": 3,
+      "max": 8
+    },
+    "plan_valid_seconds": {
+      "n": 20,
+      "sum": 1812.9037852398765,
+      "mean": 90.64518926199382,
+      "median": 120.0,
+      "p90_nearest_rank": 120.0,
+      "min": 2.0,
+      "max": 120.0
+    },
+    "plan_task_count": {
+      "n": 20,
+      "sum": 28,
+      "mean": 1.4,
+      "median": 1.0,
+      "p90_nearest_rank": 3,
+      "min": 1,
+      "max": 3
+    },
+    "all_machine_queues_at_most_one": 20,
+    "no_tasks_remaining_at_stop": 15,
+    "gap_machine_count": {
+      "n": 17,
+      "sum": 82,
+      "mean": 4.823529411764706,
+      "median": 2,
+      "p90_nearest_rank": 15,
+      "min": 1,
+      "max": 27
+    },
+    "one_family_gap": 17
+  },
+  "bands_by_start_time": {
+    "0_to_1e-09": {
+      "commits": 29,
+      "stop_counts": {
+        "uncovered_demand": 29
+      },
+      "advance_seconds": {
+        "n": 29,
+        "sum": 681.75,
+        "mean": 23.50862068965517,
+        "median": 0,
+        "p90_nearest_rank": 0,
+        "min": 0,
+        "max": 681.75
+      },
+      "advance_le_1": 28,
+      "advance_le_10": 28,
+      "advance_le_30": 28,
+      "calls": 108,
+      "calls_per_commit": {
+        "n": 29,
+        "sum": 108,
+        "mean": 3.7241379310344827,
+        "median": 3,
+        "p90_nearest_rank": 6,
+        "min": 3,
+        "max": 7
+      },
+      "plan_valid_seconds": {
+        "n": 29,
+        "sum": 34800,
+        "mean": 1200,
+        "median": 1200,
+        "p90_nearest_rank": 1200,
+        "min": 1200,
+        "max": 1200
+      },
+      "plan_task_count": {
+        "n": 29,
+        "sum": 814,
+        "mean": 28.06896551724138,
+        "median": 24,
+        "p90_nearest_rank": 41,
+        "min": 7,
+        "max": 111
+      },
+      "all_machine_queues_at_most_one": 29,
+      "no_tasks_remaining_at_stop": 29,
+      "gap_machine_count": {
+        "n": 29,
+        "sum": 12379,
+        "mean": 426.86206896551727,
+        "median": 444,
+        "p90_nearest_rank": 822,
+        "min": 4,
+        "max": 872
+      },
+      "one_family_gap": 0
+    },
+    "1e-09_to_600": {
+      "commits": 0,
+      "stop_counts": {},
+      "advance_seconds": {
+        "n": 0,
+        "sum": 0,
+        "mean": null,
+        "median": null,
+        "p90_nearest_rank": null,
+        "min": null,
+        "max": null
+      },
+      "advance_le_1": 0,
+      "advance_le_10": 0,
+      "advance_le_30": 0,
+      "calls": 0,
+      "calls_per_commit": {
+        "n": 0,
+        "sum": 0,
+        "mean": null,
+        "median": null,
+        "p90_nearest_rank": null,
+        "min": null,
+        "max": null
+      },
+      "plan_valid_seconds": {
+        "n": 0,
+        "sum": 0,
+        "mean": null,
+        "median": null,
+        "p90_nearest_rank": null,
+        "min": null,
+        "max": null
+      },
+      "plan_task_count": {
+        "n": 0,
+        "sum": 0,
+        "mean": null,
+        "median": null,
+        "p90_nearest_rank": null,
+        "min": null,
+        "max": null
+      },
+      "all_machine_queues_at_most_one": 0,
+      "no_tasks_remaining_at_stop": 0,
+      "gap_machine_count": {
+        "n": 0,
+        "sum": 0,
+        "mean": null,
+        "median": null,
+        "p90_nearest_rank": null,
+        "min": null,
+        "max": null
+      },
+      "one_family_gap": 0
+    },
+    "600_to_1200": {
+      "commits": 13,
+      "stop_counts": {
+        "uncovered_demand": 13
+      },
+      "advance_seconds": {
+        "n": 13,
+        "sum": 519.75,
+        "mean": 39.98076923076923,
+        "median": 14.306142232944694,
+        "p90_nearest_rank": 121.5,
+        "min": 1.0883959939742454,
+        "max": 196.50855554157715
+      },
+      "advance_le_1": 0,
+      "advance_le_10": 5,
+      "advance_le_30": 8,
+      "calls": 40,
+      "calls_per_commit": {
+        "n": 13,
+        "sum": 40,
+        "mean": 3.076923076923077,
+        "median": 3,
+        "p90_nearest_rank": 3,
+        "min": 3,
+        "max": 4
+      },
+      "plan_valid_seconds": {
+        "n": 13,
+        "sum": 11778.423366850631,
+        "mean": 906.0325666808178,
+        "median": 878.7414444584228,
+        "p90_nearest_rank": 1169.75,
+        "min": 498,
+        "max": 1291.25
+      },
+      "plan_task_count": {
+        "n": 13,
+        "sum": 112,
+        "mean": 8.615384615384615,
+        "median": 9,
+        "p90_nearest_rank": 12,
+        "min": 2,
+        "max": 17
+      },
+      "all_machine_queues_at_most_one": 9,
+      "no_tasks_remaining_at_stop": 1,
+      "gap_machine_count": {
+        "n": 13,
+        "sum": 33,
+        "mean": 2.5384615384615383,
+        "median": 1,
+        "p90_nearest_rank": 7,
+        "min": 1,
+        "max": 9
+      },
+      "one_family_gap": 12
+    },
+    "1200_to_1800": {
+      "commits": 46,
+      "stop_counts": {
+        "uncovered_demand": 45,
+        "periodic_replan": 1
+      },
+      "advance_seconds": {
+        "n": 46,
+        "sum": 598.5,
+        "mean": 13.01086956521739,
+        "median": 5.67569220054861,
+        "p90_nearest_rank": 34.50132007121374,
+        "min": 0.02965764629698242,
+        "max": 68.13447167101981
+      },
+      "advance_le_1": 5,
+      "advance_le_10": 27,
+      "advance_le_30": 40,
+      "calls": 138,
+      "calls_per_commit": {
+        "n": 46,
+        "sum": 138,
+        "mean": 3,
+        "median": 3.0,
+        "p90_nearest_rank": 3,
+        "min": 3,
+        "max": 3
+      },
+      "plan_valid_seconds": {
+        "n": 46,
+        "sum": 21944.65198301662,
+        "mean": 477.05765180470917,
+        "median": 494.1824274565189,
+        "p90_nearest_rank": 733.3786429607121,
+        "min": 207.396462127552,
+        "max": 798.5
+      },
+      "plan_task_count": {
+        "n": 46,
+        "sum": 241,
+        "mean": 5.239130434782608,
+        "median": 5.5,
+        "p90_nearest_rank": 7,
+        "min": 3,
+        "max": 9
+      },
+      "all_machine_queues_at_most_one": 46,
+      "no_tasks_remaining_at_stop": 0,
+      "gap_machine_count": {
+        "n": 45,
+        "sum": 270,
+        "mean": 6,
+        "median": 3,
+        "p90_nearest_rank": 16,
+        "min": 1,
+        "max": 24
+      },
+      "one_family_gap": 45
+    },
+    "1800_to_2400": {
+      "commits": 39,
+      "stop_counts": {
+        "uncovered_demand": 35,
+        "plan_horizon": 4
+      },
+      "advance_seconds": {
+        "n": 39,
+        "sum": 603.0,
+        "mean": 15.461538461538462,
+        "median": 9.342000000000098,
+        "p90_nearest_rank": 50.145244417412414,
+        "min": 0.37891226737338,
+        "max": 60.0
+      },
+      "advance_le_1": 1,
+      "advance_le_10": 20,
+      "advance_le_30": 32,
+      "calls": 154,
+      "calls_per_commit": {
+        "n": 39,
+        "sum": 154,
+        "mean": 3.948717948717949,
+        "median": 3,
+        "p90_nearest_rank": 6,
+        "min": 3,
+        "max": 22
+      },
+      "plan_valid_seconds": {
+        "n": 39,
+        "sum": 3635.9844086273733,
+        "mean": 93.23036945198393,
+        "median": 93.06846806214503,
+        "p90_nearest_rank": 189.12799999999993,
+        "min": 2.0,
+        "max": 200
+      },
+      "plan_task_count": {
+        "n": 39,
+        "sum": 67,
+        "mean": 1.7179487179487178,
+        "median": 1,
+        "p90_nearest_rank": 4,
+        "min": 0,
+        "max": 5
+      },
+      "all_machine_queues_at_most_one": 39,
+      "no_tasks_remaining_at_stop": 29,
+      "gap_machine_count": {
+        "n": 35,
+        "sum": 146,
+        "mean": 4.171428571428572,
+        "median": 2,
+        "p90_nearest_rank": 14,
+        "min": 1,
+        "max": 26
+      },
+      "one_family_gap": 35
+    },
+    "2400_to_3600": {
+      "commits": 9,
+      "stop_counts": {
+        "uncovered_demand": 9
+      },
+      "advance_seconds": {
+        "n": 9,
+        "sum": 195.15599999999995,
+        "mean": 21.683999999999994,
+        "median": 12.564927940077268,
+        "p90_nearest_rank": 63.538258819983184,
+        "min": 0.08712058107448684,
+        "max": 63.538258819983184
+      },
+      "advance_le_1": 1,
+      "advance_le_10": 4,
+      "advance_le_30": 5,
+      "calls": 28,
+      "calls_per_commit": {
+        "n": 9,
+        "sum": 28,
+        "mean": 3.111111111111111,
+        "median": 3,
+        "p90_nearest_rank": 4,
+        "min": 3,
+        "max": 4
+      },
+      "plan_valid_seconds": {
+        "n": 9,
+        "sum": 1080.0,
+        "mean": 120.0,
+        "median": 120.0,
+        "p90_nearest_rank": 120.0,
+        "min": 120,
+        "max": 120
+      },
+      "plan_task_count": {
+        "n": 9,
+        "sum": 9,
+        "mean": 1,
+        "median": 1,
+        "p90_nearest_rank": 1,
+        "min": 1,
+        "max": 1
+      },
+      "all_machine_queues_at_most_one": 9,
+      "no_tasks_remaining_at_stop": 9,
+      "gap_machine_count": {
+        "n": 9,
+        "sum": 56,
+        "mean": 6.222222222222222,
+        "median": 2,
+        "p90_nearest_rank": 27,
+        "min": 1,
+        "max": 27
+      },
+      "one_family_gap": 9
+    }
+  },
+  "actual_model_attempts": 470,
+  "model_tool_counts": {
+    "read_entities": 173,
+    "propose_delta": 138,
+    "apply_candidate": 136,
+    "unparseable": 14,
+    "read_artifact": 8,
+    "get_context": 1
+  },
+  "response_status_counts": {
+    "ok": 182,
+    "candidate_checked": 137,
+    "accepted": 136,
+    "no_response": 14,
+    "rejected": 1
+  },
+  "known_tokens": 18068814,
+  "model_seconds": 16879.08133666427,
+  "unknown_usage_attempts": 14,
+  "channel_valid_counts": {
+    "True": 456,
+    "False": 14
+  },
+  "calls_in_completed_rounds": 468,
+  "calls_in_uncommitted_contexts": 2,
+  "positive_gap_top_families": [
+    [
+      "Litho_REG_FE_64",
+      10
+    ],
+    [
+      "WE_FE_108",
+      8
+    ],
+    [
+      "Litho_REG_BE_63",
+      7
+    ],
+    [
+      "WE_BE_82",
+      6
+    ],
+    [
+      "WE_FE_84",
+      6
+    ],
+    [
+      "WE_FE_41",
+      5
+    ],
+    [
+      "DefMet_FE_43",
+      5
+    ],
+    [
+      "WE_BE_16",
+      4
+    ],
+    [
+      "WE_FE_83",
+      4
+    ],
+    [
+      "WE_BE_14",
+      4
+    ],
+    [
+      "TF_Met_FE_61",
+      3
+    ],
+    [
+      "Dielectric_BE_21",
+      3
+    ]
+  ],
+  "positive_gap_single_machine": 39,
+  "positive_gap_with_hold_expiry": 0,
+  "gaps_before_plan_expiry": 131,
+  "positive_gap_no_tasks_remaining": 38,
+  "plan_horizon_rows": [
+    {
+      "ordinal": 114,
+      "feedback_ref": "9da787c09634b3b156dcacc94303702ff264ef583b0a07162d94733677a2a4c8",
+      "commit_id": "commit:b516eac6a443413e8ae97e44",
+      "plan_version": "dispatch-114",
+      "context_ref": "context:20ae1b88bc1f4243b737dcc5",
+      "from": 2196.0,
+      "to": 2200,
+      "advanced_seconds": 4.0,
+      "stop_reason": "plan_horizon",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 2,
+            "family": "Implant_90",
+            "machine": 881
+          },
+          {
+            "candidate_count": 2,
+            "family": "Implant_90",
+            "machine": 882
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2196.0
+      },
+      "gap_count": 0,
+      "gap_machines": [],
+      "calls": 3,
+      "call_numbers": [
+        365,
+        366,
+        367
+      ],
+      "known_tokens": 89843,
+      "model_seconds": 95.44282733276486,
+      "plan_valid_seconds": 4,
+      "plan_remaining_at_stop": 0,
+      "plan_task_count": 2,
+      "plan_machine_count": 2,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 2,
+      "completed_operations": 0,
+      "end_event_kinds": {},
+      "reason_text": "Start both ready Implant_90 lots on available setup-matched machines, avoiding additional setup and ready waiting; reassess by 2200."
+    },
+    {
+      "ordinal": 120,
+      "feedback_ref": "609536579dcd6daa3e5213ea141273673bf24e71357187a9d56498d1abfd2995",
+      "commit_id": "commit:38986d0f0d8742268ba27601",
+      "plan_version": "dispatch-120",
+      "context_ref": "context:c21a6b13ac7a4414adbdd263",
+      "from": 2265.594861104115,
+      "to": 2272.44,
+      "advanced_seconds": 6.845138895885157,
+      "stop_reason": "plan_horizon",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 33,
+            "family": "Dielectric_BE_21",
+            "machine": 736
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2265.594861104115
+      },
+      "gap_count": 0,
+      "gap_machines": [],
+      "calls": 7,
+      "call_numbers": [
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411
+      ],
+      "known_tokens": 115095,
+      "model_seconds": 847.0315164984204,
+      "plan_valid_seconds": 6.845138895885157,
+      "plan_remaining_at_stop": 0.0,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 0,
+      "end_event_kinds": {},
+      "reason_text": "Start w1956 with least ready-work slack on idle qualified machine 736; reassess by 2272.44."
+    },
+    {
+      "ordinal": 121,
+      "feedback_ref": "3294fd94c58be4568e42e47ccd6f1f1609f11545c67af45176b4cf80d2a16e18",
+      "commit_id": "commit:444af84770f14a8fb9bd8937",
+      "plan_version": "dispatch-121",
+      "context_ref": "context:23a368cb32274ecaa0ca04dd",
+      "from": 2272.44,
+      "to": 2274.44,
+      "advanced_seconds": 2.0,
+      "stop_reason": "plan_horizon",
+      "trigger_entering_context": {
+        "reason": "plan_horizon",
+        "time": 2272.44
+      },
+      "gap_count": 0,
+      "gap_machines": [],
+      "calls": 6,
+      "call_numbers": [
+        412,
+        413,
+        414,
+        415,
+        416,
+        417
+      ],
+      "known_tokens": 259428,
+      "model_seconds": 218.24531620834023,
+      "plan_valid_seconds": 2.0,
+      "plan_remaining_at_stop": 0.0,
+      "plan_task_count": 3,
+      "plan_machine_count": 3,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 3,
+      "tasks_remaining_at_stop": 3,
+      "dispatch_count": 0,
+      "completed_operations": 0,
+      "end_event_kinds": {},
+      "reason_text": "Queue the three least-slack ready qualified lots for machines 733–735 at observed availability 2273.44; reassess promptly because availability is estimated."
+    },
+    {
+      "ordinal": 122,
+      "feedback_ref": "7b0a7a5c4da42559b9cbbdb5e9b5fa4cc890bcfc565ac59845bef85d6ad18662",
+      "commit_id": "commit:6a5a232bca734ab7ac5ef7a6",
+      "plan_version": "dispatch-122",
+      "context_ref": "context:2678d82a930a40cc8a143f29",
+      "from": 2274.44,
+      "to": 2334.44,
+      "advanced_seconds": 60.0,
+      "stop_reason": "plan_horizon",
+      "trigger_entering_context": {
+        "reason": "plan_horizon",
+        "time": 2274.44
+      },
+      "gap_count": 0,
+      "gap_machines": [],
+      "calls": 3,
+      "call_numbers": [
+        418,
+        419,
+        420
+      ],
+      "known_tokens": 138597,
+      "model_seconds": 128.512951125158,
+      "plan_valid_seconds": 60.0,
+      "plan_remaining_at_stop": 0.0,
+      "plan_task_count": 3,
+      "plan_machine_count": 3,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 3,
+      "tasks_remaining_at_stop": 1,
+      "dispatch_count": 2,
+      "completed_operations": 3,
+      "end_event_kinds": {},
+      "reason_text": "Explicitly refresh the three expired pending starts to observed machine availability. Preserve selected qualified lots; allow a 60-second reassessment horizon rather than repeatedly treating estimated availability as an exact completion."
+    }
+  ],
+  "last_10": [
+    {
+      "ordinal": 127,
+      "feedback_ref": "58a5ed49317e692e99cec31503deb9f8b5b11ccfdb03c08465185cbe97e62071",
+      "commit_id": "commit:0bb612d063a84686a4acdd55",
+      "plan_version": "dispatch-127",
+      "context_ref": "context:19569ec4f86147b79c97c0b3",
+      "from": 2370.759607586571,
+      "to": 2403.0,
+      "advanced_seconds": 32.24039241342916,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1294
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1295
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1298
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1299
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1300
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1301
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1302
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1303
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1304
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1305
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1306
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1307
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1308
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1309
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1310
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2370.759607586571
+      },
+      "gap_count": 1,
+      "gap_machines": [
+        {
+          "candidate_count": 67,
+          "family": "EPI_38",
+          "machine": 856
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        438,
+        439,
+        440
+      ],
+      "known_tokens": 104843,
+      "model_seconds": 114.7610828736797,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 87.75960758657084,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 2,
+      "end_event_kinds": {
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch the sole ready nonconditional wet-etch operation on available cascading machine 1294; reassess within 120 seconds."
+    },
+    {
+      "ordinal": 128,
+      "feedback_ref": "d6c3365d0f740353300132ce6223d2e1b0a62f8c7ca867f2985b3497edba133a",
+      "commit_id": "commit:f275d6adf21b47feafa38369",
+      "plan_version": "dispatch-128",
+      "context_ref": "context:1a272763b89e48cc9d596430",
+      "from": 2403.0,
+      "to": 2442.7862121077574,
+      "advanced_seconds": 39.786212107757365,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 67,
+            "family": "EPI_38",
+            "machine": 856
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2403.0
+      },
+      "gap_count": 14,
+      "gap_machines": [
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1295
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1298
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1299
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1300
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1301
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1302
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1303
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1304
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1305
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1306
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1307
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1308
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1309
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_84",
+          "machine": 1310
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        441,
+        442,
+        443
+      ],
+      "known_tokens": 116527,
+      "model_seconds": 111.76676104194485,
+      "plan_valid_seconds": 120,
+      "plan_remaining_at_stop": 80.21378789224264,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 3,
+      "end_event_kinds": {
+        "operation_complete": 1,
+        "ready": 1,
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch the ready operation with least due-minus-remaining-work slack among the equal-priority candidates on available cascading machine 856; reassess within 120 seconds."
+    },
+    {
+      "ordinal": 129,
+      "feedback_ref": "cfb85f21ea257a48e110454fe07a573e64b480e68df9fd36c45dab83c0acd572",
+      "commit_id": "commit:9e3780057f234dd6ac4e2f4d",
+      "plan_version": "dispatch-129",
+      "context_ref": "context:608b4a6f9bea42c09dc3b337",
+      "from": 2442.7862121077574,
+      "to": 2446.369200718176,
+      "advanced_seconds": 3.5829886104188517,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1295
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1298
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1299
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1300
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1301
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1302
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1303
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1304
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1305
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1306
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1307
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1308
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1309
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_84",
+            "machine": 1310
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2442.7862121077574
+      },
+      "gap_count": 2,
+      "gap_machines": [
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_41",
+          "machine": 1279
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_41",
+          "machine": 1280
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        444,
+        445,
+        446
+      ],
+      "known_tokens": 128938,
+      "model_seconds": 138.9176657081116,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 116.41701138958115,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 2,
+      "end_event_kinds": {
+        "operation_complete": 1,
+        "skip": 1,
+        "ready": 1,
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch the sole ready nonconditional wet-etch operation on idle machine 1295; reassess within 120 seconds."
+    },
+    {
+      "ordinal": 130,
+      "feedback_ref": "c0c5e27400b9a35c58699fa2d4a870504e1bda695429d4bcf2eee46d8002f519",
+      "commit_id": "commit:23f87061d81f4d7e957fd81e",
+      "plan_version": "dispatch-130",
+      "context_ref": "context:bc48b9b038ae4b0f90579d89",
+      "from": 2446.369200718176,
+      "to": 2487.3717901978953,
+      "advanced_seconds": 41.00258947971906,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_41",
+            "machine": 1279
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_41",
+            "machine": 1280
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2446.369200718176
+      },
+      "gap_count": 27,
+      "gap_machines": [
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1248
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1249
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1251
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1252
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1253
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1254
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1255
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1256
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1257
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1258
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1259
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1260
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1261
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1262
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1263
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1264
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1265
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1266
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1267
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1268
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1269
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1270
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1271
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1272
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1273
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1274
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_FE_108",
+          "machine": 1275
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        447,
+        448,
+        449
+      ],
+      "known_tokens": 128981,
+      "model_seconds": 117.02263879170641,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 78.99741052028094,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 3,
+      "end_event_kinds": {
+        "operation_complete": 1,
+        "skip": 1,
+        "ready": 1,
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch the sole ready nonconditional operation on idle eligible machine 1279; reassess within 120 seconds."
+    },
+    {
+      "ordinal": 131,
+      "feedback_ref": "39c69909afe01b5f57999928b1d438a43a49496f062a847c0292c7d48e44a2f4",
+      "commit_id": "commit:ed2fc7e570e74dd5a4610bd0",
+      "plan_version": "dispatch-131",
+      "context_ref": "context:1fa31457bb0f4b759289707f",
+      "from": 2487.3717901978953,
+      "to": 2550.9100490178785,
+      "advanced_seconds": 63.538258819983184,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1248
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1249
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1251
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1252
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1253
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1254
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1255
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1256
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1257
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1258
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1259
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1260
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1261
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1262
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1263
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1264
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1265
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1266
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1267
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1268
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1269
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1270
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1271
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1272
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1273
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1274
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_FE_108",
+            "machine": 1275
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2487.3717901978953
+      },
+      "gap_count": 1,
+      "gap_machines": [
+        {
+          "candidate_count": 103,
+          "family": "Litho_FE_111",
+          "machine": 936
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        450,
+        451,
+        452
+      ],
+      "known_tokens": 105159,
+      "model_seconds": 123.36545995785855,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 56.461741180016816,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 5,
+      "end_event_kinds": {
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch the sole ready nonconditional wet-etch operation on idle eligible machine 1248; reassess within 120 seconds."
+    },
+    {
+      "ordinal": 132,
+      "feedback_ref": "1293c4fb090dcccf360173d3234a2e47fbbbc196964819f05aa222551f4b8e3c",
+      "commit_id": "commit:88354839bb7641d9a78f0d1c",
+      "plan_version": "dispatch-132",
+      "context_ref": "context:25013b64f69d4344bbd362dd",
+      "from": 2550.9100490178785,
+      "to": 2563.4749769579557,
+      "advanced_seconds": 12.564927940077268,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 103,
+            "family": "Litho_FE_111",
+            "machine": 936
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2550.9100490178785
+      },
+      "gap_count": 1,
+      "gap_machines": [
+        {
+          "candidate_count": 1,
+          "family": "DefMet_FE_10",
+          "machine": 316
+        }
+      ],
+      "calls": 4,
+      "call_numbers": [
+        453,
+        454,
+        455,
+        456
+      ],
+      "known_tokens": 188265,
+      "model_seconds": 144.95483154337853,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 107.43507205992273,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 2,
+      "end_event_kinds": {
+        "operation_complete": 1,
+        "ready": 1,
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch w458, the earliest-due ready operation with source family qualification, on idle machine 936. Reassess within 120 seconds; do not assume missing historical bindings."
+    },
+    {
+      "ordinal": 133,
+      "feedback_ref": "7ddcaa1a10dab97a834109a4cdedd8b6828b6b06b7c494c1377ae626ab695f8e",
+      "commit_id": "commit:96193b6416984434b77cdddc",
+      "plan_version": "dispatch-133",
+      "context_ref": "context:c7e45e093372449aa097227d",
+      "from": 2563.4749769579557,
+      "to": 2593.67390530684,
+      "advanced_seconds": 30.198928348884237,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 1,
+            "family": "DefMet_FE_10",
+            "machine": 316
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2563.4749769579557
+      },
+      "gap_count": 2,
+      "gap_machines": [
+        {
+          "candidate_count": 1,
+          "family": "DefMet_FE_34",
+          "machine": 320
+        },
+        {
+          "candidate_count": 1,
+          "family": "DefMet_FE_34",
+          "machine": 321
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        457,
+        458,
+        459
+      ],
+      "known_tokens": 146036,
+      "model_seconds": 125.94391629099846,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 89.80107165111576,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 3,
+      "end_event_kinds": {
+        "operation_complete": 1,
+        "ready": 1,
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch the sole ready nonconditional operation w638:229:1 on idle eligible machine 316; reassess within 120 seconds."
+    },
+    {
+      "ordinal": 134,
+      "feedback_ref": "8a547104be1fae5f0246aaa645ecabded7d2be29b177bb07e95f36ef6a7d974f",
+      "commit_id": "commit:25e944b4d95941d49834ed19",
+      "plan_version": "dispatch-134",
+      "context_ref": "context:3e8d19bcbae646f99abd0762",
+      "from": 2593.67390530684,
+      "to": 2594.7701543790963,
+      "advanced_seconds": 1.0962490722563416,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 1,
+            "family": "DefMet_FE_34",
+            "machine": 320
+          },
+          {
+            "candidate_count": 1,
+            "family": "DefMet_FE_34",
+            "machine": 321
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2593.67390530684
+      },
+      "gap_count": 6,
+      "gap_machines": [
+        {
+          "candidate_count": 1,
+          "family": "WE_BE_82",
+          "machine": 1234
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_BE_82",
+          "machine": 1235
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_BE_82",
+          "machine": 1236
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_BE_82",
+          "machine": 1238
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_BE_82",
+          "machine": 1240
+        },
+        {
+          "candidate_count": 1,
+          "family": "WE_BE_82",
+          "machine": 1241
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        460,
+        461,
+        462
+      ],
+      "known_tokens": 131691,
+      "model_seconds": 126.57245837384835,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 118.90375092774366,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 1,
+      "end_event_kinds": {
+        "operation_complete": 1,
+        "skip": 1,
+        "ready": 1,
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch ready nonconditional operation w1198:102:1 immediately on idle eligible machine 320; reassess within 120 seconds."
+    },
+    {
+      "ordinal": 135,
+      "feedback_ref": "89c543aa2b4ce5d2bbed01e5e83a5631a27844848ee0fe7a1721950b9302c439",
+      "commit_id": "commit:40341fa916214fc0a7f9d155",
+      "plan_version": "dispatch-135",
+      "context_ref": "context:bc93baaf3ba044ac91d4ab16",
+      "from": 2594.7701543790963,
+      "to": 2598.0688794189255,
+      "advanced_seconds": 3.2987250398291508,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 1,
+            "family": "WE_BE_82",
+            "machine": 1234
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_BE_82",
+            "machine": 1235
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_BE_82",
+            "machine": 1236
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_BE_82",
+            "machine": 1238
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_BE_82",
+            "machine": 1240
+          },
+          {
+            "candidate_count": 1,
+            "family": "WE_BE_82",
+            "machine": 1241
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2594.7701543790963
+      },
+      "gap_count": 2,
+      "gap_machines": [
+        {
+          "candidate_count": 1,
+          "family": "DefMet_BE_33",
+          "machine": 312
+        },
+        {
+          "candidate_count": 1,
+          "family": "DefMet_BE_33",
+          "machine": 313
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        463,
+        464,
+        465
+      ],
+      "known_tokens": 101062,
+      "model_seconds": 147.53047312400304,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 116.70127496017085,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 1,
+      "end_event_kinds": {
+        "operation_complete": 1,
+        "ready": 1,
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch sole ready nonconditional WE_BE_82 operation w495:479:1 on idle eligible machine 1234 now; reassess within 120 seconds."
+    },
+    {
+      "ordinal": 136,
+      "feedback_ref": "2ce00eaf409d364ecb649b6912e833b3b9bcbc95c2c6973d13a83c0b3181acc4",
+      "commit_id": "commit:c4535b4ff1b34b46aa1f05ce",
+      "plan_version": "dispatch-136",
+      "context_ref": "context:1c75c92a69e2433dbdfca3f9",
+      "from": 2598.0688794189255,
+      "to": 2598.156,
+      "advanced_seconds": 0.08712058107448684,
+      "stop_reason": "uncovered_demand",
+      "trigger_entering_context": {
+        "machines": [
+          {
+            "candidate_count": 1,
+            "family": "DefMet_BE_33",
+            "machine": 312
+          },
+          {
+            "candidate_count": 1,
+            "family": "DefMet_BE_33",
+            "machine": 313
+          }
+        ],
+        "reason": "uncovered_demand",
+        "time": 2598.0688794189255
+      },
+      "gap_count": 1,
+      "gap_machines": [
+        {
+          "candidate_count": 74,
+          "family": "Dielectric_BE_27",
+          "machine": 747
+        }
+      ],
+      "calls": 3,
+      "call_numbers": [
+        466,
+        467,
+        468
+      ],
+      "known_tokens": 102376,
+      "model_seconds": 121.91771583398804,
+      "plan_valid_seconds": 120.0,
+      "plan_remaining_at_stop": 119.91287941892551,
+      "plan_task_count": 1,
+      "plan_machine_count": 1,
+      "max_machine_queue_depth": 1,
+      "plan_hold_count": 0,
+      "holds_expiring_at_stop": [],
+      "tasks_starting_after_commit": 0,
+      "tasks_remaining_at_stop": 0,
+      "dispatch_count": 1,
+      "completed_operations": 0,
+      "end_event_kinds": {
+        "coverage_gap": 1
+      },
+      "reason_text": "Dispatch sole ready nonconditional DefMet_BE_33 operation w1091:314:1 on idle eligible machine 312 now; reassess within 120 seconds."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "actual_revision": 271,
+  "candidate_ref": "candidate:4b059ab957c7437ba77b5132",
+  "commit_id": "commit:c4535b4ff1b34b46aa1f05ce",
+  "expected_revision": 270,
+  "plan_sha256": "9eb3dba43d87ea2b31df31cd4f7cf310d3dbf52eb0454a7b5f161e17b3b01dbf",
+  "request_id": "apply-136",
+  "selection_attempt_id": "attempt:f42bda210cf64489a5840ce8",
+  "selection_note_status": "saved",
+  "selection_raw_ref": "468d2c466123d1530f763a487aef016cfff83815ee12ff787d63446e6b693e98",
+  "state_ref": "71e7343823a339deff3a9ed29ab7cb82d4a007a549590c46215c372b5bf69b4e",
+  "status": "accepted",
+  "time": 2598.0688794189255,
+  "trace_end": 6603,
+  "trace_start": 6602
+}

@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/run_approved_connection_retry.py", line 82, in <module>
+    if __name__=='__main__':{'prepare':prepare,'run':run}[sys.argv[1]]()
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/run_approved_connection_retry.py", line 28, in prepare
+    checkpoint=RUN/'stopped_G1_checkpoint';sha=snapshot_stopped(BASE/'G1',checkpoint)
+                                               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/capacity_retry_support.py", line 69, in snapshot_stopped
+    store.record('capacity_retry_snapshot','origin',{'directory':str(source.resolve()),
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'head':head,'last_source_event':dict(store.db.execute('SELECT * FROM events ORDER BY seq DESC LIMIT 1').fetchone()),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'source_database_opened_read_only':True,'new_model_calls':0})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/store.py", line 138, in record
+    require(old is None or replace or old == ref, "immutable_conflict", namespace + ":" + key)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/contracts.py", line 60, in require
+    raise HarnessError(code, detail, **evidence)
+src.smt_fullfab.harness.contracts.HarnessError: immutable_conflict: capacity_retry_snapshot:origin

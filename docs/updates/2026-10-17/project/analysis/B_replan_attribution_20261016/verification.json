@@ -1,0 +1,20 @@
+{
+  "all_pass": true,
+  "matched_replans": 24,
+  "matched_followup_operations": 27,
+  "baseline_only_trigger_numbers_vs_filter": [
+    21
+  ],
+  "filter_only_trigger_times": [],
+  "tracked_source_files_unchanged": 10,
+  "no_models_solvers_or_simulators_executed": true,
+  "derived_artifact_sha256": {
+    "analyze.py": "7b4dd2afe30b23ef13f62b9c45b4a3a14c4114a187467b014ff9073bb06efa88",
+    "report.py": "77ab3ed7c7d882e9966ec8335f3ec13581351646c150fd0f1a2c5d7d86fba6ef",
+    "attribution.json": "32717edbb9cc1221114b1b4a57c18484d58c52c1db9c3b63c384a20d70e9d951",
+    "queue_witness.json": "188f30c6a2dfc65392d68be6fdfa71abda304129e7ba0cfba09388edc03a24dd",
+    "24次重排逐次归因.txt": "32d78f7fe6b309cf0a632d4066489f1e7e357f455a648226ae418bad2d9c5cd5",
+    "source_objects.json": "32e6bee5fad6b9a24be3bfaac44c9e0e6b42f82dfdeee14aaf8e5a0daaa7f73c",
+    "queue_source_objects.json": "4aef0a8de9ee8fd6c2bf66a1013b33b4c62ae302ecf5516714589547d57d0b46"
+  }
+}

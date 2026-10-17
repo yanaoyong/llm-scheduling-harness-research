@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "original_B_head": "6929dd8cb624d95b85d374e6a697025b93af4fc5",
+  "original_B_index_unchanged": true,
+  "original_B_worktree_status_unchanged": true,
+  "git_bundle_verified": true,
+  "bundle_restore_head_matches": true,
+  "no_original_B_database_opened": true,
+  "new_model_calls": 0
+}

@@ -1,5 +1,7 @@
 # 从本归档接续项目
 
+> 2026-10-17 更新：后续会话、Harness 验收与窗口实验见 [增量归档](updates/2026-10-17/README.md)。下文继续保留原历史快照及其日期。
+
 先读 [PROJECT_STATE.md](PROJECT_STATE.md)、[DECISIONS.md](DECISIONS.md)、[OPEN_QUESTIONS.md](OPEN_QUESTIONS.md)，需要证据时从 [EVIDENCE_INDEX.md](EVIDENCE_INDEX.md) 和 [CONVERSATION_MAP.md](CONVERSATION_MAP.md) 进入原材料。
 
 当前已完成两轮排程 harness M0.5 调研和一次初步方案讨论，尚未定稿或实现新的 harness。用户随后要求优先归档。下一阶段应由用户明确选择继续需求讨论、工程实施或新实验；本档案本身不启动新工作。

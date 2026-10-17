@@ -1,0 +1,7 @@
+只读排查：没有改动主机网络、B进程或CLI模型配置。
+
+已读取的官方配置参考：https://learn.chatgpt.com/docs/config-file/config-reference （由 https://developers.openai.com/codex/config-reference 跳转）。文档区分request_max_retries、stream_max_retries和stream_idle_timeout_ms。当前四组继续使用原有CLI重试关闭设置，由harness逐次记账；本次不改变模型调用命令。
+
+当前失败由已保存events中的stream disconnected / error decoding response body报告；守护进程证明命令退出，不是600秒调用超时。该证据不能定位是哪一网络环节或服务端原因，也不能证明远端没有耗费token，所以保持usage未知。
+
+不带鉴权的HEAD检查分别使用继承路由和127.0.0.1:7897；均建立TLS并收到403。只能确认到站点的HTTPS链路有响应，不能证明模型端点或长时间SSE可靠，也没有证据证明切换本机代理可以改善，因此没有更换任何四组网络条件。具体状态在readonly_transport_checks.json。

@@ -1,0 +1,199 @@
+{
+  "claims": [
+    {
+      "claim_id": "MA-C01",
+      "source_id": "F01",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q04"
+      ],
+      "statement": "Anthropic Research工程案例用lead明确委派目标、输出与边界，子agent独立检索后交回结果或工件引用；OpenAI文档区分manager保留最终答复责任与handoff转交分支控制。这些是职责/信息流机制，不提供生产资源冲突自动裁决或本厂节省保证；Anthropic的15倍token分母是普通聊天。",
+      "source_refs": [
+        {
+          "ref": "https://www.anthropic.com/engineering/multi-agent-research-system",
+          "anchor": "“Architecture overview for Research”; “Effective evaluation of agents”; “Production reliability and engineering challenges”; appendix on context management and subagent artifacts",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        },
+        {
+          "ref": "https://developers.openai.com/api/docs/guides/agents/orchestration",
+          "anchor": "“Orchestration and handoffs,” lines 942–1082: handoffs versus agents as tools, bounded specialist calls, and criteria for adding agents",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        }
+      ],
+      "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+    },
+    {
+      "claim_id": "MA-C02",
+      "source_id": "F02",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q02",
+        "MA-Q03"
+      ],
+      "statement": "Deep Agents默认isolated子agent只见委派任务，结果返回父agent；LangGraph支持子图共享state keys或显式映射，并要求为并发更新定义合并语义。append reducer解决数据合并，不构成共享机台、订单或批次约束的业务可行性保证。",
+      "source_refs": [
+        {
+          "ref": "https://docs.langchain.com/oss/python/deepagents/subagents",
+          "anchor": "Subagents; Configuration; Forked subagents; How it works; crawled 2026-10-16",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        },
+        {
+          "ref": "https://docs.langchain.com/oss/python/langgraph/use-subgraphs",
+          "anchor": "Different state schemas; Add a subgraph as a node; Subgraph persistence; crawled 2026-10-16",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        },
+        {
+          "ref": "https://docs.langchain.com/oss/python/langgraph/errors/INVALID_CONCURRENT_GRAPH_UPDATE",
+          "anchor": "Concurrent updates and reducer example; crawled 2026-10-16",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        }
+      ],
+      "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+    },
+    {
+      "claim_id": "MA-C03",
+      "source_id": "F03",
+      "q_ids": [
+        "MA-Q02",
+        "MA-Q04"
+      ],
+      "statement": "CoMemBench v2把交接的实体范围、版本和验证状态纳入共享/隔离测试，其固定执行器比较展示扩大上下文可改善部分进度却降低隔离表现；DeLM作者页的追加共享日志和任务认领仍由各agent各自提交完整解，因此Cost/Task与Cost/Submission不能混用。两类结果均不是生产排程实测。",
+      "source_refs": [
+        {
+          "ref": "https://arxiv.org/html/2609.32192v2",
+          "anchor": "v2，§3.1–3.5、§4–5.5、附录F–G；arXiv:2609.32192v2，2026-09-29",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        },
+        {
+          "ref": "https://yuzhenmao.github.io/DeLM/",
+          "anchor": "Shared Context、Task Queue、Experiments、Cost/Task 与 Cost/Submission 表；页面 BibTeX 指向 arXiv:2606.10662",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        }
+      ],
+      "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+    },
+    {
+      "claim_id": "MA-C04",
+      "source_id": "F04",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q03"
+      ],
+      "statement": "PLOS 2018两阶段多项目调度由局部算法先排、协调代理识别全局资源冲突并通过顺序博弈/候选评价分配资源，再更新局部计划；这些算法实际决定时段和资源。CMU CORA研究还记录局部修订可循环且不保证收敛。传统非LLM代理协调可作为结构先验，不能当成LLM调用节省证据。",
+      "source_refs": [
+        {
+          "ref": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0205445",
+          "anchor": "§4 sequential game negotiation and conflict elimination, lines 298–305, 320–371; §6 MPSPLIB evaluation, lines 429–465, 513–547",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        },
+        {
+          "ref": "https://publications.ri.cmu.edu/storage/publications/pub_files/pub3/liu_jyi_shane_1996_1/liu_jyi_shane_1996_1.pdf",
+          "anchor": "CMU-RI-TR-96-16 (1996), §2.2, §2.5–2.6 and §3.1; PDF pages 55–92, 94–95",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        }
+      ],
+      "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+    },
+    {
+      "claim_id": "MA-C05",
+      "source_id": "F05",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q02",
+        "MA-Q03",
+        "MA-Q04"
+      ],
+      "statement": "ALAS v1提出隔离validator、版本日志和局部修复；其表3的83.7%是逐数据集跨模型/变体择优汇总，success定义为non-N/A，不能等同固定配置的硬约束合法率；表14的60.9%是聚合MAS对ALAS的估算token费用下降，token数量下降为52.3%、时间比为1.82，均不是相对单agent的本厂收益。",
+      "source_refs": [
+        {
+          "ref": "https://arxiv.org/html/2511.03094v1",
+          "anchor": "§3.1–3.7、§4.1–4.2、表3–5、附录A.3/A.11、B.5–B.6；arXiv:2511.03094v1",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        }
+      ],
+      "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+    },
+    {
+      "claim_id": "MA-C06",
+      "source_id": "F06",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q04"
+      ],
+      "statement": "2610.10184v1比较多agent建模→编码+MCP、单agent+同类MCP、无工具单次LLM，最终由CP求解器排程。原样脚本无错且目标等于参考值的正确率分别59.3%、33.3%、14.8%；作者报告多agent比带工具单agent约多66%token和43%时间，五条多agent不完整token记录被排除。此为模型生成实验，不是LLM直接滚动排程的质量/成本结论。",
+      "source_refs": [
+        {
+          "ref": "https://arxiv.org/html/2610.10184v1",
+          "anchor": "arXiv:2610.10184v1；页面标注2026-10-07；§3.1、§4.1–4.3.3、表8/9、§6",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        }
+      ],
+      "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+    },
+    {
+      "claim_id": "MA-C07",
+      "source_id": "F07",
+      "q_ids": [
+        "MA-Q01",
+        "MA-Q04"
+      ],
+      "statement": "Agent Scaling的arXiv v3为260配置、六基准；其结果随任务结构变化，含可分解任务获益及PlanCraft顺序规划退化，不能把多agent或约45%单体能力阈值当通用准则。作者仓库v2.2.x修正分析脚本误纳10个样本外配置，维护者称更正后才复现已发表回归值；本轮未独立复现实验。",
+      "source_refs": [
+        {
+          "ref": "https://arxiv.org/html/2512.08296v3",
+          "anchor": "§4.1–4.4; Appendix E.4; arXiv v3 dated 2026-04-08",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        },
+        {
+          "ref": "https://github.com/ybkim95/agent-scaling",
+          "anchor": "README: publication title and manuscript/release tags",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        },
+        {
+          "ref": "https://github.com/ybkim95/agent-scaling/blob/main/CHANGELOG.md",
+          "anchor": "CHANGELOG 2.2.0–2.2.3",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        }
+      ],
+      "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+    },
+    {
+      "claim_id": "MA-C08",
+      "source_id": "F08",
+      "q_ids": [
+        "MA-Q04"
+      ],
+      "statement": "2609.04217v1匹配的是提示进化阶段模型调用池，部署测试团队仍可用更多调用，ALFWorld差异不显著不代表等效；2604.02460v2主要匹配请求thinking-token上限且报告API实际计数偏差。因此这些反证只支持严分调用、实际token、费用与时延预算，不证明多agent在本厂必然更差。",
+      "source_refs": [
+        {
+          "ref": "https://arxiv.org/html/2609.04217v1",
+          "anchor": "arXiv:2609.04217v1；HTML §§III–VII，特别是§V–VI及表II–IV",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        },
+        {
+          "ref": "https://arxiv.org/html/2604.02460v2",
+          "anchor": "arXiv:2604.02460v2；HTML §§3–5、附录C及G",
+          "accessed": "2026-10-16",
+          "access_level": "full"
+        }
+      ],
+      "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+    }
+  ],
+  "selection_note": "Owner replaced predictive B candidate claims with bounded source/mechanism and denominator assertions. Original extractions retained. Three independent roles test each original statement."
+}

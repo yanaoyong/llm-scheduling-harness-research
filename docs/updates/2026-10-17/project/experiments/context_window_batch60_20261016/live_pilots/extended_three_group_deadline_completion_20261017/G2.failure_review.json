@@ -1,0 +1,11 @@
+{
+  "attempt_id": "attempt:3ec92f61d02f41148e93c283",
+  "attempt_sha256": "5ce1bf7720ad3a891de6142e5e1400163c1341a3f844a2b1cf67730b2a95495a",
+  "call_number": 76,
+  "context_ref": "context:dd88bd19cd0c4106b376a8a6",
+  "failure_kind": "stream_disconnect",
+  "closed_process_and_no_model_output_validated": true,
+  "duration_seconds": 184.59384583309293,
+  "usage": null,
+  "retry_authorized": false
+}
