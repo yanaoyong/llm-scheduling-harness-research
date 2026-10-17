@@ -309,19 +309,24 @@ class FullFabEnvironment(SmtEnvironment):
             if self.last_stop and not eligible:
                 self.last_stop = None
             if self.last_stop:
-                self._emit('ledger_snapshot', **(ledger_snapshot(self) if ledger_snapshot else self.ledger_snapshot()))
+                if not original_triggers:
+                    self._emit('ledger_snapshot', **(ledger_snapshot(self) if ledger_snapshot else self.ledger_snapshot()))
                 return self.last_stop
-            snapshot = ledger_snapshot(self) if ledger_snapshot else self.ledger_snapshot()
-            self._emit('ledger_snapshot', **snapshot)
+            # Equivalence replay uses the original trigger path: no v6 ledger
+            # observations/interrupts, and no multi-GB diagnostic trace growth.
+            snapshot = None
+            if not original_triggers:
+                snapshot = ledger_snapshot(self) if ledger_snapshot else self.ledger_snapshot()
+                self._emit('ledger_snapshot', **snapshot)
             gaps = self._gaps() if original_triggers else []
             if gaps:
                 self.last_stop = {'reason': 'uncovered_demand', 'machines': gaps, 'time': self.t}
                 self._emit('coverage_gap', plan_version=self.plan['version'] if self.plan else None, machines=gaps)
                 return self.last_stop
-            if trigger == 'event' and eligible and snapshot['metrics']['avoidable_idle'] > 0:
+            if not original_triggers and trigger == 'event' and eligible and snapshot['metrics']['avoidable_idle'] > 0:
                 self.last_stop = {'reason': 'avoidable_idle', 'time': self.t}
                 return self.last_stop
-            if eligible and not self.plan and snapshot['metrics']['avoidable_idle'] > 0:
+            if not original_triggers and eligible and not self.plan and snapshot['metrics']['avoidable_idle'] > 0:
                 self.last_stop = {'reason':'no_plan','time':self.t}
                 return self.last_stop
             times = [until, self.q[0][0] if self.q else until]

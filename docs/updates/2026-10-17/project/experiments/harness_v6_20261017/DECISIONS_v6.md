@@ -83,3 +83,10 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
 ## Phase F
 
 公开物理夹具使用独立 public_702，不替代封存 mixed_702。默认真实 tokenizer 改为 o200k_base（本次 tiktoken 0.14.0），保持与 v5 一致；字符估算器仍仅用于离线纯函数测试。独立批次审计仅枚举每个兼容类首个组合，避免指数级枚举；不复用 ledger 实现。
+
+## Phase H：编排者修订，待用户确认
+
+以下为编排者原文；本阶段按任务授权实施验收修订，不冒充用户最终确认。
+
+1. test_mac_sealed_classification: reviewed plan M1(b) says "新口径下这些上下文全部不触发，例外逐条列出" — listed exceptions are allowed. Replace `exceptions == []` with: every exception must (a) have avoidable_idle > 0 confirmed by the independent audit, (b) be caused by an UNRESERVED legal operation that is not one of the old-gap (already reserved) operations, (c) never be triggered by reserved_but_earlier_startable. Then pin the exact observed set: G0 context:97eada3675ec457ca5a28750 and G1 context:61d6652b89614a3aa60bfe1e at t≈1593.13, operation w1703:86:1, machine 325. Keep 10/15/4 old-rule assertion unchanged.
+2. test_mac_snapshot_26_pending: the plan's "26/26" conflated base-plan size with pending count. New criterion: all 26 base-plan tasks are accounted for in the snapshot — 23 pending tasks verbatim in the pending table AND the 3 dispatched tasks (ids from execution_state.dispatched_task_ids) visible in the running-jobs / execution section of the snapshot (by task id or by their lot/operation identities). Verify this against the actual snapshot. If the 3 dispatched tasks are NOT visible, that is a real snapshot gap: fix snapshot.py (with a synthetic regression test) so dispatched-but-running plan tasks are represented, then assert.

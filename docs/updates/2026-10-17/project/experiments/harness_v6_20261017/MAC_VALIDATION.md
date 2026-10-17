@@ -1,6 +1,6 @@
 # Mac 验收清单
 
-以下 A–E 记录为历史阶段说明。Phase F 已获准使用预装公开 SMT2020/vendor/tiktoken；没有读取封存证据或运行模型。最新状态见文末 Phase F 表。以下命令均从本实验目录运行。
+以下 A–E 记录为历史阶段说明。Phase F 已获准使用预装公开 SMT2020/vendor/tiktoken；没有读取封存证据或运行模型。最新状态见文末 Phase H 表；Phase F 表保留为历史记录。以下命令均从本实验目录运行。
 后续阶段应添加下列测试文件和同名测试；Phase A 尚未实现这些适配器，不能声称已通过。
 这些集成测试缺依赖时须 pytest.skip 并说明缺失项；Mac 正式验收必须实际通过，不能计 skip。
 
@@ -36,8 +36,8 @@ M6 / E1、P2 实际试验另行授权预算，不属于本次验收。
    python3 -m pytest -q tests/test_sealed_contexts.py::test_mac_sealed_classification
    ```
 
-   通过：旧规则计数 G0/G1/G2=10/15/4；新规则 exceptions=[]（否则报告每个 context_ref
-   与完整指标，不隐去例外）；输出 reserved_but_earlier_startable 数量、预测潜在空闲秒数；
+   通过：旧规则计数 G0/G1/G2=10/15/4；新规则逐条核验例外（Phase H 修订）：精确为 G0/G1 的两项已登记 context；
+   独立审计确认 avoidable_idle>0，见证必须未预留且不是旧 gap 工序，预留机会不能触发；输出 reserved_but_earlier_startable 数量、预测潜在空闲秒数；
    w1703:86:1 出现在 avoidable_idle 或 explicit_wait_idle 见证中。
    这是静态反事实分类，不得推断 v6 轨迹、周期数或模型调用数。
 
@@ -48,7 +48,8 @@ M6 / E1、P2 实际试验另行授权预算，不属于本次验收。
    python3 -m pytest -q tests/test_snapshot.py::test_mac_tokenizer tests/test_sealed_contexts.py::test_mac_snapshot_26_pending
    ```
 
-   通过：o200k_base 基础计数通过；G0 1649.82 所有 26 个待执行任务逐字段保留，所有 hold
+   通过：o200k_base 基础计数通过；G0 1649.82 的 26 个 base-plan 任务全部可见：23 pending 原样保留、3 dispatched
+   在真实 running jobs 中由 job/lot/机组及 dispatch 工序身份对上，所有 hold
    原样保留，100% 未预留就绪工序有行。用实际规则/工具/路由静态表和生产预算再调用
    build_snapshot，记录实际 token 数；本测试大预算仅验证完整性，不代表生产预算可满足。
 
@@ -222,3 +223,79 @@ state、plan、until、expected_time；需让已有计划运行后第一次可�
 
 复跑：README Phase F 的 fixture/driver 命令；`tests/test_mac_snapshot.py` 现已实现公开完整性/真实预算检查。
 `tests/test_public_physics.py::test_public_run` 读取三条完整结果及压缩证据，负责真实正常检查点验收；不是此前计划的真实崩溃/漂移全验收。
+
+## Phase G：封存公开衍生证据复跑
+
+授权范围为 `/workspace/v6-mac-env/evidence` 内已有的最小公开 extract；不下载、不联网、不运行 Codex/模型。
+生成的 SQLite、完整 context、fixture、trace 与逐对象公开哈希索引全部写入 scratch。
+历史 CAS 文件名只用于查找；公开压缩字节及解码内容重新计算哈希，不能认证原始私有链。
+
+从 V6 目录执行（预装 Python 3.10 / tiktoken 0.14.0）：
+
+```bash
+export PYTHONPATH="$PWD/src:/workspace/v6-mac-env/physical"
+export TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache
+/workspace/v6-mac-env/venv/bin/python scripts/build_sealed_fixture.py \
+  --evidence-root /workspace/v6-mac-env/evidence/project/experiments/context_window_batch60_20261016 \
+  --public-fixture /workspace/v6-mac-env/work/public.json \
+  --output /workspace/v6-mac-env/work/sealed2
+export V6_MAC_FIXTURE=/workspace/v6-mac-env/work/sealed2/fixture.json
+export V6_SEALED_DB=/workspace/v6-mac-env/work/sealed2/contexts.sqlite
+export V6_SEALED_SELECT='SELECT group_name,payload FROM contexts'
+export V6_CLASSIFICATION_REPORT=/workspace/v6-mac-env/work/sealed2/classification.json
+/workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2
+/workspace/v6-mac-env/venv/bin/python -m pytest -q
+```
+
+纯仓库复跑时不设置上述环境变量：`python3 -m pytest -q`。
+新增 `tests/test_mac_sealed_details.py` 验证 mixed_702 往返、d34-421 所有 pending task 逐字段保留、w1462 非触发和共同终点见证。
+共同终点 `1603.1013031725258` 与等价回放要求的 `1603.10` 分别记录；派生终点观察使用 `measured:` 引用，不冒充归档模型上下文。
+最终结果与差异见 [封存验证报告](reports/sealed_evidence_validation_20261017.md)。
+
+### Phase G 最终验收状态（取代前述“待封存”标记）
+
+| 项目 | 状态 |
+|---|---|
+| M0b mixed_702 / G0 replay | 通过；128 个物理事件逐条相等，factory 往返哈希一致 |
+| M1(a) | 通过；10/15/4 精确复现 |
+| M1(b) 全部不触发 | 未通过；两例独立未预留 w1703:86:1 工作，原零例外断言保留 |
+| M1(c) | 完成；75 个 context×operation 机会，10389.52046615674 预测秒，非轨迹积分 |
+| M1(d) / w1462 | 通过；三组共同终点观察、w1703 见证、w1462 已预留非触发均由新增 Mac 测试核验 |
+| M2 d34-421 | 通过；63/63 pending task 原样保留，过去 not_before 不改写 |
+| M3 26/26 pending | 未通过数值假设；26 是 base_plan 总数，3 项已派工，实际 23 pending。既有 26 断言保留，完整性与预算测量按真实状态报告 |
+| M3 完整性 / token / fail-closed | 23/23 实际 pending、0/0 holds、1011/1011 ready 行；756359 tokens（含 907 running jobs）；旧注册预算 220000 下失败关闭、零丢行 |
+| M5(b) / single_action | 仍待 12 项 Codex 探针证据；没有执行 Codex |
+
+完整测试数量、真实 token 数、预算失败关闭、公开 SHA256 与两个差异的因果证据见 Phase G 报告。
+封存测试不再因数据缺失而跳过；两条被证据否定的断言不会被改成 skip/xfail。
+
+Phase G 完整 plain suite：**251 passed / 41 skipped / 42 subtests passed**。完整 configured suite：**278 passed / 2 failed / 12 skipped / 42 subtests passed**（908.00s）；两条失败即上述 M1(b) 与 M3 原数值断言，12 skips 仅 Codex 探针。没有宣称 configured 全绿。
+
+## Phase H：编排者修订，待用户确认
+
+修订原文见 [DECISIONS_v6.md](DECISIONS_v6.md)。此节取代 Phase G 的两条失败验收，
+Phase G 结果保留为历史，不改写独立证据或账本口径。
+
+- M1(b)：旧规则仍精确 10/15/4；例外集合必须恰为 G0 `context:97eada3675ec457ca5a28750`
+  和 G1 `context:61d6652b89614a3aa60bfe1e`。两者 t=1593.1323091758827、机组 325、
+  w1703:86:1，独立审计给出 avoidable_idle=1；见证与全部预留工序、旧 gap 工序、
+  reserved_but_earlier_startable 均不重叠。移除该未预留见证后预留机会原样存在，
+  两种独立实现的 avoidable_idle 都必须归零。
+- M3：26 base tasks = 23 pending 原样 + 3 dispatched 可见，全部 holds/ready 行仍完整。
+  `build_sealed_fixture.py` 从公开 G0 head state 提取 907 个未完成 running jobs，
+  放入 merged fixture 的 `g0_snapshot`（仅 scratch）；上下文 ref/time 必须匹配。
+  独立 sealed trace 将 d32-l/d36-e/d39-g 分别连到 job 976/974/975；
+  snapshot 中须按 job、lot、machine、started_at 对上，并核对 trace 的 steps/visits。
+  原 context 不含 running_jobs，旧测试默认空列表；完整快照实际有三项，不需修改 snapshot.py。
+
+精确复跑命令：沿用上方 Phase G 的全部环境变量与 build/validate/pytest 命令；
+**必须重新 build merged fixture**，以加入真实 `g0_snapshot`，不能以空列表代替。
+纯套件：取消上述环境变量后从 V6 执行 `python3 -m pytest -q`。
+结果见 [封存验证报告的 Phase H 节](reports/sealed_evidence_validation_20261017.md)。
+
+Phase H 最终结果：plain **251 passed / 41 skipped / 42 subtests passed**（36.61s）；
+configured **280 passed / 12 skipped / 42 subtests passed**（1002.87s）。
+两个修订验收均通过；12 skips 仅为 9 项 MCP/F6 与 3 项 single_action 探针。
+M0b 仍为 128 事件完全相同；M1(a) 10/15/4，M1(b) 两项例外独立核验通过；
+M3 26/26 accounted、907 running jobs、1011 ready rows、0 holds；756359 tokens，
+历史 220000 上限失败关闭，零丢行。复跑日志在 `/workspace/v6-mac-env/work/phase-h-*.log`。

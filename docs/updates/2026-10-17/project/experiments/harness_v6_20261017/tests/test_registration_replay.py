@@ -53,3 +53,22 @@ def test_reservation_audit_matches_independent_fixture():
     actual=audit_reservations(problem,plan);expected=ledger_from_scratch(problem,plan).metrics()
     assert actual=={k:expected[k] for k in actual}
     assert actual['reserved_but_earlier_startable'][0]['potential_idle_seconds']==100
+
+
+def test_original_replay_has_no_v6_ledger_or_interrupts():
+    from harness_v6.env_adapter import FullFabEnvironment
+    env=object.__new__(FullFabEnvironment)
+    env.t=0;env.horizon=10;env.plan=None;env.q=[];env.finished=False
+    events=[]
+    env._outside=lambda:None
+    env._run_planned_now=lambda:False
+    env._gaps=lambda:[]
+    env._emit=lambda kind,**fields:events.append(kind)
+    env._events_to=lambda t:setattr(env,'t',t)
+    def forbidden():raise AssertionError('original replay must not evaluate v6 ledger')
+    env.ledger_snapshot=forbidden
+    assert env.advance_plan(1)=={'reason':'periodic_replan','time':1}
+    assert events==['time_advance']
+    env._gaps=lambda:[{'machine':1,'candidate_count':1}]
+    assert env.advance_plan(2)['reason']=='uncovered_demand'
+    assert env.t==1 and events[-1]=='coverage_gap'

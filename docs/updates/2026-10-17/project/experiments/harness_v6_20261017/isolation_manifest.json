@@ -80,7 +80,7 @@
       "source_sha256": "cc8b852d0116d29c5add3fe20989104b3f390f5164ed2a0a49163864b1d26b00"
     },
     {
-      "copy_sha256": "d980c28da92027c84dabafc8a1bc7b4416d38444ce81e69457727014d5254e2b",
+      "copy_sha256": "d171777489e8272b13055a2a43e656061f6410f8514488548e9f5e2a90e9b196",
       "initial_copy_sha256": "2f9cca3b76fb8546fb9e191b1a5994b858cbf38303195a0c524c11a6362993b7",
       "modified": true,
       "path": "src/harness_v6/env_adapter.py",

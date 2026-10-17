@@ -50,7 +50,52 @@ def test_mac_sealed_classification():
         from pathlib import Path
         Path(output).write_text(json.dumps(report, sort_keys=True, separators=(',', ':')))
     assert report['old_counts_match']
-    assert report['new_rule_exceptions'] == [], report['new_rule_exceptions']
+    # Phase H: M1(b) permits individually justified exceptions (DECISIONS_v6).
+    expected = {('G0', 'context:97eada3675ec457ca5a28750'),
+                ('G1', 'context:61d6652b89614a3aa60bfe1e')}
+    exceptions = report['new_rule_exceptions']
+    assert len(exceptions) == len(expected)
+    assert {(r['group'], r['context_ref']) for r in exceptions} == expected
+    from harness_v6.audit_ledger import audit_ledger, reconcile
+    from harness_v6.ledger import ledger_from_scratch
+    checked = set()
+    for entry in SQLiteContextReader(path, query).contexts():
+        ctx = entry['context']; key = (entry['group'], ctx['context_ref'])
+        if key not in expected:
+            continue
+        record = next(r for r in exceptions if (r['group'], r['context_ref']) == key)
+        receipts = {'tasks': [{'task_id': tid, 'state': 'running'}
+                             for tid in ctx['execution_state']['dispatched_task_ids']]}
+        ledger = ledger_from_scratch(ctx['problem'], ctx['base_plan'], receipts)
+        metrics = ledger.metrics()
+        independent = audit_ledger(ctx['problem'], ctx['base_plan'], receipts)
+        assert reconcile(metrics, ctx['problem'], ctx['base_plan'], receipts)['ok']
+        assert independent['avoidable_idle'] == metrics['avoidable_idle'] == 1
+        assert record['metrics'] == metrics
+        assert ctx['time'] == pytest.approx(1593.1323091758827, abs=1e-6)
+        assert independent['avoidable_idle_matches'] == [
+            {'machine': 325, 'operation_ids': ['w1703:86:1']}]
+        old_gap_ops = {o['operation_id'] for o in ctx['problem']['operations']
+                       if not o.get('conditional', False) and o['release_time'] <= ctx['time']
+                       and any(g['machine'] in o['eligible_machines']
+                               for g in ctx['trigger']['machines'])}
+        reserved = {oid for t in ledger.pending_tasks() for oid in t['operation_ids']}
+        assert old_gap_ops and old_gap_ops <= reserved
+        witnesses = {oid for m in independent['avoidable_idle_matches'] for oid in m['operation_ids']}
+        assert witnesses.isdisjoint(reserved | old_gap_ops)
+        assert all(ledger.rows()[oid]['state'] == 'ready_unreserved' for oid in witnesses)
+        opportunities = {o['operation_id'] for o in metrics['reserved_but_earlier_startable']}
+        assert witnesses.isdisjoint(opportunities)
+        # Remove only the unreserved witness: reserved opportunities remain,
+        # but cannot cause a trigger in either implementation.
+        problem = dict(ctx['problem'], operations=[o for o in ctx['problem']['operations']
+                                                  if o['operation_id'] not in witnesses])
+        without = ledger_from_scratch(problem, ctx['base_plan'], receipts).metrics()
+        assert without['reserved_but_earlier_startable'] == metrics['reserved_but_earlier_startable']
+        assert without['avoidable_idle'] == 0
+        assert audit_ledger(problem, ctx['base_plan'], receipts)['avoidable_idle'] == 0
+        checked.add(key)
+    assert checked == expected
     assert report['w1703_witnesses']
 
 
@@ -61,6 +106,8 @@ def test_mac_snapshot_26_pending():
     from harness_v6.ledger import ledger_from_scratch
     from harness_v6.snapshot import build_snapshot, stable_prefix, tiktoken_counter
     pytest.importorskip('tiktoken', reason='Mac-only pinned tokenizer dependency is absent')
+    from mac_fixture import bundle
+    evidence = bundle('g0_snapshot')['g0_snapshot']
     found = False
     for entry in SQLiteContextReader(path, query).contexts():
         ctx = entry['context']
@@ -69,12 +116,38 @@ def test_mac_snapshot_26_pending():
         receipts = {'tasks': [{'task_id': t, 'state': 'running'} for t in dispatched]}
         ledger = ledger_from_scratch(ctx['problem'], ctx['base_plan'], receipts)
         pending = [t for t in ctx['base_plan']['tasks'] if t['id'] not in dispatched]
-        assert len(pending) == 26
+        assert len(ctx['base_plan']['tasks']) == 26
+        assert len(pending) == 23
+        assert dispatched == {'d32-l', 'd36-e', 'd39-g'}
+        assert evidence['context_ref'] == ctx['context_ref']
+        assert evidence['time'] == ctx['time']
         payload = build_snapshot(stable_prefix(tool_descriptions={}, routing=[], machine_groups=[]), ledger,
-            state_version=ctx['state_revision'], running_jobs=ctx.get('running_jobs', []),
+            state_version=ctx['state_revision'], running_jobs=evidence['running_jobs'],
             last_cycle_receipt=None, model_notes='', token_budget=10**9, token_counter=tiktoken_counter())
         current = json.loads(payload.split(b'\n', 1)[1])
         assert current['pending_tasks'] == pending
+        assert current['running_jobs'] == evidence['running_jobs']
+        visible = {}
+        trace = bundle('g0_trace')['g0_trace']
+        for task_row in ctx['base_plan']['tasks']:
+            if task_row['id'] not in dispatched:
+                continue
+            events = [e for e in trace if e['kind'] == 'dispatch'
+                      and e.get('plan_task_id') == task_row['id']
+                      and e.get('plan_version') == ctx['base_plan']['version']]
+            assert len(events) == 1
+            assert events[0]['lots'] == task_row['lot_ids']
+            assert events[0]['steps'] == task_row['steps']
+            assert events[0]['visits'] == task_row['visits']
+            jobs = [j for j in current['running_jobs']
+                    if j['job'] == events[0]['job'] and j['machine'] == task_row['machine']
+                    and set(task_row['lot_ids']) <= set(j['lot_ids'])
+                    and j['started_at'] == events[0]['time']]
+            assert len(jobs) == 1, task_row
+            visible[task_row['id']] = jobs[0]['job']
+        assert visible == {'d32-l': 976, 'd36-e': 974, 'd39-g': 975}
+        assert {t['id'] for t in current['pending_tasks']} | set(visible) == {
+            t['id'] for t in ctx['base_plan']['tasks']}
         assert current['holds'] == ctx['base_plan']['holds']
         assert len(current['unreserved_ready']) == sum(r['ready'] and r['state'] == 'ready_unreserved' for r in ledger.rows().values())
         found = True
