@@ -10,6 +10,8 @@
 
 下载 [evidence-20261017-followup-v1](https://github.com/yanaoyong/llm-scheduling-harness-research/releases/tag/evidence-20261017-followup-v1) 的全部附件。GitHub 自动生成的 Source code ZIP 只包含仓库内容，不包含 Release 证据附件。
 
+分片大小可以不同；按文件名字典序拼接全部 `.part-*` 文件即可。上传过程中把未完成的大分片继续切小，不改变拼接后的完整证据包或其 SHA-256。
+
 ```sh
 gh release download evidence-20261017-followup-v1 \
   --repo yanaoyong/llm-scheduling-harness-research \
@@ -23,7 +25,7 @@ python3 followup_archive.py verify \
   --report verify-local.json
 ```
 
-需要 Python 3 和 `zstd` 命令。Linux 可用 `sha256sum -c`。校验记录和包大小见 [构建记录](verification/build_result.json)、[包校验](verification/public_package_verification.json)、[脱敏检查](verification/privacy_review.json)。来源与范围见 [选择清单](verification/selection.json)。这些哈希用于核对完整性，不是独立数字签名。
+需要 Python 3 和 `zstd` 命令。Linux 可用 `sha256sum -c`。校验记录和包大小见 [构建记录](verification/build_result.json)、[包校验](verification/public_package_verification.json)、[脱敏检查](verification/privacy_review.json) 和 [GitHub 附件哈希核验](verification/github_assets.json)。来源与范围见 [选择清单](verification/selection.json)。这些哈希用于核对完整性，不是独立数字签名。
 
 恢复整个增量到尚不存在的目录：
 

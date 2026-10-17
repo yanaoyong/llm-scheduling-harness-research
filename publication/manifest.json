@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 2286,
+  "public_file_count_excluding_this_manifest": 2290,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -20,7 +20,7 @@
     "interview_history_verification": 8,
     "interview_report_draft": 4,
     "portfolio_document": 8,
-    "followup_archive_20261017": 1440
+    "followup_archive_20261017": 1444
   },
   "transformed_source_files": 229,
   "private_files_included": 0,
@@ -2549,8 +2549,8 @@
     },
     {
       "path": "docs/updates/2026-10-17/EVIDENCE.md",
-      "bytes": 4740,
-      "public_sha256": "5cda9bcda0163511ee19565ec3ed46bf029f4a8c9231d98b67fce7efc129be80",
+      "bytes": 5000,
+      "public_sha256": "0151d0f9f8606eee97ed0b36b4f2b93c691900ada221238e14316538d6952f30",
       "transformations": {
         "followup_archive_20261017": 1
       }
@@ -2655,6 +2655,30 @@
       "path": "docs/updates/2026-10-17/archive_tools/prepare_release_assets.py",
       "bytes": 2123,
       "public_sha256": "1ee4341fb5a1590adb86542c2a65f05bc692a1c39ddd93dec751e7dcf048ba3d",
+      "transformations": {
+        "followup_archive_20261017": 1
+      }
+    },
+    {
+      "path": "docs/updates/2026-10-17/archive_tools/recover_release_upload.py",
+      "bytes": 2070,
+      "public_sha256": "2f67b909ce7c2b5ba46040d06d449c36153e4478de0f0dc2548678ff35aba655",
+      "transformations": {
+        "followup_archive_20261017": 1
+      }
+    },
+    {
+      "path": "docs/updates/2026-10-17/archive_tools/upload_missing_assets.py",
+      "bytes": 2343,
+      "public_sha256": "b5bf6316a738d1e5c72a5ccb45815b887be3d3ca3ee75acc5b8af738bafa5e44",
+      "transformations": {
+        "followup_archive_20261017": 1
+      }
+    },
+    {
+      "path": "docs/updates/2026-10-17/archive_tools/verify_github_assets.py",
+      "bytes": 1505,
+      "public_sha256": "85cfa3fb3f16e20e272dd70fcf90b5a20cbc5826b8abd938d5b6253fea3a68be",
       "transformations": {
         "followup_archive_20261017": 1
       }
@@ -15192,8 +15216,8 @@
     },
     {
       "path": "docs/updates/2026-10-17/verification/archival_review.json",
-      "bytes": 411,
-      "public_sha256": "4cdf01f38ffc0f5cd844e1ce1a1079360145d3ff7dcaf1ce474618f834caa87b",
+      "bytes": 410,
+      "public_sha256": "b180f08c603243d22ea74157ba46dd9ad2f3dce6274cd0583d22e25fd5b5efcd",
       "transformations": {
         "followup_archive_20261017": 1
       }
@@ -15226,6 +15250,14 @@
       "path": "docs/updates/2026-10-17/verification/conversation_prefix_verification.json",
       "bytes": 156,
       "public_sha256": "1d6d453814ab3d93d6f59c1e11a7f7b70037ede88824d3bb464521294525b90e",
+      "transformations": {
+        "followup_archive_20261017": 1
+      }
+    },
+    {
+      "path": "docs/updates/2026-10-17/verification/github_assets.json",
+      "bytes": 16388,
+      "public_sha256": "6d7fd31055ee219b8abc879e5a9a882d74ae5715deb82907ede489cb83e976e7",
       "transformations": {
         "followup_archive_20261017": 1
       }
