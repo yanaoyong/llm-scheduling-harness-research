@@ -20,3 +20,45 @@
 物理适配器与审计同步前，本阶段成功的纯校验不能当作物理或来源认证。
 长时间运行须验证 breakdown 开关、检查点、预算闸门及漂移停止，CQT 仍未实现。
 M6 / E1、P2 实际试验另行授权预算，不属于本次验收。
+
+## Phase B 已实现的检查入口（M1 / M3）
+
+从 V6 目录执行。仅在 Mac 配置环境变量；本仓库只测试合成 SQLite，未读取封存库。
+
+1. 封存静态分类：实现 ContextReader.contexts() 返回 `{group, context}`，或使用
+   SQLiteContextReader。根据真实库结构设置 `V6_SEALED_DB` 和 `V6_SEALED_SELECT`；
+   SELECT 必须返回两列：G0/G1/G2 组名、完整 context JSON。若库通过引用拆表，SELECT
+   或上层 ContextReader 必须先重建 problem/base_plan/execution_state，禁止猜测缺失字段。
+   包含 882–1603.10 区间以及共同终点；26-task 检查另需 G0 1649.82。
+   设置 `V6_CLASSIFICATION_REPORT=/tmp/v6-classification.json` 保存完整结果。
+
+   ```bash
+   python3 -m pytest -q tests/test_sealed_contexts.py::test_mac_sealed_classification
+   ```
+
+   通过：旧规则计数 G0/G1/G2=10/15/4；新规则 exceptions=[]（否则报告每个 context_ref
+   与完整指标，不隐去例外）；输出 reserved_but_earlier_startable 数量、预测潜在空闲秒数；
+   w1703:86:1 出现在 avoidable_idle 或 explicit_wait_idle 见证中。
+   这是静态反事实分类，不得推断 v6 轨迹、周期数或模型调用数。
+
+2. 在 Mac 固定安装的 tiktoken 版本，并把版本与 encoding_name 写入实验登记。
+
+   ```bash
+   python3 -c 'import importlib.metadata; print(importlib.metadata.version("tiktoken"))'
+   python3 -m pytest -q tests/test_snapshot.py::test_mac_tokenizer tests/test_sealed_contexts.py::test_mac_snapshot_26_pending
+   ```
+
+   通过：cl100k_base 基础计数通过；G0 1649.82 所有 26 个待执行任务逐字段保留，所有 hold
+   原样保留，100% 未预留就绪工序有行。用实际规则/工具/路由静态表和生产预算再调用
+   build_snapshot，记录实际 token 数；本测试大预算仅验证完整性，不代表生产预算可满足。
+
+3. 物理口径对账仍依赖 Phase D 的真实适配器：从真实观察构造账本，把公开资格、
+   min-run、batch_min/max 与 has_legal 逐机组比较；重点验证 cascading 的空闲/运行并存、
+   专用绑定和运输完成。公共口径保守排除的 uncertain/same_machine_as 必须单列。
+   已有纯实现回归命令：
+
+   ```bash
+   python3 -m pytest -q tests/test_ledger.py tests/test_snapshot.py tests/test_sealed_contexts.py
+   ```
+
+   该命令不等价于物理一致性验收；真实 has_legal 适配器尚属 Phase D 待办，不能宣称已通过。
