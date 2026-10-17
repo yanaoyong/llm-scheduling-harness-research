@@ -56,7 +56,7 @@
       "source_sha256": "4f739da8892793764b05f53b1d3349fefb00e4ac4adfad2a3425986f2515af92"
     },
     {
-      "copy_sha256": "d91b7ec31340c9974f7dff040ad48e131ec0b79aa67c0a7f4dc544eff9b3a432",
+      "copy_sha256": "4fcf118a4e000c7d803629a6875f2eb1a30bd76fede7a756dd8009968310022c",
       "initial_copy_sha256": "1d2de5a7f9aba0556f56c0d62dbb997df43868c7c4d91ff3f542982fa199414e",
       "modified": true,
       "path": "src/harness_v6/factory_v6.py",
@@ -64,7 +64,7 @@
       "source_sha256": "1d2de5a7f9aba0556f56c0d62dbb997df43868c7c4d91ff3f542982fa199414e"
     },
     {
-      "copy_sha256": "d91b7ec31340c9974f7dff040ad48e131ec0b79aa67c0a7f4dc544eff9b3a432",
+      "copy_sha256": "4fcf118a4e000c7d803629a6875f2eb1a30bd76fede7a756dd8009968310022c",
       "initial_copy_sha256": "19f9c9c4592ec0e6a9d36d926f2de9dd3647f020114950951dbfa30d6e444dcd",
       "modified": true,
       "path": "src/harness_v6/factory_v6.py",
@@ -88,7 +88,7 @@
       "source_sha256": "2f9cca3b76fb8546fb9e191b1a5994b858cbf38303195a0c524c11a6362993b7"
     },
     {
-      "copy_sha256": "de07ae0fd70973e4864b502f930a575fce3ae6005904b238cc3c906f92872d57",
+      "copy_sha256": "c8236fffe5b6496ed77fe23ba6343bfabc0a32583738316569964cd4a3c9fde5",
       "initial_copy_sha256": "492002610e5068cb28da02cdda3c9d6145aefd09dfbb45257ee9fd97c5828e84",
       "modified": true,
       "path": "src/harness_v6/audit_v6.py",

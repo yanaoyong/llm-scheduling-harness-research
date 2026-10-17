@@ -40,14 +40,14 @@ def test_running_invalid_notes_and_receipt():
     assert data['model_notes'] == 'remember'
 
 
-def test_fail_closed_pluggable_counter_and_reserved_modes():
+def test_fail_closed_pluggable_counter_and_full_only():
     p, plan = fixture(); l = ledger_from_scratch(p, plan)
     with pytest.raises(SnapshotBudgetExceeded) as e:
         snapshot(l, token_budget=10, token_counter=lambda _: 11)
     assert e.value.report['tokens'] == 11 and e.value.report['dropped_rows'] == 0
     assert snapshot(l, token_budget=11, token_counter=lambda _: 11)
     for mode in ('partitioned', 'tiered'):
-        with pytest.raises(NotImplementedError): snapshot(l, mode=mode)
+        with pytest.raises(TypeError): snapshot(l, mode=mode)
 
 
 def test_long_sequence_has_constant_history_and_bounded_size():

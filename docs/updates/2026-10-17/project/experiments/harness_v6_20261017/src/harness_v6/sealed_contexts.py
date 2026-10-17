@@ -28,7 +28,7 @@ class SQLiteContextReader:
                 yield {'group': group, 'context': json.loads(payload)}
 
 
-def classify_sealed_contexts(reader, *, start=882, end=1603.10):
+def classify_sealed_contexts(reader, *, expected, witness_operation, start=882, end=1603.10):
     counts = {}; exceptions = []; classified = []; opportunity_count = 0; seconds = 0
     witness = []
     for entry in reader.contexts():
@@ -60,12 +60,11 @@ def classify_sealed_contexts(reader, *, start=882, end=1603.10):
             for o in opportunities:
                 per_op[o['operation_id']] = max(per_op.get(o['operation_id'], 0), o['potential_idle_seconds'])
             opportunity_count += len(per_op); seconds += sum(per_op.values())
-        if any('w1703:86:1' in m['operation_ids'] for key in ('avoidable_idle_matches', 'explicit_wait_idle_matches')
+        if any(witness_operation in m['operation_ids'] for key in ('avoidable_idle_matches', 'explicit_wait_idle_matches')
                for m in metrics[key]):
             witness.append({'group': group, 'context_ref': ref})
-    expected = {'G0': 10, 'G1': 15, 'G2': 4}
     return {'old_rule_counts': counts, 'expected_old_rule_counts': expected,
             'old_counts_match': counts == expected, 'new_rule_exceptions': exceptions,
             'reserved_but_earlier_startable_count': opportunity_count,
             'potential_idle_seconds': seconds, 'seconds_basis': 'static public forecast; not measured trajectory idle',
-            'w1703_witnesses': witness, 'contexts': classified}
+            'operation_witnesses': witness, 'contexts': classified}

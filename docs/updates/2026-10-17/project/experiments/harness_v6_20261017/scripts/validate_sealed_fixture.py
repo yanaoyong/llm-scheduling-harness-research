@@ -15,7 +15,7 @@ def validate(directory):
         raise ValueError('outputs must be under /workspace/v6-mac-env/work')
     bundle = json.loads((directory/'fixture.json').read_bytes())
     reader = SQLiteContextReader(directory/'contexts.sqlite', 'SELECT group_name,payload FROM contexts')
-    report = classify_sealed_contexts(reader)
+    report = classify_sealed_contexts(reader, expected={'G0':10,'G1':15,'G2':4}, witness_operation='w1703:86:1')
     (directory/'classification.json').write_bytes(encode(report))
     print('classification', report['old_rule_counts'], len(report['new_rule_exceptions']), flush=True)
     seed = bundle['mixed_702']

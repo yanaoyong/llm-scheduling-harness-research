@@ -40,6 +40,10 @@ class CheckpointStore:
     def save(self, segment, *, state, cycle, ledger, cumulative_costs, extra=None):
         payload = {'schema': 'harness-v6-checkpoint-1', 'segment': segment, 'state': state,
                    'cycle': cycle, 'ledger': ledger, 'cumulative_costs': cumulative_costs, 'extra': extra or {}}
+        previous = self.directory / 'latest.json'
+        payload['previous'] = json.loads(previous.read_bytes()) if previous.exists() else None
+        if payload['previous'] is None and segment != 0:
+            raise ValueError('checkpoint chain must start at segment 0')
         data = canonical(payload)
         name = 'checkpoint-' + str(segment) + '-' + sha(data) + '.json'
         atomic_write(self.directory / name, data)
@@ -48,13 +52,20 @@ class CheckpointStore:
 
     def latest(self):
         manifest = json.loads((self.directory / 'latest.json').read_bytes())
-        name = manifest['file']
-        if Path(name).name != name:
-            raise ValueError('invalid checkpoint filename')
-        data = (self.directory / name).read_bytes()
-        if sha(data) != manifest['sha256']:
-            raise ValueError('checkpoint hash mismatch')
-        return json.loads(data)
+        latest = None
+        while manifest:
+            name = manifest['file']
+            if Path(name).name != name:
+                raise ValueError('invalid checkpoint filename')
+            data = (self.directory / name).read_bytes()
+            if sha(data) != manifest['sha256']:
+                raise ValueError('checkpoint hash mismatch')
+            payload = json.loads(data)
+            latest = latest or payload
+            manifest = payload['previous']
+        if payload['segment'] != 0:
+            raise ValueError('checkpoint chain must start at segment 0')
+        return latest
 
     def mark_inflight(self, bundle):
         """Call before launching a session; refresh after observed usage/submit.
@@ -92,7 +103,7 @@ class CheckpointStore:
         old_plan = submit.finalize(process_ok=False, usage_known=False)
         known = bundle.get('session_usage', {})
         machine.finish(submitted=False, process_ok=False, usage_known=False,
-                       cost=known.get('cost', 0), wall_seconds=known.get('wall_seconds', 0))
+                       cost=known.get('cost', 0), wall_seconds=known.get('wall_seconds', 0), model_note=bundle.get('model_note', ''))
         state = bundle['state']
         state['plan'] = old_plan
         extra = dict(bundle.get('extra', {}))
@@ -104,6 +115,9 @@ class CheckpointStore:
                 'output_tokens', 'model_seconds', 'wall_seconds', 'submit_attempts', 'submit_rejections')}
             metrics.session(machine.now, failed=True, usage_known=False, **usage)
             extra['metrics'] = metrics.capture()
+        if 'history' in extra:
+            from .snapshot import HistorySummary
+            extra['history'] = HistorySummary(extra['history']).append({'adopted': False}).digest
         extra['recovered_inflight'] = True
         payload = self.save(machine.segment, state=state, cycle=machine.capture(),
                             ledger=bundle['ledger'], cumulative_costs={'cost': machine.cost,
@@ -137,10 +151,14 @@ def capture_ledger(ledger):
     """Save ordered input tables; no JSON object integer keys or set indexes."""
     from copy import deepcopy
     return deepcopy({'time': ledger.now, 'plan_created_at': ledger.plan_created_at,
+            'hold_keys': list(ledger.holds),
             **{name: {'upsert': list(getattr(ledger, name).values())}
                for name in ('operations', 'machines', 'tasks', 'holds', 'receipts', 'task_receipts')}})
 
 
 def restore_ledger(state):
     from .ledger import Ledger, ledger_apply
-    return ledger_apply(Ledger(state['time']), state)
+    ledger = ledger_apply(Ledger(state['time']), {k: v for k, v in state.items() if k != 'holds'})
+    from copy import deepcopy
+    ledger.holds = dict(zip(state['hold_keys'], deepcopy(state['holds']['upsert'])))
+    return ledger

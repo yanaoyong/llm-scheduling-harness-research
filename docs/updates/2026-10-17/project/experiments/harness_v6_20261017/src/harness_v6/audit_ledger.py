@@ -1,10 +1,9 @@
 """Independent reference audit.
 
-No ledger helpers are imported. Selects the first minimum-size combination per equivalence class and
-then implements the documented deterministic greedy consumption policy. This
-checks that policy, not maximum matching; does not import production ledger helpers.
+No ledger helpers are imported. Re-implements the SAME greedy policy, catching
+implementation slips, not algorithm errors or departure from maximum matching.
+Active holds count only as explicit wait, disjoint from avoidable idle.
 """
-import itertools
 import json
 
 
@@ -55,13 +54,9 @@ def audit_ledger(problem, plan=None, receipts=None):
                 if not 1 <= n <= a['batch_max']: continue
                 compatible = sorted(o['operation_id'] for o in items
                     if [o['batch_key'], o['batch_min'], o['batch_max']] == signature)
-                first = next(itertools.combinations(compatible, n), None)
+                first = compatible[:n] if len(compatible) >= n else None
                 if first is not None: batches.append((key, list(first)))
             return sorted(batches)
-        batches = enumerate_batches([o for o, s in legal if s == 'ready_unreserved' and o['operation_id'] not in used])
-        if batches:
-            ids = batches[0][1]; used.update(ids)
-            matches.append({'machine': mid, 'operation_ids': ids})
         held = any(h['machine'] == mid and h['until'] > now and
                    (h.get('after_task_id') is None or
                     (task_states.get(h['after_task_id']) in ('running', 'done')
@@ -69,6 +64,11 @@ def audit_ledger(problem, plan=None, receipts=None):
         if held:
             batches = enumerate_batches([o for o, s in legal])
             if batches: waits.append({'machine': mid, 'operation_ids': batches[0][1]})
+            continue
+        batches = enumerate_batches([o for o, s in legal if s == 'ready_unreserved' and o['operation_id'] not in used])
+        if batches:
+            ids = batches[0][1]; used.update(ids)
+            matches.append({'machine': mid, 'operation_ids': ids})
     return {'avoidable_idle': len(matches), 'avoidable_idle_matches': matches,
             'explicit_wait_idle': len(waits), 'explicit_wait_idle_matches': waits}
 

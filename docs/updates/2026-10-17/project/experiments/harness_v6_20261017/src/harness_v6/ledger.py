@@ -2,16 +2,16 @@
 
 Updates mutate only indexed input records, O(changed records + changed task
 memberships). Time is a scalar: age/readiness/hold expiry are evaluated on read.
-Full rendering and matching are explicitly separate O(current state) reads.
+rows()/metrics() perform full O(WIP) reads; matching adds qualification and
+witness work. Machine queues are built once per metrics() call.
 
 Matching is a deterministic greedy maximal approximation, NOT maximum matching:
 visit idle machines by numeric ID, bucket eligible ready operations by exact
 (batch_key, min, max), choose the lexicographically first bucket with enough
 members, take its minimum batch in operation-ID order, consume those members.
 This prevents double-counting cross-machine demand but can underestimate optimal
-utilization. Hold-blocked machines remain eligible for avoidable-idle accounting;
-explicit_wait_idle separately reports every held machine with feasible work
-(including reserved work), so these two metrics must not be added together.
+utilization. Active holds exclude machines from avoidable idle; feasible held
+work counts only as explicit_wait_idle. The two disjoint metrics may be summed.
 Conditional/uncertain qualifications are conservative exclusions, never forecasts
 of physical readiness. Receipt extensions supply running/done/invalid identity.
 """
@@ -105,16 +105,16 @@ class Ledger:
                 by_machine.setdefault(mid, {})[oid] = op
         matches, waits, opportunities, used = [], [], [], set()
         pending = self.pending_tasks()
+        queues = {}
+        for task in pending:
+            queues.setdefault(task['machine'], []).append(task)
         dispatched = {t for t, r in self.task_receipts.items() if r.get('state') in ('running', 'done')}
         for mid, machine in sorted(self.machines.items()):
             if not idle(machine, self.now):
                 continue
             candidates = by_machine.get(mid, {})
             free = {oid: op for oid, op in candidates.items() if oid in unreserved}
-            batch = choose_batch(free, machine, used)
-            if batch:
-                matches.append({'machine': mid, 'operation_ids': batch}); used.update(batch)
-            queue = [t for t in pending if t['machine'] == mid]
+            queue = queues.get(mid, [])
             held = active_holds(self.holds.values(), machine=mid, now=self.now,
                                 pending_tasks=queue, dispatched_task_ids=dispatched)
             batch = choose_batch(candidates, machine)
@@ -122,6 +122,9 @@ class Ledger:
                 waits.append({'machine': mid, 'operation_ids': batch})
             if held:
                 continue
+            batch = choose_batch(free, machine, used)
+            if batch:
+                matches.append({'machine': mid, 'operation_ids': batch}); used.update(batch)
             # Opportunity witnesses are diagnostic, not proposed task batches.
             for oid, op in sorted(candidates.items()):
                 if rows[oid]['state'] != 'reserved_not_started' or not eligible(op, machine):
@@ -134,7 +137,7 @@ class Ledger:
                     if task['machine'] == mid:
                         continue
                     original = self.machines.get(task['machine'], {})
-                    original_queue = [t for t in pending if t['machine'] == task['machine']]
+                    original_queue = queues.get(task['machine'], [])
                     original_hold = active_holds(self.holds.values(), machine=task['machine'], now=self.now,
                                                 pending_tasks=original_queue, dispatched_task_ids=dispatched)
                     estimate = max(self.now, task.get('not_before', self.now), original.get('available_at', self.now))

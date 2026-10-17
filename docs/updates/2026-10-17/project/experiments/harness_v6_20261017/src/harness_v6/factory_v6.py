@@ -90,3 +90,78 @@ def commit_physical(store, expected_state_version, env, plan):
                                    'physical_state':capture(prepared),
                                    'new_events':prepared.trace[len(env.trace):]})
     return prepared
+
+class LiveFactory:
+    """Thin physical binding for live.LiveRun; private state never enters prompt."""
+    def __init__(self, env):
+        self.env = env
+
+    @property
+    def now(self):
+        return self.env.t
+
+    @property
+    def plan(self):
+        return self.env.plan
+
+    def problem(self):
+        return self.env.problem()
+
+    def execution_state(self):
+        from .plan_delta import STATE_SCHEMA
+        env = self.env
+        return dict(schema=STATE_SCHEMA, time=env.t, observation_end=env.horizon,
+                    base_plan_version=env.plan['version'],
+                    dispatched_task_ids=sorted(t for v,t in env.executed_tasks if v==env.plan['version']),
+                    invalidated_task_ids=sorted(env.invalidated_task_ids))
+
+    def ledger(self):
+        from .ledger import ledger_read_view
+        snap = self.env.ledger_snapshot()
+        return ledger_read_view(snap['problem'], snap['plan'], snap['receipts'])
+
+    def running_jobs(self):
+        env = self.env
+        return [dict(job=jid, machine=j['machine'], lot_ids=j['lots'], started_at=j['start'],
+                     phase='processing' if jid in env.processing_by_machine[j['machine']] else 'transport')
+                for jid,j in sorted(env.jobs.items()) if not j['done']]
+
+    def advance_to(self, target, stop_on_event):
+        env = self.env
+        previous = None
+        def observe(current):
+            nonlocal previous
+            if previous is not None:
+                start, values = previous
+                self.metrics.integrate(start, current.t, **values)
+            snap = current.ledger_snapshot()
+            from .ledger import ledger_read_view
+            ledger = ledger_read_view(snap['problem'], snap['plan'], snap['receipts'])
+            values = snap['metrics']
+            previous = (current.t, dict(avoidable_idle=values['avoidable_idle'],
+                explicit_wait_idle=values['explicit_wait_idle'],
+                reserved_but_earlier_startable=len(values['reserved_but_earlier_startable']),
+                unreserved_ready_ops=sum(r['ready'] and r['state']=='ready_unreserved' for r in ledger.rows().values())))
+            # Full public inputs are frozen once per decision by LiveRun.
+            # Keep inter-event trace observations compact instead of retaining
+            # a full WIP copy at every physical event.
+            return {'metrics': snap['metrics']}
+        result = env.advance_cycle(target, ledger_snapshot=observe,
+            trigger='event' if stop_on_event else 'periodic', decision_after=env.t)
+        if previous is not None:
+            self.metrics.integrate(previous[0], env.t, **previous[1])
+        reason = result['reason']
+        return None if reason in ('avoidable_idle','periodic_replan') else reason
+
+    def adopt(self, plan):
+        self.env = prepare(self.env, plan)
+
+    def private_state(self):
+        return capture(self.env)
+
+    def capture(self):
+        return dict(physical=capture(self.env), trace=deepcopy(self.env.trace), plan=deepcopy(self.env.plan))
+
+    @classmethod
+    def restore(cls, state):
+        return cls(restore(state['physical'], state['trace']))

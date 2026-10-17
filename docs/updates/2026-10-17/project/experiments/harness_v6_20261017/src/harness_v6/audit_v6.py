@@ -205,17 +205,67 @@ def audit_plan_sources(source):
             "scope": "exact production dispatch provenance and declared responsibility; legal-demand completeness requires additional independent opportunity replay"}
 
 
+def audit_idle(problem, plan=None, receipts=None):
+    """Third implementation of the same greedy idle policy; no ledger helpers."""
+    plan=plan or {}; receipts=receipts or {}; now=problem['time']
+    tasks=plan.get('tasks',[])
+    states={r['task_id']:r['state'] for r in receipts.get('tasks',[])}
+    operation_states={r['operation_id']:r['state'] for r in receipts.get('operations',[])}
+    pending=[t for t in tasks if states.get(t['id']) not in ('running','done')]
+    available=[]
+    for op in problem['operations']:
+        owners=[t for t in tasks if op['operation_id'] in t['operation_ids']]
+        owner_states={states.get(t['id']) for t in owners}
+        state=operation_states.get(op['operation_id'])
+        if state is None:
+            state=next((s for s in ('done','running','invalid') if s in owner_states),
+                       'reserved_not_started' if owners else 'ready_unreserved')
+        if (state in ('ready_unreserved','reserved_not_started') and not op.get('conditional')
+                and not op.get('predecessor_ids') and op.get('release_time',now)<=now):
+            available.append((op,state))
+    qualified={}
+    for op,state in available:
+        for mid in set(op['eligible_machines']):
+            qualified.setdefault(mid,[]).append((op,state))
+    used=set(); matches=[]; waits=[]
+    for machine in sorted(problem['machines'],key=lambda m:m['machine']):
+        mid=machine['machine']
+        if (machine.get('currently_busy') or machine.get('currently_down') or not machine.get('available',True)
+                or any(a<=now<b for a,b in machine.get('unavailable_intervals',[]))): continue
+        held=any(h['machine']==mid and h['until']>now and (h.get('after_task_id') is None or
+            (states.get(h['after_task_id']) in ('running','done') and not any(t['machine']==mid for t in pending)))
+            for h in plan.get('holds',[]))
+        groups={}
+        for op,state in qualified.get(mid,[]):
+            oid=op['operation_id']
+            if not held and (state!='ready_unreserved' or oid in used): continue
+            if (mid not in op['eligible_machines'] or op.get('qualification_uncertain') or op.get('same_machine_as')
+                    or (machine.get('min_left',0)>0 and machine.get('min_setup')!=op.get('setup'))): continue
+            key=json.dumps([op['batch_key'],op['batch_min'],op['batch_max']],sort_keys=True,separators=(',',':'))
+            groups.setdefault(key,[]).append(oid)
+        for key,ids in sorted(groups.items()):
+            _,minimum,maximum=json.loads(key)
+            if 1<=minimum<=maximum and len(ids)>=minimum:
+                batch=sorted(ids)[:minimum]
+                (waits if held else matches).append(dict(machine=mid,operation_ids=batch))
+                if not held: used.update(batch)
+                break
+    return dict(avoidable_idle=len(matches),avoidable_idle_matches=matches,
+                explicit_wait_idle=len(waits),explicit_wait_idle_matches=waits)
+
+
 def audit_opportunity_coverage(source):
     """Independently enumerate recorded public ledger inputs at each clock step.
 
+    Active held machines contribute only explicit_wait_idle, never avoidable_idle.
+    The independent audit re-implements the same greedy policy, not an optimum.
     Does not certify private readiness: physical replay must check observation inputs.
     """
-    from .audit_ledger import audit_ledger
     events=read_events(source);errors=[];snapshot=None;integrals={};steps=0
     for index,e in enumerate(events):
         if e['kind']=='ledger_snapshot':
             snapshot=e
-            expected={**audit_ledger(e['problem'],e.get('plan'),e.get('receipts')), **audit_reservations(e['problem'],e.get('plan'),e.get('receipts'))}
+            expected={**audit_idle(e['problem'],e.get('plan'),e.get('receipts')), **audit_reservations(e['problem'],e.get('plan'),e.get('receipts'))}
             for key,value in expected.items():
                 if e['metrics'].get(key)!=value: errors.append(f'{index}: ledger mismatch {key}')
         elif e['kind']=='time_advance':

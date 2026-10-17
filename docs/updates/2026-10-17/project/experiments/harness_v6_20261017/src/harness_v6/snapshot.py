@@ -1,7 +1,6 @@
 """Complete deterministic snapshot with a fixed-byte history summary.
 
-Full-state only. Partitioned/tiered modes are reserved interface hooks and fail
-explicitly until measured Mac WIP justifies a separately reviewed implementation.
+Full-state only; snapshot scaling awaits a separate user decision.
 """
 from dataclasses import dataclass
 import hashlib
@@ -47,9 +46,7 @@ class SnapshotBudgetExceeded(ValueError):
 
 def build_snapshot(prefix, ledger, *, state_version, running_jobs, last_cycle_receipt,
                    model_notes, token_budget, token_counter=estimate_tokens,
-                   history=HistorySummary(), mode='full'):
-    if mode != 'full':
-        raise NotImplementedError('reserved snapshot mode: ' + mode)
+                   history=HistorySummary()):
     rows = ledger.rows(); metrics = ledger.metrics()
     ready_rows = []
     for oid, row in rows.items():
@@ -78,5 +75,5 @@ def build_snapshot(prefix, ledger, *, state_version, running_jobs, last_cycle_re
     if count > token_budget:
         raise SnapshotBudgetExceeded({'code': 'snapshot_budget_exceeded', 'tokens': count,
             'budget': token_budget, 'bytes': len(payload), 'pending_tasks': len(current['pending_tasks']),
-            'unreserved_ready': len(ready_rows), 'dropped_rows': 0, 'mode': mode})
+            'unreserved_ready': len(ready_rows), 'dropped_rows': 0, 'mode': 'full'})
     return payload

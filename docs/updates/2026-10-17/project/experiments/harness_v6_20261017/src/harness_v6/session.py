@@ -56,7 +56,7 @@ def command(input_dir, output_dir, *, model, budget=Budget(), binary='codex', py
 def classify(jsonl, *, interaction="mcp_session"):
     if interaction not in ("single_action", "mcp_session"):
         raise ValueError("unknown interaction")
-    calls=[];errors=[];usage=None;completed=False;ids=set();pending=set()
+    calls=[];errors=[];usage=None;completed=False;ids=set();pending=set();rounds=0;in_round=False
     for line in jsonl.splitlines():
         try:
             e=strict_json(line);kind=e['type']
@@ -68,6 +68,10 @@ def classify(jsonl, *, interaction="mcp_session"):
                 if typ in EVENT_TYPES['passive_items']: pass
                 elif interaction == 'single_action': errors.append('forbidden_item:'+str(typ))
                 elif typ==EVENT_TYPES['mcp_item']:
+                    if kind=='item.started':
+                        rounds += not in_round
+                        in_round=True
+                    elif kind=='item.completed': in_round=False
                     if item.get('server')!='harness_v6': errors.append('foreign_mcp')
                     if item.get('tool') not in TOOLS: errors.append('unknown_tool')
                     if kind in ('item.started','item.updated'): pending.add(item['id'])
@@ -92,9 +96,9 @@ def classify(jsonl, *, interaction="mcp_session"):
     if pending: errors.append('incomplete_mcp_items')
     if not completed: errors.append('missing_turn_completed')
     if usage is None: errors.append('usage_unknown')
-    return {'calls':calls,'errors':errors,'usage':usage}
+    return {'calls':calls,'errors':errors,'usage':usage,'tool_rounds':rounds,'tool_calls':len(ids|pending)}
 
-def finish(result, *, rows, submission, initial_state, commit, metrics, now, budget=Budget(), cycle=None):
+def finish(result, *, rows, submission, initial_state, commit, metrics, now, budget=Budget(), cycle=None, model_note=''):
     parsed=classify(result.jsonl);errors=list(parsed['errors']);u=parsed['usage']
     if result.returncode or result.timed_out: errors.append('process_failed')
     if result.wall_seconds>budget.wall_seconds: errors.append('wall_budget')
@@ -112,8 +116,8 @@ def finish(result, *, rows, submission, initial_state, commit, metrics, now, bud
             if not adopted: errors.append('stale_state_version')
         except Exception as exc: errors.append('commit_failed:'+str(exc))
     usage=u or {};known=u is not None
-    metrics.session(now,tool_calls=len(rows),tool_rounds=int(bool(rows)),input_tokens=usage.get('input_tokens',0),cached_tokens=usage.get('cached_input_tokens',0),output_tokens=usage.get('output_tokens',0),model_seconds=result.model_seconds,wall_seconds=result.wall_seconds,failed=not adopted,usage_known=known,submit_attempts=sum(r['tool']=='submit_plan' for r in rows),submit_rejections=sum(r['tool']=='submit_plan' and not r['result'].get('accepted') for r in rows))
-    if cycle is not None: cycle.finish(submitted=adopted,process_ok=not errors,usage_known=known,cost=usage.get('input_tokens',0)-usage.get('cached_input_tokens',0)*(1-metrics.cached_input_weight),wall_seconds=result.wall_seconds)
+    metrics.session(now,tool_calls=max(len(rows),len(parsed['calls']),parsed['tool_calls'],parsed['tool_rounds']),tool_rounds=parsed['tool_rounds'],input_tokens=usage.get('input_tokens',0),cached_tokens=usage.get('cached_input_tokens',0),output_tokens=usage.get('output_tokens',0),model_seconds=result.model_seconds,wall_seconds=result.wall_seconds,failed=not adopted,usage_known=known,submit_attempts=sum(r['tool']=='submit_plan' for r in rows),submit_rejections=sum(r['tool']=='submit_plan' and not r['result'].get('accepted') for r in rows))
+    if cycle is not None: cycle.finish(submitted=adopted,process_ok=not errors,usage_known=known,cost=usage.get('input_tokens',0)-usage.get('cached_input_tokens',0)*(1-metrics.cached_input_weight),wall_seconds=result.wall_seconds,model_note=model_note)
     return {'adopted':adopted,'errors':errors,'usage_unknown':not known}
 
 def run_session(runner, argv, prompt, *, budget=Budget(), checkpoint=None,
@@ -127,7 +131,10 @@ def run_session(runner, argv, prompt, *, budget=Budget(), checkpoint=None,
     except (TimeoutError, OSError):
         result=RunResult('',returncode=1,wall_seconds=budget.wall_seconds,timed_out=True)
     # Artifact reading is host-owned and occurs after the runner exits.
-    artifacts=finish_args.pop('artifacts')()
+    try:
+        artifacts=finish_args.pop('artifacts')()
+    except (OSError, ValueError):
+        artifacts={'rows':[], 'submission':None}
     outcome=finish(result,budget=budget,**finish_args,**artifacts)
     if checkpoint is not None:
         persist_completed(outcome)
@@ -138,6 +145,7 @@ def run_session(runner, argv, prompt, *, budget=Budget(), checkpoint=None,
 def read_artifacts(output_dir):
     from pathlib import Path
     directory=Path(output_dir)
-    rows=[strict_json(line) for line in (directory/'mcp.jsonl').read_bytes().splitlines()]
+    log=directory/'mcp.jsonl'
+    rows=[strict_json(line) for line in log.read_bytes().splitlines()] if log.exists() else []
     path=directory/'submission.json'
     return {'rows':rows,'submission':strict_json(path.read_bytes()) if path.exists() else None}
