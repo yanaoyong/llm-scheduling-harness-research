@@ -86,3 +86,75 @@ python3 -m pytest -q tests/test_cycle_submit.py tests/test_metrics_checkpoint.py
 
 真实输入 token / 缓存用量来自会话证据；必须登记 cached_input_weight 与未知用量上限。
 真实成本/质量尚未测量；CQT/Q-time 仍未实现。S1–S4 升级与任何实时模型运行需另行授权。
+
+## Phase D 当前入口（覆盖前文“未来文件”的状态说明）
+
+以下测试文件现已存在。未配置 Mac 数据时明确 skip；配置后缺字段、缺依赖或断言失败
+均报错，不会转换为 skip。所有命令从 V6 执行，设置 `PYTHONPATH="$PWD/src:<物理项目根>"`，
+物理项目须包含已固定的 src/smt/environment.py、vendor、SMT2020 数据。
+当前仓库没有执行这些验收，也没有运行 Codex 或开启 loopback 服务。
+
+`V6_MAC_FIXTURE=/绝对路径/v6-fixture.json` 的格式：
+
+- data_dir：真实 SMT2020 目录。
+- mixed_702：`{state, trace}`；state 为原 Store factory capture（允许原 batch_state，导入时删除）。
+- g0_committed_plans：按时序排列的 `{time, plan}`；g0_trace：完整封存事件。
+- d34_421：`{state, trace, plan}`，原上下文及保留过去 not_before 的完整候选计划。
+- frozen_invalidated：`{state, trace, plan, until}`，state 含宿主 invalidated_task_ids，
+  旧计划在冻结区间，新计划显式取消失效任务。
+- when_ready：`{state, trace, plan, until, expected_dispatches}`；期望事件来自独立物理核对，
+  须覆盖默认/显式 when_ready、未来硬下界、批量上下限、专用、min-run、运输、停机。
+- advance_cycle：`{state, trace, plan, until, expected_reason, expected_time}`，含可避免空闲
+  但尚有效计划的场景，检查不因缺口提前返回，并检查 trace 每次推进前有账本。
+- v6_time_semantics_trace、v6_trace：完整真实轨迹；independent_idle_integrals：独立
+  avoidable_idle、explicit_wait_idle、reserved_but_earlier_startable 三项积分。
+- documented_public_physical_differences：逐机组 `{machine, public, physical}` 差异清单。
+  初始应为空；不允许为使测试通过而事后无说明录入。保守预测/级联差异须单列原因。
+
+| 命令 | 验收 |
+|---|---|
+| `python3 -m pytest -q tests/test_mac_factory.py` | M0b mixed_702 导入、capture/restore 哈希相同，无 batch_state |
+| `python3 -m pytest -q tests/test_mac_replay.py` | M0b 原触发逐事件等价，到 1603.10，事件数非零 |
+| `python3 -m pytest -q tests/test_mac_environment.py` | M2 d34-421、失效冻结、when_ready、M4 advance_cycle、只读预检 |
+| `python3 -m pytest -q tests/test_mac_audit.py tests/test_mac_ledger.py` | 独立时间/来源审计；公开账本与物理合法性差异逐项记录；积分核对 |
+| `python3 -m pytest -q tests/test_sealed_contexts.py::test_mac_sealed_classification` | M1(a–d) 10/15/4、例外、机会数量/秒数、w1703 见证；环境变量沿用前文 |
+| `python3 -m pytest -q tests/test_snapshot.py::test_mac_tokenizer tests/test_sealed_contexts.py::test_mac_snapshot_26_pending` | M3 固定 tokenizer，G0 1649.82 的 26/26、全部 holds/ready rows |
+| `python3 -m pytest -q tests/test_mac_session.py` | M5(b) 下述九个能力记录全部通过且无真实模型请求 |
+| `python3 -m pytest -q tests/test_registration_replay.py tests/test_mcp_session.py::test_three_cycles_fake_runner` | M6 机制空跑；模板不能标为结果；真实结果必须另填质量/预算后 load(results=True) |
+
+M5(b) 提供本地 mock endpoint 实现：
+
+```bash
+PYTHONPATH=src python3 -m harness_v6.mac_probe --fixtures /绝对路径/responses.json --log /全新路径/requests.jsonl
+```
+
+服务只监听 127.0.0.1，stdout 给出随机端口；不发任何外部请求。responses.json 是列表，
+每项 `{status: 200, content_type: "text/event-stream", body: "已固定的 Responses SSE 字节文本"}`。
+用 Mac 上固定版本的协议录制/构造响应（工具调用、成功结束、压缩、错误、超时场景），
+单独运行所构造的 Codex 命令，provider base_url 必须指向此服务。测试本身不启动 Codex。
+脚本响应耗尽返回 409；请求日志独占创建。不要把真实凭据或真实端点写入夹具。
+
+`V6_F6_PROBE_DIR` 下保存 manifest.json：`endpoint`、`codex_version`、
+`real_model_requests: 0`、`checks`。每个检查记录 `passed`、实际 `command`、`expected`、
+JSONL 相对文件名 `jsonl`，同时保留请求日志作为人工核验依据。九项键及要求：
+
+1. config_injection：ignore-user-config 下 command/args/env 注入成功。
+2. approval_never：MCP 调用完成而非取消。
+3. schema_with_mcp：单独带 output-schema 的探针仍可工具调用；生产命令不强制输出 schema。
+4. jsonl_fields：确认 EVENT_TYPES 中 mcp_tool_call、item.started/updated/completed、
+   server/tool/arguments/id/status、turn.completed.usage 的真实拼写；与 MCP 日志逐条一致。
+5. startup_timeout：故意推迟服务启动，记录启动超时及失败旧计划保留。
+6. tool_timeout：故意推迟工具结果，记录工具超时及失败旧计划保留。
+7. compaction_detection：小阈值诱发压缩；thread.compacted/context.compacted/compaction
+   中的实际事件须被检测；若事件不同先修订集中表并重跑所有检查。
+8. environment_inheritance：inherit=none 下只有显式注入 MCP 环境生效。
+9. large_result_complete：大结果逐字节核对；额外保存 received_result JSON 文件，
+   sent_result_sha256 为 canonical JSON 哈希；不允许静默截断。
+
+test_mac_session 是探针证据验收入口，不会自动产生或独立认证这些能力；passed 字段不能
+替代实际命令、请求记录和人工核对。真实 wire fixtures 尚未提供，F6 仍是试验阻断门槛。
+
+仍需在 Mac 做长时性能与生产验收：完整公开观察/账本 trace 目前按步重建，不满足最终
+物理增量 O(变化量) 性能目标；测量后接入物理事件增量。真实 segment_recovery、故障、
+生产 tardiness/throughput/setup 与 token 漂移测试仍须扩展实际夹具，前文对应未来命令
+不代表已有可执行验收。现有 checkpoint/恢复测试仅证明合成机制。

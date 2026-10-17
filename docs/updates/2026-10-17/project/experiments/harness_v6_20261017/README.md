@@ -149,3 +149,48 @@ Mac tiktoken 惰性适配器及封存 SQLite 只读适配器不在本地访问�
 长序列包含 1,200 个周期、四个循环 lot、两个机组族、两道工序、双件批次、事件键随机时长。
 快照只含当前状态与固定摘要；指标小时桶和磁盘段档案可随时长增长，不进入模型快照。
 真实稳态 WIP 增长、运输、返工、复杂故障/保养和 CQT 不由此小工厂证明。
+
+## Phase D：MCP、会话证据与 Mac 接口
+
+周期暂停后，宿主把 `cycle.json` 写入冻结输入目录。它包含 snapshot、FactReader facts、
+execution_state、context_ref 和 submit_config；后者指定 state_version、next_anchor、
+source_sha256 和可选 delta_seconds。真实工厂还必须提供 private_state（同目录内的私有
+capture JSON），用于副本预检。输入目录只读；每周期使用全新的输出目录。
+
+`mcp_server.py` 是逐行 JSON-RPC 2.0 stdio 服务，支持 initialize、tools/list、tools/call。
+四个工具为 read_entities、validate_plan、submit_plan、get_decision_snapshot；不排序候选，
+不写 Store。线程锁串行化所有调用；mcp.jsonl 逐条 fsync 并连接哈希；submission.json
+独占创建。validate_plan 只修改克隆，成功 submit 也只是暂存。
+
+`session.py` 构造命令但不启动 Codex。Runner 接口负责执行及墙钟终止；测试仅用假 runner。
+宿主按 JSONL 白名单、工具预算、累计 token、退出码与用量核对；`evidence.py` 再校验
+双路参数、日志链，并从冻结底座重新编译 delta 比较整个计划。保留任务来源继承自可信底座，
+新增/替换字段来自此次工具参数。只在全部通过后调用原子 compare-and-commit。
+checkpoint 接口先写 in-flight，完成回执持久化后才清除；崩溃前 submission 不采纳。
+`store_v6.py` 默认限制写入本实验目录，也允许宿主显式指定独立 root；MCP 不导入 Store。
+真实工厂使用 factory_v6.commit_physical 同事务写计划、物理状态及新增事件，返回成功后
+宿主才替换内存环境。失败费用及未知用量仍进入 metrics。
+
+JSONL 类型表集中于 EVENT_TYPES，属于待 Mac 验证的接口契约。并行工具不能按工具个数
+计算请求下界；未有逐请求证据时保守记“有工具的一轮 + 最后一轮”，不把它当精确请求数。
+工具数量由服务端限制，墙钟由 Runner 限制；累计 token 上限在会话退出时检查，可能有
+最后一轮超额。model_max_output_tokens/压缩阈值是待 F6 验证的配置，不能宣称硬计费上限。
+
+物理模块：env_adapter（移除 v5 批处理触发，新增 advance_cycle）、observation（原样复制）、
+factory_v6（私有 capture/restore/预检）、audit_v6（独立来源、账本与机会积分）、replay
+（仅等价性与静态分类）。适配器调用纯 executor 检查队首；不会添加或更改存储的生产任务。
+历史计划缺 operation_ids 时只在账本/资格检查视图补身份，不改提交计划。复制来源与哈希
+均在 isolation_manifest.json；snapshot 指纹按实际物理模块位置和 v6 源码重新计算。
+
+`registration_template.json` 是未授权结果的空跑登记，生产计划标签为“非模型、仅机制测试”。
+成本上限、质量底线和容差尚空；registration.load(..., results=True) 必须拒绝。
+进入实际 E1/P2 三轨迹试验前须填写并重新登记；S1–S4 另行授权。
+
+运行所有离线测试：`python3 -m pytest -q`。测试包含真实 Python stdio 子进程，但不启动
+Codex、不访问网络、不读取真实封存证据。Mac 入口与夹具契约见 MAC_VALIDATION.md。
+Mac-only 的 mac_probe 提供脚本化 loopback Responses 服务，不连接真实模型；当前未运行。
+
+限制：真实物理、tokenizer、Codex 配置与 JSONL 字段仍待 Mac 验收。完整账本 trace 的
+生成目前按事件重建公开观察，尚未优化成物理事件增量；大型工厂的单步成本须测量。
+独立机会审计证明公开输入的匹配口径，私有物理合法性仍须单独复核。CQT/Q-time 未实现，
+模型随机性不能用固定 seed 消除，组批变化会改变加工时长。空跑不能证明生产质量或成本。
