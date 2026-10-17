@@ -1,0 +1,285 @@
+{
+  "verification": {
+    "all_groups_reached_target": false,
+    "paired_randomness": {
+      "mechanism": "event-keyed processing/cadence/transport draws, not a shared mutable RNG stream",
+      "shared_operation_batch_keys": 40,
+      "shared_keys_with_different_random_durations": 0
+    },
+    "previous_files_checked": 17214,
+    "previous_files_changed": [],
+    "original_B_unchanged": true,
+    "source_unchanged_during_live": false,
+    "runner_unchanged": true,
+    "support_unchanged": true,
+    "resource_continuation_audits": [
+      null,
+      null,
+      null
+    ],
+    "all_inheritance_audits_pass": true,
+    "approved_retry_audit": {
+      "valid": true,
+      "failed_attempt_retained": "attempt:1fb3f2d29c414e4d89258dbf",
+      "unknown_usage_retained": true,
+      "source_checkpoint_unchanged": true,
+      "new_actual_calls": 13,
+      "same_model_and_production_rules": true,
+      "legitimate_note_updates": [
+        {
+          "record": "notes/current",
+          "model_updates": [
+            "attempt:57d4ec3401804088b001b759",
+            "attempt:2ba85fb3fff047808fce9638",
+            "attempt:02d6c4ede6874878b2accfac",
+            "attempt:37aed79e2f054439b23d35b9"
+          ],
+          "old_version": 6,
+          "new_version": 10
+        }
+      ]
+    },
+    "all_cost_audits_pass": false,
+    "all_production_choices_from_model": true,
+    "all_physical_prefix_checks_pass": true,
+    "all_opportunity_audits_pass": true,
+    "actual_new_calls": 72,
+    "cumulative_actual_calls": 84,
+    "unknown_usage_calls": 1
+  },
+  "groups": {
+    "G0": {
+      "cumulative_calls": 28,
+      "new_calls": 24,
+      "true_replan_count": 9,
+      "inherited_pending_task_dispatch_count": 18,
+      "extension_trigger_times": [
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1337.8412733326247,
+        910.117397147927,
+        1161.8061422329447,
+        1162.894538226919
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 8
+      },
+      "extension_window": {
+        "window": [
+          882,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 20,
+        "quality": {
+          "weighted_tardy_lot_seconds": 4558.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12170.031833315616,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 455118.1207204454,
+          "production_dispatches": 26,
+          "operation_lots_dispatched": 26,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      }
+    },
+    "G1": {
+      "cumulative_calls": 28,
+      "new_calls": 24,
+      "true_replan_count": 10,
+      "inherited_pending_task_dispatch_count": 18,
+      "extension_trigger_times": [
+        1162.894538226919,
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1337.8412733326247,
+        910.117397147927,
+        1092.1200000000001,
+        1161.8061422329447
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 8,
+        "plan_runway": 1
+      },
+      "extension_window": {
+        "window": [
+          882,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 27,
+        "quality": {
+          "weighted_tardy_lot_seconds": 4558.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12170.031833315616,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 455118.1207204454,
+          "production_dispatches": 26,
+          "operation_lots_dispatched": 26,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1092.1200000000001,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      }
+    },
+    "G2": {
+      "cumulative_calls": 28,
+      "new_calls": 24,
+      "true_replan_count": 11,
+      "inherited_pending_task_dispatch_count": 17,
+      "extension_trigger_times": [
+        1162.894538226919,
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1334.7854863566047,
+        1337.8412733326247,
+        910.117397147927,
+        1124.2122958692557,
+        1161.8061422329447
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 9,
+        "plan_runway": 1
+      },
+      "extension_window": {
+        "window": [
+          882,
+          1337.8412733326247
+        ],
+        "calls_to_reach_end": 27,
+        "quality": {
+          "weighted_tardy_lot_seconds": 4558.412733326248,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 12170.031833315616,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 455078.1052506393,
+          "production_dispatches": 27,
+          "operation_lots_dispatched": 27,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1124.2122958692557,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1334.7854863566047,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          }
+        ]
+      }
+    }
+  }
+}

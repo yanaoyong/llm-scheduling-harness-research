@@ -1,0 +1,26 @@
+{
+  "read_only_scope": "Owner rg/lines20-64 only isolated transport.py; no live B access. Prior dossier as inherited research. Manifest hashes do not imply full read.",
+  "findings": [
+    {
+      "ref": "https://arxiv.org/abs/2512.08296",
+      "note": "Owner opened current abstract: v3 Apr8 260 configs6benchmarks; old search snippet180/4 stale."
+    },
+    {
+      "ref": "https://arxiv.org/html/2511.03094v1",
+      "note": "Opened and located methods/evaluation; abstract performance numbers not yet fully validated."
+    },
+    {
+      "ref": "https://arxiv.org/html/2610.10184v1",
+      "note": "Owner located §4.2 allLLMcalls token/time,5incompleteWA excluded; correctness requires equal referenceobjective, solver generates assignments."
+    },
+    {
+      "ref": "https://developers.openai.com/api/docs/guides/agents/orchestration",
+      "note": "Official OpenAI docs opened body lines942+; manager owns synthesis, handoff transfers branch control, no factory guarantee."
+    },
+    {
+      "ref": "https://yuzhenmao.github.io/DeLM/",
+      "note": "Author page cost/task differs from cost/submission; selected10longtasks per2benchmarks, eachagent complete solution. Not B results."
+    }
+  ],
+  "not_selected": "MASC/MAEF/mechanism-aware JSSP publisher snippets are search leads; no performance conclusions without fulltext. F08 chosen for faircost counter-evidence."
+}

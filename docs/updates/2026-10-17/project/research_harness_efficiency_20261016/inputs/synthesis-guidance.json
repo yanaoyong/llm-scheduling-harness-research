@@ -1,0 +1,53 @@
+{
+  "purpose": "Owner synthesis constraints, not external findings or implementation authorization",
+  "priorities_to_assess": [
+    "先评估取数范围与事实访问：现有工具已支持多查询、字段投影、明确ID与JSON路径，不应描述成完全没有批量或定向读能力；需要判断为什么现有能力没有被有效使用。",
+    "候选改动一：让首次有效读取就可保留并复用事实；把上下文预算分配给当前决策需要的精确值。目录/索引和外置原文是恢复手段，不是自动恢复保证。",
+    "候选改动二：按当前决策窗口呈现近期资源、可开始/条件可开始的需求、剩余承诺与确切约束；缺项/不确定性显式呈现，不能由摘要补事实。",
+    "候选改动三：模型一次输出多机组多任务的有限计划，执行器仅消费模型明确提交的顺序、依赖和等待；工具单动作限制不等于单任务。条件计划的当前接口支持程度仍待专门核对。",
+    "候选改动四：在有可执行计划的基础上区分已有计划覆盖的普通完工事件、真正未覆盖需求、重大扰动、周期检查、到期；不能只延长有效期或用人为等待压低重排。",
+    "效率反馈应呈现本轮读取调用/重复读取/已知事实可见性/尚无提案等进展，但质量约束优先；硬迫使提前提交也可能害质量。",
+    "评估必须分信息体积、模型往返、生产重排三个层面。计划覆盖、合法率、任务完成/等待/加权延期与总token/已知未知失败成本并列；同输入同推进长度、保留失败分母。",
+    "短窗口适合定位首次提案和上下文失效；较长窗口需区分一次取数成本与持续每轮成本，不能只用一次短轨迹证明整体节省。",
+    "不默认追加在线评审agent：它也要调用模型；先评估现有确定性约束检查，再判断哪些质量缺口确需模型评审。"
+  ],
+  "boundaries": [
+    "No local quality or savings claim until completed matched-window trials",
+    "No production code changes",
+    "Do not treat inherited report as fresh run",
+    "No model vote counts as independent-source count"
+  ],
+  "additional_source_handling": "Owner OpenAI SDK notes are supplementary API examples, not a ninth decision-critical claim. If mentioned, identify as Owner-read mechanism notes without local performance validation.",
+  "source_corrections": [
+    {
+      "source_id": "F02",
+      "issue": "精读误将CHANGELOG顶部记为0.7.22",
+      "current_verification": "HE-C02三路核验实际看到顶部0.7.25（2026-10-13）；0.7.22仍在下方。仍未取得main文件SHA，不能绑定发布版本。",
+      "policy": "保留精读原文和更正痕迹；报告不传播原顶部版本错误。"
+    },
+    {
+      "source_id": "F03",
+      "issue": "论文作者的slightly slower不能被转述成固定的小幅延迟差",
+      "current_verification": "WebShop表3同500指令：GPT-3.5为10.48s vs5.98s，GPT-4-0613为26.73s vs19.90s；并非LATS50条子集。编排省去逐函数间调用，但工具本身可用LLM且每轮还有Joiner。",
+      "policy": "主报告直接说存在更慢反例，不宣传通用加速；若保留“略慢”须注明作者措辞。固定论文v3与动态main源码证据分开。"
+    },
+    {
+      "source_id": "F05",
+      "issue": "指定期刊PDF抽取乱码且截图不可核读",
+      "current_verification": "HE-C05原源和反证两路找到了作者实验室的可读39页稿 https://isr.umd.edu/Labs/CIM/projects/jos-rescheduling.pdf ，核对图1/表1/第3.1、5、6节。原CMU和出版页访问限制仍保留。",
+      "policy": "不同设计维度不等于相互独立：原文广义policy也可以指定按情境采用的方法。作者稿与期刊版同源，不作独立交叉实证。"
+    },
+    {
+      "source_id": "F06",
+      "issue": "h内开始才部署，不等于只承诺至下次重排，也不等于跨重排不可撤销冻结",
+      "current_verification": "HE-C06原源核验确认1.5小时视野/1小时重排及h内开工门槛；下一重排重新快照。不可撤销性是另一命题，论文文字未据此保证。",
+      "policy": "将规划视野、更新周期、部署门槛、冻结语义分别写清；不要照抄论文数字或推定冻结规则。"
+    },
+    {
+      "source_id": "F07",
+      "issue": "提取器把transport.py入口写成build_context，实际入口名为prompt",
+      "current_verification": "HE-C07三路源码核验通过，但第二次成功read_entities只是记忆候选资格门槛，完整已可见时跳过，超容量仍可外置或失败；contains为列表成员匹配。",
+      "policy": "纠正源码锚点，不改写原始提取。首读优化建议是可复用且按需可见，不是无条件把所有事实全量内联。"
+    }
+  ]
+}

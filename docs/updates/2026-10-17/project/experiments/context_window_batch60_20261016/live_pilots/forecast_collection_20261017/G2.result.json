@@ -1,0 +1,124 @@
+{
+  "group": "G2",
+  "head": {
+    "context_ref": "context:129c71456ab547ef870fc673",
+    "first_read_result_ref": null,
+    "phase": "STOPPED",
+    "previous_error_signature": null,
+    "previous_read_signature": null,
+    "previous_zero_signature": null,
+    "revision": 2,
+    "same_error_count": 0,
+    "same_read_count": 0,
+    "segment": 1,
+    "state_ref": "1f9c439e01b09fd17559b7f6758948e259f49bf4dba97205cb7f9d5d4569d90a",
+    "stop_reason": "pilot_evaluation_end",
+    "time": 882.0,
+    "zero_progress": 0
+  },
+  "usage": {
+    "actual_model_attempts": 2,
+    "offline_outputs": 0,
+    "input_tokens": 772100,
+    "cached_input_tokens": 0,
+    "output_tokens": 3318,
+    "unknown_usage": 0,
+    "reserved_tokens": 0,
+    "model_seconds": 98.28433116688393,
+    "pending_attempts": 0,
+    "elapsed_wall_seconds": 361.90238308906555,
+    "cost_usd": null
+  },
+  "attempts": [
+    {
+      "index": 0,
+      "attempt_id": "attempt:05d38ad2e2d7495d9de1293a",
+      "tool": "propose_delta",
+      "status": "processed",
+      "result_status": "candidate_checked",
+      "error": null,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 369921,
+        "output_tokens": 3196
+      },
+      "duration_seconds": 69.14859599992633,
+      "packet": {
+        "budgeted_input_tokens": 374435,
+        "demand_operations": 3711,
+        "encoding": "o200k_base",
+        "inline_machines": 884,
+        "inline_operations": 3711,
+        "input_budget": 440000,
+        "local_prompt_tokens": 364435,
+        "measured_epoch": 1792198244.164495,
+        "oversized_bundle_requires_paged_read": false,
+        "paged_details": false,
+        "schema_and_system_tokens": 1781,
+        "server_model_mapping_confirmed": false,
+        "server_tokenizer_verified": false,
+        "total_operations": 4349,
+        "wrapper_reserve_tokens": 10000
+      },
+      "transport_valid": true
+    },
+    {
+      "index": 1,
+      "attempt_id": "attempt:b7e3e4a0c06f4be38e1ef7ec",
+      "tool": "apply_candidate",
+      "status": "processed",
+      "result_status": "accepted",
+      "error": null,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 402179,
+        "output_tokens": 122
+      },
+      "duration_seconds": 29.135735166957602,
+      "packet": {
+        "budgeted_input_tokens": 406170,
+        "demand_operations": 3711,
+        "encoding": "o200k_base",
+        "inline_machines": 884,
+        "inline_operations": 3711,
+        "input_budget": 440000,
+        "local_prompt_tokens": 396170,
+        "measured_epoch": 1792198354.780682,
+        "oversized_bundle_requires_paged_read": false,
+        "paged_details": false,
+        "schema_and_system_tokens": 2416,
+        "server_model_mapping_confirmed": false,
+        "server_tokenizer_verified": false,
+        "total_operations": 4349,
+        "wrapper_reserve_tokens": 10000
+      },
+      "transport_valid": true
+    }
+  ],
+  "call_types": {
+    "propose_delta": 1,
+    "apply_candidate": 1
+  },
+  "model_commits": 1,
+  "production_dispatches": 11,
+  "committed_task_counts": [
+    12
+  ],
+  "stop_reasons": {
+    "collection_limit": 1
+  },
+  "backlog": {
+    "uncovered_executable_machine_count": 0,
+    "pending_demand_machine_count": 904,
+    "pending_demand_operation_count": 4348,
+    "uncovered_executable_machines": [],
+    "ready_wait_ages": {},
+    "accepted_pending_task_count": 1,
+    "active_hold_count": 0,
+    "public_operations_total": 4349,
+    "unoffered_operation_count": 660,
+    "last_batch_id": "batch-1"
+  },
+  "observed_seconds": 180.0,
+  "evidence_sha256": "7e4ffcb3dcda084a862cfbe5f221be44f54f6e78625cef260fe51ffae69c12f2"
+}

@@ -1,0 +1,3731 @@
+[
+  {
+    "path": "analysis/B_context_2x2_20261016/account.sqlite3",
+    "public_path": "analysis/B_context_2x2_20261016/account.sqlite3.public.sql",
+    "source_sha256": "a5286398192e4b9c3dc3e51e0afdbe3081a3b7f24eb5817f6c0d41bb472551b3",
+    "source_wal_sha256": null,
+    "public_sha256": "922c173c463cda08482f9e05ed5e5b9535d14b60a7b18d411ea24262ddd52737",
+    "tables": {
+      "runs": 4
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_context_2x2_20261016/runs/singleton_2403__baseline/events.sqlite3",
+    "public_path": "analysis/B_context_2x2_20261016/runs/singleton_2403__baseline/events.sqlite3.public.sql",
+    "source_sha256": "32c4ecd2b210a5cebb25ecddaa5f454441c5bfd13c8be777bacae7d3eaf1934f",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "c8aa3be2559e648d7953c40d9ce074e9f36e79fffcc65d7b3f4cafb3eebe0936",
+    "tables": {
+      "events": 429,
+      "metadata": 3,
+      "physical": 6714,
+      "records": 671
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_context_2x2_20261016/runs/singleton_2403__combined/events.sqlite3",
+    "public_path": "analysis/B_context_2x2_20261016/runs/singleton_2403__combined/events.sqlite3.public.sql",
+    "source_sha256": "160dec743bd1018145cfe575f8add29c2a246ab70287fb01805c5e46b51a6dc7",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "4de6ec8a086052740374fb17eeb32b092d78f97af06f6e61f4a2e3dd65f4d3da",
+    "tables": {
+      "events": 440,
+      "metadata": 3,
+      "physical": 6714,
+      "records": 688
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_context_2x2_20261016/runs/singleton_2403__filter_projection/events.sqlite3",
+    "public_path": "analysis/B_context_2x2_20261016/runs/singleton_2403__filter_projection/events.sqlite3.public.sql",
+    "source_sha256": "c07800fc13105bd118cae57e2889d7a9c91abac1252188d877f66b8711b49399",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "9daddfdd9e7d5902de6df7a5c214125c24c1f1663d73c5e3f19d82bcd840d9ac",
+    "tables": {
+      "events": 439,
+      "metadata": 3,
+      "physical": 6719,
+      "records": 661
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_context_2x2_20261016/runs/singleton_2403__targeted_recovery/events.sqlite3",
+    "public_path": "analysis/B_context_2x2_20261016/runs/singleton_2403__targeted_recovery/events.sqlite3.public.sql",
+    "source_sha256": "2caebea99947a7a489609f94e32a481a02e0262977a1b9feb64d9a813a957e8d",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "f2b3674c6b0d9a1f0b9d84c5b0ae1d2c917b57cc7ff3ed84e1e799e978832d10",
+    "tables": {
+      "events": 468,
+      "metadata": 3,
+      "physical": 6714,
+      "records": 744
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/account.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/account.sqlite3.public.sql",
+    "source_sha256": "70504bb88b369d6b8fc7f9004463021e111bc07eda56b21b722b51d5cae927c2",
+    "source_wal_sha256": null,
+    "public_sha256": "3966a54276ed4258236be82461258f319b512525181317b1f87f348d765463df",
+    "tables": {
+      "runs": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/mixed_702__baseline/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/mixed_702__baseline/events.sqlite3.public.sql",
+    "source_sha256": "ed9b5fea5c8d86bb4e75b17f6200bc5d473b24f4723b69f2eda78850af7362fc",
+    "source_wal_sha256": "c746a4fb39584a5709d68bd3048dc9c7994e1633872c8bdb5eed921b9dc4c99f",
+    "public_sha256": "95dac7c76815f8f54323b328db12364fb56230dfd45f323de06ccef36d5c24ca",
+    "tables": {
+      "events": 71,
+      "metadata": 3,
+      "physical": 5405,
+      "records": 115
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/mixed_702__prompt/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/mixed_702__prompt/events.sqlite3.public.sql",
+    "source_sha256": "929458371b0f915314bcad86065a000b0388c537c82d2b4dfbb61a36cc705424",
+    "source_wal_sha256": "470df2fbac6a84227804ac201795cf1a95f9c6dae1e2b6811a5d1ae53b6f7928",
+    "public_sha256": "4f9350a505998be7558bbb6b165d9a48df2fe75ee5862dda140e3018457461fe",
+    "tables": {
+      "events": 55,
+      "metadata": 3,
+      "physical": 5355,
+      "records": 85
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/mixed_702__prompt_context_feedback/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/mixed_702__prompt_context_feedback/events.sqlite3.public.sql",
+    "source_sha256": "241f374b453d7def6b9f4cc4d5d5622ca8a29c36238b79355d76794c80cddd57",
+    "source_wal_sha256": "31dcaa73e34d403c5b39a1bad837a4caa5bd571d6a7e47ffbbc4f84ceebfabe6",
+    "public_sha256": "ce5b9355e52773366d1f92844af34f4951784299c886665770f5bdf563f37600",
+    "tables": {
+      "events": 55,
+      "metadata": 3,
+      "physical": 5355,
+      "records": 85
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/singleton_2403__baseline/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/singleton_2403__baseline/events.sqlite3.public.sql",
+    "source_sha256": "023d183a2c3dfd97035e4ca801aa678ca16cba0ba6f291eab166cadc216870ae",
+    "source_wal_sha256": "126d08aa6ff836ba34b7e2bfb5bd4dc9614513d0a6ff6a035a80e55de1862cf1",
+    "public_sha256": "1240e866d98a333cb9c8f3353ac002ed569a3720b906baafa5cc8b8ab8f3d25c",
+    "tables": {
+      "events": 71,
+      "metadata": 3,
+      "physical": 6564,
+      "records": 115
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/singleton_2403__prompt/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/singleton_2403__prompt/events.sqlite3.public.sql",
+    "source_sha256": "293d3089e513f6ca39db3d6419fd0d1dfb7092d2a9d2d38a12352aefd9be24d8",
+    "source_wal_sha256": "f5b724ce326856fbb9bd40cb257f67cf3a5dd7650298d7064159eff42ddf92fb",
+    "public_sha256": "fc1a28b1afc9fdae4bdc66e0da0f7762149144b6803dec935d84d5be618eac40",
+    "tables": {
+      "events": 55,
+      "metadata": 3,
+      "physical": 6490,
+      "records": 85
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/singleton_2403__prompt_context_feedback/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/singleton_2403__prompt_context_feedback/events.sqlite3.public.sql",
+    "source_sha256": "df2fdddff81f3ee237f7c28a5961c798b336c262403640c00488e34bd30ab2bb",
+    "source_wal_sha256": "bf3feab8854271961aa27ba14c7d8439132d28a34f514d263140f75f961a7b12",
+    "public_sha256": "584e4bdd2a5636eb410fc7f923737c73fdd18d7a89dfe3ab27bd8e7b745688d1",
+    "tables": {
+      "events": 55,
+      "metadata": 3,
+      "physical": 6490,
+      "records": 85
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/transition_1800__baseline/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/transition_1800__baseline/events.sqlite3.public.sql",
+    "source_sha256": "cccddce4ed9c8c8669b3596663fca228a7d966d8b0e4395c5ee1c1c10413fd55",
+    "source_wal_sha256": "f4c84a22e6f279a9a56292a0ed579eb01a4bf4a154d1632e6b1d7e649bad8453",
+    "public_sha256": "31ea7c30e5eac13dbfe6ba2f861066c44488ec5a9ca8c64b4c45f75811cc3405",
+    "tables": {
+      "events": 51,
+      "metadata": 3,
+      "physical": 6054,
+      "records": 86
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/transition_1800__prompt/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/transition_1800__prompt/events.sqlite3.public.sql",
+    "source_sha256": "6547d2734c190e4acab76b7566f5740f5d30815d367f9576114bf20b4f56cbe3",
+    "source_wal_sha256": "87c77cc26dcb87a3ce6aca6ad90e718322d711f4272e53584473ff9f449c762b",
+    "public_sha256": "2a0913207a3f08b884fc1e9d7dcbd743bafb5e25389f3ca92539dfacde3f80ce",
+    "tables": {
+      "events": 47,
+      "metadata": 3,
+      "physical": 6050,
+      "records": 73
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "analysis/B_coverage_ablation_20261015/runs/transition_1800__prompt_context_feedback/events.sqlite3",
+    "public_path": "analysis/B_coverage_ablation_20261015/runs/transition_1800__prompt_context_feedback/events.sqlite3.public.sql",
+    "source_sha256": "75ff8fa30d53521555bc1ff02a0cf05e19b8f63939e1f69818c69c4d058ffb4e",
+    "source_wal_sha256": "d7623d671689a102fa0d65d469bd1b3ab0d18ac023ade636fd7199af0ce61bda",
+    "public_sha256": "1a2cefbb56d6c44fed97213480426b813add0c8b107080e8dfadabac9009cacf",
+    "tables": {
+      "events": 51,
+      "metadata": 3,
+      "physical": 6050,
+      "records": 78
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_astra_B_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_astra_B_release/account.sqlite3.public.sql",
+    "source_sha256": "252ddb194c707e7a37ecf4bf46649b43e8197bcde73b9955a0f2a734d6ffc2b6",
+    "source_wal_sha256": null,
+    "public_sha256": "5b565184bb8cc2c9cb00fb0c2835db021ef4042ef0d5196da849ba3f96fb77e1",
+    "tables": {
+      "runs": 1
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_astra_B_release/runs/B3600/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_astra_B_release/runs/B3600/events.sqlite3.public.sql",
+    "source_sha256": "42f67cde08aaa4db17432058fdd3521a7199a1dfd4afe740ca486d6b49226302",
+    "source_wal_sha256": "1df433fb7847c3ae5150af4c6cc94dd0eedd467d5752f7d1bcd50d080d948868",
+    "public_sha256": "8b6ae44b38af2665f2fc6813c545e779c6836f498128f279a441546490aec18e",
+    "tables": {
+      "events": 56,
+      "metadata": 3,
+      "physical": 4471,
+      "records": 83
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_astra_TUN_B_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_astra_TUN_B_release/account.sqlite3.public.sql",
+    "source_sha256": "230fd732e15ad264138a843538a7823c82f3cf7665d1147435bc38476fc22e6f",
+    "source_wal_sha256": null,
+    "public_sha256": "7aae2e01d089ac229d201ad27726ec977c2b02038239a5f528901e6ff932ebd2",
+    "tables": {
+      "runs": 1
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_astra_TUN_B_release/continuations/B3600-no-exception-quota/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_astra_TUN_B_release/continuations/B3600-no-exception-quota/events.sqlite3.public.sql",
+    "source_sha256": "cb610ffc4bbbe3eb421740bef7263391b68098142998282ae64418575868febe",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "37732248105e70b57848d5e6fd41bd235a6dd0045be2a955222f9f30443cbf6c",
+    "tables": {
+      "events": 4121,
+      "metadata": 3,
+      "physical": 7507,
+      "records": 6580
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_astra_TUN_B_release/runs/B3600/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_astra_TUN_B_release/runs/B3600/events.sqlite3.public.sql",
+    "source_sha256": "42f67cde08aaa4db17432058fdd3521a7199a1dfd4afe740ca486d6b49226302",
+    "source_wal_sha256": "fa53613e44872b12ad56c88b17009484e3b6696dc34671e634e76875a284b8cb",
+    "public_sha256": "1408e651cb63c3ab73695c051ffb95ff1e6c9e14cc27ba76f21c7a2bde19d3b7",
+    "tables": {
+      "events": 40,
+      "metadata": 3,
+      "physical": 4480,
+      "records": 59
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/account.sqlite3.public.sql",
+    "source_sha256": "eb5a13e2bef5487df9548f63fd57395049b5ecb7ac01725dea045676d403bf82",
+    "source_wal_sha256": null,
+    "public_sha256": "42cdcff0279c3f2271a18234d733f3dfc17f3dafe91e96b5e1401a9723ea06a6",
+    "tables": {
+      "runs": 21
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/continuations/micro-12-count-advisory/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/continuations/micro-12-count-advisory/events.sqlite3.public.sql",
+    "source_sha256": "962b0a8d1da87a5e4e2dafbdb955a6d8681d0950cbbf6a6f364289f669ba8323",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e95f6f64cf38d482b6f8ea93ba142a6f242fe186759159faf63fee8a38690007",
+    "tables": {
+      "events": 33,
+      "metadata": 3,
+      "physical": 6051,
+      "records": 36
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/B3600/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/B3600/events.sqlite3.public.sql",
+    "source_sha256": "42f67cde08aaa4db17432058fdd3521a7199a1dfd4afe740ca486d6b49226302",
+    "source_wal_sha256": "a184c9c40dbcb8077490dd3e34979af21fe09075c54bfbe72ab3c4ec83297501",
+    "public_sha256": "5b306ad062dae58b7dc01fc38776ec718e8e807332211fcde2724e5da057a717",
+    "tables": {
+      "events": 76,
+      "metadata": 3,
+      "physical": 4486,
+      "records": 115
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "1870101c8463297ae2d03016da89838baaa6adbe93364fba5de9d454768b7593",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "8b3a6c2867494ba78d93522f863e1bb710b598fa492d58d802264fc68e832a02",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-02/events.sqlite3.public.sql",
+    "source_sha256": "7511af430b35eaf7dabd4fcbce7b7410098e1acf652c5a7371ac394eab819414",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "2691883990125cfbc531c5abc644d6849e463b45cb5bf7ac0013a6b4ff443006",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5723,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-03/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-03/events.sqlite3.public.sql",
+    "source_sha256": "2f87413269903c9059fe53885a4d1a874db7c6c6925de7332ec1a7c3ce4d68f5",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "77ec858f22d59d61b0c434f29e7352658d41b61bb83a77fa9281ec0473fc346a",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5744,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-04/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-04/events.sqlite3.public.sql",
+    "source_sha256": "befe517a0b165aaee5adea8e377d0123c734815c5009ba1f286cdf1fb96ac31c",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "75a7408b3977321927778bff42c2029425772b2cef4828f3e51f3d07782ff13d",
+    "tables": {
+      "events": 32,
+      "metadata": 3,
+      "physical": 5750,
+      "records": 47
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-05/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-05/events.sqlite3.public.sql",
+    "source_sha256": "6050a2e8a4a69db42a5c205fba504cc609064cad335ca6628472cd6d5f4c6354",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e8439a0868f4816fb0a890226225b31e52ddffe22facfcb5d5cf67f4142a2670",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5764,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-06/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-06/events.sqlite3.public.sql",
+    "source_sha256": "9f1093b279793f5de2b101347e47cece89aa83dd7f43b5f33112a041c74b48a5",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "8bf6e740d212c6040f6defdd2c9fb7b96462e7aeebf6cea36526d3f0f787afe2",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5812,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-07/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-07/events.sqlite3.public.sql",
+    "source_sha256": "5e55b9baaf00be62e0e82aa58e78b9c3cafbc73ca0e41b16740319460fbb42d4",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "8b9a5fd685f370f2f2f6e0fa8dec29a935abd54adfd588b1b7779abee8257d02",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5825,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-08/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-08/events.sqlite3.public.sql",
+    "source_sha256": "a92e4ef9c9fddde58f69faaaa930ea6578226073aa62cbc03881996064085289",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "b25eed654744f9af338ac9ebdeb0a17ec4d7f083560ab6f4140851f6a0dcd5fb",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5828,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-09/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-09/events.sqlite3.public.sql",
+    "source_sha256": "15a43b200c85034a714b93af8a60e81e27b496081cd1457707c99d4bd32abb97",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "63545bc51b433273ee8849f84c7938270380f07ac7aa326b3fa38bc42c93837a",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5898,
+      "records": 32
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-10/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-10/events.sqlite3.public.sql",
+    "source_sha256": "4ae01fe0bc1d6e593618f16c24f7dc7c8385b53660de87c8b37d924670043617",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "c92997471986d6ed3b598dbc86e347cb08f31b39bf6f3335ae0bfedc7ebe9653",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5954,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-11/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-11/events.sqlite3.public.sql",
+    "source_sha256": "b273151833585ac31e4280aa84f84a355515c968afedd6ae010af942ccdc9992",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "9cd70823c906e84137d1b4feab6480f88ff14beca56fcececd1f81b0d7f39fd2",
+    "tables": {
+      "events": 32,
+      "metadata": 3,
+      "physical": 5958,
+      "records": 47
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-12/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-12/events.sqlite3.public.sql",
+    "source_sha256": "06dd37b7117be36185ed89a7e776eff8be375ffd65165a0735d4acb9b75ef8b7",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "41b1a17e662f9adee65e58b1a609d65853854a7354cfe97da69fbda3d365fe8a",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 6004,
+      "records": 16
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-13/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-13/events.sqlite3.public.sql",
+    "source_sha256": "6e899f9e0a33e6509a7d0793b8965a1ee4431450f6a81cad94e84733a71a86fd",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "7cacfcc58a9843d992e15687a39e9adb4522abca2d17f744f3e251f0d9cf1421",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6069,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-14/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-14/events.sqlite3.public.sql",
+    "source_sha256": "2d7ab7a570a1369c1a89210aa05c0dae52f77cd8eb19d5ffcefcbc9196e2fa95",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "c84028767f97ad8167434712e3dbd12fd0eefce227f99a9326163ca3464a8b61",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6103,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-15/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-15/events.sqlite3.public.sql",
+    "source_sha256": "e233dd7622a91f8da3f6668f6247c936ada531e154bb04f0b6db4aaae620aa7b",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "956ce0acbcdc8a9c6897745419f6318db231cd875651c3af4975515a2001e65c",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 6107,
+      "records": 32
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-16/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-16/events.sqlite3.public.sql",
+    "source_sha256": "aaddc3613cbafa3dbde8ec7c3ce895ba3fa8745458b6e7faf6e3028ada6ba093",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "eed38eaa511aadd9c458abcd01ae6423fc27746ed57d7ce35588fd2a9f6028f3",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6250,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-17/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-17/events.sqlite3.public.sql",
+    "source_sha256": "7f69a56d193ee0e8d3f31c57324a6663e38e35bdb109893e6ef281d861bbde16",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "dfa58318f150442838bbf99765cc29347077160496a167262eaa9ce4a5988bb8",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6252,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-18/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-18/events.sqlite3.public.sql",
+    "source_sha256": "78bb8a7bdd6e001c46b4bdf1560c0eafa5628b09aab051e35cf4d3133a135ef7",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "8bf85a8309e6028bb1f3bafa9209e09d6ad8641f17ee0fdfe3c99719ff383f42",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 6260,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-19/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-19/events.sqlite3.public.sql",
+    "source_sha256": "d299528cb719e16b94cd3c161732b0f37d5dd0275cd1e6ea5a7f9c8dc48c9573",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "62c88cf8d9912921a0188a081bd1c9f1591f80749eee5b92cb9467a250325732",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6274,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-20/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_feedback_release/runs/micro-20/events.sqlite3.public.sql",
+    "source_sha256": "aa91452e289849fa37302ac4daa358c35a785b6569fa884bd21a9dc581eeedbd",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "0505a913d6fc07f2dd75d5f7e5ccb9f41ad433b8ff7044b10bac336119d907cc",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6315,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/account.sqlite3.public.sql",
+    "source_sha256": "3968df456e826d12700e718e2a20e39182d90c2c3a29de5ccd39e056da99d722",
+    "source_wal_sha256": null,
+    "public_sha256": "1be46a26161f154005555633c8fc733351e2e1a89c1b7d10b100cb5b653e8fb1",
+    "tables": {
+      "runs": 12
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/continuations/micro-20-limit30/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/continuations/micro-20-limit30/events.sqlite3.public.sql",
+    "source_sha256": "69c0ad17c103bebfe82f28265e69315eb83ced77f68b72d0928e0eb948aefd32",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "64f9de13196b4788297f27a9ce8c08e52135493be4f8dccc025bc84162ef5fce",
+    "tables": {
+      "events": 38,
+      "metadata": 3,
+      "physical": 6274,
+      "records": 44
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-08/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-08/events.sqlite3.public.sql",
+    "source_sha256": "4ea39097e547310bdbf5c5acf211f945c73099cefa0bf16c5052983769797533",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "389c316be9d5d888c8ef8aae9fe75f324a499a4ee5ae7991ecbe5d00b1b285c9",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5828,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-10/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-10/events.sqlite3.public.sql",
+    "source_sha256": "72bd573348f2361fbbf8a924e9c161d02507f3dad7bc17b57546b8b8b8606445",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e31a93be586eda55e182f4bd5116396d20508c3335eac3c9cc84faf227784bf2",
+    "tables": {
+      "events": 28,
+      "metadata": 3,
+      "physical": 5922,
+      "records": 38
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-11/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-11/events.sqlite3.public.sql",
+    "source_sha256": "2566c5ad4464e88453aa0438f3f93fdaf7be240167b4e72310f8d3347ab625f8",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "a8e4bef009f50bfd93ec6440dc7ecd6b7b1d10fc9f0cd892e796800c76df5323",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5928,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-12/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-12/events.sqlite3.public.sql",
+    "source_sha256": "9a8ea455d881cbeaa0f4166b57b8256e49c1d95f06efaa9a0814dde035655457",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "65eed91e91a9f1f9fdeff6100dcd7c00f0b8e71d264297d79d2de6df2c5a0824",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6051,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-13/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-13/events.sqlite3.public.sql",
+    "source_sha256": "d644a64fc041e64b3ce0296217886c4cfde40ab3173c9ebdd6479e69334a9889",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "3d41bc367adaec06fbe4eea7e7c0e9bb65bd461c6e660b5076a2ff07fff0f2b5",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 6069,
+      "records": 32
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-14/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-14/events.sqlite3.public.sql",
+    "source_sha256": "1017a397556a75d1a2cd6fa2e34f61065db8cbe4c69cc7a2021d73cd7e0a1dbe",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "9a3e07649e89ee64454f8cc46afdd078b37b80fa26a7f7cbd58439f0426e2c96",
+    "tables": {
+      "events": 32,
+      "metadata": 3,
+      "physical": 6103,
+      "records": 44
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-15/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-15/events.sqlite3.public.sql",
+    "source_sha256": "53a3e684c9c927b6b06d4ffc53d326d5743281147a943c804ace170a2836d8e8",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "38288b3528ec7ad134fc7a794e5612696b09bddc441516f26f82d0409a2f7404",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 6108,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-16/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-16/events.sqlite3.public.sql",
+    "source_sha256": "38f4954e28c6e5da4a9c256f40937a39da8b7128507b6c0ea62e87e27890dd95",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "12f6e5326036fd2d6a80c951f6b5fed2ed4bb720d14530a2436b6635e5503cc9",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6250,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-17/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-17/events.sqlite3.public.sql",
+    "source_sha256": "aab363c99a73f08147ced01f565c22e648f93df0990e27416e90acb851245ff9",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "ff3b342500605b048ebe31408623d7a39b743a7a7d06757383ccafe27c81943b",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 6254,
+      "records": 32
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-18/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-18/events.sqlite3.public.sql",
+    "source_sha256": "f2f26fa86c43980ee1599e2d7bc3223579c3087acc7f8a1e426a2cf23bd86c1a",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "28eba6163c495d03e49dcc378243b8fd41b2fc2fd1f0f8d81f370d8db0fb7608",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 6260,
+      "records": 32
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-19/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-19/events.sqlite3.public.sql",
+    "source_sha256": "406e4f89ab3bed4c3175ca4bd2cf5ff3446ad4e7e7d482c9b4514dea549cf0d9",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "77267d2238b941b32873339be1fdc460700f77966a99d927a0b1551c4c4237c4",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6274,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-20/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_sol_release/runs/micro-20/events.sqlite3.public.sql",
+    "source_sha256": "763966393805820e33ce151a441d3e20bd93c46fba522d6965bf2ced04252044",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "4b7b429e3518bcd51e6f73cce702bb9d999b22b0e4c6c4848329ce03570f87a2",
+    "tables": {
+      "events": 7,
+      "metadata": 3,
+      "physical": 6274,
+      "records": 7
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/account.sqlite3.public.sql",
+    "source_sha256": "fb0f55045af9814b387b59af2c01962bf3cf6fe03c79fe536fa11395fed2eec2",
+    "source_wal_sha256": null,
+    "public_sha256": "d714c080a2b66a5d41d251de7e25c975f22d606b75deeb671d0806aba56f80e2",
+    "tables": {
+      "runs": 20
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "9000f27184442c99d9ee34fb0b861714857948df213f4d68bb86428fe59d1d7e",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "01b4ca8fed19cdc2a621444cf6841d5053122bd496b92fe16d292e5e084b94cb",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-02/events.sqlite3.public.sql",
+    "source_sha256": "de725c38b77ce8ac8aff8a225fe87cd3dfe375016ba2348f1a967bd25537ec99",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "6ac1c5b670cd2934027247c6a6bb0a30f4bcbabcd498e08d29bcb33d31af0e96",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5723,
+      "records": 32
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-03/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-03/events.sqlite3.public.sql",
+    "source_sha256": "643b4770e6a3ec268fb56ecee582cab14ce0b87e9af6f78649e645bf3cd180b0",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "c5f82b97c666e3c3f7c712398f2dd9ea44f41d00d1dcc13dd7914fbe250c3c08",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5744,
+      "records": 32
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-04/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-04/events.sqlite3.public.sql",
+    "source_sha256": "162fe7bc75fa0aa5f4888b3de88866ceb368f5965cb5bf3ea29a32343dbef0a0",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "27f3071007b112a40bed78a6e3fd03a7ba83ff0df3fb2120ee83d9c8965e7cd4",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5750,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-05/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-05/events.sqlite3.public.sql",
+    "source_sha256": "53c602633eebbc46ba16126680c1792c842e2d1cf39fb2d57226dc02faea5ec4",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "62edfef4d66e5d1ed6770261859c475a2b3914e0d7196141bf24f6b5be51a64d",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5764,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-06/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-06/events.sqlite3.public.sql",
+    "source_sha256": "7f944faebe0b5ba4140e932474ff00452e2d8b69fdb878fc08e5abcd4b85a4d7",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "d475fa85db98c3b650dd4652963f6b87a21334e358ecb2345ff7d0174ac06efd",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5813,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-07/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-07/events.sqlite3.public.sql",
+    "source_sha256": "bf28fc8cf5fd63bdb3a85b277d37cec18c3cbc44e9ab37fa7fb5b6a7e6c261af",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "d83d184f03b2535f6356bb52ee5e7bb8b2d9c129f5a1b97d6697759dc1f3c60a",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5826,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-08/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-08/events.sqlite3.public.sql",
+    "source_sha256": "b9b2f927301f7cd2a8b665fb787d98b15851bfb048a2d6338d776e42e3e6e137",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "0ef5199f74697df673192be1513a02eeea93bca8b83ffaab0c2d65fbdec440cf",
+    "tables": {
+      "events": 28,
+      "metadata": 3,
+      "physical": 5850,
+      "records": 41
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-09/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-09/events.sqlite3.public.sql",
+    "source_sha256": "b4c74f414b7869945fee074081df70c43ffe7e5d9f13d195a8816fa9a347ec2b",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "9b6af6fafec36237bf02fe554403818863e15018c3fb4d6247980511bd7d30af",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5898,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-10/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-10/events.sqlite3.public.sql",
+    "source_sha256": "c91cdddd15df233cc6ad7189b404ade7bbd2dd587112ac6cdb7bb91a9effd37a",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "3d76d896a62c6ff916824e7655fded95a433428aaa67ebe968f42a7b01cd0824",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 5898,
+      "records": 28
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-11/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-11/events.sqlite3.public.sql",
+    "source_sha256": "a6ab8363f6807025933f372bf91efcfa54cc202d3c68a9970219c1467633d7fd",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "2990a5727d926b947ee30d5caaa626ba53ce9e2ec1da5c8c5464087381f8facd",
+    "tables": {
+      "events": 32,
+      "metadata": 3,
+      "physical": 5958,
+      "records": 47
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-12/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-12/events.sqlite3.public.sql",
+    "source_sha256": "9c37334ad8d92446e2fe5b374a25210e4c6827b5c667e5683d54fec1f0b2f621",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "2c560e0ce5be242d9f7c0f981af65dc799a3ddb2fd19ffbd646e0beb65d1fee6",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6051,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-13/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-13/events.sqlite3.public.sql",
+    "source_sha256": "d82650b8100175986e1ab2e34db6b9ba488824c75293799ccdac748d21b3d27e",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "87f18d78f516f7e03687ae2aefebb956737588bc1c07211deba2775e7bd87fff",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6069,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-14/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-14/events.sqlite3.public.sql",
+    "source_sha256": "4348e5a554835a32b0b23344a39498898842535d0bbc763425d258efc20563c6",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "6cc931bd055da1ecff6673e5134f07b24b55662d3e0d15a3cafef094037f2c15",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6103,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-15/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-15/events.sqlite3.public.sql",
+    "source_sha256": "d34ef35df1c8f589244e3879eb9de4c1d279111eef98ba47ea204898cb22170e",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "ff856219fd018164d94ea52d94bdd02b176820dbc2f53b134f8fa842b00a7b9c",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6108,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-16/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-16/events.sqlite3.public.sql",
+    "source_sha256": "6072d139f84efa49471a15aad564183066e7b2732bbd61a234ff104364bab901",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "5c27c918f8c34de2f7fd8ef88871880479fa761a4866c9a9318422b86921ef40",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6250,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-17/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-17/events.sqlite3.public.sql",
+    "source_sha256": "0f373904b4e4044e18def7ad9791257f4dea8a82fa2d176f49bd872fbf2768e3",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "7b76b6a2d067cf154e19886f62608cdc793c0bfb636101ba885fa286416d64be",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6254,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-18/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-18/events.sqlite3.public.sql",
+    "source_sha256": "5f80d301ce3b2265bf695aaa0564fbf6c5d691bb9fe6f039dbe0ccf18509690a",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "b206ca03b004f8a9217c3ba8cfcb6866d63a8d9c66f9be0b04753626f5c943b4",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6260,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-19/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-19/events.sqlite3.public.sql",
+    "source_sha256": "f234e3f4da645481d6f92541858aca783b662d92138334c0cc03ed8a2471ed36",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "063331b7192c7bb0dc169407bc8396aeb00fb8b26db3eaa65cfc8ed297c61b97",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6274,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-20/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_10_release/runs/micro-20/events.sqlite3.public.sql",
+    "source_sha256": "728465d3a73fd5217c9700ab20925f00dabd262068bbb41c4ad4873c1d347f9c",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "0db85bc1b8b2a79d0e82ef9004b78c0b2e25936d5f657ffe58cdd9e662cb2ab3",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 6316,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_1_1_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_1_1_release/account.sqlite3.public.sql",
+    "source_sha256": "c8374dc18ac32856e15c71827caa7ecf35d79355e8ad27836980d582f56a0f37",
+    "source_wal_sha256": null,
+    "public_sha256": "227923f14f7d8a52f9242db06759fc9a440b589a52b6c2868b836eda57659de1",
+    "tables": {
+      "runs": 1
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_1_1_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_1_1_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "c9d5ec1956dc8de7218667aeaac689cd05ac49efb521ea920b02e76c55604c84",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "f467322bfdd7ae0247d9cecc745e61af4cbb441d1f48f7c741320e40fbbc76f4",
+    "tables": {
+      "events": 16,
+      "metadata": 3,
+      "physical": 5696,
+      "records": 18
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_2_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_2_release/account.sqlite3.public.sql",
+    "source_sha256": "46f2db6246557848d92a9442e8914d78be553bd9eccfa5a6724d3b5b38ec6c94",
+    "source_wal_sha256": null,
+    "public_sha256": "bb6ea8375ad14b8fcfdd86d517c5fac467613b869d3e79dad22f134d08e0f99f",
+    "tables": {
+      "runs": 1
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_2_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_2_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "d327ffa33fb6eedde39d939e7655acbfc7e01c10ca0b66e8c6dc13d75374a095",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "8a6a1a7ebf8c820e509a2e30ec333eeb403c2f2be0ac08d7a792042e4cef6af1",
+    "tables": {
+      "events": 44,
+      "metadata": 3,
+      "physical": 5696,
+      "records": 66
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_3_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_3_release/account.sqlite3.public.sql",
+    "source_sha256": "a77bc9d878f42afac3c89247a8006e42a10b06af7298f9934e39cd1bfcd03cb0",
+    "source_wal_sha256": null,
+    "public_sha256": "bff3ccfd8c8a12b41abf633398d2fbf9a0b5c73c98fe3bad1d031b07db0d3120",
+    "tables": {
+      "runs": 2
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_3_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_3_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "b6e333e42edbf90f6ef197533c4dfc604cf0c4e3c30263a615bc2bd41d9be1da",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "8d58f5bc21e9568fcc6463747de699fec2ed355ce72e810586d7e2f93134a9f1",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_3_release/runs/micro-02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_3_release/runs/micro-02/events.sqlite3.public.sql",
+    "source_sha256": "1f81674fd7a2174c3b8dcfa318cc9657554071e304436aead76a1172d9e589d3",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "ed3113af630ca330211a4e9f03edfa98dc4a53a94ce6d874e6bbeaf0184dcbc2",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 19
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_5_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_5_release/account.sqlite3.public.sql",
+    "source_sha256": "46131f6ae0db4e99c9e0257fe95cd872c77cc5c0b6e715d76f63bbde96265c1f",
+    "source_wal_sha256": null,
+    "public_sha256": "7bad6cad347311bcb2d0a2e986c8a98eddcbc32bcadedab5a900a3cc489e5ecb",
+    "tables": {
+      "runs": 1
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_5_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_5_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "c8a62a2aa180d527696eb648d2f4a0a1b3168a414d855379ac073770d4d196fb",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "0f9e658a3a3de0becfe80216198f334aa9b7f35c896ee34d491d00e9782db57d",
+    "tables": {
+      "events": 11,
+      "metadata": 3,
+      "physical": 5696,
+      "records": 13
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_6_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_6_release/account.sqlite3.public.sql",
+    "source_sha256": "43a2c8bd5b727356e88ebfd511d760d71c18807d16f748c34243cb50548763a6",
+    "source_wal_sha256": null,
+    "public_sha256": "c1b547eab6008f9a606841a08b39f062d8d401be546695e09f4be15a6212bcd5",
+    "tables": {
+      "runs": 2
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_6_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_6_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "b8e7c4b008652fa0eb102af4a04efb0b895ebb9f0269abf0fc8ac5c21a6806e6",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "bfc52447f047e914584d9c0c5456e7465a2dbe490fa40bbc297d84e1320a7660",
+    "tables": {
+      "events": 32,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 48
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_6_release/runs/micro-02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_6_release/runs/micro-02/events.sqlite3.public.sql",
+    "source_sha256": "84864f3e78dbae6fa1327d1a690cab6b066db92116d1723f8c654434827b3d4f",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "227ee70af845d86892c40e92cceb886a2f3abec5aecda71edccfb53d1573eacb",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 28
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_7_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_7_release/account.sqlite3.public.sql",
+    "source_sha256": "1453361d65f45f1acf308fe0111d1a6399630e0a2bec168a4c02c16934e37a82",
+    "source_wal_sha256": null,
+    "public_sha256": "e0d7e386a2a9be75bb67d014a2a439f4abb3a3cf143e4f79ae9bebacae878452",
+    "tables": {
+      "runs": 3
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_7_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_7_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "12c6aba13b46167c6cce8948203c61a1d4ec75c351af085c412ca011de3ccbe7",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "a3709a8e83c060f938cf86aca5a9f16a422e1c1ea8a38862d0f0fecb71735b59",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 28
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_7_release/runs/micro-02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_7_release/runs/micro-02/events.sqlite3.public.sql",
+    "source_sha256": "f2545863604c335f345f96ea76ea937152f41ac7d12614e3099f49f2118ee624",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "9bce9600d5dc9ac0130109582073a81683d57313cfd16834564333766e0c6278",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5723,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_7_release/runs/micro-03/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_7_release/runs/micro-03/events.sqlite3.public.sql",
+    "source_sha256": "176ffc9c661af2a6a0203e55a0750fd39c0bf7870967b0b1d095986e8d66ff09",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "d90ebcec5f1fc40c48d54316e0110104e6e59ba8fb5e405cdc9c271f4252e22c",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5744,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_8_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_8_release/account.sqlite3.public.sql",
+    "source_sha256": "0d05c177b154ae5cae3c79853907920ffa6c5fa5e3cb06545e156af6c2ede3fe",
+    "source_wal_sha256": null,
+    "public_sha256": "7c455feedba73621bf7adc28bdebf97b3ee1395b84ab4ab933ef68b69f375c59",
+    "tables": {
+      "runs": 2
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_8_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_8_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "1291e8f7d6e24bd7f1ee15365f8232b847638aa9d1aca293d5bb882a50dc67ba",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "c98f85d38d78304861a9d9142f5902894d31d2e4020bbfcf4b90228c50c3b80b",
+    "tables": {
+      "events": 28,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 40
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_8_release/runs/micro-02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_8_release/runs/micro-02/events.sqlite3.public.sql",
+    "source_sha256": "4b3057225832372b7af25463f1e4d578a883d55e0da0356eed176f27137abdd8",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "dc479fd144aa2b71e6eda2477e9bd2adc7393c577844a78e34180b4327b28c83",
+    "tables": {
+      "events": 41,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 66
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/account.sqlite3.public.sql",
+    "source_sha256": "42690510f5d3c49da934cd3ffa136be243a709fcca0774ccbde42ee02c66f436",
+    "source_wal_sha256": null,
+    "public_sha256": "6b2ffe618fcbda89bf483b375781140d8628b44e86cada8789b8c37341f5aadb",
+    "tables": {
+      "runs": 11
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "ab3f7c64ad7516c6c47b2778a2aa1a160e827470a031f3d1ef11b642005308e8",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "427f81ae9b5edd20507f87bc1031f9fbec74532d672bcc6f4c1b3bb131de2f1f",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-02/events.sqlite3.public.sql",
+    "source_sha256": "4cc2d99027e88e94df9b0be5886c0cfd3329becb20a96dd1f9a47fbf14b7cdbf",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "11980a3fcd38b60ecdbdb01addd9f3d3b6e474076e086323ac337f27e8ee741e",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5723,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-03/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-03/events.sqlite3.public.sql",
+    "source_sha256": "ce4bec227c61a23384530539e771e976c30752fc8b64557c97fcd5bcb344e522",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "4629e619e551f1fc79b2e56c076629f36da437ef9893fb9f90d87544f5701ffd",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5744,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-04/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-04/events.sqlite3.public.sql",
+    "source_sha256": "b9591824c718e1a1e32037047d407529387213a326de8ebc64008b1c1e0282e9",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "a67ccaed505e9281eec41bb53b2e0a4098dc0080c949eb1ff9311e624c35fe4c",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5750,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-05/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-05/events.sqlite3.public.sql",
+    "source_sha256": "ff21acb9b0a41d34518760bfa88807eb91f8b4d5eb9d45de1ebf1aba13691e3a",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "712d7df23b5559b5aa7bc9a646a6e390a4939e6472a3f39ea6ba5bbd0e0ec878",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5764,
+      "records": 32
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-06/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-06/events.sqlite3.public.sql",
+    "source_sha256": "cdf067049a5953ea03b05d5bd6032befca7c6bcab5319bd352ba44770711792e",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "f9ed1611e9a9890bfa660e83eb7f0aa908f21b3d96e5ed9ebbf66a56351963c8",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5812,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-07/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-07/events.sqlite3.public.sql",
+    "source_sha256": "cc7abc7200b2ce88c3c413b7c0304a8bd3a69fed06a49f8d34d60570dd857ee9",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "4abbaed951ba7f213f89ddffdf07641b9dea73ac913ef281f18635aeda4bf670",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5826,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-08/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-08/events.sqlite3.public.sql",
+    "source_sha256": "5ab00155852064578524697268ace00b2a7861467825576ccd6dc0fb99c572b1",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "80086b7d2a171771519d784b6ef82e3cef81d855b1e45672ea1ade6b92196294",
+    "tables": {
+      "events": 44,
+      "metadata": 3,
+      "physical": 5850,
+      "records": 65
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-09/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-09/events.sqlite3.public.sql",
+    "source_sha256": "6b6c1dd8670260fca7f9f5a09265a230362ac9741220113b9e387bb21630ac3f",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "369ee1712fba765eed82ef25ee02255a6247a4b42e50ff63f9f1ffcba248a476",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 5898,
+      "records": 29
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-10/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-10/events.sqlite3.public.sql",
+    "source_sha256": "ca1a1957e40b078cda46c2157f1d1f7972e1ebe2700990740bc570e699ba15dd",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "41960df1681dda066a40cd0a6ad702111c25d29bff2dcee386dfae409ff8c676",
+    "tables": {
+      "events": 24,
+      "metadata": 3,
+      "physical": 5954,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-11/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_9_release/runs/micro-11/events.sqlite3.public.sql",
+    "source_sha256": "2bae41ece526f10bde931f2cce1e9114f33e81c75913832d62f7ebfc1b3c8dad",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "6abc0c379f00004de7d558876c28b7f6e6fb6210a205fbe7de4bd56927f9bcdd",
+    "tables": {
+      "events": 29,
+      "metadata": 3,
+      "physical": 5922,
+      "records": 40
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_release/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_release/account.sqlite3.public.sql",
+    "source_sha256": "cc0e0e10ce098d4978602354b2fdd61853972bf51753595bd1ff7b4ba803e96f",
+    "source_wal_sha256": null,
+    "public_sha256": "68b73d212a0d8268867636038603f033d8de6fd3783cfd8415743ac78367779d",
+    "tables": {
+      "runs": 3
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_release/runs/micro-01/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_release/runs/micro-01/events.sqlite3.public.sql",
+    "source_sha256": "1f1b80ba4ccf7faf357bd7e11100d92a540089119f97041bdfaca3b8303b60d9",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e5d0113d7d905830754adc30813d2d8e654c4b0c84a60933d518b6865c412388",
+    "tables": {
+      "events": 44,
+      "metadata": 3,
+      "physical": 5696,
+      "records": 15
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_release/runs/micro-02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_release/runs/micro-02/events.sqlite3.public.sql",
+    "source_sha256": "1e496fef0ebbb898e07ffb481fdf663a9ba85a249e031ae3a1fe40ad4a5144f8",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "0fd6e555062ba824aace113c473f98cb7edaa7953b5bc8cc15840b8852600270",
+    "tables": {
+      "events": 44,
+      "metadata": 3,
+      "physical": 5715,
+      "records": 15
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_p5_v1_release/runs/micro-03/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_p5_v1_release/runs/micro-03/events.sqlite3.public.sql",
+    "source_sha256": "0455263334985f2515146957c600a8219acd85e4adf8085a4476a14c3a6d502b",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "ab914bf30a9dd169d6948ede70298085226baa34e5a0c9cd9540fb15f4fc43bc",
+    "tables": {
+      "events": 8,
+      "metadata": 3,
+      "physical": 5723,
+      "records": 6
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_sol_acceptance/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_sol_acceptance/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "31a366c19ec8ed1ad8f692e462a5e09fc8932497d30787fa9bf7631b4a608568",
+    "source_wal_sha256": null,
+    "public_sha256": "f6de6e983d141f6df99fbe4430eec9652fd20b1d21f802462b62329aa255cf1f",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_sol_development_continuation/account.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_sol_development_continuation/account.sqlite3.public.sql",
+    "source_sha256": "8d45e373669a83c18c04ec272a62144907700a3c026469970ad2b908518ea0f0",
+    "source_wal_sha256": null,
+    "public_sha256": "7dac240b254804f571aac0f4a6defc00dc89dde2ad4dde4fe85f3951f14e5298",
+    "tables": {
+      "runs": 1
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_sol_development_continuation/runs/micro-10/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_sol_development_continuation/runs/micro-10/events.sqlite3.public.sql",
+    "source_sha256": "1a726b0de6740a573a90e38116fa6315e203411bee56b5c467cabb854298b50d",
+    "source_wal_sha256": null,
+    "public_sha256": "000d02b5d80237deda57cc43cf87aa8c85af78a93e10c0fde9c338a766aaca54",
+    "tables": {
+      "events": 16,
+      "metadata": 3,
+      "physical": 5925,
+      "records": 38
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_10_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_10_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "7e09ab7fd3ec89b1a810cc5b8f17c3e1037cfda77efec5240b81f08cfce41927",
+    "source_wal_sha256": null,
+    "public_sha256": "ccabfdde85f5120b08ec49f4839d97f5f1973ff7da30ce54cc25b4641b5213b5",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_10_offline/cli_positive_initial_order/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_10_offline/cli_positive_initial_order/events.sqlite3.public.sql",
+    "source_sha256": "362fb341404a808732829a5171c6b55661143269c6223d62958be5cd57ce5ab7",
+    "source_wal_sha256": null,
+    "public_sha256": "0d3a4e73692578999530c1cee258aa604cae4a9e79103a9eeedafe12440f67de",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_1_1_continuation/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_1_1_continuation/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "e48bb17d339e63d2be6c9b91af378ebd14b48fc2f3f08b760cea696c21026d04",
+    "source_wal_sha256": null,
+    "public_sha256": "cd6e80d8167d296358e38145b7a2afdd007fdce8f847ef351a4d1612fad3d74b",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_1_1_continuation/outbound_preview_offline/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_1_1_continuation/outbound_preview_offline/events.sqlite3.public.sql",
+    "source_sha256": "7c45c4b616e29b728e2266fe562902c52c5dc6956e4f49008631ec62fc53cb86",
+    "source_wal_sha256": null,
+    "public_sha256": "af30a533eb2705aebed6e679fe8a2716756b26e43edd877530c711477cc8d994",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 5696,
+      "records": 6
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/C_optimizer_boundary/run/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/C_optimizer_boundary/run/events.sqlite3.public.sql",
+    "source_sha256": "99ec7fe02e999e07e91f8af6d96860a16340041ddff0d2c9ca6ff7f681b0a402",
+    "source_wal_sha256": null,
+    "public_sha256": "8ae8bbe493c73b544e13e4a60a5cb3eac080665a36f70e90b84153032c0331c7",
+    "tables": {
+      "events": 22,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 18
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/T18_full_window_recovery/control/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/T18_full_window_recovery/control/events.sqlite3.public.sql",
+    "source_sha256": "94015566e01bc5f40255bc752f5e2d1628c45f7c58ccb15bfb00478dd98edfd2",
+    "source_wal_sha256": null,
+    "public_sha256": "eb96e54d252bc649bf3f2dbdd93f34c088b25ca45a0ee8217c96f45c1a73941b",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 4466,
+      "records": 25
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/T18_full_window_recovery/prepared/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/T18_full_window_recovery/prepared/events.sqlite3.public.sql",
+    "source_sha256": "d91cebc16dbadc98392e67aeec16ee87bd120788c95e08a5392c099af3194c22",
+    "source_wal_sha256": null,
+    "public_sha256": "f17a4f0ad0a67b1e389c78d4a774f8c865a0e55f8ca92501c4512bedb758c212",
+    "tables": {
+      "events": 12,
+      "metadata": 3,
+      "physical": 4374,
+      "records": 12
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/T18_full_window_recovery/recovered/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/T18_full_window_recovery/recovered/events.sqlite3.public.sql",
+    "source_sha256": "4e3a822b6acd13aab407c44889660ab5891729977933c5a5f07e1cbdd0356e4c",
+    "source_wal_sha256": null,
+    "public_sha256": "10dbd7acde64adac54f44f7a109a711dcce29a1080abbcb32a6cb632591a790e",
+    "tables": {
+      "events": 31,
+      "metadata": 3,
+      "physical": 4466,
+      "records": 25
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_1_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "93b26bc69102343e044e893d4d393e890703360864a9003973ac5f10993a73e8",
+    "source_wal_sha256": null,
+    "public_sha256": "978f62365298704fda8f9acb690e0d623629d979fc21f53148ae24fe8983aba0",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_2_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_2_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "cfbb52a22b8b3ff98627384fa45de8e47887415daa663c91c11c802f7cd93af4",
+    "source_wal_sha256": null,
+    "public_sha256": "b0206909ca8317556acda7c135e649ff541ff5bf773c071bb41e4b110324648a",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_3_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_3_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "eb8456cb3eaf8de30a4b65144b5d26e91b14379b8b1b6e88418896dfe9ae61b1",
+    "source_wal_sha256": null,
+    "public_sha256": "f29dfa17851b8a30d1ac7f1675ee8a7fd3df98746e85746b923c3ebd294aabb7",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_4_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_4_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "86e4d6096864053a54cc07a8d6761c6b777b38d03a720f6929a4ed5c4e7ff855",
+    "source_wal_sha256": null,
+    "public_sha256": "ea49e2741205281b8a3220197ecd4ae9b2cb8e6fc8bf034709ad3bf59057e5cd",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_5_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_5_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "beae431b3576f89f1b35561942c6e1fb580510985a664566320631bd7fa7638c",
+    "source_wal_sha256": null,
+    "public_sha256": "d02b0bb1bf9db4ad1604749784b54b53393fc5db3d36b86b26f8787cdf473743",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_6_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_6_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "4556c25ae516660a7b8c1ae8abb13715e5f24d68e6367d27b56fe3851d332dd6",
+    "source_wal_sha256": null,
+    "public_sha256": "43f237fc8f18f0ea0c18e787b91afaa4b525f47f1210cee7bfa4c50f7d32d57c",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_7_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_7_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "bf4e2b55765646b983001f3d4b5957c0b26fbecd13145f788c7c47f4e8db275b",
+    "source_wal_sha256": null,
+    "public_sha256": "f243402fd9a70e3f7e64040f66f5e22ee030f5090d4af49b675d71d789dfa5ff",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_7_offline/cli_positive_02/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_7_offline/cli_positive_02/events.sqlite3.public.sql",
+    "source_sha256": "619a56e7dfc7bab7fca2c08355171a1e7e722118e4e44f249d72bf47b4286c6f",
+    "source_wal_sha256": null,
+    "public_sha256": "05e9e9df3179b7a6c56ccd55de54b07eecb0e600406643cf15992d7507eb2d46",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_8_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_8_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "3cb177c12bb01708605cf3a27b6644b5ec894e93b1b449ee127bdeaf189f8b85",
+    "source_wal_sha256": null,
+    "public_sha256": "77748731c55d702f1098d22435a0c6c1acdb95d88b551484b259abba00318aed",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_9_offline/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_9_offline/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "48fda128091d39e8bf031d4b0743160f224989ed78ad75690b46d5b44f93c708",
+    "source_wal_sha256": null,
+    "public_sha256": "4ec1586a4ba6552f17315c80ab009e699db0ea73915d310cfba70660dd05de50",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_development/cli_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_development/cli_positive/events.sqlite3.public.sql",
+    "source_sha256": "8f26e110c768726e27f9c7a09d1f7c63d080698af4fd678a12d28d19608186cf",
+    "source_wal_sha256": null,
+    "public_sha256": "b5841a447896cc2d0f3239b9ba91df55a184ed93526ee210fd16554fba5b0bcf",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_development/cli_release_positive/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_development/cli_release_positive/events.sqlite3.public.sql",
+    "source_sha256": "b9597d321da1777045eba6f5fbe8add292925f147cf4e3456dfb41568e6c3de0",
+    "source_wal_sha256": null,
+    "public_sha256": "9cb351ee726350e4659e2719343adcf60ded3839ef44ae72be32c05b3266cfb9",
+    "tables": {
+      "events": 18,
+      "metadata": 3,
+      "physical": 5274,
+      "records": 14
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiment_round2_3datasets/artifacts/harness_v1_development/cli_smoke/events.sqlite3",
+    "public_path": "experiment_round2_3datasets/artifacts/harness_v1_development/cli_smoke/events.sqlite3.public.sql",
+    "source_sha256": "27141b5b07303c5358197e045e7786a92a92a8d682a55e633e957b2ac2434600",
+    "source_wal_sha256": null,
+    "public_sha256": "4416e883ae752cd000132b5ad8c0e4ec907b0577572a1c81f7480928202b7a35",
+    "tables": {
+      "events": 20,
+      "metadata": 3,
+      "physical": 4374,
+      "records": 13
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/cold-1a2fc5de21874cd599f7ed6ef3b2a4e7/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/cold-1a2fc5de21874cd599f7ed6ef3b2a4e7/events.sqlite3.public.sql",
+    "source_sha256": "813ffdf5ab7b7f8517632872696bd838808a9516b6256d3af5f45b42af826358",
+    "source_wal_sha256": null,
+    "public_sha256": "067e9069d9ca24e846e3cb1200d143130a3d835e7690c2661df2b38e35f33456",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 4375,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/cold-5054d89ef5894ede85f2e80f186b8f90/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/cold-5054d89ef5894ede85f2e80f186b8f90/events.sqlite3.public.sql",
+    "source_sha256": "090eaa9fbe87af74de9784cb84a6291aa19e48dde66c6e982bb27f7ac7fd4cfc",
+    "source_wal_sha256": null,
+    "public_sha256": "ce30d276f84c1950be649bd54b2212cfd30f9833f6887a3401d955fa43a0f895",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 4375,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/cold-a2e93458a67c4686bc1870f9e7656fe8/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/cold-a2e93458a67c4686bc1870f9e7656fe8/events.sqlite3.public.sql",
+    "source_sha256": "1c27b3e6cde923572ae4934df116c6f0495e96bd562d913fe27aad5329b4e57d",
+    "source_wal_sha256": null,
+    "public_sha256": "1d793bd44cecc7ae7d57ec20fe4e919d0278e57ce72af880d018d0cbc96402fe",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 4375,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/cold-b6fe14c17b94470194d348fd08d2ab83/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/cold-b6fe14c17b94470194d348fd08d2ab83/events.sqlite3.public.sql",
+    "source_sha256": "cac663c85aec428b8c754c6e261ca9746413cce3f239398ccedb26bf3a1b98bb",
+    "source_wal_sha256": null,
+    "public_sha256": "49a130fa6d62eb3a523e13f597a502b0ba1a6260c2c7a25163f51c43d65d84f5",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 4375,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/cold-bff3bc5367cb423f98b8791594192061/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/cold-bff3bc5367cb423f98b8791594192061/events.sqlite3.public.sql",
+    "source_sha256": "e2be9dae9b19a9b6a87626178123f9f6b4174f7fa79ceea01ec31e0251722298",
+    "source_wal_sha256": null,
+    "public_sha256": "362f8e29acadf0ec8b59c97ac9a63ae995bf788616151c97698af6882f9904f8",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 4375,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/cold-c10d07f029ec4cdb81de586690ffbe74/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/cold-c10d07f029ec4cdb81de586690ffbe74/events.sqlite3.public.sql",
+    "source_sha256": "ab8f92ac482659bbcf3e81dd30f59283511d9b7d28fbf1e192a38e171e32e56c",
+    "source_wal_sha256": null,
+    "public_sha256": "2eede9865bd1bfe3184f0060881cdb180f4ba809b0a18d18707e322896135f2c",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 4375,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/cold-fd6b35b8f7de4c03903811e215919e17/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/cold-fd6b35b8f7de4c03903811e215919e17/events.sqlite3.public.sql",
+    "source_sha256": "31b0f83b0ffbb6567aebcda14294cc4253d0a6534c07473964d77d985a422344",
+    "source_wal_sha256": null,
+    "public_sha256": "1ad31500cfa459214b22261c1cd53b4164d513d4957e267fd266ffb47830584c",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 4375,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/deadline-G0-18933c538db444a4ba51bbab689e8d82/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/deadline-G0-18933c538db444a4ba51bbab689e8d82/events.sqlite3.public.sql",
+    "source_sha256": "a6361855e075548ae604d3ba18a3d50e30d164d1b12fe328f0a2e3b025e9977d",
+    "source_wal_sha256": null,
+    "public_sha256": "dd1aafbd93fd55f717ffa5f7065a2391330e09943ece11402cea37164b488836",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5382,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/deadline-G0-20f7bd2525ba43dc961b69442d7778f3/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/deadline-G0-20f7bd2525ba43dc961b69442d7778f3/events.sqlite3.public.sql",
+    "source_sha256": "02069c5e883dc8d102fbb4ac48aaceb7ded7d7763f8dda4a25f65c3ea59bec5e",
+    "source_wal_sha256": null,
+    "public_sha256": "c99ba99491d29e49213eff570c5e29c0858bd7f76867e108d66b39b04bea5e6a",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5382,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/deadline-G1-1e288559ec2843c9b867b0704a828997/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/deadline-G1-1e288559ec2843c9b867b0704a828997/events.sqlite3.public.sql",
+    "source_sha256": "3800ddd7ac07c22eced8436531fcf017c600ce4fef7476c574f16ca24669f166",
+    "source_wal_sha256": null,
+    "public_sha256": "7e90273e329166b333282e5a6368731dbf29c9b0bafd2c36bb11244a2b679824",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5370,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/deadline-G1-94806e0bd8b54de0b3b2d910084ca57b/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/deadline-G1-94806e0bd8b54de0b3b2d910084ca57b/events.sqlite3.public.sql",
+    "source_sha256": "fa4c21bb17785b89595cdba4e4ddb7878d8430ac969a3859905050aa6106e279",
+    "source_wal_sha256": null,
+    "public_sha256": "4737c740acba72ba1a7306774e4f218a0855fcf2f150d12b45d527e4af6cac7b",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5370,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/deadline-G2-b025a055f5f04f369ff44651c71610e2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/deadline-G2-b025a055f5f04f369ff44651c71610e2/events.sqlite3.public.sql",
+    "source_sha256": "babb53a8899a99a977415ab98cac2b3b3d602c9d1960f6c4d010cb6e06ccefca",
+    "source_wal_sha256": null,
+    "public_sha256": "7ff76e4f79d2b679e45a0265fc8976d2c3399532e716be81a2dd505a40a66346",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5370,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/deadline-G2-e9443f08883a46029b27d665664e6a9d/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/deadline-G2-e9443f08883a46029b27d665664e6a9d/events.sqlite3.public.sql",
+    "source_sha256": "68d4f8ad5170eead028a9f2ac1a6751fb335aefdf55502957deedb92bafdd890",
+    "source_wal_sha256": null,
+    "public_sha256": "ec38b17f08edee71762d1d4299e6e47932029d18ee9892086be44edc21740866",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5376,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/deadline-legacy-6cc53371f90f460c8f93ab294fd96712/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/deadline-legacy-6cc53371f90f460c8f93ab294fd96712/events.sqlite3.public.sql",
+    "source_sha256": "ad84a565f4cadc0660db37c90e9756b66b1ad5c3a51beb28e2ce041035728719",
+    "source_wal_sha256": null,
+    "public_sha256": "62c096c9f6bf01f4bc46e254b7291ebc098c681ae3cf815ed512977e2124ab73",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5378,
+      "records": 17
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/deadline-legacy-f86a1aa751884c5596e0b78f65ce1fed/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/deadline-legacy-f86a1aa751884c5596e0b78f65ce1fed/events.sqlite3.public.sql",
+    "source_sha256": "0608208f097ac237c6922601add6ace9dbd8e3f27710288a051686cab47b71ca",
+    "source_wal_sha256": null,
+    "public_sha256": "963e65a33eb920476ed311662478081c61a321982eeca0c00d79eb0b5a7c9bea",
+    "tables": {
+      "events": 17,
+      "metadata": 3,
+      "physical": 5378,
+      "records": 17
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/harness-tests-oyhelalb/template/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/harness-tests-oyhelalb/template/events.sqlite3.public.sql",
+    "source_sha256": "62629603e65ad2bdf15f09375d4865a34274ea52855898fa76f94df2972c053a",
+    "source_wal_sha256": null,
+    "public_sha256": "d8c7710c1d6a6d517fdd4a26dbd1116537bb514a4477d9fe2f0984cc3dbe42a8",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 4373,
+      "records": 5
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/harness-tests-oyhelalb/test_T23_independent_audit_and_source_tamper/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/harness-tests-oyhelalb/test_T23_independent_audit_and_source_tamper/events.sqlite3.public.sql",
+    "source_sha256": "33b31f2daa850018124d0e26fc6065e59cad180203eb3bd74db953314169bb70",
+    "source_wal_sha256": null,
+    "public_sha256": "4cf5d94ca2b6678c0464c2c5fdbd913f3f2c4ffb59b3f36fd8819add68924cd1",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 4478,
+      "records": 13
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/harness-tests-oyhelalb/test_T24_fixed_evidence_ignores_shared_ledger_append/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/harness-tests-oyhelalb/test_T24_fixed_evidence_ignores_shared_ledger_append/events.sqlite3.public.sql",
+    "source_sha256": "5eb25440ef4c8ba34074394b2502b0b4a7531bf681b649bfc1bdf11b6496a94d",
+    "source_wal_sha256": null,
+    "public_sha256": "e082649412cf035d193ebd04ae58bd05812d20b2fd9c41b2694ada8d95ba1380",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 4473,
+      "records": 13
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/harness-tests-oyhelalb/test_T25_all_machine_wait_is_legal_quality_visible/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/harness-tests-oyhelalb/test_T25_all_machine_wait_is_legal_quality_visible/events.sqlite3.public.sql",
+    "source_sha256": "45e7dac0b036acdc99a15dd992cf40b734b19bc8ccf673cf25b4e36b4efcd0cc",
+    "source_wal_sha256": null,
+    "public_sha256": "42d137be33384b1bc8a6adf1719ec668a127e4c229c377da362a1bf92d6f5ab3",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 4473,
+      "records": 13
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-02a70e00c42c47b1a7623436de563221/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-02a70e00c42c47b1a7623436de563221/events.sqlite3.public.sql",
+    "source_sha256": "01087e2b489957858e25fcb4e8501fb256720889c39d79ebf6e23da2648a0479",
+    "source_wal_sha256": null,
+    "public_sha256": "201c106243754db7a6fbbd1c7b7667e9bdc8c236d179d3384fad79af5c049de6",
+    "tables": {
+      "events": 46,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 66
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-05486676a8aa45e191fecfa31be79e5c/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-05486676a8aa45e191fecfa31be79e5c/events.sqlite3.public.sql",
+    "source_sha256": "b2435ba2d47fe93d8e04ece6ccd957dffe3611e8d55a1a51ab844238d434a15d",
+    "source_wal_sha256": null,
+    "public_sha256": "7979b2c40801a0ef191781bd7d5a7bfeb2807bcbf7a7f9c9934163bcbff3a200",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6491,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-08e12cc9b21741d7a39bab83bc6beec5/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-08e12cc9b21741d7a39bab83bc6beec5/events.sqlite3.public.sql",
+    "source_sha256": "929f95fafa4c60873217a34572d404f72f2f058575b8f6cdb18ef217973ada93",
+    "source_wal_sha256": null,
+    "public_sha256": "142a1a9a1fb43acc98293074b9f060afea6a1986f76b59de1f7c5c037650cbab",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 6547,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-0da7c02e4b374ab49721e1ae1473f74c/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-0da7c02e4b374ab49721e1ae1473f74c/events.sqlite3.public.sql",
+    "source_sha256": "18320af5b4865de4f465816936df2e4d12e75550e092300a8aa8c0838aca88f8",
+    "source_wal_sha256": null,
+    "public_sha256": "090cb17cebdeea86e9c239f5c2db0e317ab583d782abc4288abf8ad8aaeb3fda",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-16ea57632c804d79946bcb8befed5ae2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-16ea57632c804d79946bcb8befed5ae2/events.sqlite3.public.sql",
+    "source_sha256": "4ec41662a438c19959e593ed5564750dfe1e8fa20eba33317366e6c8f28b98dd",
+    "source_wal_sha256": null,
+    "public_sha256": "cf4b810936a6a67abda32eebac8d8445c8ebc822e234365a4cbb21baa476e9a7",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 17
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-17da7b6a5da545c0935fe7b5dfc25d73/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-17da7b6a5da545c0935fe7b5dfc25d73/events.sqlite3.public.sql",
+    "source_sha256": "37ef58583160eccdbf803501c48e0133daf64ff4d1b831bbf75fcfd3680b8af9",
+    "source_wal_sha256": null,
+    "public_sha256": "c403378bf5d6f4439e3f70293dc50a88ac89948b49ae02f4a5a069110d23e185",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 17
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-1a42c14a5d6d4f87ad79850d21344427/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-1a42c14a5d6d4f87ad79850d21344427/events.sqlite3.public.sql",
+    "source_sha256": "f7eeee2259a59b92784ddb6e0076a477820f6a22ae362f49595eccbbe2b5f871",
+    "source_wal_sha256": null,
+    "public_sha256": "bd55fae3ee0fcedb0d21d025a941a1b0dc5cab304faefbd48fe94bfea14b29fc",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 16
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-1d7a5709eab940a99d8b065134da0701/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-1d7a5709eab940a99d8b065134da0701/events.sqlite3.public.sql",
+    "source_sha256": "57a4b0193e07a6ee58a88d2885a9411c933ecdfc4775531f45daf3650302aebf",
+    "source_wal_sha256": null,
+    "public_sha256": "fcf0bdd9eacd7ceaa9210d3944df88df1e46113277ed500575780153ac599863",
+    "tables": {
+      "events": 10,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 13
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-233c481743d949a290950446adae80d8/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-233c481743d949a290950446adae80d8/events.sqlite3.public.sql",
+    "source_sha256": "d1f5a62646a2f3a7f2b23f15d9c1335888a6231592584d67995dce77d273fa50",
+    "source_wal_sha256": null,
+    "public_sha256": "bfaff6c87ecf9604a4a895bd13beeb27528f485969b8fa77db96ddfe57d28c4e",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 16
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-269daaac47a24a85b0efe980e3705f96/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-269daaac47a24a85b0efe980e3705f96/events.sqlite3.public.sql",
+    "source_sha256": "052c9579124f916af90eec71b953e9fd93085692255e30e6af5e6ab9ce815aa3",
+    "source_wal_sha256": null,
+    "public_sha256": "162c3c2137698de5c40f4c55cdc32e2907225c0a0056f8fdd2a773b5093c6238",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-26fe906a7eeb45e5b33200366c0c4a82/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-26fe906a7eeb45e5b33200366c0c4a82/events.sqlite3.public.sql",
+    "source_sha256": "c3e605b8e2aa4a71d89e9f78141945f3e75f9cd50c5c749d58e05ea409af4028",
+    "source_wal_sha256": null,
+    "public_sha256": "b100f001e484af1fa6f2868a907af9b9e249cbe57b8e46192d5855c14e2f80a7",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-2d24fbaf0cdc4c42bb070157726ddd51/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-2d24fbaf0cdc4c42bb070157726ddd51/events.sqlite3.public.sql",
+    "source_sha256": "c8cffc6bdd94c2c6f7a3955e992a9f3de4b7bdddacf1572d080867e19c5a37e6",
+    "source_wal_sha256": null,
+    "public_sha256": "5c0da6627102c6646451239a7baad742bf85fc066a4da1c3634d240f701bb872",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 6552,
+      "records": 41
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-3941e999ab7a4a41b982b537d3eef7b3/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-3941e999ab7a4a41b982b537d3eef7b3/events.sqlite3.public.sql",
+    "source_sha256": "cbf67e61af04001a71917db7b0491215f8ec646b956ef85c22279fdde758e3ba",
+    "source_wal_sha256": null,
+    "public_sha256": "9f423d5373b860ef842325194fbb79f11f1e47d7a16fcaafdc629eb1ff7c7898",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-39b4dee7d6f04127897a5200cae0eec2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-39b4dee7d6f04127897a5200cae0eec2/events.sqlite3.public.sql",
+    "source_sha256": "8a5b0eadabb2fcc119a7a062be3e057a1d20e767e1b3791d85175ddfbf72a7a8",
+    "source_wal_sha256": null,
+    "public_sha256": "6712401d4b59c9a5cb0a700be3eb8375e11c28fb8fa6d3ce222dbbfe2a7403c0",
+    "tables": {
+      "events": 46,
+      "metadata": 3,
+      "physical": 6491,
+      "records": 65
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-3b76d7ebbac049ecbe25401f754bb3d6/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-3b76d7ebbac049ecbe25401f754bb3d6/events.sqlite3.public.sql",
+    "source_sha256": "0fd1a65490f87de3019100ebe7bc7166a5cfc4279074cf30bf0d41867f9317f5",
+    "source_wal_sha256": null,
+    "public_sha256": "49df5962dcb979db71a34bcf2f625b100eef4b563cb35606942f37bb5e22fd12",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 17
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-3d734aeabae343a1a6f52bd506559b63/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-3d734aeabae343a1a6f52bd506559b63/events.sqlite3.public.sql",
+    "source_sha256": "2e3fda6f8b45dcd76de6f78bdca47cc8d88b6b057488a910e11a606f711d303c",
+    "source_wal_sha256": null,
+    "public_sha256": "fdea32663e82f5c148b5c4ae43c3efb3fc7e8714cc8bfbb156cf5bd228bc2bbd",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-411585c4f4be41fe8dbae9868b48ddfb/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-411585c4f4be41fe8dbae9868b48ddfb/events.sqlite3.public.sql",
+    "source_sha256": "d19c06cb83ab40efe0122499ac539c8662276b97ee110fc795e0f80f5c096da5",
+    "source_wal_sha256": null,
+    "public_sha256": "97e95a7b40e7d6ea1b45e9bf9a509f9a3f62000753f96663d7ec8d61a6201b4a",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 6552,
+      "records": 41
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-435efdb1c7cc4f049b7e106f40b3fc13/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-435efdb1c7cc4f049b7e106f40b3fc13/events.sqlite3.public.sql",
+    "source_sha256": "9c791d4d1eee46a142f0d839a23eb4c3190a13c9388d8899bf283132d7906b7d",
+    "source_wal_sha256": null,
+    "public_sha256": "5a1981d6a7163047d01147a775884e4481d911fd31f21431916b19fc428f117c",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-4aab2f04341a43189101ab7528d4d3ce/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-4aab2f04341a43189101ab7528d4d3ce/events.sqlite3.public.sql",
+    "source_sha256": "06a7928d9b2f722a1622ee9cc1ffe0726b6e718ab34d487295bf66619b6044eb",
+    "source_wal_sha256": null,
+    "public_sha256": "82fe597188cfbd43b9369198b902953b6781dea7d9ad44d87227e1a49af3d297",
+    "tables": {
+      "events": 46,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 66
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-4c809e8c0d3b4f67a8e32bde399a0e82/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-4c809e8c0d3b4f67a8e32bde399a0e82/events.sqlite3.public.sql",
+    "source_sha256": "26f436a640cc2b65c270bf69dec0687d364e670a193fa293ca616f1fa9b6bda7",
+    "source_wal_sha256": null,
+    "public_sha256": "bcc9db2d3998cbc5907ca3c2d060167de6f1c27c8636d1be2ac239be9b567afa",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-4eb1974611c34769bd326c47d6e7dfa6/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-4eb1974611c34769bd326c47d6e7dfa6/events.sqlite3.public.sql",
+    "source_sha256": "0b27387ef4be75c974f6fbc8f51b70d1c23393b92f94f170215430787bf48929",
+    "source_wal_sha256": null,
+    "public_sha256": "c3d32ab5d3b18487b626f19546a8139d0871dbb33d691fe3864e7554c03ae2d2",
+    "tables": {
+      "events": 46,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 67
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-503eb4305a754c9b991c9fb00757550d/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-503eb4305a754c9b991c9fb00757550d/events.sqlite3.public.sql",
+    "source_sha256": "ed0e8b0d11f95337ea862fd6cd609b58eb92aae2f2b6b16d94f444e757e19bd1",
+    "source_wal_sha256": null,
+    "public_sha256": "b5121ac9eb2edf7624721c156ad85c4ccb55309d4e082db69020afd4939b214e",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 11
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-61d020dfd0c64870bd84a9ece2112f57/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-61d020dfd0c64870bd84a9ece2112f57/events.sqlite3.public.sql",
+    "source_sha256": "20281961a58887f7fa0d3495c2ac725d177e48312090918710f5a995df7c4442",
+    "source_wal_sha256": null,
+    "public_sha256": "d0c6d183908820468355419bd8764d6867fdc8015457c8874b22001cb43589ba",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-623338df5cae46e08fb950824fd3506e/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-623338df5cae46e08fb950824fd3506e/events.sqlite3.public.sql",
+    "source_sha256": "ba1e53516b6dfd05c5a7c1459650617f5f50c9dddfc56035286d1ef83119d59d",
+    "source_wal_sha256": null,
+    "public_sha256": "8d22a3382f08e47a99feb7585feace547e84c011113a0139684f1d6ebc1f1092",
+    "tables": {
+      "events": 14,
+      "metadata": 3,
+      "physical": 6548,
+      "records": 23
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-749addd21f1d4202907fd0e697924e69/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-749addd21f1d4202907fd0e697924e69/events.sqlite3.public.sql",
+    "source_sha256": "28331be5d07aa48cb8f536dcc87a89015b5fd9fec446ea7f77e08b6dc93be581",
+    "source_wal_sha256": null,
+    "public_sha256": "210cd511c075df4f02b53762e3fba66518a504041526faed78299f192564c4e8",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-7de619e8b6e2400a9e40cfed89808088/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-7de619e8b6e2400a9e40cfed89808088/events.sqlite3.public.sql",
+    "source_sha256": "d59cf265d632e7a043681cd7a4c60cee2838fbbb975d1718b51e99d696824350",
+    "source_wal_sha256": null,
+    "public_sha256": "389674baa5af6b4c0c89f15ffe3abc0eb90f9613fce395c5ec0d7ced5f57eca8",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 6552,
+      "records": 41
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-8141ddf930084db281230d06565f782c/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-8141ddf930084db281230d06565f782c/events.sqlite3.public.sql",
+    "source_sha256": "cd20512696c7b891128d9a9f8cc529f600cac9fe34cc2e034c3ac689575f10c4",
+    "source_wal_sha256": null,
+    "public_sha256": "5b0c2cbd098888544b079808c9e71f1db706381da13c0ca1168357d945cfda92",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-87c60bb1ef1f495da21b5bae0a97c8a5/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-87c60bb1ef1f495da21b5bae0a97c8a5/events.sqlite3.public.sql",
+    "source_sha256": "7f3e43c6e9ccaf962941e3fc5b43c4b4b828eb9354295135ded2e263b043a1ac",
+    "source_wal_sha256": null,
+    "public_sha256": "7db14851276a0af4a2fbda9a763bba42eff78d090d2f6dbbc0e880ce15844b5b",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 6552,
+      "records": 38
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-8b6547c4af684e90b5f74de2372dbaec/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-8b6547c4af684e90b5f74de2372dbaec/events.sqlite3.public.sql",
+    "source_sha256": "2be21c47e3ca053a388a42a171e942b69e49ac5d52cf2f8116c9dbaf4448ea13",
+    "source_wal_sha256": null,
+    "public_sha256": "ab202d7c52b1f469a00231285b31807d0bde58ff016de2e7e67726c8c6e45a47",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-948459ddadc246b79eccb3432f0bbcba/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-948459ddadc246b79eccb3432f0bbcba/events.sqlite3.public.sql",
+    "source_sha256": "bc9e28b732848b7e139c44c48574dcd41ab7c5ac669622413365d6c5e8351464",
+    "source_wal_sha256": null,
+    "public_sha256": "fbb4cf544328fc5aa864f56ec08421c2346b7b1a0274035667912c94f9bd40e4",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6491,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-95bf9bed15e64fbbac979eec450d96c7/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-95bf9bed15e64fbbac979eec450d96c7/events.sqlite3.public.sql",
+    "source_sha256": "1fa98fae36644590c05cdb5a0b157445e449d66e32f90776f2d0d87396ac089e",
+    "source_wal_sha256": null,
+    "public_sha256": "a26b32a02357262bc6b937ad8b1184ee978e7510a295a47a9c3168a598c8ecb1",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-06801ae21fc8416c8570fce12444f0a7/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-06801ae21fc8416c8570fce12444f0a7/events.sqlite3.public.sql",
+    "source_sha256": "053f3b2e732d9b613bc30aeba8690f189bf2ac97675e26cd479dc630c090ecd4",
+    "source_wal_sha256": null,
+    "public_sha256": "17f553f4c58d9d50e6ed6cdd23856d3429cebc3eb97ca699bf12a553489ad446",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-3974cc114ae34d44aaf139b919b5af87/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-3974cc114ae34d44aaf139b919b5af87/events.sqlite3.public.sql",
+    "source_sha256": "8f7c5f4ee44377ef43fe33633637b1fdc47705b0489203ac80191af6a722a7b6",
+    "source_wal_sha256": null,
+    "public_sha256": "2028f12b4cb5be728f9e6bd7cba078e9c4e0c4ea5496915927c9bc6632cc688d",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-519de9d792f94d2d8b5e78b70a745ab7/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-519de9d792f94d2d8b5e78b70a745ab7/events.sqlite3.public.sql",
+    "source_sha256": "3c816ef4707699aeb58a805bbdc5cef8ae44f735fb459f10a89df7b77eb9d2d2",
+    "source_wal_sha256": null,
+    "public_sha256": "8c9113d57b92f6f602f5aae5755639dc3c19fd3c6249feac01928e6bd57d49ca",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6491,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-545706cbed97498685e106290e197432/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-545706cbed97498685e106290e197432/events.sqlite3.public.sql",
+    "source_sha256": "f5da82bf308590b6f7b0e4d536bb5fd9df58606b8526c708224e792af69d1d0d",
+    "source_wal_sha256": null,
+    "public_sha256": "d2d9b3275997a40cd4b00db75d6eda1772f0177fb3da9c52d4f38211e1863de5",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-5af3bb7cbd4047239bbe52a63dbddf5a/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-5af3bb7cbd4047239bbe52a63dbddf5a/events.sqlite3.public.sql",
+    "source_sha256": "2b58eee6b98c0f098c10387c6136ac2de5f663f0209a52ec81a4fd52a686556e",
+    "source_wal_sha256": null,
+    "public_sha256": "49b7e13437cfa85ea2165ddbbab36eed199af9779f3eedda06367291954a7c3e",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-ba317d511a6d459fbc6ac1ec92d3d2aa/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-ba317d511a6d459fbc6ac1ec92d3d2aa/events.sqlite3.public.sql",
+    "source_sha256": "0f9aab122a45a71a195631e827de9e8430db1326ef78f60967fe3a176553b4f6",
+    "source_wal_sha256": null,
+    "public_sha256": "e384fdc149a2d451ed3fb50a9848d4ae8951270c66a53bcde047d5894d5ba563",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-fc219ba754584514b55fe78de4eab46c/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-G2-fc219ba754584514b55fe78de4eab46c/events.sqlite3.public.sql",
+    "source_sha256": "175bc768b79c010ddc6709135cb42bf66742087ead3cf98a3530e2d8caecf9a8",
+    "source_wal_sha256": null,
+    "public_sha256": "197b8ee9dbd5c712950789b11cae137fbac083219a4c78655359ffba6caea2b0",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-a157ea4d8e564b908f43ec9051a8389b/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-a157ea4d8e564b908f43ec9051a8389b/events.sqlite3.public.sql",
+    "source_sha256": "14f99385797979363eae65f0e9c12296530c7df3ca03eebcc0d648c75877df12",
+    "source_wal_sha256": null,
+    "public_sha256": "d65f3b2ce52db8c3787b58e9b184490b873b4bc02daa452971964a5892f959a3",
+    "tables": {
+      "events": 46,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 66
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-ab8da71ac3544c968524f4377fa52201/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-ab8da71ac3544c968524f4377fa52201/events.sqlite3.public.sql",
+    "source_sha256": "ac5994999176da333b92abcecfb08fb687e107512201f0b10082ccb59bffef60",
+    "source_wal_sha256": null,
+    "public_sha256": "a54a12616eb7b300d72820cc3e669037a410c17254c8ea83fd22200f77bc74e6",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-aec93bf9b3fd4c6aa73936ee1b86ae2e/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-aec93bf9b3fd4c6aa73936ee1b86ae2e/events.sqlite3.public.sql",
+    "source_sha256": "8cf801e75c20f34a0618bfe05d1ea43952ee189536bd2aa7509927b3f9f2e4e6",
+    "source_wal_sha256": null,
+    "public_sha256": "f1320c68acff03f41b7bd0ea5e657cde330479df03de5e148cf673f5f172cde9",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 9
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-b4776eaa928b43e08e36a05d2f8e3ff6/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-b4776eaa928b43e08e36a05d2f8e3ff6/events.sqlite3.public.sql",
+    "source_sha256": "129a52d5518faf757bf8df2e643cd3394e88113961e5ca074b50410694c6fa41",
+    "source_wal_sha256": null,
+    "public_sha256": "e47db489d1418033b8d9b6faae226e3d84efc2159ba7dfa4416f7d03386b8ca6",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 8
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-b83f566cf9de4f8d9da4e4b9037c5eae/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-b83f566cf9de4f8d9da4e4b9037c5eae/events.sqlite3.public.sql",
+    "source_sha256": "57ed978b41a13598903fb065c43937ba38cda3d845f59280afabadc9056a9f04",
+    "source_wal_sha256": null,
+    "public_sha256": "b09e488f2b89d47e8f512fc546a07695a2cac02e144046980111accd136a4d3f",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6491,
+      "records": 15
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-b9ac64b728724892a925a94e31051d70/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-b9ac64b728724892a925a94e31051d70/events.sqlite3.public.sql",
+    "source_sha256": "421876d57a714575054559429ca2d1fcf08ebda6132195d50036a4b5d45ba440",
+    "source_wal_sha256": null,
+    "public_sha256": "6be6e20889f188519f1fbcdcda72b9d3984373489715bf4aad6cb71b91c8f08d",
+    "tables": {
+      "events": 46,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 67
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-cfaa9f1f1eda464ba3c899686eda2d7a/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-cfaa9f1f1eda464ba3c899686eda2d7a/events.sqlite3.public.sql",
+    "source_sha256": "b63555c4b7ec8f5598f07d76c50b2f689dbb668e7058fe8543a72c3c5f1830bc",
+    "source_wal_sha256": null,
+    "public_sha256": "c546e1023636f84414c34f446fd748c04dc0e507bc9fa3ae9dc25a3b2493ee35",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 16
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-e77e647a0d4244f9a3225c3f60b3f096/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-e77e647a0d4244f9a3225c3f60b3f096/events.sqlite3.public.sql",
+    "source_sha256": "0e8e13ae49ee688da909747659751eaf3a3a23a8c9ca6eeb8d0733953e6d2004",
+    "source_wal_sha256": null,
+    "public_sha256": "977985d8a5ceac926a5578489295760a0bebe7e2d15b2d2e1699bb351de27b6e",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6491,
+      "records": 7
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-edbad9f304624b50a931dbf5c7c6e6ee/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-edbad9f304624b50a931dbf5c7c6e6ee/events.sqlite3.public.sql",
+    "source_sha256": "f7c7b45f957194d8f33d27fc82057c5f202bccfd816b62342940a7659cfafa60",
+    "source_wal_sha256": null,
+    "public_sha256": "7453a8ff4f9ade51e3a11d283634afb571307cb238cb732f6dc3544d2fc848e2",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 11
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-ee3c96109bc744398fc3e8c4c332297e/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-ee3c96109bc744398fc3e8c4c332297e/events.sqlite3.public.sql",
+    "source_sha256": "2dea01aebb9ec477c09c347aff3165d405a2050f945eae87359841e13b6f5956",
+    "source_wal_sha256": null,
+    "public_sha256": "f290ce74f148fac9f95eea61e795c2b02fd0c82e89d37dbe4a6199c3bf09778e",
+    "tables": {
+      "events": 2,
+      "metadata": 3,
+      "physical": 6491,
+      "records": 7
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-ee64d57b7c7549158197eb75d1393328/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-ee64d57b7c7549158197eb75d1393328/events.sqlite3.public.sql",
+    "source_sha256": "4699f4ee667b1a3765056ca07c67d18c1757a5d9d4d1ae471bc52465659bc508",
+    "source_wal_sha256": null,
+    "public_sha256": "4731cb431fcb337445e751e8919f6db136cb5c9d1b81cf97e2a06147634b18b1",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 6552,
+      "records": 38
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/runtime-fe80d80fd4c94a47b2c9e8b031a57dcc/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/runtime-fe80d80fd4c94a47b2c9e8b031a57dcc/events.sqlite3.public.sql",
+    "source_sha256": "ec3f764bea649b18472c1b64fc45996dc9c6db6ecaae12e05591e06c73131c61",
+    "source_wal_sha256": null,
+    "public_sha256": "b5d00ccb82f0754a5b1b370df2a9f6d76a7e585bec19e58e37b0bfa07f71f6cc",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 6492,
+      "records": 11
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-00c89ed4c3034275a476e2bbcb20da99/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-00c89ed4c3034275a476e2bbcb20da99/events.sqlite3.public.sql",
+    "source_sha256": "7007567e0c0d29c33e0f33eef5719f524feafe367c4d6bef494a3c9bf49551eb",
+    "source_wal_sha256": null,
+    "public_sha256": "0582dc280009e0225771615af5ff1bc1790a56730e4804294a63f2664d644ab5",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 5357,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-393b914947d2436caf85ddd8281787f4/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-393b914947d2436caf85ddd8281787f4/events.sqlite3.public.sql",
+    "source_sha256": "4778cee95810f252fdb0b426724e41a193b6e80d1a346255e4693d073cca024b",
+    "source_wal_sha256": null,
+    "public_sha256": "61c0bb182a4351207689b144109a59795da3b27f631ec004c16d5c0f3f653668",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 5357,
+      "records": 11
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-5387c95699fe4165a5332ae290b2459d/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-5387c95699fe4165a5332ae290b2459d/events.sqlite3.public.sql",
+    "source_sha256": "5380b1af3fa43021f622e3d4cb7a39c1628aba27435d868d48c46bd3ba8e800a",
+    "source_wal_sha256": null,
+    "public_sha256": "a24e3f2c393eb95cad2bae36db2b3b4e215a599a10b4db06471306d059dd3c28",
+    "tables": {
+      "events": 16,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 23
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-691ac679ecdb4cbd970a6a9d21e65f56/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-691ac679ecdb4cbd970a6a9d21e65f56/events.sqlite3.public.sql",
+    "source_sha256": "b841120808246b75252ecdcc6d3886d296b17ba5e9e142ce44ff1a6b7fc36563",
+    "source_wal_sha256": null,
+    "public_sha256": "ec639628eee6b248170dfd879c4039091f5c5a77f4e04d32151ece7c9b554423",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-7333ee40a93d4c088dc9cbfd1ef0b389/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-7333ee40a93d4c088dc9cbfd1ef0b389/events.sqlite3.public.sql",
+    "source_sha256": "adc27e11677a7ca2133988ca53e660096ea226df70f04645491b16b3e0835d97",
+    "source_wal_sha256": null,
+    "public_sha256": "38947f9ebef90d0ba2492db8e2992007fcdcbd3cd0f2ffd35e75d14acd3fd609",
+    "tables": {
+      "events": 16,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 25
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-734bb9cd891a4f91a045745b79aae4ba/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-734bb9cd891a4f91a045745b79aae4ba/events.sqlite3.public.sql",
+    "source_sha256": "9ccbbb8944838b72badeff918332de677a77a357945cab99c0c1a815d860ffc2",
+    "source_wal_sha256": null,
+    "public_sha256": "33bd6b0c2000d17bf3d621dddf8f12b216c4fb2e68cf5e8eab3f662acf938398",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 5357,
+      "records": 11
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-76fd8770e94047498df9a8fa30921c13/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-76fd8770e94047498df9a8fa30921c13/events.sqlite3.public.sql",
+    "source_sha256": "369caeb79e9dbbdb0b6033518313b430540957cc6ee5f0e45236593231812382",
+    "source_wal_sha256": null,
+    "public_sha256": "b5113111d3b62fb3120f39f63f2af50df38581f07f667007b4c012e742f3991b",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 5357,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-7c84e55aa9654fc082822093418bc809/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-7c84e55aa9654fc082822093418bc809/events.sqlite3.public.sql",
+    "source_sha256": "640f8c81dbf8a5c1a692c674df26a2ae37b2f3af6c076956f13c101931ac0c83",
+    "source_wal_sha256": null,
+    "public_sha256": "27cd744d061da6d4914690b41ecd0c878ab1d610b4560fe43864f7f293c3145c",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 5357,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-8a7845686daf4ef9a202cae9dd0c17b3/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-8a7845686daf4ef9a202cae9dd0c17b3/events.sqlite3.public.sql",
+    "source_sha256": "e2d42f8ce93bb49d23cf79fb72432e9133eb288b293dcda473661d5a954bcaf9",
+    "source_wal_sha256": null,
+    "public_sha256": "629889a6290ceb5de630cc5da6cffbd2ae39c350de3d14688eef4d33338f569c",
+    "tables": {
+      "events": 16,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 25
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-8de3464f72394cf8bedf19f584fe0032/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-8de3464f72394cf8bedf19f584fe0032/events.sqlite3.public.sql",
+    "source_sha256": "392a16ac7e4edb8fa29d2c96842e9af6a5b8679ab83a23e147c6c1e75a444abf",
+    "source_wal_sha256": null,
+    "public_sha256": "c521ab5288ee6bd89f52f828594fe15c7dc5e09c437ddfce2de1ccdbce45922b",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5370,
+      "records": 24
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-91b6aa9bd8ca4c6fbdaf7ee8c26c3190/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-91b6aa9bd8ca4c6fbdaf7ee8c26c3190/events.sqlite3.public.sql",
+    "source_sha256": "501f99ab341e47ae16d1932a0bd055e74aa03e02be2841d0bdb242261ef6e6da",
+    "source_wal_sha256": null,
+    "public_sha256": "b1d2643fca62970836f72e441b233e5d7a959643bd7eb447d98cf177ec2c8d43",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5370,
+      "records": 24
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-9c28f0ab5227440195cab0a046a10237/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-9c28f0ab5227440195cab0a046a10237/events.sqlite3.public.sql",
+    "source_sha256": "061340d828aa6999cbd24ecd5628a11d024fc2623fcb01bc8c52bc23e552b139",
+    "source_wal_sha256": null,
+    "public_sha256": "d75701e6b8675c8cf154e4bf5fc3b44ed399332e7ea600b8e3e3b2044e0648f1",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 5357,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-a8a0e551b6a34f15a16a3c47c3f354c6/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-a8a0e551b6a34f15a16a3c47c3f354c6/events.sqlite3.public.sql",
+    "source_sha256": "838724c4aa4b33ec712ead768b3e91d826ae430229523930494433e3433f536a",
+    "source_wal_sha256": null,
+    "public_sha256": "fca1592144310c11175ee127015164fa2eba43ad49bcdbd15c3457c24acea4c3",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-df2eaa642c304a2dab7ff99881506790/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-df2eaa642c304a2dab7ff99881506790/events.sqlite3.public.sql",
+    "source_sha256": "394a4ece7c288cfb403acf783e884c3b725f2097d4631b7e2f1c2fa8192bb49d",
+    "source_wal_sha256": null,
+    "public_sha256": "7696940ec6f2443ec8daf6c9e5ce97d3416c4e38307203d6d3280cefa9b9220d",
+    "tables": {
+      "events": 6,
+      "metadata": 3,
+      "physical": 5357,
+      "records": 11
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-ea0372e35d954fa1845ce1a2bd0c2aab/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-ea0372e35d954fa1845ce1a2bd0c2aab/events.sqlite3.public.sql",
+    "source_sha256": "4c1cff9166829013a73a6f6fe3a0e0571dcb126abe25cb175ff0e03ee38c1a94",
+    "source_wal_sha256": null,
+    "public_sha256": "4fabc5cbe3e63c63ca0c0179515a1330ec05fee6a283eaed952f276f894b1572",
+    "tables": {
+      "events": 16,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 25
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-eb8285df65dc4980ab241109907b465b/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G1-eb8285df65dc4980ab241109907b465b/events.sqlite3.public.sql",
+    "source_sha256": "25dd81c08d4ba53ade6731883a4ae06cccc2f226f27f0e8f411dd89006b58a1a",
+    "source_wal_sha256": null,
+    "public_sha256": "be83d09a4aa7b5090911155e039d2cab99ea00e186e10773465c79d144ac1143",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 24
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G2-2963f0a84b6b4aadb507b87be56e9e1c/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G2-2963f0a84b6b4aadb507b87be56e9e1c/events.sqlite3.public.sql",
+    "source_sha256": "da3746d2920bcae184bbc7d9b7e67dcb184292b8f1cb7ccdb097e9e642fab2c3",
+    "source_wal_sha256": null,
+    "public_sha256": "65177bd5bb611f10f8eaa985969c48d5b375e8e3a85114f26952765a77f0030a",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5370,
+      "records": 24
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G2-4eca7a0825f9463bbbb0d8b645681f17/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G2-4eca7a0825f9463bbbb0d8b645681f17/events.sqlite3.public.sql",
+    "source_sha256": "cf461c12f1ae11384414171cae804d5e837b079b683c439a584d507d77c94e41",
+    "source_wal_sha256": null,
+    "public_sha256": "dde7bda703370ae3dbb9fb3cd2c52a60dec5b0e9cd1fcfe558e141d69b8121d1",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G2-8108de8d5cdd4e68bc75f0fbf9c95685/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G2-8108de8d5cdd4e68bc75f0fbf9c95685/events.sqlite3.public.sql",
+    "source_sha256": "e9fe47284305d12bb37fa1da7c694c4d8c5234f12e7aa2d1157945681cdf458a",
+    "source_wal_sha256": null,
+    "public_sha256": "58ae0bdb470745d3dec2981b1ab5c72b1912a164805fa52a28dcb5b4fce42480",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 26
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G2-c2f626e03fd64f239a65bc7f1e5ce6a4/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/.tmp/two-strategy-G2-c2f626e03fd64f239a65bc7f1e5ce6a4/events.sqlite3.public.sql",
+    "source_sha256": "6cc6d8b9050d19ecff3bf3515a384fee9ae7214f24f7dc4a3e9eaa75b8dc1a3d",
+    "source_wal_sha256": null,
+    "public_sha256": "00a96dce4a509262400bfc68d0fbe309ca4a41f3d537a8357fe8aec18674f0f3",
+    "tables": {
+      "events": 15,
+      "metadata": 3,
+      "physical": 5393,
+      "records": 24
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/deadline_three_group_20261017/G0/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/deadline_three_group_20261017/G0/events.sqlite3.public.sql",
+    "source_sha256": "c9f7d60cc03b1d39c944defea370832f412f50655255979389fa0ade30e1361e",
+    "source_wal_sha256": null,
+    "public_sha256": "c80f56f40b3081c31d42481154ac2c15d9dde4c4b5f8cc5ca4f10a1e85b2f667",
+    "tables": {
+      "events": 28,
+      "metadata": 3,
+      "physical": 5401,
+      "records": 65
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/deadline_three_group_20261017/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/deadline_three_group_20261017/G1/events.sqlite3.public.sql",
+    "source_sha256": "fa6ef3e39262d284a5fdcfa77e6bc29256c52706886ca73f9087cb8224e03e0b",
+    "source_wal_sha256": null,
+    "public_sha256": "c444ccb647c6830452f3307a5b8e4a8e7aedcf9b63f215653b5f262993f10529",
+    "tables": {
+      "events": 28,
+      "metadata": 3,
+      "physical": 5430,
+      "records": 65
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/deadline_three_group_20261017/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/deadline_three_group_20261017/G2/events.sqlite3.public.sql",
+    "source_sha256": "e284e645a5b1b81c5de7d99b529cf45da9d5ba1cecba5a4809e6e17c09a4aa34",
+    "source_wal_sha256": null,
+    "public_sha256": "1b583b766f99b840b3c6a5e9d45e662a12a9e944775242eff749c2e4ddcfcd4c",
+    "tables": {
+      "events": 28,
+      "metadata": 3,
+      "physical": 5428,
+      "records": 65
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_20261017/G0/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_20261017/G0/events.sqlite3.public.sql",
+    "source_sha256": "a06973162b1f34c6b3f3e165e04951ecbef8758b5337b1d9032e972cc9d3c89a",
+    "source_wal_sha256": null,
+    "public_sha256": "438bbee7781ef7099ad218102dd38fc9aefe14b8fa71340d31ff98981d99883e",
+    "tables": {
+      "events": 166,
+      "metadata": 3,
+      "physical": 5667,
+      "records": 401
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_20261017/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_20261017/G1/events.sqlite3.public.sql",
+    "source_sha256": "7d16a1ba723d227176d28edc7a8ba41c0810ddde5125e26475d0c2e32ed7a568",
+    "source_wal_sha256": null,
+    "public_sha256": "e5e69ff5db191e0413d5d85c1286ee2573740acc8911a67c28ef23f561ce6c24",
+    "tables": {
+      "events": 92,
+      "metadata": 3,
+      "physical": 5681,
+      "records": 221
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_20261017/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_20261017/G2/events.sqlite3.public.sql",
+    "source_sha256": "ec6b16844e7ca4d5d683a564a8773a7aa19c9c09471dd0ef0aa57543e715d90f",
+    "source_wal_sha256": null,
+    "public_sha256": "b49f9dc15b05efb425246afe30500c9d7a39743113bbc69fc5247906a5e678ca",
+    "tables": {
+      "events": 166,
+      "metadata": 3,
+      "physical": 5819,
+      "records": 401
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_capacity_retry_20261017/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_capacity_retry_20261017/G1/events.sqlite3.public.sql",
+    "source_sha256": "2d3b0336042b413d7cf0b7b56cff51799fddae5acfe55c0d6aad488fd79023f2",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "25b0e6f59e138c45b708232d8e7612bd9ea05ba263d87af771d2335b05c8f6d4",
+    "tables": {
+      "events": 163,
+      "metadata": 3,
+      "physical": 5820,
+      "records": 383
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_capacity_retry_20261017/stopped_G1_checkpoint/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_capacity_retry_20261017/stopped_G1_checkpoint/events.sqlite3.public.sql",
+    "source_sha256": "01400f04bd6a6bc00ea80940b0ace56f52aa6e4d9bfc5fa0200d568cb7dc53fd",
+    "source_wal_sha256": null,
+    "public_sha256": "faf5ab02349a6fe78ad2e7b132ed290e70ca8402ebd7b4460beb6089b2367184",
+    "tables": {
+      "events": 92,
+      "metadata": 3,
+      "physical": 5681,
+      "records": 222
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_completion_20261017/G0/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_completion_20261017/G0/events.sqlite3.public.sql",
+    "source_sha256": "14a579013d52bb701104e32b77648a942541d9847b1e8e481b0473f150ad9f93",
+    "source_wal_sha256": null,
+    "public_sha256": "07a8f04a66f6360de792f2d83399d04936092359132c26e404064d80329b469c",
+    "tables": {
+      "events": 360,
+      "metadata": 3,
+      "physical": 5919,
+      "records": 868
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_completion_20261017/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_completion_20261017/G1/events.sqlite3.public.sql",
+    "source_sha256": "90823e03722d2bd4bbbda80285d8188928b8822a052d60340b63b87636152e28",
+    "source_wal_sha256": null,
+    "public_sha256": "6b7402c0bff335f5831e2f343f20f37f0642ea2727d5234d078d702d778502a0",
+    "tables": {
+      "events": 354,
+      "metadata": 3,
+      "physical": 6103,
+      "records": 840
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_completion_20261017/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_completion_20261017/G2/events.sqlite3.public.sql",
+    "source_sha256": "da358a40056c68c944c863205db16f99404f9a6486a30c53621410f046642b15",
+    "source_wal_sha256": null,
+    "public_sha256": "5a5e47dd9eab90e3000ee2ff18638dbd3e8e395778d0a1b2c88b5e9e384ae9c6",
+    "tables": {
+      "events": 377,
+      "metadata": 3,
+      "physical": 6109,
+      "records": 918
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_connection_retry_20261017/stopped_G1_checkpoint/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_connection_retry_20261017/stopped_G1_checkpoint/events.sqlite3.public.sql",
+    "source_sha256": "31f87beb9a8dec52ea2aa4b00fc4639e1ee026b4bd015fd1f1709fa82326ed1c",
+    "source_wal_sha256": null,
+    "public_sha256": "33dfc995b08be03e0e1f9c69f56779a167e35692bfed2bbdb0259d65852c3ce3",
+    "tables": {
+      "events": 387,
+      "metadata": 3,
+      "physical": 6165,
+      "records": 918
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_deadline_completion_20261017/G0/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_deadline_completion_20261017/G0/events.sqlite3.public.sql",
+    "source_sha256": "cf5f134943369e4f2f9c5686bc73d709dd4cd26b91e2788766f804a2d2474be7",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "67f380f63526b9640b3fe99f427c23043a6de35089a6ceeb3226e76afceabdae",
+    "tables": {
+      "events": 430,
+      "metadata": 3,
+      "physical": 5943,
+      "records": 1024
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_deadline_completion_20261017/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_deadline_completion_20261017/G1/events.sqlite3.public.sql",
+    "source_sha256": "f0bb8e530c73cc25aa7d748a1969d1b80ddd21375248e9a85f551a9141419d10",
+    "source_wal_sha256": null,
+    "public_sha256": "bb10fa843d716db4c28abd76b0247ef1480b8a7443984714ab6825c84c64ea91",
+    "tables": {
+      "events": 399,
+      "metadata": 3,
+      "physical": 6165,
+      "records": 932
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_deadline_completion_20261017/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_deadline_completion_20261017/G2/events.sqlite3.public.sql",
+    "source_sha256": "bf4255ad7b45d5a7ae9e327fd119efc03d729346421de78578b4adc7976003ff",
+    "source_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "6426547975e67a71b89572662dc067f146d0ca856d7a9cd46abfae6a8ed95be9",
+    "tables": {
+      "events": 449,
+      "metadata": 3,
+      "physical": 6185,
+      "records": 1086
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_final_segment_20261017/G0/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_final_segment_20261017/G0/events.sqlite3.public.sql",
+    "source_sha256": "e4364969dc77e0ceaef3d0c03367b7a12ecf05435becc3c54a00b88c75dcd357",
+    "source_wal_sha256": null,
+    "public_sha256": "fc0c85531a88cda38965d22e9423e6db17317fffc873f9e5b53707a889cb928d",
+    "tables": {
+      "events": 399,
+      "metadata": 3,
+      "physical": 5943,
+      "records": 959
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_final_segment_20261017/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_final_segment_20261017/G1/events.sqlite3.public.sql",
+    "source_sha256": "80de25151f3ade01411a49eea0b455c79671796a53f8ee820822df6fb1cbdb72",
+    "source_wal_sha256": null,
+    "public_sha256": "acca848e55b010bb744f6a4ec8309a3f989cb4a91ca628160490f48e5d1c65e5",
+    "tables": {
+      "events": 388,
+      "metadata": 3,
+      "physical": 6165,
+      "records": 918
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_final_segment_20261017/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/extended_three_group_final_segment_20261017/G2/events.sqlite3.public.sql",
+    "source_sha256": "0c9382a2f224652caa0d9d0a5de9ae6f6b0632bcdd625c24591b0c0fcde53346",
+    "source_wal_sha256": null,
+    "public_sha256": "d700344323a22725dcd4d20166ab2c85184a76f4c20a0a720354ec862069e68d",
+    "tables": {
+      "events": 420,
+      "metadata": 3,
+      "physical": 6163,
+      "records": 1024
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/forecast_collection_20261017/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/forecast_collection_20261017/G1/events.sqlite3.public.sql",
+    "source_sha256": "941726b27523b707594c242b040f07d5c58f1a837952b4bb139dba215b3bdfa2",
+    "source_wal_sha256": null,
+    "public_sha256": "2e0d2ba89f30bff39acd351ab2cee29982609a68ea1227102ab81d51d263cba3",
+    "tables": {
+      "events": 32,
+      "metadata": 3,
+      "physical": 5430,
+      "records": 74
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/forecast_collection_20261017/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/forecast_collection_20261017/G2/events.sqlite3.public.sql",
+    "source_sha256": "b0f407854f76b9fa9ede9d597d7519d2937d0811e113835dba6d93b4cda1c5d2",
+    "source_wal_sha256": null,
+    "public_sha256": "4f5274b01373dd206318d5c8ad7073ec5d8e6355fe041dadc6e78a7965ab1d79",
+    "tables": {
+      "events": 16,
+      "metadata": 3,
+      "physical": 5424,
+      "records": 35
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/paired_20261016/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/paired_20261016/G1/events.sqlite3.public.sql",
+    "source_sha256": "e2abf6e1222365e4b7581d16e92d470476599d66723519214cadd6e589ae06c4",
+    "source_wal_sha256": null,
+    "public_sha256": "e07536a3d57b9faa8e70a8e769be71938a15345260759c3829ea5ca09df203d2",
+    "tables": {
+      "events": 7,
+      "metadata": 3,
+      "physical": 5356,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/paired_20261016/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/paired_20261016/G2/events.sqlite3.public.sql",
+    "source_sha256": "92e448c5a080de00ff882f671cb33d017173a2a3d126a8395c6c6157246a0a8c",
+    "source_wal_sha256": null,
+    "public_sha256": "6d2f1bbfaffda1e5dfd347c6b52bba39abb9511b54973fc74917892c3cc6e792",
+    "tables": {
+      "events": 7,
+      "metadata": 3,
+      "physical": 5356,
+      "records": 10
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/paired_20261016_cli_fix/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/paired_20261016_cli_fix/G1/events.sqlite3.public.sql",
+    "source_sha256": "0fc7244a65425634cbcaf6ab1193e6e4396ce2818a6da4c81cb5cb1d21b30f51",
+    "source_wal_sha256": null,
+    "public_sha256": "e2a1deb39e61c42cae130cbce72b4f8ed0e6cf8df1aa4188a7ec5f125405e230",
+    "tables": {
+      "events": 27,
+      "metadata": 3,
+      "physical": 5359,
+      "records": 57
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/paired_20261016_cli_fix/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/paired_20261016_cli_fix/G2/events.sqlite3.public.sql",
+    "source_sha256": "487d043b170053dada42134e43ec5c99ff7f0f17f6720c6ef2872b80290ea98d",
+    "source_wal_sha256": null,
+    "public_sha256": "39de0a71e25a6b99e91f1eeb80cacb8f11e9a443aa192adc9ae84a9edd5971e3",
+    "tables": {
+      "events": 11,
+      "metadata": 3,
+      "physical": 5356,
+      "records": 19
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/two_strategy_20261016/G1/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/two_strategy_20261016/G1/events.sqlite3.public.sql",
+    "source_sha256": "8a78ec6aca011087837f8b55a6f4edd076005f4e25178cc0ac5edcbf8d3b8c82",
+    "source_wal_sha256": null,
+    "public_sha256": "f67c409e1b191c8a2d0108c7a38a0ee70dab10212a6320e9dffaca7bfc319337",
+    "tables": {
+      "events": 45,
+      "metadata": 3,
+      "physical": 5380,
+      "records": 100
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  },
+  {
+    "path": "experiments/context_window_batch60_20261016/live_pilots/two_strategy_20261016/G2/events.sqlite3",
+    "public_path": "experiments/context_window_batch60_20261016/live_pilots/two_strategy_20261016/G2/events.sqlite3.public.sql",
+    "source_sha256": "08d2e745037e053a4355d610412ab4340860aa8cc10bbefd8800f76f2525d8c9",
+    "source_wal_sha256": null,
+    "public_sha256": "b9dccb017bcb868153364a50471245cebb6064087a264cf972bc34ff7a6b032e",
+    "tables": {
+      "events": 35,
+      "metadata": 3,
+      "physical": 5380,
+      "records": 79
+    },
+    "integrity_check": "ok",
+    "sanitized_row_values_verified": true
+  }
+]

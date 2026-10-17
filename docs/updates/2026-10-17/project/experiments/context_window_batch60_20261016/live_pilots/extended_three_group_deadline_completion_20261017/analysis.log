@@ -1,0 +1,743 @@
+{
+  "verification": {
+    "all_groups_reached_target": false,
+    "closed_unknown_failures": [
+      {
+        "group": "G1",
+        "call_number": 15,
+        "attempt_id": "attempt:1fb3f2d29c414e4d89258dbf",
+        "failure_kind": "capacity",
+        "closed_process_no_output_validated": true
+      },
+      {
+        "group": "G1",
+        "call_number": 72,
+        "attempt_id": "attempt:9e6f5392f191497d96230569",
+        "failure_kind": "connection",
+        "closed_process_no_output_validated": true
+      },
+      {
+        "group": "G1",
+        "call_number": 70,
+        "attempt_id": "attempt:c3d8b4d628574df39c4bd3d8",
+        "failure_kind": "connection",
+        "closed_process_no_output_validated": true
+      },
+      {
+        "group": "G2",
+        "call_number": 76,
+        "attempt_id": "attempt:3ec92f61d02f41148e93c283",
+        "failure_kind": "stream_disconnect",
+        "closed_process_no_output_validated": true
+      }
+    ],
+    "paired_randomness": {
+      "mechanism": "event-keyed processing/cadence/transport draws, not a shared mutable RNG stream",
+      "shared_operation_batch_keys": 63,
+      "shared_keys_with_different_random_durations": 0
+    },
+    "previous_files_checked": 17214,
+    "previous_files_changed": [],
+    "original_B_unchanged": true,
+    "source_unchanged_during_live": true,
+    "runner_unchanged": true,
+    "support_unchanged": true,
+    "resource_continuation_audits": [
+      {
+        "valid": true,
+        "inherited_calls": 28,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:057874bf2d5f4e47b7039073",
+              "attempt:510e3f74f90649c2a48533ec",
+              "attempt:3ca6ea1a37aa48c083a447fc",
+              "attempt:21e72e6438784b5287b890a9",
+              "attempt:015145f1284c442180f472a3",
+              "attempt:73ce3e4a2da74f7abb191b75",
+              "attempt:1b4c6291e6544dfb9522b054",
+              "attempt:d451d8680392414f86612025",
+              "attempt:d1525cedd57c41de91649d9b",
+              "attempt:26c0761d25f3422d9c469852",
+              "attempt:8195251ac25e48fd84c220af",
+              "attempt:fa3c58e5e65f45c8bd37a4e3",
+              "attempt:54cffe898f024bc3aadf755a"
+            ],
+            "old_version": 11,
+            "new_version": 24
+          }
+        ]
+      },
+      {
+        "valid": true,
+        "inherited_calls": 28,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:817d6aba24384a7080c672b8",
+              "attempt:076577c50e184e40b2f5e156",
+              "attempt:a395ff57a398401a936b4e5e",
+              "attempt:ea81a1e5929342008fd077ee",
+              "attempt:3eb44e9a4918426284eb3834",
+              "attempt:ae1e5b20e0f84ea29a3a5c21",
+              "attempt:1402f9cd2b194d8ea29af0d5",
+              "attempt:cb96f5c266de45c3aac73d46",
+              "attempt:4e01bf5f6a61432180294675",
+              "attempt:6e2bdfcd595e4710bf49309d",
+              "attempt:0b63970fe56a427aadc6ca48",
+              "attempt:f03f34515f924f169ffc48f8",
+              "attempt:5e687f3c9085405287e432d8"
+            ],
+            "old_version": 10,
+            "new_version": 23
+          }
+        ]
+      },
+      {
+        "valid": true,
+        "inherited_calls": 28,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:6c236da2a4744d3fb603e770",
+              "attempt:8c2a55d6495c4af2ad954c1f",
+              "attempt:5afebd0f412640038d9c53a9",
+              "attempt:430feec9559f46988ffe06d1",
+              "attempt:422b458d761841c0befb1140",
+              "attempt:0d1c8bbbd2284e1583f32b1a",
+              "attempt:c88ccc4b4f324579814704f7",
+              "attempt:1e4d456ef8224ae3a7a0144c",
+              "attempt:fa3ef2882d9a4abb86e4693b",
+              "attempt:ec5eabb46ae446c4ad9c72b1",
+              "attempt:5ffb7cceb6124a2f9c94e5de",
+              "attempt:def19315325a46e1ac642ca2",
+              "attempt:b99f1b073efb4afa8d18fc87",
+              "attempt:85e67d81a0364537a050c83c",
+              "attempt:91dcbb2928ad4c72b96f62e9",
+              "attempt:07c7088bde484a30896f0186",
+              "attempt:a5f79d7018154cecac99675c",
+              "attempt:d4685a0f52b54af4a5e4acca",
+              "attempt:a4c544ee5428495489146c7c",
+              "attempt:84589c51ee704d35ad7c035e",
+              "attempt:ef7e6e7e12004f3bade18b72"
+            ],
+            "old_version": 11,
+            "new_version": 32
+          }
+        ]
+      }
+    ],
+    "final_resource_audits": [
+      {
+        "valid": true,
+        "inherited_calls": 64,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:54cffe898f024bc3aadf755a"
+            ],
+            "old_version": 23,
+            "new_version": 24
+          }
+        ]
+      },
+      {
+        "valid": true,
+        "inherited_calls": 64,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:f03f34515f924f169ffc48f8",
+              "attempt:5e687f3c9085405287e432d8"
+            ],
+            "old_version": 21,
+            "new_version": 23
+          }
+        ]
+      },
+      {
+        "valid": true,
+        "inherited_calls": 64,
+        "same_factory_state_and_active_context": true,
+        "same_production_configuration": true,
+        "legitimate_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:a5f79d7018154cecac99675c",
+              "attempt:d4685a0f52b54af4a5e4acca",
+              "attempt:a4c544ee5428495489146c7c",
+              "attempt:84589c51ee704d35ad7c035e",
+              "attempt:ef7e6e7e12004f3bade18b72"
+            ],
+            "old_version": 27,
+            "new_version": 32
+          }
+        ]
+      }
+    ],
+    "all_inheritance_audits_pass": true,
+    "approved_retry_audit": {
+      "valid": true,
+      "failed_attempt_retained": "attempt:1fb3f2d29c414e4d89258dbf",
+      "unknown_usage_retained": true,
+      "source_checkpoint_unchanged": true,
+      "new_actual_calls": 57,
+      "same_model_and_production_rules": true,
+      "legitimate_note_updates": [
+        {
+          "record": "notes/current",
+          "model_updates": [
+            "attempt:57d4ec3401804088b001b759",
+            "attempt:2ba85fb3fff047808fce9638",
+            "attempt:02d6c4ede6874878b2accfac",
+            "attempt:37aed79e2f054439b23d35b9",
+            "attempt:817d6aba24384a7080c672b8",
+            "attempt:076577c50e184e40b2f5e156",
+            "attempt:a395ff57a398401a936b4e5e",
+            "attempt:ea81a1e5929342008fd077ee",
+            "attempt:3eb44e9a4918426284eb3834",
+            "attempt:ae1e5b20e0f84ea29a3a5c21",
+            "attempt:1402f9cd2b194d8ea29af0d5",
+            "attempt:cb96f5c266de45c3aac73d46",
+            "attempt:4e01bf5f6a61432180294675",
+            "attempt:6e2bdfcd595e4710bf49309d",
+            "attempt:0b63970fe56a427aadc6ca48",
+            "attempt:f03f34515f924f169ffc48f8",
+            "attempt:5e687f3c9085405287e432d8"
+          ],
+          "old_version": 6,
+          "new_version": 23
+        }
+      ]
+    },
+    "approved_connection_retry_audit": {
+      "valid": true,
+      "failed_attempt_retained": "attempt:c3d8b4d628574df39c4bd3d8",
+      "unknown_usage_retained": true,
+      "same_state_context_model_and_production_rules": true,
+      "new_actual_calls": 2,
+      "legitimate_note_updates": []
+    },
+    "deadline_reconciliation_audits": [
+      {
+        "valid": true,
+        "only_manifest_changes": [
+          "admission",
+          "deadline_epoch"
+        ],
+        "all_prior_calls_and_candidates_retained": true,
+        "old_deadline_epoch": 1792213932.132264,
+        "new_deadline_epoch": 1792223059.132264,
+        "legitimate_note_updates": []
+      },
+      {
+        "valid": true,
+        "only_manifest_changes": [
+          "admission",
+          "deadline_epoch"
+        ],
+        "all_prior_calls_and_candidates_retained": true,
+        "old_deadline_epoch": 1792213939.2062201,
+        "new_deadline_epoch": 1792223059.2062201,
+        "legitimate_note_updates": []
+      },
+      {
+        "valid": true,
+        "only_manifest_changes": [
+          "admission",
+          "deadline_epoch"
+        ],
+        "all_prior_calls_and_candidates_retained": true,
+        "old_deadline_epoch": 1792213946.312953,
+        "new_deadline_epoch": 1792223059.312953,
+        "legitimate_note_updates": [
+          {
+            "record": "notes/current",
+            "model_updates": [
+              "attempt:84589c51ee704d35ad7c035e",
+              "attempt:ef7e6e7e12004f3bade18b72"
+            ],
+            "old_version": 30,
+            "new_version": 32
+          }
+        ]
+      }
+    ],
+    "all_cost_audits_pass": false,
+    "all_production_choices_from_model": true,
+    "all_physical_prefix_checks_pass": true,
+    "all_opportunity_audits_pass": true,
+    "actual_new_calls": 215,
+    "cumulative_actual_calls": 227,
+    "unknown_usage_calls": 4
+  },
+  "groups": {
+    "G0": {
+      "cumulative_calls": 79,
+      "new_calls": 75,
+      "true_replan_count": 20,
+      "inherited_pending_task_dispatch_count": 18,
+      "extension_trigger_times": [
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1337.8412733326247,
+        1343.6907074665332,
+        1357.8993034662105,
+        1383.8694236673707,
+        1384.7212653047432,
+        1386.1847539996988,
+        1448.7331921568093,
+        1482.121210588931,
+        1485.6604048542813,
+        1503.0665974098868,
+        1543.3357692936547,
+        910.117397147927,
+        1593.1323091758827,
+        1161.8061422329447,
+        1162.894538226919
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 18,
+        "plan_invalidated": 1
+      },
+      "extension_window": {
+        "window": [
+          882,
+          1603.1013031725258
+        ],
+        "calls_to_reach_end": 56,
+        "quality": {
+          "weighted_tardy_lot_seconds": 7211.013031725259,
+          "throughput_lots": 1,
+          "throughput_wafers": 25,
+          "setup_loss_seconds": 18801.53257931314,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2176,
+          "queue_wait_lot_seconds": 721274.4395245819,
+          "production_dispatches": 49,
+          "operation_lots_dispatched": 49,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1343.6907074665332,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1357.8993034662105,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1383.8694236673707,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1384.7212653047432,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1386.1847539996988,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1448.7331921568093,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1482.121210588931,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1485.6604048542813,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1503.0665974098868,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1543.3357692936547,
+            "reason": "plan_invalidated"
+          },
+          {
+            "time": 1593.1323091758827,
+            "reason": "uncovered_demand"
+          }
+        ]
+      }
+    },
+    "G1": {
+      "cumulative_calls": 72,
+      "new_calls": 68,
+      "true_replan_count": 23,
+      "inherited_pending_task_dispatch_count": 18,
+      "extension_trigger_times": [
+        1162.894538226919,
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1337.8412733326247,
+        1343.6907074665332,
+        1357.8993034662105,
+        1383.8694236673707,
+        1384.7212653047432,
+        1386.1847539996988,
+        1448.7331921568093,
+        1482.121210588931,
+        1485.6604048542813,
+        1503.0665974098868,
+        910.117397147927,
+        1543.3357692936547,
+        1553.5141551764884,
+        1593.1323091758827,
+        1603.1013031725258,
+        1092.1200000000001,
+        1161.8061422329447
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 18,
+        "plan_invalidated": 2,
+        "plan_runway": 2
+      },
+      "extension_window": {
+        "window": [
+          882,
+          1603.1013031725258
+        ],
+        "calls_to_reach_end": 69,
+        "quality": {
+          "weighted_tardy_lot_seconds": 7211.013031725259,
+          "throughput_lots": 1,
+          "throughput_wafers": 25,
+          "setup_loss_seconds": 18801.53257931314,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2176,
+          "queue_wait_lot_seconds": 721274.4395245819,
+          "production_dispatches": 49,
+          "operation_lots_dispatched": 49,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1092.1200000000001,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1343.6907074665332,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1357.8993034662105,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1383.8694236673707,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1384.7212653047432,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1386.1847539996988,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1448.7331921568093,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1482.121210588931,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1485.6604048542813,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1503.0665974098868,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1543.3357692936547,
+            "reason": "plan_invalidated"
+          },
+          {
+            "time": 1553.5141551764884,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1593.1323091758827,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1603.1013031725258,
+            "reason": "plan_invalidated"
+          }
+        ]
+      }
+    },
+    "G2": {
+      "cumulative_calls": 76,
+      "new_calls": 72,
+      "true_replan_count": 30,
+      "inherited_pending_task_dispatch_count": 17,
+      "extension_trigger_times": [
+        1162.894538226919,
+        1203.848415689957,
+        1260.0680213006715,
+        1266.621357039288,
+        1266.6510146855849,
+        1334.7854863566047,
+        1337.8412733326247,
+        1343.6907074665332,
+        1357.8993034662105,
+        1383.8694236673707,
+        1384.7212653047432,
+        1386.1847539996988,
+        1444.4753893518757,
+        1447.17910465061,
+        1448.7331921568093,
+        910.117397147927,
+        1479.566215509453,
+        1482.121210588931,
+        1485.6604048542813,
+        1501.6799999999998,
+        1503.0665974098868,
+        1543.3357692936547,
+        1547.3999999999999,
+        1566.728667129884,
+        1589.4896236430086,
+        1593.1323091758827,
+        1124.2122958692557,
+        1603.1013031725258,
+        1161.8061422329447
+      ],
+      "extension_trigger_reasons": {
+        "uncovered_demand": 24,
+        "plan_runway": 3,
+        "plan_invalidated": 2
+      },
+      "extension_window": {
+        "window": [
+          882,
+          1603.1013031725258
+        ],
+        "calls_to_reach_end": 69,
+        "quality": {
+          "weighted_tardy_lot_seconds": 7211.013031725259,
+          "throughput_lots": 1,
+          "throughput_wafers": 25,
+          "setup_loss_seconds": 18801.53257931314,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2176,
+          "queue_wait_lot_seconds": 721096.788508339,
+          "production_dispatches": 49,
+          "operation_lots_dispatched": 49,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 910.117397147927,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1124.2122958692557,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1161.8061422329447,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1162.894538226919,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1203.848415689957,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1260.0680213006715,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.621357039288,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1266.6510146855849,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1334.7854863566047,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1337.8412733326247,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1343.6907074665332,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1357.8993034662105,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1383.8694236673707,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1384.7212653047432,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1386.1847539996988,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1444.4753893518757,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1447.17910465061,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1448.7331921568093,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1479.566215509453,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1482.121210588931,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1485.6604048542813,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1501.6799999999998,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1503.0665974098868,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1543.3357692936547,
+            "reason": "plan_invalidated"
+          },
+          {
+            "time": 1547.3999999999999,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 1566.728667129884,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1589.4896236430086,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1593.1323091758827,
+            "reason": "uncovered_demand"
+          },
+          {
+            "time": 1603.1013031725258,
+            "reason": "plan_invalidated"
+          }
+        ]
+      }
+    }
+  }
+}

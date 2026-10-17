@@ -1,0 +1,21 @@
+{
+  "finished_cells": 0,
+  "completed_cells": 0,
+  "planned_cells": 9,
+  "rows": [],
+  "paired_comparisons": [],
+  "aggregates_all_three_complete_states_only": [],
+  "limitations": [
+    "One model trajectory per cell; model output is not seed controlled.",
+    "Three short 300-second windows cannot establish long-run non-inferiority.",
+    "Inherited physical state, plan, trace, event queue and RNG are exact; original horizon and period anchor preserved.",
+    "Prior selection notes inherited equally; old tool-history/fact cache reset equally.",
+    "Any unknown usage is retained, never set to zero.",
+    "Wall time includes an external accidental file-cleanup interruption and exact-byte recovery; do not treat it as a model-efficiency comparison."
+  ],
+  "status": "interrupted_unknown_usage_freeze",
+  "interim_evidence_file": "interim_snapshot.json",
+  "interim_total_model_calls": 112,
+  "interim_unknown_usage_calls": 1,
+  "no_valid_effect_conclusion": true
+}

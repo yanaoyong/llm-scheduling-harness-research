@@ -1,0 +1,109 @@
+{
+  "protocol_version": "scheduling-harness-v1.10",
+  "semantic_profile_id": "capacity-deadline-collection-offline-v5",
+  "arm": "B",
+  "seed": 1701,
+  "window_seconds": 2898.0,
+  "period_seconds": 1800,
+  "plan_seconds": 14400,
+  "lookahead_depth": 2,
+  "time_mode": "paused_during_decision",
+  "initialization": "registered_cold_start",
+  "scope": "all_physical_machines",
+  "priority_weights": {
+    "10": 1,
+    "20": 2,
+    "30": 3
+  },
+  "model": {
+    "name": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "timeout_seconds": 240,
+    "automatic_retries": 0
+  },
+  "limits": {
+    "attempts": 8,
+    "tokens": 4500000,
+    "model_seconds": 1920,
+    "wall_seconds": 5400,
+    "cleanup_seconds": 60,
+    "storage_bytes": 4294967296,
+    "token_reserve_per_call": 100000,
+    "classical_seconds": 720,
+    "classical_requests": 250,
+    "context_chars": 4000000,
+    "same_error_limit": 3,
+    "same_read_limit": 3,
+    "zero_progress_limit": 3
+  },
+  "unknown_usage_policy": "freeze_new_calls",
+  "fallback": "none",
+  "capacity_experiment": {
+    "policy": "capacity-deadline-collection-offline-v5",
+    "group": "G2",
+    "model_context_window": 544000,
+    "input_token_budget": 440000,
+    "wrapper_reserve_tokens": 10000,
+    "model_auto_compact_token_limit": 489600,
+    "tokenizer": "o200k_base",
+    "output_reserve_tokens": 32768,
+    "history_budget_fraction": 0.1,
+    "model_calls_enabled": true,
+    "collection_max_seconds": null,
+    "max_ready_wait_seconds": 0,
+    "planning_lead_seconds": 135,
+    "capacity_trigger_fraction": 0.85,
+    "forecast_min_interval_seconds": 60,
+    "forecast_lookahead_seconds": null,
+    "execution_rule": "deadline",
+    "decision_budget_seconds": 120,
+    "publication_budget_seconds": 0,
+    "preparation_budget_seconds": 0,
+    "deadline_margin_seconds": 15,
+    "deadline_budget_basis": "offline provisional; 120 decision + 15 margin; not a measured service guarantee"
+  },
+  "capabilities": [
+    "append_proposal",
+    "apply_candidate",
+    "begin_alternative_proposal",
+    "begin_proposal",
+    "finalize_proposal",
+    "get_context",
+    "propose_delta",
+    "read_artifact",
+    "read_entities",
+    "write_notes"
+  ],
+  "semantic_coverage": [
+    {
+      "constraint": "identity_qualification_batch_freeze_physics_opportunity",
+      "implementation": "implemented",
+      "evidence_availability": "available",
+      "verdict": "not_evaluated",
+      "scope": "smt-fullfab-development-paused-cold-v1"
+    },
+    {
+      "constraint": "cqt",
+      "implementation": "not_implemented",
+      "evidence_availability": "partial",
+      "verdict": "not_evaluated",
+      "scope": "smt-fullfab-development-paused-cold-v1",
+      "reason": "Historical CQT timer starts and full runtime semantics are absent"
+    },
+    {
+      "constraint": "historical_binding",
+      "implementation": "partial",
+      "evidence_availability": "partial",
+      "verdict": "undetermined",
+      "scope": "smt-fullfab-development-paused-cold-v1",
+      "reason": "Known bindings checked; missing history is not defaulted"
+    },
+    {
+      "constraint": "official_calibration_and_online",
+      "implementation": "not_implemented",
+      "evidence_availability": "partial",
+      "verdict": "not_evaluated",
+      "scope": "smt-fullfab-development-paused-cold-v1"
+    }
+  ]
+}

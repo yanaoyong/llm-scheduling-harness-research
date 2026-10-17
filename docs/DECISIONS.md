@@ -1,5 +1,7 @@
 # 项目决策与状态记录
 
+> 2026-10-17 更新：后续会话、Harness 验收与窗口实验见 [增量归档](updates/2026-10-17/README.md)。下文继续保留原历史快照及其日期。
+
 本页只记录从 Codex rollout 可见消息中能追溯的决定与状态。证据分为用户明确授权、助手提出的方案、助手报告的结果、历史失败和未验证事项。它不是隐藏推理的复原，也不替代实验报告。
 
 面试写作新增的个人决策候选、受阻／恢复细节与角色归属，见 [补充素材](career-application/INTERVIEW_MATERIALS.md)。其 [来源摘录](career-application/evidence/2026-10-13/source-excerpts.md) 区分本人追问、用户提交的任务文本和助手建议；C-fixed 不直接归为本人原创。

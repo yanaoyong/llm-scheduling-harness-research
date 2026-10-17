@@ -1,0 +1,1613 @@
+{
+  "scope": "Read-only extracts from saved B plans, observations, model action records and physical trace; no new scheduling/model run. Plan reasons describe model-declared intent, not proof of optimality.",
+  "physical_trace": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/physical/trace.jsonl",
+  "cases": [
+    {
+      "commit_number": 1,
+      "plan_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7/plan_00000/selected_plan.json",
+      "plan_trace_line": 4374,
+      "header": {
+        "version": "fullfab_initial_01",
+        "created_at": 0,
+        "valid_until": 3600,
+        "freeze_until": 0,
+        "reason": "Initial explicit full-factory schedule prioritizing overdue weighted work, compatible batches and throughput; retain revision flexibility for observed stochastic outcomes."
+      },
+      "scope_count": 913,
+      "tasks_count": 967,
+      "holds_count": 0,
+      "selected_before_tasks": [],
+      "selected_after_tasks": [
+        {
+          "id": "t730",
+          "machine": 730,
+          "lot_ids": [
+            "w842"
+          ],
+          "steps": [
+            422
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w842:422:1"
+          ],
+          "not_before": 0
+        },
+        {
+          "id": "t781",
+          "machine": 781,
+          "lot_ids": [
+            "w1114",
+            "w1130",
+            "w1141",
+            "w1144"
+          ],
+          "steps": [
+            219,
+            219,
+            219,
+            219
+          ],
+          "visits": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "operation_ids": [
+            "w1114:219:1",
+            "w1130:219:1",
+            "w1141:219:1",
+            "w1144:219:1"
+          ],
+          "not_before": 0
+        },
+        {
+          "id": "t1011b",
+          "machine": 1011,
+          "lot_ids": [
+            "w1038"
+          ],
+          "steps": [
+            47
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1038:47:1"
+          ],
+          "not_before": 1254.36
+        },
+        {
+          "id": "t966",
+          "machine": 966,
+          "lot_ids": [
+            "w1193"
+          ],
+          "steps": [
+            131
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1193:131:1"
+          ],
+          "not_before": 0
+        },
+        {
+          "id": "t1233",
+          "machine": 1233,
+          "lot_ids": [
+            "w1387"
+          ],
+          "steps": [
+            293
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1387:293:1"
+          ],
+          "not_before": 0
+        },
+        {
+          "id": "t1288",
+          "machine": 1288,
+          "lot_ids": [
+            "w1462"
+          ],
+          "steps": [
+            130
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1462:130:1"
+          ],
+          "not_before": 0
+        },
+        {
+          "id": "t1309",
+          "machine": 1309,
+          "lot_ids": [
+            "w1462"
+          ],
+          "steps": [
+            131
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1462:131:1"
+          ],
+          "not_before": 1288.2
+        }
+      ],
+      "selected_holds": [],
+      "stop_before": [
+        {
+          "source_line": 4367,
+          "kind": "ready",
+          "lot": "o17r0l0",
+          "seq": 4366,
+          "step": 1,
+          "time": 0.0,
+          "visit": 1
+        },
+        {
+          "source_line": 4369,
+          "kind": "ready",
+          "lot": "o18r0l0",
+          "seq": 4368,
+          "step": 1,
+          "time": 0.0,
+          "visit": 1
+        },
+        {
+          "source_line": 4371,
+          "kind": "ready",
+          "lot": "o19r0l0",
+          "seq": 4370,
+          "step": 1,
+          "time": 0.0,
+          "visit": 1
+        },
+        {
+          "source_line": 4373,
+          "kind": "ready",
+          "lot": "o20r0l0",
+          "seq": 4372,
+          "step": 1,
+          "time": 0.0,
+          "visit": 1
+        }
+      ],
+      "next_commit_or_terminal_seconds": 803.2499999999999,
+      "simulation_progress_seconds": 803.2499999999999,
+      "production_dispatches_before_next_commit": 815,
+      "selected_physical_events": [
+        {
+          "source_line": 4733,
+          "cadence_seconds": 2746.548,
+          "job": 358,
+          "kind": "dispatch",
+          "lot_end": 3597.9364252258506,
+          "lots": [
+            "w842"
+          ],
+          "machine": 730,
+          "machine_ready": 2746.548,
+          "min_runs_left": 0,
+          "owner": "plan",
+          "piece_pm": [],
+          "plan_task_id": "t730",
+          "plan_version": "fullfab_initial_01",
+          "process_end": 3121.3451100199736,
+          "processing_key": [
+            "processing",
+            [
+              [
+                "w842",
+                422,
+                1
+              ]
+            ]
+          ],
+          "processing_seconds": 3001.3451100199736,
+          "seq": 4732,
+          "setup_after": "",
+          "setup_before": "",
+          "setup_seconds": 0.0,
+          "steps": [
+            422
+          ],
+          "time": 0,
+          "transport_seconds": 476.59131520587687,
+          "visits": [
+            1
+          ]
+        },
+        {
+          "source_line": 4774,
+          "cadence_seconds": 28289.221249404618,
+          "job": 399,
+          "kind": "dispatch",
+          "lot_end": 28993.803078850076,
+          "lots": [
+            "w1114",
+            "w1130",
+            "w1141",
+            "w1144"
+          ],
+          "machine": 781,
+          "machine_ready": 28409.221249404618,
+          "min_runs_left": 0,
+          "owner": "plan",
+          "piece_pm": [],
+          "plan_task_id": "t781",
+          "plan_version": "fullfab_initial_01",
+          "process_end": 28409.221249404618,
+          "processing_key": [
+            "processing",
+            [
+              [
+                "w1114",
+                219,
+                1
+              ],
+              [
+                "w1130",
+                219,
+                1
+              ],
+              [
+                "w1141",
+                219,
+                1
+              ],
+              [
+                "w1144",
+                219,
+                1
+              ]
+            ]
+          ],
+          "processing_seconds": 28289.221249404618,
+          "seq": 4773,
+          "setup_after": "",
+          "setup_before": "",
+          "setup_seconds": 0.0,
+          "steps": [
+            219,
+            219,
+            219,
+            219
+          ],
+          "time": 0,
+          "transport_seconds": 584.5818294454571,
+          "visits": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "source_line": 5061,
+          "cadence_seconds": 2897.1008707455035,
+          "job": 686,
+          "kind": "dispatch",
+          "lot_end": 3501.3458061621322,
+          "lots": [
+            "w1193"
+          ],
+          "machine": 966,
+          "machine_ready": 3017.1008707455035,
+          "min_runs_left": 0,
+          "owner": "plan",
+          "piece_pm": [],
+          "plan_task_id": "t966",
+          "plan_version": "fullfab_initial_01",
+          "process_end": 3017.1008707455035,
+          "processing_key": [
+            "processing",
+            [
+              [
+                "w1193",
+                131,
+                1
+              ]
+            ]
+          ],
+          "processing_seconds": 2897.1008707455035,
+          "seq": 5060,
+          "setup_after": "",
+          "setup_before": "",
+          "setup_seconds": 0.0,
+          "steps": [
+            131
+          ],
+          "time": 0,
+          "transport_seconds": 484.24493541662855,
+          "visits": [
+            1
+          ]
+        },
+        {
+          "source_line": 5199,
+          "cadence_seconds": 1302.75,
+          "job": 824,
+          "kind": "dispatch",
+          "lot_end": 1437.7772093112183,
+          "lots": [
+            "w1387"
+          ],
+          "machine": 1233,
+          "machine_ready": 1302.75,
+          "min_runs_left": 0,
+          "owner": "plan",
+          "piece_pm": [],
+          "plan_task_id": "t1233",
+          "plan_version": "fullfab_initial_01",
+          "process_end": 1437.7772093112183,
+          "processing_key": [
+            "processing",
+            [
+              [
+                "w1387",
+                293,
+                1
+              ]
+            ]
+          ],
+          "processing_seconds": 1317.7772093112183,
+          "seq": 5198,
+          "setup_after": "",
+          "setup_before": "",
+          "setup_seconds": 0.0,
+          "steps": [
+            293
+          ],
+          "time": 0,
+          "transport_seconds": 0.0,
+          "visits": [
+            1
+          ]
+        },
+        {
+          "source_line": 5251,
+          "cadence_seconds": 708.75,
+          "job": 876,
+          "kind": "dispatch",
+          "lot_end": 1161.8061422329447,
+          "lots": [
+            "w1462"
+          ],
+          "machine": 1288,
+          "machine_ready": 708.75,
+          "min_runs_left": 0,
+          "owner": "plan",
+          "piece_pm": [],
+          "plan_task_id": "t1288",
+          "plan_version": "fullfab_initial_01",
+          "process_end": 839.2718187072948,
+          "processing_key": [
+            "processing",
+            [
+              [
+                "w1462",
+                130,
+                1
+              ]
+            ]
+          ],
+          "processing_seconds": 719.2718187072948,
+          "seq": 5250,
+          "setup_after": "",
+          "setup_before": "",
+          "setup_seconds": 0.0,
+          "steps": [
+            130
+          ],
+          "time": 0,
+          "transport_seconds": 322.5343235256498,
+          "visits": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "commit_number": 4,
+      "plan_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v12__commit_progress_001/plan_00002/selected_plan.json",
+      "plan_trace_line": 5472,
+      "header": {
+        "version": "fullfab_revision_2",
+        "created_at": 1161.8061422329447,
+        "valid_until": 3600,
+        "freeze_until": 1161.8061422329447,
+        "reason": "Address observed uncovered demand by explicitly moving ready operation w1462:131:1 to available qualified machine 1301; preserve other pending tasks, finite holds and full factory scope to continue production toward absolute time 3600."
+      },
+      "scope_count": 913,
+      "tasks_count": 169,
+      "holds_count": 36,
+      "selected_before_tasks": [
+        {
+          "id": "t1011b",
+          "lot_ids": [
+            "w1038"
+          ],
+          "machine": 1011,
+          "not_before": 1254.36,
+          "operation_ids": [
+            "w1038:47:1"
+          ],
+          "steps": [
+            47
+          ],
+          "visits": [
+            1
+          ]
+        },
+        {
+          "id": "t1309",
+          "lot_ids": [
+            "w1462"
+          ],
+          "machine": 1309,
+          "not_before": 1288.2,
+          "operation_ids": [
+            "w1462:131:1"
+          ],
+          "steps": [
+            131
+          ],
+          "visits": [
+            1
+          ]
+        },
+        {
+          "id": "r1012_w1193_132",
+          "machine": 1012,
+          "lot_ids": [
+            "w1193"
+          ],
+          "steps": [
+            132
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1193:132:1"
+          ],
+          "not_before": 3567
+        }
+      ],
+      "selected_after_tasks": [
+        {
+          "id": "t1011b",
+          "lot_ids": [
+            "w1038"
+          ],
+          "machine": 1011,
+          "not_before": 1254.36,
+          "operation_ids": [
+            "w1038:47:1"
+          ],
+          "steps": [
+            47
+          ],
+          "visits": [
+            1
+          ]
+        },
+        {
+          "id": "t1309",
+          "machine": 1301,
+          "lot_ids": [
+            "w1462"
+          ],
+          "steps": [
+            131
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1462:131:1"
+          ],
+          "not_before": 1161.8061422329447
+        },
+        {
+          "id": "r1012_w1193_132",
+          "machine": 1012,
+          "lot_ids": [
+            "w1193"
+          ],
+          "steps": [
+            132
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1193:132:1"
+          ],
+          "not_before": 3567
+        }
+      ],
+      "selected_holds": [],
+      "stop_before": [
+        {
+          "source_line": 5464,
+          "kind": "ready",
+          "lot": "w1887",
+          "seq": 5463,
+          "step": 112,
+          "time": 1152.3275285668556,
+          "visit": 1
+        },
+        {
+          "source_line": 5469,
+          "job": 876,
+          "kind": "operation_complete",
+          "lot": "w1462",
+          "seq": 5468,
+          "step": 130,
+          "time": 1161.8061422329447
+        },
+        {
+          "source_line": 5470,
+          "kind": "ready",
+          "lot": "w1462",
+          "seq": 5469,
+          "step": 131,
+          "time": 1161.8061422329447,
+          "visit": 1
+        },
+        {
+          "source_line": 5471,
+          "kind": "coverage_gap",
+          "machines": [
+            {
+              "candidate_count": 1,
+              "family": "WE_FE_84",
+              "machine": 1298
+            },
+            {
+              "candidate_count": 1,
+              "family": "WE_FE_84",
+              "machine": 1299
+            },
+            {
+              "candidate_count": 1,
+              "family": "WE_FE_84",
+              "machine": 1301
+            },
+            {
+              "candidate_count": 1,
+              "family": "WE_FE_84",
+              "machine": 1307
+            }
+          ],
+          "plan_version": "fullfab_revision_1",
+          "seq": 5470,
+          "time": 1161.8061422329447
+        }
+      ],
+      "next_commit_or_terminal_seconds": 1229.708666059185,
+      "simulation_progress_seconds": 67.90252382624021,
+      "production_dispatches_before_next_commit": 2,
+      "selected_physical_events": [
+        {
+          "source_line": 5473,
+          "cadence_seconds": 675.0,
+          "job": 934,
+          "kind": "dispatch",
+          "lot_end": 2264.9941258092913,
+          "lots": [
+            "w1462"
+          ],
+          "machine": 1301,
+          "machine_ready": 1836.8061422329447,
+          "min_runs_left": 0,
+          "owner": "plan",
+          "piece_pm": [],
+          "plan_task_id": "t1309",
+          "plan_version": "fullfab_revision_2",
+          "process_end": 1964.445488388972,
+          "processing_key": [
+            "processing",
+            [
+              [
+                "w1462",
+                131,
+                1
+              ]
+            ]
+          ],
+          "processing_seconds": 682.6393461560274,
+          "seq": 5472,
+          "setup_after": "",
+          "setup_before": "",
+          "setup_seconds": 0.0,
+          "steps": [
+            131
+          ],
+          "time": 1161.8061422329447,
+          "transport_seconds": 300.54863742031904,
+          "visits": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "commit_number": 7,
+      "plan_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v13__base_evidence_002/plan_00001/selected_plan.json",
+      "plan_trace_line": 5509,
+      "header": {
+        "version": "fullfab_revision_5",
+        "created_at": 1233.4621259638616,
+        "valid_until": 3600,
+        "freeze_until": 1233.4621259638616,
+        "reason": "Preserve pending production commitments and full factory scope; address uncovered machine 1008 with a finite wait until 1254.36 for work reserved by t1011b on machine 1011, avoiding duplicate dispatch."
+      },
+      "scope_count": 913,
+      "tasks_count": 167,
+      "holds_count": 38,
+      "selected_before_tasks": [
+        {
+          "id": "t1011b",
+          "lot_ids": [
+            "w1038"
+          ],
+          "machine": 1011,
+          "not_before": 1254.36,
+          "operation_ids": [
+            "w1038:47:1"
+          ],
+          "steps": [
+            47
+          ],
+          "visits": [
+            1
+          ]
+        },
+        {
+          "id": "r1012_w1193_132",
+          "lot_ids": [
+            "w1193"
+          ],
+          "machine": 1012,
+          "not_before": 3567,
+          "operation_ids": [
+            "w1193:132:1"
+          ],
+          "steps": [
+            132
+          ],
+          "visits": [
+            1
+          ]
+        }
+      ],
+      "selected_after_tasks": [
+        {
+          "id": "t1011b",
+          "lot_ids": [
+            "w1038"
+          ],
+          "machine": 1011,
+          "not_before": 1254.36,
+          "operation_ids": [
+            "w1038:47:1"
+          ],
+          "steps": [
+            47
+          ],
+          "visits": [
+            1
+          ]
+        },
+        {
+          "id": "r1012_w1193_132",
+          "machine": 1012,
+          "lot_ids": [
+            "w1193"
+          ],
+          "steps": [
+            132
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1193:132:1"
+          ],
+          "not_before": 3567
+        }
+      ],
+      "selected_holds": [
+        {
+          "machine": 1016,
+          "until": 1254.36,
+          "reason": "Sole currently waiting operation w1038:47:1 is reserved by retained t1011b on machine1011 at1254.36. Brief finite wait preserves that reservation without duplicate dispatch; reconsider capacity at the next observation."
+        },
+        {
+          "machine": 1008,
+          "until": 1254.36,
+          "reason": "Sole ready operation w1038:47:1 is reserved by retained task t1011b on machine 1011 at 1254.36; wait finitely to preserve that commitment, then reassess demand."
+        }
+      ],
+      "stop_before": [
+        {
+          "source_line": 5504,
+          "kind": "coverage_gap",
+          "machines": [
+            {
+              "candidate_count": 1,
+              "family": "LithoMet_FE_19",
+              "machine": 1016
+            }
+          ],
+          "plan_version": "fullfab_revision_3",
+          "seq": 5503,
+          "time": 1230.3728488918987
+        },
+        {
+          "source_line": 5507,
+          "kind": "coverage_gap",
+          "machines": [
+            {
+              "candidate_count": 1,
+              "family": "LithoMet_FE_19",
+              "machine": 1008
+            }
+          ],
+          "plan_version": "fullfab_revision_4",
+          "seq": 5506,
+          "time": 1233.4621259638616
+        }
+      ],
+      "next_commit_or_terminal_seconds": 1245.6959788618578,
+      "simulation_progress_seconds": 12.233852897996258,
+      "production_dispatches_before_next_commit": 0,
+      "selected_physical_events": []
+    },
+    {
+      "commit_number": 89,
+      "plan_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00003/selected_plan.json",
+      "plan_trace_line": 7224,
+      "header": {
+        "version": "fullfab_revision_89",
+        "created_at": 3501.3458061621322,
+        "valid_until": 3600,
+        "freeze_until": 3501.3458061621322,
+        "reason": "Start ready w1193:132:1 on idle1012 now rather than3567 to resolve FE19 uncovered demand. Retain three other pending reservations exactly and76 finite holds; exclude already dispatched work. Preserve full factory scope and reassess actual releases and route outcomes at the next observation toward absolute3600."
+      },
+      "scope_count": 913,
+      "tasks_count": 4,
+      "holds_count": 76,
+      "selected_before_tasks": [
+        {
+          "id": "r1012_w1193_132",
+          "machine": 1012,
+          "lot_ids": [
+            "w1193"
+          ],
+          "steps": [
+            132
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1193:132:1"
+          ],
+          "not_before": 3567
+        },
+        {
+          "id": "rev86_w842_423",
+          "machine": 312,
+          "lot_ids": [
+            "w842"
+          ],
+          "steps": [
+            423
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w842:423:1"
+          ],
+          "not_before": 3571.3451100199736
+        }
+      ],
+      "selected_after_tasks": [
+        {
+          "id": "r1012_w1193_132",
+          "machine": 1012,
+          "lot_ids": [
+            "w1193"
+          ],
+          "steps": [
+            132
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w1193:132:1"
+          ],
+          "not_before": 3501.3458061621322
+        },
+        {
+          "id": "rev86_w842_423",
+          "machine": 312,
+          "lot_ids": [
+            "w842"
+          ],
+          "steps": [
+            423
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w842:423:1"
+          ],
+          "not_before": 3571.3451100199736
+        }
+      ],
+      "selected_holds": [],
+      "stop_before": [
+        {
+          "source_line": 7216,
+          "seq": 7215,
+          "time": 3499.13631902672,
+          "kind": "ready",
+          "lot": "w427",
+          "step": 125,
+          "visit": 1
+        },
+        {
+          "source_line": 7217,
+          "seq": 7216,
+          "time": 3499.13631902672,
+          "kind": "coverage_gap",
+          "plan_version": "fullfab_revision_87",
+          "machines": [
+            {
+              "machine": 105,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 106,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 107,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 108,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 109,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 110,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 111,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 112,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 113,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 114,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 115,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            },
+            {
+              "machine": 116,
+              "family": "DE_FE_51",
+              "candidate_count": 1
+            }
+          ]
+        },
+        {
+          "source_line": 7221,
+          "seq": 7220,
+          "time": 3501.3458061621322,
+          "kind": "operation_complete",
+          "job": 686,
+          "lot": "w1193",
+          "step": 131
+        },
+        {
+          "source_line": 7222,
+          "seq": 7221,
+          "time": 3501.3458061621322,
+          "kind": "ready",
+          "lot": "w1193",
+          "step": 132,
+          "visit": 1
+        },
+        {
+          "source_line": 7223,
+          "seq": 7222,
+          "time": 3501.3458061621322,
+          "kind": "coverage_gap",
+          "plan_version": "fullfab_revision_88",
+          "machines": [
+            {
+              "machine": 1006,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1007,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1008,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1009,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1010,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1011,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1013,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1014,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1015,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1016,
+              "family": "LithoMet_FE_19",
+              "candidate_count": 1
+            }
+          ]
+        }
+      ],
+      "next_commit_or_terminal_seconds": 3535.923026979447,
+      "simulation_progress_seconds": 34.57722081731481,
+      "production_dispatches_before_next_commit": 1,
+      "selected_physical_events": [
+        {
+          "source_line": 7225,
+          "seq": 7224,
+          "time": 3501.3458061621322,
+          "kind": "dispatch",
+          "job": 1172,
+          "machine": 1012,
+          "lots": [
+            "w1193"
+          ],
+          "steps": [
+            132
+          ],
+          "visits": [
+            1
+          ],
+          "owner": "plan",
+          "setup_before": "",
+          "setup_after": "",
+          "setup_seconds": 0.0,
+          "processing_seconds": 1132.5140084922207,
+          "cadence_seconds": 1132.5140084922207,
+          "transport_seconds": 467.1678241667098,
+          "process_end": 4753.859814654353,
+          "lot_end": 5221.027638821062,
+          "machine_ready": 4753.859814654353,
+          "piece_pm": [],
+          "min_runs_left": 0,
+          "processing_key": [
+            "processing",
+            [
+              [
+                "w1193",
+                132,
+                1
+              ]
+            ]
+          ],
+          "plan_version": "fullfab_revision_89",
+          "plan_task_id": "r1012_w1193_132"
+        }
+      ],
+      "model_actions": [
+        {
+          "model_index": 1308,
+          "kind": "session_query",
+          "action": "read_page",
+          "page_index": 10,
+          "chunk_id": null,
+          "input_plus_output_tokens": 24676,
+          "duration_seconds": 29.256776125053875,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01308/result.json"
+        },
+        {
+          "model_index": 1309,
+          "kind": "create_draft",
+          "action": null,
+          "page_index": null,
+          "chunk_id": null,
+          "input_plus_output_tokens": 47851,
+          "duration_seconds": 32.08798754203599,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01309/result.json"
+        },
+        {
+          "model_index": 1310,
+          "kind": "session_query",
+          "action": "read_operations",
+          "page_index": null,
+          "chunk_id": null,
+          "input_plus_output_tokens": 27797,
+          "duration_seconds": 31.867358708987013,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01310/result.json"
+        },
+        {
+          "model_index": 1311,
+          "kind": "session_query",
+          "action": "read_machines",
+          "page_index": null,
+          "chunk_id": null,
+          "input_plus_output_tokens": 29436,
+          "duration_seconds": 33.09751587500796,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01311/result.json"
+        },
+        {
+          "model_index": 1312,
+          "kind": "assembly_action",
+          "action": "chunk",
+          "page_index": null,
+          "chunk_id": "rev89_dispositions",
+          "input_plus_output_tokens": 29914,
+          "duration_seconds": 42.23038404097315,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01312/result.json"
+        },
+        {
+          "model_index": 1313,
+          "kind": "assembly_action",
+          "action": "chunk",
+          "page_index": null,
+          "chunk_id": "rev89_header",
+          "input_plus_output_tokens": 31403,
+          "duration_seconds": 68.9752570829587,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01313/result.json"
+        },
+        {
+          "model_index": 1314,
+          "kind": "assembly_action",
+          "action": "seal",
+          "page_index": null,
+          "chunk_id": null,
+          "input_plus_output_tokens": 29081,
+          "duration_seconds": 32.583155791973695,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01314/result.json"
+        },
+        {
+          "model_index": 1315,
+          "kind": "check_assembly",
+          "action": null,
+          "page_index": null,
+          "chunk_id": null,
+          "input_plus_output_tokens": 30541,
+          "duration_seconds": 30.641175500000827,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01315/result.json"
+        },
+        {
+          "model_index": 1316,
+          "kind": "read_candidate",
+          "action": null,
+          "page_index": null,
+          "chunk_id": null,
+          "input_plus_output_tokens": 28512,
+          "duration_seconds": 31.43019620794803,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01316/result.json"
+        },
+        {
+          "model_index": 1317,
+          "kind": "apply",
+          "action": null,
+          "page_index": null,
+          "chunk_id": null,
+          "input_plus_output_tokens": 34131,
+          "duration_seconds": 28.57172470795922,
+          "result_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01317/result.json"
+        }
+      ],
+      "known_input_plus_output_tokens": 313342,
+      "model_call_duration_sum_seconds": 360.74153158289846
+    },
+    {
+      "commit_number": 93,
+      "plan_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00007/selected_plan.json",
+      "plan_trace_line": 7304,
+      "header": {
+        "version": "fullfab_revision_93",
+        "created_at": 3593.437278335227,
+        "valid_until": 3600,
+        "freeze_until": 3593.437278335227,
+        "reason": "Start sole ready unconditional BE93 operation w293:325:1 immediately on913. Hold alternate913-family capacity914-916 finitely to avoid duplicate dispatch. Explicitly replace expired w842 reservation at its current conditional release on312; preserve76 base finite holds and full scope without resubmitting dispatched work. Reassess actual demand at next observation toward absolute3600."
+      },
+      "scope_count": 913,
+      "tasks_count": 2,
+      "holds_count": 79,
+      "selected_before_tasks": [
+        {
+          "id": "rev86_w842_423",
+          "machine": 312,
+          "lot_ids": [
+            "w842"
+          ],
+          "steps": [
+            423
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w842:423:1"
+          ],
+          "not_before": 3571.3451100199736
+        }
+      ],
+      "selected_after_tasks": [
+        {
+          "id": "rev86_w842_423",
+          "machine": 312,
+          "lot_ids": [
+            "w842"
+          ],
+          "steps": [
+            423
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w842:423:1"
+          ],
+          "not_before": 3594.437278335227
+        }
+      ],
+      "selected_holds": [],
+      "stop_before": [
+        {
+          "source_line": 7301,
+          "seq": 7300,
+          "time": 3593.437278335227,
+          "kind": "operation_complete",
+          "job": 603,
+          "lot": "w293",
+          "step": 324
+        },
+        {
+          "source_line": 7302,
+          "seq": 7301,
+          "time": 3593.437278335227,
+          "kind": "ready",
+          "lot": "w293",
+          "step": 325,
+          "visit": 1
+        },
+        {
+          "source_line": 7303,
+          "seq": 7302,
+          "time": 3593.437278335227,
+          "kind": "coverage_gap",
+          "plan_version": "fullfab_revision_92",
+          "machines": [
+            {
+              "machine": 913,
+              "family": "Litho_BE_93",
+              "candidate_count": 1
+            },
+            {
+              "machine": 914,
+              "family": "Litho_BE_93",
+              "candidate_count": 1
+            },
+            {
+              "machine": 915,
+              "family": "Litho_BE_93",
+              "candidate_count": 1
+            },
+            {
+              "machine": 916,
+              "family": "Litho_BE_93",
+              "candidate_count": 1
+            }
+          ]
+        }
+      ],
+      "next_commit_or_terminal_seconds": 3597.9364252258506,
+      "simulation_progress_seconds": 4.499146890623706,
+      "production_dispatches_before_next_commit": 1,
+      "selected_physical_events": [
+        {
+          "source_line": 7312,
+          "seq": 7311,
+          "time": 3597.9364252258506,
+          "kind": "operation_complete",
+          "job": 358,
+          "lot": "w842",
+          "step": 422
+        },
+        {
+          "source_line": 7313,
+          "seq": 7312,
+          "time": 3597.9364252258506,
+          "kind": "skip",
+          "lot": "w842",
+          "step": 423,
+          "visit": 1,
+          "draw": 83.85464980761944
+        },
+        {
+          "source_line": 7314,
+          "seq": 7313,
+          "time": 3597.9364252258506,
+          "kind": "ready",
+          "lot": "w842",
+          "step": 424,
+          "visit": 1
+        }
+      ]
+    },
+    {
+      "commit_number": 94,
+      "plan_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00008/selected_plan.json",
+      "plan_trace_line": 7316,
+      "header": {
+        "version": "fullfab_revision_94",
+        "created_at": 3597.9364252258506,
+        "valid_until": 3600,
+        "freeze_until": 3597.9364252258506,
+        "reason": "Cancel invalidated w842:423:1 reservation, absent from the current inspected observation. BE33 has no predecessor-free release before3600; do not resubmit dispatched w293:325:1. Preserve79 finite unanchored alternative-capacity holds and full factory scope. Reassess actual demand at the next executor observation toward absolute3600."
+      },
+      "scope_count": 913,
+      "tasks_count": 0,
+      "holds_count": 79,
+      "selected_before_tasks": [
+        {
+          "id": "rev86_w842_423",
+          "machine": 312,
+          "lot_ids": [
+            "w842"
+          ],
+          "steps": [
+            423
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w842:423:1"
+          ],
+          "not_before": 3594.437278335227
+        }
+      ],
+      "selected_after_tasks": [],
+      "selected_holds": [],
+      "stop_before": [
+        {
+          "source_line": 7308,
+          "seq": 7307,
+          "time": 3594.493337317942,
+          "kind": "operation_complete",
+          "job": 1087,
+          "lot": "w2041",
+          "step": 117
+        },
+        {
+          "source_line": 7309,
+          "seq": 7308,
+          "time": 3594.493337317942,
+          "kind": "ready",
+          "lot": "w2041",
+          "step": 118,
+          "visit": 1
+        },
+        {
+          "source_line": 7312,
+          "seq": 7311,
+          "time": 3597.9364252258506,
+          "kind": "operation_complete",
+          "job": 358,
+          "lot": "w842",
+          "step": 422
+        },
+        {
+          "source_line": 7313,
+          "seq": 7312,
+          "time": 3597.9364252258506,
+          "kind": "skip",
+          "lot": "w842",
+          "step": 423,
+          "visit": 1,
+          "draw": 83.85464980761944
+        },
+        {
+          "source_line": 7314,
+          "seq": 7313,
+          "time": 3597.9364252258506,
+          "kind": "ready",
+          "lot": "w842",
+          "step": 424,
+          "visit": 1
+        },
+        {
+          "source_line": 7315,
+          "seq": 7314,
+          "time": 3597.9364252258506,
+          "kind": "plan_invalidated",
+          "plan_version": "fullfab_revision_93",
+          "task_id": "rev86_w842_423",
+          "reason": "observed route/visit changed"
+        }
+      ],
+      "next_commit_or_terminal_seconds": 3597.9364252258506,
+      "simulation_progress_seconds": 0.0,
+      "production_dispatches_before_next_commit": 0,
+      "selected_physical_events": []
+    },
+    {
+      "commit_number": 95,
+      "plan_file": "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00009/selected_plan.json",
+      "plan_trace_line": 7318,
+      "header": {
+        "version": "fullfab_revision_95",
+        "created_at": 3597.9364252258506,
+        "valid_until": 3600,
+        "freeze_until": 3597.9364252258506,
+        "reason": "Start sole inspected ready unconditional TF_BE_26 operation w842:424:1 immediately on1153. Hold alternative1159 finitely through3600 to avoid duplicate dispatch. Preserve79 existing finite unanchored holds and full factory scope; reassess actual demand at next executor observation toward absolute3600."
+      },
+      "scope_count": 913,
+      "tasks_count": 1,
+      "holds_count": 80,
+      "selected_before_tasks": [],
+      "selected_after_tasks": [
+        {
+          "id": "rev95_w842_424",
+          "machine": 1153,
+          "lot_ids": [
+            "w842"
+          ],
+          "steps": [
+            424
+          ],
+          "visits": [
+            1
+          ],
+          "operation_ids": [
+            "w842:424:1"
+          ],
+          "not_before": 3597.9364252258506
+        }
+      ],
+      "selected_holds": [
+        {
+          "machine": 1159,
+          "until": 3600,
+          "reason": "Sole inspected ready unconditional TF_BE_26 operation w842:424:1 explicitly starts on1153 now. Finite alternative-capacity wait avoids duplicate dispatch; other predecessor-free forecasts release after3600. Reassess actual demand at next observation."
+        }
+      ],
+      "stop_before": [
+        {
+          "source_line": 7312,
+          "seq": 7311,
+          "time": 3597.9364252258506,
+          "kind": "operation_complete",
+          "job": 358,
+          "lot": "w842",
+          "step": 422
+        },
+        {
+          "source_line": 7313,
+          "seq": 7312,
+          "time": 3597.9364252258506,
+          "kind": "skip",
+          "lot": "w842",
+          "step": 423,
+          "visit": 1,
+          "draw": 83.85464980761944
+        },
+        {
+          "source_line": 7314,
+          "seq": 7313,
+          "time": 3597.9364252258506,
+          "kind": "ready",
+          "lot": "w842",
+          "step": 424,
+          "visit": 1
+        },
+        {
+          "source_line": 7315,
+          "seq": 7314,
+          "time": 3597.9364252258506,
+          "kind": "plan_invalidated",
+          "plan_version": "fullfab_revision_93",
+          "task_id": "rev86_w842_423",
+          "reason": "observed route/visit changed"
+        },
+        {
+          "source_line": 7317,
+          "seq": 7316,
+          "time": 3597.9364252258506,
+          "kind": "coverage_gap",
+          "plan_version": "fullfab_revision_94",
+          "machines": [
+            {
+              "machine": 1153,
+              "family": "TF_BE_26",
+              "candidate_count": 1
+            },
+            {
+              "machine": 1159,
+              "family": "TF_BE_26",
+              "candidate_count": 1
+            }
+          ]
+        }
+      ],
+      "next_commit_or_terminal_seconds": 3600,
+      "simulation_progress_seconds": 2.0635747741494015,
+      "production_dispatches_before_next_commit": 1,
+      "selected_physical_events": [
+        {
+          "source_line": 7319,
+          "seq": 7318,
+          "time": 3597.9364252258506,
+          "kind": "dispatch",
+          "job": 1182,
+          "machine": 1153,
+          "lots": [
+            "w842"
+          ],
+          "steps": [
+            424
+          ],
+          "visits": [
+            1
+          ],
+          "owner": "plan",
+          "setup_before": "",
+          "setup_after": "",
+          "setup_seconds": 0.0,
+          "processing_seconds": 4554.571339624211,
+          "cadence_seconds": 3883.7520000000004,
+          "transport_seconds": 550.2966271090309,
+          "process_end": 8272.507764850061,
+          "lot_end": 8822.804391959093,
+          "machine_ready": 7481.6884252258515,
+          "piece_pm": [],
+          "min_runs_left": 0,
+          "processing_key": [
+            "processing",
+            [
+              [
+                "w842",
+                424,
+                1
+              ]
+            ]
+          ],
+          "plan_version": "fullfab_revision_95",
+          "plan_task_id": "rev95_w842_424"
+        }
+      ]
+    }
+  ],
+  "source_file_sha256": {
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7/plan_00000/selected_plan.json": "081a684eb00e10c0dc996d1e4bff904a4331e1e23aafe7d4d2a094ba5a0fbf7d",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v7/plan_00000/bootstrap.json": "5ee56b31a570e3a4c0c8f5d9d9868fd4f36f6b5181e2cc66366cde35b3bb284e",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v12__commit_progress_001/plan_00002/selected_plan.json": "2c0099082dd637b5b18d44bee0b00e274da78d151892770b708d5b63e230cd38",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v12__commit_progress_001/plan_00002/bootstrap.json": "0283a521f77bcbd39edc74732fcf329973c4fb61d2226e6fa06c113fb2d5f429",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v13__base_evidence_002/plan_00001/selected_plan.json": "a0cdbb2219bbb8c6b235263af470d6074d7210cbb785238fbb08300b9f978374",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v13__base_evidence_002/plan_00001/bootstrap.json": "e7b8a8ea5b47610bae641e089fa458dce801d6f516567f908b4fc8a30628883a",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00003/selected_plan.json": "e0e60c14375f4374a8165aef9a3324b0077156c57b3c06742df9f0f4e7c22cb8",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00003/bootstrap.json": "961dd4a565d5943827fd633a1e48f34c4fc180cc7cab3aeb25ef8194180a9346",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00003/interaction_evidence.json": "999461e9cee7b81d8d067c6d5b4eaeb47a40b3971c2339c561e52f0323af269e",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01308/result.json": "60bbacdc840996a81828bf6168d971708b5018e43a2ecb624cc7d77711005991",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01309/result.json": "26ebf6cae13d65e53f443dcea1997e288611e00fce369212d66cb6da902d9523",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01310/result.json": "5f91557900bc61447c43d5eed6d20c19813d2e919fcbd67fa2963eeac0ad1401",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01311/result.json": "6e4e4b24c8d0e05c7643f4882d4cde6598dc8e2d384bd2c8fd2bee8e507d9d86",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01312/result.json": "89a2678285e1180266ef323283632a51c2f06470c80a04fd98c6556919355377",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01313/result.json": "96e13fd9cd20681a14e2c234cb07fe82e464a7ae754c59c60cce27c5fc150770",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01314/result.json": "343e6b268ec9ea9c4a8ceff3346ee73db578d7a54c5386fc2bbd1e46cb283d2a",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01315/result.json": "0c40d75aafdebc61a6968a9ad598122fb804bfb545b7ce043021239b8b7b1ae6",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01316/result.json": "29f007217cf5877c74e88a4237a8395175a5e512b8deb0eb78c0a2e6cb086684",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/model_01317/result.json": "4041939806e17b997877d0cce428c7310451e949322675ad25c0643911207697",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00007/selected_plan.json": "baf3a3ac4cc12dc5a0a86f6b2d825a95c790bf589f57b148a730262a7c2c180d",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00007/bootstrap.json": "4fb746a99bb45ab047101c828a5a1706610036c2ef9fe78ec5b8982636367a4e",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00008/selected_plan.json": "d308ef896f8cea9b653d93ad4df4cd68723017d8a4cdd3bf259cf6a1e0b08823",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00008/bootstrap.json": "0ad632ba7057f24aad66aa6d8392a307cd996281651c81b5acfee47b99382247",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00009/selected_plan.json": "38a5affbb96885c097078df2fcdf1badace7992009e0f84f925bf2118e8f70f7",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/plan_00009/bootstrap.json": "34d00f4fcb667eb947575a20918a2787b29266141167cd7de7cc9773a49654d6",
+    "experiment_round2_3datasets/runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/physical/trace.jsonl": "6a1039538a6404e69e7455f64d76a5f9e3e964bd3c806e6cf2a1d4d38307a632"
+  },
+  "final_metrics": {
+    "completed_window": true,
+    "simulation_seconds": 3600.0,
+    "throughput_lots": 1,
+    "throughput_wafers": 25,
+    "mean_cycle_seconds_completed": 2575593.7772093113,
+    "tardy_completed_lots": 0,
+    "total_tardiness_completed_seconds": 0,
+    "initial_wip_lots": 2156,
+    "released_new_lots": 21,
+    "terminal_wip_lots": 2176,
+    "wip_change": 20,
+    "terminal_tardy_wip_lots": 10,
+    "controlled_completed_operation_lots": 288,
+    "controlled_dispatched_operation_lots": 1327,
+    "controlled_family_queue_area_lot_seconds": 3703658.2793514105,
+    "controlled_decisions": 95,
+    "controlled_machine_fraction": 1.0,
+    "dispatches": 1183,
+    "controlled_dispatches": 1071,
+    "batch_dispatches": 70,
+    "unfinished_controlled_batches": 70,
+    "end_to_end_seconds": 2852.0358214169974
+  }
+}

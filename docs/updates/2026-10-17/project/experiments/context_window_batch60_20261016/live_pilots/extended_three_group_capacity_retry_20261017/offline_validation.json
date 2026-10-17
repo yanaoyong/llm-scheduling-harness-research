@@ -1,0 +1,49 @@
+{
+  "all_pass": true,
+  "new_model_calls": 0,
+  "admission_checked_without_reserving_call": true,
+  "retry_proof": {
+    "valid": true,
+    "failed_attempt_retained": "attempt:1fb3f2d29c414e4d89258dbf",
+    "unknown_usage_retained": true,
+    "source_checkpoint_unchanged": true,
+    "new_actual_calls": 0,
+    "same_model_and_production_rules": true,
+    "legitimate_note_updates": []
+  },
+  "lineage": {
+    "valid": true,
+    "inherited_calls": 4,
+    "inherited_commits": 2,
+    "physical_prefix_events": 5429,
+    "omitted_presentation_events": 1,
+    "production_decisions_changed": false,
+    "source_changed_files": [
+      "src/smt_fullfab/harness/capacity_pilot.py",
+      "src/smt_fullfab/harness/network.py"
+    ],
+    "legitimate_model_note_updates": [
+      {
+        "record": "notes/current",
+        "model_updates": [
+          "attempt:30724787f8f24d27ae9ae650",
+          "attempt:fc4720b595c9404f890eba29",
+          "attempt:751f25d429ff49c3942a000f",
+          "attempt:0832341ba6b046f1ba863867"
+        ],
+        "old_version": 2,
+        "new_version": 6
+      }
+    ],
+    "immutable_ledgers_exact": true
+  },
+  "production": {
+    "valid": true,
+    "commits": 6,
+    "algorithm_production_tasks": 0,
+    "checked_batch_receipts": 6,
+    "B_algorithm_calls": 0,
+    "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+  },
+  "original_failed_call_still_unknown": true
+}

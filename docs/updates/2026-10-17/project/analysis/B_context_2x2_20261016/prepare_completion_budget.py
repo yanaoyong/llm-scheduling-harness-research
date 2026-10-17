@@ -1,0 +1,17 @@
+from pathlib import Path
+O=Path(__file__).resolve().parent;W=O/'workspace/src/smt_fullfab/harness'
+def preserve(src,dst):assert not dst.exists();dst.write_bytes(src.read_bytes())
+preserve(O/'recovery_amendment.json',O/'recovery_amendment_v4.json')
+for p in [W/'context_recovery.py',W/'wall_budget.py',O/'experiment.py']:preserve(p,O/(p.stem+'_before_completion_budget.py'))
+p=W/'context_recovery.py';s=p.read_text().replace('grant["changed_limit_fields"]==["attempts"]','grant["changed_limit_fields"]==["attempts","tokens","model_seconds","wall_seconds"] and grant["completion_limits"]=={"attempts":None,"tokens":None,"model_seconds":7200,"wall_seconds":57600}').replace('"Only call-count caps removed"','"Uniform completion allowance; no change to model or per-call timeout"')
+s=s.replace('    result["limits"]["attempts"]=None\n    result.update(context_uncapped_counts=True,original_attempt_limit=60,source_revision_sha256=digest(revision))','''    require(manifest["config"]["limits"]["tokens"]==3000000 and manifest["config"]["limits"]["model_seconds"]==3600 and manifest["config"]["limits"]["wall_seconds"]==28800,"context_count_marker","Exact original budgets required")
+    result["limits"].update(attempts=None,tokens=None,model_seconds=7200,wall_seconds=57600)
+    result.update(context_uncapped_counts=True,context_completion_allowance=True,original_attempt_limit=60,original_token_limit=3000000,model_extension_seconds=3600,wall_extension_seconds=28800,effective_deadline_epoch=manifest["deadline_epoch"]+28800,source_revision_sha256=digest(revision))''')
+p.write_text(s)
+p=W/'wall_budget.py';s=p.read_text().replace("'Count-only revision cannot alter time allowances'","'Context completion allowance cannot combine with unrelated run policies'")
+s=s.replace("    if budget.get('context_uncapped_counts'):\n        for group in ('micro', 'combined'):caps[group]['attempts']=None", "    if budget.get('context_completion_allowance'):\n        for group in ('micro', 'combined'):\n            caps[group].update(attempts=None,tokens=None,model_seconds=28800,wall_seconds=57600)\n        return caps\n    if budget.get('context_uncapped_counts'):\n        for group in ('micro', 'combined'):caps[group]['attempts']=None")
+p.write_text(s)
+p=O/'experiment.py';s=p.read_text().replace("usage['input_tokens']+usage['output_tokens']<=reg_limits['tokens']","within_cap(usage['input_tokens']+usage['output_tokens'],reg_limits['tokens'])");p.write_text(s)
+s=(O/'verify_count_revision.py').read_text().replace('_v4','_v5').replace("{**original['config']['limits'],'attempts':None}","{**original['config']['limits'],'attempts':None,'tokens':None,'model_seconds':7200,'wall_seconds':57600}").replace("self.assertEqual(b['effective_deadline_epoch'],m['deadline_epoch'])","self.assertEqual(b['effective_deadline_epoch'],m['deadline_epoch']+28800)").replace("{**reg['caps'][group],'attempts':None}","{**reg['caps'][group],'attempts':None,'tokens':None,'model_seconds':28800,'wall_seconds':57600}")
+(O/'verify_completion_budget.py').write_text(s)
+print('Completion budget revision prepared; v4 preserved')

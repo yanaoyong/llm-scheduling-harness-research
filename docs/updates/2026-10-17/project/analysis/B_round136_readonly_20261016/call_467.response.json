@@ -1,0 +1,23 @@
+{
+  "candidate_ref": "candidate:4b059ab957c7437ba77b5132",
+  "draft_required": false,
+  "plan_ref": "artifact:48286f8b301a43c896bbf6a6",
+  "protocol_stage": "proposal_complete_awaiting_explicit_selection",
+  "selection_rule": "If this is your intended plan, a later model output must explicitly apply_candidate with its exact reference. No further drafting/finalization is required; all alternative candidates remain selectable.",
+  "status": "candidate_checked",
+  "summary": {
+    "added": [
+      "d136-w1091"
+    ],
+    "cancelled": [],
+    "check": "static_compiler_and_current_physical_commit_preparation",
+    "dynamic_feasibility": "not_certified",
+    "freeze_until": 2598.0688794189255,
+    "hold_count": 0,
+    "plan_sha256": "9eb3dba43d87ea2b31df31cd4f7cf310d3dbf52eb0454a7b5f161e17b3b01dbf",
+    "replaced": [],
+    "semantic_coverage": "partial",
+    "task_count": 1,
+    "valid_until": 2718.0688794189255
+  }
+}

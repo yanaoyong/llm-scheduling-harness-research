@@ -1,0 +1,53 @@
+{
+  "phase": "scope-search",
+  "question_set": {
+    "flow_instance": "research_harness_multiagent_20261016",
+    "run_id": "harness-multiagent-m05-20261016",
+    "scope_note": "补充多agent路线：分工、共享信息、全局排程冲突，与单agent比较全体模型调用、完整成本和排程质量。只研究不改B。",
+    "questions": [
+      {
+        "q_id": "MA-Q01",
+        "question": "多agent按职能、机组/区域、订单/资源或时间窗口如何分工？何时辅助读取、局部提案+统一裁决或分布式协商适用，任务耦合与分工粒度如何影响效果？",
+        "risk_hint": "high"
+      },
+      {
+        "q_id": "MA-Q02",
+        "question": "多agent怎样共享带版本的事实、约束、计划与进度，同时隔离上下文、避免重复读取/摘要遗漏/过时状态？需要哪些消息和工件契约？",
+        "risk_hint": "high"
+      },
+      {
+        "q_id": "MA-Q03",
+        "question": "如何处理共享机台/批次/订单的全局竞争、跨区域依赖、死锁、局部最优和并发提交冲突？最终谁决定具体安排，约束检查、求解器与全局裁决各承担什么？",
+        "risk_hint": "high"
+      },
+      {
+        "q_id": "MA-Q04",
+        "question": "原始研究怎样与单agent公平比较全体模型调用、token、延迟/费用和排程质量？哪些实证支持多agent、哪些反例反对；如何设计本厂隔离配对验证且不影响运行B？",
+        "risk_hint": "high"
+      }
+    ]
+  },
+  "seeds": {
+    "MA-Q01": [
+      "Anthropic How we built our multi-agent research system",
+      "OpenAI Agents SDK manager agents-as-tools versus handoffs",
+      "LLM multi-agent manufacturing job shop scheduling decomposition"
+    ],
+    "MA-Q02": [
+      "Deep Agents subagents isolated context shared filesystem",
+      "LangGraph subgraphs shared state reducers concurrent updates",
+      "multi-agent blackboard versioned shared memory scheduling"
+    ],
+    "MA-Q03": [
+      "ADACOR holonic manufacturing scheduling supervisor operational holons disturbance",
+      "PROSA holonic manufacturing order resource staff holons contract net",
+      "LLM multi agent job shop scheduling global resource conflict negotiation arbitration"
+    ],
+    "MA-Q04": [
+      "Towards a Science of Scaling Agent Systems empirical single multi agent cost coordination",
+      "Why Do Multi-Agent LLM Systems Fail MAST",
+      "LLM multi agent scheduling benchmark single agent ablation tokens makespan tardiness"
+    ]
+  },
+  "internal_brief": "本厂B为模型直接决定lot、机台、批次、顺序、等待的排程路线。已有隔离快照支持单次propose_delta含多机多任务。旧实验观察：宽读取造成翻页/上下文压力，两个改动组74次成功调用全为读取且0提案；等长回放未完成，不能下收益结论。历史单任务短覆盖常因未覆盖需求重入模。此次只做研究，不读原始工厂数据、不访问live B、不跑排程。需比较单agent与辅助分析、局部提案统一裁决、分布式协商；所有具体排程决策者都须披露。旧证据仅是继承背景，不能冒充新复现。"
+}

@@ -1,5 +1,7 @@
 # 未决问题
 
+> 2026-10-17 更新：后续会话、Harness 验收与窗口实验见 [增量归档](updates/2026-10-17/README.md)。下文继续保留原历史快照及其日期。
+
 1. **C 的模型增益是否存在？** 缺少同工具、同接口、同预算、固定参数且不调用模型的 C-fixed 消融；历史 C 的表现不能直接归因于 LLM。[一小时比较](../source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/ABC_1h_plan_comparison_20261012.md)（原文 L57-L60） [后续条件](../source_snapshot/experiment_round2_3datasets/docs/smt_fullfab/B_1h_results_efficiency_and_next_budget_20261012.md)（原文 L90-L96）
 2. **历史部署能否逐哈希绑定？** 当前源码、包内依赖、compiler、物理依赖与已批准 B 运行的版本关联还缺证据。[未决问题 OQ-02](../source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/open-questions.md)（原文 L29-L37）
 3. **决定归属如何界定？** 生产计划决定与环境虚拟推进、物理就绪等待的职责边界尚需明确。[未决问题 OQ-03](../source_snapshot/research_harness_scheduling_20261012_round2/m0.5_research/open-questions.md)（原文 L39-L47）

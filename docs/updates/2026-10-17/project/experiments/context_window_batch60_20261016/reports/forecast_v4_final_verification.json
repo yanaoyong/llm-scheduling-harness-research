@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-17",
+  "tests_passed": 170,
+  "model_calls": 0,
+  "source_and_pilot_isolation": {
+    "source_files_checked": 803,
+    "changed_source_files": [],
+    "linked_to_source": [],
+    "changed_fixtures": [],
+    "original_run_database_opened": false,
+    "sealed_pilot_files_checked": 33815,
+    "changed_sealed_pilot_files": [],
+    "valid": true
+  },
+  "modified_runtime_files": [
+    "src/smt_fullfab/observation.py",
+    "src/smt_fullfab/audit.py",
+    "src/smt_fullfab/harness/capacity_prompt.py",
+    "src/smt_fullfab/harness/batch_window.py",
+    "src/smt_fullfab/harness/transport.py",
+    "src/smt_fullfab/harness/evaluation.py",
+    "src/smt_fullfab/harness/runtime.py",
+    "src/smt_fullfab/harness/contracts.py",
+    "src/smt_fullfab/harness/capacity_config.py",
+    "src/smt_fullfab/harness/planning_batches.py"
+  ],
+  "new_runtime_files": [
+    "src/smt_fullfab/harness/forecast_collection.py"
+  ],
+  "legacy_audit_runs": 3,
+  "checked_test_source_sha256": {
+    "tests/test_capacity_forecast_collection.py": "1ff0d1809c710b8454c898b58eeb2991e57b98ce17b04ae5f155651bb6f26efb",
+    "tests/test_capacity_two_strategy.py": "48100cd2e5ffea036c1afef00b67f352a3d65d9581e589a53ed550c649623079",
+    "tests/test_capacity_live_pilot.py": "0962c2076000b1991099e61de2a22143da51cd0bb49778d94ef286c790099cf3",
+    "tests/test_capacity_batch60_experiment.py": "4be1632d3ace72f1f8b7791f4fbc0882d760565fe9ca962f277b317ba9ac105d"
+  },
+  "report_sha256": "d281930971c12ec169c602974299e5ee6ef79c60078d789ab3dadaa13129d0de",
+  "no_runtime_change_after_full_validation": true
+}

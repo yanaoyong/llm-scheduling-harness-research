@@ -1,0 +1,321 @@
+{
+  "comparison_window": [
+    702.0,
+    768.0
+  ],
+  "paired_v4_window": [
+    702.0,
+    882.0
+  ],
+  "same_registration_fields": {
+    "initial_fixture_sha256": true,
+    "initial_state_sha256": true,
+    "initial_trace_sha256": true,
+    "evaluation_end": true,
+    "per_group_call_cap": true,
+    "task": true,
+    "cli_sha256": true,
+    "model_catalog_sha256": false
+  },
+  "config_changes_from_v3": {
+    "G1": [
+      {
+        "path": ".capacity_experiment.forecast_lookahead_seconds",
+        "v3": null,
+        "v4": 60
+      },
+      {
+        "path": ".capacity_experiment.forecast_min_interval_seconds",
+        "v3": null,
+        "v4": 60
+      },
+      {
+        "path": ".capacity_experiment.policy",
+        "v3": "capacity-two-strategy-wait60-offline-v3",
+        "v4": "capacity-forecast-collection-wait60-offline-v4"
+      },
+      {
+        "path": ".semantic_profile_id",
+        "v3": "capacity-two-strategy-wait60-offline-v3",
+        "v4": "capacity-forecast-collection-wait60-offline-v4"
+      }
+    ],
+    "G2": [
+      {
+        "path": ".capacity_experiment.forecast_lookahead_seconds",
+        "v3": null,
+        "v4": 60
+      },
+      {
+        "path": ".capacity_experiment.forecast_min_interval_seconds",
+        "v3": null,
+        "v4": 60
+      },
+      {
+        "path": ".capacity_experiment.policy",
+        "v3": "capacity-two-strategy-wait60-offline-v3",
+        "v4": "capacity-forecast-collection-wait60-offline-v4"
+      },
+      {
+        "path": ".semantic_profile_id",
+        "v3": "capacity-two-strategy-wait60-offline-v3",
+        "v4": "capacity-forecast-collection-wait60-offline-v4"
+      }
+    ]
+  },
+  "same_window_comparison": {
+    "v3": {
+      "G1": {
+        "window": [
+          702.0,
+          768.0
+        ],
+        "calls_to_reach_end": 6,
+        "quality": {
+          "weighted_tardy_lot_seconds": 660.0,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 4488.0,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 67125.0,
+          "production_dispatches": 5,
+          "operation_lots_dispatched": 5,
+          "executable_unplanned_machine_seconds": 52.499999999999886
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 761.2499999999999,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 768.0,
+            "reason": "plan_runway"
+          }
+        ]
+      },
+      "G2": {
+        "window": [
+          702.0,
+          768.0
+        ],
+        "calls_to_reach_end": 4,
+        "quality": {
+          "weighted_tardy_lot_seconds": 660.0,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 4488.0,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 67072.5,
+          "production_dispatches": 5,
+          "operation_lots_dispatched": 5,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": [
+          {
+            "time": 761.2499999999999,
+            "reason": "plan_runway"
+          },
+          {
+            "time": 768.0,
+            "reason": "plan_runway"
+          }
+        ]
+      }
+    },
+    "v4": {
+      "G1": {
+        "window": [
+          702.0,
+          768.0
+        ],
+        "calls_to_reach_end": 2,
+        "quality": {
+          "weighted_tardy_lot_seconds": 660.0,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 4488.0,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 67072.5,
+          "production_dispatches": 5,
+          "operation_lots_dispatched": 5,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": []
+      },
+      "G2": {
+        "window": [
+          702.0,
+          768.0
+        ],
+        "calls_to_reach_end": 2,
+        "quality": {
+          "weighted_tardy_lot_seconds": 660.0,
+          "throughput_lots": 0,
+          "throughput_wafers": 0,
+          "setup_loss_seconds": 4488.0,
+          "batch_fill_mean": null,
+          "terminal_wip_lots": 2177,
+          "queue_wait_lot_seconds": 67072.5,
+          "production_dispatches": 5,
+          "operation_lots_dispatched": 5,
+          "executable_unplanned_machine_seconds": 0.0
+        },
+        "planning_stops_within_window": []
+      }
+    }
+  },
+  "v4_packet_details": {
+    "G1": [
+      {
+        "call_number": 1,
+        "time": 702.0,
+        "trigger": "uncovered_demand",
+        "forecast_trigger_machines": [],
+        "forecast_trigger_coverage": [],
+        "focus_count": 5,
+        "focus_information_status": {
+          "complete": 5
+        },
+        "inline_operations": 1339
+      },
+      {
+        "call_number": 2,
+        "time": 702.0,
+        "trigger": "uncovered_demand",
+        "forecast_trigger_machines": [],
+        "forecast_trigger_coverage": [],
+        "focus_count": 5,
+        "focus_information_status": {
+          "complete": 5
+        },
+        "inline_operations": 1339
+      },
+      {
+        "call_number": 3,
+        "time": 815.25,
+        "trigger": "plan_runway",
+        "forecast_trigger_machines": [
+          1216
+        ],
+        "forecast_trigger_coverage": [
+          {
+            "candidate_count": 50,
+            "information_status": "complete",
+            "inline_candidates": 50,
+            "deadline": 815.25,
+            "machine": 1216,
+            "rank": 1,
+            "reason": "triggering_machine"
+          }
+        ],
+        "focus_count": 2,
+        "focus_information_status": {
+          "complete": 2
+        },
+        "inline_operations": 1309
+      },
+      {
+        "call_number": 4,
+        "time": 815.25,
+        "trigger": "plan_runway",
+        "forecast_trigger_machines": [
+          1216
+        ],
+        "forecast_trigger_coverage": [
+          {
+            "candidate_count": 50,
+            "information_status": "complete",
+            "inline_candidates": 50,
+            "deadline": 815.25,
+            "machine": 1216,
+            "rank": 1,
+            "reason": "triggering_machine"
+          }
+        ],
+        "focus_count": 2,
+        "focus_information_status": {
+          "complete": 2
+        },
+        "inline_operations": 1311
+      },
+      {
+        "call_number": 5,
+        "time": 815.25,
+        "trigger": "plan_runway",
+        "forecast_trigger_machines": [
+          1216
+        ],
+        "forecast_trigger_coverage": [
+          {
+            "candidate_count": 50,
+            "information_status": "complete",
+            "inline_candidates": 50,
+            "deadline": 815.25,
+            "machine": 1216,
+            "rank": 1,
+            "reason": "triggering_machine"
+          }
+        ],
+        "focus_count": 2,
+        "focus_information_status": {
+          "complete": 2
+        },
+        "inline_operations": 1311
+      }
+    ],
+    "G2": [
+      {
+        "call_number": 1,
+        "time": 702.0,
+        "trigger": "uncovered_demand",
+        "forecast_trigger_machines": [],
+        "forecast_trigger_coverage": [],
+        "focus_count": 5,
+        "focus_information_status": {
+          "complete": 5
+        },
+        "inline_operations": 3711
+      },
+      {
+        "call_number": 2,
+        "time": 702.0,
+        "trigger": "uncovered_demand",
+        "forecast_trigger_machines": [],
+        "forecast_trigger_coverage": [],
+        "focus_count": 5,
+        "focus_information_status": {
+          "complete": 5
+        },
+        "inline_operations": 3711
+      }
+    ]
+  },
+  "total_calls": {
+    "v3": {
+      "G1": 8,
+      "G2": 6
+    },
+    "v4": {
+      "G1": 5,
+      "G2": 2
+    }
+  },
+  "isolation_after": {
+    "source_files_checked": 803,
+    "changed_source_files": [],
+    "sealed_pilot_files_checked": 33815,
+    "changed_sealed_pilot_files": [],
+    "changed_fixtures": [],
+    "original_run_database_opened": false,
+    "valid": true
+  },
+  "comparison_limits": [
+    "End-of-run backlogs can only be directly compared at equal simulated endpoints.",
+    "V3 and V4 use different harness rules/prompts, and model outputs vary; one pair is not a causal statistical estimate.",
+    "No untouched original B arm has been run under these exact conditions.",
+    "The observation cutoff is not the plan validity cutoff. This saved state is continuation, not cold start."
+  ]
+}

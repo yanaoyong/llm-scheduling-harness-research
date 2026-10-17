@@ -1,0 +1,36 @@
+{
+  "checks": {
+    "source_matches_registration": true,
+    "runner_matches_registration": true,
+    "same_start_state_and_load": true,
+    "same_observation_target": true,
+    "same_initial_public_data_three_groups": true,
+    "within_per_group_call_cap": true,
+    "within_total_call_cap": true,
+    "all_production_from_explicit_model_choice": true,
+    "opportunity_audits_pass": true,
+    "physical_prefix_has_only_expected_nonterminal_limit": true,
+    "isolation_valid": true
+  },
+  "integrity_passed": true,
+  "all_groups_reached_target": true,
+  "actual_calls": 12,
+  "unknown_usage_calls": 0,
+  "admission_checks_passed": 14,
+  "isolation_after": {
+    "source_files_checked": 803,
+    "changed_source_files": [],
+    "historical_pilot_files_checked": 45232,
+    "changed_historical_pilot_files": [],
+    "archived_v5_files_checked": 472,
+    "changed_archived_files": [],
+    "changed_fixtures": [],
+    "original_B_database_opened": false,
+    "valid": true
+  },
+  "evidence_sha256": {
+    "G0": "7c86f34574c6427d52051375023395b687c0b1a0a9667efaee74b2672615cafe",
+    "G1": "03377187d676f658bdb3789cd2ea177ec9801ac842bcaa11306aa8a76f177bc6",
+    "G2": "b0d05ba5eb7b19d0d2680b6168612acb0f5494a24f4ec4484a2b1cf6cf26365f"
+  }
+}

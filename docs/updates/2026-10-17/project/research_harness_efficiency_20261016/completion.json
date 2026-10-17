@@ -1,0 +1,38 @@
+{
+  "status": "complete",
+  "completed_at": "2026-10-15T21:52:16.348395+00:00",
+  "review": "APPROVED",
+  "actual_child_sessions": 40,
+  "approved_cap": 42,
+  "unused_sessions": 2,
+  "requested_model_counts": {
+    "gpt-6-luna": 13,
+    "gpt-6.1-sol": 27
+  },
+  "phase_counts": {
+    "Fetch": 8,
+    "Review": 2,
+    "Scope": 1,
+    "Search": 4,
+    "Synthesize": 1,
+    "Verify": 24
+  },
+  "known_usage_totals": {
+    "input_tokens": 6982695,
+    "cached_input_tokens": 5042176,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 102360,
+    "reasoning_output_tokens": 28633
+  },
+  "unknown_usage_sessions": 0,
+  "inference_request_count": "not separately exposed by CLI",
+  "owner_tokens": "not available as exact total",
+  "monetary_cost": "unknown",
+  "claims": 8,
+  "independent_checks_per_claim": 3,
+  "production_B_modified": false,
+  "new_factory_runs": 0,
+  "execution_scope_note": "Production-write and run fields are executor declarations. Independent review concerns research artifacts and sampled evidence, not complete environment or live-B certification.",
+  "internal_source_hash_checks_passed": 5,
+  "remaining_research_work": []
+}

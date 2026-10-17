@@ -1,0 +1,397 @@
+{"case": "singleton_2403__baseline", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__filter_projection", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__targeted_recovery", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__combined", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "singleton_2403__filter_projection", "time": 2403.0, "start": 2403.0, "phase": "STOPPED", "calls": 2, "replans": 0, "status": "stopped", "unknown_usage": 1}
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/experiment.py", line 127, in <module>
+    elif command=='run':run()
+                        ^^^^^
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/experiment.py", line 119, in run
+    if u['unknown_usage']:raise RuntimeError('Unknown usage freezes cohort; preserve failure, do not retry or switch model')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Unknown usage freezes cohort; preserve failure, do not retry or switch model
+{"case": "singleton_2403__filter_projection", "time": 2403.0, "start": 2403.0, "phase": "STOPPED", "calls": 3, "replans": 0, "status": "stopped", "unknown_usage": 2}
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/experiment.py", line 145, in <module>
+    elif command=='run':run()
+                        ^^^^^
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/experiment.py", line 137, in run
+    if u['unknown_usage']!=len(current_recoveries(r)):raise RuntimeError('Unexempt unknown usage freezes cohort; preserve all failures and budgets')
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Unexempt unknown usage freezes cohort; preserve all failures and budgets
+{"case": "singleton_2403__filter_projection", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "transport_cooldown", "unknown_usage": 3}
+{"case": "singleton_2403__targeted_recovery", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__combined", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 3, "replans": 1, "status": "accepted", "unknown_usage": 0, "advance_seconds": 39.786212107757365, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 5, "replans": 0, "status": "transport_cooldown", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "transport_cooldown", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "transport_cooldown", "unknown_usage": 1}
+{"case": "singleton_2403__baseline", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 4, "replans": 1, "status": "transport_cooldown", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 6, "replans": 0, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 4, "replans": 1, "status": "accepted", "unknown_usage": 1, "advance_seconds": 39.786212107757365, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 5, "replans": 1, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 7, "replans": 1, "status": "accepted", "unknown_usage": 4, "advance_seconds": 39.786212107757365, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 5, "replans": 1, "status": "accepted", "unknown_usage": 1, "advance_seconds": 39.786212107757365, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 5, "replans": 1, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__baseline", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 6, "replans": 1, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 8, "replans": 1, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 6, "replans": 1, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 6, "replans": 1, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__baseline", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 7, "replans": 2, "status": "accepted", "unknown_usage": 1, "advance_seconds": 3.5829886104188517, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 9, "replans": 1, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 7, "replans": 1, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 7, "replans": 2, "status": "accepted", "unknown_usage": 1, "advance_seconds": 3.5829886104188517, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 8, "replans": 2, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 10, "replans": 2, "status": "accepted", "unknown_usage": 4, "advance_seconds": 3.5829886104188517, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 8, "replans": 2, "status": "accepted", "unknown_usage": 1, "advance_seconds": 3.5829886104188517, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 8, "replans": 2, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__baseline", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 9, "replans": 2, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 11, "replans": 2, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 9, "replans": 2, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 9, "replans": 2, "status": "transport_cooldown", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 10, "replans": 3, "status": "accepted", "unknown_usage": 1, "advance_seconds": 41.00258947971906, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 12, "replans": 2, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 10, "replans": 2, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 10, "replans": 2, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 11, "replans": 3, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 13, "replans": 3, "status": "accepted", "unknown_usage": 4, "advance_seconds": 41.00258947971906, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 11, "replans": 3, "status": "accepted", "unknown_usage": 1, "advance_seconds": 41.00258947971906, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 11, "replans": 3, "status": "accepted", "unknown_usage": 2, "advance_seconds": 41.00258947971906, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 12, "replans": 3, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 14, "replans": 3, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 12, "replans": 3, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 12, "replans": 3, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 13, "replans": 4, "status": "accepted", "unknown_usage": 1, "advance_seconds": 63.538258819983184, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 15, "replans": 3, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 13, "replans": 3, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 13, "replans": 3, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 14, "replans": 4, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 16, "replans": 4, "status": "accepted", "unknown_usage": 4, "advance_seconds": 63.538258819983184, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 14, "replans": 4, "status": "accepted", "unknown_usage": 1, "advance_seconds": 63.538258819983184, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 14, "replans": 4, "status": "accepted", "unknown_usage": 2, "advance_seconds": 63.538258819983184, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 15, "replans": 4, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 17, "replans": 4, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 15, "replans": 4, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 15, "replans": 4, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 16, "replans": 5, "status": "accepted", "unknown_usage": 1, "advance_seconds": 12.564927940077268, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 18, "replans": 4, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 16, "replans": 4, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 16, "replans": 4, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 17, "replans": 5, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 19, "replans": 4, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 17, "replans": 4, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 17, "replans": 4, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 18, "replans": 5, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 20, "replans": 5, "status": "accepted", "unknown_usage": 4, "advance_seconds": 12.564927940077268, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 18, "replans": 4, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 18, "replans": 5, "status": "accepted", "unknown_usage": 2, "advance_seconds": 12.564927940077268, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 19, "replans": 6, "status": "accepted", "unknown_usage": 1, "advance_seconds": 30.198928348884237, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 21, "replans": 5, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 19, "replans": 5, "status": "accepted", "unknown_usage": 1, "advance_seconds": 12.564927940077268, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 19, "replans": 5, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 20, "replans": 6, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 22, "replans": 5, "status": "rejected", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 20, "replans": 5, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 20, "replans": 5, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 21, "replans": 6, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 23, "replans": 5, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2563.4749769579557, "start": 2403.0, "phase": "OBSERVED", "calls": 21, "replans": 5, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 21, "replans": 6, "status": "accepted", "unknown_usage": 2, "advance_seconds": 30.198928348884237, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 22, "replans": 7, "status": "accepted", "unknown_usage": 1, "advance_seconds": 1.0962490722563416, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 24, "replans": 6, "status": "accepted", "unknown_usage": 4, "advance_seconds": 30.198928348884237, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 22, "replans": 6, "status": "accepted", "unknown_usage": 1, "advance_seconds": 30.198928348884237, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 22, "replans": 6, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 23, "replans": 7, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 25, "replans": 6, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 23, "replans": 6, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 23, "replans": 6, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 24, "replans": 7, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 26, "replans": 6, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2593.67390530684, "start": 2403.0, "phase": "OBSERVED", "calls": 24, "replans": 6, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 24, "replans": 7, "status": "accepted", "unknown_usage": 2, "advance_seconds": 1.0962490722563416, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 25, "replans": 7, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 27, "replans": 7, "status": "accepted", "unknown_usage": 4, "advance_seconds": 1.0962490722563416, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 25, "replans": 7, "status": "accepted", "unknown_usage": 1, "advance_seconds": 1.0962490722563416, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 25, "replans": 7, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 26, "replans": 8, "status": "accepted", "unknown_usage": 1, "advance_seconds": 3.2987250398291508, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 28, "replans": 7, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 26, "replans": 7, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 26, "replans": 7, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 27, "replans": 8, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 29, "replans": 7, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 27, "replans": 7, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__combined", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 27, "replans": 8, "status": "accepted", "unknown_usage": 2, "advance_seconds": 3.2987250398291508, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 28, "replans": 8, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 30, "replans": 8, "status": "accepted", "unknown_usage": 4, "advance_seconds": 3.2987250398291508, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2594.7701543790963, "start": 2403.0, "phase": "OBSERVED", "calls": 28, "replans": 7, "status": "transport_cooldown", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 28, "replans": 8, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 29, "replans": 9, "status": "accepted", "unknown_usage": 1, "advance_seconds": 0.08712058107448684, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 31, "replans": 8, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 29, "replans": 8, "status": "accepted", "unknown_usage": 2, "advance_seconds": 3.2987250398291508, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 29, "replans": 8, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 30, "replans": 9, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 32, "replans": 8, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 30, "replans": 8, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 30, "replans": 9, "status": "accepted", "unknown_usage": 2, "advance_seconds": 0.08712058107448684, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 31, "replans": 9, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 33, "replans": 9, "status": "accepted", "unknown_usage": 4, "advance_seconds": 0.08712058107448684, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2598.0688794189255, "start": 2403.0, "phase": "OBSERVED", "calls": 31, "replans": 8, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 31, "replans": 9, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 32, "replans": 10, "status": "accepted", "unknown_usage": 1, "advance_seconds": 1.043999999999869, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 34, "replans": 9, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 32, "replans": 9, "status": "accepted", "unknown_usage": 2, "advance_seconds": 0.08712058107448684, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 32, "replans": 9, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 33, "replans": 10, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 35, "replans": 9, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 33, "replans": 9, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 33, "replans": 10, "status": "accepted", "unknown_usage": 2, "advance_seconds": 1.043999999999869, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 34, "replans": 10, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 36, "replans": 10, "status": "accepted", "unknown_usage": 4, "advance_seconds": 1.043999999999869, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 34, "replans": 9, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 34, "replans": 10, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 35, "replans": 11, "status": "accepted", "unknown_usage": 1, "advance_seconds": 0.2519999999999527, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 37, "replans": 10, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 35, "replans": 9, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 35, "replans": 10, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 36, "replans": 11, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 38, "replans": 10, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2598.156, "start": 2403.0, "phase": "OBSERVED", "calls": 36, "replans": 9, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 36, "replans": 11, "status": "accepted", "unknown_usage": 2, "advance_seconds": 0.2519999999999527, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 37, "replans": 11, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 39, "replans": 11, "status": "accepted", "unknown_usage": 4, "advance_seconds": 0.2519999999999527, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 37, "replans": 10, "status": "accepted", "unknown_usage": 2, "advance_seconds": 1.043999999999869, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 37, "replans": 11, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 38, "replans": 12, "status": "accepted", "unknown_usage": 1, "advance_seconds": 9.498516931470022, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 40, "replans": 11, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 38, "replans": 10, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 38, "replans": 11, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 39, "replans": 12, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 41, "replans": 11, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.2, "start": 2403.0, "phase": "OBSERVED", "calls": 39, "replans": 10, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 39, "replans": 12, "status": "accepted", "unknown_usage": 2, "advance_seconds": 9.498516931470022, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 40, "replans": 12, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 42, "replans": 12, "status": "accepted", "unknown_usage": 4, "advance_seconds": 9.498516931470022, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 40, "replans": 11, "status": "accepted", "unknown_usage": 2, "advance_seconds": 0.2519999999999527, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 40, "replans": 12, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 41, "replans": 13, "status": "accepted", "unknown_usage": 1, "advance_seconds": 7.064660745676065, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 43, "replans": 12, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 41, "replans": 11, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 41, "replans": 12, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 42, "replans": 13, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 44, "replans": 12, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 42, "replans": 11, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 42, "replans": 13, "status": "accepted", "unknown_usage": 2, "advance_seconds": 7.064660745676065, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 43, "replans": 13, "status": "rejected", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 45, "replans": 13, "status": "accepted", "unknown_usage": 4, "advance_seconds": 7.064660745676065, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 43, "replans": 11, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 43, "replans": 13, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 44, "replans": 13, "status": "candidate_checked", "unknown_usage": 1}
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/harness/experiment.py", line 166, in experiment_lock
+    fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 35] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/experiment.py", line 146, in <module>
+    elif command=='run':run()
+                        ^^^^^
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/experiment.py", line 125, in run
+    else:result=transport.call(r)
+                ^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/harness/transport.py", line 427, in call
+    with experiment_lock(runtime.manifest["admission"]):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/harness/experiment.py", line 168, in experiment_lock
+    require(False, "experiment_busy", "Another real model call owns the shared account")
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/harness/contracts.py", line 60, in require
+    raise HarnessError(code, detail, **evidence)
+src.smt_fullfab.harness.contracts.HarnessError: experiment_busy: Another real model call owns the shared account
+{"case": "singleton_2403__filter_projection", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 46, "replans": 13, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 44, "replans": 11, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 44, "replans": 13, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 45, "replans": 14, "status": "accepted", "unknown_usage": 1, "advance_seconds": 7.026974847717156, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 47, "replans": 13, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2599.4519999999998, "start": 2403.0, "phase": "OBSERVED", "calls": 45, "replans": 11, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 45, "replans": 14, "status": "accepted", "unknown_usage": 2, "advance_seconds": 7.026974847717156, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 46, "replans": 14, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 48, "replans": 14, "status": "accepted", "unknown_usage": 4, "advance_seconds": 7.026974847717156, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 46, "replans": 12, "status": "accepted", "unknown_usage": 2, "advance_seconds": 9.498516931470022, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 46, "replans": 14, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 47, "replans": 14, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 49, "replans": 14, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 47, "replans": 12, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 47, "replans": 14, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 48, "replans": 15, "status": "accepted", "unknown_usage": 1, "advance_seconds": 10.793279354182232, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 50, "replans": 14, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2608.95051693147, "start": 2403.0, "phase": "OBSERVED", "calls": 48, "replans": 12, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 48, "replans": 15, "status": "accepted", "unknown_usage": 2, "advance_seconds": 10.793279354182232, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 49, "replans": 15, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 51, "replans": 15, "status": "accepted", "unknown_usage": 4, "advance_seconds": 10.793279354182232, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 49, "replans": 13, "status": "accepted", "unknown_usage": 2, "advance_seconds": 7.064660745676065, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 49, "replans": 15, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 50, "replans": 15, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 52, "replans": 15, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 50, "replans": 13, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 50, "replans": 15, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__baseline", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 51, "replans": 16, "status": "accepted", "unknown_usage": 1, "advance_seconds": 11.46963079076886, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 53, "replans": 15, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2616.015177677146, "start": 2403.0, "phase": "OBSERVED", "calls": 51, "replans": 13, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 51, "replans": 15, "status": "transport_cooldown", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 52, "replans": 16, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 54, "replans": 16, "status": "accepted", "unknown_usage": 4, "advance_seconds": 11.46963079076886, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 52, "replans": 14, "status": "accepted", "unknown_usage": 2, "advance_seconds": 7.026974847717156, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 52, "replans": 16, "status": "accepted", "unknown_usage": 3, "advance_seconds": 11.46963079076886, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 53, "replans": 16, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 55, "replans": 16, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 53, "replans": 14, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 53, "replans": 16, "status": "ok", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 54, "replans": 17, "status": "accepted", "unknown_usage": 1, "advance_seconds": 22.762767226402957, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 56, "replans": 16, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2623.042152524863, "start": 2403.0, "phase": "OBSERVED", "calls": 54, "replans": 14, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 54, "replans": 16, "status": "candidate_checked", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 55, "replans": 17, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 57, "replans": 17, "status": "accepted", "unknown_usage": 4, "advance_seconds": 22.762767226402957, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 55, "replans": 15, "status": "accepted", "unknown_usage": 2, "advance_seconds": 10.793279354182232, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 55, "replans": 17, "status": "accepted", "unknown_usage": 3, "advance_seconds": 22.762767226402957, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 56, "replans": 17, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 58, "replans": 17, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 56, "replans": 15, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 56, "replans": 17, "status": "ok", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 57, "replans": 18, "status": "accepted", "unknown_usage": 1, "advance_seconds": 4.783071643694257, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 59, "replans": 17, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2633.8354318790452, "start": 2403.0, "phase": "OBSERVED", "calls": 57, "replans": 15, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 57, "replans": 17, "status": "candidate_checked", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 58, "replans": 18, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 60, "replans": 18, "status": "accepted", "unknown_usage": 4, "advance_seconds": 4.783071643694257, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 58, "replans": 16, "status": "accepted", "unknown_usage": 2, "advance_seconds": 11.46963079076886, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 58, "replans": 18, "status": "accepted", "unknown_usage": 3, "advance_seconds": 4.783071643694257, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 59, "replans": 18, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 61, "replans": 18, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 59, "replans": 16, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 59, "replans": 18, "status": "ok", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 60, "replans": 19, "status": "accepted", "unknown_usage": 1, "advance_seconds": 8.666393365025215, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 62, "replans": 18, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2645.305062669814, "start": 2403.0, "phase": "OBSERVED", "calls": 60, "replans": 16, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 60, "replans": 18, "status": "candidate_checked", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 61, "replans": 19, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 63, "replans": 19, "status": "accepted", "unknown_usage": 4, "advance_seconds": 8.666393365025215, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 61, "replans": 17, "status": "accepted", "unknown_usage": 2, "advance_seconds": 22.762767226402957, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 61, "replans": 19, "status": "accepted", "unknown_usage": 3, "advance_seconds": 8.666393365025215, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 62, "replans": 19, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 64, "replans": 19, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 62, "replans": 17, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 62, "replans": 19, "status": "ok", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 63, "replans": 20, "status": "accepted", "unknown_usage": 1, "advance_seconds": 1.3612346129552861, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 65, "replans": 19, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2668.067829896217, "start": 2403.0, "phase": "OBSERVED", "calls": 63, "replans": 17, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 63, "replans": 19, "status": "candidate_checked", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 64, "replans": 20, "status": "ok", "unknown_usage": 1}
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/harness/experiment.py", line 166, in experiment_lock
+    fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 35] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/experiment.py", line 148, in <module>
+    elif command=='run':run()
+                        ^^^^^
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/experiment.py", line 127, in run
+    else:result=transport.call(r)
+                ^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/harness/transport.py", line 427, in call
+    with experiment_lock(runtime.manifest["admission"]):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/harness/experiment.py", line 168, in experiment_lock
+    require(False, "experiment_busy", "Another real model call owns the shared account")
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/src/smt_fullfab/harness/contracts.py", line 60, in require
+    raise HarnessError(code, detail, **evidence)
+src.smt_fullfab.harness.contracts.HarnessError: experiment_busy: Another real model call owns the shared account
+{"case": "singleton_2403__filter_projection", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 66, "replans": 20, "status": "accepted", "unknown_usage": 4, "advance_seconds": 1.3612346129552861, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 64, "replans": 18, "status": "accepted", "unknown_usage": 2, "advance_seconds": 4.783071643694257, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 64, "replans": 20, "status": "accepted", "unknown_usage": 3, "advance_seconds": 1.3612346129552861, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 65, "replans": 20, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 67, "replans": 20, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 65, "replans": 18, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 65, "replans": 20, "status": "ok", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 66, "replans": 21, "status": "accepted", "unknown_usage": 1, "advance_seconds": 3.8032648033836267, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 68, "replans": 20, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2672.8509015399113, "start": 2403.0, "phase": "OBSERVED", "calls": 66, "replans": 18, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 66, "replans": 20, "status": "candidate_checked", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 67, "replans": 21, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 69, "replans": 21, "status": "accepted", "unknown_usage": 4, "advance_seconds": 4.082042231443211, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 67, "replans": 19, "status": "accepted", "unknown_usage": 2, "advance_seconds": 8.666393365025215, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 67, "replans": 21, "status": "accepted", "unknown_usage": 3, "advance_seconds": 3.8032648033836267, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 68, "replans": 21, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 70, "replans": 21, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 68, "replans": 19, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 68, "replans": 21, "status": "ok", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 69, "replans": 22, "status": "accepted", "unknown_usage": 1, "advance_seconds": 0.27877742805958405, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 71, "replans": 21, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2681.5172949049365, "start": 2403.0, "phase": "OBSERVED", "calls": 69, "replans": 19, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 69, "replans": 21, "status": "ok", "unknown_usage": 3}
+{"case": "singleton_2403__baseline", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 70, "replans": 22, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 72, "replans": 22, "status": "accepted", "unknown_usage": 4, "advance_seconds": 11.572933414756335, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 70, "replans": 20, "status": "accepted", "unknown_usage": 2, "advance_seconds": 1.3612346129552861, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 70, "replans": 21, "status": "transport_cooldown", "unknown_usage": 4}
+{"case": "singleton_2403__baseline", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 71, "replans": 22, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 73, "replans": 22, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 71, "replans": 20, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 71, "replans": 21, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__baseline", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 72, "replans": 23, "status": "accepted", "unknown_usage": 1, "advance_seconds": 11.572933414756335, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 74, "replans": 22, "status": "transport_cooldown", "unknown_usage": 5}
+{"case": "singleton_2403__targeted_recovery", "time": 2682.878529517892, "start": 2403.0, "phase": "OBSERVED", "calls": 72, "replans": 20, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 72, "replans": 22, "status": "accepted", "unknown_usage": 4, "advance_seconds": 0.27877742805958405, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 73, "replans": 23, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 75, "replans": 22, "status": "candidate_checked", "unknown_usage": 5}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 73, "replans": 21, "status": "accepted", "unknown_usage": 2, "advance_seconds": 3.8032648033836267, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 73, "replans": 22, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__baseline", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 74, "replans": 23, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 76, "replans": 22, "status": "transport_cooldown", "unknown_usage": 6}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 74, "replans": 21, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 74, "replans": 22, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__baseline", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 75, "replans": 24, "status": "accepted", "unknown_usage": 1, "advance_seconds": 0.4722982045095705, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__filter_projection", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 77, "replans": 23, "status": "accepted", "unknown_usage": 6, "advance_seconds": 0.4722982045095705, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 75, "replans": 21, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 75, "replans": 23, "status": "accepted", "unknown_usage": 4, "advance_seconds": 11.572933414756335, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__baseline", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 76, "replans": 24, "status": "ok", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 78, "replans": 23, "status": "ok", "unknown_usage": 6}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 76, "replans": 21, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 76, "replans": 23, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__baseline", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 77, "replans": 24, "status": "candidate_checked", "unknown_usage": 1}
+{"case": "singleton_2403__filter_projection", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 79, "replans": 23, "status": "candidate_checked", "unknown_usage": 6}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 77, "replans": 21, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 77, "replans": 23, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__baseline", "time": 2703.0, "start": 2403.0, "phase": "OBSERVED", "calls": 78, "replans": 25, "status": "accepted", "unknown_usage": 1, "advance_seconds": 3.9941966313990633, "stop_reason": "periodic_replan"}
+{"case": "singleton_2403__filter_projection", "time": 2703.0, "start": 2403.0, "phase": "OBSERVED", "calls": 80, "replans": 24, "status": "accepted", "unknown_usage": 6, "advance_seconds": 3.9941966313990633, "stop_reason": "periodic_replan"}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.6817943212754, "start": 2403.0, "phase": "OBSERVED", "calls": 78, "replans": 21, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 78, "replans": 24, "status": "accepted", "unknown_usage": 4, "advance_seconds": 0.4722982045095705, "stop_reason": "uncovered_demand"}
+{"completed_case": "singleton_2403__baseline", "complete": true, "replans": 25, "calls": 78, "physical_errors": [], "provenance_valid": true, "cost_valid": false}
+{"completed_case": "singleton_2403__filter_projection", "complete": true, "replans": 24, "calls": 80, "physical_errors": [], "provenance_valid": true, "cost_valid": false}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 79, "replans": 22, "status": "accepted", "unknown_usage": 2, "advance_seconds": 0.27877742805958405, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__combined", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 79, "replans": 24, "status": "ok", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 80, "replans": 22, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 80, "replans": 24, "status": "candidate_checked", "unknown_usage": 4}
+{"case": "singleton_2403__targeted_recovery", "time": 2686.960571749335, "start": 2403.0, "phase": "OBSERVED", "calls": 81, "replans": 22, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__combined", "time": 2703.0, "start": 2403.0, "phase": "OBSERVED", "calls": 81, "replans": 25, "status": "accepted", "unknown_usage": 4, "advance_seconds": 3.9941966313990633, "stop_reason": "periodic_replan"}
+{"case": "singleton_2403__targeted_recovery", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 82, "replans": 23, "status": "accepted", "unknown_usage": 2, "advance_seconds": 11.572933414756335, "stop_reason": "uncovered_demand"}
+{"completed_case": "singleton_2403__combined", "complete": true, "replans": 25, "calls": 81, "physical_errors": [], "provenance_valid": true, "cost_valid": false}
+{"case": "singleton_2403__targeted_recovery", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 83, "replans": 23, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__targeted_recovery", "time": 2698.5335051640914, "start": 2403.0, "phase": "OBSERVED", "calls": 84, "replans": 23, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__targeted_recovery", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 85, "replans": 24, "status": "accepted", "unknown_usage": 2, "advance_seconds": 0.4722982045095705, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__targeted_recovery", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 86, "replans": 24, "status": "ok", "unknown_usage": 2}
+{"case": "singleton_2403__targeted_recovery", "time": 2699.005803368601, "start": 2403.0, "phase": "OBSERVED", "calls": 87, "replans": 24, "status": "candidate_checked", "unknown_usage": 2}
+{"case": "singleton_2403__targeted_recovery", "time": 2703.0, "start": 2403.0, "phase": "OBSERVED", "calls": 88, "replans": 25, "status": "accepted", "unknown_usage": 2, "advance_seconds": 3.9941966313990633, "stop_reason": "periodic_replan"}
+{"completed_case": "singleton_2403__targeted_recovery", "complete": true, "replans": 25, "calls": 88, "physical_errors": [], "provenance_valid": true, "cost_valid": false}

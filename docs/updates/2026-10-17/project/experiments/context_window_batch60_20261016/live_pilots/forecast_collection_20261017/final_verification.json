@@ -1,0 +1,40 @@
+{
+  "checks": {
+    "both_reached_target": true,
+    "exact_common_window": true,
+    "no_unknown_usage": true,
+    "within_registered_call_caps": true,
+    "source_still_matches_registration": true,
+    "runner_still_matches_registration": true,
+    "isolation_valid": true,
+    "all_new_production_choices_from_model": true,
+    "opportunity_audits_pass": true,
+    "no_physical_prefix_errors_except_unfinished_horizon": true
+  },
+  "live_calls": 7,
+  "offline_outputs": 0,
+  "startup_tests_passed": 9,
+  "isolation_after": {
+    "source_files_checked": 803,
+    "changed_source_files": [],
+    "sealed_pilot_files_checked": 33815,
+    "changed_sealed_pilot_files": [],
+    "changed_fixtures": [],
+    "original_run_database_opened": false,
+    "valid": true
+  },
+  "evidence_sha256": {
+    "G1": "80e34b49fe1a783d84bbe7ccb3403393e8e481744be798bde7fb8d66041819c6",
+    "G2": "7e4ffcb3dcda084a862cfbe5f221be44f54f6e78625cef260fe51ffae69c12f2"
+  },
+  "physical_audit_scope": "Partial observed prefix; no terminal event fabricated; not a full-horizon pass.",
+  "default_model_calls_enabled": false,
+  "report_sha256": "4ffe1ebe15b6cfa9ae2ad2d8345fc524b4febc3e99ba4aed8fdd09c4306e8e45",
+  "supplemental_analysis_sha256": {
+    "summary.json": "e5522f27c7544b6ec2f007571c267b2172619a3145603eb7572865b924122bf1",
+    "previous_comparison.json": "3ce451f708aa8e4899326dede6afa274af8bf010508c144cabbbee40caa3d779",
+    "machine_1216_diagnosis.json": "e9d4c6fee07875743662b63bda49b95b739fd516ff325357d0bc5bbca80c87ee",
+    "dispatch_comparison.json": "6711ace25aca2116ab26d4da4a191757b612a05e2d4bbb549bee652c2f16eeee",
+    "model_catalog_changes.json": "9662d10960d3d2c4db4b829e42ffd9bd27a75ed20083d92e0b57e3f8c3ceed4a"
+  }
+}

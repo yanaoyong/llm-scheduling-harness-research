@@ -1,0 +1,13 @@
+{
+  "completed_epoch": 1792073566.391239,
+  "registered_source_fingerprint": "f9ae646cb71dd7c0822d678920f40a67add219407ece821e35af17f1203cc5fa",
+  "all_nine_initial_states_and_configs_verified": true,
+  "original_B_source_unchanged": true,
+  "original_B_WIP_verified": true,
+  "experiment_immutable_files_restored_from_exact_retained_copies": 33,
+  "original_B_net_file_modifications": 0,
+  "original_B_process_or_database_modified": false,
+  "recovery_repeated_model_calls": 0,
+  "resumed_same_accounts_and_budgets": true,
+  "wall_time_includes_external_cleanup_interruption": true
+}

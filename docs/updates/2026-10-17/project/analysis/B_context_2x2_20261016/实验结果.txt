@@ -1,0 +1,53 @@
+B 上下文机制 2×2 实验结果
+状态：四组均完成相同300秒窗口
+
+配置：t=2403→2703，gpt-6-astra / medium，原排程提示词与物理规则不变。基线对应已保存状态及此前隔离版本。外置门槛为原无损打包后12,000字符；组合组先投影再判断门槛。
+
+现状：推进 300.000/300秒；模型调用 78；已报告token 2,962,796；未知用量 1；规划执行段 25；窗口内新需求触发重排 24。
+  首次提案：第2次调用，累计模型耗时83.02秒，累计已知47,924token；此前未知用量0次
+  首次静态检查通过的候选（不等于已执行或动态可行）：第2次调用，累计模型耗时83.02秒
+  成功业务动作：76；业务拒绝：1；传输失败：1；失败模型进程累计耗时：24.97秒。
+  工具分布：{"read_entities": 26, "propose_delta": 26, "apply_candidate": 25, "transport_failure": 1}；计划总任务数（含沿用队列）：[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]；每次新增任务数：[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]。
+  实际采用处理能力：{"entity_queries": 45, "operation_queries_excluding_conditional_future": 19, "operation_queries_explicitly_requesting_conditional_future": 0, "queries_with_fields": 3, "queries_with_filter": 19, "queries_with_extended_predicates": 0, "prompts_with_offloaded_feedback": 0, "prompts_with_fact_memory": 0}。
+  首提案实际经过时间：149.08秒，包含组间轮转、人工恢复确认和退避等待，不能当作方案本身的速度比较。上方累计模型耗时包含失败进程耗时，但不含这些等待。
+  质量/审计：{"weighted_tardy_lot_seconds": 3000.0, "throughput_lots": 0, "production_operation_lots_completed": 32, "ready_wait_lot_seconds": 311505.4658163018, "material_present_fraction": 0.7977802952313536, "reserved_fraction": 0.7893059696395899, "physical_valid": true, "provenance_valid": true, "cost_valid": false, "known_accounting_verified_with_authorized_unknown": true}
+只改过滤投影：推进 300.000/300秒；模型调用 80；已报告token 2,422,176；未知用量 6；规划执行段 24；窗口内新需求触发重排 23。
+  首次提案：第6次调用，累计模型耗时236.16秒，累计已知42,572token；此前未知用量4次
+  首次静态检查通过的候选（不等于已执行或动态可行）：第6次调用，累计模型耗时236.16秒
+  成功业务动作：73；业务拒绝：1；传输失败：6；失败模型进程累计耗时：198.59秒。
+  工具分布：{"read_entities": 25, "transport_failure": 6, "propose_delta": 25, "apply_candidate": 24}；计划总任务数（含沿用队列）：[1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2]；每次新增任务数：[1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]。
+  实际采用处理能力：{"entity_queries": 43, "operation_queries_excluding_conditional_future": 15, "operation_queries_explicitly_requesting_conditional_future": 0, "queries_with_fields": 1, "queries_with_filter": 15, "queries_with_extended_predicates": 0, "prompts_with_offloaded_feedback": 0, "prompts_with_fact_memory": 2}。
+  首提案实际经过时间：3060.61秒，包含组间轮转、人工恢复确认和退避等待，不能当作方案本身的速度比较。上方累计模型耗时包含失败进程耗时，但不含这些等待。
+  质量/审计：{"weighted_tardy_lot_seconds": 3000.0, "throughput_lots": 0, "production_operation_lots_completed": 32, "ready_wait_lot_seconds": 311505.4658163018, "material_present_fraction": 0.7977802952313536, "reserved_fraction": 0.7893059696395899, "physical_valid": true, "provenance_valid": true, "cost_valid": false, "known_accounting_verified_with_authorized_unknown": true}
+只改定向恢复：推进 300.000/300秒；模型调用 88；已报告token 2,845,518；未知用量 2；规划执行段 25；窗口内新需求触发重排 24。
+  首次提案：第4次调用，累计模型耗时138.42秒，累计已知63,262token；此前未知用量1次
+  首次静态检查通过的候选（不等于已执行或动态可行）：第4次调用，累计模型耗时138.42秒
+  成功业务动作：86；业务拒绝：0；传输失败：2；失败模型进程累计耗时：43.19秒。
+  工具分布：{"read_entities": 32, "transport_failure": 2, "propose_delta": 25, "apply_candidate": 25, "read_artifact": 4}；计划总任务数（含沿用队列）：[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]；每次新增任务数：[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]。
+  实际采用处理能力：{"entity_queries": 51, "operation_queries_excluding_conditional_future": 23, "operation_queries_explicitly_requesting_conditional_future": 0, "queries_with_fields": 11, "queries_with_filter": 23, "queries_with_extended_predicates": 0, "prompts_with_offloaded_feedback": 4, "prompts_with_fact_memory": 8, "artifact_page_read_actions": 3, "batched_recovery_actions": 1, "exact_paths_recovered": 12}。
+  首提案实际经过时间：3107.61秒，包含组间轮转、人工恢复确认和退避等待，不能当作方案本身的速度比较。上方累计模型耗时包含失败进程耗时，但不含这些等待。
+  质量/审计：{"weighted_tardy_lot_seconds": 3000.0, "throughput_lots": 0, "production_operation_lots_completed": 32, "ready_wait_lot_seconds": 311505.4658163018, "material_present_fraction": 0.7977802952313536, "reserved_fraction": 0.7893059696395899, "physical_valid": true, "provenance_valid": true, "cost_valid": false, "known_accounting_verified_with_authorized_unknown": true}
+两者结合：推进 300.000/300秒；模型调用 81；已报告token 2,505,967；未知用量 4；规划执行段 25；窗口内新需求触发重排 24。
+  首次提案：第2次调用，累计模型耗时87.67秒，累计已知43,560token；此前未知用量0次
+  首次静态检查通过的候选（不等于已执行或动态可行）：第2次调用，累计模型耗时87.67秒
+  成功业务动作：77；业务拒绝：0；传输失败：4；失败模型进程累计耗时：140.59秒。
+  工具分布：{"read_entities": 27, "propose_delta": 25, "transport_failure": 4, "apply_candidate": 25}；计划总任务数（含沿用队列）：[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]；每次新增任务数：[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]。
+  实际采用处理能力：{"entity_queries": 46, "operation_queries_excluding_conditional_future": 21, "operation_queries_explicitly_requesting_conditional_future": 0, "queries_with_fields": 5, "queries_with_filter": 21, "queries_with_extended_predicates": 1, "prompts_with_offloaded_feedback": 2, "prompts_with_fact_memory": 5}。
+  首提案实际经过时间：2415.95秒，包含组间轮转、人工恢复确认和退避等待，不能当作方案本身的速度比较。上方累计模型耗时包含失败进程耗时，但不含这些等待。
+  质量/审计：{"weighted_tardy_lot_seconds": 3000.0, "throughput_lots": 0, "production_operation_lots_completed": 32, "ready_wait_lot_seconds": 311505.4658163018, "material_present_fraction": 0.7977802952313536, "reserved_fraction": 0.7893059696395899, "physical_valid": true, "provenance_valid": true, "cost_valid": false, "known_accounting_verified_with_authorized_unknown": true}
+只改过滤投影相对基线：调用减少 -2.6%；token减少 不可精确计算：保留未知用量；规划执行段减少 4.0%；新需求触发重排减少 4.2%；注册质量指标无观测退化：True；详细检查：{"weighted_tardiness_not_higher": true, "throughput_not_lower": true, "completed_operations_not_lower": true, "ready_wait_not_higher": true, "physical_and_provenance_valid": true, "accounting_known_or_authorized_unknown_only": true}。
+只改定向恢复相对基线：调用减少 -12.8%；token减少 不可精确计算：保留未知用量；规划执行段减少 0.0%；新需求触发重排减少 0.0%；注册质量指标无观测退化：True；详细检查：{"weighted_tardiness_not_higher": true, "throughput_not_lower": true, "completed_operations_not_lower": true, "ready_wait_not_higher": true, "physical_and_provenance_valid": true, "accounting_known_or_authorized_unknown_only": true}。
+两者结合相对基线：调用减少 -3.8%；token减少 不可精确计算：保留未知用量；规划执行段减少 0.0%；新需求触发重排减少 0.0%；注册质量指标无观测退化：True；详细检查：{"weighted_tardiness_not_higher": true, "throughput_not_lower": true, "completed_operations_not_lower": true, "ready_wait_not_higher": true, "physical_and_provenance_valid": true, "accounting_known_or_authorized_unknown_only": true}。
+
+本实验累计实际模型调用 327；已报告token 10,736,457；未知用量 13。
+计数口径：规划执行段包括起始规划；uncovered_demand才是窗口中新需求触发的重排。终点2703处periodic_replan来自评价窗口截断，下一自然周期边界为3600，不是模型计划到期。
+限制：每组只有一次非确定性模型轨迹，只是300秒保存状态试验。原time_mode=paused_during_decision，模型调用和恢复等待期间仿真暂停；质量指标不包含这些现实延迟对车间的影响。不能据此证明统计非劣或长期全厂质量。material_present_fraction 是在制物料占机观测比例，含原引擎定义的停机延长，并非纯加工利用率。物理审计沿用原 semantic_coverage，未扩展CQT等未建模能力。
+证据：experiment.json、verification.json/log、recovery_verification_v2.json/log、summary.json、interruption_audit.json、recovery_exhaustion_audit.json，以及 runs 下不可变对象/事件账本。完整窗口结果文件仅在各组实际完成后生成。
+隔离：原先实验和正在运行的 B 没有被本试验写入或重启。
+
+后续授权：用户明确取消恢复次数限制并要求完成四组。连续失败等待60/120/300秒，之后保持300秒；每次请求独立计账，未知用量保留。两次历史冻结证据仅代表当时边界，不代表当前仍按旧次数上限冻结。
+验证：recovery_verification_v3.json 保留24项恢复规则验证；recovery_activation_uncapped.json 证明首次取消恢复次数限制时保留7次调用、2次未知。调用次数修订阶段recovery_verification_v4.json有26项通过验证；count_revision_activation.json证明解除每组60次/共同240次调用上限时保留175次调用和9次未知，四组状态及全部attempt/恢复记录未改变。在v4阶段原调用上限仅作参考，其他资源上限尚未改变。
+
+完成预算修订：recovery_verification_v5.json为当前26项通过验证；completion_budget_activation.json保留255次既有调用及10次未知。按用户授权，四组统一取消次数与token总量硬上限，累计模型时长改为每组7200秒/共享28800秒，运行时长改为57600秒。原配置和所有成本保留，模型、单次600秒超时、四组处理及物理规则不变。前述v4是历史阶段。
+
+用量审计补充：原始.result.json保留预算展示标签original_model_seconds缺失的报错；只读repair_cost_audit_view.py从原sealed manifest补齐这一标签，未改变任何限额、用量、原始记录或仿真。重新执行原audit_cost并校验已知用量与全部授权失败，结果另存.audited.result.json。未知用量仍使严格零未知成本审计为false。

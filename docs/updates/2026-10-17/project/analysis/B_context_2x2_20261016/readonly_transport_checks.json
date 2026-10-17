@@ -1,0 +1,44 @@
+{
+  "epoch": 1792118933.766297,
+  "checks": [
+    {
+      "route": "inherited",
+      "url": "https://chatgpt.com/",
+      "returncode": 0,
+      "http_seconds_tls": "403 0.753762 0",
+      "error": "",
+      "authenticated": false,
+      "model_request": false
+    },
+    {
+      "route": "loopback_7897",
+      "url": "https://chatgpt.com/",
+      "returncode": 0,
+      "http_seconds_tls": "403 0.394610 0",
+      "error": "",
+      "authenticated": false,
+      "model_request": false
+    },
+    {
+      "route": "inherited",
+      "url": "https://developers.openai.com/codex/config-reference",
+      "returncode": 0,
+      "http_seconds_tls": "403 0.936266 0",
+      "error": "",
+      "authenticated": false,
+      "model_request": false
+    },
+    {
+      "route": "loopback_7897",
+      "url": "https://developers.openai.com/codex/config-reference",
+      "returncode": 0,
+      "http_seconds_tls": "403 0.952285 0",
+      "error": "",
+      "authenticated": false,
+      "model_request": false
+    }
+  ],
+  "network_changes": 0,
+  "live_B_actions": 0,
+  "scope": "Read-only unauthenticated HEAD checks; does not establish SSE stability or service-side inference outcome."
+}

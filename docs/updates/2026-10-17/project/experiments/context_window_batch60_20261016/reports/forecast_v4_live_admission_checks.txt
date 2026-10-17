@@ -1,0 +1,14 @@
+test_current_instruction_has_separate_bound_authorization (tests.test_capacity_live_pilot.LiveAdmissionTests.test_current_instruction_has_separate_bound_authorization) ... ok
+test_cutoff_preserves_original_horizon_and_offline_default (tests.test_capacity_live_pilot.LiveAdmissionTests.test_cutoff_preserves_original_horizon_and_offline_default) ... ok
+test_flag_alone_is_not_authority (tests.test_capacity_live_pilot.LiveAdmissionTests.test_flag_alone_is_not_authority) ... ok
+test_frozen_config_and_registration (tests.test_capacity_live_pilot.LiveAdmissionTests.test_frozen_config_and_registration) ... ok
+test_live_pilot_exposes_reviews_on_existing_apply_action (tests.test_capacity_live_pilot.LiveAdmissionTests.test_live_pilot_exposes_reviews_on_existing_apply_action) ... ok
+test_registration_tamper_rejected (tests.test_capacity_live_pilot.LiveAdmissionTests.test_registration_tamper_rejected) ... ok
+test_saved_state_and_source_are_bound (tests.test_capacity_live_pilot.LiveAdmissionTests.test_saved_state_and_source_are_bound) ... ok
+test_explicit_review_is_atomic_and_independently_audited_without_extra_round (tests.test_capacity_forecast_collection.ReceiptAuditTests.test_explicit_review_is_atomic_and_independently_audited_without_extra_round) ... ok
+test_review_schema_uses_existing_confirmation_action (tests.test_capacity_forecast_collection.ReceiptAuditTests.test_review_schema_uses_existing_confirmation_action) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 27.259s
+
+OK

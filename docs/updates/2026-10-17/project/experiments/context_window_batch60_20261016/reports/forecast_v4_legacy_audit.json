@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "run": "live_pilots/two_strategy_20261016/G1",
+      "provenance": {
+        "valid": true,
+        "commits": 2,
+        "algorithm_production_tasks": 0,
+        "checked_batch_receipts": 2,
+        "B_algorithm_calls": 0,
+        "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+      },
+      "physical_prefix_errors": [
+        "physical: missing terminal event"
+      ],
+      "model_calls": 0
+    },
+    {
+      "run": "live_pilots/two_strategy_20261016/G2",
+      "provenance": {
+        "valid": true,
+        "commits": 2,
+        "algorithm_production_tasks": 0,
+        "checked_batch_receipts": 2,
+        "B_algorithm_calls": 0,
+        "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+      },
+      "physical_prefix_errors": [
+        "physical: missing terminal event"
+      ],
+      "model_calls": 0
+    },
+    {
+      "run": "live_pilots/paired_20261016_cli_fix/G1",
+      "provenance": {
+        "valid": true,
+        "commits": 1,
+        "algorithm_production_tasks": 0,
+        "checked_batch_receipts": 0,
+        "B_algorithm_calls": 0,
+        "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+      },
+      "physical_prefix_errors": [
+        "physical: missing terminal event"
+      ],
+      "model_calls": 0
+    }
+  ],
+  "auditor_sha256": "fe07f35b08b343c6b8a89e55d2bc89f984d6585b0a86876ceb3b93c050a09b7d"
+}

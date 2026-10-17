@@ -1,0 +1,337 @@
+--- a/src/smt_fullfab/harness/transport.py
++++ b/src/smt_fullfab/harness/transport.py
+@@ -277,11 +277,12 @@
+                          "status": result["status"],
+                          "tool": action.get("tool") if type(action) is dict else None,
+                          "action": action if action is not None and len(encode(action)) <= 6000 else {"inline": False}}
+-                presentation = pack(result)
+-                if len(encode(presentation)) <= 60000:
++                from .context_ablation import presentation as present_result, flags
++                presentation = present_result(runtime, result, entry["result_ref"], budget=3500)
++                if len(encode(pack(result))) <= 60000 or any(flags(runtime)):
+                     entry["result"] = presentation
+                 else:
+-                    entry["result_preview"] = compact_feedback(result, entry["result_ref"], budget=3500)
++                    entry["result_preview"] = presentation
+                 runtime.store.record("interaction_entries", attempt_id, entry)
+             entries.append(entry)
+         full_ref = runtime._publish(entries, "own_interaction_history")
+@@ -338,16 +339,15 @@
+         attempt = attempts[-1][1]
+         if "response_ref" in attempt:
+             feedback = runtime.store.get(attempt["response_ref"])
+-            presentation = pack(feedback)
+-            if len(encode(presentation)) > 60000:
+-                entry = runtime.store.read("interaction_entries", attempt["attempt_id"])
+-                feedback = compact_feedback(feedback, entry["result_ref"])
+-            else:
+-                feedback = presentation
++            from .context_ablation import presentation as present_result
++            entry = runtime.store.read("interaction_entries", attempt["attempt_id"])
++            feedback = present_result(runtime, feedback, entry["result_ref"])
+     for key in ("pending_tasks", "pertinent_operations", "base_holds"):
+         context[key] = pack(context[key])
+     from .coverage_ablation import augment
+     prefix = augment(runtime, context, full, PROTOCOL_TEXT)
++    from .context_ablation import recovery_context
++    recovery_context(runtime, context, full)
+     frame = {"context": context, "interaction_history": history, "last_tool_feedback": feedback, "task": task}
+     from .fact_memory import INSTRUCTIONS, prompt_variants
+     cap = runtime.config["limits"]["context_chars"]
+@@ -447,6 +447,8 @@
+     open_draft = any(d["context_ref"] == current and not d["sealed"] for _, d in runtime.store.rows("drafts"))
+     schema = response_schema(runtime.config["arm"], comparison_context_refs=previous_contexts,
+                              candidate_refs=candidates, has_open_draft=open_draft)
++    from .context_ablation import adapt_schema
++    schema = adapt_schema(runtime, schema)
+     attempt_id = runtime.reserve_attempt(text, schema)
+     return network, text, schema, attempt_id
+ 
+--- a/src/smt_fullfab/harness/runtime.py
++++ b/src/smt_fullfab/harness/runtime.py
+@@ -16,6 +16,7 @@
+ from .contracts import (PROTOCOL, ROOT, SEMANTIC_COVERAGE, HarnessError, digest, encode, encode_model_schema,
+                         fingerprint, number, require, strict_json, validate_action, validate_config, within_cap)
+ from .facts import FactReader, build_facts, changes, reconstruct
++from .context_ablation import reader as context_reader
+ from .factory import capture, prepare, restore
+ from .store import Store
+ 
+@@ -221,7 +222,7 @@
+             self.store.set_meta("head", head)
+             self.store.set_meta("last_context", context_ref)
+             self.store.event("observed", {"context_ref": context_ref, "revision": head["revision"], "problem_sha256": digest(problem), "base_sha256": digest(base)})
+-        self.reader = FactReader(context_ref, facts)
++        self.reader = context_reader(self, context_ref, facts)
+         return self.context()
+ 
+     def context(self, ref=None):
+@@ -390,6 +391,9 @@
+         if attempt["channel"] == "codex" and tool in ("begin_proposal", "write_notes"):
+             require(not any(c["context_ref"] == self.head["context_ref"] for _, c in self.store.rows("candidates")),
+                     "candidate_stage", "Checked candidates exist: explicitly select, inspect or propose an alternative. Selection may include a memory note.")
++        if tool == "read_artifact" and "lookups" in action:
++            from .context_ablation import recover
++            return recover(self, action)
+         if tool == "read_artifact":
+             public = self.store.read("public", action["artifact_ref"])
+             require(public is not None and public["run_id"] == self.manifest["run_id"], "private_or_cross_run", "Only registered public artifacts may be read")
+@@ -427,7 +431,7 @@
+         if tool == "read_entities":
+             require(type(action["queries"]) is list and 1 <= len(action["queries"]) <= 32, "queries", "1..32 queries required")
+             if self.reader is None or self.reader.context_ref != context["context_ref"]:
+-                self.reader = FactReader(context["context_ref"], context["facts"])
++                self.reader = context_reader(self, context["context_ref"], context["facts"])
+             results = []
+             for query in action["queries"]:
+                 try:
+--- a/src/smt_fullfab/harness/experiment.py
++++ b/src/smt_fullfab/harness/experiment.py
+@@ -223,6 +223,9 @@
+     raw = (root / "experiment.json").read_bytes()
+     require(sha_bytes(raw) == admission["experiment_sha256"], "registration_changed", "Frozen experiment differs")
+     value = strict_json(raw)
++    if value.get("schema") == "harness-context-2x2-v1":
++        from .context_ablation import validate_registration
++        return validate_registration(value, root)
+     if value.get("schema") == "harness-coverage-ablation-v1":
+         from .coverage_ablation import validate_registration
+         return validate_registration(value, root)
+@@ -467,6 +470,9 @@
+ def validate_admission(admission, fingerprint, config, initial):
+     require(type(admission) is dict, "P5_admission", "Real execution requires frozen G0-G4 admission")
+     reg = registration(admission)
++    if reg.get("schema") == "harness-context-2x2-v1":
++        from .context_ablation import validate_admission as validate_context
++        return validate_context(reg, admission, fingerprint, config, initial)
+     if reg.get("schema") == "harness-coverage-ablation-v1":
+         from .coverage_ablation import validate_admission as validate_ablation
+         return validate_ablation(reg, admission, fingerprint, config, initial)
+--- a/src/smt_fullfab/harness/network.py
++++ b/src/smt_fullfab/harness/network.py
+@@ -19,7 +19,7 @@
+     if reference.get('mode') == 'coverage_ablation_inherit_host':
+         from .experiment import registration
+         reg = registration(reference['admission'])
+-        require(reg['schema'] == 'harness-coverage-ablation-v1' and reg['network_policy'] == 'inherit_host_no_inspection_or_changes', 'ablation_network', 'Frozen inherited host policy required')
++        require(reg['schema'] in ('harness-coverage-ablation-v1', 'harness-context-2x2-v1') and reg['network_policy'] == 'inherit_host_no_inspection_or_changes', 'ablation_network', 'Frozen inherited host policy required')
+         return reference
+     if reference.get('mode') == 'user_managed_host_network':
+         from .user_managed_network import validate_reference
+@@ -56,7 +56,7 @@
+ def for_admission(admission, *, live=False, attempt=None, run_id=None):
+     from .experiment import registration
+     reg = registration(admission)
+-    if reg.get('schema') == 'harness-coverage-ablation-v1':
++    if reg.get('schema') in ('harness-coverage-ablation-v1', 'harness-context-2x2-v1'):
+         return {'mode': 'coverage_ablation_inherit_host', 'admission': admission, 'route_continuity_claim': False}
+     if 'transport_proxy' not in reg:
+         return None
+--- a/src/smt_fullfab/harness/contracts.py
++++ b/src/smt_fullfab/harness/contracts.py
+@@ -182,7 +182,10 @@
+         allowed |= {"since_context_ref"}
+     if tool == "apply_candidate":
+         allowed |= {"selection_note"}
+-    require(set(TOOLS[tool]) | {"tool"} <= set(action) <= allowed, "action_schema", "Missing or additional fields", tool=tool)
++    required = set(TOOLS[tool]) | {"tool"}
++    if tool == "read_artifact" and "lookups" in action:
++        required = allowed = {"tool", "artifact_ref", "lookups"}
++    require(required <= set(action) <= allowed, "action_schema", "Missing or additional fields", tool=tool)
+     for key in ("context_ref", "request_id", "candidate_ref", "artifact_ref", "proposal_ref", "proposal_id"):
+         if key in action:
+             require(type(action[key]) is str and 0 < len(action[key]) <= 200, "identity", key)
+--- /dev/null
++++ b/src/smt_fullfab/harness/context_ablation.py
+@@ -0,0 +1,191 @@
++"""Isolated 2x2 read/presentation experiment; no production decision generation."""
++from copy import deepcopy
++from contextlib import nullcontext
++from pathlib import Path
++from .contracts import HarnessError, digest, encode, require
++from .facts import FactReader, IDENTITIES
++from .presentation import pack
++SCHEMA = "harness-context-2x2-v1"
++VARIANTS = ("baseline", "filter_projection", "targeted_recovery", "combined")
++OFFLOAD_CHARS = 12000
++
++def flags(runtime):
++    admission = runtime.manifest.get("admission") or {}
++    variant = admission.get("case_id", "").split("__")[-1] if admission.get("experiment_kind") == SCHEMA else "baseline"
++    require(variant in VARIANTS, "context_variant", "Unknown registered variant")
++    return variant in ("filter_projection", "combined"), variant in ("targeted_recovery", "combined")
++
++def validate_registration(reg, root):
++    from .experiment import checked_file
++    require(Path(reg["experiment_directory"]).resolve() == root.resolve(), "context_registration", "Directory differs")
++    require(reg["full_B_new_run_limit"] == 0 and len(reg["cases"]) == 4, "context_scope", "Four isolated cases only")
++    require(reg["network_policy"] == "inherit_host_no_inspection_or_changes", "context_network", "Frozen host policy")
++    require(reg["user_instruction"] == "那就在隔离副本里实现并对比这两种方案，用同一保存状态跑现状、只改过滤投影、只改定向恢复、两者结合四组，其他条件保持一致，比较总调用、token、首次提案时间和排程质量，不要影响正在跑的 B。", "context_authorization", "Explicit instruction required")
++    proof = checked_file(reg["verification"])
++    require(proof["all_pass"] and proof["physics_unchanged"] and proof["base_prompt_command_schema_unchanged"] and proof["fingerprint_sha256"] == reg["fingerprint_sha256"], "context_verification", "Frozen passing tests required")
++    entries = list(reg["cases"].values())
++    require({x["variant"] for x in entries} == set(VARIANTS) and set(reg["execution_order"]) == set(reg["cases"]), "context_pairing", "Exactly four variants")
++    for case, entry in reg["cases"].items():
++        require(case == entry["state_id"] + "__" + entry["variant"], "context_case", "Case/variant binding")
++    for field in ("state_id", "initial_sha256", "initial_state_sha256", "initial_trace_sha256", "config_sha256", "evaluation_end", "start"):
++        require(len({x[field] for x in entries}) == 1, "context_pairing", field)
++    return reg
++
++def validate_admission(reg, admission, fp, config, initial):
++    entry = reg["cases"][admission["case_id"]]
++    require(admission["group"] == entry["group"] == "micro" and config["arm"] == "B" and initial is not None, "context_scope", "Saved-state B only")
++    require(fp["sha256"] == reg["fingerprint_sha256"], "context_source", "Source changed")
++    require(digest(initial) == entry["initial_sha256"] and digest(config) == entry["config_sha256"], "context_initial", "State/config changed")
++    require(config["unknown_usage_policy"] == "freeze_new_calls" and config["model"] == reg["model"], "context_model", "Frozen model/policy")
++    require(all(admission[k] == reg[k] for k in ("cli_sha256", "cli_binary", "model_catalog", "model_catalog_sha256")), "context_transport", "Transport binding differs")
++    for key, cap in reg["caps"]["micro"].items():
++        require(config["limits"][key] <= cap, "context_budget", key)
++
++class ExtendedFactReader(FactReader):
++    """Model-specified AND predicates, exact source order and ordinary pagination."""
++    def read(self, query):
++        where = query.get("where") if type(query) is dict else None
++        if not isinstance(where, list) or not any(isinstance(p, dict) and p.get("op") not in ("eq", "contains") for p in where):
++            return super().read(query)
++        kind = query.get("kind")
++        require(kind in IDENTITIES and "cursor" in query and "ids" not in query and 1 <= len(where) <= 16, "query_filter", "Explicit paginated predicates required")
++        catalog = self.facts["catalogs"][kind]
++        known = {f for key in catalog for f in self.facts["entities"][key]["value"]}
++        scalar = lambda v: v is None or type(v) in (str, int, float, bool)
++        equal = lambda a,b: a == b and (type(a) is bool) == (type(b) is bool)
++        for p in where:
++            require(type(p) is dict and set(p) == {"field", "op", "value"} and type(p["field"]) is str and p["field"] in known, "query_filter", "Known public field required")
++            op,v = p["op"],p["value"]
++            require(op in ("eq","contains","lt","le","gt","ge","in","contains_any"), "query_filter", "Unknown predicate")
++            require((op in ("eq","contains") and scalar(v)) or (op in ("lt","le","gt","ge") and type(v) in (int,float)) or (op in ("in","contains_any") and type(v) is list and 1 <= len(v) <= 512 and all(scalar(x) for x in v)), "query_filter", "Wrong predicate value type")
++        encode(where)  # reject non-finite values
++        def match(row):
++            for p in where:
++                if p["field"] not in row: return False
++                a,b,op = row[p["field"]],p["value"],p["op"]
++                if op == "eq": ok = equal(a,b)
++                elif op == "contains": ok = type(a) is list and any(equal(x,b) for x in a)
++                elif op == "in": ok = any(equal(a,x) for x in b)
++                elif op == "contains_any": ok = type(a) is list and any(equal(x,y) for x in a for y in b)
++                elif type(a) not in (int,float): ok = False
++                else: ok = {"lt":a<b,"le":a<=b,"gt":a>b,"ge":a>=b}[op]
++                if not ok: return False
++            return True
++        selected = [k for k in catalog if match(self.facts["entities"][k]["value"])]
++        cursor = query["cursor"] or self.cursor(kind,0,where)
++        prefix = self.cursor(kind,0,where).rsplit(":",1)[0]+":"
++        require(type(cursor) is str and cursor.startswith(prefix) and cursor[len(prefix):].isdigit(), "stale_cursor", "Context/kind/filter changed")
++        offset = int(cursor[len(prefix):])
++        facts = dict(self.facts, catalogs={**self.facts["catalogs"],kind:selected})
++        reader = FactReader(self.context_ref,facts)
++        q = {k:v for k,v in query.items() if k != "where"}; q["cursor"] = reader.cursor(kind,offset)
++        result = reader.read(q)
++        result.update(catalog_total=len(catalog), matching_total=len(selected), where=deepcopy(where), filtering="exact_model_predicates_only_no_ranking")
++        if result["next_cursor"]: result["next_cursor"] = self.cursor(kind,offset+result["returned"],where)
++        return result
++
++def reader(runtime, context_ref, facts):
++    return (ExtendedFactReader if flags(runtime)[0] else FactReader)(context_ref,facts)
++
++def projected(value, reference):
++    """Project provenance wrappers only; every requested business field remains exact."""
++    result = deepcopy(value)
++    changed = False
++    if type(result) is dict and type(result.get("results")) is list:
++        for query in result["results"]:
++            if type(query) is dict and type(query.get("entities")) is list:
++                for i,row in enumerate(query["entities"]):
++                    if type(row) is dict and "entity_revision" in row and "value" in row:
++                        query["entities"][i] = {k:row[k] for k in ("kind","id","source_index","value","projection_fields","absent_fields")}
++                        changed = True
++    if changed:
++        result["provenance_externalized"] = {"artifact_ref":reference,"meaning":"Only repeated provenance metadata omitted from this view. Values, IDs, source order, missing fields and query/page coverage are exact. Original row metadata remains at results/<query index>/entities/<row index>."}
++    return result
++
++def index_paths(value):
++    """Public structural locator, never scores or suggested production choices."""
++    result=[]
++    def walk(v,path,depth):
++        if depth > 7: return
++        if type(v) is dict:
++            if "kind" in v and "id" in v and type(v.get("value")) is dict:
++                result.append({"kind":v["kind"],"id":v["id"],"path":path+["value"],"fields":list(v["value"])})
++                return
++            for k,x in v.items():
++                if type(x) in (list,dict): walk(x,path+[k],depth+1)
++        elif type(v) is list:
++            for i,x in enumerate(v): walk(x,path+[i],depth+1)
++    walk(value,[],0)
++    return result
++
++def presentation(runtime,value,reference,*,budget=14000):
++    from .transport import compact_feedback
++    fp,recovery = flags(runtime)
++    view = projected(value,reference) if fp else value
++    packed = pack(view)
++    if recovery and len(encode(packed)) > OFFLOAD_CHARS:
++        locators=index_paths(value)
++        index_key = digest([reference, value])
++        index_ref = runtime.store.read("recovery_indices", index_key)
++        if index_ref is None:
++            with nullcontext() if runtime.store.db.in_transaction else runtime.store.transaction():
++                index_ref=runtime._publish({"artifact_ref":reference,"locators":locators,"count":len(locators),"order":"original_source_order","complete":True},"exact_recovery_index")
++                runtime.store.record("recovery_indices", index_key, index_ref)
++        # Reuse the baseline exact source-order preview, but make offload and lookup explicit.
++        preview=compact_feedback(value,reference,budget=min(budget,3500))
++        return {"offloaded":True,"inline_complete":False,"original_ref":reference,"original_sha256":digest(value),"presented_chars":len(encode(packed)),"threshold_chars":OFFLOAD_CHARS,"preview":preview,"locator_count":len(locators),"locator_index_ref":index_ref,"locator_preview":pack(locators[:4]),"locator_preview_omitted":max(0,len(locators)-4),"recovery_contract":"read_artifact accepts 1..32 lookups of exact original JSON paths with fields:null (all) or explicit fields. Read the locator index with ordinary page path [locators] for additional exact paths. No original content is deleted."}
++    return packed if len(encode(packed)) <= 60000 else compact_feedback(value,reference,budget=budget)
++
++def recovery_context(runtime,context,full):
++    fp,recovery=flags(runtime)
++    if fp:
++        context["query_extensions"]={"tool":"read_entities","additional_predicates":{"lt/le/gt/ge":"numeric scalar bound (booleans excluded)","in":"scalar value in explicit array","contains_any":"array field intersects explicit array"},"rule":"Model chooses all predicates and fields; AND only, fixed source order, no ranking. These extend the base eq/contains contract."}
++    if recovery:
++        context["exact_recovery"]={"current_facts_ref":full["facts_ref"],"context_ref":full["context_ref"],"time":full["time"],"entity_path_template":["entities","<kind>:<exact ID>","value"],"kinds":{"machines":"machine integer rendered as string","operations":"operation_id","tasks":"task id","holds":"h:<source index>"},"field_catalog":{k:list(dict.fromkeys(f for key in keys for f in full["facts"]["entities"][key]["value"])) for k,keys in full["facts"]["catalogs"].items()},"rule":"Use read_artifact with artifact_ref and lookups:[{path:[exact original keys/indices],fields:null or explicit field names}]. Batch up to 32 exact lookups. Old artifacts retain old context; never infer current readiness from an old result. Missing paths/fields are explicit. No search, hidden state, or automatic entity selection."}
++
++def recover(runtime,action):
++    require(flags(runtime)[1],"recovery_disabled","Batch recovery not enabled in this variant")
++    public=runtime.store.read("public",action["artifact_ref"])
++    require(public is not None and public["run_id"] == runtime.manifest["run_id"],"private_or_cross_run","Only this run's registered public artifacts")
++    lookups=action["lookups"]
++    require(type(lookups) is list and 1 <= len(lookups) <= 32,"artifact_lookups","1..32 exact lookups required")
++    original=runtime.store.get(public["object_ref"]); rows=[]
++    for lookup in lookups:
++        try:
++            require(type(lookup) is dict and set(lookup)=={"path","fields"},"artifact_lookups","Exact path and explicit fields/null required")
++            path,fields=lookup["path"],lookup["fields"]
++            require(type(path) is list and len(path)<=32 and all(type(k) in (str,int) for k in path),"artifact_path","Exact JSON path required")
++            require(fields is None or (type(fields) is list and all(type(f) is str for f in fields) and len(fields)==len(set(fields))),"projection","Unique fields or null required")
++            v=original
++            for key in path:
++                require((type(v) is list and type(key) is int and 0<=key<len(v)) or (type(v) is dict and type(key) is str and key in v),"artifact_path","No such exact path")
++                v=v[key]
++            require(fields is None or type(v) is dict,"projection","Fields require an object")
++            absent=[] if fields is None else [f for f in fields if f not in v]
++            if fields is not None: v={f:deepcopy(v[f]) for f in fields if f in v}
++            rows.append({"status":"ok","path":path,"fields":fields,"absent_fields":absent,"value":v})
++        except HarnessError as exc:
++            rows.append({**exc.response(),"lookup":lookup})
++    return {"status":"ok","artifact_ref":action["artifact_ref"],"object_ref":public["object_ref"],"results":rows,"source_semantics":"Immutable exact artifact version; not rebased to current context"}
++
++def adapt_schema(runtime,schema):
++    from .transport import obj,array
++    fp,recovery=flags(runtime)
++    if not fp and not recovery: return schema
++    schema=deepcopy(schema); actions=schema["properties"]["action"]["anyOf"]
++    text={"type":"string"}; scalar={"anyOf":[text,{"type":"number"},{"type":"boolean"},{"type":"null"}]}
++    if fp:
++        action=next(a for a in actions if a["properties"]["tool"]["enum"]==["read_entities"])
++        for query in action["properties"]["queries"]["items"]["anyOf"]:
++            if "where" in query["properties"]:
++                pred=query["properties"]["where"]["items"]["properties"]
++                if "lt" in pred["op"]["enum"]: continue
++                pred["op"]["enum"] += ["lt","le","gt","ge","in","contains_any"]
++                pred["value"]={"anyOf":[*scalar["anyOf"],array(scalar)]}
++        action["description"]="Exact model-selected filtering and field projection. In addition to eq/contains, use numeric lt/le/gt/ge or in/contains_any with an explicit scalar array. Source order and omissions are reported. No implicit ranking."
++    if recovery:
++        lookup=obj({"path":array({"anyOf":[text,{"type":"integer"}]}),"fields":{"anyOf":[array(text),{"type":"null"}]}})
++        action=obj({"tool":{"type":"string","enum":["read_artifact"]},"artifact_ref":text,"lookups":array(lookup)})
++        action["description"]="Restore 1..32 exact JSON paths from this run's public immutable original artifact in one action. fields:null returns the whole value; fields:[names] projects that object. Use original paths/locator index, not table row indices. Older refs remain older evidence."
++        actions.append(action)
++    return schema

@@ -1,0 +1,71 @@
+{
+  "cap": 42,
+  "entries": [
+    {
+      "label": "scope-search-v1",
+      "phase": "scope-search",
+      "reserved": 5,
+      "at": "2026-10-15T21:16:46.086178+00:00",
+      "effort": "medium",
+      "args_sha256": "0eaedacd2a245103dfceb935da470663a091cbcc79b101c3ac458c03aa5bad7c",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-15T21:18:10.329254+00:00"
+    },
+    {
+      "label": "fetch-v1",
+      "phase": "fetch",
+      "reserved": 8,
+      "at": "2026-10-15T21:19:06.081270+00:00",
+      "effort": "medium",
+      "args_sha256": "fa1142f7c382f0d1bea56a068e651d801dfe587e8c60f2079f8cb6d701cafe58",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-15T21:22:13.160256+00:00"
+    },
+    {
+      "label": "verify-v1",
+      "phase": "verify",
+      "reserved": 24,
+      "at": "2026-10-15T21:23:53.082198+00:00",
+      "effort": "high",
+      "args_sha256": "71602e638465295f778f95e9012471e212b0162e852c4c7186835d2e9e5e42fe",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-15T21:36:29.286536+00:00"
+    },
+    {
+      "label": "synthesize-v1",
+      "phase": "synthesize",
+      "reserved": 1,
+      "at": "2026-10-15T21:37:35.998029+00:00",
+      "effort": "high",
+      "args_sha256": "d5fdceb8e138d8d07cfad0f24afecc29d6c4b8f41f7bbe93344972cd52c1fdf9",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-15T21:40:11.231831+00:00"
+    },
+    {
+      "label": "review-v1",
+      "phase": "review",
+      "reserved": 1,
+      "at": "2026-10-15T21:42:49.210639+00:00",
+      "effort": "xhigh",
+      "args_sha256": "0fe2692c7827e388692861419b9387ca71ff5c59f6e0c8da43d46e44b91ab80c",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-15T21:47:18.130535+00:00"
+    },
+    {
+      "label": "review-v2",
+      "phase": "review",
+      "reserved": 1,
+      "at": "2026-10-15T21:49:19.005959+00:00",
+      "effort": "xhigh",
+      "args_sha256": "a06a77fe14bb0043d81731ed9b879cd4df0b42efac6acfc028e9d223549560f8",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-15T21:51:36.479957+00:00"
+    }
+  ]
+}

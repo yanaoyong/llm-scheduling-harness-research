@@ -1,0 +1,71 @@
+{
+  "mixed_702__baseline": [
+    {
+      "tasks": 6,
+      "max_queue": 1,
+      "valid_for": 498,
+      "advanced": 6.75,
+      "stop": "uncovered_demand"
+    },
+    {
+      "tasks": 12,
+      "max_queue": 2,
+      "valid_for": 1091.25,
+      "advanced": 121.5,
+      "stop": "uncovered_demand"
+    },
+    {
+      "tasks": 9,
+      "max_queue": 2,
+      "valid_for": 969.75,
+      "advanced": 33.749999999999886,
+      "stop": "uncovered_demand"
+    },
+    {
+      "tasks": 9,
+      "max_queue": 2,
+      "valid_for": 936.0000000000001,
+      "advanced": 46.117397147927136,
+      "stop": "uncovered_demand"
+    }
+  ],
+  "singleton_2403__baseline": [
+    {
+      "tasks": 1,
+      "max_queue": 1,
+      "valid_for": 120,
+      "advanced": 39.786212107757365,
+      "stop": "uncovered_demand"
+    },
+    {
+      "tasks": 1,
+      "max_queue": 1,
+      "valid_for": 120.0,
+      "advanced": 3.5829886104188517,
+      "stop": "uncovered_demand"
+    },
+    {
+      "tasks": 1,
+      "max_queue": 1,
+      "valid_for": 120.0,
+      "advanced": 41.00258947971906,
+      "stop": "uncovered_demand"
+    },
+    {
+      "tasks": 1,
+      "max_queue": 1,
+      "valid_for": 120.0,
+      "advanced": 63.538258819983184,
+      "stop": "uncovered_demand"
+    }
+  ],
+  "transition_1800__baseline": [
+    {
+      "tasks": 2,
+      "max_queue": 1,
+      "valid_for": 200,
+      "advanced": 2.25,
+      "stop": "uncovered_demand"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "scope": "Independent arithmetic and A solver-output attribution; no simulator or model or project metrics imports.",
+  "arms": {
+    "A": {
+      "events": 7505,
+      "simulation_start": 0.0,
+      "simulation_end": 3600.0,
+      "production_scope": 913,
+      "initial_wip": 2156,
+      "new_released": 21,
+      "complete_lots": 1,
+      "terminal_wip": 2176,
+      "terminal_tardy_wip": 10,
+      "production_dispatches": 1138,
+      "production_operations_started": 1397,
+      "production_operations_completed": 336,
+      "plans_committed": 47,
+      "queue_wait_lot_hours": 1019.2916143811872,
+      "declared_setup_machine_hours": 30.07795851458313,
+      "batch_fill_mean": 0.9422705314009662,
+      "weighted_tardy_lot_hours": 10.0,
+      "completed": {
+        "w1387": 1437.7772093112183
+      },
+      "event_counts": {
+        "initial": 1,
+        "release": 2177,
+        "ready": 2512,
+        "skip": 81,
+        "plan_committed": 47,
+        "dispatch": 1249,
+        "time_advance": 1048,
+        "downtime": 7,
+        "operation_complete": 336,
+        "plan_invalidated": 45,
+        "lot_complete": 1,
+        "terminal": 1
+      }
+    },
+    "B": {
+      "events": 7324,
+      "simulation_start": 0.0,
+      "simulation_end": 3600.0,
+      "production_scope": 913,
+      "initial_wip": 2156,
+      "new_released": 21,
+      "complete_lots": 1,
+      "terminal_wip": 2176,
+      "terminal_tardy_wip": 10,
+      "production_dispatches": 1071,
+      "production_operations_started": 1327,
+      "production_operations_completed": 288,
+      "plans_committed": 95,
+      "queue_wait_lot_hours": 1028.793966486503,
+      "declared_setup_machine_hours": 40.34038278664082,
+      "batch_fill_mean": 0.925,
+      "weighted_tardy_lot_hours": 10.0,
+      "completed": {
+        "w1387": 1437.7772093112183
+      },
+      "event_counts": {
+        "initial": 1,
+        "release": 2177,
+        "ready": 2464,
+        "skip": 69,
+        "plan_committed": 95,
+        "dispatch": 1183,
+        "time_advance": 933,
+        "downtime": 7,
+        "coverage_gap": 77,
+        "snapshot_loaded": 12,
+        "operation_complete": 288,
+        "lot_complete": 1,
+        "plan_invalidated": 16,
+        "terminal": 1
+      }
+    },
+    "C": {
+      "events": 7494,
+      "simulation_start": 0.0,
+      "simulation_end": 3600.0,
+      "production_scope": 913,
+      "initial_wip": 2156,
+      "new_released": 21,
+      "complete_lots": 1,
+      "terminal_wip": 2176,
+      "terminal_tardy_wip": 10,
+      "production_dispatches": 1130,
+      "production_operations_started": 1387,
+      "production_operations_completed": 334,
+      "plans_committed": 46,
+      "queue_wait_lot_hours": 1032.6517984212087,
+      "declared_setup_machine_hours": 26.879487624116788,
+      "batch_fill_mean": 0.9448529411764706,
+      "weighted_tardy_lot_hours": 10.0,
+      "completed": {
+        "w1387": 1437.7772093112183
+      },
+      "event_counts": {
+        "initial": 1,
+        "release": 2177,
+        "ready": 2510,
+        "skip": 80,
+        "plan_committed": 46,
+        "dispatch": 1241,
+        "time_advance": 1051,
+        "downtime": 7,
+        "operation_complete": 334,
+        "plan_invalidated": 45,
+        "lot_complete": 1,
+        "terminal": 1
+      }
+    }
+  },
+  "A_source_snapshot_files_verified": 25,
+  "A_solver_outputs_matched": 47,
+  "A_cp_calls_from_solver_outputs": 359,
+  "manifest_differing_fields_vs_A": {
+    "B": [
+      "fullfab_version"
+    ],
+    "C": [
+      "fullfab_version"
+    ]
+  }
+}

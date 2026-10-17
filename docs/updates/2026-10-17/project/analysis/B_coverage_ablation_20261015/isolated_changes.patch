@@ -1,0 +1,188 @@
+--- /dev/null
++++ b/src/smt_fullfab/harness/coverage_ablation.py
+@@ -0,0 +1,87 @@
++"""Isolated presentation ablation. Never constructs or repairs production choices."""
++from collections import Counter, defaultdict
++from pathlib import Path
++from .contracts import digest, encode, require, sha_bytes
++from .presentation import pack
++
++GUIDANCE = "\n\nYour decision unit is a rolling factory plan. A trigger identifies the first currently uncovered demand; it does not define the full scope of this revision. Preserve the production objective and legality. As a secondary efficiency goal, reduce repeated model calls needed to cover known work. Do not improve the call metric by withholding useful work, hiding an uncovered machine, adding artificial waits, or scheduling invalid tasks.\n\nFor this development variant, inspect a nominal coverage window of min(current_time + 300 seconds, observation window end). This is a planning target, not a guaranteed execution interval or a minimum number of tasks. No private future event or exact completion may be inferred from it.\n\nBefore submitting, inspect both current uncovered resources and resources that may become available within the window using public machine availability forecasts. The family catalog alone does not contain machine availability. With the existing tools, use read_entities with machine catalog cursors and selected fields to inspect the factory; follow next_cursor for completeness. Group resources from those facts yourself. Batch independent machine, operation and pending-task queries in a single read_entities action when they fit. Use smaller projections and pagination when required. Do not repeatedly query only the machine that caused this trigger.\n\nDistinguish these kinds of work:\n1. Currently ready operations, including lots waiting for machines that are busy now. Where useful, explicitly choose several compatible tasks, batches and machine orders so those machines have work when they become available. Consider the effect of reserving a lot on competing machines.\n2. Public nominal successor operations. conditional=true means future or not yet ready; it does not by itself mean an illegal operation. Inspect predecessor, sampling/rework, qualification and binding facts before deciding whether to plan it. A deterministic-looking own step does not prove that its predecessor path is certain.\n3. Genuinely unresolved branches or missing qualifications. Explain the evidence needed and preserve necessary event-triggered replanning. Do not invent an outcome to fill a queue.\n\nnot_before is an earliest-start condition; the executor also checks actual lot and machine readiness and your submitted machine order. A forecast of now + 1 second is not an exact imminent completion. Do not create one- or two-second plan validity merely to poll it. Under the CURRENT protocol, a retained non-frozen pending task whose not_before is in the past requires your explicit replacement or cancellation; handle those records without resubmitting dispatched work.\n\nOne propose_delta can contain multiple tasks on multiple machines, including ordered follow-on tasks. 'One action' does not mean 'one production task'. 'Small revision' refers to serialized response size. Use the multi-call draft tools only when the complete response really is too large. Choose valid_until to support the intended coverage and any real uncertainty; validity alone is not coverage.\n\nBefore applying a checked candidate, assess whether it addresses the current demand and the near-term resources you inspected. A one-task plan is valid when the facts justify it, but do not use it by default. In the existing reason or selection_note, briefly record the intended coverage, deferred groups and factual reasons, and any unresolved uncertainty. Do not output extra schema fields.\n\nKeep exact lot, operation, visit, machine, batch and order choices model-authored. The host still performs mechanical checks only. This guidance adds no constructor, solver, ranking, automatic selection or silent schedule repair.\n"
++VARIANTS = ('baseline', 'prompt', 'prompt_context_feedback')
++
++def validate_registration(reg, root):
++    require(Path(reg['experiment_directory']).resolve() == root.resolve(), 'ablation_registration', 'Directory differs')
++    require(reg['full_B_new_run_limit'] == 0 and len(reg['cases']) == 9, 'ablation_scope', 'Nine isolated saved-state cases only')
++    require(reg['user_instruction'] == '那就先改提示词、默认上下文和效率反馈，用相同保存状态对比现状、只改提示词、提示词加上下文反馈这三组，看看能减少多少重排和模型调用，同时确认排程质量没有下降。不要影响当前正在跑的 B。', 'ablation_authorization', 'Explicit experiment instruction required')
++    require(reg['network_policy'] == 'inherit_host_no_inspection_or_changes', 'ablation_network', 'No network edits')
++    from .experiment import checked_file
++    proof = checked_file(reg['verification'])
++    require(proof['all_pass'] and proof['physics_unchanged'] and proof['transport_command_schema_unchanged'] and proof['fingerprint_sha256'] == reg['fingerprint_sha256'], 'ablation_verification', 'Tested frozen source required')
++    for state in reg['states']:
++        entries = [x for x in reg['cases'].values() if x['state_id'] == state]
++        require(len(entries) == 3 and {x['variant'] for x in entries} == set(VARIANTS), 'ablation_pairing', 'Three matched variants required')
++        for field in ('initial_state_sha256','initial_trace_sha256','initial_sha256','config_sha256','evaluation_end'):
++            require(len({x[field] for x in entries}) == 1, 'ablation_pairing', field)
++    return reg
++
++def validate_admission(reg, admission, fp, config, initial):
++    entry = reg['cases'][admission['case_id']]
++    require(admission['group'] == entry['group'] == 'micro' and config['arm'] == 'B' and initial is not None, 'ablation_scope', 'Saved-state B case required')
++    require(fp['sha256'] == reg['fingerprint_sha256'], 'ablation_source', 'Source changed')
++    require(digest(initial) == entry['initial_sha256'] and digest(config) == entry['config_sha256'], 'ablation_initial', 'State or config changed')
++    require(config['unknown_usage_policy'] == 'freeze_new_calls' and config['model'] == reg['model'], 'ablation_model', 'Frozen model and unknown-usage freeze required')
++    require(admission['cli_sha256'] == reg['cli_sha256'] and admission['cli_binary'] == reg['cli_binary'], 'cli_freeze', 'CLI differs')
++    for key, cap in reg['caps']['micro'].items():
++        require(config['limits'][key] <= cap, 'ablation_budget', key)
++
++def coverage_view(problem, pending_tasks, now, end):
++    """Counts and exact public resource rows. No rankings or assignments."""
++    horizon = min(now + 300, end)
++    ready, future, queues = Counter(), Counter(), Counter(t['machine'] for t in pending_tasks)
++    families = {}
++    for m in problem['machines']:
++        families.setdefault(m['family'], {'family': m['family'], 'machines': 0, 'busy': 0, 'nominal_available_within_window': 0, 'pending_tasks': 0, 'ready_operations': 0, 'conditional_operations': 0})
++        f = families[m['family']]; f['machines'] += 1; f['busy'] += m['currently_busy']; f['nominal_available_within_window'] += m['available_at'] <= horizon; f['pending_tasks'] += queues[m['machine']]
++    for op in problem['operations']:
++        counter = future if op['conditional'] else ready
++        counter.update(op['eligible_machines'])
++        if op['family'] in families: families[op['family']]['conditional_operations' if op['conditional'] else 'ready_operations'] += 1
++    rows = [dict(m, pending_task_count=queues[m['machine']], ready_eligible_operation_count=ready[m['machine']], conditional_eligible_operation_count=future[m['machine']]) for m in problem['machines'] if m['available_at'] <= horizon or queues[m['machine']]]
++    fields = ['machine','family','available_at','currently_busy','currently_down','current_setup','pending_task_count','ready_eligible_operation_count','conditional_eligible_operation_count']
++    return {'window_end': horizon, 'basis': 'Public nominal forecasts only; no exact future completions, RNG or schedule recommendation. Eligibility counts overlap across machines and are not reservations.', 'all_machine_count': len(problem['machines']), 'resource_rows_rule': 'Every machine nominally available by window_end or carrying a pending task; original source order, no top-k', 'resource_rows': pack([{k:m[k] for k in fields} for m in rows]), 'resource_row_count': len(rows), 'resource_rows_omitted_by_rule': len(problem['machines'])-len(rows), 'all_families': pack(list(families.values()))}
++
++def efficiency_view(runtime):
++    feedback = runtime.store.rows('feedback')
++    attempts = [a for _,a in runtime.store.rows('attempts') if a['channel'] == 'codex' and a['status'] not in ('reserved','not_sent')]
++    commits = {c['actual_revision']: c for _,c in runtime.store.rows('commits')}
++    by_context = Counter(a['context_ref'] for a in attempts)
++    rows = []
++    for key, f in feedback:
++        commit = commits[int(key)]
++        candidate = runtime.store.read('candidates', commit['candidate_ref'])
++        plan = candidate['compiled']['plan']
++        rows.append({k:f[k] for k in ('from','to','advanced_seconds','dispatch_count_delta','completed_operations_delta','completed_lots_delta')} | {'stop_reason': f['stop_reason']['reason'], 'model_calls': by_context[candidate['context_ref']], 'plan_tasks':len(plan['tasks']), 'machines':len({t['machine'] for t in plan['tasks']}), 'max_queue_depth':max(Counter(t['machine'] for t in plan['tasks']).values(),default=0), 'declared_valid_seconds':plan['valid_until']-plan['created_at']})
++    advanced = sum(f['advanced_seconds'] for _,f in feedback); dispatches = sum(f['dispatch_count_delta'] for _,f in feedback)
++    return {'goal': 'Efficiency is secondary to legality, weighted tardiness, throughput and ready waiting; do not idle useful work to reduce calls.', 'completed_rounds':len(rows), 'actual_model_calls_including_current_uncommitted_context':len(attempts), 'actual_advanced_seconds':advanced, 'actual_dispatches':dispatches, 'calls_per_simulated_minute':len(attempts)*60/advanced if advanced else None, 'calls_per_dispatch':len(attempts)/dispatches if dispatches else None, 'recent_rounds':rows[-8:], 'historical_seed_rounds_before_branch':runtime.store.read('ablation_seed','efficiency', []) if not rows else [], 'zero_denominator': 'null means not yet measurable'}
++
++def augment(runtime, context, full, prefix):
++    admission = runtime.manifest.get('admission')
++    if not admission or admission.get("experiment_kind") != "harness-coverage-ablation-v1": return prefix
++    from .experiment import registration
++    reg = registration(admission)
++    if reg.get('schema') != 'harness-coverage-ablation-v1': return prefix
++    variant = reg['cases'][admission['case_id']]['variant']
++    if variant == 'baseline': return prefix
++    if variant == 'prompt_context_feedback':
++        pending = set(context['pending_base_task_ids'])
++        tasks = [t for t in full['base_plan']['tasks'] if t['id'] in pending]
++        context['factory_coverage'] = coverage_view(full['problem'], tasks, context['time'], full['execution_state']['observation_end'])
++        context['execution_efficiency'] = efficiency_view(runtime)
++        # Keep ready and conditional facts visible in separate source-order previews.
++        mids = {m['machine'] for m in full['problem']['machines'] if m['available_at'] <= min(context['time']+300, full['execution_state']['observation_end'])}
++        related = [o for o in full['problem']['operations'] if mids.intersection(o['eligible_machines']) or o['operation_id'] in {oid for t in tasks for oid in t['operation_ids']}]
++        ready = [o for o in related if not o['conditional']]; future = [o for o in related if o['conditional']]
++        selected = ready[:24]+future[:24]
++        context['pertinent_operations'] = pack(selected)
++        context['pertinent_operations_total'] = len(related)
++        context['pertinent_operations_omitted'] = len(related)-len(selected)
++        context['operation_preview_rule'] = {'ready_total':len(ready),'conditional_total':len(future),'inline_ready':min(24,len(ready)),'inline_conditional':min(24,len(future)),'order':'First 24 of each class in original public source order; preview only, not candidate ranking. Read catalogs/projections for omitted facts.'}
++    return prefix + GUIDANCE
+--- a/src/smt_fullfab/harness/transport.py
++++ b/src/smt_fullfab/harness/transport.py
+@@ -346,15 +346,17 @@
+                 feedback = presentation
+     for key in ("pending_tasks", "pertinent_operations", "base_holds"):
+         context[key] = pack(context[key])
++    from .coverage_ablation import augment
++    prefix = augment(runtime, context, full, PROTOCOL_TEXT)
+     frame = {"context": context, "interaction_history": history, "last_tool_feedback": feedback, "task": task}
+     from .fact_memory import INSTRUCTIONS, prompt_variants
+     cap = runtime.config["limits"]["context_chars"]
+-    base_chars = len(PROTOCOL_TEXT + "\n" + encode(frame).decode())
++    base_chars = len(prefix + "\n" + encode(frame).decode())
+     for candidate in prompt_variants(runtime, attempts, frame, base_chars):
+-        rendered = fit_prompt(candidate, PROTOCOL_TEXT + INSTRUCTIONS, cap)
++        rendered = fit_prompt(candidate, prefix + INSTRUCTIONS, cap)
+         if rendered is not None:
+             return rendered
+-    rendered = fit_prompt(frame, PROTOCOL_TEXT, cap)
++    rendered = fit_prompt(frame, prefix, cap)
+     require(rendered is not None, "context_capacity", "Essential context cannot fit")
+     return rendered
+ 
+--- a/src/smt_fullfab/harness/runtime.py
++++ b/src/smt_fullfab/harness/runtime.py
+@@ -95,7 +95,8 @@
+                     "created_epoch": now, "deadline_epoch": now + config["limits"]["wall_seconds"],
+                     "config": config, "mode": mode, "fingerprint": fp, "admission": admission,
+                     "initial_state_sha256": digest(capture(env)), "initial_trace_sha256": digest(env.trace),
+-                    "start_time": start, "end_time": env.horizon, "period_anchor": start,
++                    "start_time": start, "end_time": env.horizon, "period_anchor": (initial or {}).get("period_anchor", start),
++                    "evaluation_end": (initial or {}).get("evaluation_end", env.horizon),
+                     "parent": None if initial is None else initial["parent"],
+                     "prefix_events": 0 if initial is None else len(env.trace),
+                     "token_hard_cap": False,
+@@ -628,7 +629,7 @@
+         prepared = deepcopy(self.env)
+         start, n = prepared.t, len(prepared.trace)
+         anchor, period = self.manifest["period_anchor"], self.config["period_seconds"]
+-        boundary = min(prepared.horizon, anchor + (math.floor((prepared.t - anchor) / period) + 1) * period)
++        boundary = min(prepared.horizon, self.manifest.get("evaluation_end", prepared.horizon), anchor + (math.floor((prepared.t - anchor) / period) + 1) * period)
+         stop = prepared.advance_plan(boundary)
+         self.store.fault("after_physical_compute")
+         batch = prepared.trace[n:]
+--- a/src/smt_fullfab/harness/experiment.py
++++ b/src/smt_fullfab/harness/experiment.py
+@@ -223,6 +223,9 @@
+     raw = (root / "experiment.json").read_bytes()
+     require(sha_bytes(raw) == admission["experiment_sha256"], "registration_changed", "Frozen experiment differs")
+     value = strict_json(raw)
++    if value.get("schema") == "harness-coverage-ablation-v1":
++        from .coverage_ablation import validate_registration
++        return validate_registration(value, root)
+     if value.get("schema") == "harness-B-network-restart-registration-v1":
+         from .B_network_restart import validate_registration
+         return validate_registration(value, root)
+@@ -464,6 +467,9 @@
+ def validate_admission(admission, fingerprint, config, initial):
+     require(type(admission) is dict, "P5_admission", "Real execution requires frozen G0-G4 admission")
+     reg = registration(admission)
++    if reg.get("schema") == "harness-coverage-ablation-v1":
++        from .coverage_ablation import validate_admission as validate_ablation
++        return validate_ablation(reg, admission, fingerprint, config, initial)
+     sealed_prior(reg)
+     grant = continuation_authorization(reg["authorization"]) if "authorization" in reg else {}
+     require(config["unknown_usage_policy"] == grant.get("unknown_usage_policy", "freeze_new_calls"),
+--- a/src/smt_fullfab/harness/network.py
++++ b/src/smt_fullfab/harness/network.py
+@@ -16,6 +16,11 @@
+ 
+ 
+ def validate_binding(reference, *, live=False):
++    if reference.get('mode') == 'coverage_ablation_inherit_host':
++        from .experiment import registration
++        reg = registration(reference['admission'])
++        require(reg['schema'] == 'harness-coverage-ablation-v1' and reg['network_policy'] == 'inherit_host_no_inspection_or_changes', 'ablation_network', 'Frozen inherited host policy required')
++        return reference
+     if reference.get('mode') == 'user_managed_host_network':
+         from .user_managed_network import validate_reference
+         return validate_reference(reference)
+@@ -51,6 +56,8 @@
+ def for_admission(admission, *, live=False, attempt=None, run_id=None):
+     from .experiment import registration
+     reg = registration(admission)
++    if reg.get('schema') == 'harness-coverage-ablation-v1':
++        return {'mode': 'coverage_ablation_inherit_host', 'admission': admission, 'route_continuity_claim': False}
+     if 'transport_proxy' not in reg:
+         return None
+     from .user_managed_network import reference as network_reference
+@@ -61,7 +68,7 @@
+ 
+ def apply_environment(environment, reference):
+     environment = dict(environment)
+-    if reference and reference.get('mode') == 'user_managed_host_network':
++    if reference and reference.get('mode') in ('user_managed_host_network', 'coverage_ablation_inherit_host'):
+         validate_binding(reference)
+         return environment
+     if reference:

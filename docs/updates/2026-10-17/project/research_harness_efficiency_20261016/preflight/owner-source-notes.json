@@ -1,0 +1,40 @@
+{
+  "status": "Owner direct source scout, not independent Verify votes",
+  "accessed": "2026-10-16",
+  "source_handling": {
+    "A": "No wiki/ or wiki-background/ directories; rg fallback to previous approved reports and isolated code; manifest contains SHA256.",
+    "C": "No new curated feed; explicit_na; corpus_write=none"
+  },
+  "additional_primary_sources": [
+    {
+      "ref": "https://openai.github.io/openai-agents-python/ref/extensions/tool_output_trimmer/",
+      "anchor": "Tool Output Trimmer: recent_turns are user-message turns, not model calls; older eligible results become previews.",
+      "note": "实现可配置的输入裁剪；最近用户回合保护不能直接等同最近几次模型调用。单一用户回合内的长工具循环是否获益需另外核对。Owner已打开官方原文；不是效能实验。"
+    },
+    {
+      "ref": "https://openai.github.io/openai-agents-python/running_agents/",
+      "anchor": "Call model input filter",
+      "note": "模型调用前的输入编辑与session历史持久化可分离；只描述接口机制，不推断质量无损。"
+    }
+  ],
+  "access_issues": [
+    {
+      "ref": "https://cepac.cheme.cmu.edu/pasi2011/library/henning/ReschedulingFramework-VieiraHerrmannLin.pdf",
+      "issue": "PDF text extraction partly garbled; full-page text not treated as readable proof. Assigned F05 to inspect screenshots or accessible primary mirror."
+    },
+    {
+      "ref": "https://www.anthropic.com/engineering/code-execution-with-mcp",
+      "issue": "One find call returned Internal Error; direct open subsequently succeeded."
+    }
+  ],
+  "model_selection_source": {
+    "ref": "https://developers.openai.com/api/docs/guides/model-selection",
+    "note": "Official model selection guidance opened in preflight; actual per-stage mapping is recorded in approved engine-binding.json."
+  },
+  "conclusions_not_claimed": [
+    "No local scheduling savings estimate",
+    "No quality non-regression result",
+    "No production B change",
+    "No new factory replay"
+  ]
+}

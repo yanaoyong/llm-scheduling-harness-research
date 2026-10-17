@@ -1,0 +1,4 @@
+四组已完成 t=2403→2703 的共同300秒窗口，所有run均CLOSED，没有在途实验模型请求。
+总调用327，已知token下界10,736,457，未知用量13次。
+主报告：完整实验结论.txt；核验：completion_verification.json。
+interruption.json、v1至v4授权/边界与原始.result.json保留历史控制暂停及审计展示字段报错；当前结论使用完整的.audited.result.json和最终summary.json。原始证据与正在跑的B未改动。

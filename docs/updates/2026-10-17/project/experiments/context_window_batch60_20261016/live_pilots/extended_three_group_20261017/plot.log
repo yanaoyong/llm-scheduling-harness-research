@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/experiments/context_window_batch60_20261016/scripts/plot_extended_calls.py", line 10, in <module>
+    import matplotlib
+ModuleNotFoundError: No module named 'matplotlib'

@@ -1,0 +1,72 @@
+{
+  "status": "Owner design hypotheses for synthesis, not implemented or empirically verified",
+  "comparison_arms": [
+    {
+      "id": "S0",
+      "role": "原B的已保存状态基线，只作诊断参照；此前实验冻结且不重启。"
+    },
+    {
+      "id": "S1",
+      "role": "改良信息访问的单agent；与多agent共享相同查询、记忆、执行和触发条件，是主要架构对照。"
+    },
+    {
+      "id": "M1",
+      "role": "少量只读分析子agent + 唯一全局决策agent。子agent返回事实与约束、来源和缺项；若输出候选排序或局部任务选择则不再属于纯分析，转M2归类。"
+    },
+    {
+      "id": "M2",
+      "role": "局部模型生成显式候选计划 + 全局模型裁决具体lot/机台/批次/顺序/等待；工具只检查/执行，不能隐式选择或修复。"
+    },
+    {
+      "id": "M3",
+      "role": "分布式协商：资源/订单agent交换申请及承诺、有限轮协商；必须声明冲突决策规则及最终提交权，不能把消息最终一致性当排程可行性。"
+    }
+  ],
+  "decomposition": [
+    "职能分工更直接隔离读取/分析与决策，但管线可能串行；需计汇总开销。",
+    "按真实共享资源/跨区先后关系拆分，机台数量并不等于可独立agent数量。对比低耦合/高耦合，候选按稀少跨边界约束划分。",
+    "先比较固定2子agent；4子agent仅作粒度敏感性，不能默认为优胜。",
+    "时间窗口拆分须保留跨窗占用/冻结任务/后继依赖；订单划分须暴露共用机器/批次/工具。"
+  ],
+  "candidate_information_contract": {
+    "snapshot": "fact_version, plan_version, simulated_time, source_ref/hash;不可变事实快照是依据，聊天摘要不是事实权威",
+    "assignment": "task_id, owner, scope, objective, input_refs, output_schema, budget/deadline, dependency_ids",
+    "analysis": "fact_ids/values with provenance, complete/missing/truncated flags, cross_scope_constraints, assumptions/uncertainty;不得默默删候选",
+    "proposal": "proposal_id, base_versions, exact_tasks/orders/holds, affected_resources/operations, boundary_dependencies, provenance, validity_conditions",
+    "conflict": "conflicting_ids, invariant_violated, state_versions, affected_set, no automatic choice",
+    "commit": "唯一明确提交入口，当前版本和全局约束检查；过时或冲突返回模型重新决策。幂等请求同key必须同payload；已执行动作不能靠回滚聊天撤销。"
+  },
+  "conflict_scenario": "两个区域各自把同一批次或同一共享资源的同一时段写入候选。局部候选各自合法不代表合并合法。主决策模型读取两份候选与共享约束决定保留/调整/等待；确定性检查器指出冲突，不能暗自按优先级选赢家。",
+  "evaluation": {
+    "fixed": "相同保存private状态/RNG/事件序列、底层模型与effort、工具能力、质量检查、触发策略和推进时长；设计不要求访问运行B",
+    "two_comparisons": "先同模型同能力对照架构，再单独测试强主模型+较便宜子模型，避免模型差异混淆架构收益",
+    "budgets": "分别画总调用、总token、总费用、墙钟预算曲线；等调用不等token/费用，等模拟时长不等决策实时性。质量匹配比较达标最低成本，预算匹配比较质量。",
+    "call_ledger": "every provider request role/model/requestid/attempt/parent/phase/tokens/cache/usage_known/latency/status;tools另列，生产重排另列；失败重试校验修复和汇总全入分母；并行tokens/费用求和但墙钟取真实关键路径",
+    "quality": "硬约束/冻结承诺违规；加权延期主目标、完成量、ready等待面积、机台空闲与故障响应、计划变动、可执行覆盖、首次合法提案时间。不能以non-N/A或仅计划条数代替质量",
+    "dynamic": "至少低/高耦合、瓶颈争用、跨区批次和依赖、急单、故障、过期返回、重复提交、子agent超时场景；扰动共享同序列",
+    "statistics": "以状态/事件seed配对重复，报告差值与区间；样本数由pilot方差/可接受非劣界决定，预注册质量容差。失败与无提案计分，不能只比较幸存成功样本",
+    "latency_modes": "区分推理时暂停虚拟时钟与计入实际决策延迟的仿真；两种模式不混报",
+    "not_run": "此处仅M1实验设计；当前冻结回放不恢复，B代码/数据库/进程不操作"
+  },
+  "corrections_to_watch": [
+    "ALAS abstract83.7是跨数据集择优汇总，不是固定模型单一配置；表3 success=non-N/A，不能等同约束合法。",
+    "CP论文WA/WB/WC分别multi+MCP/single+MCP/direct，质量59.3/33.3/14.8；WA比WB时间+43%、token+66%是作者同文汇总，不是本厂预测；缺失5run token要留痕。",
+    "Scaling论文v3和旧博客不混；仓库分析脚本修正是否改变外推要核对。",
+    "DeLM每agent完整解，cost/submission与cost/task不能混，平均多候选正确率不是事后最优可上线选择。",
+    "F03精读将DeLM SWE-bench行模型记为GPT-6-Flash，Owner打开作者页看到Gemini 3 Flash；不要沿用精读误记，使用版本与角色准确名称。",
+    "F06末尾unknown称MCP与分工同时变化，需限定为相对Direct；WA和WB均有MCP，不能把WA-WB比较说成工具有无同时改变。",
+    "所有Fetch中的可证伪预测并非已证结论，关键命题只采用claim-selection原句。",
+    "MA-C03原主动证伪角色超时；独立补核结果另存verify-repair-v2，原失败与未知用量必须保留。不能把原始null覆盖成支持。",
+    "F07精读的匹配总推理预算、成本图等细节不是MA-C07全部核验范围；如引用，准确标为作者预算/统计口径，不能声称真实各项成本已完全匹配。",
+    "ALAS表3择优总体83.7为五个数据集百分比简单平均；固定GPT-4o行ALAS66.7而single68.9，勿只宣传最好汇总。",
+    "报告可建议优先M1但不能将其说成已证最省；M3并非完全否定，只是冲突协议和协调开销尚未证明适合B。"
+  ],
+  "writing_contract": [
+    "结论精炼，各源只摘要必要机制与局限；避免在matrix/questions/recommendations重复同一来源长段。原始证据细节通过路径链接保留。",
+    "不能将框架文档说成已验证的生产级全局提交；本厂信息契约/裁决协议均明确为Owner推导待测方案。",
+    "给4路线表，并把目前总模型调用/实价/排程质量数值未知逐项标明，不用主agent调用数或子会话数替代。",
+    "DeLM非排程案例可作共享机制与成本分母示例，不因作者页性能报告决定本厂优先级。",
+    "保留所有支持/反对/弃权及访问限制；未经实测的优先级是验证顺序不是收益排名。",
+    "M1子agent须有非平凡分析贡献；现有确定性批量查询/投影放S1，不应把一次简单工具调用包装成额外模型会话。工具并行不等于多agent。"
+  ]
+}

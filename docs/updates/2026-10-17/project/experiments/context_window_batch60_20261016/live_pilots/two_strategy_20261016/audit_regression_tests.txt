@@ -1,0 +1,8 @@
+test_T23_independent_audit_and_source_tamper (tests.test_smt_fullfab_harness.HarnessAcceptanceTests.test_T23_independent_audit_and_source_tamper) ... ok
+test_T24_fixed_evidence_ignores_shared_ledger_append (tests.test_smt_fullfab_harness.HarnessAcceptanceTests.test_T24_fixed_evidence_ignores_shared_ledger_append) ... ok
+test_T25_all_machine_wait_is_legal_quality_visible (tests.test_smt_fullfab_harness.HarnessAcceptanceTests.test_T25_all_machine_wait_is_legal_quality_visible) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 36.602s
+
+OK

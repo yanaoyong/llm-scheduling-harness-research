@@ -1,0 +1,52 @@
+{
+  "scope": "Deterministic DES re-execution with saved plans and recorded stop targets; not fresh scheduling/model reproduction. Current shared environment is used.",
+  "comparison_exclusions": [
+    "seq: control-only event counts can change",
+    "terminal.metrics.end_to_end_seconds: actual wall clock is not deterministic"
+  ],
+  "attempt001_correction": "First wrapper used last event time rather than declared time_advance.to for event-free tails; corrected. Original failed attempt retained.",
+  "new_model_calls": 0,
+  "new_solver_calls": 0,
+  "arms": {
+    "A": {
+      "source_sha256": "9d0a8ac22b0513e4d2ba8559844b3c2adec315c907e5e1544e5ad59be4d0087d",
+      "saved_plans": 47,
+      "replayed_plans": 47,
+      "simulation_seconds": 3600.0,
+      "finished": true,
+      "saved_physical_events": 6364,
+      "replayed_physical_events": 6364,
+      "exact_physical_events_match": true,
+      "first_difference": null,
+      "elapsed_seconds": 1.6977152498438954
+    },
+    "B": {
+      "source_sha256": "6a1039538a6404e69e7455f64d76a5f9e3e964bd3c806e6cf2a1d4d38307a632",
+      "saved_plans": 95,
+      "replayed_plans": 95,
+      "simulation_seconds": 3600.0,
+      "finished": true,
+      "saved_physical_events": 6190,
+      "replayed_physical_events": 6190,
+      "exact_physical_events_match": true,
+      "first_difference": null,
+      "elapsed_seconds": 1.502235959051177
+    },
+    "C": {
+      "source_sha256": "ecb253cddb8d91a79cca65fc2825e2ce32ee5bba3dbfe2e65ccb2146490d4196",
+      "saved_plans": 46,
+      "replayed_plans": 46,
+      "simulation_seconds": 3600.0,
+      "finished": true,
+      "saved_physical_events": 6351,
+      "replayed_physical_events": 6351,
+      "exact_physical_events_match": true,
+      "first_difference": null,
+      "elapsed_seconds": 1.7266164999455214
+    }
+  },
+  "implementation_sha256": {
+    "src/smt_fullfab/environment.py": "acb0aa3f26c0327125a0e39e723757361b2e9e598542e14e980229dde2ff21b2",
+    "src/smt/environment.py": "04598803fd84239ec1de464505f5450e9a82dbb6ea0b73d13227a1ab55b8c5c6"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "user_answer": "不再重试 G1，按三组共同达到的区间比较",
+  "selected_common_window": [
+    702,
+    1603.1013031725258
+  ],
+  "original_target_end": 1800,
+  "stop_further_model_calls": true,
+  "retain_in_flight_results_and_all_costs": true,
+  "recorded_epoch": 1792214942.399864
+}

@@ -1,0 +1,28 @@
+{
+  "phase": "verify-one",
+  "claim": {
+    "claim_id": "MA-C03",
+    "source_id": "F03",
+    "q_ids": [
+      "MA-Q02",
+      "MA-Q04"
+    ],
+    "statement": "CoMemBench v2把交接的实体范围、版本和验证状态纳入共享/隔离测试，其固定执行器比较展示扩大上下文可改善部分进度却降低隔离表现；DeLM作者页的追加共享日志和任务认领仍由各agent各自提交完整解，因此Cost/Task与Cost/Submission不能混用。两类结果均不是生产排程实测。",
+    "source_refs": [
+      {
+        "ref": "https://arxiv.org/html/2609.32192v2",
+        "anchor": "v2，§3.1–3.5、§4–5.5、附录F–G；arXiv:2609.32192v2，2026-09-29",
+        "accessed": "2026-10-16",
+        "access_level": "full"
+      },
+      {
+        "ref": "https://yuzhenmao.github.io/DeLM/",
+        "anchor": "Shared Context、Task Queue、Experiments、Cost/Task 与 Cost/Submission 表；页面 BibTeX 指向 arXiv:2606.10662",
+        "accessed": "2026-10-16",
+        "access_level": "full"
+      }
+    ],
+    "scope": "Descriptive source-bounded claim, not an untested forecast for B."
+  },
+  "internal_brief": "本厂B为模型直接决定lot、机台、批次、顺序、等待的排程路线。已有隔离快照支持单次propose_delta含多机多任务。旧实验观察：宽读取造成翻页/上下文压力，两个改动组74次成功调用全为读取且0提案；等长回放未完成，不能下收益结论。历史单任务短覆盖常因未覆盖需求重入模。此次只做研究，不读原始工厂数据、不访问live B、不跑排程。需比较单agent与辅助分析、局部提案统一裁决、分布式协商；所有具体排程决策者都须披露。旧证据仅是继承背景，不能冒充新复现。\n"
+}

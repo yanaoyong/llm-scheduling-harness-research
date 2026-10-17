@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "snapshot_completed_utc": "2026-10-17T06:12:52.281893+00:00",
+  "files": 1629104,
+  "logical_bytes": 57279156047,
+  "unique_objects": 209389,
+  "unique_bytes": 47583513085,
+  "compressed_bytes": 5836739989,
+  "archive_sha256": "1022cddc231475eeb7155b9dce33426ced9f3d31fa85279f29935e83aebab8bb",
+  "manifest_sha256": "3dec156f32d8a353a764788b2f42ec65e1c9754b1d6c278c0f3f6abb899be83b",
+  "changed_while_reading": [],
+  "original_B_git_unchanged": true,
+  "top_level_counts": {
+    "SMT2020_全厂排程_续作_goal_prompt.txt": [
+      1,
+      15813
+    ],
+    "analysis": [
+      108954,
+      3338263957
+    ],
+    "application_plan": [
+      21,
+      9024958
+    ],
+    "audit_ABC_1h_20261013": [
+      59,
+      20147862
+    ],
+    "career_application_report": [
+      36,
+      13170208
+    ],
+    "career_materials": [
+      2,
+      23994
+    ],
+    "experiment_round1": [
+      5116,
+      57317822
+    ],
+    "experiment_round2_3datasets": [
+      789069,
+      47289420882
+    ],
+    "experiments": [
+      724233,
+      6506081149
+    ],
+    "inputs": [
+      5,
+      369991
+    ],
+    "m0.5_research": [
+      270,
+      2682997
+    ],
+    "project_report": [
+      30,
+      9023740
+    ],
+    "relocation.json": [
+      1,
+      37586
+    ],
+    "research_harness_efficiency_20261016": [
+      283,
+      3433454
+    ],
+    "research_harness_multiagent_20261016": [
+      300,
+      3222852
+    ],
+    "research_harness_scheduling_20261012": [
+      373,
+      7272022
+    ],
+    "research_harness_scheduling_20261012_round2": [
+      350,
+      19642892
+    ],
+    "summary.md": [
+      1,
+      3868
+    ]
+  },
+  "elapsed_seconds": 364.7959477901459
+}

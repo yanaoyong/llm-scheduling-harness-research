@@ -1,0 +1,66 @@
+{
+  "G1": {
+    "first_inline_1216_candidates": 11,
+    "total_1216_candidates": 51,
+    "plans": [
+      {
+        "time": 702.0,
+        "added_on_1216": []
+      },
+      {
+        "time": 815.25,
+        "added_on_1216": [
+          {
+            "id": "d33-1216",
+            "lot_ids": [
+              "w1807"
+            ],
+            "machine": 1216,
+            "not_before": 830.25,
+            "operation_ids": [
+              "w1807:269:1"
+            ],
+            "steps": [
+              269
+            ],
+            "visits": [
+              1
+            ]
+          }
+        ]
+      }
+    ],
+    "G2_1216_chosen_operation_in_first_packet": []
+  },
+  "G2": {
+    "first_inline_1216_candidates": 41,
+    "total_1216_candidates": 51,
+    "plans": [
+      {
+        "time": 702.0,
+        "added_on_1216": [
+          {
+            "id": "d32-1216",
+            "lot_ids": [
+              "w1807"
+            ],
+            "machine": 1216,
+            "not_before": 830.25,
+            "operation_ids": [
+              "w1807:269:1"
+            ],
+            "steps": [
+              269
+            ],
+            "visits": [
+              1
+            ]
+          }
+        ]
+      }
+    ],
+    "G2_1216_chosen_operation_in_first_packet": [
+      "w1807:269:1"
+    ]
+  }
+}

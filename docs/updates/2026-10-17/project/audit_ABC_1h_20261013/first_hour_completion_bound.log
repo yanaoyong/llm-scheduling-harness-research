@@ -1,0 +1,63 @@
+{
+  "valid_upper_bound_under_current_model": true,
+  "trace_sha256": "9d0a8ac22b0513e4d2ba8559844b3c2adec315c907e5e1544e5ad59be4d0087d",
+  "total_lots": 2177,
+  "method": "Each lot must serially complete all remaining 100-percent sampling steps. Use minimum processing plus minimum family loading/unloading, and minimum transfers between adjacent mandatory steps. Ignore all optional work, setup, queues, downtime, capacity competition and rework. Source has no forward rework. Thus this is an optimistic lower bound, not a predicted schedule.",
+  "cold_start_assumption": "All initial WIP starts before its next uncompleted step, with no already-progressed processing residual carried in.",
+  "one_hour_completed_lots_upper_bound": 1,
+  "one_hour_candidate_lots": [
+    {
+      "lot": "w1387",
+      "initial": true,
+      "route": "route_6.txt",
+      "completed_step_at_start": 292,
+      "route_steps": 293,
+      "remaining_steps": 1,
+      "processing_loading_lower_bound_seconds": 1436.52,
+      "mandatory_transfer_lower_bound_seconds": 0,
+      "earliest_possible_finish_lower_bound_seconds": 1436.52
+    }
+  ],
+  "achieved_completion_events": [
+    {
+      "lot": "w1387",
+      "time": 1437.7772093112183
+    }
+  ],
+  "initial_remaining_steps_median": 201.0,
+  "saved_reference_results": [
+    {
+      "run": "ref_cr_1701_1h_v1",
+      "saved_status": "success",
+      "window_end": 3600.0,
+      "throughput_lots": 1,
+      "sha256": "54b24a0c616acdc14b27b20c923ff6859095f59f274316a94da77b71483a3d06",
+      "fresh_full_audit_in_this_followup": false
+    },
+    {
+      "run": "ref_cr_1701_8h_v1",
+      "saved_status": "success",
+      "window_end": 28800.0,
+      "throughput_lots": 10,
+      "sha256": "9a38afcd3bbbef82703445eba217d3e3e3824fce9a3761855cd8f9f32caf4523",
+      "fresh_full_audit_in_this_followup": false
+    },
+    {
+      "run": "ref_fifo_1701_8h_v1",
+      "saved_status": "success",
+      "window_end": 28800.0,
+      "throughput_lots": 12,
+      "sha256": "38d86e6f5939937490f1e07cd3a331f5456093506ef90d238df115c2694c599b",
+      "fresh_full_audit_in_this_followup": false
+    },
+    {
+      "run": "ref_cr_1701_24h_v1",
+      "saved_status": "success",
+      "window_end": 86400.0,
+      "throughput_lots": 30,
+      "sha256": "183910cf83a79ebd6ed5abfd7e246bcfd89787ced044c362030dcbd2b2840a8d",
+      "fresh_full_audit_in_this_followup": false
+    }
+  ]
+}
+NEAREST_EXCLUDED {'lot': 'w1386', 'initial': True, 'route': 'route_6.txt', 'completed_step_at_start': 291, 'route_steps': 293, 'remaining_steps': 2, 'processing_loading_lower_bound_seconds': 3542.64, 'mandatory_transfer_lower_bound_seconds': 300.0, 'earliest_possible_finish_lower_bound_seconds': 3842.64}

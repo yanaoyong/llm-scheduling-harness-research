@@ -1,0 +1,44 @@
+{
+  "G0": {
+    "available": true,
+    "time": 1250,
+    "method": "Use an exact snapshot or replay only the already committed plan inside a recorded execution batch; verify physical events against the actual trace.",
+    "unassigned_immediately_executable_unique_operations": 0,
+    "unassigned_immediately_executable_operation_ids": [],
+    "machines_with_an_unassigned_legal_batch": [],
+    "program_reported_gap_machine_count": 0,
+    "gap_machines_whose_candidates_are_all_already_assigned": [],
+    "gap_machines_without_enough_unassigned_lots_to_form_a_batch": [],
+    "production_tasks_selected": 0,
+    "actual_simulation_advanced_seconds": 0,
+    "offline_replay_seconds": 46.15158431004306
+  },
+  "G1": {
+    "available": true,
+    "time": 1250,
+    "method": "Use an exact snapshot or replay only the already committed plan inside a recorded execution batch; verify physical events against the actual trace.",
+    "unassigned_immediately_executable_unique_operations": 0,
+    "unassigned_immediately_executable_operation_ids": [],
+    "machines_with_an_unassigned_legal_batch": [],
+    "program_reported_gap_machine_count": 0,
+    "gap_machines_whose_candidates_are_all_already_assigned": [],
+    "gap_machines_without_enough_unassigned_lots_to_form_a_batch": [],
+    "production_tasks_selected": 0,
+    "actual_simulation_advanced_seconds": 0,
+    "offline_replay_seconds": 46.15158431004306
+  },
+  "G2": {
+    "available": true,
+    "time": 1250,
+    "method": "Use an exact snapshot or replay only the already committed plan inside a recorded execution batch; verify physical events against the actual trace.",
+    "unassigned_immediately_executable_unique_operations": 0,
+    "unassigned_immediately_executable_operation_ids": [],
+    "machines_with_an_unassigned_legal_batch": [],
+    "program_reported_gap_machine_count": 0,
+    "gap_machines_whose_candidates_are_all_already_assigned": [],
+    "gap_machines_without_enough_unassigned_lots_to_form_a_batch": [],
+    "production_tasks_selected": 0,
+    "actual_simulation_advanced_seconds": 0,
+    "offline_replay_seconds": 46.15158431004306
+  }
+}

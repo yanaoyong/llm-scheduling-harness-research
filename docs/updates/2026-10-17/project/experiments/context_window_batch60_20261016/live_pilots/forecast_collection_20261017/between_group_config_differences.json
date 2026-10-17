@@ -1,0 +1,22 @@
+[
+  {
+    "path": ".capacity_experiment.group",
+    "G1": "G1",
+    "G2": "G2"
+  },
+  {
+    "path": ".capacity_experiment.input_token_budget",
+    "G1": 220000,
+    "G2": 440000
+  },
+  {
+    "path": ".capacity_experiment.model_auto_compact_token_limit",
+    "G1": 244800,
+    "G2": 489600
+  },
+  {
+    "path": ".capacity_experiment.model_context_window",
+    "G1": 272000,
+    "G2": 544000
+  }
+]

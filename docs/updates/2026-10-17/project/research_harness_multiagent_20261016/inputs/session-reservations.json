@@ -1,0 +1,93 @@
+{
+  "cap": 42,
+  "entries": [
+    {
+      "label": "scope-search-v1",
+      "phase": "scope-search",
+      "reserved": 5,
+      "at": "2026-10-16T00:24:32.889058+00:00",
+      "effort": "medium",
+      "args_sha256": "768725ffd48c415fb004e5eb82f660a2ab7241f3e21984db8a312154074935c6",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-16T00:26:16.361040+00:00"
+    },
+    {
+      "label": "fetch-v1",
+      "phase": "fetch",
+      "reserved": 8,
+      "at": "2026-10-16T00:27:24.741204+00:00",
+      "effort": "medium",
+      "args_sha256": "43b4808b4ab5a9afe26a28f5f28394920d0f3c0e54a42da0f3452a2384c24968",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-16T00:31:00.189391+00:00"
+    },
+    {
+      "label": "verify-v1",
+      "phase": "verify",
+      "reserved": 24,
+      "at": "2026-10-16T00:31:54.445576+00:00",
+      "effort": "high",
+      "args_sha256": "e25cf74e9f7969619f850ffcd899eb52c4514d8f82383ea0259291b73cacfe1c",
+      "status": "closed",
+      "returncode": 2,
+      "ended_at": "2026-10-16T00:54:12.593699+00:00"
+    },
+    {
+      "label": "verify-repair-v1",
+      "phase": "verify-one",
+      "reserved": 1,
+      "at": "2026-10-16T00:54:51.534986+00:00",
+      "effort": "high",
+      "args_sha256": "d3b9d98ff1150db65f908abbd70acef3f3faa671bef5622b80d2fa6fc94fbed5",
+      "status": "closed",
+      "returncode": 1,
+      "ended_at": "2026-10-16T00:54:51.675707+00:00"
+    },
+    {
+      "label": "verify-repair-v2",
+      "phase": "verify-one",
+      "reserved": 1,
+      "at": "2026-10-16T00:55:41.510776+00:00",
+      "effort": "high",
+      "args_sha256": "d3b9d98ff1150db65f908abbd70acef3f3faa671bef5622b80d2fa6fc94fbed5",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-16T00:57:06.195747+00:00"
+    },
+    {
+      "label": "synthesize-v1",
+      "phase": "synthesize",
+      "reserved": 1,
+      "at": "2026-10-16T00:58:57.610179+00:00",
+      "effort": "high",
+      "args_sha256": "8f8b2b4aa9ad31dff377220d3eb1eeb68b6728f42b60fd0737af8a16b12b2bd3",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-16T01:02:08.681410+00:00"
+    },
+    {
+      "label": "review-v1",
+      "phase": "review",
+      "reserved": 1,
+      "at": "2026-10-16T01:03:21.432222+00:00",
+      "effort": "xhigh",
+      "args_sha256": "ec151568f2c700f0b6e63cf95b2135c38bff0b099d2d9f27f8259299991d5fe5",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-16T01:07:52.275947+00:00"
+    },
+    {
+      "label": "review-v2",
+      "phase": "review",
+      "reserved": 1,
+      "at": "2026-10-16T01:09:59.708666+00:00",
+      "effort": "xhigh",
+      "args_sha256": "107731f1107820fe49b0af87cabf20c9344e23f7ee818332fe412e458cec7b84",
+      "status": "closed",
+      "returncode": 0,
+      "ended_at": "2026-10-16T01:14:50.102439+00:00"
+    }
+  ]
+}

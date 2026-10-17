@@ -1,0 +1,82 @@
+{
+  "common_window": [
+    702,
+    1603.1013031725258
+  ],
+  "groups": {
+    "G0": {
+      "total_calls": 79,
+      "observed_seconds": 947.8155803370928,
+      "model_commits": 24,
+      "planning_stop_counts": {
+        "uncovered_demand": 20,
+        "periodic_replan": 1,
+        "plan_invalidated": 4
+      },
+      "common_window_quality": {
+        "observed_seconds": 901.1013031725258,
+        "weighted_tardy_lot_seconds": 9011.013031725259,
+        "throughput_lots": 1,
+        "throughput_wafers": 25,
+        "setup_loss_seconds": 31041.53257931315,
+        "batch_fill_mean": null,
+        "terminal_wip_lots": 2176,
+        "queue_wait_lot_seconds": 903693.1895245819,
+        "production_dispatches": 60,
+        "operation_lots_dispatched": 60,
+        "unreserved_machine_seconds": 126443.72921454729,
+        "executable_unplanned_machine_seconds": 0.0
+      }
+    },
+    "G1": {
+      "total_calls": 72,
+      "observed_seconds": 901.1013031725258,
+      "model_commits": 23,
+      "planning_stop_counts": {
+        "plan_runway": 3,
+        "uncovered_demand": 18,
+        "collection_limit": 1,
+        "plan_invalidated": 2
+      },
+      "common_window_quality": {
+        "observed_seconds": 901.1013031725258,
+        "weighted_tardy_lot_seconds": 9011.013031725259,
+        "throughput_lots": 1,
+        "throughput_wafers": 25,
+        "setup_loss_seconds": 31041.53257931315,
+        "batch_fill_mean": null,
+        "terminal_wip_lots": 2176,
+        "queue_wait_lot_seconds": 903693.1895245819,
+        "production_dispatches": 60,
+        "operation_lots_dispatched": 60,
+        "unreserved_machine_seconds": 126443.72921454729,
+        "executable_unplanned_machine_seconds": 0.0
+      }
+    },
+    "G2": {
+      "total_calls": 76,
+      "observed_seconds": 919.6206007317896,
+      "model_commits": 32,
+      "planning_stop_counts": {
+        "plan_runway": 4,
+        "uncovered_demand": 25,
+        "collection_limit": 1,
+        "plan_invalidated": 3
+      },
+      "common_window_quality": {
+        "observed_seconds": 901.1013031725258,
+        "weighted_tardy_lot_seconds": 9011.013031725259,
+        "throughput_lots": 1,
+        "throughput_wafers": 25,
+        "setup_loss_seconds": 31041.53257931315,
+        "batch_fill_mean": null,
+        "terminal_wip_lots": 2176,
+        "queue_wait_lot_seconds": 903515.538508339,
+        "production_dispatches": 60,
+        "operation_lots_dispatched": 60,
+        "unreserved_machine_seconds": 126266.0781983043,
+        "executable_unplanned_machine_seconds": 0.0
+      }
+    }
+  }
+}

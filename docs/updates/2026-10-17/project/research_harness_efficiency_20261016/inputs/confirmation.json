@@ -1,0 +1,10 @@
+{
+  "authorized": true,
+  "user_choice": "深入档：上限 42 个子会话，扩大原源精读，八条关键命题各做三路核验",
+  "scope": "M0.5 research only; no production B change or scheduling replay",
+  "cap_includes": [
+    "failed sessions",
+    "retries"
+  ],
+  "owner_direct_research": "separate from child session count"
+}

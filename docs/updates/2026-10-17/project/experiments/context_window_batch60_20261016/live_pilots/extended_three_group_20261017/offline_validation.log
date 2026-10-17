@@ -1,0 +1,4 @@
+{"group": "G0", "continued_to": 910.117397147927, "reason": "uncovered_demand", "new_calls": 0, "physical_errors": ["physical: missing terminal event"]}
+{"group": "G1", "continued_to": 910.117397147927, "reason": "uncovered_demand", "new_calls": 0, "physical_errors": ["physical: missing terminal event"]}
+{"group": "G2", "continued_to": 910.117397147927, "reason": "uncovered_demand", "new_calls": 0, "physical_errors": ["physical: missing terminal event"]}
+ALL OFFLINE EXTENSION CHECKS PASSED

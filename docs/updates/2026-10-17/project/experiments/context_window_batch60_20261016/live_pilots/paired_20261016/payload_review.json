@@ -1,0 +1,74 @@
+{
+  "model_calls": 0,
+  "user_context": "用户已明确说明：我们现在只是模拟并不是真实排产；最新请求授权在独立副本做实际模型对比。",
+  "dataset": "SMT2020_LVHM semiconductor manufacturing testbed",
+  "source_document": "vendor/PySCFabSim-revised/README.md lines 16-20",
+  "data_source_url": "https://p2schedgen.fernuni-hagen.de/index.php/downloads/simulation",
+  "payload_scope": "Only public simulator observation, accepted simulator plan, public demand ledger and own pilot interaction history. Full private snapshot, RNG, original B paths/database, credentials and model catalog account identity are not in prompt.",
+  "destination": "https://chatgpt.com/backend-api/codex (existing Codex login)",
+  "groups": [
+    {
+      "group": "G1",
+      "payload_sha256": "a83a076adeeecc00653a71bf33a03b207d5f4cfcb3d5123b73eafd16307f2f3e",
+      "private_marker_presence": {
+        "/Users/": false,
+        "yanaoyong": false,
+        "experiment_round2_3datasets": false,
+        "auth.json": false,
+        "access_token": false,
+        "refresh_token": false,
+        "api_key": false,
+        "PRIVATE KEY": false
+      },
+      "capacity": {
+        "local_prompt_tokens": 209975,
+        "wrapper_reserve_tokens": 10000,
+        "budgeted_input_tokens": 219975,
+        "input_budget": 220000,
+        "inline_operations": 1818,
+        "demand_operations": 4349,
+        "total_operations": 4349,
+        "inline_machines": 851,
+        "paged_details": false,
+        "oversized_bundle_requires_paged_read": false,
+        "encoding": "o200k_base",
+        "server_model_mapping_confirmed": false
+      }
+    },
+    {
+      "group": "G2",
+      "payload_sha256": "cfb5d7906a45735e8d6e1c00198623fec1008db6f02c8c930a22398330fdad7f",
+      "private_marker_presence": {
+        "/Users/": false,
+        "yanaoyong": false,
+        "experiment_round2_3datasets": false,
+        "auth.json": false,
+        "access_token": false,
+        "refresh_token": false,
+        "api_key": false,
+        "PRIVATE KEY": false
+      },
+      "capacity": {
+        "local_prompt_tokens": 387908,
+        "wrapper_reserve_tokens": 10000,
+        "budgeted_input_tokens": 397908,
+        "input_budget": 440000,
+        "inline_operations": 4349,
+        "demand_operations": 4349,
+        "total_operations": 4349,
+        "inline_machines": 905,
+        "paged_details": false,
+        "oversized_bundle_requires_paged_read": false,
+        "encoding": "o200k_base",
+        "server_model_mapping_confirmed": false
+      }
+    }
+  ],
+  "source_isolation": {
+    "files_checked": 803,
+    "changed_source_files": [],
+    "changed_fixtures": [],
+    "original_run_database_opened": false,
+    "valid": true
+  }
+}

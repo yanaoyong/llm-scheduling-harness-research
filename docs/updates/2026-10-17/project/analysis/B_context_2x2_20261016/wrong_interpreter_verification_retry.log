@@ -1,0 +1,18 @@
+test_treatment_matrix_and_baseline_schema (__main__.ContextTests.test_treatment_matrix_and_baseline_schema) ... ok
+test_T26_classical_adapter_real_worker_and_no_candidate (tests.test_smt_fullfab_harness.HarnessAcceptanceTests.test_T26_classical_adapter_real_worker_and_no_candidate) ... FAIL
+
+======================================================================
+FAIL: test_T26_classical_adapter_real_worker_and_no_candidate (tests.test_smt_fullfab_harness.HarnessAcceptanceTests.test_T26_classical_adapter_real_worker_and_no_candidate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_context_2x2_20261016/workspace/tests/test_smt_fullfab_harness.py", line 442, in test_T26_classical_adapter_real_worker_and_no_candidate
+    self.assertEqual(result["status"], "candidate_checked", result)
+AssertionError: 'tool_failed' != 'candidate_checked'
+- tool_failed
++ candidate_checked
+ : {'status': 'tool_failed', 'solver_status': 'NO_RESULT', 'candidate_created': False, 'result_ref': 'artifact:562e655134124a4780cc2517', 'duration_seconds': 0.13544054212979972}
+
+----------------------------------------------------------------------
+Ran 2 tests in 9.703s
+
+FAILED (failures=1)

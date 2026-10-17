@@ -1,0 +1,15 @@
+{
+  "modified": [
+    "src/smt_fullfab/harness/transport.py",
+    "src/smt_fullfab/harness/runtime.py",
+    "src/smt_fullfab/harness/experiment.py",
+    "src/smt_fullfab/harness/network.py",
+    "src/smt_fullfab/harness/contracts.py"
+  ],
+  "added": [
+    "src/smt_fullfab/harness/context_ablation.py"
+  ],
+  "frozen_main_prompt": true,
+  "fact_memory_file_unchanged": true,
+  "physics_files_unchanged": true
+}

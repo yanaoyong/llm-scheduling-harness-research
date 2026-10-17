@@ -1,0 +1,168 @@
+{"case": "singleton_2403__baseline", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 1, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 2, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 3, "replans": 1, "status": "accepted", "unknown_usage": 0, "advance_seconds": 39.786212107757365, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 708.75, "start": 702.0, "phase": "OBSERVED", "calls": 3, "replans": 1, "status": "accepted", "unknown_usage": 0, "advance_seconds": 6.75, "stop_reason": "uncovered_demand"}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 3, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 4, "replans": 1, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 708.75, "start": 702.0, "phase": "OBSERVED", "calls": 4, "replans": 1, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 4, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2442.7862121077574, "start": 2403.0, "phase": "OBSERVED", "calls": 5, "replans": 1, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 5, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 5, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 5, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 5, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 708.75, "start": 702.0, "phase": "OBSERVED", "calls": 5, "replans": 1, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 5, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 5, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 5, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 6, "replans": 2, "status": "accepted", "unknown_usage": 0, "advance_seconds": 3.5829886104188517, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 6, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 6, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 6, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 6, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 830.25, "start": 702.0, "phase": "OBSERVED", "calls": 6, "replans": 2, "status": "accepted", "unknown_usage": 0, "advance_seconds": 121.5, "stop_reason": "uncovered_demand"}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 6, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 6, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 6, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 7, "replans": 2, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 7, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 7, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 7, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 7, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 830.25, "start": 702.0, "phase": "OBSERVED", "calls": 7, "replans": 2, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 7, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 7, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 7, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2446.369200718176, "start": 2403.0, "phase": "OBSERVED", "calls": 8, "replans": 2, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 8, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 8, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 8, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 8, "replans": 0, "status": "ok", "unknown_usage": 0}
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/experiment.py", line 119, in <module>
+    print(json.dumps({'case':case,**status[case],**{k:result[k] for k in ['advance_seconds','stop_reason'] if k in result}},ensure_ascii=False),flush=True)
+                     ^^^^^
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/experiment.py", line 105, in run
+    runtimes[case]=r
+                 ^^^^
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/transport.py", line 430, in call
+    return _call(runtime, task=task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/transport.py", line 532, in _call
+    return runtime.process(attempt_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/runtime.py", line 539, in process
+    validate_runtime_source(self.manifest, fingerprint())
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/amendment.py", line 248, in validate_runtime_source
+    require(value is not None and manifest['fingerprint']['sha256'] == reg['fingerprint_sha256'] and
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/contracts.py", line 60, in require
+    raise HarnessError(code, detail, **evidence)
+src.smt_fullfab.harness.contracts.HarnessError: fingerprint_changed: No explicit tested control revision
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/store.py", line 124, in bytes
+    raw = zlib.decompress((self.path / "objects" / (ref + ".z")).read_bytes())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/runs/singleton_2403__baseline/objects/db8d94b64c5f20cb0e46893b868eafd9d80941b9a6dbf4e436a4c372c27d1482.z'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/experiment.py", line 134, in <module>
+    elif command=='run':run()
+                        ^^^^^
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/experiment.py", line 99, in run
+    if target.exists():r=Runtime.resume_run(target)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/runtime.py", line 142, in resume_run
+    proof = store.verify()
+            ^^^^^^^^^^^^^^
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/store.py", line 199, in verify
+    self.bytes(row[0])
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/workspace/src/smt_fullfab/harness/store.py", line 126, in bytes
+    raise HarnessError("object_corrupt", ref) from exc
+src.smt_fullfab.harness.contracts.HarnessError: object_corrupt: db8d94b64c5f20cb0e46893b868eafd9d80941b9a6dbf4e436a4c372c27d1482
+{"case": "singleton_2403__baseline", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 9, "replans": 3, "status": "accepted", "unknown_usage": 0, "advance_seconds": 41.00258947971906, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 9, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 9, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 9, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 9, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 863.9999999999999, "start": 702.0, "phase": "OBSERVED", "calls": 9, "replans": 3, "status": "accepted", "unknown_usage": 0, "advance_seconds": 33.749999999999886, "stop_reason": "uncovered_demand"}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 8, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 8, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 8, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 10, "replans": 3, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 10, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 10, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 10, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 10, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 863.9999999999999, "start": 702.0, "phase": "OBSERVED", "calls": 10, "replans": 3, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 9, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 9, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 9, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2487.3717901978953, "start": 2403.0, "phase": "OBSERVED", "calls": 11, "replans": 3, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 11, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 11, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 11, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 11, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 863.9999999999999, "start": 702.0, "phase": "OBSERVED", "calls": 11, "replans": 3, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 10, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 10, "replans": 0, "status": "candidate_checked", "unknown_usage": 0}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 10, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 12, "replans": 4, "status": "accepted", "unknown_usage": 0, "advance_seconds": 63.538258819983184, "stop_reason": "uncovered_demand"}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 12, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 12, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 12, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 12, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 910.117397147927, "start": 702.0, "phase": "OBSERVED", "calls": 12, "replans": 4, "status": "accepted", "unknown_usage": 0, "advance_seconds": 46.117397147927136, "stop_reason": "uncovered_demand"}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 11, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__baseline", "time": 1802.25, "start": 1800.0, "phase": "OBSERVED", "calls": 11, "replans": 1, "status": "accepted", "unknown_usage": 0, "advance_seconds": 2.25, "stop_reason": "uncovered_demand"}
+{"case": "transition_1800__prompt", "time": 1800.0, "start": 1800.0, "phase": "OBSERVED", "calls": 11, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__baseline", "time": 2550.9100490178785, "start": 2403.0, "phase": "OBSERVED", "calls": 13, "replans": 4, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 13, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "singleton_2403__prompt_context_feedback", "time": 2403.0, "start": 2403.0, "phase": "OBSERVED", "calls": 13, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 13, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__prompt_context_feedback", "time": 702.0, "start": 702.0, "phase": "OBSERVED", "calls": 13, "replans": 0, "status": "ok", "unknown_usage": 0}
+{"case": "mixed_702__baseline", "time": 910.117397147927, "start": 702.0, "phase": "OBSERVED", "calls": 13, "replans": 4, "status": "ok", "unknown_usage": 0}
+{"case": "transition_1800__prompt_context_feedback", "time": 1800.0, "start": 1800.0, "phase": "STOPPED", "calls": 12, "replans": 0, "status": "stopped", "unknown_usage": 1}
+Traceback (most recent call last):
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/experiment.py", line 134, in <module>
+    elif command=='run':run()
+                        ^^^^^
+  File "__PROJECT_ROOT__/analysis/B_coverage_ablation_20261015/experiment.py", line 126, in run
+    if u['unknown_usage']:raise RuntimeError('Unknown usage freezes cohort; preserve failure, do not retry or switch model')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Unknown usage freezes cohort; preserve failure, do not retry or switch model

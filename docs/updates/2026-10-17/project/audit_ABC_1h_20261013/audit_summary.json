@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-13",
+  "decision": "Verified saved one-hour development feasibility under the documented simulator assumptions. Real-factory full constraints, fresh fixed-version autonomous success and online viability are not certified.",
+  "full_trace_audits": {
+    "A": true,
+    "B": true,
+    "C": true
+  },
+  "saved_plan_DES_reexecution": {
+    "A": true,
+    "B": true,
+    "C": true
+  },
+  "B_plans_raw_authored_and_compiled": 95,
+  "B_raw_model_calls_checked": 1362,
+  "C_model_calls_checked": 92,
+  "C_plans_attributed": 46,
+  "A_solver_plans_attributed": 47,
+  "A_CP_call_wording_correction": {
+    "top_level_periodic_optimizations": 2,
+    "local_cp_sat_solve_records": 359
+  },
+  "tamper_tests_rejected": 4,
+  "auditor_regression_tests_passed": 93,
+  "new_evaluation_model_calls": 0,
+  "new_solver_calls": 0,
+  "original_comparison_sources_unchanged": {
+    "runs/smt_fullfab_development/A_1701_1h_hybrid_v1/audit.json": true,
+    "artifacts/smt_fullfab_diagnostics/B_budget_extension_v15/terminal_full_audit_bundle/metrics.json": true,
+    "artifacts/smt_fullfab_diagnostics/C_constructive_v2_analysis/report.json": true,
+    "artifacts/smt_fullfab_diagnostics/B_budget_extension_v15/terminal_full_audit_bundle/opportunity.json": true,
+    "artifacts/smt_fullfab_diagnostics/B_one_hour_cost_review_20261012/analysis.json": true,
+    "runs/smt_fullfab_development/A_1701_1h_hybrid_v1/result.json": true,
+    "runs/smt_fullfab_development/A_1701_1h_hybrid_v1/trace.jsonl": true,
+    "runs/smt_fullfab_stage2/B_1701_1h_delta_v15__authorized_extension_001/physical/trace.jsonl": true,
+    "runs/smt_fullfab_stage2/C_1701_1h_constructive_v2/trace.jsonl": true,
+    "src/smt_fullfab/stream_metrics.py": true,
+    "src/smt_fullfab/metrics.py": true
+  },
+  "retained_failed_attempts": [
+    "C_controller_reaudit.json uses later global ledger",
+    "DES_plan_reexecution_attempt001.json uses incorrect replay boundary wrapper"
+  ],
+  "report": "复查结论.txt"
+}

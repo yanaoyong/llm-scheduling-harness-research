@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "unique_objects_decoded": 95008,
+  "original_object_refs_verified": true,
+  "public_decoded_checksums_recorded": true,
+  "scientific_sqlite_exports_verified": 252,
+  "runtime_prefixes_excluded": 1865
+}

@@ -1,0 +1,17 @@
+{
+  "failure_kind": "capacity",
+  "attempt_id": "attempt:1fb3f2d29c414e4d89258dbf",
+  "attempt_sha256": "27f68434537dfa4a8c2b20880587efb4ecf9ee942deef4519af479eee3bac754",
+  "failed_call_number": 15,
+  "simulation_time": 1203.848415689957,
+  "same_context_ref": "context:67641310482949e0ab1e8bb0",
+  "usage_remains_unknown": true,
+  "closed_without_output_or_action": true,
+  "proposed_new_attempts": 1,
+  "same_model": "gpt-6-astra",
+  "context_window": 272000,
+  "input_budget": 220000,
+  "no_production_choice_changed": true,
+  "original_failure_and_all_costs_retained": true,
+  "new_failure_freezes_again": true
+}

@@ -1,0 +1,78 @@
+{
+  "recovery_policy": {
+    "max_retries_per_request": 1,
+    "max_failures_per_cohort": 2,
+    "cooldown_seconds": [
+      60
+    ],
+    "allowed_failure_kinds": [
+      "connection",
+      "stream_disconnect"
+    ],
+    "unknown_usage": "retain_unknown"
+  },
+  "authorized_retries_used": 1,
+  "global_recovery_slots_remaining": 1,
+  "same_request_retries_remaining": 0,
+  "same_request_retry_exact_bytes": true,
+  "original_attempts_and_physical_state_unchanged": true,
+  "status": "frozen_after_same_request_retry_exhausted",
+  "registration_sha256": "74a18fbca93199c354a346aa8e02d9bdd212efe2d3c6eaa2bff91e819560fd9d",
+  "created_epoch": 1792117528.04437,
+  "failures": [
+    {
+      "case": "singleton_2403__filter_projection",
+      "attempt_id": "attempt:b86ad94cd5d04dd28203eb9b",
+      "attempt_record_sha256": "ecbe2b9465892a087e0e8c8860a386d777a17dc01de1e0e6d5b9932c408392c0",
+      "prompt_sha256": "ac67ced237dc96a32fd6e4235f7aae4dfb3bf16ce6bbd62eea2d2e173c2aa7dd",
+      "schema_sha256": "bc525c846427ed46900fe640f2365dc76cc2647f82ec0486dede207fd10e094d",
+      "raw_events_sha256": "997ed8d39f345525f602b3b6a5567422037fd7d4121a736fcf0789d96501450e",
+      "guard_sha256": "1c0f2d72879598b9dc7c84f126c5847e3e400f0b6fe743ec3f6143c4da9d3814",
+      "duration_seconds": 61.10168141685426,
+      "returncode": 1,
+      "parent_wait_completed": true,
+      "guard_timed_out": false,
+      "turn_completed": false,
+      "model_output_bytes": 0,
+      "reported_usage": null,
+      "errors": [
+        "stream disconnected before completion: Transport error: network error: error decoding response body",
+        "stream disconnected before completion: Transport error: network error: error decoding response body"
+      ],
+      "automatic_retries": 0,
+      "no_cost_imputation": true
+    },
+    {
+      "case": "singleton_2403__filter_projection",
+      "attempt_id": "attempt:2a2b6ed290c7424bb9e121ac",
+      "attempt_record_sha256": "6c7259343102b6d7bc3a9c22c103c76b958f843905b71e09d9ce5e380a255037",
+      "prompt_sha256": "ac67ced237dc96a32fd6e4235f7aae4dfb3bf16ce6bbd62eea2d2e173c2aa7dd",
+      "schema_sha256": "bc525c846427ed46900fe640f2365dc76cc2647f82ec0486dede207fd10e094d",
+      "raw_events_sha256": "1f2d7926316070243f274d96db155d22542e1e5c07ed05125f10263e6dcd42ea",
+      "guard_sha256": "ff1365d40244ce0695916c3d58c7b543935ed73b483d3cd81d0a29675f30b282",
+      "duration_seconds": 40.04372029192746,
+      "returncode": 1,
+      "parent_wait_completed": true,
+      "guard_timed_out": false,
+      "turn_completed": false,
+      "model_output_bytes": 0,
+      "reported_usage": null,
+      "errors": [
+        "stream disconnected before completion: Transport error: network error: error decoding response body",
+        "stream disconnected before completion: Transport error: network error: error decoding response body"
+      ],
+      "automatic_retries": 0,
+      "no_cost_imputation": true
+    }
+  ],
+  "total_model_calls": 7,
+  "known_reported_tokens_lower_bound": 102777,
+  "unknown_usage_calls": 2,
+  "pending_attempts": 0,
+  "complete_common_windows": 0,
+  "can_compare_total_efficiency": false,
+  "can_conclude_quality_non_regression": false,
+  "no_new_calls_after_failure": true,
+  "all_objects_checked_by_sha256": true,
+  "live_B_writer_or_process_actions": 0
+}

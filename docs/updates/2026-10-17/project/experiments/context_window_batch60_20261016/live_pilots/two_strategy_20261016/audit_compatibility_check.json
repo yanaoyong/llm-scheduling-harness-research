@@ -1,0 +1,32 @@
+{
+  "G1": {
+    "valid": true,
+    "commits": 2,
+    "algorithm_production_tasks": 0,
+    "checked_batch_receipts": 2,
+    "B_algorithm_calls": 0,
+    "independence": "raw JSON reconstruction; production compiler and commit functions not called",
+    "forged_receipt_rejected": true,
+    "missing_receipt_rejected": true
+  },
+  "G2": {
+    "valid": true,
+    "commits": 2,
+    "algorithm_production_tasks": 0,
+    "checked_batch_receipts": 2,
+    "B_algorithm_calls": 0,
+    "independence": "raw JSON reconstruction; production compiler and commit functions not called",
+    "forged_receipt_rejected": true,
+    "missing_receipt_rejected": true
+  },
+  "legacy_G1": {
+    "valid": true,
+    "commits": 1,
+    "algorithm_production_tasks": 0,
+    "checked_batch_receipts": 0,
+    "B_algorithm_calls": 0,
+    "independence": "raw JSON reconstruction; production compiler and commit functions not called"
+  },
+  "scope": "Post-run audit compatibility correction only; sealed model inputs, outputs, plans, costs and traces unchanged.",
+  "auditor_sha256": "f3acc3171ec5ae930aa0ba44303278bd64a422494e199faaa09194bd9657d4c8"
+}

@@ -1,0 +1,30 @@
+{
+  "status": "complete",
+  "finished_at": "2026-10-16T01:16:29.700479+00:00",
+  "scope": "Supplemental M0.5 research only; no B access/change/replay, executor declaration",
+  "review": "APPROVED_WITH_CONDITIONS",
+  "review_gates_all_passed": true,
+  "review_conditions": "fulfilled by Owner bookkeeping; raw reviewer verdict preserved",
+  "review_label": "review-v2",
+  "child_sessions": 41,
+  "reserved": 42,
+  "cap": 42,
+  "known_usage_totals": {
+    "input_tokens": 9562647,
+    "cached_input_tokens": 7448320,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 107474,
+    "reasoning_output_tokens": 29359
+  },
+  "usage_limitations": "Input includes cached input; output includes reasoning output. Do not add subsets again. Missing usage is unknown, not zero. CLI child sessions can include multiple model inferences; exact inference count is not exposed in these event logs. Owner direct read/search and coordination usage is separate and not available as an exact token total. Monetary account cost unknown.",
+  "status_counts": {
+    "completed": 40,
+    "failed": 1
+  },
+  "future_experiments": "not started",
+  "outputs": [
+    "m0.5_research/dossier.md",
+    "m0.5_research/open-questions.md",
+    "m0.5_research/review.md"
+  ]
+}
