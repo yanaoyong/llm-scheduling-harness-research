@@ -62,3 +62,27 @@ M6 / E1、P2 实际试验另行授权预算，不属于本次验收。
    ```
 
    该命令不等价于物理一致性验收；真实 has_legal 适配器尚属 Phase D 待办，不能宣称已通过。
+
+## Phase C / M4–M4b 接入清单
+
+本阶段新增模块没有 vendor/data 导入；下列现有命令可立即复跑纯机制检查：
+
+```bash
+python3 -m pytest -q tests/test_cycle_submit.py tests/test_metrics_checkpoint.py tests/test_synthetic_long_run.py
+```
+
+通过：1,200 周期完成；613 周期检查点恢复的最终全状态哈希相等；快照 <12KB，
+最大最小差 <3KB；段预算停止、完整小时漂移停止、故障 invalidation 通过。
+这些字节上限仅适用于四 lot 合成工厂，不能替代真实 tokenizer / WIP 测量。
+
+后续 Phase D/M5 应提供下列真实适配测试（尚未实现，不能声称已在本仓库验收）：
+
+| 精确命令（从 V6 运行） | 通过条件 |
+|---|---|
+| `python3 -m pytest -q tests/test_mac_environment.py -k advance_cycle` | 每个物理步骤更新账本/trace，缺口不提前终止，准确停在锚点或允许的越级事件；H 不裁剪模型有效期，合并锚点下限可提交 |
+| `python3 -m pytest -q tests/test_mac_environment.py -k submit_precheck` | 接入只读 physical_precheck；完整独立违规列表；不变更 delta 可保留旧计划；崩溃后旧计划仍执行 |
+| `python3 -m pytest -q tests/test_mac_factory.py -k segment_recovery` | 真实 state+ledger+cycle+cost 恢复；pending submission 不采纳、不重跑会话；已知部分成本保留，未知用量累加；trace/MCP/JSONL 压缩前后哈希对应 |
+| `python3 -m pytest -q tests/test_mac_environment.py -k long_run_metrics` | 生产 tardiness/throughput/queue wait/setup 与独立物理审计一致；开工偏移基准和改机比例分母登记；四个小时漂移指标核对；预算只在段边界停；S2+ 故障受影响任务走 plan_invalidated |
+
+真实输入 token / 缓存用量来自会话证据；必须登记 cached_input_weight 与未知用量上限。
+真实成本/质量尚未测量；CQT/Q-time 仍未实现。S1–S4 升级与任何实时模型运行需另行授权。

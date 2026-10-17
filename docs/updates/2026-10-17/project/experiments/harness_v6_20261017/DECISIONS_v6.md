@@ -32,3 +32,21 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
 - 未来非就绪工序保留 ready=False；未知资格保守排除，真实物理一致性留 Mac。
 - 历史压缩为固定大小证据链摘要；不携带跨会话对话历史。超预算失败关闭。
 - 静态机会秒数是公开预测差，不是 v6 反事实轨迹收益。未实施分区/分层。
+
+## Phase C 登记参数与边界
+
+- CycleConfig 显式保存 stage、Δ/H、breakdowns、K_fail=2、stall_cycles=4、
+  unknown_usage_cap=2、segment_seconds=3600、segment_cycles=60。
+  这些是合成默认值，不是授权真实试验的预算或最优配置。
+- 停滞的 idle 分支仅对正空闲计数；零空闲/空周期重置，以免健康空跑被判停滞。
+  模型明确说明可重置该分支，但不能免除无提交/会话失败阈值。
+- 近邻锚点在 begin 时确定合并，submit 的 next_anchor 使用合并后的边界，
+  valid_until 下限更保守，避免被跳过的锚点使计划恰在下一真实会话前失效。
+- 每周期 Submitter 是事务暂存区；accepted 不等于已经改变物理状态。
+  只有 process_ok 且 usage_known 且成功 submit 才采纳。无自动重试。
+- 漂移采用事先登记的绝对小时上限 + 连续小时数，不事后推断“恶化”阈值。
+  input_per_request 的分母当前为请求下界。预算 cost 单位由登记决定；合成使用输入 token。
+- 缓存折算系数、稳态排除小时数必须登记；合成默认 0.1 / 1 小时。
+- 恢复依赖宿主在启动每个会话前持久化 in-flight marker；仅保存每段检查点不足以
+  知道崩溃时有无正在计费的会话。marker 包含完整当时状态，恢复不重放模型会话。
+- 新文件全部为新写，未复制 P 文件，来源清单与 Phase A 哈希不变。

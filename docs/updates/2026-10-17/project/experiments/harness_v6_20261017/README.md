@@ -99,3 +99,53 @@ running jobs、全部未预留就绪工序、匹配、机会、失效任务、�
 超预算抛出 SnapshotBudgetExceeded，report 含计数、预算、字节数和完整行数，dropped_rows=0，
 不返回被裁剪快照。partitioned/tiered 仅保留 mode 接口，明确抛 NotImplementedError。
 Mac tiktoken 惰性适配器及封存 SQLite 只读适配器不在本地访问真实证据。
+
+## Phase C：周期、提交、长序列机制验证
+
+新增 `cycle.py`、`submit.py`、`checkpoint.py`、`metrics.py`、`synthetic.py`。
+全部为 stdlib，不导入真实工厂；生产任务只在显式标记“非模型、仅机制测试”的
+`scripted_delta` 中生成。它不是实验组或调度质量基线。
+
+- `CycleMachine.begin/finish`：默认从 t0 锚点开始；模拟时钟在会话期间暂停。
+  `begin` 返回 session=False 的空周期不调用规划器。无计划且无可避免空闲也是空周期。
+  真实宿主必须按锚点或事件调用，不能跳过锚点。合并越级后的近邻锚点时，提交者可见的
+  next_anchor 已反映合并，因此有效期下限仍有完整 Δ 余量。plan_horizon 记录缺陷并停止。
+- `Submitter.submit_plan`：每个周期一个实例，宿主串行调用；回执 accepted 表示周期内
+  预检接受，最终是否采纳由 `finalize(process_ok=..., usage_known=...)` 决定。
+  任何失败保留旧计划；一次成功后关闭该周期。重放同 ID 同参数返回原回执，
+  同 ID 改参数拒绝。调用方须用 cycle ID 命名空间隔离不同周期的 submission_id。
+  `{}` 显式不变更，仍校验当前待执行任务与有效期，不自动延长计划或修复任务。
+  非空增量遵循 Phase A 格式，允许省略 tasks/holds 的默认保留块。
+  `physical_precheck(plan, problem, execution_state)` 返回全部私有物理违规列表，
+  必须只读；实际物理采纳由后续宿主在会话成功后执行。
+- `CycleConfig.for_stage`：S0 默认 60/900，S1–S4 必须登记 Δ；H 默认 max(3Δ,900)，
+  仅供快照前瞻与建议跨度，不能作为 valid_until 上限。S2–S4 默认启用 breakdown。
+  K_fail、stall_cycles、unknown_usage_cap、segment_seconds/cycles、累计/每小时成本上限
+  都在配置中；未登记预算时 cap=None，仅适用于机制测试。
+- 停滞：连续非空周期无成功提交，或正的 avoidable_idle 连续不下降且无显式模型说明。
+  零空闲不会造成假停滞；空周期重置 idle streak。未知用量按失败会话累计，不能清零。
+- `Metrics`：integrate 按小时边界拆分计数×秒；生产与执行事件计入发生小时，
+  会话成本计入开始小时。请求下界=工具轮次+1；input_per_request 使用此下界作分母，
+  真实请求数可取得时应由后续会话适配层另行核对。未缓存等价输入为
+  input-cached+cached_input_weight×cached，系数是登记参数（合成默认 0.1，不代表报价）。
+  每模拟小时成本用实际覆盖秒数作分母；无推进时 rate=None。稳态按 exclude_first_hours
+  过滤，不删除原始小时桶。开工偏移和改机比例分别保存分子/分母。
+- `DriftRule`：登记四种小时指标的绝对上限；任一超标连续 N 个完整小时则停止。
+  漏小时重置 streak，重复小时拒绝；不在运行后选择阈值。预算只在段边界核对累计成本，
+  小时预算对应 cap×累计模拟小时；超额在边界停止，不在会话中重试。
+
+检查点宿主协议：在段边界调用 `CheckpointStore.save`（或合成 runner.checkpoint），
+传入工厂状态、cycle.capture()、capture_ledger()、累计成本与指标状态。
+每次会话启动前必须 `mark_inflight` 保存最新完整恢复包；可在收到用量/提交后更新。
+正常完成后先发布新检查点，再 clear_inflight。恢复用 recover()，未完成会话不重跑，
+丢弃候选提交、保留已知成本并增加未知用量/失败计数。返回状态继续到下一个有效锚点。
+日志文件按段关闭后用 rotate_logs(segment, {'trace': path, 'mcp': path, 'jsonl': path})
+压缩；压缩文件与哈希清单持久化之后才移除原文件。检查点/marker 用 tmp+rename、fsync；
+哈希不符失败关闭，不静默回退旧状态。宿主是唯一写者；本模块不实现多进程锁。
+
+当前合成 runner 的 checkpoint/restore 验证正常段恢复；通用 recover 另测崩溃路径。
+真实会话的 WAL 更新、证据核对、物理提交与日志关闭由 Phase D/M5 接入。
+运行 `python3 -m pytest -q tests/test_cycle_submit.py tests/test_metrics_checkpoint.py tests/test_synthetic_long_run.py`。
+长序列包含 1,200 个周期、四个循环 lot、两个机组族、两道工序、双件批次、事件键随机时长。
+快照只含当前状态与固定摘要；指标小时桶和磁盘段档案可随时长增长，不进入模型快照。
+真实稳态 WIP 增长、运输、返工、复杂故障/保养和 CQT 不由此小工厂证明。
