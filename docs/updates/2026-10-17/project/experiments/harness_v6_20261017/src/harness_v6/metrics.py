@@ -48,7 +48,7 @@ class Metrics:
         if not 0 <= cached_tokens <= input_tokens:
             raise ValueError('cached tokens must be part of input')
         if min(tool_calls, tool_rounds, input_tokens, output_tokens, model_seconds, wall_seconds,
-               submit_attempts, submit_rejections) < 0 or tool_rounds > tool_calls or submit_rejections > submit_attempts:
+               submit_attempts, submit_rejections) < 0 or submit_rejections > submit_attempts:
             raise ValueError('invalid usage counters')
         self.add(time, sessions=1, tool_calls=tool_calls, model_request_lower_bound=tool_rounds+1,
                  input_tokens=input_tokens, cached_tokens=cached_tokens, output_tokens=output_tokens,

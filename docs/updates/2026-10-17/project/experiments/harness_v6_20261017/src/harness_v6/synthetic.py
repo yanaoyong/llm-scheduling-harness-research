@@ -6,7 +6,7 @@ by event consumption order. This is not SMT2020 or production-quality evidence.
 """
 from copy import deepcopy
 import hashlib
-from .snapshot import canonical, HistorySummary, stable_prefix
+from .snapshot import canonical, HistorySummary, stable_prefix, estimate_tokens
 from .plan_delta import SCHEMA, STATE_SCHEMA, ORDER_POLICY, anchor_hashes, json_sha256
 from .executor import decide_start
 from .ledger import Ledger, ledger_apply
@@ -134,11 +134,12 @@ class SyntheticFactory:
         if not stop_on_event:
             self.advance(target, self.metrics)
             return None
+        horizon = target - self.now
         self.advance(target, self.metrics, stop_on_event=True)
         self._dispatch(self.metrics)
         while self.ledger().metrics()['avoidable_idle'] <= 0 and not self.invalid:
             before = self.now
-            self.advance(self.now + 900, self.metrics, stop_on_event=True)
+            self.advance(self.now + horizon, self.metrics, stop_on_event=True)
             self._dispatch(self.metrics)
             if self.now == before:
                 raise RuntimeError('synthetic event clock stalled')
@@ -233,7 +234,7 @@ class SyntheticRun(LiveRun):
             submission_id=str(self.cycle.cycles), delta=scripted_delta(self.factory, self.cycle.cycles)))
         super().__init__(SyntheticFactory(seed), runner, directory=directory or self._temporary.name,
             prefix=stable_prefix(tool_descriptions=[], routing=[1,2], machine_groups=[1,2]),
-            source_sha256=SOURCE, config=config, drift_rule=drift_rule, model_note=LABEL)
+            source_sha256=SOURCE, snapshot_token_budget=100000, token_counter=estimate_tokens, config=config, drift_rule=drift_rule, model_note=LABEL)
 
     def step(self, *, event=None, injected_usage=100):
         self.runner.usage = injected_usage

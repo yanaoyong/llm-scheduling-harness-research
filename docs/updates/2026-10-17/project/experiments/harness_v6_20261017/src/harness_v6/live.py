@@ -20,8 +20,9 @@ from . import session, single_action
 
 class LiveRun:
     def __init__(self, factory, runner, *, directory, prefix, source_sha256,
-                 config=None, drift_rule=None, model='scripted', budget=session.Budget(), model_note=''):
+                 snapshot_token_budget, token_counter, config=None, drift_rule=None, model='scripted', budget=session.Budget(), model_note=''):
         self.factory, self.runner = factory, runner
+        self.snapshot_token_budget, self.token_counter = snapshot_token_budget, token_counter
         self.directory = Path(directory)
         self.store = CheckpointStore(self.directory / 'checkpoints')
         self.prefix, self.source_sha256 = prefix, source_sha256
@@ -55,7 +56,7 @@ class LiveRun:
             try:
                 payload = build_snapshot(self.prefix, ledger, state_version=c.cycles,
                     running_jobs=f.running_jobs(), last_cycle_receipt=c.last_record,
-                    model_notes=self.model_note, token_budget=self.budget.token_cap, history=self.history)
+                    model_notes=self.model_note, token_budget=self.snapshot_token_budget, token_counter=self.token_counter, history=self.history)
             except SnapshotBudgetExceeded:
                 c.finish(submitted=False, model_note=self.model_note)
                 c.stop_reason = 'snapshot_budget_exceeded'
@@ -69,6 +70,11 @@ class LiveRun:
             submit = Submitter(f.plan, problem, execution, **config)
             initial = submit.capture()
             directory = self.directory / f'cycle-{c.cycles}'
+            if directory.exists():
+                attempt = 1
+                while directory.with_name(directory.name + f'.abandoned-{attempt}').exists():
+                    attempt += 1
+                directory.rename(directory.with_name(directory.name + f'.abandoned-{attempt}'))
             inputs, outputs = directory / 'input', directory / 'output'
             inputs.mkdir(parents=True); outputs.mkdir()
             frozen = dict(snapshot={'text': payload.decode()}, facts=build_facts(problem, f.plan),
@@ -95,7 +101,7 @@ class LiveRun:
             def completed(outcome):
                 self.history = self.history.append({'adopted': outcome['adopted']})
                 self._observe_drift()
-                self.checkpoint(self.store)
+                (inputs / 'private.json').unlink(missing_ok=True)
             common = dict(commit=commit, metrics=self.metrics, now=f.now, cycle=c,
                           budget=self.budget, checkpoint=self.store, inflight_bundle=bundle,
                           persist_completed=completed, model_note=self.model_note)
@@ -103,15 +109,18 @@ class LiveRun:
                 schema = inputs / 'submit.schema.json'; single_action.write_schema(schema)
                 argv = single_action.command(inputs, schema, model=self.model, budget=self.budget)
                 self.outcome = single_action.run(RecordingRunner(), argv, payload.decode(), submitter=submit, **common)
-                atomic_write(outputs / 'evidence.json', canonical(self.outcome))
             else:
                 argv = session.command(inputs, outputs, model=self.model, budget=self.budget,
                     env={'PYTHONPATH': os.pathsep.join(str(Path(p).resolve()) for p in sys.path)})
                 self.outcome = session.run_session(RecordingRunner(), argv, payload.decode(),
                     initial_state=initial, artifacts=lambda: session.read_artifacts(outputs), **common)
+            atomic_write(outputs / 'evidence.json', canonical(self.outcome))
         self._observe_drift()
-        if c.inflight is None and c.last_record and c.last_record.get('segment_boundary'):
+        if c.inflight is None and (c.stop_reason or (c.last_record and c.last_record.get('segment_boundary'))):
             self.checkpoint(self.store)
+            directories = [p for p in self.directory.glob('cycle-*') if p.is_dir() and '.abandoned-' not in p.name]
+            if directories and c.last_record and c.last_record.get('segment_boundary'):
+                self.store.rotate_logs(c.segment, {'cycles': directories})
         return record
 
     def _observe_drift(self):
@@ -149,8 +158,10 @@ class LiveRun:
         if state['drift']:
             d = state['drift']; self.drift = DriftMonitor(DriftRule(d['limits'], d['consecutive_hours']))
             self.drift.streak = d['streak']; self.drift.last_hour = d['last_hour']
+        (self.directory / f'cycle-{self.cycle.cycles}' / 'input/private.json').unlink(missing_ok=True)
         self._observe_drift()
-        self.checkpoint(self.store)
+        if self.cycle.stop_reason:
+            self.checkpoint(self.store)
         return self
 
     def state_hash(self):

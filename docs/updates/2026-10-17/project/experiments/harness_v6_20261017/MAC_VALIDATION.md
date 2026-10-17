@@ -326,3 +326,11 @@ M1(d) 三组均通过，完整 token 仍为 756359。最终完整配置 suite �
 日志：`work/phase-i-plain-final.log`、`work/phase-i-configured-final.log`、
 `work/phase-i-live-rpc-final.log`、`work/phase-i-live-rpc-mac-final.log`。
 `python3 -m compileall -q src` 与 `git diff --check` 均通过。
+
+## Phase J
+
+沿用上述配置运行 `python -m pytest -q tests/test_live.py::test_mac_live_p2_three_cycles`：
+必须显式使用 snapshot_token_budget=10**8、tiktoken_counter('o200k_base')，三次提交通过私有物理预检；完成后 private.json 不存在。
+纯合成 `python3 -m pytest -q tests/test_checkpoint_segments.py tests/test_synthetic_long_run.py --durations=10`：
+1,200 周期不缩减；检查点最多两个、latest 仅读一个完整文件，链篡改失败；段后两周期恢复保留 abandoned 目录且终态一致。
+测试以 /dev/shm 为合成 LiveRun 临时目录，缺失时回退 tmp_path；物理测试仍用磁盘，避免 64MB tmpfs 容量不足。

@@ -88,7 +88,7 @@
       "source_sha256": "2f9cca3b76fb8546fb9e191b1a5994b858cbf38303195a0c524c11a6362993b7"
     },
     {
-      "copy_sha256": "c8236fffe5b6496ed77fe23ba6343bfabc0a32583738316569964cd4a3c9fde5",
+      "copy_sha256": "9d02713336ea9f784cd90745cac46cb53c770831bbcbcb3fd64705332b908cf0",
       "initial_copy_sha256": "492002610e5068cb28da02cdda3c9d6145aefd09dfbb45257ee9fd97c5828e84",
       "modified": true,
       "path": "src/harness_v6/audit_v6.py",

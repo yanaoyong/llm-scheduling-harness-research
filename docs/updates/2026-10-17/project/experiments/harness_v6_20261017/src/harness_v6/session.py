@@ -116,7 +116,7 @@ def finish(result, *, rows, submission, initial_state, commit, metrics, now, bud
             if not adopted: errors.append('stale_state_version')
         except Exception as exc: errors.append('commit_failed:'+str(exc))
     usage=u or {};known=u is not None
-    metrics.session(now,tool_calls=max(len(rows),len(parsed['calls']),parsed['tool_calls'],parsed['tool_rounds']),tool_rounds=parsed['tool_rounds'],input_tokens=usage.get('input_tokens',0),cached_tokens=usage.get('cached_input_tokens',0),output_tokens=usage.get('output_tokens',0),model_seconds=result.model_seconds,wall_seconds=result.wall_seconds,failed=not adopted,usage_known=known,submit_attempts=sum(r['tool']=='submit_plan' for r in rows),submit_rejections=sum(r['tool']=='submit_plan' and not r['result'].get('accepted') for r in rows))
+    metrics.session(now,tool_calls=len(rows),tool_rounds=parsed['tool_rounds'],input_tokens=usage.get('input_tokens',0),cached_tokens=usage.get('cached_input_tokens',0),output_tokens=usage.get('output_tokens',0),model_seconds=result.model_seconds,wall_seconds=result.wall_seconds,failed=not adopted,usage_known=known,submit_attempts=sum(r['tool']=='submit_plan' for r in rows),submit_rejections=sum(r['tool']=='submit_plan' and not r['result'].get('accepted') for r in rows))
     if cycle is not None: cycle.finish(submitted=adopted,process_ok=not errors,usage_known=known,cost=usage.get('input_tokens',0)-usage.get('cached_input_tokens',0)*(1-metrics.cached_input_weight),wall_seconds=result.wall_seconds,model_note=model_note)
     return {'adopted':adopted,'errors':errors,'usage_unknown':not known}
 

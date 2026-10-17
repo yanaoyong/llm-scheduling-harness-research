@@ -139,7 +139,7 @@ Mac tiktoken 惰性适配器及封存 SQLite 只读适配器不在本地访问�
 检查点宿主协议：在段边界调用 `CheckpointStore.save`（或合成 runner.checkpoint），
 传入工厂状态、cycle.capture()、capture_ledger()、累计成本与指标状态。
 每次会话启动前必须 `mark_inflight` 保存最新完整恢复包；可在收到用量/提交后更新。
-正常完成后先发布新检查点，再 clear_inflight。恢复用 recover()，未完成会话不重跑，
+正常完成后清除 private.json，再 clear_inflight；仅段边界和停止时发布完整检查点。恢复用 recover()，未完成会话不重跑，
 丢弃候选提交、保留已知成本并增加未知用量/失败计数。返回状态继续到下一个有效锚点。
 日志文件按段关闭后用 rotate_logs(segment, {'trace': path, 'mcp': path, 'jsonl': path})
 压缩；压缩文件与哈希清单持久化之后才移除原文件。检查点/marker 用 tmp+rename、fsync；
@@ -171,7 +171,7 @@ capture JSON），用于副本预检。输入目录只读；每周期使用全�
 checkpoint 接口先写 in-flight，完成回执持久化后才清除；崩溃前 submission 不采纳。
 `store_v6.py` 默认限制写入本实验目录，也允许宿主显式指定独立 root；MCP 不导入 Store。
 SQLite 宿主可用 factory_v6.commit_physical 同事务写计划、物理状态及新增事件。
-本轮 live 宿主为唯一写者，检查暂停周期版本后 prepare/adopt，再原子发布完成检查点；
+本轮 live 宿主为唯一写者，检查暂停周期版本后 prepare/adopt，段边界或停止时原子发布检查点；
 崩溃窗口由 inflight 恢复旧状态。失败费用及未知用量仍进入 metrics。
 
 JSONL 类型表集中于 EVENT_TYPES，属于待 Mac 验证的接口契约。并行工具不能按工具个数
@@ -287,8 +287,11 @@ Phase F 修复：过期条件 hold 不要求已消失的锚任务；冻结 when_
 真实物理使用 `factory_v6.LiveFactory`，`private_state` 只供服务器恢复副本预检。
 完整公开输入按决策冻结；两次决策间 trace 只保留指标，避免逐物理事件积存完整 WIP。
 完整逐事件机会证据审计仍由 `run_public_physics.py` 的流式日志验证承担。
-每次启动前保存 inflight；完成后发布检查点再清 marker。崩溃恢复不采纳残留 submission，
-计失败并前进；检查点保存前驱文件名和 SHA256，latest 验证直到 segment 0。
+每次启动前保存 inflight；完成后清 marker，仅段边界和停止保存完整检查点。崩溃恢复不采纳残留 submission，
+计失败并前进；无 inflight 时重放最近段检查点之后的周期，已有目录改名为 cycle-N.abandoned-k。
+检查点链清单保留 segment/file/SHA256/前驱 SHA256，latest 校验清单及一个最新完整文件；仅保留最新两个完整文件。
+完成周期删除 private.json；段边界把周期目录压成一个 gzip tar，SHA256 清单持久化后才删除原目录。
+LiveRun 必须显式传入 snapshot_token_budget 和 token_counter，独立于每会话预算；Mac 使用 o200k_base。
 账本检查点单独保存 hold 索引，不向模型可见 hold 增加 id。
 
 用户批准：hold 期间只计 explicit_wait_idle，不触发。到期后恢复 avoidable_idle 匹配；

@@ -5,6 +5,9 @@ import json
 import os
 from pathlib import Path
 import tempfile
+import io
+import tarfile
+import shutil
 from .snapshot import canonical
 
 
@@ -47,25 +50,41 @@ class CheckpointStore:
         data = canonical(payload)
         name = 'checkpoint-' + str(segment) + '-' + sha(data) + '.json'
         atomic_write(self.directory / name, data)
-        atomic_write(self.directory / 'latest.json', canonical({'file': name, 'sha256': sha(data)}))
+        entry = {'segment': segment, 'file': name, 'sha256': sha(data),
+                 'previous_sha256': payload['previous']['sha256'] if payload['previous'] else None}
+        with (self.directory / 'chain.jsonl').open('ab') as stream:
+            stream.write(canonical(entry) + b'\n'); stream.flush(); os.fsync(stream.fileno())
+        atomic_write(self.directory / 'latest.json', canonical(entry))
+        keep = {name}
+        if payload['previous']:
+            keep.add(payload['previous']['file'])
+        for path in self.directory.glob('checkpoint-*.json'):
+            if path.name not in keep:
+                path.unlink()
         return payload
 
     def latest(self):
         manifest = json.loads((self.directory / 'latest.json').read_bytes())
-        latest = None
-        while manifest:
-            name = manifest['file']
-            if Path(name).name != name:
-                raise ValueError('invalid checkpoint filename')
-            data = (self.directory / name).read_bytes()
-            if sha(data) != manifest['sha256']:
-                raise ValueError('checkpoint hash mismatch')
-            payload = json.loads(data)
-            latest = latest or payload
-            manifest = payload['previous']
-        if payload['segment'] != 0:
-            raise ValueError('checkpoint chain must start at segment 0')
-        return latest
+        previous = None
+        found = False
+        for line in (self.directory / 'chain.jsonl').read_bytes().splitlines():
+            entry = json.loads(line)
+            if entry['previous_sha256'] != previous or (previous is None and entry['segment'] != 0):
+                raise ValueError('checkpoint chain hash mismatch')
+            previous = entry['sha256']
+            if entry == manifest:
+                found = True
+                break
+        if not found or Path(manifest['file']).name != manifest['file']:
+            raise ValueError('invalid checkpoint chain manifest')
+        data = (self.directory / manifest['file']).read_bytes()
+        if sha(data) != manifest['sha256']:
+            raise ValueError('checkpoint hash mismatch')
+        payload = json.loads(data)
+        expected = payload['previous']['sha256'] if payload['previous'] else None
+        if expected != manifest['previous_sha256'] or payload['segment'] != manifest['segment']:
+            raise ValueError('checkpoint chain hash mismatch')
+        return payload
 
     def mark_inflight(self, bundle):
         """Call before launching a session; refresh after observed usage/submit.
@@ -119,10 +138,9 @@ class CheckpointStore:
             from .snapshot import HistorySummary
             extra['history'] = HistorySummary(extra['history']).append({'adopted': False}).digest
         extra['recovered_inflight'] = True
-        payload = self.save(machine.segment, state=state, cycle=machine.capture(),
+        payload = dict(segment=machine.segment, state=state, cycle=machine.capture(),
                             ledger=bundle['ledger'], cumulative_costs={'cost': machine.cost,
                             'wall_seconds': machine.wall_seconds, 'unknown_usage': machine.unknown_usage}, extra=extra)
-        self.clear_inflight()
         return payload
 
     def rotate_logs(self, segment, logs):
@@ -132,18 +150,28 @@ class CheckpointStore:
         """
         records = []
         for kind, source in sorted(logs.items()):
-            if kind not in ('trace', 'mcp', 'jsonl'):
+            if kind == 'cycles':
+                buffer = io.BytesIO()
+                with tarfile.open(fileobj=buffer, mode='w') as archive:
+                    for directory in sorted(source):
+                        archive.add(directory, arcname=directory.name)
+                raw = buffer.getvalue()
+            elif kind not in ('trace', 'mcp', 'jsonl'):
                 raise ValueError('unknown log kind')
-            source = Path(source)
-            raw = source.read_bytes()
-            packed = gzip.compress(raw, mtime=0)
-            name = f'{kind}-{segment}.jsonl.gz'
+            else:
+                raw = Path(source).read_bytes()
+            packed = gzip.compress(raw, compresslevel=1, mtime=0)
+            name = f'{kind}-{segment}.tar.gz' if kind == 'cycles' else f'{kind}-{segment}.jsonl.gz'
             atomic_write(self.directory / name, packed)
             records.append({'kind': kind, 'file': name, 'sha256': sha(packed),
                             'raw_sha256': sha(raw), 'raw_bytes': len(raw)})
         atomic_write(self.directory / f'logs-{segment}.json', canonical(records))
         for source in logs.values():
-            Path(source).unlink()
+            if isinstance(source, list):
+                for directory in source:
+                    shutil.rmtree(directory)
+            else:
+                Path(source).unlink()
         return records
 
 

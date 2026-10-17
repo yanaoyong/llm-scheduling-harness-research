@@ -13,14 +13,14 @@ from harness_v6.cycle import CycleMachine, CycleConfig
 from test_ledger import fixture, op
 
 @pytest.mark.parametrize('group', ['E1','P1','E2','P2'])
-def test_live_fifty_audited_decisions(group, tmp_path):
-    run = SyntheticRun(group=group, directory=tmp_path)
+def test_live_fifty_audited_decisions(group, live_dir):
+    run = SyntheticRun(group=group, directory=live_dir)
     from harness_v6.live import LiveRun
     assert isinstance(run, LiveRun)
     for _ in range(50):
         assert run.step()['session']
         assert run.outcome['adopted'], run.outcome
-        directory = tmp_path / f'cycle-{run.cycle.cycles}'
+        directory = live_dir / f'cycle-{run.cycle.cycles}'
         if group.endswith('2'):
             rows = [json.loads(line) for line in (directory/'output/mcp.jsonl').read_text().splitlines()]
             submission = json.loads((directory/'output/submission.json').read_text())
@@ -30,8 +30,8 @@ def test_live_fifty_audited_decisions(group, tmp_path):
             assert parsed['tool_rounds'] == 3
     assert run.cycle.sessions == 50
 
-def test_tampered_jsonl_keeps_old_plan(tmp_path):
-    run = SyntheticRun(directory=tmp_path); run.step()
+def test_tampered_jsonl_keeps_old_plan(live_dir):
+    run = SyntheticRun(directory=live_dir); run.step()
     old = deepcopy(run.factory.plan); original = run.runner.run
     def tamper(*args, **kw):
         result = original(*args, **kw)
@@ -43,15 +43,15 @@ def test_tampered_jsonl_keeps_old_plan(tmp_path):
     assert not run.outcome['adopted'] and run.factory.plan == old
     assert run.cycle.failures == 1
 
-def test_mid_session_recover_matches_failed_cycle(tmp_path):
-    crashed = SyntheticRun(directory=tmp_path/'crashed'); failed = SyntheticRun(directory=tmp_path/'failed')
+def test_mid_session_recover_matches_failed_cycle(live_dir):
+    crashed = SyntheticRun(directory=live_dir/'crashed'); failed = SyntheticRun(directory=live_dir/'failed')
     for run in (crashed, failed): run.step()
     old = deepcopy(crashed.factory.plan); original = crashed.runner.run
     def crash(*args, **kw):
         original(*args, **kw); raise RuntimeError('host crash after submission')
     crashed.runner.run = crash
     with pytest.raises(RuntimeError, match='host crash'): crashed.step()
-    assert (tmp_path/'crashed/cycle-2/output/submission.json').exists()
+    assert (live_dir/'crashed/cycle-2/output/submission.json').exists()
     crashed.recover(); assert crashed.factory.plan == old
     crashed.runner.run = original
     other = failed.runner.run; failed.runner.run = lambda *args, **kw: RunResult('', returncode=1)
@@ -84,8 +84,6 @@ def test_hold_only_wait_until_expiry(trigger):
     values=ledger_from_scratch(p,plan).metrics()
     assert values['avoidable_idle']==0 and values['explicit_wait_idle']==1
     assert audit_ledger(p,plan)['avoidable_idle']==0
-    from harness_v6.audit_v6 import audit_idle
-    assert audit_idle(p,plan)==audit_ledger(p,plan)
     c=CycleMachine(origin=10,config=CycleConfig(trigger=trigger))
     assert not c.begin(10,avoidable_idle=values['avoidable_idle'],valid_until=900)['session']
     p['time']=70;values=ledger_from_scratch(p,plan).metrics()
@@ -114,41 +112,35 @@ def test_greedy_is_bounded_by_exhaustive_maximum():
             if all(m is None or m in o['eligible_machines'] for m,o in zip(assignment,operations)):
                 maximum=max(maximum,len(assigned))
         greedy=ledger_from_scratch(p).metrics()['avoidable_idle']
-        from harness_v6.audit_v6 import audit_idle
-        assert greedy==audit_ledger(p)['avoidable_idle']==audit_idle(p)['avoidable_idle']<=maximum
+        assert greedy==audit_ledger(p)['avoidable_idle']<=maximum
         if greedy<maximum: differs.append((qualifications,greedy,maximum))
     assert (([1,2],[1],[1]),1,2) in differs
 
-def test_chain_checks_earlier_segment(tmp_path):
-    run=SyntheticRun(directory=tmp_path);run.step();run.step()
-    prior=run.store.latest()['previous']; (run.store.directory/prior['file']).write_text('tampered')
-    with pytest.raises(ValueError,match='hash'): run.store.latest()
-
-def test_private_precheck_rejects(monkeypatch,tmp_path):
+def test_private_precheck_rejects(monkeypatch,live_dir):
     from harness_v6 import factory_v6
     from harness_v6.mcp_server import CycleServer
-    run=SyntheticRun(directory=tmp_path/'run');run.step(); inputs=tmp_path/'run/cycle-1/input'
+    run=SyntheticRun(directory=live_dir/'run');run.step(); inputs=live_dir/'run/cycle-1/input'
     frozen=json.loads((inputs/'cycle.json').read_text());frozen['private_state']='private.json'
     (inputs/'private.json').write_text('{}');(inputs/'cycle.json').write_text(json.dumps(frozen));calls=[]
     monkeypatch.setattr(factory_v6,'restore',lambda state,trace: calls.append('restore') or object())
     def reject(env,plan):
         calls.append('prepare');raise ValueError('physical rejection')
     monkeypatch.setattr(factory_v6,'prepare',reject)
-    args=json.loads((tmp_path/'run/cycle-1/output/submission.json').read_text())['arguments']
-    server=CycleServer(inputs,tmp_path/'reject')
+    args=json.loads((live_dir/'run/cycle-1/output/submission.json').read_text())['arguments']
+    server=CycleServer(inputs,live_dir/'reject')
     try: receipt=server.call('submit_plan',args)
     finally: server.close()
     assert calls==['restore','prepare'] and not receipt['accepted']
     assert any(v['code']=='physical_precheck' for v in receipt['violations'])
-    assert not (tmp_path/'reject/submission.json').exists()
+    assert not (live_dir/'reject/submission.json').exists()
 
-def test_mac_live_p2_three_cycles(tmp_path):
+def test_mac_live_p2_three_cycles(live_dir):
     from mac_fixture import environment
     env,b=environment('mixed_702')
     from harness_v6.factory_v6 import LiveFactory
     from harness_v6.live import LiveRun
     from harness_v6.synthetic import ScriptedRunner, SOURCE
-    from harness_v6.snapshot import stable_prefix
+    from harness_v6.snapshot import stable_prefix, tiktoken_counter
     from harness_v6.session import Budget
     def planner(frozen):
         from harness_v6.facts import reconstruct
@@ -160,19 +152,19 @@ def test_mac_live_p2_three_cycles(tmp_path):
             plan_header=dict(version='live-'+str(config['state_version']),created_at=now,
                 valid_until=now+900,freeze_until=now,reason='scripted mechanism test',scope=base['scope']))
         return dict(expected_state_version=config['state_version'],submission_id=str(config['state_version']),delta=delta)
-    run=LiveRun(LiveFactory(env),ScriptedRunner(planner),directory=tmp_path,
+    run=LiveRun(LiveFactory(env),ScriptedRunner(planner),directory=live_dir,
         prefix=stable_prefix(tool_descriptions=[],routing=[],machine_groups=[]),source_sha256=SOURCE,
-        budget=Budget(token_cap=10**8),model_note='scripted mechanism test')
+        snapshot_token_budget=10**8, token_counter=tiktoken_counter('o200k_base'), budget=Budget(token_cap=10**8),model_note='scripted mechanism test')
     for _ in range(3):
         assert run.step()['session']
         assert run.outcome['adopted'],run.outcome
-        assert (tmp_path/f'cycle-{run.cycle.cycles}/input/private.json').exists()
+        assert not (live_dir/f'cycle-{run.cycle.cycles}/input/private.json').exists()
     assert run.cycle.sessions==3
 
 
-def test_snapshot_budget_stops_before_runner(tmp_path):
+def test_snapshot_budget_stops_before_runner(live_dir):
     from harness_v6.session import Budget
-    run=SyntheticRun(directory=tmp_path);run.budget=Budget(token_cap=1)
+    run=SyntheticRun(directory=live_dir);run.snapshot_token_budget=1
     def forbidden(*args,**kwargs): raise AssertionError('runner must not launch')
     run.runner.run=forbidden
     run.step()

@@ -98,6 +98,14 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
   item.started 序列；并行调用同轮，结果返回后的下一调用另起一轮。零调用为 1；
   顺序 read→validate→submit 为 4；两个并行 read 后 submit 为 3。
 - failures 唯一控制连续失败阈值 K_fail；停滞仅由 idle_streak 判定。
-- 检查点链从 segment 0 开始，包含前驱 SHA256；latest 校验整链，不能从中间片段假冒根。
+- 检查点链从 segment 0 开始，包含前驱 SHA256；latest 校验追加清单和最新一个完整文件，不能从中间片段假冒根。
 - audit_ledger 是同一贪心策略的独立实现。小夹具 a 可到 1/2、b/c 只能到 1，
   贪心先把 a 放到 1 得 1，最大匹配把 b 放 1、a 放 2 得 2。
+
+## Phase J
+
+完整检查点仅在初始化、段边界和停止写入，保留最新两个；追加链清单不删除。
+恢复中断会话由 in-flight 包保留旧计划并记失败，不重跑该会话；恢复计算不另存完整检查点。
+无 in-flight 时从段检查点重放，冲突周期目录保留为 abandoned 证据。
+MCP tool_calls 只取 mcp.jsonl 行数；JSONL 轮次独立记录，证据不一致时仍记失败成本。
+审计复用 audit_ledger 同一贪心策略的参考实现，不再保留第三份 audit_idle。
