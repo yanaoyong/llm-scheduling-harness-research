@@ -101,6 +101,8 @@ python -m pytest -q tests/test_mac_session.py tests/test_mac_single_action.py
 ```
 
 预期 12 个 PASS 和 12 passed，manifest `real_model_requests=0`，真实 binary 的 `mechanism_only=false`。
+两个 Mac gate 都强制检查该标记及记录的绝对 binary 路径；仓库 `tests/fake_codex.py`
+（含符号链接）只能用于离线机制测试，指向 fake 证据时必须 FAIL，不能作为真实 Codex 验收。
 每项保留 command、prompt、schema、原始 session.jsonl、stderr、requests.jsonl、check.json；
 MCP 项还保存进程启动/工具调用/结果证据，大结果从**下一轮请求**取回并核对完整 SHA256。
 超时项必须在宿主截止前出现明确 MCP timeout，不能用宿主杀进程当作通过。

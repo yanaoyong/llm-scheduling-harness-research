@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import selectors
 import signal
+import shutil
 import subprocess
 import time
 from .session import RunResult
@@ -14,7 +15,15 @@ from .session import RunResult
 
 class CodexRunner:
     def __init__(self, binary, *, workdir, env_allowlist, stderr_path):
-        self.binary = str(binary)
+        candidate = os.fspath(binary)
+        # Explicit paths are relative to the caller, before subprocess cwd changes.
+        resolved = shutil.which(candidate) if '/' not in candidate else candidate
+        if resolved is None or not Path(resolved).is_file():
+            raise ValueError(f'Codex binary does not exist: {candidate}')
+        path = Path(resolved).resolve()
+        if not os.access(path, os.X_OK):
+            raise ValueError(f'Codex binary is not executable: {path}')
+        self.binary = str(path)
         self.workdir = str(Path(workdir).resolve())
         self.env = {k: os.environ[k] for k in env_allowlist if k in os.environ}
         self.stderr_path = Path(stderr_path)

@@ -137,3 +137,32 @@ def test_exited_leader_cleans_stdout_holding_child(tmp_path, exit_code):
     while stat.exists() and stat.read_text().split()[2] != 'Z' and time.monotonic() < deadline:
         time.sleep(.01)
     assert not stat.exists() or stat.read_text().split()[2] == 'Z'
+
+
+def test_relative_binary_resolved_before_workdir_change(tmp_path, monkeypatch):
+    monkeypatch.chdir(FAKE.parents[1])
+    monkeypatch.setenv('PYTHONPATH', str(FAKE.parents[1]/'src'))
+    r = CodexRunner('tests/fake_codex.py', workdir=tmp_path,
+                    env_allowlist=['PATH', 'PYTHONPATH'], stderr_path=tmp_path/'stderr')
+    assert r.binary == str(FAKE)
+    assert r.version('fake-codex 1') == 'fake-codex 1'
+
+
+def test_binary_path_lookup(tmp_path, monkeypatch):
+    monkeypatch.setenv('PATH', str(FAKE.parent) + os.pathsep + os.environ['PATH'])
+    monkeypatch.setenv('PYTHONPATH', str(FAKE.parents[1]/'src'))
+    r = CodexRunner('fake_codex.py', workdir=tmp_path,
+                    env_allowlist=['PATH', 'PYTHONPATH'], stderr_path=tmp_path/'stderr')
+    assert r.binary == str(FAKE)
+    assert r.version() == 'fake-codex 1'
+
+
+def test_binary_missing_or_not_executable(tmp_path):
+    binary = tmp_path/'codex'
+    kwargs = dict(workdir=tmp_path, env_allowlist=[], stderr_path=tmp_path/'stderr')
+    with pytest.raises(ValueError, match='does not exist'):
+        CodexRunner(binary, **kwargs)
+    binary.write_text('not executable')
+    binary.chmod(0o644)
+    with pytest.raises(ValueError, match='not executable'):
+        CodexRunner(binary, **kwargs)

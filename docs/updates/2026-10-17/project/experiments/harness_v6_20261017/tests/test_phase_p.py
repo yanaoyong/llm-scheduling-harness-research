@@ -27,11 +27,12 @@ def test_probe_manifest_existing_consumers(tmp_path):
     root = tmp_path/'probes'
     manifest = probes.run(str(FAKE), 'fake-codex 1', root)
     assert len(manifest['checks']) == 12 and manifest['mechanism_only']
-    env = dict(os.environ, V6_F6_PROBE_DIR=str(root), V6_SINGLE_ACTION_PROBE_DIR=str(root))
-    result = subprocess.run([sys.executable, '-m', 'pytest', '-q',
-        'tests/test_mac_session.py','tests/test_mac_single_action.py'], env=env, capture_output=True, text=True)
-    assert result.returncode == 0, result.stdout+result.stderr
-    assert '12 passed' in result.stdout
+    from probe_checks import check_f6, check_single_action, require_real_codex
+    for check in manifest['checks']:
+        validate = check_single_action if check.startswith('single_') else check_f6
+        validate(root, manifest, check)
+    with pytest.raises(AssertionError, match='mechanism-only'):
+        require_real_codex(manifest)
     # Evidence changes invalidate evaluation; no unconditional success flags.
     endpoint, row = probes.capture(str(FAKE), 'fake-codex 1', tmp_path/'bad', 'config_injection', timeout=.001)
     assert not row['passed']
@@ -120,3 +121,21 @@ def test_preflight_cli_version_only(tmp_path):
     report = json.loads(output.read_text())
     assert next(r for r in report['checks'] if r['name']=='Codex pin')['passed']
     assert report['authentication'].startswith('not tested')
+
+
+@pytest.mark.parametrize('mechanism_only', [True, None, 0, 'false'])
+def test_mac_gate_rejects_non_real_manifest(mechanism_only):
+    from probe_checks import require_real_codex
+    with pytest.raises(AssertionError, match='mechanism-only'):
+        require_real_codex({'mechanism_only': mechanism_only})
+
+
+def test_mac_gate_rejects_fake_binary_even_if_flag_changed(tmp_path):
+    from probe_checks import require_real_codex
+    alias = tmp_path/'codex'
+    alias.symlink_to(FAKE)
+    for binary in (FAKE, alias, Path('/archived/repository/tests/fake_codex.py')):
+        manifest = dict(mechanism_only=False, codex_version='codex pinned',
+                        checks={'probe': {'command': [str(binary)]}})
+        with pytest.raises(AssertionError, match='repository fake'):
+            require_real_codex(manifest)

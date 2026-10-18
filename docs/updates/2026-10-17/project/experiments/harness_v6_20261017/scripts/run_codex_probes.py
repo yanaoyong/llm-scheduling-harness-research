@@ -188,6 +188,7 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
         argv = configure(argv, settings)
         if check == 'schema_with_mcp': argv[-1:-1] = ['--output-schema', str(directory/'schema.json')]
         runner = CodexRunner(binary, workdir=directory, env_allowlist=['PATH','PYTHONPATH'], stderr_path=directory/'stderr.log')
+        argv[0] = runner.binary
         runner.env['PYTHONPATH'] = os.pathsep.join(str(Path(p).resolve()) for p in sys.path if p)
         runner.env['V6_FORBIDDEN_SENTINEL'] = 'must-not-reach-mcp'
         try:
