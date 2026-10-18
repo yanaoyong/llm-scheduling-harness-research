@@ -24,12 +24,12 @@ remain integers; floats retain a decimal point or exponent and are rounded to
 step_definitions rows have zero-based IDs; routes list these IDs in step order;
 step_number_is_position=true restores step numbers starting at 1.
 machine_groups_compact groups static attributes; $ids lists machine ID ranges,
-$positions restores source order. Ranges a:b are inclusive; commas join ranges.
+sorted by id when decoded. Ranges a:b are inclusive; commas join ranges.
 ready_groups shares batch/setup/qualification/release fields and $eligible;
-$operations lists EVERY operation ID, $positions restores original row order.
-$eligible [family,name,order] means every static machine of that family; order
-is a range list of zero-based positions in sorted family IDs. [set,id] refers to
-eligible_sets. machines holds dynamic state; machine_inheritance lists each inherited static
+$operations lists EVERY operation ID; decoded ready rows sort by operation_id.
+$eligible [family,name] means the sorted IDs of every static machine in that
+family. Other lists use [set,id] in eligible_sets, preserving their exact order.
+machines holds dynamic state sorted by machine; machine_inheritance lists each inherited static
 field and its machine ID ranges; machine_constants applies to every
 machine (availability_basis is stated once). pending_tasks, holds, invalid_tasks,
 running_jobs, idle matches, opportunities, ages and receipt use header-once

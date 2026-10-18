@@ -26,6 +26,8 @@ def tiktoken_counter(encoding_name='o200k_base'):
 
 
 def stable_prefix(*, tool_descriptions, routing, machine_groups):
+    if all(isinstance(m, dict) and 'id' in m for m in machine_groups):
+        machine_groups = sorted(machine_groups, key=lambda m: m['id'])
     return encode_prefix({'rules': V6_RULES, 'tools': tool_descriptions,
                           'routing': routing, 'machine_groups': machine_groups})
 
@@ -60,8 +62,8 @@ def current_state(ledger, *, state_version, running_jobs, last_cycle_receipt,
                                'qualification_uncertain': op.get('qualification_uncertain', False)})
     current = {'state_version': state_version, 'time': ledger.now,
                'pending_tasks': ledger.pending_tasks(), 'holds': list(ledger.holds.values()),
-               'machines': [ledger.machines[mid] for mid in sorted(ledger.machines)],
-               'running_jobs': running_jobs, 'unreserved_ready': ready_rows,
+               'machines': sorted(ledger.machines.values(), key=lambda m: m['machine']),
+               'running_jobs': running_jobs, 'unreserved_ready': sorted(ready_rows, key=lambda r: r['operation_id']),
                'avoidable_idle_matches': metrics['avoidable_idle_matches'],
                'explicit_wait_idle_matches': metrics['explicit_wait_idle_matches'],
                'invalid_tasks': [t for tid, t in ledger.tasks.items()

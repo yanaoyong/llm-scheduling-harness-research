@@ -122,15 +122,14 @@ def encode_prefix(obj):
         result['routing'] = routing
     if isinstance(machines, list) and machines and all(isinstance(m, dict) and type(m.get('id')) is int for m in machines):
         groups = {}
-        for index, machine in enumerate(machines):
+        for machine in sorted(machines, key=lambda m: m['id']):
             attrs = {k: v for k, v in machine.items() if k != 'id'}
             key = cell(attrs)
             if key not in groups:
-                groups[key] = dict(attributes=attrs, ids=[], positions=[])
+                groups[key] = dict(attributes=attrs, ids=[])
             groups[key]['ids'].append(machine['id'])
-            groups[key]['positions'].append(index)
         result['machine_groups_compact'] = [dict(g['attributes'], **{
-            '$ids': ranges(g['ids']), '$positions': ranges(g['positions'])}) for g in groups.values()]
+            '$ids': ranges(g['ids'])}) for g in groups.values()]
     else:
         result['machine_groups'] = machines
     return ('SNAPSHOT_V1\n' + ''.join(section(k, v) for k, v in sorted(result.items()))).encode()
@@ -149,9 +148,9 @@ def decode_prefix(payload):
     if 'machine_groups_compact' in result:
         machines = []
         for g in result.pop('machine_groups_compact'):
-            attrs = {k: v for k, v in g.items() if k not in ('$ids', '$positions')}
-            machines.extend((p, dict(attrs, id=i)) for p, i in zip(unranges(g['$positions']), unranges(g['$ids'])))
-        result['machine_groups'] = [m for _, m in sorted(machines)]
+            attrs = {k: v for k, v in g.items() if k != '$ids'}
+            machines.extend(dict(attrs, id=i) for i in unranges(g['$ids']))
+        result['machine_groups'] = sorted(machines, key=lambda m: m['id'])
     return result
 
 
@@ -169,16 +168,12 @@ def encode_current(prefix, current):
             families.setdefault(m['family'], []).append(mid)
     family_keys = {cell(sorted(v)): k for k, v in sorted(families.items())}
     eligible_sets, groups = {}, {}
-    for index, row in enumerate(result.pop('unreserved_ready')):
+    for row in sorted(result.pop('unreserved_ready'), key=lambda r: r['operation_id']):
         row = dict(row)
         eligible = row.pop('eligible_machines')
         key = cell(eligible)
-        # Name the whole family even when the canonical list has a different order.
-        family_key = cell(sorted(eligible))
-        if family_key in family_keys:
-            family = family_keys[family_key]
-            ordered = sorted(families[family])
-            ref = ['family', family, ranges([ordered.index(mid) for mid in eligible])]
+        if key in family_keys:
+            ref = ['family', family_keys[key]]
         else:
             if key not in eligible_sets:
                 eligible_sets[key] = (len(eligible_sets), eligible)
@@ -187,13 +182,12 @@ def encode_current(prefix, current):
         row['$eligible'] = ref
         key = cell(row)
         if key not in groups:
-            groups[key] = dict(row, **{'$operations': [], '$positions': []})
+            groups[key] = dict(row, **{'$operations': []})
         groups[key]['$operations'].append(oid)
-        groups[key]['$positions'].append(index)
     result['eligible_sets'] = [dict(id=i, machines=ms) for i, ms in eligible_sets.values()]
-    result['ready_groups'] = [dict(g, **{'$positions': ranges(g['$positions'])}) for g in groups.values()]
+    result['ready_groups'] = list(groups.values())
     constants = {}
-    machines = result['machines']
+    machines = result['machines'] = sorted(result['machines'], key=lambda m: m['machine'])
     if machines and all('availability_basis' in m and m['availability_basis'] == machines[0].get('availability_basis') for m in machines):
         constants['availability_basis'] = machines[0]['availability_basis']
     inherited = {'family': [], 'cascading': []}
@@ -225,12 +219,12 @@ def decode_snapshot(payload):
     for group in current.pop('ready_groups'):
         group = dict(group)
         reference = group.pop('$eligible')
-        kind, ref = reference[:2]
-        ids, positions = group.pop('$operations'), unranges(group.pop('$positions'))
-        eligible = ([sorted(families[ref])[i] for i in unranges(reference[2])]
-                    if kind == 'family' else sets[ref])
-        ready.extend((p, dict(deepcopy(group), operation_id=oid, eligible_machines=list(eligible))) for p, oid in zip(positions, ids))
-    current['unreserved_ready'] = [r for _, r in sorted(ready)]
+        kind, ref = reference
+        ids = group.pop('$operations')
+        eligible = sorted(families[ref]) if kind == 'family' else sets[ref]
+        ready.extend(dict(deepcopy(group), operation_id=oid, eligible_machines=list(eligible)) for oid in ids)
+    current['unreserved_ready'] = sorted(ready, key=lambda r: r['operation_id'])
+    current['machines'].sort(key=lambda m: m['machine'])
     constants = current.pop('machine_constants')
     by_id = {m['machine']: m for m in current['machines']}
     for row in current.pop('machine_inheritance'):

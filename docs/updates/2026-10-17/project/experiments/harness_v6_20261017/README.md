@@ -310,7 +310,7 @@ LiveRun 必须显式传入 context_token_budget、request_overhead_tokens、outp
 
 所有值明确写出，`!` 表示缺失字段，`null` 表示 None，空字符串为 `""`，布尔值为 true/false。
 没有空格默认值或 `=` 简写。整数/浮点类型保持；唯一归一化是浮点数 10 位有效数字，
-验收相对误差 ≤1e-9，非浮点精确比较。列表原顺序通过位置区间还原。
+验收相对误差 ≤1e-9，非浮点精确比较。规范对象的就绪行按 operation_id、动态机器按 machine、静态机器按 id 排序；不携带位置元数据。完整且已排序的族列表使用 [family,name]，其他 eligible 列表使用 [set,id] 保留原顺序。
 未改变 submit/task 格式、任务选择或模型可见内容；release_time 仍显式保留。
 
 validate_plan / submit_plan 内部收集全部违规，回执最多返回 50 条并提供 violation_count、

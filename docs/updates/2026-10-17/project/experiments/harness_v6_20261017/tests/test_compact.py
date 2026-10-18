@@ -51,7 +51,7 @@ def test_generated_routes_machines_ledger_roundtrip(seed, monkeypatch):
                   extra=[False, None, '', -0.0, 1e-20, 'CURRENT\n', '\t']) for i in range(1, 8)]
     if seed % 2:
         route[0]['step'] = 1.0  # Noncanonical inputs retain step type verbatim.
-    prefix_obj = dict(rules='rule', tools=[], routing={'r':route, 'empty':[], 'r2':deepcopy(route)}, machine_groups=machines)
+    prefix_obj = dict(rules='rule', tools=[], routing={'r':route, 'empty':[], 'r2':deepcopy(route)}, machine_groups=sorted(machines, key=lambda m: m['id']))
     prefix = encode_prefix(prefix_obj)
     jobs = [dict(job=i, started_at=rng.random(), machine=1, lot_ids=[str(i)]) for i in range(10)]
     captured = []
@@ -69,12 +69,17 @@ def test_generated_routes_machines_ledger_roundtrip(seed, monkeypatch):
     equivalent(captured[0], current)
     assert build_snapshot(prefix, ledger, **args) == payload
     assert payload.startswith(prefix)
+    assert b'$positions' not in payload
+    assert [r['operation_id'] for r in current['unreserved_ready']] == sorted(r['operation_id'] for r in current['unreserved_ready'])
+    assert [m['machine'] for m in current['machines']] == sorted(ids)
+    assert stable_prefix(tool_descriptions=[], routing={}, machine_groups=machines) == stable_prefix(tool_descriptions=[], routing={}, machine_groups=list(reversed(machines)))
     from harness_v6.compact import sections, CURRENT
     groups = sections(payload.split(CURRENT, 1)[1].decode())['ready_groups']
     for group in groups:
         oid = group['$operations'][0]
         eligible = ledger.operations[oid]['eligible_machines']
-        if set(eligible) in ({1, 2}, {8, 10, 11}):
+        assert len(group['$eligible']) == 2
+        if eligible in ([1, 2], [8, 10, 11]):
             assert group['$eligible'][0] == 'family'
         else:
             assert group['$eligible'][0] == 'set'
@@ -83,6 +88,36 @@ def test_generated_routes_machines_ledger_roundtrip(seed, monkeypatch):
     assert {t['id'] for t in current['pending_tasks']} == {t['id'] for t in ledger.pending_tasks()}
     assert {o['operation_id'] for o in current['unreserved_ready']} == {
         oid for oid, r in ledger.rows().items() if r['ready'] and r['state']=='ready_unreserved'}
+
+
+
+def test_canonical_rows_ignore_insertion_order_and_keep_explicit_eligible_order():
+    from harness_v6.snapshot import current_state
+    p, plan = fixture()
+    p['operations'] = [op(oid, eligible_machines=eligible) for oid, eligible in
+                       [('z', [2, 1]), ('a', [1, 2]), ('m', [1])]]
+    p['machines'].reverse()
+    ledger = ledger_from_scratch(p, plan)
+    args = dict(state_version=0, running_jobs=[], last_cycle_receipt=None, model_notes='')
+    current = current_state(ledger, **args)
+    assert [r['operation_id'] for r in current['unreserved_ready']] == ['a', 'm', 'z']
+    assert [m['machine'] for m in current['machines']] == [1, 2]
+    prefix = dict(rules='', tools=[], routing={}, machine_groups=[dict(id=2, family='F'), dict(id=1, family='F')])
+    original = deepcopy((prefix, current))
+    wire = encode_prefix(prefix) + encode_current(prefix, current)
+    decoded_prefix, decoded_current = decode_snapshot(wire)
+    assert [m['id'] for m in decoded_prefix['machine_groups']] == [1, 2]
+    equivalent(current, decoded_current)
+    assert (prefix, current) == original
+    from harness_v6.compact import sections, CURRENT
+    encoded = sections(wire.split(CURRENT, 1)[1].decode())
+    refs = {oid: g['$eligible'] for g in encoded['ready_groups'] for oid in g['$operations']}
+    assert refs['a'] == ['family', 'F']
+    sets = {r['id']: r['machines'] for r in encoded['eligible_sets']}
+    assert refs['z'][0] == refs['m'][0] == 'set'
+    assert sets[refs['z'][1]] == [2, 1]
+    assert sets[refs['m'][1]] == [1]
+    assert b'$positions' not in wire
 
 
 def test_absence_and_null_in_heterogeneous_tables():
