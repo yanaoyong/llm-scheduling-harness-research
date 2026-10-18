@@ -4,10 +4,11 @@ Four circulating lots, two routes/machine groups, batches of two. Random
 processing durations are keyed by seed, operation identities and machine, not
 by event consumption order. This is not SMT2020 or production-quality evidence.
 """
+from .delta_schema import model_task
 from copy import deepcopy
 import hashlib
 from .snapshot import canonical, HistorySummary, stable_prefix, estimate_tokens
-from .plan_delta import SCHEMA, STATE_SCHEMA, ORDER_POLICY, anchor_hashes, json_sha256
+from .plan_delta import STATE_SCHEMA, json_sha256
 from .executor import decide_start
 from .ledger import Ledger, ledger_apply
 from .cycle import CycleMachine, DriftMonitor, DriftRule
@@ -174,13 +175,12 @@ def scripted_delta(factory, cycle):
             tasks.append({'id': f'c{cycle}-m{mid}-b{index}', 'machine': mid, 'start_mode': 'when_ready',
                           'operation_ids': [r['operation_id'] for r in batch], 'lot_ids': [r['lot_id'] for r in batch],
                           'steps': [r['step'] for r in batch], 'visits': [r['visit'] for r in batch]})
-    return {'schema': SCHEMA, 'anchors': anchor_hashes(base, problem, state, source_sha256=SOURCE),
-            'order_policy': ORDER_POLICY, 'plan_header': {'version': f'v{cycle}', 'created_at': factory.now,
-                'valid_until': factory.now + 100000, 'freeze_until': factory.now, 'reason': LABEL, 'scope': [1, 2]},
-            'tasks': {'keep': {'mode': 'all_pending_except', 'ids': cancel}, 'cancel_ids': cancel, 'replace': [], 'add': tasks},
-            'holds': {'keep': {'mode': 'all_except', 'ids': []}, 'cancel_ids': [], 'replace': [], 'add': []},
+    return {'plan_header': {
+                'valid_until': factory.now + 100000, 'freeze_until': factory.now, 'reason': LABEL},
+            'tasks': {'cancel_ids': cancel, 'replace': [], 'add': [model_task(t) for t in tasks]},
+            'holds': {'cancel_ids': [], 'replace': [], 'add': []},
             'machine_orders': [{'machine': m, 'task_ids': [t['id'] for t in retained+tasks if t['machine']==m]}
-                               for m in sorted({t['machine'] for t in tasks})]}
+                               for m in sorted({t['machine'] for t in tasks + pending})]}
 
 
 from .checkpoint import capture_ledger as ledger_capture
@@ -208,7 +208,7 @@ class ScriptedRunner:
             server = CycleServer(inputs, outputs)
             try:
                 for index, (tool, arguments) in enumerate([
-                    ('get_decision_snapshot', {}), ('validate_plan', args), ('submit_plan', args)]):
+                    ('validate_plan', args), ('submit_plan', args)]):
                     item = dict(id=str(index), type='mcp_tool_call', server='harness_v6', tool=tool, arguments=arguments)
                     events.append(dict(type='item.started', item=dict(item)))
                     server.rpc(dict(jsonrpc='2.0', id=index, method='tools/call',
@@ -224,7 +224,7 @@ from .live import LiveRun
 
 
 class SyntheticRun(LiveRun):
-    def __init__(self, *, seed=1, config=None, drift_rule=None, group=None, directory=None):
+    def __init__(self, *, seed=1, config=None, drift_rule=None, group=None, directory=None, snapshot_format="explicit"):
         import tempfile
         if group is not None:
             from .groups import config_for
@@ -233,8 +233,9 @@ class SyntheticRun(LiveRun):
         runner = ScriptedRunner(lambda frozen: dict(expected_state_version=self.cycle.cycles,
             submission_id=str(self.cycle.cycles), delta=scripted_delta(self.factory, self.cycle.cycles)))
         super().__init__(SyntheticFactory(seed), runner, directory=directory or self._temporary.name,
-            prefix=stable_prefix(tool_descriptions=[], routing=[1,2], machine_groups=[1,2]),
-            source_sha256=SOURCE, snapshot_token_budget=100000, token_counter=estimate_tokens, config=config, drift_rule=drift_rule, model_note=LABEL)
+            prefix=stable_prefix(tool_descriptions=[], routing=[1,2], machine_groups=[1,2], snapshot_format=snapshot_format, token_counter=estimate_tokens),
+            snapshot_format=snapshot_format,
+            source_sha256=SOURCE, request_overhead_tokens=0, output_reserve_tokens=0, context_token_budget=100000, token_counter=estimate_tokens, config=config, drift_rule=drift_rule, model_note=LABEL)
 
     def step(self, *, event=None, injected_usage=100):
         self.runner.usage = injected_usage
@@ -242,8 +243,9 @@ class SyntheticRun(LiveRun):
 
     @classmethod
     def restore(cls, payload):
-        obj = cls()
+        obj = cls(snapshot_format=payload['extra'].get('snapshot_format', 'explicit'))
         state = payload['extra']
+        obj.budget_report = state.get('budget_report')
         obj.factory = SyntheticFactory.restore(payload['state'])
         obj.cycle = CycleMachine.restore(payload['cycle'])
         obj.metrics = Metrics.restore(state['metrics'])

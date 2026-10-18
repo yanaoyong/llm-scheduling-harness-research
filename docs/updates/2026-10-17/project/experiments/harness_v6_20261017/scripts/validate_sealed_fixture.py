@@ -1,4 +1,7 @@
 """Offline measurements from the public sealed fixture; never runs a planner."""
+from harness_v6.compact import normalize
+from harness_v6.delta_schema import model_task
+from harness_v6.snapshot import decode_snapshot
 import argparse
 import json
 from pathlib import Path
@@ -27,8 +30,8 @@ def validate(directory):
     result['replay'] = {k: v for k, v in replay.items() if k != 'errors'}
     print('replay', result['replay'], str(replay.get('errors'))[:500], flush=True)
     counter = tiktoken_counter()
-    from harness_v6.mcp_server import TOOLS
-    prefix = stable_prefix(tool_descriptions=[{'name':name,'description':name,'inputSchema':schema} for name,schema in TOOLS.items()],
+    from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS
+    prefix = stable_prefix(tool_descriptions=[{'name':name,'description':TOOL_DESCRIPTIONS[name],'inputSchema':schema} for name,schema in TOOLS.items()],
                            routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
     case_refs = {c['context_ref'] for c in bundle['w1462_case']['calls']}
     exception_refs = {c['context_ref'] for c in report['new_rule_exceptions']}
@@ -67,9 +70,9 @@ def validate(directory):
         args = dict(state_version=ctx['state_revision'], running_jobs=running,
                     last_cycle_receipt=None, model_notes='', token_counter=counter)
         payload = build_snapshot(prefix, ledger, token_budget=10**9, **args)
-        current = json.loads(payload.split(b'\n',1)[1])
+        current = decode_snapshot(payload)[1]
         pending = [t for t in ctx['base_plan']['tasks'] if t['id'] not in execution['dispatched_task_ids']]
-        assert current['pending_tasks'] == pending
+        assert current['pending_tasks'] == normalize([model_task(t) for t in pending])
         # Phase H: account for all base tasks across pending and actual running jobs.
         assert len(ctx['base_plan']['tasks']) == 26 and len(pending) == 23
         assert running == bundle['g0_snapshot']['running_jobs']
@@ -85,11 +88,11 @@ def validate(directory):
             assert events[0]['steps'] == task['steps']
             assert events[0]['visits'] == task['visits']
             jobs = [j for j in current['running_jobs'] if j['job'] == events[0]['job'] and j['machine'] == task['machine']
-                    and set(task['lot_ids']) <= set(j['lot_ids']) and j['started_at'] == events[0]['time']]
+                    and set(task['lot_ids']) <= set(j['lot_ids']) and j['started_at'] == normalize(events[0]['time'])]
             assert len(jobs) == 1
             visible[task['id']] = jobs[0]['job']
         assert visible == {'d32-l': 976, 'd36-e': 974, 'd39-g': 975}
-        assert current['holds'] == ctx['base_plan']['holds']
+        assert current['holds'] == normalize(ctx['base_plan']['holds'])
         expected_ready = {oid for oid,row in ledger.rows().items() if row['ready'] and row['state']=='ready_unreserved'}
         assert {row['operation_id'] for row in current['unreserved_ready']} == expected_ready
         budget = bundle['sealed_input_budget']

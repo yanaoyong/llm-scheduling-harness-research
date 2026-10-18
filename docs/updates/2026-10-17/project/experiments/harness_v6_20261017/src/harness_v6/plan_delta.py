@@ -89,10 +89,8 @@ def anchor_hashes(base_plan, problem, execution_state, *, source_sha256):
             'state_sha256': json_sha256(execution_state), 'source_sha256': source_sha256}
 
 
-def _partition(universe, patch, *, all_mode, replacement_key, label):
-    _keys(patch, ('keep', 'cancel_ids', 'replace', 'add'), label)
-    _keys(patch['keep'], ('mode', 'ids'), label + '.keep')
-    selected = _ids(patch['keep']['ids'], label + '.keep.ids')
+def _partition(universe, patch, *, replacement_key, label):
+    _keys(patch, ('cancel_ids', 'replace', 'add'), label)
     cancelled = _ids(patch['cancel_ids'], label + '.cancel_ids')
     _require(isinstance(patch['replace'], list) and isinstance(patch['add'], list), 'schema', label + ' arrays')
     if replacement_key == 'id':
@@ -103,21 +101,13 @@ def _partition(universe, patch, *, all_mode, replacement_key, label):
         replaced = _ids([t['ref'] for t in patch['replace']], label + '.replace refs')
     domain = set(universe)
     _require(not (set(cancelled) & set(replaced)), 'partition', label + ' cancel and replace overlap')
-    _require(set(selected + cancelled + replaced) <= domain, 'unknown_or_dispatched_id', label)
-    mode = patch['keep']['mode']
-    if mode == 'ids':
-        retained = set(selected)
-    elif mode == all_mode:
-        _require(set(selected) == set(cancelled + replaced), 'partition', label + ' exceptions must exactly name cancellation/replacement')
-        retained = domain - set(selected)
-    else:raise DeltaError('schema', label + ' retention mode')
-    _require(not retained.intersection(cancelled + replaced) and retained | set(cancelled + replaced) == domain,
-             'partition', label + ' every base item needs exactly one explicit disposition')
+    _require(set(cancelled + replaced) <= domain, 'unknown_or_dispatched_id', label)
+    retained = domain - set(cancelled + replaced)
     return retained, cancelled, replaced
 
 
-def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha256):
-    """Compile declared keeps/cancels/replacements/additions into one full plan.
+def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha256, state_version=None, submission_id=None):
+    """Compile implicit retention and explicit cancellations/replacements/additions into one full plan.
 
     No input is mutated. Task array order within each machine is authoritative;
     no sorting by machine/ID/priority is performed. Existing global interleaving
@@ -128,10 +118,7 @@ def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha
         if not condition:
             errors.append({'code': code, 'detail': detail})
     anchors = anchor_hashes(base_plan, problem, execution_state, source_sha256=source_sha256)
-    _keys(delta, ('schema', 'anchors', 'plan_header', 'order_policy', 'tasks', 'holds', 'machine_orders'), 'delta')
-    _require(delta['schema'] == SCHEMA and delta['order_policy'] == ORDER_POLICY, 'schema', 'delta version/order policy')
-    _keys(delta['anchors'], anchors, 'anchors')
-    check(all(delta['anchors'][k] == v for k, v in anchors.items()), 'stale_anchor', 'base/problem/state/source hash mismatch')
+    _keys(delta, ('plan_header', 'tasks', 'holds', 'machine_orders'), 'delta')
     _keys({k: v for k, v in execution_state.items() if k != 'invalidated_task_ids'}, ('schema', 'time', 'observation_end', 'base_plan_version', 'dispatched_task_ids'), 'execution_state')
     now, observation_end = execution_state['time'], execution_state['observation_end']
     _require(execution_state['schema'] == STATE_SCHEMA and _number(now) and _number(observation_end)
@@ -152,7 +139,7 @@ def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha
     invalidated = _ids(execution_state.get('invalidated_task_ids', []), 'invalidated task IDs')
     _require(set(invalidated) <= set(base_ids) - set(dispatched), 'base_state', 'invalidation receipt must name pending base tasks')
     pending = [tid for tid in base_ids if tid not in set(dispatched)]
-    retained, cancelled, replaced = _partition(pending, delta['tasks'], all_mode='all_pending_except', replacement_key='id', label='tasks')
+    retained, cancelled, replaced = _partition(pending, delta['tasks'], replacement_key='id', label='tasks')
     replacements = {t['id']: t for t in delta['tasks']['replace']}
     added = delta['tasks']['add']
     _require(all(isinstance(t, dict) and 'id' in t for t in added), 'schema', 'added task')
@@ -160,30 +147,56 @@ def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha
     _require(not set(added_ids).intersection(base_ids), 'reused_id', 'new task reuses any base task ID')
     tasks = [deepcopy(by_id[tid] if tid in retained else replacements[tid]) for tid in pending if tid in retained or tid in replacements]
     tasks += deepcopy(added)
-    _require(all(type(t.get('machine')) is int for t in tasks), 'machine', 'machine identity must remain an integer')
     orders = delta['machine_orders']
     _require(isinstance(orders, list), 'schema', 'machine_orders')
-    explicit = {}
+    explicit, assignments = {}, {}
+    task_ids = {t['id'] for t in tasks}
     for order in orders:
         _keys(order, ('machine', 'task_ids'), 'machine order')
         mid = order['machine']
         _require(type(mid) is int and mid not in explicit, 'machine_order', 'invalid/duplicate machine order')
         values = _ids(order['task_ids'], 'machine order IDs')
-        expected = [t['id'] for t in tasks if t['machine'] == mid]
-        _require(set(values) == set(expected), 'machine_order', 'machine order must list exactly its resulting task IDs')
+        _require(set(values) <= task_ids, 'machine_order', 'unknown task in machine order')
+        for tid in values:
+            _require(tid not in assignments, 'machine_order', 'task listed in multiple orders: ' + tid)
+            assignments[tid] = mid
         explicit[mid] = values
-    changed_machines = {t['machine'] for t in added}
-    for tid in replaced:
-        if by_id[tid]['machine'] != replacements[tid]['machine']:
-            changed_machines.update((by_id[tid]['machine'], replacements[tid]['machine']))
-    _require(changed_machines <= set(explicit), 'missing_machine_order', 'additions/moves need explicit full affected-machine order')
+    ops = {o['operation_id']: o for o in problem.get('operations', [])}
+    for task in tasks:
+        tid = task['id']
+        if tid not in retained:
+            _require(isinstance(task, dict) and {'id', 'operation_ids'} <= set(task)
+                     and set(task) <= {'id', 'operation_ids', 'start_mode', 'not_before', 'latest_start'},
+                     'schema', 'model task decisions only')
+            if 'latest_start' in task:
+                check(_number(task['latest_start']), 'latest_start', 'finite latest_start required: ' + tid)
+            oids = _ids(task['operation_ids'], 'task operation IDs')
+            _require(bool(oids), 'ids', 'task operation IDs must not be empty')
+            unknown = [oid for oid in oids if oid not in ops]
+            _require(not unknown, 'unknown_operation', str(unknown))
+            for key, field in [('lot_ids', 'lot_id'), ('steps', 'step'), ('visits', 'visit')]:
+                task[key] = [ops[oid][field] for oid in oids]
+            if tid in replacements:
+                task['machine'] = by_id[tid]['machine']
+            else:
+                _require(tid in assignments, 'missing_machine_order', 'new task must be listed: ' + tid)
+        if tid in assignments:
+            task['machine'] = assignments[tid]
+    for mid, values in explicit.items():
+        _require(set(values) == {t['id'] for t in tasks if t['machine'] == mid},
+                 'machine_order', 'machine order must list exactly its resulting task IDs')
+    changed_machines = {t['machine'] for t in tasks if t['id'] in added_ids}
+    for task in tasks:
+        if task['id'] in by_id and task['machine'] != by_id[task['id']]['machine']:
+            changed_machines.update((task['machine'], by_id[task['id']]['machine']))
+    _require(changed_machines <= set(explicit), 'missing_machine_order', 'new or moved tasks need full affected-machine orders')
     compiled_by_id = {t['id']: t for t in tasks}
     positions = {mid: iter(ids) for mid, ids in explicit.items()}
     tasks = [deepcopy(compiled_by_id[next(positions[t['machine']])]) if t['machine'] in positions else t for t in tasks]
-    header = delta['plan_header']
-    _keys(header, ('version', 'created_at', 'valid_until', 'freeze_until', 'reason', 'scope'), 'plan_header')
-    check(type(header['version']) is str and header['version'] and header['version'] != base_plan['version']
-             and header['created_at'] == now and type(header['reason']) is str and bool(header['reason']), 'header', 'new explicit version/time/reason required')
+    _keys(delta['plan_header'], ('valid_until', 'freeze_until', 'reason'), 'plan_header')
+    header = dict(deepcopy(delta['plan_header']), created_at=now, scope=deepcopy(problem['scope']),
+                  version='v6:' + json_sha256([state_version, submission_id, anchors, delta]))
+    check(type(header['reason']) is str and bool(header['reason']), 'header', 'nonempty reason required')
     machine_rows = problem.get('machines', [])
     _require(isinstance(machine_rows, list) and all(isinstance(m, dict) and type(m.get('machine')) is int
              and type(m.get('family')) is str and m['family'] for m in machine_rows), 'schema', 'observed machines')
@@ -210,9 +223,12 @@ def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha
     base_holds = base_plan.get('holds', [])
     _require(isinstance(base_holds, list) and all(isinstance(h, dict) for h in base_holds), 'schema', 'base holds')
     refs = ['h:' + str(i) for i in range(len(base_holds))]
-    kept_holds, cancelled_holds, replaced_holds = _partition(refs, delta['holds'], all_mode='all_except', replacement_key='ref', label='holds')
+    kept_holds, cancelled_holds, replaced_holds = _partition(refs, delta['holds'], replacement_key='ref', label='holds')
     hold_replacements = {item['ref']: item['hold'] for item in delta['holds']['replace']}
     holds = [deepcopy(base_holds[i] if ref in kept_holds else hold_replacements[ref]) for i, ref in enumerate(refs) if ref in kept_holds or ref in hold_replacements]
+    for hold in list(hold_replacements.values()) + delta['holds']['add']:
+        _require(isinstance(hold, dict) and {'machine', 'until', 'reason'} <= set(hold)
+                 and set(hold) <= {'machine', 'until', 'reason', 'after_task_id'}, 'schema', 'hold decisions only')
     holds += deepcopy(delta['holds']['add'])
     plan = {**deepcopy(header), 'tasks': tasks, 'holds': holds}
     from .normalize import validate_plan
@@ -222,12 +238,12 @@ def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha
     evidence = {'schema': SCHEMA + '-evidence', 'anchors': anchors, 'delta_sha256': json_sha256(delta),
         'compiled_plan_sha256': json_sha256(plan), 'physically_dispatched_excluded_ids': dispatched,
         'cancelled_task_ids': cancelled, 'replaced_task_ids': replaced, 'added_task_ids': added_ids,
-        'task_sources': [{'id': t['id'], 'source': 'base_exact' if t['id'] in retained else 'explicit_replace' if t['id'] in replacements else 'explicit_add',
+        'task_sources': [{'id': t['id'], 'source': 'base_move' if t['id'] in retained and t['machine'] != by_id[t['id']]['machine'] else 'base_exact' if t['id'] in retained else 'explicit_replace' if t['id'] in replacements else 'explicit_add',
                           'task_sha256': json_sha256(t)} for t in tasks],
         'hold_sources': [{'ref': ref, 'source': 'base_exact' if ref in kept_holds else 'explicit_replace'} for ref in refs if ref in kept_holds or ref in hold_replacements]
                         + [{'add_index': i, 'source': 'explicit_add'} for i in range(len(delta['holds']['add']))],
         'cancelled_hold_refs': cancelled_holds, 'replaced_hold_refs': replaced_holds,
-        'explicit_machine_orders': deepcopy(orders), 'order_policy': delta['order_policy'],
+        'explicit_machine_orders': deepcopy(orders), 'order_policy': ORDER_POLICY,
         'preserved_frozen_prefixes': frozen_prefixes,
         'common_commit_validation_required': True, 'independent_physical_and_source_audit_required': True,
         'model_attribution_certified': False,
@@ -235,12 +251,12 @@ def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha
     return {'plan': plan, 'evidence': evidence}
 
 
-def validate_plan_delta(base_plan, problem, execution_state, delta, *, source_sha256):
+def validate_plan_delta(base_plan, problem, execution_state, delta, *, source_sha256, state_version=None, submission_id=None):
     """Read-only diagnostics. Structural dependency failures block compilation;
     a structurally compilable plan returns all independent constraint failures.
     """
     try:
-        compile_plan_delta(base_plan, problem, execution_state, delta, source_sha256=source_sha256)
+        compile_plan_delta(base_plan, problem, execution_state, delta, source_sha256=source_sha256, state_version=state_version, submission_id=submission_id)
     except DeltaError as exc:
         return exc.violations
     return []

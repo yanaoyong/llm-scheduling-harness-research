@@ -111,8 +111,8 @@ def test_lower_bound_stale_collecting_precheck():
     assert [e['code'] for e in s.submit_plan(1,'x',d)['violations']]==['valid_until_lower_bound','physics']
 
 
-def test_defaults_and_detachment():
-    f=SyntheticFactory();d=scripted_delta(f,1);del d['tasks']['keep'];del d['holds']
+def test_implicit_retention_and_detachment():
+    f=SyntheticFactory();d=scripted_delta(f,1)
     s=submitter(f);r=s.submit_plan(1,'x',d);assert r['accepted']
     r['coverage']['uncovered_operation_ids'].append('tamper')
     assert 'tamper' not in s.submit_plan(1,'x',d)['coverage']['uncovered_operation_ids']

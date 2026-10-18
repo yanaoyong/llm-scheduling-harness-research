@@ -160,7 +160,7 @@ source_sha256 和可选 delta_seconds。真实工厂还必须提供 private_stat
 capture JSON），用于副本预检。输入目录只读；每周期使用全新的输出目录。
 
 `mcp_server.py` 是逐行 JSON-RPC 2.0 stdio 服务，支持 initialize、tools/list、tools/call。
-四个工具为 read_entities、validate_plan、submit_plan、get_decision_snapshot；不排序候选，
+三个工具为 read_entities、validate_plan、submit_plan；不排序候选，
 不写 Store。线程锁串行化所有调用；mcp.jsonl 逐条 fsync 并连接哈希；submission.json
 独占创建。validate_plan 只修改克隆，成功 submit 也只是暂存。
 
@@ -291,9 +291,89 @@ Phase F 修复：过期条件 hold 不要求已消失的锚任务；冻结 when_
 计失败并前进；无 inflight 时重放最近段检查点之后的周期，已有目录改名为 cycle-N.abandoned-k。
 检查点链清单保留 segment/file/SHA256/前驱 SHA256，latest 校验清单及一个最新完整文件；仅保留最新两个完整文件。
 完成周期删除 private.json；段边界把周期目录压成一个 gzip tar，SHA256 清单持久化后才删除原目录。
-LiveRun 必须显式传入 snapshot_token_budget 和 token_counter，独立于每会话预算；Mac 使用 o200k_base。
+LiveRun 必须显式传入 context_token_budget、request_overhead_tokens、output_reserve_tokens 和 token_counter；Mac 使用 o200k_base。闸门检查 snapshot_tokens + request_overhead_tokens + output_reserve_tokens ≤ context_token_budget，独立于会话累计成本预算。
 账本检查点单独保存 hold 索引，不向模型可见 hold 增加 id。
 
 用户批准：hold 期间只计 explicit_wait_idle，不触发。到期后恢复 avoidable_idle 匹配；
 未激活条件 hold 不阻止匹配。指标积分 `explicit_wait_idle_seconds` 单独计费。
 完整快照为唯一接口，分层/分区仍待用户决定。
+
+
+## Phase L：紧凑快照与上下文边界
+
+快照只通过 prompt 交付一次；重复快照工具已删除。`snapshot.decode_snapshot(payload)`
+返回原 canonical prefix/current 对象。`SNAPSHOT_V1` 静态前缀在前，`CURRENT` 动态状态在后，
+同一静态输入跨周期逐字节稳定。工艺路线共享工步定义表，机器静态属性分组并列出 ID 区间；
+就绪工序按组批/资格/可用机组集合分组，每个 operation ID 均保留。完整机组族直接引用族名，
+其余集合使用独立表；机组动态表从静态表恢复 family/cascading，availability_basis 只写一次。
+任务、hold、失效、作业、机会和回执使用一次表头；嵌套值仍完整保留。格式说明在 V6_RULES。
+
+所有值明确写出，`!` 表示缺失字段，`null` 表示 None，空字符串为 `""`，布尔值为 true/false。
+没有空格默认值或 `=` 简写。整数/浮点类型保持；唯一归一化是浮点数 10 位有效数字，
+验收相对误差 ≤1e-9，非浮点精确比较。规范对象的就绪行按 operation_id、动态机器按 machine、静态机器按 id 排序；不携带位置元数据。完整且已排序的族列表使用 [family,name]，其他 eligible 列表使用 [set,id] 保留原顺序。
+未改变 submit/task 格式、任务选择或模型可见内容；release_time 仍显式保留。
+
+validate_plan / submit_plan 内部收集全部违规，回执最多返回 50 条并提供 violation_count、
+counts_by_code、truncated；接受条件不变。read_entities 的 ids 超过 512 时明确拒绝，不截断。
+整次请求预算超限时不启动 Runner，写入 budget_report.json 并持久化停止原因及各项 token。
+合成绑定的 overhead/reserve 显式为 0；生产值必须用 Mac F6 探针测量和登记。
+
+复现实测（沿用上文 fixture / PYTHONPATH / TIKTOKEN_CACHE_DIR）：
+
+```bash
+python3 scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --output /tmp/compact-snapshot-tokens.json
+python3 -m pytest -q tests/test_compact.py tests/test_mac_snapshot.py tests/test_sealed_contexts.py
+```
+
+最新旧/新 token 表与验证结果见 `reports/compact_snapshot_validation_20261018.md`。
+这是表示和机制验证，不代表模型理解准确率或生产排程质量；该项仍待 Mac 探针验证。
+
+### Phase M：仅传决策的提交格式
+
+`validate_plan` 与 `submit_plan` 的 `delta` 共用完整 JSON Schema；single_action
+的 `--output-schema` 也来自同一份定义（`delta_schema.py`）。外层仍为
+`expected_state_version`、`submission_id`、`delta`；`{}` 表示显式不改计划。
+非空 delta 必须包含四项：
+
+- `plan_header`：模型仅决定 `valid_until`、`freeze_until`、`reason`。
+- `tasks`、`holds`：均为 `{cancel_ids, replace, add}`，未取消或替换的项自动保留。
+  hold 的替换项为 `{ref:"h:0", hold:{machine,until,reason,after_task_id?}}`。
+- `machine_orders`：`[{machine,task_ids}]` 同时指定机台和完整队列；新增任务必须恰好
+  出现一次。未列出的替换任务继承原机台与队列位置；取消无需提供队列，剩余相对顺序不变。
+  保留或替换任务列在另一机台即移动，源与目标机台均须给完整队列（空源队列也须 `[]`）。
+  新增任务的接收机台须给完整队列；任何显式给出的队列均须完整。
+
+任务只传 `id`、`operation_ids` 及可选 `start_mode`、`not_before`、`latest_start`。
+编译器从当前 observation 展开 `lot_ids/steps/visits`，从显式队列或原任务继承 `machine`；
+内部计划、执行器、物理适配器、账本、存储结构不变。默认 `when_ready`；过去的硬下界原样保留。
+快照中的 pending/invalid task 使用上述投影，独立 `machine_orders` 保留排队信息。
+
+模型不再传 `schema`、`order_policy`、`anchors`、`keep`，也不传 header 的
+`created_at/scope/version`。host 设置 now、当前 scope，版本是 state_version、
+submission_id、权威 anchors 和 delta 的确定性 SHA256；四项 anchors 留在 receipt/evidence。
+因此新旧物理计划的生产字段可逐项相等，但版本字符串及包含版本的审计哈希会改变。
+完整小例子见 `prompt_rules.py`；离线 token 对比命令见 MAC_VALIDATION 的 Phase M 条目。
+
+
+## Phase N：explicit / dense 快照 A/B
+
+登记表必须填写 `snapshot_format: "explicit" | "dense"`，模板为 explicit。
+将登记值同时传入 `stable_prefix(..., snapshot_format=...)` 和
+`LiveRun(..., snapshot_format=...)`；后者传给 `build_snapshot`，格式与前缀不符会拒绝。
+检查点保存格式，恢复时拒绝格式变化。旧纯函数调用默认 explicit。
+第一行分别为 SNAPSHOT_V1 / SNAPSHOT_V1_DENSE，decode_snapshot 自动识别。
+生产任务、物理语义和信息覆盖不变；格式说明文字按格式不同，其余规范对象一致。
+
+Dense 表头声明 defaults 和 equals；空单元格为声明默认值，! 为缺字段，null 为 None。
+默认值取规范化后整列众数（含类型），并列按编码字典序。
+逐列试算完整表（含表头）token 数，仅严格减少时采用。
+cadence 的 = 引用 processing；processing_until 的 = 引用 [available_at]。
+字符串仅在无歧义时裸写；嵌套对象仍是 JSON/分布编码。
+release_time 等于 time 且类型相同时省略，由 $release_time_is_time 声明恢复；真正缺字段仍缺。
+原有工步去重、family/set、ID 范围、10 位浮点及规范排序保留。
+
+实测/正式 Mac 调用须向 stable_prefix 与 build_snapshot/LiveRun 传入同一个
+`tiktoken_counter('o200k_base')`。纯 stdlib 合成测试使用确定性估计器，不能证明真实
+模型 token 节省；相同输入和同一计数器保证字节稳定，不能跨计数器比较前缀哈希。
+计数器是既有预算计量依赖，不是新增实验变量；新增变量仅 snapshot_format。
+Dense 扩展 legend 仅 dense 包含。默认值只依赖所属表，静态表不依赖当前周期。

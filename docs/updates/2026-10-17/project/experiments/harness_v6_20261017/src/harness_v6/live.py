@@ -20,9 +20,21 @@ from . import session, single_action
 
 class LiveRun:
     def __init__(self, factory, runner, *, directory, prefix, source_sha256,
-                 snapshot_token_budget, token_counter, config=None, drift_rule=None, model='scripted', budget=session.Budget(), model_note=''):
+                 context_token_budget, request_overhead_tokens, output_reserve_tokens, token_counter, config=None, drift_rule=None, model='scripted', budget=session.Budget(), model_note='', snapshot_format='explicit'):
+        from .compact import check_format
+        self.snapshot_format = check_format(snapshot_format)
+        magic = b"SNAPSHOT_V1_DENSE\n" if snapshot_format == "dense" else b"SNAPSHOT_V1\n"
+        if not prefix.startswith(magic):
+            raise ValueError("snapshot_format does not match prefix")
         self.factory, self.runner = factory, runner
-        self.snapshot_token_budget, self.token_counter = snapshot_token_budget, token_counter
+        self.context_token_budget = context_token_budget
+        self.request_overhead_tokens = request_overhead_tokens
+        self.output_reserve_tokens = output_reserve_tokens
+        self.token_counter = token_counter
+        if any(type(v) is not int or v < 0 for v in
+               (context_token_budget, request_overhead_tokens, output_reserve_tokens)):
+            raise ValueError('context budget, overhead and reserve must be nonnegative integers')
+        self.budget_report = None
         self.directory = Path(directory)
         self.store = CheckpointStore(self.directory / 'checkpoints')
         self.prefix, self.source_sha256 = prefix, source_sha256
@@ -54,12 +66,17 @@ class LiveRun:
                          valid_until=f.plan['valid_until'] if f.plan else None, event=event)
         if record['session']:
             try:
-                payload = build_snapshot(self.prefix, ledger, state_version=c.cycles,
+                payload = build_snapshot(self.prefix, ledger, snapshot_format=self.snapshot_format, state_version=c.cycles,
                     running_jobs=f.running_jobs(), last_cycle_receipt=c.last_record,
-                    model_notes=self.model_note, token_budget=self.snapshot_token_budget, token_counter=self.token_counter, history=self.history)
-            except SnapshotBudgetExceeded:
+                    model_notes=self.model_note, token_budget=self.context_token_budget - self.request_overhead_tokens - self.output_reserve_tokens, token_counter=self.token_counter, history=self.history)
+            except SnapshotBudgetExceeded as exc:
+                self.budget_report = dict(exc.report, code='context_budget_exceeded',
+                    snapshot_tokens=exc.report['tokens'], request_overhead_tokens=self.request_overhead_tokens,
+                    output_reserve_tokens=self.output_reserve_tokens, context_token_budget=self.context_token_budget,
+                    request_tokens=exc.report['tokens'] + self.request_overhead_tokens + self.output_reserve_tokens)
+                atomic_write(self.directory / 'budget_report.json', canonical(self.budget_report))
                 c.finish(submitted=False, model_note=self.model_note)
-                c.stop_reason = 'snapshot_budget_exceeded'
+                c.stop_reason = 'context_budget_exceeded'
                 self.checkpoint(self.store)
                 return record
             self.max_snapshot_bytes = max(self.max_snapshot_bytes, len(payload))
@@ -133,7 +150,7 @@ class LiveRun:
 
     def capture(self):
         return {'factory': self.factory.capture(), 'cycle': self.cycle.capture(), 'metrics': self.metrics.capture(),
-                'history': self.history.digest, 'max_snapshot_bytes': self.max_snapshot_bytes,
+                'snapshot_format': self.snapshot_format, 'history': self.history.digest, 'budget_report': self.budget_report, 'max_snapshot_bytes': self.max_snapshot_bytes,
                 'min_snapshot_bytes': self.min_snapshot_bytes, 'last_hour': self.last_hour,
                 'drift': None if not self.drift else {'limits': self.drift.rule.limits,
                     'consecutive_hours': self.drift.rule.consecutive_hours, 'streak': self.drift.streak,
@@ -148,6 +165,9 @@ class LiveRun:
     def recover(self):
         payload = self.store.recover()
         state = payload['extra']
+        if state.get('snapshot_format', 'explicit') != self.snapshot_format:
+            raise ValueError('checkpoint snapshot_format mismatch')
+        self.budget_report = state.get('budget_report')
         self.factory = self.factory.restore(payload['state'])
         self.cycle = CycleMachine.restore(payload['cycle'])
         self.metrics = Metrics.restore(state['metrics'])

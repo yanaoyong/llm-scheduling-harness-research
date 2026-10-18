@@ -46,7 +46,7 @@ def test_drift_injection():
         run.step(injected_usage=100 if i<60 else 1000)
         if run.cycle.stop_reason:break
     assert run.cycle.stop_reason=='drift' and run.last_hour==2
-    assert run.metrics.report()[0]['input_per_request']==25
+    assert run.metrics.report()[0]['input_per_request']==100/3
 
 
 def test_breakdown():

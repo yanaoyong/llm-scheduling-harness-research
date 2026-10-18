@@ -109,3 +109,55 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
 无 in-flight 时从段检查点重放，冲突周期目录保留为 abandoned 证据。
 MCP tool_calls 只取 mcp.jsonl 行数；JSONL 轮次独立记录，证据不一致时仍记失败成本。
 审计复用 audit_ledger 同一贪心策略的参考实现，不再保留第三份 audit_idle。
+
+
+## Phase L（2026-10-18，用户批准）
+
+- 只改变快照表示：无损共享工步定义/路线序列、静态机器分组/范围、就绪工序分组/机组族引用、动态一次表头；静态前缀始终在前。所有内容可还原；就绪行按 operation_id、动态机器按 machine、静态机器按 id 规范排序，不保存位置元数据；[family,name] 仅用于完整且已排序的族列表，其余 [set,id] 保留 eligible 原序，不改变 submit/task schema。
+- 唯一数值归一化：float 保留 10 位有效数字，解码相对误差 ≤1e-9；非浮点精确、int/float 类型保持。无隐式默认、无同值 `=`；缺失字段 `!` 与 None `null` 明确区分。
+- 删除重复快照工具；完整快照只作为 prompt 提供。ScriptedRunner 每会话 validate/submit 两次工具调用，请求数下界由 4 变 3。
+- 回执违规详情上限 50，额外报告总数、按码计数和 truncated；内部完整验证/接受语义不变。read_entities ids >512 明确拒绝。
+- LiveRun 必填 context_token_budget、request_overhead_tokens、output_reserve_tokens；快照 + 系统/工具开销 + 输出/推理预留 ≤ 总上下文预算，超限失败关闭并写出每项。移除旧的仅快照预算参数。
+- 无模型调用、网络、提交；配置环境验证沿用 F–K 已授权的公开/封存夹具。真实理解准确率、F6 系统提示/工具开销和生产 reserve 登记仍在 Mac 上完成。
+
+### Phase M（用户批准：仅决策的 delta）
+
+- 删除模型任务的 `lot_ids/steps/visits`：`operation_ids` 已唯一决定当前工序身份；
+  编译器查 observation，不接受模型重复或矛盾声明。保留内部身份一致性校验。
+- 删除模型 `anchors`：状态绑定使用外层 `expected_state_version`；host 仍计算并保存四项哈希。
+- 删除 task/hold patch 的 `keep.mode/keep.ids`：仅取消列表和替换/新增，未提及者保留。
+- 删除 `schema/order_policy`：协议常量由 host 定义；删除 header 的
+  `created_at/scope/version`：分别由 now、责任范围、确定性状态/提交/输入哈希生成。
+  模型 header 决策仅 `valid_until/freeze_until/reason`。
+- 删除模型任务的 `machine`：新增或显式移动由 `machine_orders` 决定，同时表达队列顺序。
+  Phase M2 修订：新增必须列一次；未列出的替换继承原机台与位置；取消无需队列，稳定删除。
+  保留或替换任务列于另一机台即移动，源与目标均须完整队列（包括空源队列）。
+  完整队列仅在新增接收机台及移动两端强制要求；可选显式重排仍须给完整队列。
+- 快照任务投影同步删除这些字段，新增 `machine_orders` 保留任务分配信息；内部结构不变。
+- 完整 schema 由 MCP 两工具和 single_action 共享；拒绝旧字段，不提供兼容 shim 或格式开关。
+- 新旧版本字符串及依赖版本的哈希不应要求字节相同；物理、任务身份/分配/队列/时间、holds
+  和恢复结果必须相同。仅生产字段等价，不能把版本元数据变化误报为物理差异。
+
+
+## Phase N：explicit / dense 快照 A/B
+
+登记表必须填写 `snapshot_format: "explicit" | "dense"`，模板为 explicit。
+将登记值同时传入 `stable_prefix(..., snapshot_format=...)` 和
+`LiveRun(..., snapshot_format=...)`；后者传给 `build_snapshot`，格式与前缀不符会拒绝。
+检查点保存格式，恢复时拒绝格式变化。旧纯函数调用默认 explicit。
+第一行分别为 SNAPSHOT_V1 / SNAPSHOT_V1_DENSE，decode_snapshot 自动识别。
+生产任务、物理语义和信息覆盖不变；格式说明文字按格式不同，其余规范对象一致。
+
+Dense 表头声明 defaults 和 equals；空单元格为声明默认值，! 为缺字段，null 为 None。
+默认值取规范化后整列众数（含类型），并列按编码字典序。
+逐列试算完整表（含表头）token 数，仅严格减少时采用。
+cadence 的 = 引用 processing；processing_until 的 = 引用 [available_at]。
+字符串仅在无歧义时裸写；嵌套对象仍是 JSON/分布编码。
+release_time 等于 time 且类型相同时省略，由 $release_time_is_time 声明恢复；真正缺字段仍缺。
+原有工步去重、family/set、ID 范围、10 位浮点及规范排序保留。
+
+实测/正式 Mac 调用须向 stable_prefix 与 build_snapshot/LiveRun 传入同一个
+`tiktoken_counter('o200k_base')`。纯 stdlib 合成测试使用确定性估计器，不能证明真实
+模型 token 节省；相同输入和同一计数器保证字节稳定，不能跨计数器比较前缀哈希。
+计数器是既有预算计量依赖，不是新增实验变量；新增变量仅 snapshot_format。
+Dense 扩展 legend 仅 dense 包含。默认值只依赖所属表，静态表不依赖当前周期。

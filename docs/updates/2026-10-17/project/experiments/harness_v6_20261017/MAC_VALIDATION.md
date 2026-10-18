@@ -330,7 +330,77 @@ M1(d) 三组均通过，完整 token 仍为 756359。最终完整配置 suite �
 ## Phase J
 
 沿用上述配置运行 `python -m pytest -q tests/test_live.py::test_mac_live_p2_three_cycles`：
-必须显式使用 snapshot_token_budget=10**8、tiktoken_counter('o200k_base')，三次提交通过私有物理预检；完成后 private.json 不存在。
+必须显式使用 context_token_budget=10**8、request_overhead_tokens=0、output_reserve_tokens=0（仅脚本测试）、tiktoken_counter('o200k_base')，三次提交通过私有物理预检；完成后 private.json 不存在。
 纯合成 `python3 -m pytest -q tests/test_checkpoint_segments.py tests/test_synthetic_long_run.py --durations=10`：
 1,200 周期不缩减；检查点最多两个、latest 仅读一个完整文件，链篡改失败；段后两周期恢复保留 abandoned 目录且终态一致。
 测试以 /dev/shm 为合成 LiveRun 临时目录，缺失时回退 tmp_path；物理测试仍用磁盘，避免 64MB tmpfs 容量不足。
+
+
+## Phase L / M3 紧凑表示（2026-10-18）
+
+沿用 Phase J 的 PYTHONPATH、TIKTOKEN_CACHE_DIR、V6_MAC_FIXTURE、V6_SEALED_DB、V6_SEALED_SELECT，
+V6_CLASSIFICATION_REPORT 指向新的 classification-l-final.json。最终结果见
+`reports/compact_snapshot_validation_20261018.md`；前文 756359 / 563837 为历史 raw JSON 测量。
+
+```bash
+python3 -m pytest -q
+python3 scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2
+python3 scripts/run_public_physics.py --fixture "$V6_MAC_FIXTURE" --group P2 --until 1603.10 --output /workspace/v6-mac-env/work/phase-l-p2.json
+python3 scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --output /workspace/v6-mac-env/work/compact-l-tokens.json
+```
+
+通过标准：manifest routes/machines、G0 t=1649.82 的全部字段/类型往返一致（float 相对 1e-9）；
+26 accounted = 23 pending + 3 traced running；907 jobs、1011 ready、全部机器/hold 完整；
+10/15/4 旧分类、两个封存异常和 128 个物理事件回放不变。输出 o200k_base 的实际静态/动态/总 token，
+不得为满足估计值省略信息。使用新格式总数减 1 的预算必须失败关闭。
+
+### F6 新项目：whole_request_overhead（仍待 Mac 证据，不在本阶段运行 Codex）
+
+使用现有本地模拟 Responses 服务/固定 Codex 版本录制请求，保留系统提示、三个工具 schema、
+完整快照、工具结果和 token 计数；禁止借重复快照工具补取内容。使用 pinned o200k_base 分别测量
+系统提示/工具协议开销（request_overhead_tokens）及完整请求。登记 context_token_budget 和覆盖
+输出+推理的 output_reserve_tokens；后续轮次工具结果增长也必须纳入开销保守上界。
+验收：所有录制请求的实际非快照输入 ≤登记 overhead，完整输入 + reserve ≤ context budget；
+多 1 token 的边界在启动 Runner 前停止，budget_report.json 各项可核对；不发生隐式压缩。
+模型理解紧凑表的准确率还需单独验证，不由解码往返替代。
+
+已有证据检查命令：`python3 -m pytest -q tests/test_mac_session.py`。
+新增预算边界命令：`python3 -m pytest -q tests/test_compact.py -k whole_request_budget`。
+F6 新测量须与九项已有 probe 一起人工核验并保存报告；此阶段只执行合成边界测试，
+未提供真实 Codex 请求证据，不将该项标为通过。
+
+## Phase M：决策 delta 的离线验收
+
+在 V6 目录，使用既有配置环境，不调用模型：
+
+```bash
+PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/measure_model_delta.py --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --output /workspace/v6-mac-env/work/model-m-tokens.json
+PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2
+PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/run_public_physics.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --group P2 --until 1603.10 --output /workspace/v6-mac-env/work/phase-m-p2.json
+```
+
+通过条件：scripted 和完整 26-task G0 base 的新旧 o200k token 可重复报告；新版更小。
+G0 快照投影精确 round-trip，所有任务 ID 和 machine_orders 保留。sealed 分类和 replay 不变。
+P2 16 sessions、232 steps、878 dispatches、恢复相等、全部任务生产字段及物理事件不变；
+仅快照表示、host 生成的版本字符串和依赖版本的哈希允许变化，必须逐项说明。
+完整 configured suite 使用 Phase J 的环境变量，分类输出改为 `classification-m-final.json`。
+仍待真实 Mac/Codex 验证：模型能否读懂完整 schema/小例子、single_action 接受同一 schema；
+既有 F6 12 项探针未获新的运行授权，不能把离线结果写成 live-model 成功。
+
+
+## Phase N：双格式与理解准确率
+
+离线设置沿用 Phase J（PYTHONPATH、TIKTOKEN_CACHE_DIR、V6_MAC_FIXTURE、V6_SEALED_DB）。
+命令：`python -m pytest -q tests/test_mac_snapshot.py tests/test_dense.py tests/test_compact.py`。
+通过标准：真实 manifest 和 G0 t=1649.82 两种格式还原相同规范生产对象，类型及覆盖一致，
+两种前缀各自跨周期字节稳定；只有格式 legend 不同。
+`python scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --output /tmp/phase-n-tokens.json`
+使用 o200k_base 计数；输出 explicit/dense 工艺、静态机组、ready、动态机组、运行作业、其余、legend、总数。
+默认选择以同一计数器的完整表 token 严格减少为准，不能使用字符估计器宣称真实收益。
+
+待独立授权的模型理解 A/B：固定同一组状态和工具、模型、预算；仅更换登记 snapshot_format。
+两种格式询问同一题集：指定工序的完整合格机组集合；batch_min/max 与可组批判断；
+队首任务、设备可用时刻、正在加工/待执行区分；缺字段/null/空串与默认值解释。
+从规范解码对象建立标准答案，报告逐题正确率、按题型正确率、全请求 token、请求数；
+顺序随机或交叉平衡，并报告重复次数。不得仅凭压缩率宣称理解能力等价。
+本阶段只执行离线检查，不调用模型。CQT/Q-time 仍未实现。

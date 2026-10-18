@@ -1,4 +1,6 @@
 """Scripted physical mechanism driver; no model/transport/experimental costs."""
+from harness_v6.delta_schema import model_task
+from harness_v6.snapshot import decode_snapshot
 import argparse
 import gzip
 from functools import lru_cache
@@ -14,7 +16,7 @@ from harness_v6.groups import config_for
 from harness_v6.ledger import ledger_read_view, choose_batch
 from harness_v6.audit_v6 import audit_opportunity_coverage, audit_plan_sources
 from harness_v6.snapshot import stable_prefix, build_snapshot, tiktoken_counter
-from harness_v6.plan_delta import SCHEMA, STATE_SCHEMA, ORDER_POLICY, anchor_hashes
+from harness_v6.plan_delta import STATE_SCHEMA
 from harness_v6.submit import Submitter
 from harness_v6.checkpoint import capture_ledger, restore_ledger
 
@@ -45,8 +47,8 @@ def step(env, cycle, rows, prefix, counter, stop, event=None, evidence_path=None
         phase='processing' if jid in env.processing_by_machine[j['machine']] else 'transport')
         for jid,j in sorted(env.jobs.items()) if not j['done']],
         last_cycle_receipt=cycle.last_record,model_notes=LABEL,token_budget=10**8,token_counter=counter)
-    current=json.loads(payload.split(b'\n',1)[1])
-    rows.append(dict(time=env.t,tokens=counter(payload.decode()),prefix_tokens=counter(prefix.decode()),current_tokens=counter(payload.split(b'\n',1)[1].decode()),bytes=len(payload),pending_tasks=len(current['pending_tasks']),
+    current=decode_snapshot(payload)[1]
+    rows.append(dict(time=env.t,tokens=counter(payload.decode()),prefix_tokens=counter(prefix.decode()),current_tokens=counter(payload[len(prefix):].decode()),bytes=len(payload),pending_tasks=len(current['pending_tasks']),
         unreserved_ready=len(current['unreserved_ready']),wip=sum(l['status'] not in ('done','unreleased') for l in env.lots.values()),session=record['session']))
     if record['session']:
         plan=scripted_plan(env,f'{cycle.config.trigger}-{cycle.cycles}')
@@ -54,10 +56,12 @@ def step(env, cycle, rows, prefix, counter, stop, event=None, evidence_path=None
         state=dict(schema=STATE_SCHEMA,time=env.t,observation_end=env.horizon,base_plan_version=base['version'],
             dispatched_task_ids=sorted(t for v,t in env.executed_tasks if v==base['version']),invalidated_task_ids=sorted(env.invalidated_task_ids))
         cancel=[t['id'] for t in base['tasks'] if t['id'] not in state['dispatched_task_ids']]
-        delta=dict(schema=SCHEMA,anchors=anchor_hashes(base,problem,state,source_sha256=SOURCE),order_policy=ORDER_POLICY,
-            plan_header={k:v for k,v in plan.items() if k not in ('tasks','holds')},
-            tasks=dict(keep=dict(mode='all_pending_except',ids=cancel),cancel_ids=cancel,replace=[],add=plan['tasks']),
-            machine_orders=[dict(machine=t['machine'],task_ids=[t['id']]) for t in plan['tasks']])
+        delta=dict(
+            plan_header={k:v for k,v in plan.items() if k in ('valid_until','freeze_until','reason')},
+            tasks=dict(cancel_ids=cancel,replace=[],add=[model_task(t) for t in plan['tasks']]),
+            holds=dict(cancel_ids=[],replace=[],add=[]),
+            machine_orders=[dict(machine=m,task_ids=[t['id'] for t in plan['tasks'] if t['machine']==m])
+                for m in sorted({t['machine'] for t in plan['tasks']+base['tasks']})])
         def precheck(candidate,*_):
             prepare(env,candidate);return []
         submit=Submitter(base,problem,state,state_version=cycle.cycles,next_anchor=cycle.anchor,
@@ -101,7 +105,7 @@ def run(bundle,group,stop,delta,breakdowns,output):
     begin=time.perf_counter();b=json.loads(Path(bundle).read_text());f=b['public_702']
     env=restore(f['state'],f['trace'],data_dir=b['data_dir']);env.breakdowns=breakdowns
     cycle=CycleMachine(origin=env.t,config=config_for(group,CycleConfig(delta=delta,breakdowns=breakdowns)))
-    prefix=stable_prefix(tool_descriptions=['read_entities','validate_plan','submit_plan','get_decision_snapshot'],
+    prefix=stable_prefix(tool_descriptions=['read_entities','validate_plan','submit_plan'],
         routing=env.manifest['routes'],machine_groups=env.manifest['machines'])
     counter=lru_cache(maxsize=4)(tiktoken_counter());rows=[];steps=0;integrals={};checkpoint=None;event=None
     while env.t<stop:

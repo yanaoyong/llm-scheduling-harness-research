@@ -9,11 +9,18 @@ from .contracts import encode, digest, strict_json
 from .facts import FactReader, reconstruct
 from .submit import Submitter
 
+from .delta_schema import DELTA_SCHEMA
+
+TOOL_DESCRIPTIONS = {
+    "read_entities": "Read authoritative frozen entities by IDs or paginated filters (up to 512 IDs).",
+    "validate_plan": "Validate decision delta without adoption; returns all violation counts and up to 50 details.",
+    "submit_plan": "Atomically accept one state-bound decision delta; adoption requires successful session exit.",
+}
+
 TOOLS = {
     'read_entities': {'type':'object','properties':{'kind':{'type':'string'}, 'ids':{'type':'array'}, 'cursor':{'type':['string','null']}, 'count':{'type':'integer'}, 'fields':{'type':'array'}, 'where':{'type':'array'}},'required':['kind']},
-    'validate_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':{'type':'object'}},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
-    'submit_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':{'type':'object'}},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
-    'get_decision_snapshot': {'type':'object','properties':{},'additionalProperties':False},
+    'validate_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':DELTA_SCHEMA},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
+    'submit_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':DELTA_SCHEMA},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
 }
 
 class CycleServer:
@@ -27,7 +34,6 @@ class CycleServer:
         self.records=[]
         self.max_tool_calls=max_tool_calls
         payload=strict_json((self.input_dir/'cycle.json').read_bytes())
-        self.snapshot=payload['snapshot']
         problem, base = reconstruct(payload['facts'])
         self.reader=FactReader(payload['context_ref'],payload['facts'])
         if payload.get('private_state'):
@@ -48,9 +54,6 @@ class CycleServer:
             try:
                 if len(self.records)>=self.max_tool_calls: raise ValueError('tool_budget')
                 if name=='read_entities': result=self.reader.read(arguments)
-                elif name=='get_decision_snapshot':
-                    if arguments: raise ValueError('unexpected arguments')
-                    result=deepcopy(self.snapshot)
                 elif name in ('validate_plan','submit_plan'):
                     target=self.submitter if name=='submit_plan' else Submitter.restore(self.submitter.capture(),physical_precheck=self.submitter.physical_precheck)
                     result=target.submit_plan(**arguments)
@@ -75,7 +78,7 @@ class CycleServer:
         if method=='notifications/initialized': return None
         try:
             if method=='initialize': result={'protocolVersion':request.get('params',{}).get('protocolVersion','2024-11-05'),'capabilities':{'tools':{}},'serverInfo':{'name':'harness_v6','version':'1'}}
-            elif method=='tools/list': result={'tools':[{'name':n,'description':n,'inputSchema':s} for n,s in TOOLS.items()]}
+            elif method=='tools/list': result={'tools':[{'name':n,'description':TOOL_DESCRIPTIONS[n],'inputSchema':s} for n,s in TOOLS.items()]}
             elif method=='tools/call':
                 p=request['params'];value=self.call(p['name'],p.get('arguments',{}))
                 result={'content':[{'type':'text','text':encode(value).decode()}],'isError':bool(value.get('isError',False))}

@@ -1,4 +1,5 @@
 from copy import deepcopy
+from harness_v6.delta_schema import model_task
 import pytest
 from harness_v6.normalize import normalize_plan, validate_plan, active_holds
 from harness_v6.plan_delta import DeltaError, validate_plan_delta
@@ -14,22 +15,22 @@ def case():
 def test_frozen_invalid_cancel_keeps_surviving_prefix(case):
     case.base['freeze_until']=20;case.delta['plan_header']['freeze_until']=20
     case.state['invalidated_task_ids']=['z']
-    case.delta['tasks']['keep']['ids']=['z'];case.delta['tasks']['cancel_ids']=['z'];case.bind()
+    case.delta['tasks']['cancel_ids']=['z'];case.delta['machine_orders']=[{'machine':1,'task_ids':['a']}]
     result=case.compile()
     assert [t['id'] for t in result['plan']['tasks']]==['c','a']
     assert result['evidence']['preserved_frozen_prefixes'][0]['task_ids']==['a']
-    case.state.pop('invalidated_task_ids');case.bind()
+    case.state.pop('invalidated_task_ids')
     with pytest.raises(DeltaError,match='frozen_task'):case.compile()
 
 def test_invalid_frozen_cannot_rewrite(case):
     case.base['freeze_until']=20;case.delta['plan_header']['freeze_until']=20
-    case.state['invalidated_task_ids']=['z'];case.delta['tasks']['keep']['ids']=['z']
-    replacement=deepcopy(case.base['tasks'][1]);replacement['not_before']=13
-    case.delta['tasks']['replace']=[replacement];case.bind()
+    case.state['invalidated_task_ids']=['z'];
+    replacement=model_task(case.base['tasks'][1]);replacement['not_before']=13
+    case.delta['tasks']['replace']=[replacement];case.delta['machine_orders']=[{'machine':1,'task_ids':['z','a']}]
     with pytest.raises(DeltaError,match='frozen_task'):case.compile()
 
 def test_invalid_receipts_are_host_bound(case):
-    case.state['invalidated_task_ids']=['alien'];case.bind()
+    case.state['invalidated_task_ids']=['alien']
     with pytest.raises(DeltaError,match='base_state'):case.compile()
 
 @pytest.mark.parametrize('mode',[None,'when_ready','not_before'])
@@ -37,19 +38,19 @@ def test_optional_lower_bound_and_implicit_mode_preserve_bytes(case,mode):
     for t in case.base['tasks']:
         t.pop('not_before')
         if mode is not None:t['start_mode']=mode
-    case.bind();result=case.compile()
+    result=case.compile()
     assert result['plan']['tasks']==case.base['tasks'][1:]
     assert normalize_plan(normalize_plan(result['plan']))==result['plan']
 
 @pytest.mark.parametrize('mode',['predict',None,1,True,{},[]])
 def test_invalid_start_mode(case,mode):
-    case.base['tasks'][1]['start_mode']=mode;case.bind()
+    case.base['tasks'][1]['start_mode']=mode
     with pytest.raises(DeltaError,match='start_mode'):case.compile()
 
 def test_all_independent_violations_and_idempotence(case):
     case.base['tasks'][1].update(start_mode='wrong',not_before=120)
     case.base['tasks'][2]['lot_ids']=['wrong-lot']
-    case.base['holds'][1]['until']=120;case.bind()
+    case.base['holds'][1]['until']=120
     before=deepcopy((case.base,case.problem,case.state,case.delta))
     errors=validate_plan_delta(*before,source_sha256=SOURCE)
     assert [e['code'] for e in errors]==['start_mode','start','task_identity','hold']
@@ -60,14 +61,14 @@ def test_all_independent_violations_and_idempotence(case):
 
 def test_expired_hold_anchor_can_leave_plan(case):
     case.base['holds'][0]['until']=10
-    case.delta['tasks']['keep']['ids']=['a'];case.delta['tasks']['cancel_ids']=['a'];case.bind()
+    case.delta['tasks']['cancel_ids']=['a'];case.delta['machine_orders']=[{'machine':1,'task_ids':['z']}]
     assert case.compile()['plan']['holds'][0]==case.base['holds'][0]
 
 def test_frozen_without_bound_stays_exact(case):
     case.base['tasks'][1].pop('not_before');case.base['freeze_until']=15
-    case.delta['plan_header']['freeze_until']=15;case.bind()
+    case.delta['plan_header']['freeze_until']=15
     assert case.compile()['plan']['tasks'][0]==case.base['tasks'][1]
-    case.delta['tasks']['keep']['ids']=['z'];case.delta['tasks']['cancel_ids']=['z']
+    case.delta['tasks']['cancel_ids']=['z'];case.delta['machine_orders']=[{'machine':1,'task_ids':['a']}]
     with pytest.raises(DeltaError,match='frozen_task'):case.compile()
 
 @pytest.fixture
@@ -146,7 +147,7 @@ def test_prompt_semantics():
 
 def test_header_and_task_violations_together(case):
     case.delta['plan_header']['valid_until']=101
-    case.base['tasks'][1]['start_mode']='wrong';case.bind()
+    case.base['tasks'][1]['start_mode']='wrong'
     with pytest.raises(DeltaError) as caught:case.compile()
     assert [e['code'] for e in caught.value.violations]==['header','start_mode']
 
@@ -154,7 +155,7 @@ def test_header_and_task_violations_together(case):
 def test_malformed_task_does_not_hide_other_task_or_hold_failures(case):
     case.base['tasks'][1].pop('steps')
     case.base['tasks'][2]['start_mode']='bad'
-    case.base['holds'][1]['reason']='';case.bind()
+    case.base['holds'][1]['reason']=''
     with pytest.raises(DeltaError) as caught:case.compile()
     assert [e['code'] for e in caught.value.violations]==['schema','start_mode','hold']
 
@@ -162,7 +163,7 @@ def test_malformed_task_does_not_hide_other_task_or_hold_failures(case):
 def test_multiple_observed_operation_errors_are_collected(case):
     case.problem['operations'][1]['step']=True
     case.problem['operations'][2]['eligible_machines']=[True]
-    case.bind()
+
     with pytest.raises(DeltaError) as caught:case.compile()
     codes=[e['code'] for e in caught.value.violations]
     assert 'observed_identity' in codes and 'observed_eligibility' in codes

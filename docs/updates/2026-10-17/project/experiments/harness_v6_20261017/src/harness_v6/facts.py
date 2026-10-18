@@ -141,6 +141,7 @@ class FactReader:
         if "ids" in query:
             ids = query["ids"]
             require(type(ids) is list and all(type(i) in (str, int) for i in ids), "entity_ids", "Exact IDs required")
+            require(len(ids) <= 512, "entity_ids_limit", "At most 512 IDs per query; no IDs were read")
             keys = [kind + ":" + str(i) for i in ids]
             require(len(keys) == len(set(keys)), "entity_missing", "Duplicate requested entity ID")
             missing = [{"kind": kind, "id": str(i), "code": "entity_missing",

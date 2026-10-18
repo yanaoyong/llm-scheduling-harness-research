@@ -10,6 +10,7 @@ def validate(value, *, results=False):
     def check(ok,name):
         if not ok: errors.append(name)
     def positive(x): return type(x) in (int,float) and math.isfinite(x) and x>0
+    check(value.get('snapshot_format') in ('explicit', 'dense'), 'snapshot_format')
     check(value.get('stage') in ('S0','S1','S2','S3','S4'),'stage')
     check(positive(value.get('delta_seconds')),'delta_seconds')
     check(positive(value.get('horizon_seconds')),'horizon_seconds')
