@@ -176,19 +176,20 @@ def compile_plan_delta(base_plan, problem, execution_state, delta, *, source_sha
             _require(not unknown, 'unknown_operation', str(unknown))
             for key, field in [('lot_ids', 'lot_id'), ('steps', 'step'), ('visits', 'visit')]:
                 task[key] = [ops[oid][field] for oid in oids]
-            _require(tid in assignments, 'missing_machine_order', 'new/replaced task must be listed: ' + tid)
+            if tid in replacements:
+                task['machine'] = by_id[tid]['machine']
+            else:
+                _require(tid in assignments, 'missing_machine_order', 'new task must be listed: ' + tid)
         if tid in assignments:
             task['machine'] = assignments[tid]
     for mid, values in explicit.items():
         _require(set(values) == {t['id'] for t in tasks if t['machine'] == mid},
                  'machine_order', 'machine order must list exactly its resulting task IDs')
     changed_machines = {t['machine'] for t in tasks if t['id'] in added_ids}
-    for tid in cancelled:
-        changed_machines.add(by_id[tid]['machine'])
     for task in tasks:
         if task['id'] in by_id and task['machine'] != by_id[task['id']]['machine']:
             changed_machines.update((task['machine'], by_id[task['id']]['machine']))
-    _require(changed_machines <= set(explicit), 'missing_machine_order', 'changed task sets need full affected-machine orders')
+    _require(changed_machines <= set(explicit), 'missing_machine_order', 'new or moved tasks need full affected-machine orders')
     compiled_by_id = {t['id']: t for t in tasks}
     positions = {mid: iter(ids) for mid, ids in explicit.items()}
     tasks = [deepcopy(compiled_by_id[next(positions[t['machine']])]) if t['machine'] in positions else t for t in tasks]

@@ -61,13 +61,16 @@ def test_retained_move_is_explicit_and_requires_complete_orders(case):
     case.reject('machine_order')
 
 
-def test_cancellation_requires_full_remaining_queue(case):
+def test_cancellation_without_order_preserves_remaining_queue(case):
     case.delta['tasks']['cancel_ids'] = ['z']
-    case.reject('missing_machine_order')
+    case.base['tasks'].append(task('new', start=20))
+    before = deepcopy((case.base, case.delta))
+    assert case.compile()['plan']['tasks'] == case.base['tasks'][2:]
+    assert (case.base, case.delta) == before
     case.delta['machine_orders'] = [{'machine':1, 'task_ids':[]}]
     case.reject('machine_order')
-    case.delta['machine_orders'][0]['task_ids'] = ['a']
-    assert [t['id'] for t in case.compile()['plan']['tasks']] == ['c','a']
+    case.delta['machine_orders'][0]['task_ids'] = ['a', 'new']
+    assert [t['id'] for t in case.compile()['plan']['tasks']] == ['c','a','new']
 
 
 def test_schema_is_complete_shared_and_closed():
@@ -119,3 +122,41 @@ def test_no_change_receipt_still_records_host_anchors():
     factory = SyntheticFactory(); target = submitter(factory)
     result = target.submit_plan(1, 'no-change', {})
     assert result['evidence']['anchors'] == anchor_hashes(target.base_plan, target.problem, target.execution_state, source_sha256=target.source_sha256)
+
+
+def test_replacement_without_order_keeps_machine_and_position(case):
+    replacement = dict(model_task(case.base['tasks'][1]), latest_start=80)
+    case.delta['tasks']['replace'] = [replacement]
+    before = deepcopy((case.base, case.delta))
+    expected = deepcopy(case.base['tasks'][1:])
+    expected[0]['latest_start'] = 80
+    assert case.compile()['plan']['tasks'] == expected
+    assert (case.base, case.delta) == before
+    # A supplied order still cannot omit a replacement on that machine.
+    case.delta['machine_orders'] = [{'machine': 1, 'task_ids': ['a']}]
+    case.reject('machine_order')
+
+
+def test_replacement_move_requires_both_full_orders(case):
+    case.delta['tasks']['replace'] = [model_task(case.base['tasks'][1])]
+    case.delta['machine_orders'] = [{'machine': 2, 'task_ids': ['c', 'z']}]
+    case.reject('missing_machine_order')
+    case.delta['machine_orders'].append({'machine': 1, 'task_ids': ['a']})
+    result = case.compile()['plan']['tasks']
+    assert [t['id'] for t in result if t['machine'] == 2] == ['c', 'z']
+    assert next(t for t in result if t['id'] == 'z') == dict(case.base['tasks'][1], machine=2)
+
+
+def test_addition_still_requires_one_listing(case):
+    case.delta['tasks']['add'] = [model_task(task('new'))]
+    case.reject('missing_machine_order')
+    case.delta['machine_orders'] = [{'machine': 1, 'task_ids': ['z', 'a', 'new']}]
+    assert case.compile()['plan']['tasks'][-1]['id'] == 'new'
+    case.delta['machine_orders'].append({'machine': 2, 'task_ids': ['c', 'new']})
+    case.reject('machine_order')
+
+
+def test_cancel_entire_queue_without_order(case):
+    case.delta['tasks']['cancel_ids'] = ['z', 'a']
+    case.delta['holds']['cancel_ids'] = ['h:0']
+    assert case.compile()['plan']['tasks'] == [case.base['tasks'][2]]

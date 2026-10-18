@@ -7,7 +7,7 @@
   },
   "files": [
     {
-      "copy_sha256": "6a0d63067938c7a52dd7a26442e77e4b4a669ecac285a9b6292e5ae2fdf0a3e2",
+      "copy_sha256": "ac60d3e223f8e9781bf7c5fd712cda1e5740ab85734cdb89fc8ce7009b48751a",
       "initial_copy_sha256": "0581ab7c7829401dcff56ad453b4f768a5a5d1cf92e7f6e3f216a2a8f86990b9",
       "modified": true,
       "path": "src/harness_v6/plan_delta.py",

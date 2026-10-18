@@ -45,6 +45,20 @@ def measure(database):
         for name, mode in [('tasks','all_pending_except'),('holds','all_except')]:
             old[name]['keep'] = dict(mode=mode,ids=[])
         record('g0_base_as_delta',old,new)
+        # Phase M versus M2: identical cancellation/replacement decisions,
+        # removing only the formerly mandatory full machine queue.
+        target = plan['tasks'][0]
+        queue = [t['id'] for t in plan['tasks'] if t['machine'] == target['machine']]
+        for action in ('cancel', 'replace'):
+            before = deepcopy(new)
+            before['tasks'] = dict(cancel_ids=[target['id']] if action == 'cancel' else [],
+                                   replace=[model_task(target)] if action == 'replace' else [], add=[])
+            before['holds'] = dict(cancel_ids=[], replace=[], add=[])
+            before['machine_orders'] = [dict(machine=target['machine'],
+                task_ids=[tid for tid in queue if action != 'cancel' or tid != target['id']])]
+            after = deepcopy(before)
+            after['machine_orders'] = []
+            record('phase_m_to_m2_g0_' + action, before, after)
         rows['g0_context'] = dict(time=ctx['time'],tasks=len(plan['tasks']))
         return rows
     raise ValueError('G0 1649.82 context missing')

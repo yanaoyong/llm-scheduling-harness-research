@@ -41,14 +41,20 @@ violation_count, counts_by_code and truncated; acceptance uses ALL violations.
 V6_RULES += """Decision delta: plan_header has valid_until, freeze_until, reason only.
 Tasks use id, operation_ids, optional start_mode/not_before/latest_start; never
 send machine, lot_ids, steps, visits. machine_orders assigns machines and full
-queue order; list each new/replaced task once. Retained tasks keep their machine
-unless listed on another; every changed task set needs a full order (even []).
+queue order; list each new task exactly once. Unlisted replacements keep their
+base machine and queue position. Cancellation needs no order and preserves the
+remaining order. Retained/replaced tasks move only when listed on another machine.
+New tasks require the receiving machine's full order; moves require full source
+and destination orders (even an empty source []). Every supplied order is complete.
 Snapshot pending_tasks/invalid_tasks use this projection; machine_orders retains
 pending assignments and queue order. Both patches use cancel_ids, replace, add;
 unmentioned items remain. Hold replacements use {ref:"h:0",hold:{...}}.
 Do not send schema, anchors, order_policy, version, created_at or scope: the host
 fills constants/provenance from frozen state; expected_state_version binds it.
-Submit {} for explicit no-change. Example delta (assuming empty base queues):
+Submit {} for explicit no-change. For cancellation alone, use cancel_ids:["t1"]
+and machine_orders:[]; for replacement in place, use replace:[{"id":"t1",
+"operation_ids":["op1"],"latest_start":800}] and machine_orders:[].
+Example addition delta (assuming empty base queues):
 {"plan_header":{"valid_until":900,"freeze_until":0,"reason":"run ready work"},
  "tasks":{"cancel_ids":[],"replace":[],"add":[{"id":"t1","operation_ids":["op1"]}]},
  "holds":{"cancel_ids":[],"replace":[],"add":[]},

@@ -129,8 +129,10 @@ MCP tool_calls 只取 mcp.jsonl 行数；JSONL 轮次独立记录，证据不一
 - 删除 `schema/order_policy`：协议常量由 host 定义；删除 header 的
   `created_at/scope/version`：分别由 now、责任范围、确定性状态/提交/输入哈希生成。
   模型 header 决策仅 `valid_until/freeze_until/reason`。
-- 删除模型任务的 `machine`：唯一来源为 `machine_orders`，同时表达队列顺序。
-  新增/替换必须列一次；保留任务可移动；取消也改变任务集合，须给完整剩余队列。
+- 删除模型任务的 `machine`：新增或显式移动由 `machine_orders` 决定，同时表达队列顺序。
+  Phase M2 修订：新增必须列一次；未列出的替换继承原机台与位置；取消无需队列，稳定删除。
+  保留或替换任务列于另一机台即移动，源与目标均须完整队列（包括空源队列）。
+  完整队列仅在新增接收机台及移动两端强制要求；可选显式重排仍须给完整队列。
 - 快照任务投影同步删除这些字段，新增 `machine_orders` 保留任务分配信息；内部结构不变。
 - 完整 schema 由 MCP 两工具和 single_action 共享；拒绝旧字段，不提供兼容 shim 或格式开关。
 - 新旧版本字符串及依赖版本的哈希不应要求字节相同；物理、任务身份/分配/队列/时间、holds

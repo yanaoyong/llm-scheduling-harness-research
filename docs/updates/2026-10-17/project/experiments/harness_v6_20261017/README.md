@@ -338,12 +338,13 @@ python3 -m pytest -q tests/test_compact.py tests/test_mac_snapshot.py tests/test
 - `plan_header`：模型仅决定 `valid_until`、`freeze_until`、`reason`。
 - `tasks`、`holds`：均为 `{cancel_ids, replace, add}`，未取消或替换的项自动保留。
   hold 的替换项为 `{ref:"h:0", hold:{machine,until,reason,after_task_id?}}`。
-- `machine_orders`：`[{machine,task_ids}]` 同时指定机台和完整队列；新增/替换任务
-  必须恰好出现一次，保留任务可显式移动。任何任务集合改变的机台都须提供完整队列，
-  包括清空后的 `[]`。
+- `machine_orders`：`[{machine,task_ids}]` 同时指定机台和完整队列；新增任务必须恰好
+  出现一次。未列出的替换任务继承原机台与队列位置；取消无需提供队列，剩余相对顺序不变。
+  保留或替换任务列在另一机台即移动，源与目标机台均须给完整队列（空源队列也须 `[]`）。
+  新增任务的接收机台须给完整队列；任何显式给出的队列均须完整。
 
 任务只传 `id`、`operation_ids` 及可选 `start_mode`、`not_before`、`latest_start`。
-编译器从当前 observation 展开 `lot_ids/steps/visits`，从队列展开 `machine`；
+编译器从当前 observation 展开 `lot_ids/steps/visits`，从显式队列或原任务继承 `machine`；
 内部计划、执行器、物理适配器、账本、存储结构不变。默认 `when_ready`；过去的硬下界原样保留。
 快照中的 pending/invalid task 使用上述投影，独立 `machine_orders` 保留排队信息。
 

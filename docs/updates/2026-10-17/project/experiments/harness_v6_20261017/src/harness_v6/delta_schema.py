@@ -17,7 +17,7 @@ TASK = obj(dict(id=ID, operation_ids=dict(IDS, minItems=1),
                 start_mode=dict(type='string', enum=['when_ready', 'not_before'], description='Defaults to when_ready.'),
                 not_before=dict(type='number', description='Optional hard lower bound; past values are satisfied.'),
                 latest_start=dict(type='number', description='Latest allowed start; expiry invalidates the task.')),
-           ['id', 'operation_ids'], 'Machine and queue position come only from machine_orders; identity comes from observation.')
+           ['id', 'operation_ids'], 'Identity comes from observation. Unlisted replacements keep their base machine and queue position; new tasks require machine_orders.')
 HOLD = obj(dict(machine=dict(type='integer'), until=dict(type='number'), reason=ID,
                 after_task_id=dict(type=['string', 'null'], description='Conditional: applies after this task executes and queue is empty. Omit/null for unconditional.')),
            ['machine', 'until', 'reason'])
@@ -32,7 +32,7 @@ DELTA_SCHEMA = dict(anyOf=[obj({}, description='Explicit no-change commit.'), ob
     tasks=patch(TASK, TASK),
     holds=patch(HOLD, obj(dict(ref=ID, hold=HOLD))),
     machine_orders=array(obj(dict(machine=dict(type='integer'), task_ids=IDS),
-        description='Full resulting queue on each changed machine. Each new/replaced task appears exactly once; retained tasks may move.'))))])
+        description='Each supplied order is a full resulting queue. New tasks appear exactly once. Unlisted replacements keep base machine and position; cancellation preserves remaining order without an entry. Moves require full source and destination orders, including empty source queues.'))))])
 
 
 def model_task(task):
