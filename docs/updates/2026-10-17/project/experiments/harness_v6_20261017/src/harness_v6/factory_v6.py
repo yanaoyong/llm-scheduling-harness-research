@@ -126,9 +126,10 @@ class LiveFactory:
                      phase='processing' if jid in env.processing_by_machine[j['machine']] else 'transport')
                 for jid,j in sorted(env.jobs.items()) if not j['done']]
 
-    def advance_to(self, target, stop_on_event):
+    def advance_to(self, target, stop_on_event, *, stop_at=None):
         env = self.env
         previous = None
+        trace_start = len(env.trace)
         def observe(current):
             nonlocal previous
             if previous is not None:
@@ -150,6 +151,11 @@ class LiveFactory:
             trigger='event' if stop_on_event else 'periodic', decision_after=env.t)
         if previous is not None:
             self.metrics.integrate(previous[0], env.t, **previous[1])
+        for row in env.trace[trace_start:]:
+            if row['kind'] == 'lot_complete':
+                lot = env.lots[row['lot']]
+                self.metrics.production(row['time'], throughput=1,
+                    tardiness=max(0, row['time'] - lot['due']), weight=lot.get('weight', 1))
         reason = result['reason']
         return None if reason in ('avoidable_idle','periodic_replan') else reason
 

@@ -131,16 +131,16 @@ class SyntheticFactory:
             if stop_on_event:
                 return
 
-    def advance_to(self, target, stop_on_event):
+    def advance_to(self, target, stop_on_event, *, stop_at=None):
         if not stop_on_event:
             self.advance(target, self.metrics)
             return None
         horizon = target - self.now
         self.advance(target, self.metrics, stop_on_event=True)
         self._dispatch(self.metrics)
-        while self.ledger().metrics()['avoidable_idle'] <= 0 and not self.invalid:
+        while (stop_at is None or self.now < stop_at) and self.ledger().metrics()['avoidable_idle'] <= 0 and not self.invalid:
             before = self.now
-            self.advance(self.now + horizon, self.metrics, stop_on_event=True)
+            self.advance(self.now + horizon if stop_at is None else min(self.now + horizon, stop_at), self.metrics, stop_on_event=True)
             self._dispatch(self.metrics)
             if self.now == before:
                 raise RuntimeError('synthetic event clock stalled')
@@ -257,3 +257,37 @@ class SyntheticRun(LiveRun):
             d = state['drift']; obj.drift = DriftMonitor(DriftRule(d['limits'], d['consecutive_hours']))
             obj.drift.streak = d['streak']; obj.drift.last_hour = d['last_hour']
         return obj
+
+
+def prompt_action(prompt):
+    """Public-snapshot-only offline planner, also used by the process fake."""
+    import json
+    from .snapshot import decode_snapshot
+    from .ledger import choose_batch, idle
+    snapshot, tail = prompt.rsplit('\nCYCLE_FOOTER\n', 1)
+    footer = json.loads(tail)
+    _, state = decode_snapshot(snapshot.encode())
+    invalid = {t['id'] for t in state['invalid_tasks']}
+    orders = {r['machine']: [t for t in r['task_ids'] if t not in invalid]
+              for r in state['machine_orders']}
+    ops = {o['operation_id']: o for o in state['unreserved_ready']}
+    used, additions, changed = set(), [], set()
+    for machine in state['machines']:
+        mid = machine['machine']
+        if not idle(machine, state['time']):
+            continue
+        batch = choose_batch(ops, machine, used)
+        if batch:
+            tid = 'scripted-' + footer['submission_id'] + '-' + str(mid)
+            additions.append(dict(id=tid, operation_ids=batch, start_mode='when_ready'))
+            orders.setdefault(mid, []).append(tid)
+            used.update(batch); changed.add(mid)
+    bounds = [footer['valid_until_minimum']] + [t[k] for t in state['pending_tasks']
+        for k in ('not_before', 'latest_start') if t.get(k) is not None]
+    delta = dict(plan_header=dict(valid_until=max(bounds) + 1,
+        freeze_until=footer['current_time'], reason=LABEL),
+        tasks=dict(cancel_ids=sorted(invalid), replace=[], add=additions),
+        holds=dict(cancel_ids=[], replace=[], add=[]),
+        machine_orders=[dict(machine=m, task_ids=orders[m]) for m in sorted(changed)])
+    return dict(expected_state_version=footer['expected_state_version'],
+                submission_id=footer['submission_id'], delta=delta)

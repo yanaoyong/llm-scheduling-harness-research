@@ -83,3 +83,18 @@ def rules_for_format(snapshot_format):
     return V6_RULES.replace('Snapshot format SNAPSHOT_V1:', 'Snapshot format SNAPSHOT_V1_DENSE:').replace(
         'All cells are explicit JSON values:', 'Base cell types:').replace(
         'No blank defaults or =.', 'Dense cell overrides are declared below.') + DENSE_LEGEND
+
+
+def cycle_footer(*, state_version, submission_id, now, next_anchor, delta,
+                 delta_min, trigger, interaction, wall_seconds):
+    """Only per-cycle instruction tail; snapshot prefix remains byte-stable."""
+    import json
+    minimum = next_anchor + delta if trigger == 'periodic' else now + delta_min
+    instruction = ('Use read_entities for additional public facts, validate_plan, then submit_plan.'
+                   if interaction == 'mcp_session' else
+                   'Return exactly the JSON object {expected_state_version,submission_id,delta} '
+                   'matching the output schema; no prose or tool calls.')
+    value = dict(current_time=now, expected_state_version=state_version, submission_id=submission_id,
+                 valid_until_minimum=minimum, valid_until_comparison=">=" if trigger == "periodic" else ">", trigger=trigger,
+                 wall_deadline_seconds=wall_seconds, instruction=instruction + ' Use exact current_time for freeze_until; snapshot times are rounded.')
+    return '\nCYCLE_FOOTER\n' + json.dumps(value, sort_keys=True, separators=(',', ':')) + '\n'

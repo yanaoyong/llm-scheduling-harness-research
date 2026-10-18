@@ -41,6 +41,14 @@ def validate(value, *, results=False):
         check(not results and value.get('is_result') is False,'scripted_not_results')
     else:
         check(value.get('plan_source')=='model','model_source')
+    if results:
+        check(positive(value.get('end_time')), 'end_time')
+        check(type(value.get('trajectories_per_group')) is int and value['trajectories_per_group'] > 0, 'trajectories_per_group')
+        check(value.get('is_result') is True, 'is_result')
+        for key in ('codex_version', 'model'):
+            check(isinstance(value.get(key), str) and bool(value[key].strip()), key)
+        for key in ('context_token_budget', 'request_overhead_tokens', 'output_reserve_tokens'):
+            check(type(value.get(key)) is int and value[key] >= (1 if key == 'context_token_budget' else 0), key)
     if results or not value.get('dry_run'):
         check(positive(value.get('per_sim_hour_token_cap')),'token_cap')
         check(positive(value.get('per_sim_hour_request_cap')),'request_cap')
