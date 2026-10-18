@@ -5,6 +5,7 @@ This includes clock, all competitors and distant resource changes. Finer caches
 may optimize this only after proving the same reconstruction/coverage contract.
 """
 from copy import deepcopy
+import math
 
 from .contracts import digest, require
 
@@ -98,9 +99,35 @@ class FactReader:
     def __init__(self, context_ref, facts):
         self.context_ref, self.facts = context_ref, facts
         self.cache = {}
+        from .physical_window import public_operation
+        from .ledger import ready
+        problem, base = reconstruct(facts)
+        reserved={o for task in base['tasks'] for o in task.get('operation_ids',[])}
+        self.public_values={}
+        self.coverage_plan_sha256=digest(base)
+        for key,e in facts['entities'].items():
+            value=e['value']
+            if e['kind']=='operations':
+                value=public_operation(value,problem.get('time',0))
+                value['coverage_plan_sha256']=self.coverage_plan_sha256
+                value['coverage_uncovered']=ready(e['value'],problem.get('time',0)) and e['id'] not in reserved
+            self.public_values[key]=value
+
+    def set_coverage_plan(self, plan):
+        """Read-only candidate coverage view; every page binds this plan and observation."""
+        from .ledger import ready
+        reserved={o for task in plan['tasks'] for o in task['operation_ids']}
+        self.coverage_plan_sha256=digest(plan)
+        now=self.facts['problem_metadata'].get('time',0)
+        for key,e in self.facts['entities'].items():
+            if e['kind']=='operations':
+                self.public_values[key]['coverage_uncovered']=ready(e['value'],now) and e['id'] not in reserved
+                self.public_values[key]['coverage_plan_sha256']=self.coverage_plan_sha256
+        self.cache.clear()
 
     def cursor(self, kind, offset, where=None):
         identity = [self.context_ref, kind] if where is None else [self.context_ref, kind, where]
+        identity += [self.facts["dependency_epoch"], self.coverage_plan_sha256]
         return f"{digest(identity)[:24]}:{offset}"
 
     def read(self, query):
@@ -114,13 +141,18 @@ class FactReader:
         if "where" in query:
             require("ids" not in query and type(where) is list and 1 <= len(where) <= 16,
                     "query_filter", "A paginated filter needs 1..16 explicit predicates")
-            known_fields = {field for key in catalog for field in self.facts["entities"][key]["value"]}
+            known_fields = {field for key in catalog for field in self.public_values[key]}
+            if kind == "operations":
+                known_fields.update(("coverage_uncovered", "coverage_plan_sha256", "earliest_start", "nominal_start"))
             for predicate in where:
                 require(type(predicate) is dict and set(predicate) == {"field", "op", "value"} and
                         type(predicate["field"]) is str and predicate["field"] in known_fields and
-                        predicate["op"] in ("eq", "contains") and
+                        predicate["op"] in ("eq", "contains", "gt", "gte", "lt", "lte") and
                         (predicate["value"] is None or type(predicate["value"]) in (str, int, float, bool)),
-                        "query_filter", "Predicates use known public fields, eq/contains and a scalar value")
+                        "query_filter", "Predicates use known public fields and scalar values")
+                if predicate['op'] in ('gt','gte','lt','lte'):
+                    require(type(predicate['value']) in (int,float) and math.isfinite(predicate['value']),
+                            'query_filter','Range operands must be finite numbers, not booleans')
             def equal(left, right):
                 return left == right and (type(left) is bool) == (type(right) is bool)
             def matches(value):
@@ -131,12 +163,15 @@ class FactReader:
                     actual = value[field]
                     if predicate["op"] == "eq":
                         if not equal(actual, requested): return False
+                    elif predicate['op'] in ('gt','gte','lt','lte'):
+                        if type(actual) not in (int,float) or not math.isfinite(actual): return False
+                        if not {'gt':actual>requested,'gte':actual>=requested,'lt':actual<requested,'lte':actual<=requested}[predicate['op']]: return False
                     elif type(actual) is not list or not any(equal(v, requested) for v in actual):
                         return False
                 return True
             # Pure model-specified predicate in original source order. No rank,
             # feasibility repair, objective, dispatch or candidate selection.
-            catalog = [key for key in catalog if matches(self.facts["entities"][key]["value"])]
+            catalog = [key for key in catalog if matches(self.public_values[key])]
         missing = []
         if "ids" in query:
             ids = query["ids"]
@@ -168,16 +203,18 @@ class FactReader:
             cache_key = (kind, entity["id"], entity["entity_revision"], entity["source_version"], digest(fields))
             if cache_key not in self.cache:
                 row = deepcopy(entity)
+                row["value"] = deepcopy(self.public_values[key])
                 if fields is not None:
-                    row["value"] = {k: deepcopy(entity["value"][k]) for k in fields if k in entity["value"]}
+                    row["value"] = {k: deepcopy(self.public_values[key][k]) for k in fields if k in self.public_values[key]}
                 row["projection_fields"] = fields
-                row["absent_fields"] = [] if fields is None else [k for k in fields if k not in entity["value"]]
+                row["absent_fields"] = [] if fields is None else [k for k in fields if k not in self.public_values[key]]
                 row["original_ref"] = {"context_ref": self.context_ref, "kind": kind, "id": entity["id"]}
                 self.cache[cache_key] = row
             rows.append(deepcopy(self.cache[cache_key]))
         result = {"status": "ok", "context_ref": self.context_ref, "entities": rows,
                   "catalog_total": catalog_total, "returned": len(rows), "next_cursor": next_cursor,
                   "order": "requested_ID_order_or_fixed_source_order", "complete_requested_slice": True}
+        result["coverage_plan_sha256"] = self.coverage_plan_sha256
         if missing:
             result.update(status="partial", complete_requested_slice=False,
                           requested_count=len(query["ids"]), missing_entities=missing,

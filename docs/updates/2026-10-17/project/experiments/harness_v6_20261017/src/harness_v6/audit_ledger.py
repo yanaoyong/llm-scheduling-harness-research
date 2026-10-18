@@ -34,10 +34,11 @@ def audit_ledger(problem, plan=None, receipts=None):
     used = set(); matches = []; waits = []
     for machine in sorted(problem['machines'], key=lambda m: m['machine']):
         mid = machine['machine']
-        if (machine.get('currently_busy') or machine.get('currently_down') or not machine.get('available', True)
+        if (len(machine.get('processing_until', [])) >= (2 if machine.get('cascading') else 1)
+                or machine.get('currently_busy') or machine.get('currently_down') or not machine.get('available', True)
                 or any(a <= now < b for a, b in machine.get('unavailable_intervals', []))):
             continue
-        legal = [(o, s) for o, s in qualified.get(mid, []) if not o.get('qualification_uncertain') and not o.get('same_machine_as')
+        legal = [(o, s) for o, s in qualified.get(mid, []) if not o.get('same_machine_as')
                  and (machine.get('min_left', 0) <= 0 or machine.get('min_setup') == o.get('setup'))]
         def enumerate_batches(items):
             batches = []

@@ -38,7 +38,7 @@ NUMBER = {'type': 'number'}
 BOUNDS = {k: NUMBER for k in ('batch_min', 'batch_max')}
 ROUTE_FIELDS = ('processing', 'cadence', 'batch_min', 'batch_max', 'setup')
 SCHEMAS = {
-    'upcoming': object_schema(dict(present={'type':'boolean'}, estimated_release_time={'type':['number','null']}, eligible_machines={'type':'array','items':{'type':'integer'}})),
+    'upcoming': object_schema(dict(present={'type':'boolean'}, earliest_start={'type':['number','null']}, eligible_machines={'type':'array','items':{'type':'integer'}})),
     'eligible': {'type': 'array', 'items': {'type': 'integer'}},
     'batch_bounds': object_schema(BOUNDS),
     'batch_compatible': {'type': 'boolean'},
@@ -124,9 +124,9 @@ def questions_for(state, prefix, current, rng, snapshots, per_type):
         oid = op['operation_id']
         found = next((r for r in upcoming if r['operation_id'] == oid), None)
         add('upcoming', f'Is operation {oid} present in upcoming_operations? Give present, '
-            'estimated_release_time and the complete eligible_machines sorted ascending; '
+            'earliest_start and the complete eligible_machines sorted ascending; '
             'if absent use null and []. This asks section membership, not physical impossibility.',
-            dict(present=found is not None, estimated_release_time=found['release_time'] if found else None,
+            dict(present=found is not None, earliest_start=found['earliest_start'] if found else None,
                  eligible_machines=sorted(found['eligible_machines']) if found else []),
             dict(operation_id=oid), 'present' if found else 'absent')
     machines = sorted(current['machines'], key=lambda r: r['machine'])
@@ -334,8 +334,9 @@ def load_real_states(fixture, database, selectors, counter, *, public_ledger=Non
     bundle = json.loads(Path(fixture).read_bytes())
     seed = bundle['mixed_702']
     env = restore(seed['state'], seed['trace'], data_dir=bundle['data_dir'])
+    from harness_v6.physical_window import frozen_operations
     prefixes = {fmt: stable_prefix(tool_descriptions=[], routing=env.manifest['routes'],
-                machine_groups=env.manifest['machines'], snapshot_format=fmt, token_counter=counter) for fmt in FORMATS}
+                machine_groups=env.manifest['machines'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs),snapshot_format=fmt, token_counter=counter) for fmt in FORMATS}
     states = {}
     if len(selectors) != len(set(selectors)):
         raise ValueError('duplicate state selector')
@@ -358,6 +359,7 @@ def load_real_states(fixture, database, selectors, counter, *, public_ledger=Non
             if len(matches) != 1:
                 raise ValueError('expected exactly one G0 t=1649.82 context')
             ctx = matches[0]
+            ctx['problem']=frozen_operations(ctx['problem'],env.manifest,running_jobs=bundle['g0_snapshot']['running_jobs'],dispatches=bundle['g0_trace'])
             ledger = ledger_from_scratch(ctx['problem'], ctx['base_plan'], {'tasks': [
                 dict(task_id=t, state='running') for t in ctx['execution_state']['dispatched_task_ids']]})
             g0 = bundle['g0_snapshot']
@@ -372,6 +374,7 @@ def load_real_states(fixture, database, selectors, counter, *, public_ledger=Non
             public_times.add(target)
             if public_ledger:
                 observed = frozen_public[target]
+                observed['problem']=frozen_operations(observed['problem'],env.manifest)
                 ledger = ledger_from_scratch(observed['problem'], observed['plan'], observed['receipts'])
                 # Ledger evidence does not contain job identities; never invent them.
                 jobs = []

@@ -12,13 +12,13 @@ from .submit import Submitter
 from .delta_schema import DELTA_SCHEMA
 
 TOOL_DESCRIPTIONS = {
-    "read_entities": "Read authoritative frozen entities by IDs or paginated filters (up to 512 IDs).",
+    "read_entities": "Finite numeric gt/gte/lt/lte exclude null/absent; eq/contains also supported. coverage_uncovered=true reads all uncovered operations with version-bound paging, no ranking. Read authoritative frozen entities by IDs or paginated filters (up to 512 IDs).",
     "validate_plan": "Validate decision delta without adoption; returns all violation counts and up to 50 details.",
     "submit_plan": "Atomically accept one state-bound decision delta; adoption requires successful session exit.",
 }
 
 TOOLS = {
-    'read_entities': {'type':'object','properties':{'kind':{'type':'string'}, 'ids':{'type':'array'}, 'cursor':{'type':['string','null']}, 'count':{'type':'integer'}, 'fields':{'type':'array'}, 'where':{'type':'array'}},'required':['kind']},
+    'read_entities': {'type':'object','properties':{'kind':{'type':'string'}, 'ids':{'type':'array'}, 'cursor':{'type':['string','null']}, 'count':{'type':'integer'}, 'fields':{'type':'array'}, 'where':{'type':'array','items':{'type':'object','properties':{'field':{'type':'string'},'op':{'enum':['eq','contains','gt','gte','lt','lte']},'value':{}},'required':['field','op','value'],'additionalProperties':False}}},'required':['kind']},
     'validate_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':DELTA_SCHEMA},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
     'submit_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':DELTA_SCHEMA},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
 }
@@ -57,6 +57,11 @@ class CycleServer:
                 elif name in ('validate_plan','submit_plan'):
                     target=self.submitter if name=='submit_plan' else Submitter.restore(self.submitter.capture(),physical_precheck=self.submitter.physical_precheck)
                     result=target.submit_plan(**arguments)
+                    if result.get("coverage") is not None:
+                        candidate=target.coverage_plan
+                        if digest(candidate)!=result["plan_sha256"] and target.candidate is not None:
+                            candidate=target.candidate
+                        self.reader.set_coverage_plan(candidate)
                     if name=='submit_plan' and result['accepted'] and not (self.output_dir/'submission.json').exists():
                         value={'arguments':arguments,'plan':target.candidate,'receipt':result}
                         fd=os.open(self.output_dir/'submission.json',os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)

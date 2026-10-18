@@ -94,7 +94,7 @@ def test_submit_atomic_idempotent_closed():
 def test_empty_and_absent_submission():
     f=SyntheticFactory();f.plan['valid_until']=900;s=submitter(f)
     r=s.submit_plan(1,'noop',{});assert r['accepted'] and r['no_change']
-    assert r['coverage']==dict(observed_operations=4, reserved_operations=0,
+    assert {k:v for k,v in r['coverage'].items() if k not in ('complete_read','coverage_plan_sha256')}==dict(observed_operations=4, reserved_operations=0,
         ready_operations=4, ready_unreserved_count=4,
         ready_unreserved_sample=['0:1:1','1:1:1','2:1:1','3:1:1'],
         truncated=False, report_only=True)
@@ -180,7 +180,7 @@ def test_coverage_ready_definition_and_sorted_bound():
     problem = dict(time=10, operations=operations, machines=[])
     plan = dict(tasks=[dict(id='reserved', operation_ids=['op-00000'])], holds=[])
     report = coverage_report(plan, problem)
-    assert report == dict(observed_operations=103, reserved_operations=1,
+    assert {k:v for k,v in report.items() if k not in ('complete_read','coverage_plan_sha256')} == dict(observed_operations=103, reserved_operations=1,
                          ready_operations=100, ready_unreserved_count=99,
                          ready_unreserved_sample=[f'op-{i:05d}' for i in range(1, 51)],
                          truncated=True, report_only=True)

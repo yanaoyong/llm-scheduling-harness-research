@@ -25,7 +25,7 @@ def states():
     ops = [op(str(i), eligible_machines=[1] if i < 40 else [2]) for i in range(80)]
     for i, row in enumerate(ops):
         row.update(batch_min=2, batch_max=4, release_time=10, batch_key=['A' if i % 2 else 'B'])
-    current = dict(upcoming_operations=[dict(ops[0], operation_id='future', release_time=20)], time=10, unreserved_ready=ops, machine_orders=[dict(machine=1, task_ids=['task-a'])],
+    current = dict(upcoming_operations=[dict(ops[0], operation_id='future', earliest_start=20)], time=10, unreserved_ready=ops, machine_orders=[dict(machine=1, task_ids=['task-a'])],
         running_jobs=[dict(job=12, machine=2)], machines=[dict(machine=i, available_at=10000+i,
         processing_until=[10000+i], current_setup='' if i < 90 else 'A') for i in range(100)])
     return {'synthetic': {fmt: encode_prefix(prefix, fmt) + encode_current(prefix, current, fmt)
@@ -38,7 +38,7 @@ def independent_answers(questions, current, prefix):
         t = q['target']
         if q['type'] == 'upcoming':
             row = next((r for r in current.get('upcoming_operations', []) if r['operation_id'] == t['operation_id']), None)
-            value = dict(present=row is not None, estimated_release_time=row['release_time'] if row else None, eligible_machines=sorted(row['eligible_machines']) if row else [])
+            value = dict(present=row is not None, earliest_start=row['earliest_start'] if row else None, eligible_machines=sorted(row['eligible_machines']) if row else [])
         elif q['type'] in ('eligible', 'batch_bounds'):
             row = next(r for r in current['unreserved_ready'] if r['operation_id'] == t['operation_id'])
             value = sorted(row['eligible_machines']) if q['type'] == 'eligible' else {'batch_min': row['batch_min'], 'batch_max': row['batch_max']}
@@ -155,14 +155,23 @@ def test_configured_real_generation(tmp_path):
                 seen.add(now)
                 completed = {r['task_id'] for r in source['receipts'].get('tasks',[]) if r['state'] in ('running','done')}
                 reserved = {oid for t in source['plan']['tasks'] if t['id'] not in completed for oid in t['operation_ids']}
-                expected = []
-                for op in source['problem']['operations']:
-                    if op.get('readiness_basis') == 'executing_predecessor' and op['release_time'] <= now+900 and op['operation_id'] not in reserved:
-                        expected.append({k:op.get(k,False) if k in ('conditional','qualification_uncertain') else op.get(k) for k in (
-                            'operation_id','release_time','batch_key','batch_min','batch_max','setup','eligible_machines','sampling_percent','conditional','qualification_uncertain')})
+                from harness_v6.physical_window import frozen_operations
+                from harness_v6.factory_v6 import restore
+                from harness_v6.ledger import ready
+                bundle=json.loads(Path(fixture_path).read_bytes())
+                seed=bundle['mixed_702']
+                manifest=restore(seed['state'],seed['trace'],data_dir=bundle['data_dir']).manifest
+                problem=frozen_operations(source['problem'],manifest)
+                expected=[]
+                for op in problem['operations']:
+                    if not ready(op,now) and op['earliest_start']<=now+900 and op['operation_id'] not in reserved:
+                        expected.append({k:op.get(k) for k in ('operation_id','earliest_start','nominal_start',
+                            'batch_key','batch_min','batch_max','setup','eligible_machines','priority',
+                            'processing_seconds_min','processing_seconds_max','readiness_basis','predecessor_ids',
+                            'sampling_percent','conditional')})
                 expected.sort(key=lambda r:r['operation_id'])
                 for fmt in ab.FORMATS:
-                    assert decode_snapshot(real['public:'+str(int(now))][fmt])[1]['upcoming_operations'] == normalize(expected)
+                    assert decode_snapshot(real['public:'+str(int(now))][fmt])[1]['upcoming_operations']==normalize(expected)
                 if len(seen)==3: break
         assert seen == {702,1182,1602}
 

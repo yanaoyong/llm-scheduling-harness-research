@@ -459,3 +459,32 @@ PYTHONPATH=src:$PHYSICS python scripts/measure_compact_snapshot.py --fixture "$V
 ```
 
 通过条件：G0 1649.82 有 74 条 upcoming；explicit/dense 精确还原 canonical 对象（沿用 10 位有效数字协议），冻结公共 P2 702/1182/1602 同样往返。when_ready 新任务 w100:228:1 被 compiler/Submitter 接受，测试显式取消旧基线已不在 observation 的 d43-g；不是自动修复。全部既有过滤/校验不变；sealed classification 与 Phase Q JSON-equal。审计输出含五个状态、各规则计数及缺失信息说明；模型/真实 Codex 不参与。A/B 题集见 MAC_RUNBOOK，真实理解准确率待另行授权。
+
+
+## Phase T 最终离线核验（2026-10-18，用户批准本地 Mac 镜像）
+
+在 V6 目录，设置 `PYTHONPATH=src:/workspace/v6-mac-env/physical`、
+`TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache`，使用镜像 venv Python。
+以下命令不访问网络、模型或写封存数据；输出只写 /tmp/v6orch。
+
+```bash
+PYTHONPATH=src python3 -m pytest -q
+V6_PUBLIC_LEDGER=/workspace/v6-mac-env/work/phase-m2-final-p2.json.ledger.jsonl.gz V6_MAC_FIXTURE=/workspace/v6-mac-env/work/sealed2/fixture.json V6_SEALED_DB=/workspace/v6-mac-env/work/sealed2/contexts.sqlite V6_SEALED_SELECT='SELECT group_name,payload FROM contexts' V6_CLASSIFICATION_REPORT=/tmp/v6orch/classification-t-final.json /workspace/v6-mac-env/venv/bin/python -m pytest -q
+/workspace/v6-mac-env/venv/bin/python scripts/audit_filters.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --public-ledger /workspace/v6-mac-env/work/phase-m2-final-p2.json.ledger.jsonl.gz --horizon-seconds 900 --output /tmp/v6orch/t-audit-final.json
+/workspace/v6-mac-env/venv/bin/python scripts/measure_compact_snapshot.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --output /tmp/v6orch/t-tokens-final.json
+/workspace/v6-mac-env/venv/bin/python scripts/measure_physical_window.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --public-ledger /workspace/v6-mac-env/work/phase-m2-final-p2.json.ledger.jsonl.gz --output /tmp/v6orch/t-window-final.json
+python3 -m compileall -q src tests scripts
+git diff --check
+date -u
+```
+
+通过标准：plain/configured 全通过（仅缺失的 Mac/真实模型证据可跳过）；sealed 分类对 Q/R 的
+所有变化逐字段解释；audit 独立 idle 核对；生产 lower_bound_walk 的实际开工检查 0 violations；
+G0/P2 explicit/dense 精确 normalized round trip；cycle.py SHA256 保持不变。coverage.complete_read
+必须可逐页返回所有工序并拒绝旧版本游标。G0 dense CURRENT 相对 43,817 不得增加超过 20,000。
+初测 CURRENT 78,295 explicit / 54,607 dense（+17,650 / +10,790）；最终精确值以 t-tokens-final.json
+为准。due 独立表 +10,670 / +10,676，超过 8,000 dense 上限，保持关闭。每 session 等价输入为
+CURRENT + 0.1×prefix，假设静态前缀完全命中缓存，不含额外工具轮次与冷缓存。
+
+A/B kit 仍为 384 问/16 planned requests，upcoming 答案字段为 earliest_start；之前 kit 必须重新生成。
+冻结 G0/P2 不扩充操作库存，缺少 P2 job starts 时使用弱下界。所有新诊断只在下次锚点展示，不触发唤醒。

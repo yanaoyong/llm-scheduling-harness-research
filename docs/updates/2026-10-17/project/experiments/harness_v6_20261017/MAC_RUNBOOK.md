@@ -7,7 +7,7 @@
 
 ## 0. 固定环境、版本和输入
 
-先检出交付分支 `feat/harness-v6-codex-runner`，记录 commit。将下列路径改成自己的绝对路径；
+先检出 `main`（须包含 Phase T 合并提交，见 `HANDOFF_20261018.md`），记录 commit。将下列路径改成自己的绝对路径；
 `PIN` 必须为已选定 Codex 的完整 `--version` 输出，`MODEL` 为已批准模型名。
 物理项目要含 `src/smt/environment.py`、固定 PySCFabSim vendor 和 SMT2020_LVHM 数据；
 封存 evidence 使用此前交付的公开 extract 目录结构。不能用其他数据集替代。
@@ -315,3 +315,32 @@ PYTHONPATH=src:$PHYSICS python scripts/ab_comprehension.py generate \
 ```
 
 此配置为 384 题（8 × 12 × 4），16 个请求；仅生成不调用模型。keys 来自解码后的 canonical 对象。P2 ledger 文件没有 running_jobs，题集该栏为空，不据此断言工厂无运行作业；机器忙碌字段仍来自冻结 problem。旧 public:SECONDS（不传 --public-ledger）是从 mixed_702 推进的机制状态，不等同于 P2 已有轨迹。使用 coverage.json 披露 absent/present 类与独立目标数；无 upcoming 状态只有 absent 类，不伪造正例。
+
+
+## Phase T 最终离线核验（2026-10-18，用户批准本地 Mac 镜像）
+
+在 V6 目录，设置 `PYTHONPATH=src:/workspace/v6-mac-env/physical`、
+`TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache`，使用镜像 venv Python。
+以下命令不访问网络、模型或写封存数据；输出只写 /tmp/v6orch。
+
+```bash
+PYTHONPATH=src python3 -m pytest -q
+V6_PUBLIC_LEDGER=/workspace/v6-mac-env/work/phase-m2-final-p2.json.ledger.jsonl.gz V6_MAC_FIXTURE=/workspace/v6-mac-env/work/sealed2/fixture.json V6_SEALED_DB=/workspace/v6-mac-env/work/sealed2/contexts.sqlite V6_SEALED_SELECT='SELECT group_name,payload FROM contexts' V6_CLASSIFICATION_REPORT=/tmp/v6orch/classification-t-final.json /workspace/v6-mac-env/venv/bin/python -m pytest -q
+/workspace/v6-mac-env/venv/bin/python scripts/audit_filters.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --public-ledger /workspace/v6-mac-env/work/phase-m2-final-p2.json.ledger.jsonl.gz --horizon-seconds 900 --output /tmp/v6orch/t-audit-final.json
+/workspace/v6-mac-env/venv/bin/python scripts/measure_compact_snapshot.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --output /tmp/v6orch/t-tokens-final.json
+/workspace/v6-mac-env/venv/bin/python scripts/measure_physical_window.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --public-ledger /workspace/v6-mac-env/work/phase-m2-final-p2.json.ledger.jsonl.gz --output /tmp/v6orch/t-window-final.json
+python3 -m compileall -q src tests scripts
+git diff --check
+date -u
+```
+
+通过标准：plain/configured 全通过（仅缺失的 Mac/真实模型证据可跳过）；sealed 分类对 Q/R 的
+所有变化逐字段解释；audit 独立 idle 核对；生产 lower_bound_walk 的实际开工检查 0 violations；
+G0/P2 explicit/dense 精确 normalized round trip；cycle.py SHA256 保持不变。coverage.complete_read
+必须可逐页返回所有工序并拒绝旧版本游标。G0 dense CURRENT 相对 43,817 不得增加超过 20,000。
+初测 CURRENT 78,295 explicit / 54,607 dense（+17,650 / +10,790）；最终精确值以 t-tokens-final.json
+为准。due 独立表 +10,670 / +10,676，超过 8,000 dense 上限，保持关闭。每 session 等价输入为
+CURRENT + 0.1×prefix，假设静态前缀完全命中缓存，不含额外工具轮次与冷缓存。
+
+A/B kit 仍为 384 问/16 planned requests，upcoming 答案字段为 earliest_start；之前 kit 必须重新生成。
+冻结 G0/P2 不扩充操作库存，缺少 P2 job starts 时使用弱下界。所有新诊断只在下次锚点展示，不触发唤醒。

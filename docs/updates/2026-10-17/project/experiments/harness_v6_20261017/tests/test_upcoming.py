@@ -17,7 +17,7 @@ def test_upcoming_boundaries_reservations_flags_and_encoding(fmt):
     p, plan = fixture(); now = p['time']
     def future(oid, **kw):
         return op(oid, readiness_basis='executing_predecessor', conditional=True,
-                  sampling_percent=30, **kw)
+                  sampling_percent=30, earliest_start=kw.get('release_time',now), **kw)
     p['operations'] = [future('z', release_time=now+900, eligible_machines=[2,1]),
         future('a', release_time=now+1, qualification_uncertain=True),
         future('late', release_time=now+900.001), future('reserved',release_time=now+10),
@@ -29,9 +29,9 @@ def test_upcoming_boundaries_reservations_flags_and_encoding(fmt):
     before=deepcopy((p,plan,ledger.metrics()))
     args=dict(horizon_seconds=900,state_version=1,running_jobs=[],last_cycle_receipt=None,model_notes='')
     current=current_state(ledger,**args)
-    assert [r['operation_id'] for r in current['upcoming_operations']]==['a','past','z']
-    assert current['upcoming_operations'][0]['qualification_uncertain'] is True
-    assert all(r['conditional'] and r['sampling_percent']==30 for r in current['upcoming_operations'])
+    assert [r['operation_id'] for r in current['upcoming_operations']]==['a','exported','past','z']
+    assert all('qualification_uncertain' not in r and 'release_time' not in r for r in current['upcoming_operations'])
+    assert all(r['conditional'] and r['sampling_percent']==30 for r in current['upcoming_operations'] if r['operation_id']!='exported')
     prefix=stable_prefix(tool_descriptions=[],routing={},machine_groups=[dict(id=i,family='F') for i in [1,2]],snapshot_format=fmt)
     payload=build_snapshot(prefix,ledger,snapshot_format=fmt,token_budget=10**8,**args)
     assert decode_snapshot(payload)[1]==normalize(current)
@@ -39,7 +39,7 @@ def test_upcoming_boundaries_reservations_flags_and_encoding(fmt):
     assert {r['$eligible'][0] for r in raw['upcoming_operations']}=={'family','set'}
     assert (p,plan,ledger.metrics())==before
     args['horizon_seconds']=1
-    assert [r['operation_id'] for r in current_state(ledger,**args)['upcoming_operations']]==['a','past']
+    assert [r['operation_id'] for r in current_state(ledger,**args)['upcoming_operations']]==['a','exported','past']
     del args['horizon_seconds']
     with pytest.raises(TypeError): current_state(ledger,**args)
     for horizon in (0,-1,True,float('inf')):
@@ -79,9 +79,8 @@ def test_g0_when_ready_upcoming_compiles_and_submits():
             if page['next_cursor'] is None: break
             query['cursor']=page['next_cursor']
         assert len(found)==1159
-        assert any(r['release_time']>c['time']+900 for r in found)
-        with pytest.raises(HarnessError):
-            reader.read(dict(kind='operations',cursor=None,count=512,where=[dict(field='release_time',op='gt',value=c['time']+900)]))
+        assert any(r['nominal_start']>c['time']+900 for r in found)
+        assert reader.read(dict(kind='operations',cursor=None,count=512,where=[dict(field='nominal_start',op='gt',value=c['time']+900)]))['matching_total'] > 0
         target=Submitter(p,problem,state,state_version=c['state_revision'],next_anchor=c['time']+60,source_sha256='0'*64)
         receipt=target.submit_plan(c['state_revision'],'r',delta)
         assert receipt['accepted'],receipt['violations']

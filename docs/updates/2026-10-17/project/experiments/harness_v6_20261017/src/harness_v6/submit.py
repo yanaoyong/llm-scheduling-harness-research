@@ -23,7 +23,10 @@ def coverage_report(plan, problem):
     return {'observed_operations': len(observed), 'reserved_operations': len(assigned & observed),
             'ready_operations': len(ready_ids), 'ready_unreserved_count': len(unreserved),
             'ready_unreserved_sample': unreserved[:50], 'truncated': len(unreserved) > 50,
-            'report_only': True}
+            'report_only': True, 'coverage_plan_sha256': json_sha256(plan),
+            'complete_read': {'kind':'operations','cursor':None,'count':512,'where':[
+                {'field':'coverage_uncovered','op':'eq','value':True},
+                {'field':'coverage_plan_sha256','op':'eq','value':json_sha256(plan)}]}}
 
 
 def bounded_receipt(receipt):
@@ -43,6 +46,7 @@ class Submitter:
         self.trigger = trigger
         self.delta_min = delta_min
         self.base_plan = deepcopy(base_plan)
+        self.coverage_plan = self.base_plan
         self.problem = deepcopy(problem)
         self.execution_state = deepcopy(execution_state)
         self.state_version = state_version
@@ -107,6 +111,12 @@ class Submitter:
                    'accepted': not errors, 'violations': errors, 'no_change': delta == {},
                    'coverage': coverage_report(plan, self.problem) if plan is not None else None,
                    'plan_sha256': json_sha256(plan) if plan is not None else None, 'evidence': evidence}
+        if plan is not None:
+            self.coverage_plan=plan
+        from .physical_window import queue_diagnostics
+        from .ledger import ledger_read_view
+        receipt.update(queue_diagnostics(ledger_read_view(self.problem, plan or self.base_plan,
+            {'tasks':[dict(task_id=t,state='running') for t in self.execution_state.get('dispatched_task_ids',[])]})))
         if not errors:
             self.candidate = plan
             self.closed = True

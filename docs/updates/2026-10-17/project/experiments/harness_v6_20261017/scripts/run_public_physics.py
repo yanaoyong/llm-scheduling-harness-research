@@ -106,7 +106,7 @@ def run(bundle,group,stop,delta,breakdowns,output):
     env=restore(f['state'],f['trace'],data_dir=b['data_dir']);env.breakdowns=breakdowns
     cycle=CycleMachine(origin=env.t,config=config_for(group,CycleConfig(delta=delta,breakdowns=breakdowns)))
     prefix=stable_prefix(tool_descriptions=['read_entities','validate_plan','submit_plan'],
-        routing=env.manifest['routes'],machine_groups=env.manifest['machines'])
+        routing=env.manifest['routes'],machine_groups=env.manifest['machines'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs))
     counter=lru_cache(maxsize=4)(tiktoken_counter());rows=[];steps=0;integrals={};checkpoint=None;event=None
     while env.t<stop:
         result,audit=step(env,cycle,rows,prefix,counter,stop,event,output+'.ledger.jsonl.gz')

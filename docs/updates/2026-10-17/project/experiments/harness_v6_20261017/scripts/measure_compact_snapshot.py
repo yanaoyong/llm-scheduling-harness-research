@@ -17,12 +17,14 @@ def measure(fixture, database):
     seed = bundle['mixed_702']
     env = restore(seed['state'], seed['trace'], data_dir=bundle['data_dir'])
     tools = [{'name': n, 'description': TOOL_DESCRIPTIONS[n], 'inputSchema': s} for n, s in TOOLS.items()]
-    prefix_obj = dict(rules=V6_RULES, tools=tools, routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
-    prefix = stable_prefix(tool_descriptions=tools, routing=prefix_obj['routing'], machine_groups=prefix_obj['machine_groups'])
+    prefix_obj = dict(rules=V6_RULES, tools=tools, routing=env.manifest['routes'], machine_groups=env.manifest['machines'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs))
+    prefix = stable_prefix(tool_descriptions=tools, routing=prefix_obj['routing'], machine_groups=prefix_obj['machine_groups'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs))
     for entry in SQLiteContextReader(database, 'SELECT group_name,payload FROM contexts').contexts():
         ctx = entry['context']
         if entry['group'] != 'G0' or abs(ctx['time'] - 1649.82) > .01:
             continue
+        from harness_v6.physical_window import frozen_operations
+        ctx['problem']=frozen_operations(ctx['problem'],env.manifest,running_jobs=bundle['g0_snapshot']['running_jobs'],dispatches=bundle['g0_trace'])
         dispatched = ctx['execution_state']['dispatched_task_ids']
         ledger = ledger_from_scratch(ctx['problem'], ctx['base_plan'],
             {'tasks': [dict(task_id=t, state='running') for t in dispatched]})
@@ -53,7 +55,7 @@ def measure(fixture, database):
             'total': dict(old=counter((canonical(prefix_obj)+b'\n'+canonical(current)).decode()),new=counter(payload.decode())),
         }
         dense_prefix = stable_prefix(tool_descriptions=tools, routing=prefix_obj['routing'],
-                                     machine_groups=prefix_obj['machine_groups'], snapshot_format='dense', token_counter=counter)
+                                     machine_groups=prefix_obj['machine_groups'], setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs),snapshot_format='dense', token_counter=counter)
         dense_payload = build_snapshot(dense_prefix, ledger, horizon_seconds=900, snapshot_format='dense', token_counter=counter, token_budget=10**9, **args)
         # Attribute shared eligible-set overhead by removing only this section.
         from harness_v6.compact import encode_current, decode_prefix
@@ -84,7 +86,12 @@ def measure(fixture, database):
             rows[name]['dense'] = counter(raw.decode())
         for row in rows.values():
             row['explicit'] = row.pop('new')
-        return dict(context_ref=ctx['context_ref'],time=ctx['time'],tokenizer='o200k_base',
+        due_cost = {}
+        from harness_v6.snapshot import due_values
+        due=due_values(ledger,current)
+        for fmt,pref in [('explicit',prefix),('dense',dense_prefix)]:
+            due_cost[fmt] = counter(encode_current(decode_prefix(pref),dict(current,lot_due=due),snapshot_format=fmt,token_counter=counter).decode()) - counter(encode_current(decode_prefix(pref),current,snapshot_format=fmt,token_counter=counter).decode())
+        return dict(due_incremental_tokens=due_cost, context_ref=ctx['context_ref'],time=ctx['time'],tokenizer='o200k_base',
                     tiktoken_version=importlib.metadata.version('tiktoken'),tokens=rows, upcoming_incremental_tokens=incremental,
                     note='Old column is raw JSON with the same current rules/three tools; pre-L production total was 756359 (prefix 563837). Section token counts are standalone and need not sum exactly.',
                     counts=dict(pending_tasks=len(current['pending_tasks']),running_jobs=len(current['running_jobs']),

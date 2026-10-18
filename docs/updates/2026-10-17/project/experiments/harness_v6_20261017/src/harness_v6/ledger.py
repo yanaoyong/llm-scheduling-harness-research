@@ -12,8 +12,8 @@ members, take its minimum batch in operation-ID order, consume those members.
 This prevents double-counting cross-machine demand but can underestimate optimal
 utilization. Active holds exclude machines from avoidable idle; feasible held
 work counts only as explicit_wait_idle. The two disjoint metrics may be summed.
-Conditional/uncertain qualifications are conservative exclusions, never forecasts
-of physical readiness. Receipt extensions supply running/done/invalid identity.
+Unresolved same_machine_as bindings remain exclusions; absent recorded dedication
+is not an exclusion. Avoidable idle is a greedy witness lower bound. Receipt extensions supply running/done/invalid identity.
 """
 from copy import deepcopy
 from dataclasses import dataclass, field
@@ -32,7 +32,8 @@ def ready(op, now):
 
 
 def idle(machine, now):
-    return (not machine.get('currently_busy', False)
+    return (len(machine.get('processing_until', [])) < (2 if machine.get('cascading') else 1)
+            and not machine.get('currently_busy', False)
             and not machine.get('currently_down', False)
             and machine.get('available', True)
             and not any(a <= now < b for a, b in machine.get('unavailable_intervals', [])))
@@ -40,7 +41,6 @@ def idle(machine, now):
 
 def eligible(op, machine):
     return (machine['machine'] in op['eligible_machines']
-            and not op.get('qualification_uncertain', False)
             and not op.get('same_machine_as')
             and (machine.get('min_left', 0) <= 0
                  or machine.get('min_setup') == op.get('setup')))

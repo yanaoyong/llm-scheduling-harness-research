@@ -15,7 +15,7 @@ Coverage shortfall is reported, never rejected. coverage contains observed_opera
 reserved_operations, ready_operations, ready_unreserved_count, ready_unreserved_sample
 (first 50 sorted ready-and-unreserved IDs), truncated and report_only=true.
 Readiness uses the ledger definition; non-ready work is excluded from ready counts
-and sample. Full uncovered IDs can be reconstructed offline from saved plan/problem. CQT/Q-time is not implemented.
+and sample. coverage_uncovered provides complete version-bound read_entities paging. CQT/Q-time is not implemented.
 '''
 
 V6_RULES += """Snapshot format SNAPSHOT_V1: static prefix first, then CURRENT.
@@ -29,16 +29,26 @@ step_definitions rows have zero-based IDs; routes list these IDs in step order;
 step_number_is_position=true restores step numbers starting at 1.
 machine_groups_compact groups static attributes; $ids lists machine ID ranges,
 sorted by id when decoded. Ranges a:b are inclusive; commas join ranges.
-upcoming_operations contains unreserved, not-ready operations with executing_predecessor
-and estimated release_time <= time + CURRENT horizon_seconds (the registered horizon). release_time is
-an estimate, not a guaranteed arrival. conditional/sampling and uncertain qualification
-remain visible. when_ready tasks may reserve these operations; execution rechecks readiness.
-Later exported work can be discovered with read_entities({"kind":"operations","cursor":null,
-"count":512,"where":[{"field":"readiness_basis","op":"eq","value":"executing_predecessor"}]}).
-Follow next_cursor with the same where predicates; compare release_time to time+H yourself:
-read_entities supports eq/contains, not a greater-than time filter.
+upcoming_operations contains exported unreserved not-ready operations with earliest_start <= time+H.
+earliest_start is a physical lower bound; nominal_start is informational mean-path time,
+or null when the source mean path is unavailable.
+Neither is an arrival promise or hard constraint; when_ready waits for actual material.
+waiting_since is observed-ready history. Processing min/max include process + load/unload,
+excluding setup/transport; null maximum means unbounded. Rework revisits are not projected.
+No recorded dedication means the simulator does not restrict family-machine qualification;
+observed bindings and same_machine_as remain binding.
+unavailable_intervals=[] means no data provided, not guaranteed availability. Future maintenance is not provided.
+setup_transitions/min_runs are static source facts: explicit step setup_time, else old-to-new
+setup table, else empty-old fallback, else zero; min_runs decrement per lot.
+avoidable_idle is a greedy witness lower bound. blocked_queues and absent_operation_tasks
+are next-anchor diagnostics only; the model must cancel absent-operation tasks explicitly.
+read_entities supports eq/contains and finite numeric gt/gte/lt/lte; null/absent never match ranges.
+No implicit ranking or sorting is applied. To read ALL uncovered operations in this frozen version:
+read_entities({"kind":"operations","cursor":null,"count":512,"where":[{"field":"coverage_uncovered","op":"eq","value":true}]}).
+Follow coverage.complete_read after validate/submit for the candidate-specific uncovered list.
+Follow next_cursor with identical predicates until null; cursors bind observation, coverage plan and filter.
 upcoming_operations uses the same $operations and $eligible grouping as ready_groups;
-its decoded rows sort by operation_id. ready_groups shares batch/setup/qualification/release fields and $eligible;
+its decoded rows sort by operation_id. ready_groups shares physical timing, priority, batch/setup fields and $eligible;
 $operations lists EVERY operation ID; decoded ready rows sort by operation_id.
 $eligible [family,name] means the sorted IDs of every static machine in that
 family. Other lists use [set,id] in eligible_sets, preserving their exact order.
@@ -83,8 +93,7 @@ Strings may be bare unless ambiguous, empty, numeric-looking or marker-prefixed;
 otherwise they are JSON-quoted. Nested values remain JSON/distribution cells.
 Defaults use the most frequent normalized typed value, ties by encoded lexical order;
 only positive whole-table savings under the supplied token counter are used.
-$release_time_is_time=true means omitted release_time equals CURRENT time in that ready group;
-without that flag, an absent release_time remains absent. All other compact conventions apply.
+All other compact conventions apply. Internal release_time is not a public arrival fact.
 """
 
 
@@ -106,7 +115,7 @@ def cycle_footer(*, state_version, submission_id, now, next_anchor, delta,
     instruction = ('Use read_entities for additional public facts, validate_plan, then submit_plan.'
                    if interaction == 'mcp_session' else
                    'Return exactly the JSON object {expected_state_version,submission_id,delta} '
-                   'matching the output schema; no prose or tool calls.')
+                   'matching the output schema; no prose or tool calls. Use earliest_start as a lower bound and nominal_start as information only; diagnostics require your explicit delta.')
     value = dict(current_time=now, expected_state_version=state_version, submission_id=submission_id,
                  valid_until_minimum=minimum, valid_until_comparison=">=" if trigger == "periodic" else ">", trigger=trigger,
                  wall_deadline_seconds=wall_seconds, instruction=instruction + ' Use exact current_time for freeze_until; snapshot times are rounded.')

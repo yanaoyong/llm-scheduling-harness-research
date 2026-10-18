@@ -37,6 +37,10 @@ def load_states(fixture, database, public_ledger):
     from harness_v6.env_adapter import FullFabEnvironment
     env = FullFabEnvironment(seed=0, data_dir=bundle['data_dir'])
     states['SMT2020:0'] = dict(env.ledger_snapshot(), running_jobs=[dict(job=i, machine=j['machine'], lot_ids=j['lots'], started_at=j['start']) for i,j in env.jobs.items() if not j['done']])
+    from harness_v6.physical_window import frozen_operations
+    for name, record in states.items():
+        if name != 'SMT2020:0':
+            record['problem']=frozen_operations(record['problem'],env.manifest,running_jobs=record.get('running_jobs',[]),dispatches=bundle['g0_trace'] if name.startswith('G0') else ())
     return states, env
 
 

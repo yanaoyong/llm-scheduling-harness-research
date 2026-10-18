@@ -26,11 +26,12 @@ def tiktoken_counter(encoding_name='o200k_base'):
     return lambda text: len(encoding.encode(text, disallowed_special=()))
 
 
-def stable_prefix(*, tool_descriptions, routing, machine_groups, snapshot_format="explicit", token_counter=token_cost):
+def stable_prefix(*, tool_descriptions, routing, machine_groups, snapshot_format="explicit", token_counter=token_cost, setup_transitions=None, min_runs=None):
     if all(isinstance(m, dict) and 'id' in m for m in machine_groups):
         machine_groups = sorted(machine_groups, key=lambda m: m['id'])
     return encode_prefix({'rules': rules_for_format(snapshot_format), 'tools': tool_descriptions,
-                          'routing': routing, 'machine_groups': machine_groups}, snapshot_format=snapshot_format, token_counter=token_counter)
+                          'routing': routing, 'machine_groups': machine_groups,
+                          **({'setup_transitions':setup_transitions,'min_runs':min_runs} if setup_transitions is not None else {})}, snapshot_format=snapshot_format, token_counter=token_counter)
 
 
 @dataclass(frozen=True)
@@ -48,6 +49,15 @@ class SnapshotBudgetExceeded(ValueError):
         super().__init__('complete snapshot exceeds token budget')
 
 
+# G0 dedicated lot map costs 10,676 dense tokens (> user-approved 8,000 cap).
+INCLUDE_DUE = False
+
+
+def due_values(ledger, current):
+    visible={r['operation_id'] for section in ('unreserved_ready','upcoming_operations') for r in current[section]}
+    return {op['lot_id']:op.get('due') for oid,op in sorted(ledger.operations.items()) if oid in visible}
+
+
 def current_state(ledger, *, horizon_seconds, state_version, running_jobs, last_cycle_receipt,
                   model_notes, history=HistorySummary()):
     """Canonical public object, independent of its wire representation."""
@@ -57,25 +67,19 @@ def current_state(ledger, *, horizon_seconds, state_version, running_jobs, last_
     rows = ledger.rows(); metrics = ledger.metrics()
     pending = ledger.pending_tasks()
     reserved = {oid for task in pending for oid in task['operation_ids']}
-    upcoming = []
+    from .physical_window import public_operation, queue_diagnostics
+    upcoming, ready_rows = [], []
+    common = ('earliest_start','nominal_start','batch_key','batch_min','batch_max','setup',
+              'eligible_machines','priority','processing_seconds_min','processing_seconds_max')
     for oid, op in sorted(ledger.operations.items()):
-        if (op.get('readiness_basis') == 'executing_predecessor'
-                and not rows[oid]['ready'] and oid not in reserved
-                and op['release_time'] <= ledger.now + horizon_seconds):
-            upcoming.append(dict(operation_id=oid, release_time=op['release_time'],
-                batch_key=op['batch_key'], batch_min=op['batch_min'], batch_max=op['batch_max'],
-                setup=op.get('setup'), eligible_machines=op['eligible_machines'],
-                sampling_percent=op.get('sampling_percent'), conditional=op.get('conditional', False),
-                qualification_uncertain=op.get('qualification_uncertain', False)))
-    ready_rows = []
-    for oid, row in rows.items():
-        if row['state'] == 'ready_unreserved' and row['ready']:
-            op = ledger.operations[oid]
-            ready_rows.append({'operation_id': oid, 'eligible_machines': op['eligible_machines'],
-                               'batch_key': op['batch_key'], 'batch_min': op['batch_min'],
-                               'batch_max': op['batch_max'], 'setup': op.get('setup'),
-                               'release_time': op.get('release_time'),
-                               'qualification_uncertain': op.get('qualification_uncertain', False)})
+        public = public_operation(op, ledger.now)
+        row = dict(operation_id=oid, **{k:public.get(k) for k in common})
+        if rows[oid]['state']=='ready_unreserved' and rows[oid]['ready']:
+            row['waiting_since']=public.get('waiting_since')
+            ready_rows.append(row)
+        elif not rows[oid]['ready'] and oid not in reserved and public['earliest_start'] <= ledger.now+horizon_seconds:
+            row.update({k:public.get(k) for k in ('readiness_basis','predecessor_ids','sampling_percent','conditional')})
+            upcoming.append(row)
     current = {'state_version': state_version, 'time': ledger.now, 'horizon_seconds': horizon_seconds,
                'upcoming_operations': upcoming,
                'pending_tasks': [model_task(t) for t in pending],
@@ -92,6 +96,9 @@ def current_state(ledger, *, horizon_seconds, state_version, running_jobs, last_
                'reserved_but_earlier_startable': metrics['reserved_but_earlier_startable'],
                'assigned_not_started_age': metrics['assigned_not_started_age'],
                'history_summary': history.digest}
+    if INCLUDE_DUE:
+        current["lot_due"]=due_values(ledger,current)
+    current.update(queue_diagnostics(ledger))
     return current
 
 

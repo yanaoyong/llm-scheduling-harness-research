@@ -39,6 +39,11 @@ class LiveRun:
         self.budget_report = None
         self.directory = Path(directory)
         self.store = CheckpointStore(self.directory / 'checkpoints')
+        if hasattr(factory, 'env'):
+            from .compact import decode_prefix, encode_prefix
+            static=decode_prefix(prefix)
+            static.update(setup_transitions=factory.env.manifest['setups'],min_runs=dict(factory.env.min_runs))
+            prefix=encode_prefix(static,snapshot_format=snapshot_format,token_counter=token_counter)
         self.prefix, self.source_sha256 = prefix, source_sha256
         self.model, self.budget, self.model_note = model, budget, model_note
         self.cycle = CycleMachine(origin=factory.now, config=config or CycleConfig())
@@ -54,6 +59,8 @@ class LiveRun:
 
     def step(self, *, event=None, until=None):
         c, f = self.cycle, self.factory
+        if hasattr(f, "env"):
+            f.env.presentation_horizon_seconds = c.config.horizon
         if c.stop_reason:
             return None
         if event is None:
@@ -158,6 +165,8 @@ class LiveRun:
 
     def _observe_drift(self):
         c, f = self.cycle, self.factory
+        if hasattr(f, "env"):
+            f.env.presentation_horizon_seconds = c.config.horizon
         completed_hour = int((f.now-c.origin)//3600)-1
         while self.last_hour < completed_hour:
             self.last_hour += 1

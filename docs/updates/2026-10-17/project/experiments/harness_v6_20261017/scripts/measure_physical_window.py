@@ -11,7 +11,8 @@ import json
 from pathlib import Path
 
 from audit_filters import load_states
-from phase_s_helpers import distribution_bounds, phase_duration, lower_bound_walk, depth_distribution
+from harness_v6.physical_window import distribution_bounds, phase_duration, lower_bound_walk
+from phase_s_helpers import depth_distribution
 from harness_v6.compact import (encode_current, decode_prefix, decode_snapshot, normalize,
                                 section, dense_section, sections)
 from harness_v6.snapshot import canonical, current_state, stable_prefix, tiktoken_counter
@@ -120,7 +121,7 @@ def wire_cost(rows, manifest, counter):
 
 
 def qualification_probe(env, record):
-    ops = [o for o in record['problem']['operations'] if o.get('qualification_uncertain') and o['readiness_basis'] == 'observed_ready']
+    ops = [o for o in record['problem']['operations'] if o.get('qualification_basis')=='no recorded dedication; simulator does not restrict' and o['readiness_basis'] == 'observed_ready']
     pairs = accepted = bindings = 0
     cache = {m: set(env.eligible(m)) for o in ops for m in o['eligible_machines']}
     for o in ops:
