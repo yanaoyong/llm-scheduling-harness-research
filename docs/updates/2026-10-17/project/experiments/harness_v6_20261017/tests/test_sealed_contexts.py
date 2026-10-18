@@ -1,4 +1,5 @@
 from harness_v6.compact import normalize
+from harness_v6.delta_schema import model_task
 from harness_v6.snapshot import decode_snapshot
 import json
 import os
@@ -127,7 +128,7 @@ def test_mac_snapshot_26_pending():
             state_version=ctx['state_revision'], running_jobs=evidence['running_jobs'],
             last_cycle_receipt=None, model_notes='', token_budget=10**9, token_counter=tiktoken_counter())
         current = decode_snapshot(payload)[1]
-        assert current['pending_tasks'] == normalize(pending)
+        assert current['pending_tasks'] == normalize([model_task(t) for t in pending])
         assert current['running_jobs'] == normalize(evidence['running_jobs'])
         visible = {}
         trace = bundle('g0_trace')['g0_trace']

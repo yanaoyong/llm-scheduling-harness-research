@@ -144,13 +144,11 @@ def test_mac_live_p2_three_cycles(live_dir):
     from harness_v6.session import Budget
     def planner(frozen):
         from harness_v6.facts import reconstruct
-        from harness_v6.plan_delta import SCHEMA, ORDER_POLICY, anchor_hashes
         problem,base=reconstruct(frozen['facts']);state=frozen['execution_state']
         config=frozen['submit_config'];now=state['time']
-        delta=dict(schema=SCHEMA,order_policy=ORDER_POLICY,machine_orders=[],
-            anchors=anchor_hashes(base,problem,state,source_sha256=SOURCE),
-            plan_header=dict(version='live-'+str(config['state_version']),created_at=now,
-                valid_until=now+900,freeze_until=now,reason='scripted mechanism test',scope=base['scope']))
+        delta=dict(machine_orders=[], tasks=dict(cancel_ids=[],replace=[],add=[]),
+            holds=dict(cancel_ids=[],replace=[],add=[]),
+            plan_header=dict(valid_until=now+900,freeze_until=now,reason='scripted mechanism test'))
         return dict(expected_state_version=config['state_version'],submission_id=str(config['state_version']),delta=delta)
     run=LiveRun(LiveFactory(env),ScriptedRunner(planner),directory=live_dir,
         prefix=stable_prefix(tool_descriptions=[],routing=[],machine_groups=[]),source_sha256=SOURCE,

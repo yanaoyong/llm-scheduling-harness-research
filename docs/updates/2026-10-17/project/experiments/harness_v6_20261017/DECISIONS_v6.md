@@ -119,3 +119,19 @@ MCP tool_calls 只取 mcp.jsonl 行数；JSONL 轮次独立记录，证据不一
 - 回执违规详情上限 50，额外报告总数、按码计数和 truncated；内部完整验证/接受语义不变。read_entities ids >512 明确拒绝。
 - LiveRun 必填 context_token_budget、request_overhead_tokens、output_reserve_tokens；快照 + 系统/工具开销 + 输出/推理预留 ≤ 总上下文预算，超限失败关闭并写出每项。移除旧的仅快照预算参数。
 - 无模型调用、网络、提交；配置环境验证沿用 F–K 已授权的公开/封存夹具。真实理解准确率、F6 系统提示/工具开销和生产 reserve 登记仍在 Mac 上完成。
+
+### Phase M（用户批准：仅决策的 delta）
+
+- 删除模型任务的 `lot_ids/steps/visits`：`operation_ids` 已唯一决定当前工序身份；
+  编译器查 observation，不接受模型重复或矛盾声明。保留内部身份一致性校验。
+- 删除模型 `anchors`：状态绑定使用外层 `expected_state_version`；host 仍计算并保存四项哈希。
+- 删除 task/hold patch 的 `keep.mode/keep.ids`：仅取消列表和替换/新增，未提及者保留。
+- 删除 `schema/order_policy`：协议常量由 host 定义；删除 header 的
+  `created_at/scope/version`：分别由 now、责任范围、确定性状态/提交/输入哈希生成。
+  模型 header 决策仅 `valid_until/freeze_until/reason`。
+- 删除模型任务的 `machine`：唯一来源为 `machine_orders`，同时表达队列顺序。
+  新增/替换必须列一次；保留任务可移动；取消也改变任务集合，须给完整剩余队列。
+- 快照任务投影同步删除这些字段，新增 `machine_orders` 保留任务分配信息；内部结构不变。
+- 完整 schema 由 MCP 两工具和 single_action 共享；拒绝旧字段，不提供兼容 shim 或格式开关。
+- 新旧版本字符串及依赖版本的哈希不应要求字节相同；物理、任务身份/分配/队列/时间、holds
+  和恢复结果必须相同。仅生产字段等价，不能把版本元数据变化误报为物理差异。

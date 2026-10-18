@@ -6,7 +6,7 @@ from pathlib import Path
 from harness_v6.compact import CURRENT, decode_snapshot, section, sections
 from harness_v6.snapshot import stable_prefix, current_state, build_snapshot, canonical, tiktoken_counter
 from harness_v6.prompt_rules import V6_RULES
-from harness_v6.mcp_server import TOOLS
+from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS
 from harness_v6.factory_v6 import restore
 from harness_v6.ledger import ledger_from_scratch
 from harness_v6.sealed_contexts import SQLiteContextReader
@@ -16,7 +16,7 @@ def measure(fixture, database):
     bundle = json.loads(Path(fixture).read_bytes())
     seed = bundle['mixed_702']
     env = restore(seed['state'], seed['trace'], data_dir=bundle['data_dir'])
-    tools = [{'name': n, 'description': n, 'inputSchema': s} for n, s in TOOLS.items()]
+    tools = [{'name': n, 'description': TOOL_DESCRIPTIONS[n], 'inputSchema': s} for n, s in TOOLS.items()]
     prefix_obj = dict(rules=V6_RULES, tools=tools, routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
     prefix = stable_prefix(tool_descriptions=tools, routing=prefix_obj['routing'], machine_groups=prefix_obj['machine_groups'])
     for entry in SQLiteContextReader(database, 'SELECT group_name,payload FROM contexts').contexts():

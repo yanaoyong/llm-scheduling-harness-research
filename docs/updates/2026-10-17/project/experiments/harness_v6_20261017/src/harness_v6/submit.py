@@ -5,7 +5,7 @@ must serialize calls to this object and persist its capture with the cycle WAL.
 """
 from copy import deepcopy
 from collections import Counter
-from .plan_delta import (compile_plan_delta, DeltaError, json_sha256)
+from .plan_delta import (compile_plan_delta, DeltaError, json_sha256, anchor_hashes)
 from .normalize import validate_plan, number
 
 
@@ -66,22 +66,19 @@ class Submitter:
             if delta == {}:
                 # No-change is an explicit commit of the old production payload.
                 plan = deepcopy(self.base_plan)
+                evidence = {'anchors': anchor_hashes(self.base_plan, self.problem, self.execution_state,
+                                                     source_sha256=self.source_sha256),
+                            'delta_sha256': json_sha256(delta), 'compiled_plan_sha256': json_sha256(plan)}
                 projection = deepcopy(plan)
                 projection['tasks'] = [t for t in plan['tasks'] if t['id'] not in self.execution_state['dispatched_task_ids']]
                 projection['created_at'] = self.execution_state['time']
                 projection['freeze_until'] = max(projection['freeze_until'], self.execution_state['time'])
                 errors.extend(validate_plan(projection, self.problem, self.execution_state, base_plan=self.base_plan))
             else:
-                supplied = deepcopy(delta)
-                if isinstance(supplied, dict):
-                    for name, mode in [('tasks', 'all_pending_except'), ('holds', 'all_except')]:
-                        if name not in supplied:
-                            supplied[name] = {'keep': {'mode': mode, 'ids': []}, 'cancel_ids': [], 'replace': [], 'add': []}
-                        elif isinstance(supplied[name], dict) and 'keep' not in supplied[name]:
-                            supplied[name]['keep'] = {'mode': mode, 'ids': []}
                 try:
                     compiled = compile_plan_delta(self.base_plan, self.problem, self.execution_state,
-                                                  supplied, source_sha256=self.source_sha256)
+                                                  delta, source_sha256=self.source_sha256,
+                                                  state_version=self.state_version, submission_id=submission_id)
                     plan, evidence = compiled['plan'], compiled['evidence']
                 except DeltaError as exc:
                     errors.extend(exc.violations)

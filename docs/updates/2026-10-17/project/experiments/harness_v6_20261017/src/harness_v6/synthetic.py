@@ -4,10 +4,11 @@ Four circulating lots, two routes/machine groups, batches of two. Random
 processing durations are keyed by seed, operation identities and machine, not
 by event consumption order. This is not SMT2020 or production-quality evidence.
 """
+from .delta_schema import model_task
 from copy import deepcopy
 import hashlib
 from .snapshot import canonical, HistorySummary, stable_prefix, estimate_tokens
-from .plan_delta import SCHEMA, STATE_SCHEMA, ORDER_POLICY, anchor_hashes, json_sha256
+from .plan_delta import STATE_SCHEMA, json_sha256
 from .executor import decide_start
 from .ledger import Ledger, ledger_apply
 from .cycle import CycleMachine, DriftMonitor, DriftRule
@@ -174,13 +175,12 @@ def scripted_delta(factory, cycle):
             tasks.append({'id': f'c{cycle}-m{mid}-b{index}', 'machine': mid, 'start_mode': 'when_ready',
                           'operation_ids': [r['operation_id'] for r in batch], 'lot_ids': [r['lot_id'] for r in batch],
                           'steps': [r['step'] for r in batch], 'visits': [r['visit'] for r in batch]})
-    return {'schema': SCHEMA, 'anchors': anchor_hashes(base, problem, state, source_sha256=SOURCE),
-            'order_policy': ORDER_POLICY, 'plan_header': {'version': f'v{cycle}', 'created_at': factory.now,
-                'valid_until': factory.now + 100000, 'freeze_until': factory.now, 'reason': LABEL, 'scope': [1, 2]},
-            'tasks': {'keep': {'mode': 'all_pending_except', 'ids': cancel}, 'cancel_ids': cancel, 'replace': [], 'add': tasks},
-            'holds': {'keep': {'mode': 'all_except', 'ids': []}, 'cancel_ids': [], 'replace': [], 'add': []},
+    return {'plan_header': {
+                'valid_until': factory.now + 100000, 'freeze_until': factory.now, 'reason': LABEL},
+            'tasks': {'cancel_ids': cancel, 'replace': [], 'add': [model_task(t) for t in tasks]},
+            'holds': {'cancel_ids': [], 'replace': [], 'add': []},
             'machine_orders': [{'machine': m, 'task_ids': [t['id'] for t in retained+tasks if t['machine']==m]}
-                               for m in sorted({t['machine'] for t in tasks})]}
+                               for m in sorted({t['machine'] for t in tasks + pending})]}
 
 
 from .checkpoint import capture_ledger as ledger_capture

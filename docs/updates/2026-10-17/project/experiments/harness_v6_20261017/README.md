@@ -327,3 +327,28 @@ python3 -m pytest -q tests/test_compact.py tests/test_mac_snapshot.py tests/test
 
 最新旧/新 token 表与验证结果见 `reports/compact_snapshot_validation_20261018.md`。
 这是表示和机制验证，不代表模型理解准确率或生产排程质量；该项仍待 Mac 探针验证。
+
+### Phase M：仅传决策的提交格式
+
+`validate_plan` 与 `submit_plan` 的 `delta` 共用完整 JSON Schema；single_action
+的 `--output-schema` 也来自同一份定义（`delta_schema.py`）。外层仍为
+`expected_state_version`、`submission_id`、`delta`；`{}` 表示显式不改计划。
+非空 delta 必须包含四项：
+
+- `plan_header`：模型仅决定 `valid_until`、`freeze_until`、`reason`。
+- `tasks`、`holds`：均为 `{cancel_ids, replace, add}`，未取消或替换的项自动保留。
+  hold 的替换项为 `{ref:"h:0", hold:{machine,until,reason,after_task_id?}}`。
+- `machine_orders`：`[{machine,task_ids}]` 同时指定机台和完整队列；新增/替换任务
+  必须恰好出现一次，保留任务可显式移动。任何任务集合改变的机台都须提供完整队列，
+  包括清空后的 `[]`。
+
+任务只传 `id`、`operation_ids` 及可选 `start_mode`、`not_before`、`latest_start`。
+编译器从当前 observation 展开 `lot_ids/steps/visits`，从队列展开 `machine`；
+内部计划、执行器、物理适配器、账本、存储结构不变。默认 `when_ready`；过去的硬下界原样保留。
+快照中的 pending/invalid task 使用上述投影，独立 `machine_orders` 保留排队信息。
+
+模型不再传 `schema`、`order_policy`、`anchors`、`keep`，也不传 header 的
+`created_at/scope/version`。host 设置 now、当前 scope，版本是 state_version、
+submission_id、权威 anchors 和 delta 的确定性 SHA256；四项 anchors 留在 receipt/evidence。
+因此新旧物理计划的生产字段可逐项相等，但版本字符串及包含版本的审计哈希会改变。
+完整小例子见 `prompt_rules.py`；离线 token 对比命令见 MAC_VALIDATION 的 Phase M 条目。

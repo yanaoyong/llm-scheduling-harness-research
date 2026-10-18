@@ -368,3 +368,21 @@ python3 scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --databa
 新增预算边界命令：`python3 -m pytest -q tests/test_compact.py -k whole_request_budget`。
 F6 新测量须与九项已有 probe 一起人工核验并保存报告；此阶段只执行合成边界测试，
 未提供真实 Codex 请求证据，不将该项标为通过。
+
+## Phase M：决策 delta 的离线验收
+
+在 V6 目录，使用既有配置环境，不调用模型：
+
+```bash
+PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/measure_model_delta.py --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --output /workspace/v6-mac-env/work/model-m-tokens.json
+PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2
+PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/run_public_physics.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --group P2 --until 1603.10 --output /workspace/v6-mac-env/work/phase-m-p2.json
+```
+
+通过条件：scripted 和完整 26-task G0 base 的新旧 o200k token 可重复报告；新版更小。
+G0 快照投影精确 round-trip，所有任务 ID 和 machine_orders 保留。sealed 分类和 replay 不变。
+P2 16 sessions、232 steps、878 dispatches、恢复相等、全部任务生产字段及物理事件不变；
+仅快照表示、host 生成的版本字符串和依赖版本的哈希允许变化，必须逐项说明。
+完整 configured suite 使用 Phase J 的环境变量，分类输出改为 `classification-m-final.json`。
+仍待真实 Mac/Codex 验证：模型能否读懂完整 schema/小例子、single_action 接受同一 schema；
+既有 F6 12 项探针未获新的运行授权，不能把离线结果写成 live-model 成功。

@@ -7,7 +7,7 @@
   },
   "files": [
     {
-      "copy_sha256": "636f0e872318ebac1c3551142ffd00e6038f7c762304e7b017e232eb796f2b3a",
+      "copy_sha256": "6a0d63067938c7a52dd7a26442e77e4b4a669ecac285a9b6292e5ae2fdf0a3e2",
       "initial_copy_sha256": "0581ab7c7829401dcff56ad453b4f768a5a5d1cf92e7f6e3f216a2a8f86990b9",
       "modified": true,
       "path": "src/harness_v6/plan_delta.py",
@@ -31,7 +31,7 @@
       "source_sha256": "ce1ccb34b6d766e63e0e6f5b899f9d81271a71dd50f9cf575a33fdfac918031b"
     },
     {
-      "copy_sha256": "f657c180c50a2f6f7822b8082949e5ea1324afd71570498f29fda51ae5e7b1b6",
+      "copy_sha256": "f50e2e20161888865b75b9e21d3527a115a5e7f789ef8db089bb10d143fd02dc",
       "initial_copy_sha256": "a952078dd4556ca32b243fff027223444ec7323fd5d190af83a8d94832e9701a",
       "modified": true,
       "path": "tests/test_plan_delta.py",

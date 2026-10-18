@@ -1,4 +1,5 @@
 """Complete public-state snapshot and real-token fail-closed check; no sealed alias."""
+from harness_v6.delta_schema import model_task
 from harness_v6.compact import normalize
 from harness_v6.snapshot import decode_snapshot
 import json
@@ -19,7 +20,7 @@ def test_public_complete_snapshot_and_budget():
         for i,j in sorted(env.jobs.items()) if not j['done']],last_cycle_receipt=None,model_notes='public mechanism',token_counter=count)
     payload=build_snapshot(prefix,ledger,token_budget=10**8,**args)
     current=decode_snapshot(payload)[1]
-    assert current['pending_tasks']==normalize(ledger.pending_tasks())
+    assert current['pending_tasks']==normalize([model_task(t) for t in ledger.pending_tasks()])
     assert current['holds']==normalize(list(ledger.holds.values()))
     expected={oid for oid,r in ledger.rows().items() if r['ready'] and r['state']=='ready_unreserved'}
     assert {r['operation_id'] for r in current['unreserved_ready']}==expected

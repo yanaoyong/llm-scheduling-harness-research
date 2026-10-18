@@ -37,3 +37,20 @@ tables; nested cells retain their JSON fields. The prompt contains the complete
 snapshot once. read_entities accepts at most 512 IDs. Tool receipts report
 violation_count, counts_by_code and truncated; acceptance uses ALL violations.
 """
+
+V6_RULES += """Decision delta: plan_header has valid_until, freeze_until, reason only.
+Tasks use id, operation_ids, optional start_mode/not_before/latest_start; never
+send machine, lot_ids, steps, visits. machine_orders assigns machines and full
+queue order; list each new/replaced task once. Retained tasks keep their machine
+unless listed on another; every changed task set needs a full order (even []).
+Snapshot pending_tasks/invalid_tasks use this projection; machine_orders retains
+pending assignments and queue order. Both patches use cancel_ids, replace, add;
+unmentioned items remain. Hold replacements use {ref:"h:0",hold:{...}}.
+Do not send schema, anchors, order_policy, version, created_at or scope: the host
+fills constants/provenance from frozen state; expected_state_version binds it.
+Submit {} for explicit no-change. Example delta (assuming empty base queues):
+{"plan_header":{"valid_until":900,"freeze_until":0,"reason":"run ready work"},
+ "tasks":{"cancel_ids":[],"replace":[],"add":[{"id":"t1","operation_ids":["op1"]}]},
+ "holds":{"cancel_ids":[],"replace":[],"add":[]},
+ "machine_orders":[{"machine":1,"task_ids":["t1"]}]}
+"""

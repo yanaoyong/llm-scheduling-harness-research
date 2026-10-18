@@ -1,5 +1,6 @@
 """Offline measurements from the public sealed fixture; never runs a planner."""
 from harness_v6.compact import normalize
+from harness_v6.delta_schema import model_task
 from harness_v6.snapshot import decode_snapshot
 import argparse
 import json
@@ -29,8 +30,8 @@ def validate(directory):
     result['replay'] = {k: v for k, v in replay.items() if k != 'errors'}
     print('replay', result['replay'], str(replay.get('errors'))[:500], flush=True)
     counter = tiktoken_counter()
-    from harness_v6.mcp_server import TOOLS
-    prefix = stable_prefix(tool_descriptions=[{'name':name,'description':name,'inputSchema':schema} for name,schema in TOOLS.items()],
+    from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS
+    prefix = stable_prefix(tool_descriptions=[{'name':name,'description':TOOL_DESCRIPTIONS[name],'inputSchema':schema} for name,schema in TOOLS.items()],
                            routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
     case_refs = {c['context_ref'] for c in bundle['w1462_case']['calls']}
     exception_refs = {c['context_ref'] for c in report['new_rule_exceptions']}
@@ -71,7 +72,7 @@ def validate(directory):
         payload = build_snapshot(prefix, ledger, token_budget=10**9, **args)
         current = decode_snapshot(payload)[1]
         pending = [t for t in ctx['base_plan']['tasks'] if t['id'] not in execution['dispatched_task_ids']]
-        assert current['pending_tasks'] == normalize(pending)
+        assert current['pending_tasks'] == normalize([model_task(t) for t in pending])
         # Phase H: account for all base tasks across pending and actual running jobs.
         assert len(ctx['base_plan']['tasks']) == 26 and len(pending) == 23
         assert running == bundle['g0_snapshot']['running_jobs']
