@@ -174,3 +174,16 @@ Dense 扩展 legend 仅 dense 包含。默认值只依赖所属表，静态表�
   汇总 spread=总体标准差；quality tolerance 是绝对量，迟交/空闲越低越好、产出越高越好。
 - fixture 日历不能通过改 horizon 延长；起点之后工厂 seed 明确登记，模型随机性没有 seed 保证。
   真实 Codex 参数/JSONL 合约仍需既有 F6 探针，fake 只证明协议和失败路径机制。
+
+## Phase P：可复现 Mac 测量
+
+- CodexRunner 的超时只由 leader 未在 deadline 前退出触发；正常/非零退出也杀进程组，
+  并以短有界窗口排空 stdout。stdin/stdout 都非阻塞，避免管道容量导致死锁。
+- 探针只接受 127.0.0.1 HTTP provider，隔离认证环境；保留全部原始证据。
+  当前 Responses SSE 和 Codex flags 为待真实 pin 验证的协议假设，失败明确阻止试验。
+- overhead capture 广告生产 schema，用完整当前对象压力工具结果录制多轮；建议只覆盖
+  测试范围。轮次至少覆盖注册工具上限；不能推断未来任意 WIP 或不可见服务端开销。
+- A/B 延用 P0/P0b 题集/计分，仅加单动作 schema runner；不读 answer key，失败请求留缺失，
+  不自动挑选格式、不自动重试，不把 fake usage 当模型成本。
+- `--max-sessions` 按本次调用新增会话数停止，保留可恢复检查点；smoke 独立目录不进最终统计。
+- preflight 只查 --version；认证由用户管理并在独立真实 smoke 验证。CQT/Q-time 未实现。

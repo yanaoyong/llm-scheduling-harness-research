@@ -427,3 +427,22 @@ Mac 真实 Codex 验收（本阶段不运行）：先完成既有 F6/三项 sing
 JSONL 字段。然后按 README 命令运行批准的 E1/P2 ×3 登记，断言 manifest 版本与登记一致、
 无未知 usage、质量口径可由物理 trace 复算，summary/results 成本按同一模拟窗口归一化。
 真实 API 缓存和模型理解/质量须实际测量；fake usage 不是真实成本。CQT/Q-time 仍未实现。
+
+## Phase P：可执行测量与统一 runbook
+
+当前顺序入口为 [MAC_RUNBOOK.md](MAC_RUNBOOK.md)，替代前文“手工构造探针”的操作步骤，
+保留全部原能力门槛。`scripts/run_codex_probes.py` 自动录制 9+3 项并生成现有测试读取的 manifest；
+任何 pin/Responses SSE/JSONL 不兼容失败关闭，不能把 fake 通过当成真实能力。
+`measure_request_overhead.py --capture mcp_session|single_action` 使用真实快照和生产工具 schema
+录制两格式请求，多轮结果增长纳入建议；只覆盖已测轮次/负载，未知服务器 framing 仍须单独核验。
+`ab_comprehension.py run` 固定 model/pin/budget，执行已有 AB/BA plan；不读取答案。
+`mac_preflight.py` 核对路径/hash/版本/cache，--version 不验证认证。
+
+```bash
+python -m pytest -q tests/test_phase_p.py tests/test_codex_runner.py tests/test_ab_comprehension.py tests/test_request_overhead.py
+```
+
+通过条件：fake 真实 HTTP+stdio 回路生成的 12 项 manifest 被原有两个 Mac 测试完整接受；
+大小/越界/错误输入失败关闭；leader 退出留 TERM-ignoring child 不误超时，正常及超时均无运行中后代；
+A/B fake 100% 与预算预检、overhead 两模式录制分析、hash 篡改、一会话停止/恢复通过。
+真实 Mac 的全部 12 项仍须独立执行且无 skip，A/B 理解与正式 E1/P2 质量/成本尚未测量。

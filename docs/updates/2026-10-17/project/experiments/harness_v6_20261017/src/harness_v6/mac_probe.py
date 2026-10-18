@@ -12,21 +12,30 @@ from pathlib import Path
 from .contracts import strict_json, encode
 
 
-def serve(fixtures, log, *, port=0):
-    responses=list(fixtures)
+def create_server(fixtures, log, *, port=0):
+    responses=list(fixtures) if not callable(fixtures) else None
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *args): pass
         def do_POST(self):
             raw=self.rfile.read(int(self.headers.get('Content-Length',0)))
             log.write(encode({'path':self.path,'body':raw.decode()})+b'\n');log.flush()
-            if not responses:
+            if responses is not None and not responses:
                 self.send_error(409,'No scripted response remains');return
-            row=responses.pop(0);body=row['body'].encode()
+            try:
+                row=fixtures(strict_json(raw)) if callable(fixtures) else responses.pop(0)
+            except (ValueError, KeyError) as exc:
+                self.send_error(422, str(exc)); return
+            body=row['body'].encode()
             self.send_response(row.get('status',200))
             self.send_header('Content-Type',row['content_type'])
             self.send_header('Content-Length',str(len(body)))
             self.end_headers();self.wfile.write(body)
     server=HTTPServer(('127.0.0.1',port),Handler)
+    return server
+
+
+def serve(fixtures, log, *, port=0):
+    server = create_server(fixtures, log, port=port)
     print(f'http://127.0.0.1:{server.server_port}/v1',flush=True)
     try:server.serve_forever()
     finally:server.server_close()

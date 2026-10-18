@@ -419,6 +419,93 @@ def score(questions_path, answers_dir, output, answer_key=None):
     return result
 
 
+def schema_matches(value, schema):
+    import math
+    types = schema.get('type', [])
+    types = [types] if isinstance(types, str) else types
+    actual = ('null' if value is None else 'boolean' if type(value) is bool else
+              'integer' if type(value) is int else 'number' if type(value) is float else
+              'string' if isinstance(value, str) else 'array' if isinstance(value, list) else 'object')
+    if types and actual not in types and not (actual == 'integer' and 'number' in types): return False
+    if actual == 'number' and not math.isfinite(value): return False
+    if 'enum' in schema and value not in schema['enum']: return False
+    if isinstance(value, dict):
+        props = schema.get('properties', {})
+        if not set(schema.get('required', [])).issubset(value): return False
+        if schema.get('additionalProperties') is False and set(value)-set(props): return False
+        return all(schema_matches(v, props[k]) for k,v in value.items() if k in props)
+    if isinstance(value, list) and 'items' in schema:
+        return all(schema_matches(v, schema['items']) for v in value)
+    return True
+
+
+def run(kit, output, *, codex_binary, codex_version, model, context_token_budget,
+        request_overhead_tokens, output_reserve_tokens, wall_seconds=300,
+        env_allowlist=('PATH', 'HOME'), counter=None):
+    """Execute the existing counterbalanced plan; never load the answer key."""
+    from harness_v6.codex_runner import CodexRunner
+    from harness_v6.session import Budget, classify
+    from harness_v6.single_action import command
+    from harness_v6.contracts import digest
+    from harness_v6.snapshot import tiktoken_counter
+    kit = Path(kit).resolve(); output = Path(output).resolve()
+    if min(context_token_budget, output_reserve_tokens, wall_seconds) <= 0 or request_overhead_tokens < 0:
+        raise ValueError('invalid A/B budget')
+    counter = counter or tiktoken_counter('o200k_base')
+    plan = json.loads((kit/'presentation_plan.json').read_bytes())
+    # Preflight every prompt before spending on the first request.
+    prepared = []
+    for row in plan:
+        prompt = (kit/row['prompt']).read_text()
+        tokens = counter(prompt)
+        if tokens + request_overhead_tokens + output_reserve_tokens > context_token_budget:
+            raise ValueError('A/B context budget exceeded: '+row['request_id'])
+        prepared.append((row, prompt, tokens))
+    output.mkdir(parents=True, exist_ok=False)
+    answers = output/'answers'; answers.mkdir()
+    evidence = output/'evidence'; evidence.mkdir()
+    runner = CodexRunner(codex_binary, workdir=output, env_allowlist=env_allowlist,
+                         stderr_path=evidence/'stderr.log')
+    version = runner.version(codex_version)
+    manifest = dict(codex_version=version, model=model, context_token_budget=context_token_budget,
+        request_overhead_tokens=request_overhead_tokens, output_reserve_tokens=output_reserve_tokens,
+        wall_seconds=wall_seconds, plan_sha256=digest(plan), requests=[],
+        mechanism_only=version.startswith('fake-codex'))
+    failures = []
+    for row, prompt, tokens in prepared:
+        rid = row['request_id']; schema = kit/row['output_schema']
+        argv = command(output, schema, model=model, binary=codex_binary,
+                       budget=Budget(wall_seconds=wall_seconds, token_cap=context_token_budget))
+        argv = ['model_max_output_tokens='+str(output_reserve_tokens) if arg.startswith('model_max_output_tokens=') else arg for arg in argv]
+        result = runner.run(argv, prompt, timeout=wall_seconds)
+        (evidence/(rid+'.jsonl')).write_text(result.jsonl)
+        parsed = classify(result.jsonl, interaction='single_action')
+        errors = list(parsed['errors'])
+        if result.returncode or result.timed_out: errors.append('process_failed')
+        answer = None
+        try:
+            messages = [e['item']['text'] for e in map(json.loads, result.jsonl.splitlines())
+                        if e.get('type') == 'item.completed' and e.get('item', {}).get('type') == 'agent_message']
+            answer = json.loads(messages[-1])
+            schema_value = json.loads(schema.read_bytes())
+            if not schema_matches(answer, schema_value):
+                errors.append('answer_schema_keys')
+        except (ValueError, KeyError, IndexError, TypeError): errors.append('invalid_final_answer')
+        entry = dict(request_id=rid, command=argv, prompt_sha256=digest(prompt),
+            schema_sha256=digest(json.loads(schema.read_bytes())), prompt_tokens=tokens,
+            usage=parsed['usage'], wall_seconds=result.wall_seconds, errors=errors)
+        manifest['requests'].append(entry)
+        write_json(output/'manifest.json', manifest)
+        if errors:
+            failures.append(rid)
+        else:
+            write_json(answers/(rid+'.json'), dict(request_id=rid, format=row['format'],
+                state=row['state'], repetition=row['repetition'], answers=answer, usage=parsed['usage']))
+    if failures:
+        raise ValueError('A/B failed requests (retained as missing for scoring): '+', '.join(failures))
+    return manifest
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
@@ -434,10 +521,20 @@ def main():
     for name in ('questions', 'answers', 'output'):
         scoring.add_argument('--' + name, required=True)
     scoring.add_argument('--answer-key')
-    sub.add_parser('run', help='not yet available; requires the later Codex runner')
+    running = sub.add_parser('run', help='run the counterbalanced plan with pinned Codex')
+    for name in ('kit', 'output', 'codex-binary', 'codex-version', 'model'):
+        running.add_argument('--'+name, required=True)
+    for name in ('context-token-budget', 'request-overhead-tokens', 'output-reserve-tokens'):
+        running.add_argument('--'+name, type=int, required=True)
+    running.add_argument('--wall-seconds', type=float, default=300)
+    running.add_argument('--env-allowlist', nargs='+', default=['PATH', 'HOME'])
     args = parser.parse_args()
     if args.command == 'run':
-        parser.error('run is not yet available: Phase P must integrate the Codex runner')
+        run(args.kit, args.output, codex_binary=args.codex_binary, codex_version=args.codex_version,
+            model=args.model, context_token_budget=args.context_token_budget,
+            request_overhead_tokens=args.request_overhead_tokens, output_reserve_tokens=args.output_reserve_tokens,
+            wall_seconds=args.wall_seconds, env_allowlist=args.env_allowlist)
+        return
     if args.command == 'generate':
         from harness_v6.snapshot import tiktoken_counter
         states = load_real_states(args.fixture, args.database, args.states, tiktoken_counter())

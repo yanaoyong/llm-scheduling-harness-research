@@ -127,6 +127,10 @@ def execute(args):
             is_result=not args.dry_run_scripted, label=registration.LABEL if args.dry_run_scripted else '模型实验')
     atomic_write(manifest_path, canonical(manifest))
     run.checkpoint(run.store)
+    session_limit = getattr(args, 'max_sessions', None)
+    if session_limit is not None and session_limit < 1: raise ValueError('max_sessions must be positive')
+    initial_sessions = run.cycle.sessions
+    limited = False
     while run.factory.now < stop and not run.cycle.stop_reason:
         run.step(until=stop)
         values = totals(run)
@@ -135,6 +139,9 @@ def execute(args):
             cap = reg.get('per_sim_hour_request_cap')
             if cap is not None and values['model_request_lower_bound_per_sim_hour'] > cap:
                 run.cycle.stop_reason = run.cycle.stop_reason or 'request_budget_cap'
+        if session_limit is not None and run.cycle.sessions - initial_sessions >= session_limit:
+            limited = True
+            break
     # A requested endpoint is also a segment boundary for budget accounting.
     final_totals = totals(run)
     for metric, cap_key, stop_reason in (
@@ -144,7 +151,7 @@ def execute(args):
         if cap is not None and final_totals.get(metric) is not None and final_totals[metric] > cap:
             run.cycle.stop_reason = run.cycle.stop_reason or stop_reason
     run.checkpoint(run.store)
-    reason = run.cycle.stop_reason or ('registered_end' if stop == reg['end_time'] else 'until')
+    reason = run.cycle.stop_reason or ('session_limit' if limited else 'registered_end' if stop == reg['end_time'] else 'until')
     manifest.update(end=run.factory.now, stop_reason=reason)
     atomic_write(manifest_path, canonical(manifest))
     summary = dict(totals=totals(run), evaluation_totals=totals(run, steady_only=True), per_hour=run.metrics.report(), steady_state=run.metrics.report(steady_only=True),
@@ -162,6 +169,7 @@ def main():
     p.add_argument('--registration',required=True); p.add_argument('--group',choices=['E1','P1','E2','P2'],required=True)
     p.add_argument('--trajectory',type=int,required=True); p.add_argument('--output',required=True)
     p.add_argument('--resume',action='store_true'); p.add_argument('--dry-run-scripted',action='store_true')
+    p.add_argument('--max-sessions', type=int, help='stop after this many additional sessions (smoke test)')
     p.add_argument('--codex-binary'); p.add_argument('--until',type=float)
     execute(p.parse_args())
 

@@ -1,4 +1,4 @@
-"""Analyze saved mac_probe request JSONL; never launch a runner or endpoint.
+"""Analyze saved requests, or capture pinned Codex against a loopback mock.
 
 Use --requests explicit=FILE --requests dense=FILE --snapshot explicit=FILE
 --snapshot dense=FILE --context-token-budget N --output-reserve-tokens N --output FILE.
@@ -176,18 +176,44 @@ def named_files(values):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--requests', action='append', required=True)
+    parser.add_argument('--requests', action='append')
+    parser.add_argument('--capture', choices=['mcp_session', 'single_action'])
+    parser.add_argument('--codex-binary')
+    parser.add_argument('--codex-version')
+    parser.add_argument('--model')
+    parser.add_argument('--capture-dir', type=Path)
+    parser.add_argument('--capture-rounds', type=int, default=3)
+    parser.add_argument('--wall-seconds', type=float, default=300)
     parser.add_argument('--snapshot', action='append', required=True)
     parser.add_argument('--context-token-budget', type=int, required=True)
     parser.add_argument('--output-reserve-tokens', type=int, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
+    if args.capture:
+        if args.requests or not all((args.codex_binary, args.codex_version, args.model, args.capture_dir)):
+            parser.error('capture requires binary/version/model/capture-dir and excludes --requests')
+        from run_codex_probes import capture
+        args.capture_dir.mkdir(parents=True, exist_ok=False)
+        args.requests = []
+        for fmt, path in named_files(args.snapshot).items():
+            directory = args.capture_dir/fmt
+            _, row = capture(args.codex_binary, args.codex_version, directory,
+                'single_schema_no_mcp' if args.capture == 'single_action' else 'config_injection',
+                prompt=path.read_text(), model=args.model, timeout=args.wall_seconds,
+                overhead_rounds=args.capture_rounds, context_token_budget=args.context_token_budget,
+                output_reserve_tokens=args.output_reserve_tokens)
+            if not row['passed']:
+                raise ValueError('capture failed: inspect '+str(directory))
+            args.requests.append(fmt+'='+str(directory/'requests.jsonl'))
+    elif not args.requests:
+        parser.error('provide --requests or --capture')
     logs = {fmt: [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
             for fmt, path in named_files(args.requests).items()}
     snapshots = {fmt: path.read_text() for fmt, path in named_files(args.snapshot).items()}
     result = measure(logs, snapshots, tiktoken_counter('o200k_base'),
                      context_token_budget=args.context_token_budget, output_reserve_tokens=args.output_reserve_tokens)
     result.update(tokenizer='o200k_base', tiktoken_version=importlib.metadata.version('tiktoken'))
+    result.update(interaction=args.capture, measured_tool_rounds=args.capture_rounds if args.capture == 'mcp_session' else None)
     args.output.write_bytes(canonical(result) + b'\n')
     print(json.dumps(dict(request_overhead_tokens=result['request_overhead_tokens'], passed=result['passed']), sort_keys=True))
 

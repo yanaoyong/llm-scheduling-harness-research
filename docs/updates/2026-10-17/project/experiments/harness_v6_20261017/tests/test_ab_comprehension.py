@@ -120,7 +120,7 @@ def test_score_unknown_request_and_unavailable_run(tmp_path):
     with pytest.raises(ValueError, match='unknown or duplicate'):
         ab.score(kit / 'questions.json', responses, tmp_path / 'score.json')
     p = subprocess.run([sys.executable, str(SCRIPT), 'run'], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=str(SCRIPT.parents[1] / 'src')))
-    assert p.returncode == 2 and 'not yet available' in p.stderr
+    assert p.returncode == 2 and 'required' in p.stderr
 
 
 def test_configured_real_generation(tmp_path):

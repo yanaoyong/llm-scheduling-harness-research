@@ -428,3 +428,16 @@ footer 提供精确（未舍入）current_time、expected_state_version、submis
 整次请求预算包含 footer，超限不启动进程；无裁剪、无新增生产决策。
 
 汇总成本/质量使用登记的稳态窗口 evaluation_totals；原始 totals 和失败/未知费用保留。
+
+## 在 Mac 上运行（Phase P）
+
+完整顺序、确切命令、失败处理及回传文件见 [MAC_RUNBOOK.md](MAC_RUNBOOK.md)。
+先 `scripts/mac_preflight.py`、公共/封存夹具、plain/configured suite，再
+`run_codex_probes.py`（固定 Codex + loopback mock，12 项）、
+`measure_request_overhead.py --capture`（两格式/两交互、多轮）、
+`ab_comprehension.py generate/run/score`。仅 A/B run、smoke 和正式轨迹调用模型。
+填写完整登记后 `run_live.py --max-sessions 1` 做一次会话 smoke，随后 E1/P2 ×3
+并用 `summarize_runs.py` 汇总。Fake 证据只能证明机制；真实 pin 的 wire/flags 仍需 Mac 探针全部通过。
+
+CodexRunner 按 leader 退出判定完成，在正常/失败/超时返回前均清理进程组，
+stdout 以非阻塞方式同步读取；子进程持有管道不再误判超时。

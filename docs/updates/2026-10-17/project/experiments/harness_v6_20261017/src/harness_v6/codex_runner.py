@@ -5,6 +5,7 @@ uses elapsed wall time: the pinned JSONL contract has no model-time field.
 """
 import os
 from pathlib import Path
+import selectors
 import signal
 import subprocess
 import time
@@ -27,19 +28,60 @@ class CodexRunner:
                 env=self.env, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                 stderr=errors, start_new_session=True)
             expired = False
-            try:
-                output, _ = process.communicate(prompt.encode(), timeout=timeout)
-            except subprocess.TimeoutExpired:
-                expired = True
-                self._signal(process.pid, signal.SIGTERM)
+            chunks = []
+            pending = memoryview(prompt.encode())
+            # Pipe EOF belongs to all descendants, not just the session leader.
+            # Nonblocking I/O keeps both prompt writes and output drains bounded.
+            with selectors.DefaultSelector() as selector:
+                os.set_blocking(process.stdout.fileno(), False)
+                os.set_blocking(process.stdin.fileno(), False)
+                selector.register(process.stdout, selectors.EVENT_READ)
+                if pending:
+                    selector.register(process.stdin, selectors.EVENT_WRITE)
+                else:
+                    process.stdin.close()
+
+                def pump(wait):
+                    nonlocal pending
+                    for key, _ in selector.select(wait):
+                        if key.fileobj is process.stdout:
+                            data = os.read(process.stdout.fileno(), 65536)
+                            if data:
+                                chunks.append(data)
+                            else:
+                                selector.unregister(process.stdout)
+                        else:
+                            try:
+                                pending = pending[os.write(process.stdin.fileno(), pending[:65536]):]
+                            except BrokenPipeError:
+                                pending = memoryview(b'')
+                            if not pending:
+                                selector.unregister(process.stdin)
+                                process.stdin.close()
+
                 try:
-                    output, _ = process.communicate(timeout=0.5)
-                except subprocess.TimeoutExpired:
-                    self._signal(process.pid, signal.SIGKILL)
-                    output, _ = process.communicate()
+                    deadline = start + timeout
+                    while process.poll() is None:
+                        remaining = deadline - time.monotonic()
+                        if remaining <= 0:
+                            expired = process.poll() is None
+                            break
+                        pump(min(.02, remaining))
+                    if expired:
+                        self._signal(process.pid, signal.SIGTERM)
+                        grace = time.monotonic() + .5
+                        while process.poll() is None and time.monotonic() < grace:
+                            pump(.02)
                 finally:
-                    # Descendants may ignore TERM even after the leader exits.
+                    # Also clean up successful leaders' TERM-ignoring children.
                     self._signal(process.pid, signal.SIGKILL)
+                    process.wait()
+                    drain_deadline = time.monotonic() + .5
+                    while selector.get_map() and time.monotonic() < drain_deadline:
+                        pump(.02)
+                    process.stdout.close()
+                    process.stdin.close()
+            output = b''.join(chunks)
         wall = time.monotonic() - start
         return RunResult(output.decode('utf-8', errors='replace'), process.returncode,
                          wall, expired, wall)

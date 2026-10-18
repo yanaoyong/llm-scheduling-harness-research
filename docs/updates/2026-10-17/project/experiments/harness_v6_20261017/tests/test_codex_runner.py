@@ -112,3 +112,28 @@ def test_fake_planner_keeps_retained_future_bounds_inside_validity(tmp_path):
     action=prompt_action(snapshot.decode()+footer)
     assert action['delta']['plan_header']['valid_until']>500
     assert not action['delta']['tasks']['replace']
+
+
+@pytest.mark.parametrize('exit_code', [0, 3])
+def test_exited_leader_cleans_stdout_holding_child(tmp_path, exit_code):
+    script = tmp_path / 'leader.py'
+    child_file = tmp_path / 'child.pid'
+    script.write_text("#!/usr/bin/env python3\nimport os, signal, time\n"
+        "pid = os.fork()\nif pid == 0:\n"
+        " signal.signal(signal.SIGTERM, signal.SIG_IGN)\n"
+        " while True: time.sleep(1)\n"
+        f"open({str(child_file)!r}, 'w').write(str(pid))\n"
+        "print('{\"type\":\"turn.completed\"}', flush=True)\n"
+        f"raise SystemExit({exit_code})\n")
+    script.chmod(0o755)
+    r = CodexRunner(script, workdir=tmp_path, env_allowlist=['PATH'],
+                    stderr_path=tmp_path/'stderr')
+    result = r.run(['codex'], '', timeout=5)
+    assert not result.timed_out and result.returncode == exit_code
+    assert result.wall_seconds < 2
+    assert json.loads(result.jsonl) == {'type': 'turn.completed'}
+    stat = Path(f'/proc/{int(child_file.read_text())}/stat')
+    deadline = time.monotonic() + 1
+    while stat.exists() and stat.read_text().split()[2] != 'Z' and time.monotonic() < deadline:
+        time.sleep(.01)
+    assert not stat.exists() or stat.read_text().split()[2] == 'Z'
