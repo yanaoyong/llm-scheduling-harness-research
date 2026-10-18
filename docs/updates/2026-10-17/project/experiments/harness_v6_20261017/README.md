@@ -377,3 +377,54 @@ release_time 等于 time 且类型相同时省略，由 $release_time_is_time �
 模型 token 节省；相同输入和同一计数器保证字节稳定，不能跨计数器比较前缀哈希。
 计数器是既有预算计量依赖，不是新增实验变量；新增变量仅 snapshot_format。
 Dense 扩展 legend 仅 dense 包含。默认值只依赖所属表，静态表不依赖当前周期。
+
+## Phase O：Codex 运行入口（Mac）
+
+运行链为 `run_live.py → LiveRun → CodexRunner → codex exec`；MCP 模式由 Codex
+启动 `harness_v6.mcp_server`，single_action 使用同源输出 schema。
+每次进程用独立 session/process group，无 shell；超时先 TERM 再 KILL 整组。
+stdout 完整保存在周期 JSONL，stderr 追加到 run 目录。model_seconds 暂用完整墙钟秒数，
+当前已固定的 JSONL 合约不提供可靠模型耗时字段。认证由用户预先配置好（ChatGPT 登录或
+API key），harness 不管理凭据。默认只继承 PATH/HOME；需要的认证变量名必须显式登记在
+`env_allowlist`，不要将凭据值写入登记文件。MCP Python 路径由 host 的 sys.path 冻结。
+
+先复制 `registration_template.json` 为 `REG.json`，填写 fixture 的绝对路径、
+fixture_key（默认 mixed_702）、end_time、trajectory_seeds、完整 `codex --version` 输出、model、
+snapshot_format、三个上下文 token 字段、session_budget、每小时 token/request 上限、quality
+的 floor/tolerance 和稳态窗口。正式运行设置 dry_run=false、plan_source=model、is_result=true。
+模型无可控制随机 seed；trajectory_seeds 仅设置起点之后的工厂事件键随机数。
+fixture 的物理 horizon 必须覆盖 end_time + horizon_seconds；CLI 不偷偷扩展既有事件日历。
+质量 floor 对 throughput 为下限，对迟交/可避免空闲为上限；tolerance 为同单位绝对容差。
+weighted_tardiness 计新完成 lot 的 weight×迟交秒（无 weight 时为 1），throughput 为完成 lot 数。
+
+从 V6 目录、已安装 tiktoken 和物理依赖的 Mac Python 环境执行：
+
+```bash
+export PYTHONPATH="$PWD/src:/path/to/physical"
+export TIKTOKEN_CACHE_DIR=/path/to/tiktoken_cache
+python3 scripts/run_live.py --registration REG.json --group E1 --trajectory 1 --output /tmp/v6-E1-1
+python3 scripts/run_live.py --registration REG.json --group P2 --trajectory 1 --output /tmp/v6-P2-1
+# 同样运行 trajectory 2、3；恢复用原参数和原目录：
+python3 scripts/run_live.py --registration REG.json --group P2 --trajectory 1 --output /tmp/v6-P2-1 --resume
+python3 scripts/summarize_runs.py /tmp/v6-E1-{1,2,3} /tmp/v6-P2-{1,2,3} --output /tmp/v6-results
+```
+
+`--until` 仅提前暂停到指定绝对模拟秒数，可随后恢复到登记终点；不得越过登记 end_time。
+manifest 记录登记/fixture 哈希、组别、轨迹、seed、版本、模型、格式、起止、停止原因、git commit；
+恢复拒绝身份或版本变化。CLI 每次完成会话先发布 checkpoint 再清 WAL，避免正常完成后
+宿主崩溃导致重复模型收费。其他 LiveRun 调用保留既有按段检查点默认行为。
+summary 包含逐模拟小时/稳态指标、总量、失败/未知用量、预算与停止原因。
+results.json / 中文 results.md 提供均值±总体标准差、E1/P2 成本与质量比较；
+登记不一致、重复轨迹、终点不同或机制/模型混用会拒绝。样本未齐或未知用量会明确标为不完整。
+
+机制测试沿用 dry_run=true 的登记，加 `--dry-run-scripted`，永不标为实验结果。
+fixture="synthetic" 可完全离线；真实 fixture 可加 `--codex-binary "$PWD/tests/fake_codex.py"`
+测试真实进程/MCP 边界。fake 使用脚本化公开快照规划，`fake-codex 1` 不允许正式结果。
+真实 Codex 版本和 F6 行为仍须在 Mac 验证；fake 通过不能证明真实二进制兼容或模型质量。
+
+prompt 精确顺序：稳定规则/格式 legend/工具描述/静态表 → CURRENT → CYCLE_FOOTER。
+footer 提供精确（未舍入）current_time、expected_state_version、submission_id、墙钟期限、
+有效期比较符和交互指令：periodic `>= next_anchor + Δ`，event `> now + delta_min`。
+整次请求预算包含 footer，超限不启动进程；无裁剪、无新增生产决策。
+
+汇总成本/质量使用登记的稳态窗口 evaluation_totals；原始 totals 和失败/未知费用保留。

@@ -56,7 +56,7 @@
       "source_sha256": "4f739da8892793764b05f53b1d3349fefb00e4ac4adfad2a3425986f2515af92"
     },
     {
-      "copy_sha256": "4fcf118a4e000c7d803629a6875f2eb1a30bd76fede7a756dd8009968310022c",
+      "copy_sha256": "88fb887c00cb6bc26cbf444248800ff6469579db7539cfd0293a3a80672fd1ba",
       "initial_copy_sha256": "1d2de5a7f9aba0556f56c0d62dbb997df43868c7c4d91ff3f542982fa199414e",
       "modified": true,
       "path": "src/harness_v6/factory_v6.py",
@@ -64,7 +64,7 @@
       "source_sha256": "1d2de5a7f9aba0556f56c0d62dbb997df43868c7c4d91ff3f542982fa199414e"
     },
     {
-      "copy_sha256": "4fcf118a4e000c7d803629a6875f2eb1a30bd76fede7a756dd8009968310022c",
+      "copy_sha256": "88fb887c00cb6bc26cbf444248800ff6469579db7539cfd0293a3a80672fd1ba",
       "initial_copy_sha256": "19f9c9c4592ec0e6a9d36d926f2de9dd3647f020114950951dbfa30d6e444dcd",
       "modified": true,
       "path": "src/harness_v6/factory_v6.py",

@@ -161,3 +161,16 @@ release_time 等于 time 且类型相同时省略，由 $release_time_is_time �
 模型 token 节省；相同输入和同一计数器保证字节稳定，不能跨计数器比较前缀哈希。
 计数器是既有预算计量依赖，不是新增实验变量；新增变量仅 snapshot_format。
 Dense 扩展 legend 仅 dense 包含。默认值只依赖所属表，静态表不依赖当前周期。
+
+## Phase O 运行路径
+
+- CodexRunner 仅继承登记的环境变量，独立进程组，完整 JSONL、stderr 文件、TERM/KILL 墙钟超时。
+  每次 CLI 运行（含恢复）只查询一次版本；与登记字符串精确一致才继续。不处理认证。
+- prompt 尾部单独给精确时间和提交约束；event 严格大于下界，避免紧凑浮点时间影响 freeze_until。
+  稳定前缀不含周期数据；预算计入整个 prompt 和登记 overhead/reserve。
+- 正式 CLI 必须 results=True 验证登记。机制 run 永远标记“非模型、仅机制测试”。
+  CLI 完成会话 checkpoint 在清 inflight 前发布；这比普通 LiveRun 的段检查点更保守，增加磁盘成本。
+- 新完成 lot 计 throughput 与 weight×tardiness（缺省 weight=1）；完整小时/稳态窗口均保留。
+  汇总 spread=总体标准差；quality tolerance 是绝对量，迟交/空闲越低越好、产出越高越好。
+- fixture 日历不能通过改 horizon 延长；起点之后工厂 seed 明确登记，模型随机性没有 seed 保证。
+  真实 Codex 参数/JSONL 合约仍需既有 F6 探针，fake 只证明协议和失败路径机制。

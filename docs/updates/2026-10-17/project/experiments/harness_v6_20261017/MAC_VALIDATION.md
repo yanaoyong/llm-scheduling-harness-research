@@ -404,3 +404,26 @@ P2 16 sessions、232 steps、878 dispatches、恢复相等、全部任务生产�
 从规范解码对象建立标准答案，报告逐题正确率、按题型正确率、全请求 token、请求数；
 顺序随机或交叉平衡，并报告重复次数。不得仅凭压缩率宣称理解能力等价。
 本阶段只执行离线检查，不调用模型。CQT/Q-time 仍未实现。
+
+## Phase O：进程边界与 CLI
+
+```bash
+python3 -m pytest -q tests/test_codex_runner.py tests/test_run_cli.py
+# 配置物理环境后，独立端到端 proof：
+PYTHONPATH="$PWD/src:/workspace/v6-mac-env/physical" \
+TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache \
+V6_MAC_FIXTURE=/workspace/v6-mac-env/work/sealed2/fixture.json \
+/workspace/v6-mac-env/venv/bin/python -m pytest -q tests/test_run_cli.py::test_configured_cli_fake_crash_resume
+```
+
+通过条件：四组各≥10 个真实子进程决策，MCP 客户端实际启动 stdio server，双证据审计通过，
+请求下界为工具轮次+1；非零/超时/禁用动作/坏 JSONL/未知用量/提交后崩溃均不采纳，
+失败上限停止、超时后无运行中后代。真实 mixed_702 上两个机制 run 各≥3 会话，
+注入第二次会话后宿主崩溃，恢复丢弃候选并计失败，达到同一终点、生成汇总。
+无配置时仅物理 E2E 明确 skip。生产指标单独用新 lot_complete 事件验证，不重复历史完成量。
+
+Mac 真实 Codex 验收（本阶段不运行）：先完成既有 F6/三项 single_action 原始证据探针，
+核对登记版本、认证 allowlist、--ignore-user-config/--ignore-rules 等 argv、MCP 子进程权限及
+JSONL 字段。然后按 README 命令运行批准的 E1/P2 ×3 登记，断言 manifest 版本与登记一致、
+无未知 usage、质量口径可由物理 trace 复算，summary/results 成本按同一模拟窗口归一化。
+真实 API 缓存和模型理解/质量须实际测量；fake usage 不是真实成本。CQT/Q-time 仍未实现。

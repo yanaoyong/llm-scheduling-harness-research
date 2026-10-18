@@ -54,5 +54,27 @@
     "exclude_first_hours": 0
   },
   "trajectories_per_group": 3,
-  "snapshot_format": "explicit"
+  "snapshot_format": "explicit",
+  "fixture": null,
+  "fixture_key": "mixed_702",
+  "end_time": 1603.1,
+  "trajectory_seeds": [
+    1,
+    2,
+    3
+  ],
+  "codex_version": null,
+  "model": null,
+  "context_token_budget": null,
+  "request_overhead_tokens": null,
+  "output_reserve_tokens": null,
+  "env_allowlist": [
+    "PATH",
+    "HOME"
+  ],
+  "session_budget": {
+    "max_tool_calls": 100,
+    "wall_seconds": 300,
+    "token_cap": 100000
+  }
 }
