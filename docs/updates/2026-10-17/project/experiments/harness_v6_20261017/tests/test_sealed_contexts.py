@@ -124,7 +124,7 @@ def test_mac_snapshot_26_pending():
         assert dispatched == {'d32-l', 'd36-e', 'd39-g'}
         assert evidence['context_ref'] == ctx['context_ref']
         assert evidence['time'] == ctx['time']
-        payload = build_snapshot(stable_prefix(tool_descriptions={}, routing=[], machine_groups=[]), ledger,
+        payload = build_snapshot(stable_prefix(tool_descriptions={}, routing=[], machine_groups=[]), ledger, horizon_seconds=900,
             state_version=ctx['state_revision'], running_jobs=evidence['running_jobs'],
             last_cycle_receipt=None, model_notes='', token_budget=10**9, token_counter=tiktoken_counter())
         current = decode_snapshot(payload)[1]

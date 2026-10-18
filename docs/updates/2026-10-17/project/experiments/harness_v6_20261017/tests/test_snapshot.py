@@ -15,7 +15,7 @@ def prefix():
 def snapshot(l, **kw):
     args = dict(state_version='v', running_jobs=[], last_cycle_receipt=None, model_notes='', token_budget=100000)
     args.update(kw)
-    return build_snapshot(prefix(), l, **args)
+    return build_snapshot(prefix(), l, horizon_seconds=900, **args)
 
 
 def test_complete_deterministic_snapshot():

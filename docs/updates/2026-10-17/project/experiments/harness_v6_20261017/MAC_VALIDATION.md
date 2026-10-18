@@ -448,3 +448,14 @@ A/B fake 100% 与预算预检、overhead 两模式录制分析、hash 篡改、�
 真实 Mac 的全部 12 项仍须独立执行且无 skip，A/B 理解与正式 E1/P2 质量/成本尚未测量。
 
 - Phase Q：配置 `V6_SEALED_DB`、`V6_SEALED_SELECT` 和缓存 `TIKTOKEN_CACHE_DIR` 后运行 `python -m pytest -q -s tests/test_mac_snapshot.py::test_g0_bounded_coverage_tokens`；G0 1649.82 基础计划回执 coverage 的 o200k token 必须 < 1,500，打印旧/新 token 数，最多 50 个就绪未预留 ID。
+
+## Phase R：过滤审计与 upcoming_operations
+
+```bash
+export V6_PUBLIC_LEDGER="$WORK/phase-m2-final-p2.json.ledger.jsonl.gz"
+PYTHONPATH=src:$PHYSICS python -m pytest -q tests/test_upcoming.py tests/test_mac_snapshot.py tests/test_ab_comprehension.py
+PYTHONPATH=src:$PHYSICS python scripts/audit_filters.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --public-ledger "$V6_PUBLIC_LEDGER" --horizon-seconds 900 --output "$WORK/phase-r-audit.json"
+PYTHONPATH=src:$PHYSICS python scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --output "$WORK/phase-r-tokens.json"
+```
+
+通过条件：G0 1649.82 有 74 条 upcoming；explicit/dense 精确还原 canonical 对象（沿用 10 位有效数字协议），冻结公共 P2 702/1182/1602 同样往返。when_ready 新任务 w100:228:1 被 compiler/Submitter 接受，测试显式取消旧基线已不在 observation 的 d43-g；不是自动修复。全部既有过滤/校验不变；sealed classification 与 Phase Q JSON-equal。审计输出含五个状态、各规则计数及缺失信息说明；模型/真实 Codex 不参与。A/B 题集见 MAC_RUNBOOK，真实理解准确率待另行授权。

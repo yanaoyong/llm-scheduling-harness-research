@@ -105,7 +105,7 @@ def test_fake_planner_keeps_retained_future_bounds_inside_validity(tmp_path):
     from harness_v6.snapshot import build_snapshot, estimate_tokens
     run=SyntheticRun(directory=tmp_path);run.step()
     run.factory.plan['tasks'][0]['not_before']=500
-    snapshot=build_snapshot(run.prefix,run.factory.ledger(),state_version=2,running_jobs=[],
+    snapshot=build_snapshot(run.prefix, run.factory.ledger(), horizon_seconds=900,state_version=2,running_jobs=[],
         last_cycle_receipt=None,model_notes='',token_budget=100000,token_counter=estimate_tokens)
     footer=cycle_footer(state_version=2,submission_id='2',now=0,next_anchor=60,delta=60,
         delta_min=60,trigger='periodic',interaction='mcp_session',wall_seconds=300)

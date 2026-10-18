@@ -64,11 +64,11 @@ def test_generated_routes_machines_ledger_roundtrip(seed, monkeypatch, snapshot_
     monkeypatch.setattr(snap, 'encode_current', capture)
     args = dict(snapshot_format=snapshot_format, state_version=seed, running_jobs=jobs, last_cycle_receipt={'accepted':False,'violations':[{'code':'x'}]},
                 model_notes='\u2028\n\t! null ""', token_budget=100000)
-    payload = build_snapshot(prefix, ledger, **args)
+    payload = build_snapshot(prefix, ledger, horizon_seconds=900, **args)
     decoded_prefix, current = decode_snapshot(payload)
     equivalent(prefix_obj, decoded_prefix)
     equivalent(captured[0], current)
-    assert build_snapshot(prefix, ledger, **args) == payload
+    assert build_snapshot(prefix, ledger, horizon_seconds=900, **args) == payload
     assert payload.startswith(prefix)
     assert b'$positions' not in payload
     assert [r['operation_id'] for r in current['unreserved_ready']] == sorted(r['operation_id'] for r in current['unreserved_ready'])
@@ -100,7 +100,7 @@ def test_canonical_rows_ignore_insertion_order_and_keep_explicit_eligible_order(
     p['machines'].reverse()
     ledger = ledger_from_scratch(p, plan)
     args = dict(state_version=0, running_jobs=[], last_cycle_receipt=None, model_notes='')
-    current = current_state(ledger, **args)
+    current = current_state(ledger, horizon_seconds=900, **args)
     assert [r['operation_id'] for r in current['unreserved_ready']] == ['a', 'm', 'z']
     assert [m['machine'] for m in current['machines']] == [1, 2]
     prefix = dict(rules='', tools=[], routing={}, machine_groups=[dict(id=2, family='F'), dict(id=1, family='F')])

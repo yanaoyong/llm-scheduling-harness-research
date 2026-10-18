@@ -69,7 +69,7 @@ def validate(directory):
         (directory/'provenance.json').write_bytes(encode(provenance))
         args = dict(state_version=ctx['state_revision'], running_jobs=running,
                     last_cycle_receipt=None, model_notes='', token_counter=counter)
-        payload = build_snapshot(prefix, ledger, token_budget=10**9, **args)
+        payload = build_snapshot(prefix, ledger, horizon_seconds=900, token_budget=10**9, **args)
         current = decode_snapshot(payload)[1]
         pending = [t for t in ctx['base_plan']['tasks'] if t['id'] not in execution['dispatched_task_ids']]
         assert current['pending_tasks'] == normalize([model_task(t) for t in pending])
@@ -97,7 +97,7 @@ def validate(directory):
         assert {row['operation_id'] for row in current['unreserved_ready']} == expected_ready
         budget = bundle['sealed_input_budget']
         try:
-            build_snapshot(prefix, ledger, token_budget=budget, **args)
+            build_snapshot(prefix, ledger, horizon_seconds=900, token_budget=budget, **args)
         except SnapshotBudgetExceeded as error:
             result['snapshot'] = error.report
         else:

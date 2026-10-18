@@ -76,7 +76,7 @@ class LiveRun:
                 now=f.now, next_anchor=c.anchor, delta=c.config.delta, delta_min=c.config.delta_min,
                 trigger=c.config.trigger, interaction=c.config.interaction, wall_seconds=self.budget.wall_seconds)
             try:
-                payload = build_snapshot(self.prefix, ledger, snapshot_format=self.snapshot_format, state_version=c.cycles,
+                payload = build_snapshot(self.prefix, ledger, horizon_seconds=c.config.horizon, snapshot_format=self.snapshot_format, state_version=c.cycles,
                     running_jobs=f.running_jobs(), last_cycle_receipt=c.last_record,
                     model_notes=self.model_note, token_budget=self.context_token_budget - self.request_overhead_tokens - self.output_reserve_tokens, token_counter=self.token_counter, history=self.history)
                 prompt = payload.decode() + footer

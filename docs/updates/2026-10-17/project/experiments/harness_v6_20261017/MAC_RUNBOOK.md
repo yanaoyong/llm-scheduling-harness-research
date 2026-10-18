@@ -73,7 +73,7 @@ PY
 ```
 
 预期 fixture/provenance/build_summary/contexts.sqlite 产生且验证退出 0；G0 1649.82、public 702/703，
-252 题、12 次 counterbalanced 请求。查看 coverage.json：实际独立目标数量/重复、near-miss 缺类必须披露。
+288 题（8 类 × 12 × 3 状态）、12 次 counterbalanced 请求。新增 upcoming 类考查出现与否、预计释放时间、完整可用机组集合。查看 coverage.json：实际独立目标数量/重复、near-miss 缺类必须披露。
 失败不要改答案或封存数据，发送 build_summary、provenance、验证日志及错误。
 
 ## 2. 离线 suite
@@ -303,3 +303,15 @@ date -u > "$WORK/finished-at.txt"
 未缓存等价输入比较、质量 floor/tolerance。不得混合 dry-run、smoke、不同登记；少于三条或未到终点只能报不完整证据。
 回传 `$WORK` 中上述各步骤指定文件及最终 results；认证文件/API key 不在回传范围。
 G0 是封存参照，不据此推断新轨迹调用数。CQT/Q-time 未实现，不能解释为已满足相关质量约束。
+
+Phase R 冻结公共 P2 审计题集（不回放、不新建任务）：
+
+```bash
+PYTHONPATH=src:$PHYSICS python scripts/ab_comprehension.py generate \
+  --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" \
+  --public-ledger "$WORK/phase-m2-final-p2.json.ledger.jsonl.gz" \
+  --states g0 public:702 public:1182 public:1602 --horizon-seconds 900 \
+  --per-type 12 --repetitions 2 --output "$WORK/ab-phase-r"
+```
+
+此配置为 384 题（8 × 12 × 4），16 个请求；仅生成不调用模型。keys 来自解码后的 canonical 对象。P2 ledger 文件没有 running_jobs，题集该栏为空，不据此断言工厂无运行作业；机器忙碌字段仍来自冻结 problem。旧 public:SECONDS（不传 --public-ledger）是从 mixed_702 推进的机制状态，不等同于 P2 已有轨迹。使用 coverage.json 披露 absent/present 类与独立目标数；无 upcoming 状态只有 absent 类，不伪造正例。

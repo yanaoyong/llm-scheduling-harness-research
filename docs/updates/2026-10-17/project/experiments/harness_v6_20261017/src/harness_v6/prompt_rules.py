@@ -29,7 +29,16 @@ step_definitions rows have zero-based IDs; routes list these IDs in step order;
 step_number_is_position=true restores step numbers starting at 1.
 machine_groups_compact groups static attributes; $ids lists machine ID ranges,
 sorted by id when decoded. Ranges a:b are inclusive; commas join ranges.
-ready_groups shares batch/setup/qualification/release fields and $eligible;
+upcoming_operations contains unreserved, not-ready operations with executing_predecessor
+and estimated release_time <= time + CURRENT horizon_seconds (the registered horizon). release_time is
+an estimate, not a guaranteed arrival. conditional/sampling and uncertain qualification
+remain visible. when_ready tasks may reserve these operations; execution rechecks readiness.
+Later exported work can be discovered with read_entities({"kind":"operations","cursor":null,
+"count":512,"where":[{"field":"readiness_basis","op":"eq","value":"executing_predecessor"}]}).
+Follow next_cursor with the same where predicates; compare release_time to time+H yourself:
+read_entities supports eq/contains, not a greater-than time filter.
+upcoming_operations uses the same $operations and $eligible grouping as ready_groups;
+its decoded rows sort by operation_id. ready_groups shares batch/setup/qualification/release fields and $eligible;
 $operations lists EVERY operation ID; decoded ready rows sort by operation_id.
 $eligible [family,name] means the sorted IDs of every static machine in that
 family. Other lists use [set,id] in eligible_sets, preserving their exact order.

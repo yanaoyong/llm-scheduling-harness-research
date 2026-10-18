@@ -38,6 +38,7 @@ NUMBER = {'type': 'number'}
 BOUNDS = {k: NUMBER for k in ('batch_min', 'batch_max')}
 ROUTE_FIELDS = ('processing', 'cadence', 'batch_min', 'batch_max', 'setup')
 SCHEMAS = {
+    'upcoming': object_schema(dict(present={'type':'boolean'}, estimated_release_time={'type':['number','null']}, eligible_machines={'type':'array','items':{'type':'integer'}})),
     'eligible': {'type': 'array', 'items': {'type': 'integer'}},
     'batch_bounds': object_schema(BOUNDS),
     'batch_compatible': {'type': 'boolean'},
@@ -117,6 +118,17 @@ def questions_for(state, prefix, current, rng, snapshots, per_type):
             raise ValueError(f'{state}: no convention-sensitive interpretation candidates')
         return [pools[i % len(pools)][i // len(pools)] for i in range(n)]
     ops = sorted(current['unreserved_ready'], key=lambda r: r['operation_id'])
+    upcoming = sorted(current.get('upcoming_operations', []), key=lambda r: r['operation_id'])
+    classes = {'present': upcoming, 'absent': ops}
+    for op in stratified(classes, per_type):
+        oid = op['operation_id']
+        found = next((r for r in upcoming if r['operation_id'] == oid), None)
+        add('upcoming', f'Is operation {oid} present in upcoming_operations? Give present, '
+            'estimated_release_time and the complete eligible_machines sorted ascending; '
+            'if absent use null and []. This asks section membership, not physical impossibility.',
+            dict(present=found is not None, estimated_release_time=found['release_time'] if found else None,
+                 eligible_machines=sorted(found['eligible_machines']) if found else []),
+            dict(operation_id=oid), 'present' if found else 'absent')
     machines = sorted(current['machines'], key=lambda r: r['machine'])
     for kind in ('eligible', 'batch_bounds'):
         for op in sample(ops, per_type):
@@ -306,12 +318,14 @@ def generate(states, output, *, seed=0, repetitions=2, output_schema=None, per_t
     return questions, answers, plan
 
 
-def load_real_states(fixture, database, selectors, counter):
+def load_real_states(fixture, database, selectors, counter, *, public_ledger=None, horizon_seconds=900):
     """Thin fixture adapter; public states retain existing plan, add no tasks.
 
     g0 selects the archived G0 1649.82 snapshot. public:T advances the restored
     mixed_702 state to T without planning (decision interrupts suppressed to T).
-    These are public-physics states, not archived model trajectories.
+    Without public_ledger these are mechanism states, not archived trajectories.
+    With public_ledger select the first frozen observation at each requested time;
+    no advancing or planning. That source has no running-job identity records.
     """
     from harness_v6.factory_v6 import restore
     from harness_v6.ledger import ledger_from_scratch
@@ -326,6 +340,17 @@ def load_real_states(fixture, database, selectors, counter):
     if len(selectors) != len(set(selectors)):
         raise ValueError('duplicate state selector')
     public_times = set()
+    frozen_public = {}
+    if public_ledger:
+        import gzip
+        wanted = {float(s.split(':',1)[1]) for s in selectors if s.startswith('public:')}
+        with gzip.open(public_ledger, 'rt') as stream:
+            for line in stream:
+                row = json.loads(line)
+                if row['time'] in wanted:
+                    frozen_public.setdefault(row['time'], row)
+                if wanted <= set(frozen_public): break
+        if wanted - set(frozen_public): raise ValueError('public ledger missing selected times')
     for selector in selectors:
         if selector == 'g0':
             matches = [r['context'] for r in SQLiteContextReader(database, 'SELECT group_name,payload FROM contexts').contexts()
@@ -345,20 +370,26 @@ def load_real_states(fixture, database, selectors, counter):
             if target in public_times:
                 raise ValueError('duplicate public time')
             public_times.add(target)
-            public = restore(seed['state'], seed['trace'], data_dir=bundle['data_dir'])
-            if not public.t <= target <= public.horizon:
-                raise ValueError(f'{selector}: time outside restored state horizon')
-            public.advance_cycle(target, decision_after=target)
-            if abs(public.t - target) > 1e-8:
-                raise ValueError(f'{selector}: physics stopped at {public.t}: {public.last_stop}')
-            observed = public.ledger_snapshot()
-            ledger = ledger_from_scratch(observed['problem'], observed['plan'], observed['receipts'])
-            jobs = [dict(job=i, machine=j['machine'], lot_ids=j['lots'], started_at=j['start'])
-                    for i, j in sorted(public.jobs.items()) if not j['done']]
+            if public_ledger:
+                observed = frozen_public[target]
+                ledger = ledger_from_scratch(observed['problem'], observed['plan'], observed['receipts'])
+                # Ledger evidence does not contain job identities; never invent them.
+                jobs = []
+            else:
+                public = restore(seed['state'], seed['trace'], data_dir=bundle['data_dir'])
+                if not public.t <= target <= public.horizon:
+                    raise ValueError(f'{selector}: time outside restored state horizon')
+                public.advance_cycle(target, decision_after=target)
+                if abs(public.t - target) > 1e-8:
+                    raise ValueError(f'{selector}: physics stopped at {public.t}: {public.last_stop}')
+                observed = public.ledger_snapshot()
+                ledger = ledger_from_scratch(observed['problem'], observed['plan'], observed['receipts'])
+                jobs = [dict(job=i, machine=j['machine'], lot_ids=j['lots'], started_at=j['start'])
+                        for i, j in sorted(public.jobs.items()) if not j['done']]
             version = selector
         else:
             raise ValueError(f'unknown state {selector}; use g0 or public:SECONDS')
-        states[selector] = {fmt: build_snapshot(prefixes[fmt], ledger, state_version=version,
+        states[selector] = {fmt: build_snapshot(prefixes[fmt], ledger, horizon_seconds=horizon_seconds, state_version=version,
             running_jobs=jobs, last_cycle_receipt=None, model_notes='', token_budget=10**9,
             token_counter=counter, snapshot_format=fmt) for fmt in FORMATS}
     if 'g0' not in states or len(public_times) < 2:
@@ -513,6 +544,8 @@ def main():
     for name in ('fixture', 'database', 'output'):
         gen.add_argument('--' + name, required=True)
     gen.add_argument('--states', nargs='+', default=['g0', 'public:702', 'public:703'])
+    gen.add_argument('--public-ledger')
+    gen.add_argument('--horizon-seconds', type=float, default=900)
     gen.add_argument('--per-type', type=int, default=12)
     gen.add_argument('--seed', type=int, default=0)
     gen.add_argument('--repetitions', type=int, default=2)
@@ -537,7 +570,7 @@ def main():
         return
     if args.command == 'generate':
         from harness_v6.snapshot import tiktoken_counter
-        states = load_real_states(args.fixture, args.database, args.states, tiktoken_counter())
+        states = load_real_states(args.fixture, args.database, args.states, tiktoken_counter(), public_ledger=args.public_ledger, horizon_seconds=args.horizon_seconds)
         generate(states, args.output, seed=args.seed, repetitions=args.repetitions, output_schema=args.output_schema, per_type=args.per_type)
     else:
         score(args.questions, args.answers, args.output, args.answer_key)

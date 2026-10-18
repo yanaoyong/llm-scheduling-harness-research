@@ -18,7 +18,7 @@ def test_public_complete_snapshot_and_budget():
     count=tiktoken_counter()
     args=dict(state_version=0,running_jobs=[dict(job=i,machine=j['machine'],lot_ids=j['lots'],started_at=j['start'])
         for i,j in sorted(env.jobs.items()) if not j['done']],last_cycle_receipt=None,model_notes='public mechanism',token_counter=count)
-    payload=build_snapshot(prefix,ledger,token_budget=10**8,**args)
+    payload=build_snapshot(prefix, ledger, horizon_seconds=900,token_budget=10**8,**args)
     current=decode_snapshot(payload)[1]
     assert current['pending_tasks']==normalize([model_task(t) for t in ledger.pending_tasks()])
     assert current['holds']==normalize(list(ledger.holds.values()))
@@ -26,7 +26,7 @@ def test_public_complete_snapshot_and_budget():
     assert {r['operation_id'] for r in current['unreserved_ready']}==expected
     tokens=count(payload.decode())
     with pytest.raises(SnapshotBudgetExceeded) as error:
-        build_snapshot(prefix,ledger,token_budget=tokens-1,**args)
+        build_snapshot(prefix, ledger, horizon_seconds=900,token_budget=tokens-1,**args)
     assert error.value.report['tokens']==tokens and error.value.report['dropped_rows']==0
 
 
@@ -54,17 +54,17 @@ def test_real_manifest_and_g0_compact_roundtrip(snapshot_format):
             dict(task_id=t, state='running') for t in ctx['execution_state']['dispatched_task_ids']]})
         args = dict(state_version=ctx['state_revision'], running_jobs=bundle('g0_snapshot')['g0_snapshot']['running_jobs'],
                     last_cycle_receipt=None, model_notes='')
-        expected = current_state(ledger, **args)
-        payload = build_snapshot(prefix, ledger, snapshot_format=snapshot_format, token_counter=tiktoken_counter(), token_budget=10**9, **args)
+        expected = current_state(ledger, horizon_seconds=900, **args)
+        payload = build_snapshot(prefix, ledger, horizon_seconds=900, snapshot_format=snapshot_format, token_counter=tiktoken_counter(), token_budget=10**9, **args)
         equivalent(expected, decode_snapshot(payload)[1])
         explicit = stable_prefix(tool_descriptions=[], routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
-        other = decode_snapshot(build_snapshot(explicit, ledger, token_budget=10**9, **args))
+        other = decode_snapshot(build_snapshot(explicit, ledger, horizon_seconds=900, token_budget=10**9, **args))
         decoded = decode_snapshot(payload)
         equivalent(other[1], decoded[1])
         for key in ('routing', 'machine_groups', 'tools'):
             equivalent(other[0][key], decoded[0][key])
         assert payload.startswith(prefix)
-        assert build_snapshot(prefix, ledger, snapshot_format=snapshot_format, token_counter=tiktoken_counter(), token_budget=10**9, **args) == payload
+        assert build_snapshot(prefix, ledger, horizon_seconds=900, snapshot_format=snapshot_format, token_counter=tiktoken_counter(), token_budget=10**9, **args) == payload
         return
     pytest.fail('configured fixture missing G0 1649.82')
 

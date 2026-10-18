@@ -43,7 +43,7 @@ def step(env, cycle, rows, prefix, counter, stop, event=None, evidence_path=None
     ledger=ledger_read_view(problem,snap['plan'],snap['receipts'])
     record=cycle.begin(env.t,avoidable_idle=snap['metrics']['avoidable_idle'],invalid_tasks=env.invalidated_task_ids,
         valid_until=env.plan['valid_until'] if env.plan else None,event=event)
-    payload=build_snapshot(prefix,ledger,state_version=cycle.cycles,running_jobs=[dict(job=jid,machine=j['machine'],lot_ids=j['lots'],started_at=j['start'],
+    payload=build_snapshot(prefix, ledger, horizon_seconds=cycle.config.horizon,state_version=cycle.cycles,running_jobs=[dict(job=jid,machine=j['machine'],lot_ids=j['lots'],started_at=j['start'],
         phase='processing' if jid in env.processing_by_machine[j['machine']] else 'transport')
         for jid,j in sorted(env.jobs.items()) if not j['done']],
         last_cycle_receipt=cycle.last_record,model_notes=LABEL,token_budget=10**8,token_counter=counter)

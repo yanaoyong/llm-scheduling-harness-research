@@ -443,3 +443,5 @@ CodexRunner 按 leader 退出判定完成，在正常/失败/超时返回前均�
 stdout 以非阻塞方式同步读取；子进程持有管道不再误判超时。
 
 - Phase Q：提交/校验回执覆盖仅报告计数及最多 50 个排序后的未预留就绪工序 ID；复用账本就绪定义，完整未覆盖集合可由已保存计划和冻结问题离线重建，不拒绝覆盖不足。
+
+Phase R（2026-10-18）：用户确认三层区分：SMT2020/模拟器物理事实、必须经用户明确批准的展示/近似规则、仅模型作出的调度决定。隐藏工作的展示规则也可能等效于调度决定；本阶段仅审计既有过滤，不改变它们。唯一批准的新增展示是 `upcoming_operations`：未被 pending task 预留、ledger 尚未就绪的 `executing_predecessor` 工序，预计 `release_time <= time + horizon_seconds`；保留 sampling/conditional/qualification_uncertain。H 从登记的周期配置显式传入，不在 current_state 中默认。explicit/dense 使用同一 family/set 引用，按 operation_id 解码；release_time 是估计，可用 when_ready 预留。完整审计见 [报告](reports/harness_filtering_audit_20261018.md)。

@@ -48,11 +48,25 @@ class SnapshotBudgetExceeded(ValueError):
         super().__init__('complete snapshot exceeds token budget')
 
 
-def current_state(ledger, *, state_version, running_jobs, last_cycle_receipt,
+def current_state(ledger, *, horizon_seconds, state_version, running_jobs, last_cycle_receipt,
                   model_notes, history=HistorySummary()):
     """Canonical public object, independent of its wire representation."""
+    from .normalize import number
+    if not number(horizon_seconds) or horizon_seconds <= 0:
+        raise ValueError('horizon_seconds must be explicitly positive and finite')
     rows = ledger.rows(); metrics = ledger.metrics()
     pending = ledger.pending_tasks()
+    reserved = {oid for task in pending for oid in task['operation_ids']}
+    upcoming = []
+    for oid, op in sorted(ledger.operations.items()):
+        if (op.get('readiness_basis') == 'executing_predecessor'
+                and not rows[oid]['ready'] and oid not in reserved
+                and op['release_time'] <= ledger.now + horizon_seconds):
+            upcoming.append(dict(operation_id=oid, release_time=op['release_time'],
+                batch_key=op['batch_key'], batch_min=op['batch_min'], batch_max=op['batch_max'],
+                setup=op.get('setup'), eligible_machines=op['eligible_machines'],
+                sampling_percent=op.get('sampling_percent'), conditional=op.get('conditional', False),
+                qualification_uncertain=op.get('qualification_uncertain', False)))
     ready_rows = []
     for oid, row in rows.items():
         if row['state'] == 'ready_unreserved' and row['ready']:
@@ -62,7 +76,8 @@ def current_state(ledger, *, state_version, running_jobs, last_cycle_receipt,
                                'batch_max': op['batch_max'], 'setup': op.get('setup'),
                                'release_time': op.get('release_time'),
                                'qualification_uncertain': op.get('qualification_uncertain', False)})
-    current = {'state_version': state_version, 'time': ledger.now,
+    current = {'state_version': state_version, 'time': ledger.now, 'horizon_seconds': horizon_seconds,
+               'upcoming_operations': upcoming,
                'pending_tasks': [model_task(t) for t in pending],
                'machine_orders': [{'machine': mid, 'task_ids': [t['id'] for t in pending if t['machine'] == mid]}
                                   for mid in sorted({t['machine'] for t in pending})], 'holds': list(ledger.holds.values()),
@@ -80,7 +95,7 @@ def current_state(ledger, *, state_version, running_jobs, last_cycle_receipt,
     return current
 
 
-def build_snapshot(prefix, ledger, *, state_version, running_jobs, last_cycle_receipt,
+def build_snapshot(prefix, ledger, *, horizon_seconds, state_version, running_jobs, last_cycle_receipt,
                    model_notes, token_budget, token_counter=estimate_tokens,
                    history=HistorySummary(), snapshot_format="explicit"):
     from .compact import check_format
@@ -88,7 +103,7 @@ def build_snapshot(prefix, ledger, *, state_version, running_jobs, last_cycle_re
     magic = b"SNAPSHOT_V1_DENSE\n" if snapshot_format == "dense" else b"SNAPSHOT_V1\n"
     if not prefix.startswith(magic):
         raise ValueError("snapshot_format does not match prefix")
-    current = current_state(ledger, state_version=state_version, running_jobs=running_jobs,
+    current = current_state(ledger, horizon_seconds=horizon_seconds, state_version=state_version, running_jobs=running_jobs,
                             last_cycle_receipt=last_cycle_receipt, model_notes=model_notes, history=history)
     payload = prefix + (encode_current(decode_prefix(prefix), current, snapshot_format="dense", token_counter=token_counter)
                         if snapshot_format == "dense" else encode_current(decode_prefix(prefix), current))
