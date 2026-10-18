@@ -71,9 +71,9 @@ def test_snapshot_counter_separate_from_session_budget(live_dir):
     run = SyntheticRun(directory=live_dir)
     calls = []
     run.token_counter = lambda text: calls.append(text) or 51
-    run.snapshot_token_budget = 50
+    run.context_token_budget = 50
     run.step()
-    assert calls and run.cycle.stop_reason == 'snapshot_budget_exceeded'
+    assert calls and run.cycle.stop_reason == 'context_budget_exceeded'
 
 
 def test_event_advance_uses_requested_horizon(monkeypatch):
@@ -107,7 +107,7 @@ def test_mcp_log_authoritative_even_with_more_jsonl_calls(live_dir):
     run.step()
     row = run.metrics.report()[0]
     assert not run.outcome['adopted']
-    assert row['tool_calls'] == 0 and row['model_request_lower_bound'] == 4
+    assert row['tool_calls'] == 0 and row['model_request_lower_bound'] == 3
 
 
 @pytest.mark.parametrize('failure, expected', [

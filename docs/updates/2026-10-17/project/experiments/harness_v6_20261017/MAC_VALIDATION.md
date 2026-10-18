@@ -330,7 +330,41 @@ M1(d) 三组均通过，完整 token 仍为 756359。最终完整配置 suite �
 ## Phase J
 
 沿用上述配置运行 `python -m pytest -q tests/test_live.py::test_mac_live_p2_three_cycles`：
-必须显式使用 snapshot_token_budget=10**8、tiktoken_counter('o200k_base')，三次提交通过私有物理预检；完成后 private.json 不存在。
+必须显式使用 context_token_budget=10**8、request_overhead_tokens=0、output_reserve_tokens=0（仅脚本测试）、tiktoken_counter('o200k_base')，三次提交通过私有物理预检；完成后 private.json 不存在。
 纯合成 `python3 -m pytest -q tests/test_checkpoint_segments.py tests/test_synthetic_long_run.py --durations=10`：
 1,200 周期不缩减；检查点最多两个、latest 仅读一个完整文件，链篡改失败；段后两周期恢复保留 abandoned 目录且终态一致。
 测试以 /dev/shm 为合成 LiveRun 临时目录，缺失时回退 tmp_path；物理测试仍用磁盘，避免 64MB tmpfs 容量不足。
+
+
+## Phase L / M3 紧凑表示（2026-10-18）
+
+沿用 Phase J 的 PYTHONPATH、TIKTOKEN_CACHE_DIR、V6_MAC_FIXTURE、V6_SEALED_DB、V6_SEALED_SELECT，
+V6_CLASSIFICATION_REPORT 指向新的 classification-l-final.json。最终结果见
+`reports/compact_snapshot_validation_20261018.md`；前文 756359 / 563837 为历史 raw JSON 测量。
+
+```bash
+python3 -m pytest -q
+python3 scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2
+python3 scripts/run_public_physics.py --fixture "$V6_MAC_FIXTURE" --group P2 --until 1603.10 --output /workspace/v6-mac-env/work/phase-l-p2.json
+python3 scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --output /workspace/v6-mac-env/work/compact-l-tokens.json
+```
+
+通过标准：manifest routes/machines、G0 t=1649.82 的全部字段/类型往返一致（float 相对 1e-9）；
+26 accounted = 23 pending + 3 traced running；907 jobs、1011 ready、全部机器/hold 完整；
+10/15/4 旧分类、两个封存异常和 128 个物理事件回放不变。输出 o200k_base 的实际静态/动态/总 token，
+不得为满足估计值省略信息。使用新格式总数减 1 的预算必须失败关闭。
+
+### F6 新项目：whole_request_overhead（仍待 Mac 证据，不在本阶段运行 Codex）
+
+使用现有本地模拟 Responses 服务/固定 Codex 版本录制请求，保留系统提示、三个工具 schema、
+完整快照、工具结果和 token 计数；禁止借重复快照工具补取内容。使用 pinned o200k_base 分别测量
+系统提示/工具协议开销（request_overhead_tokens）及完整请求。登记 context_token_budget 和覆盖
+输出+推理的 output_reserve_tokens；后续轮次工具结果增长也必须纳入开销保守上界。
+验收：所有录制请求的实际非快照输入 ≤登记 overhead，完整输入 + reserve ≤ context budget；
+多 1 token 的边界在启动 Runner 前停止，budget_report.json 各项可核对；不发生隐式压缩。
+模型理解紧凑表的准确率还需单独验证，不由解码往返替代。
+
+已有证据检查命令：`python3 -m pytest -q tests/test_mac_session.py`。
+新增预算边界命令：`python3 -m pytest -q tests/test_compact.py -k whole_request_budget`。
+F6 新测量须与九项已有 probe 一起人工核验并保存报告；此阶段只执行合成边界测试，
+未提供真实 Codex 请求证据，不将该项标为通过。

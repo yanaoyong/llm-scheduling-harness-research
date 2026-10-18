@@ -174,3 +174,9 @@ Phase I 完整验证：纯 suite `267 passed, 42 skipped, 42 subtests passed in 
 配置 suite `297 passed, 12 skipped, 42 subtests passed in 1775.79s (0:29:35)`。配置 skip 仅为
 12 个未授权 Codex 探针。最终 tools/call RPC 形态另通过纯宿主 16 项及真实物理
 3 周期验证；编译和 diff 格式检查通过。没有模型/网络调用或提交。
+
+
+Phase L（2026-10-18）：以上 token 数是历史 raw JSON。最新紧凑格式的完整旧/新对照见
+[compact_snapshot_validation_20261018.md](compact_snapshot_validation_20261018.md)。
+静态分类、回放和任务核对的语义保持；当前快照自身可低于旧 cap，但生产整次请求预算还需
+系统/工具 overhead 和输出/推理 reserve，不能沿用“只检查快照”的结论。

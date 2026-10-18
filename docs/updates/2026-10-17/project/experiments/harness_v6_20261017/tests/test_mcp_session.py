@@ -60,13 +60,14 @@ def test_three_cycles_fake_runner(tmp_path):
 
 def test_stdio_roundtrip(tmp_path):
     s,f=setup_cycle(tmp_path);s.close()
-    requests=[{'jsonrpc':'2.0','id':1,'method':'initialize','params':{'protocolVersion':'2024-11-05'}},{'jsonrpc':'2.0','method':'notifications/initialized'}, {'jsonrpc':'2.0','id':2,'method':'tools/list'}, {'jsonrpc':'2.0','id':3,'method':'tools/call','params':{'name':'get_decision_snapshot','arguments':{}}}]
+    requests=[{'jsonrpc':'2.0','id':1,'method':'initialize','params':{'protocolVersion':'2024-11-05'}},{'jsonrpc':'2.0','method':'notifications/initialized'}, {'jsonrpc':'2.0','id':2,'method':'tools/list'}, {'jsonrpc':'2.0','id':3,'method':'tools/call','params':{'name':'read_entities','arguments':{'kind':'operations','ids':[]}}}]
     env={**os.environ,'PYTHONPATH':str(Path(__file__).resolve().parents[1]/'src')}
     p=subprocess.run([sys.executable,'-m','harness_v6.mcp_server','--input',str(s.input_dir),'--output',str(tmp_path/'stdio')],input='\n'.join(json.dumps(r) for r in requests)+'\n',text=True,capture_output=True,env=env,timeout=10)
     assert p.returncode==0,p.stderr
     replies=[json.loads(x) for x in p.stdout.splitlines()]
     assert [r['id'] for r in replies]==[1,2,3]
-    assert len(replies[1]['result']['tools'])==4
+    assert len(replies[1]['result']['tools'])==3
+    assert not replies[2]['result']['isError']
     assert not audit_chain([json.loads(x) for x in (tmp_path/'stdio/mcp.jsonl').read_text().splitlines()])
 
 
@@ -96,7 +97,7 @@ def test_fail_closed_retains_plan(tmp_path,failure):
     if failure=='tokens':budget=Budget(token_cap=10)
     if failure=='wall':result.wall_seconds=301
     if failure=='tools':
-        s.call('get_decision_snapshot',{});result.jsonl=jsonl(s.records);budget=Budget(max_tool_calls=1)
+        s.call('read_entities',{'kind':'operations','ids':[]});result.jsonl=jsonl(s.records);budget=Budget(max_tool_calls=1)
     if failure=='missing_jsonl':result.jsonl=jsonl([])
     if failure=='hash':a['rows'][0]['arguments']['submission_id']='forged'
     if failure=='production':a['submission']['plan']['tasks'][0]['machine']=999

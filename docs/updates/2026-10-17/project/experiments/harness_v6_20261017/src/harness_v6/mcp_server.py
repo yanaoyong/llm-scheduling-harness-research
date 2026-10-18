@@ -13,7 +13,6 @@ TOOLS = {
     'read_entities': {'type':'object','properties':{'kind':{'type':'string'}, 'ids':{'type':'array'}, 'cursor':{'type':['string','null']}, 'count':{'type':'integer'}, 'fields':{'type':'array'}, 'where':{'type':'array'}},'required':['kind']},
     'validate_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':{'type':'object'}},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
     'submit_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':{'type':'object'}},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
-    'get_decision_snapshot': {'type':'object','properties':{},'additionalProperties':False},
 }
 
 class CycleServer:
@@ -27,7 +26,6 @@ class CycleServer:
         self.records=[]
         self.max_tool_calls=max_tool_calls
         payload=strict_json((self.input_dir/'cycle.json').read_bytes())
-        self.snapshot=payload['snapshot']
         problem, base = reconstruct(payload['facts'])
         self.reader=FactReader(payload['context_ref'],payload['facts'])
         if payload.get('private_state'):
@@ -48,9 +46,6 @@ class CycleServer:
             try:
                 if len(self.records)>=self.max_tool_calls: raise ValueError('tool_budget')
                 if name=='read_entities': result=self.reader.read(arguments)
-                elif name=='get_decision_snapshot':
-                    if arguments: raise ValueError('unexpected arguments')
-                    result=deepcopy(self.snapshot)
                 elif name in ('validate_plan','submit_plan'):
                     target=self.submitter if name=='submit_plan' else Submitter.restore(self.submitter.capture(),physical_precheck=self.submitter.physical_precheck)
                     result=target.submit_plan(**arguments)

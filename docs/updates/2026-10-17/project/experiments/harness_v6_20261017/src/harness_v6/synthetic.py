@@ -208,7 +208,7 @@ class ScriptedRunner:
             server = CycleServer(inputs, outputs)
             try:
                 for index, (tool, arguments) in enumerate([
-                    ('get_decision_snapshot', {}), ('validate_plan', args), ('submit_plan', args)]):
+                    ('validate_plan', args), ('submit_plan', args)]):
                     item = dict(id=str(index), type='mcp_tool_call', server='harness_v6', tool=tool, arguments=arguments)
                     events.append(dict(type='item.started', item=dict(item)))
                     server.rpc(dict(jsonrpc='2.0', id=index, method='tools/call',
@@ -234,7 +234,7 @@ class SyntheticRun(LiveRun):
             submission_id=str(self.cycle.cycles), delta=scripted_delta(self.factory, self.cycle.cycles)))
         super().__init__(SyntheticFactory(seed), runner, directory=directory or self._temporary.name,
             prefix=stable_prefix(tool_descriptions=[], routing=[1,2], machine_groups=[1,2]),
-            source_sha256=SOURCE, snapshot_token_budget=100000, token_counter=estimate_tokens, config=config, drift_rule=drift_rule, model_note=LABEL)
+            source_sha256=SOURCE, request_overhead_tokens=0, output_reserve_tokens=0, context_token_budget=100000, token_counter=estimate_tokens, config=config, drift_rule=drift_rule, model_note=LABEL)
 
     def step(self, *, event=None, injected_usage=100):
         self.runner.usage = injected_usage
@@ -244,6 +244,7 @@ class SyntheticRun(LiveRun):
     def restore(cls, payload):
         obj = cls()
         state = payload['extra']
+        obj.budget_report = state.get('budget_report')
         obj.factory = SyntheticFactory.restore(payload['state'])
         obj.cycle = CycleMachine.restore(payload['cycle'])
         obj.metrics = Metrics.restore(state['metrics'])

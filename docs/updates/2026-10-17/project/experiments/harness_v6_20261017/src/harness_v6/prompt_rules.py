@@ -10,6 +10,30 @@ An unconditional active hold blocks the machine. A conditional hold applies only
 after its anchor task has executed and the machine has no pending tasks.
 Frozen tasks retain byte-equivalent JSON and queue prefixes; a host-invalidated
 frozen task may be explicitly cancelled. Invalidation does not authorize rewriting.
-Use validate_plan for all violations, then atomic submit_plan (no dry_run).
+Use validate_plan for violation counts and up to 50 detailed violations, then atomic submit_plan (no dry_run).
 Coverage shortfall is reported, never rejected. CQT/Q-time is not implemented.
 '''
+
+V6_RULES += """Snapshot format SNAPSHOT_V1: static prefix first, then CURRENT.
+@name value contains one JSON value; @name object/table N [columns] introduces
+N tab-separated rows with that header. All cells are explicit JSON values:
+null is None, ! is absent field, "" is empty string; true/false are booleans.
+Umean~offset and Cconstant encode uniform/constant distributions. Integers
+remain integers; floats retain a decimal point or exponent and are rounded to
+10 significant digits (the only value normalization). No blank defaults or =.
+step_definitions rows have zero-based IDs; routes list these IDs in step order;
+step_number_is_position=true restores step numbers starting at 1.
+machine_groups_compact groups static attributes; $ids lists machine ID ranges,
+$positions restores source order. Ranges a:b are inclusive; commas join ranges.
+ready_groups shares batch/setup/qualification/release fields and $eligible;
+$operations lists EVERY operation ID, $positions restores original row order.
+$eligible [family,name,order] means every static machine of that family; order
+is a range list of zero-based positions in sorted family IDs. [set,id] refers to
+eligible_sets. machines holds dynamic state; machine_inheritance lists each inherited static
+field and its machine ID ranges; machine_constants applies to every
+machine (availability_basis is stated once). pending_tasks, holds, invalid_tasks,
+running_jobs, idle matches, opportunities, ages and receipt use header-once
+tables; nested cells retain their JSON fields. The prompt contains the complete
+snapshot once. read_entities accepts at most 512 IDs. Tool receipts report
+violation_count, counts_by_code and truncated; acceptance uses ALL violations.
+"""

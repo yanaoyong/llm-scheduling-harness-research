@@ -4,6 +4,7 @@ The physical precheck is read-only and returns a list of violations. The host
 must serialize calls to this object and persist its capture with the cycle WAL.
 """
 from copy import deepcopy
+from collections import Counter
 from .plan_delta import (compile_plan_delta, DeltaError, json_sha256)
 from .normalize import validate_plan, number
 
@@ -13,6 +14,14 @@ def coverage_report(plan, problem):
     observed = {o['operation_id'] for o in problem['operations']}
     return {'observed_operations': len(observed), 'reserved_operations': len(assigned & observed),
             'uncovered_operation_ids': sorted(observed - assigned), 'report_only': True}
+
+
+def bounded_receipt(receipt):
+    """Keep full validation internal; return explicit counts with at most 50 errors."""
+    errors = receipt['violations']
+    return dict(receipt, violations=errors[:50], violation_count=len(errors),
+                counts_by_code=dict(sorted(Counter(e['code'] for e in errors).items())),
+                truncated=len(errors) > 50)
 
 
 class Submitter:
@@ -39,13 +48,13 @@ class Submitter:
 
     def submit_plan(self, expected_state_version, submission_id, delta):
         if not isinstance(submission_id, str) or not submission_id:
-            return {'accepted': False, 'violations': [{'code': 'submission_id', 'detail': 'nonempty ID required'}]}
+            return bounded_receipt({'accepted': False, 'violations': [{'code': 'submission_id', 'detail': 'nonempty ID required'}]})
         signature = json_sha256([expected_state_version, delta])
         if submission_id in self.receipts:
             old = self.receipts[submission_id]
             if old['request_sha256'] == signature:
                 return deepcopy(old)
-            return {'accepted': False, 'violations': [{'code': 'submission_id_conflict', 'detail': submission_id}]}
+            return bounded_receipt({'accepted': False, 'violations': [{'code': 'submission_id_conflict', 'detail': submission_id}]})
         errors = []
         if self.closed or self.finalized:
             errors.append({'code': 'cycle_closed', 'detail': 'one successful submit per cycle'})
@@ -94,6 +103,7 @@ class Submitter:
         if not errors:
             self.candidate = plan
             self.closed = True
+        receipt = bounded_receipt(receipt)
         self.receipts[submission_id] = deepcopy(receipt)
         return deepcopy(receipt)
 

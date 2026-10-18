@@ -160,7 +160,7 @@ source_sha256 和可选 delta_seconds。真实工厂还必须提供 private_stat
 capture JSON），用于副本预检。输入目录只读；每周期使用全新的输出目录。
 
 `mcp_server.py` 是逐行 JSON-RPC 2.0 stdio 服务，支持 initialize、tools/list、tools/call。
-四个工具为 read_entities、validate_plan、submit_plan、get_decision_snapshot；不排序候选，
+三个工具为 read_entities、validate_plan、submit_plan；不排序候选，
 不写 Store。线程锁串行化所有调用；mcp.jsonl 逐条 fsync 并连接哈希；submission.json
 独占创建。validate_plan 只修改克隆，成功 submit 也只是暂存。
 
@@ -291,9 +291,39 @@ Phase F 修复：过期条件 hold 不要求已消失的锚任务；冻结 when_
 计失败并前进；无 inflight 时重放最近段检查点之后的周期，已有目录改名为 cycle-N.abandoned-k。
 检查点链清单保留 segment/file/SHA256/前驱 SHA256，latest 校验清单及一个最新完整文件；仅保留最新两个完整文件。
 完成周期删除 private.json；段边界把周期目录压成一个 gzip tar，SHA256 清单持久化后才删除原目录。
-LiveRun 必须显式传入 snapshot_token_budget 和 token_counter，独立于每会话预算；Mac 使用 o200k_base。
+LiveRun 必须显式传入 context_token_budget、request_overhead_tokens、output_reserve_tokens 和 token_counter；Mac 使用 o200k_base。闸门检查 snapshot_tokens + request_overhead_tokens + output_reserve_tokens ≤ context_token_budget，独立于会话累计成本预算。
 账本检查点单独保存 hold 索引，不向模型可见 hold 增加 id。
 
 用户批准：hold 期间只计 explicit_wait_idle，不触发。到期后恢复 avoidable_idle 匹配；
 未激活条件 hold 不阻止匹配。指标积分 `explicit_wait_idle_seconds` 单独计费。
 完整快照为唯一接口，分层/分区仍待用户决定。
+
+
+## Phase L：紧凑快照与上下文边界
+
+快照只通过 prompt 交付一次；重复快照工具已删除。`snapshot.decode_snapshot(payload)`
+返回原 canonical prefix/current 对象。`SNAPSHOT_V1` 静态前缀在前，`CURRENT` 动态状态在后，
+同一静态输入跨周期逐字节稳定。工艺路线共享工步定义表，机器静态属性分组并列出 ID 区间；
+就绪工序按组批/资格/可用机组集合分组，每个 operation ID 均保留。完整机组族直接引用族名，
+其余集合使用独立表；机组动态表从静态表恢复 family/cascading，availability_basis 只写一次。
+任务、hold、失效、作业、机会和回执使用一次表头；嵌套值仍完整保留。格式说明在 V6_RULES。
+
+所有值明确写出，`!` 表示缺失字段，`null` 表示 None，空字符串为 `""`，布尔值为 true/false。
+没有空格默认值或 `=` 简写。整数/浮点类型保持；唯一归一化是浮点数 10 位有效数字，
+验收相对误差 ≤1e-9，非浮点精确比较。列表原顺序通过位置区间还原。
+未改变 submit/task 格式、任务选择或模型可见内容；release_time 仍显式保留。
+
+validate_plan / submit_plan 内部收集全部违规，回执最多返回 50 条并提供 violation_count、
+counts_by_code、truncated；接受条件不变。read_entities 的 ids 超过 512 时明确拒绝，不截断。
+整次请求预算超限时不启动 Runner，写入 budget_report.json 并持久化停止原因及各项 token。
+合成绑定的 overhead/reserve 显式为 0；生产值必须用 Mac F6 探针测量和登记。
+
+复现实测（沿用上文 fixture / PYTHONPATH / TIKTOKEN_CACHE_DIR）：
+
+```bash
+python3 scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --output /tmp/compact-snapshot-tokens.json
+python3 -m pytest -q tests/test_compact.py tests/test_mac_snapshot.py tests/test_sealed_contexts.py
+```
+
+最新旧/新 token 表与验证结果见 `reports/compact_snapshot_validation_20261018.md`。
+这是表示和机制验证，不代表模型理解准确率或生产排程质量；该项仍待 Mac 探针验证。

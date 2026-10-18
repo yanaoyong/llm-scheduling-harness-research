@@ -27,7 +27,7 @@ def test_live_fifty_audited_decisions(group, live_dir):
             initial = json.loads((directory/'initial.json').read_text())
             parsed = classify((directory/'output/session.jsonl').read_text())
             assert not audit_provenance(rows, parsed['calls'], submission, initial)
-            assert parsed['tool_rounds'] == 3
+            assert parsed['tool_rounds'] == 2
     assert run.cycle.sessions == 50
 
 def test_tampered_jsonl_keeps_old_plan(live_dir):
@@ -70,7 +70,7 @@ def test_request_rounds(stages, rounds):
             identity=str(index); index+=1; pending.append(identity)
         else: identity=pending.pop(0)
         events.append(dict(type='item.started' if stage=='s' else 'item.completed',
-            item=dict(type='mcp_tool_call', id=identity, server='harness_v6', tool='get_decision_snapshot', arguments={}, status='completed')))
+            item=dict(type='mcp_tool_call', id=identity, server='harness_v6', tool='read_entities', arguments={}, status='completed')))
     events.append(dict(type='turn.completed', usage=dict(input_tokens=1,cached_input_tokens=0,output_tokens=0)))
     parsed=classify('\n'.join(json.dumps(e) for e in events))
     assert not parsed['errors'] and parsed['tool_rounds']==rounds
@@ -154,7 +154,7 @@ def test_mac_live_p2_three_cycles(live_dir):
         return dict(expected_state_version=config['state_version'],submission_id=str(config['state_version']),delta=delta)
     run=LiveRun(LiveFactory(env),ScriptedRunner(planner),directory=live_dir,
         prefix=stable_prefix(tool_descriptions=[],routing=[],machine_groups=[]),source_sha256=SOURCE,
-        snapshot_token_budget=10**8, token_counter=tiktoken_counter('o200k_base'), budget=Budget(token_cap=10**8),model_note='scripted mechanism test')
+        request_overhead_tokens=0, output_reserve_tokens=0, context_token_budget=10**8, token_counter=tiktoken_counter('o200k_base'), budget=Budget(token_cap=10**8),model_note='scripted mechanism test')
     for _ in range(3):
         assert run.step()['session']
         assert run.outcome['adopted'],run.outcome
@@ -164,10 +164,10 @@ def test_mac_live_p2_three_cycles(live_dir):
 
 def test_snapshot_budget_stops_before_runner(live_dir):
     from harness_v6.session import Budget
-    run=SyntheticRun(directory=live_dir);run.snapshot_token_budget=1
+    run=SyntheticRun(directory=live_dir);run.context_token_budget=1
     def forbidden(*args,**kwargs): raise AssertionError('runner must not launch')
     run.runner.run=forbidden
     run.step()
-    assert run.cycle.stop_reason=='snapshot_budget_exceeded'
+    assert run.cycle.stop_reason=='context_budget_exceeded'
     assert not run.metrics.buckets
-    assert run.store.latest()['cycle']['stop_reason']=='snapshot_budget_exceeded'
+    assert run.store.latest()['cycle']['stop_reason']=='context_budget_exceeded'

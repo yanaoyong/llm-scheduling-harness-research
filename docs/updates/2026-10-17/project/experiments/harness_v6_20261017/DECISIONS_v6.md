@@ -109,3 +109,13 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
 无 in-flight 时从段检查点重放，冲突周期目录保留为 abandoned 证据。
 MCP tool_calls 只取 mcp.jsonl 行数；JSONL 轮次独立记录，证据不一致时仍记失败成本。
 审计复用 audit_ledger 同一贪心策略的参考实现，不再保留第三份 audit_idle。
+
+
+## Phase L（2026-10-18，用户批准）
+
+- 只改变快照表示：无损共享工步定义/路线序列、静态机器分组/范围、就绪工序分组/机组族引用、动态一次表头；静态前缀始终在前。所有内容和列表顺序可还原，不改变 submit/task schema。
+- 唯一数值归一化：float 保留 10 位有效数字，解码相对误差 ≤1e-9；非浮点精确、int/float 类型保持。无隐式默认、无同值 `=`；缺失字段 `!` 与 None `null` 明确区分。
+- 删除重复快照工具；完整快照只作为 prompt 提供。ScriptedRunner 每会话 validate/submit 两次工具调用，请求数下界由 4 变 3。
+- 回执违规详情上限 50，额外报告总数、按码计数和 truncated；内部完整验证/接受语义不变。read_entities ids >512 明确拒绝。
+- LiveRun 必填 context_token_budget、request_overhead_tokens、output_reserve_tokens；快照 + 系统/工具开销 + 输出/推理预留 ≤ 总上下文预算，超限失败关闭并写出每项。移除旧的仅快照预算参数。
+- 无模型调用、网络、提交；配置环境验证沿用 F–K 已授权的公开/封存夹具。真实理解准确率、F6 系统提示/工具开销和生产 reserve 登记仍在 Mac 上完成。

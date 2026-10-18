@@ -15,9 +15,9 @@
       "source_sha256": "0581ab7c7829401dcff56ad453b4f768a5a5d1cf92e7f6e3f216a2a8f86990b9"
     },
     {
-      "copy_sha256": "d05cdd65cc9e3a0bd31270eb9770e480264cfb0b3e412caf69ae6f79d8f1aa29",
+      "copy_sha256": "3a86a0123e1ffa12579ba327f5685e3dfebc23d274bcd382f60ccd56fbab5e70",
       "initial_copy_sha256": "d05cdd65cc9e3a0bd31270eb9770e480264cfb0b3e412caf69ae6f79d8f1aa29",
-      "modified": false,
+      "modified": true,
       "path": "src/harness_v6/facts.py",
       "source_path": "docs/updates/2026-10-17/project/experiments/context_window_batch60_20261016/src/smt_fullfab/harness/facts.py",
       "source_sha256": "d05cdd65cc9e3a0bd31270eb9770e480264cfb0b3e412caf69ae6f79d8f1aa29"

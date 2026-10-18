@@ -1,3 +1,4 @@
+from harness_v6.snapshot import decode_snapshot
 import json
 import pytest
 from harness_v6.ledger import ledger_from_scratch, ledger_apply
@@ -21,19 +22,19 @@ def test_complete_deterministic_snapshot():
     plan['tasks'] = [dict(task(str(i)), id=f't{i}') for i in range(26)]
     plan['holds'] = [{'machine': 2, 'until': 50}, {'machine': 1, 'until': 0}]
     l = ledger_from_scratch(p, plan)
-    payload = snapshot(l); current = json.loads(payload.split(b'\n', 1)[1])
+    payload = snapshot(l); current = decode_snapshot(payload)[1]
     assert current['pending_tasks'] == plan['tasks']
     assert current['holds'] == plan['holds']
     assert {r['operation_id'] for r in current['unreserved_ready']} == {str(i) for i in range(26, 50)}
     assert snapshot(l) == payload
     ledger_apply(l, {'time': 11})
-    assert snapshot(l).split(b'\n')[0] == payload.split(b'\n')[0]
+    assert snapshot(l).split(b'CURRENT\n')[0] == payload.split(b'CURRENT\n')[0]
 
 
 def test_running_invalid_notes_and_receipt():
     p, plan = fixture(); plan['tasks'] = [task()]
     l = ledger_from_scratch(p, plan, {'tasks': [{'task_id': 't', 'state': 'invalid'}]})
-    data = json.loads(snapshot(l, running_jobs=[{'job': 'j'}], model_notes='remember', last_cycle_receipt={'ok': True}).split(b'\n')[1])
+    data = decode_snapshot(snapshot(l, running_jobs=[{'job': 'j'}], model_notes='remember', last_cycle_receipt={'ok': True}))[1]
     assert data['invalid_tasks'] == plan['tasks']
     assert data['running_jobs'] == [{'job': 'j'}]
     assert data['last_cycle_receipt'] == {'ok': True}

@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import hashlib
 import json
 from .prompt_rules import V6_RULES
+from .compact import encode_prefix, decode_prefix, encode_current, decode_snapshot
 
 
 def canonical(value):
@@ -25,8 +26,8 @@ def tiktoken_counter(encoding_name='o200k_base'):
 
 
 def stable_prefix(*, tool_descriptions, routing, machine_groups):
-    return canonical({'rules': V6_RULES, 'tools': tool_descriptions,
-                      'routing': routing, 'machine_groups': machine_groups}) + b'\n'
+    return encode_prefix({'rules': V6_RULES, 'tools': tool_descriptions,
+                          'routing': routing, 'machine_groups': machine_groups})
 
 
 @dataclass(frozen=True)
@@ -44,9 +45,9 @@ class SnapshotBudgetExceeded(ValueError):
         super().__init__('complete snapshot exceeds token budget')
 
 
-def build_snapshot(prefix, ledger, *, state_version, running_jobs, last_cycle_receipt,
-                   model_notes, token_budget, token_counter=estimate_tokens,
-                   history=HistorySummary()):
+def current_state(ledger, *, state_version, running_jobs, last_cycle_receipt,
+                  model_notes, history=HistorySummary()):
+    """Canonical public object, independent of its wire representation."""
     rows = ledger.rows(); metrics = ledger.metrics()
     ready_rows = []
     for oid, row in rows.items():
@@ -70,10 +71,18 @@ def build_snapshot(prefix, ledger, *, state_version, running_jobs, last_cycle_re
                'reserved_but_earlier_startable': metrics['reserved_but_earlier_startable'],
                'assigned_not_started_age': metrics['assigned_not_started_age'],
                'history_summary': history.digest}
-    payload = prefix + canonical(current)
+    return current
+
+
+def build_snapshot(prefix, ledger, *, state_version, running_jobs, last_cycle_receipt,
+                   model_notes, token_budget, token_counter=estimate_tokens,
+                   history=HistorySummary()):
+    current = current_state(ledger, state_version=state_version, running_jobs=running_jobs,
+                            last_cycle_receipt=last_cycle_receipt, model_notes=model_notes, history=history)
+    payload = prefix + encode_current(decode_prefix(prefix), current)
     count = token_counter(payload.decode('utf-8'))
     if count > token_budget:
         raise SnapshotBudgetExceeded({'code': 'snapshot_budget_exceeded', 'tokens': count,
             'budget': token_budget, 'bytes': len(payload), 'pending_tasks': len(current['pending_tasks']),
-            'unreserved_ready': len(ready_rows), 'dropped_rows': 0, 'mode': 'full'})
+            'unreserved_ready': len(current['unreserved_ready']), 'dropped_rows': 0, 'mode': 'full'})
     return payload

@@ -1,3 +1,5 @@
+from harness_v6.compact import normalize
+from harness_v6.snapshot import decode_snapshot
 import json
 import os
 import sqlite3
@@ -124,9 +126,9 @@ def test_mac_snapshot_26_pending():
         payload = build_snapshot(stable_prefix(tool_descriptions={}, routing=[], machine_groups=[]), ledger,
             state_version=ctx['state_revision'], running_jobs=evidence['running_jobs'],
             last_cycle_receipt=None, model_notes='', token_budget=10**9, token_counter=tiktoken_counter())
-        current = json.loads(payload.split(b'\n', 1)[1])
-        assert current['pending_tasks'] == pending
-        assert current['running_jobs'] == evidence['running_jobs']
+        current = decode_snapshot(payload)[1]
+        assert current['pending_tasks'] == normalize(pending)
+        assert current['running_jobs'] == normalize(evidence['running_jobs'])
         visible = {}
         trace = bundle('g0_trace')['g0_trace']
         for task_row in ctx['base_plan']['tasks']:
@@ -142,13 +144,13 @@ def test_mac_snapshot_26_pending():
             jobs = [j for j in current['running_jobs']
                     if j['job'] == events[0]['job'] and j['machine'] == task_row['machine']
                     and set(task_row['lot_ids']) <= set(j['lot_ids'])
-                    and j['started_at'] == events[0]['time']]
+                    and j['started_at'] == normalize(events[0]['time'])]
             assert len(jobs) == 1, task_row
             visible[task_row['id']] = jobs[0]['job']
         assert visible == {'d32-l': 976, 'd36-e': 974, 'd39-g': 975}
         assert {t['id'] for t in current['pending_tasks']} | set(visible) == {
             t['id'] for t in ctx['base_plan']['tasks']}
-        assert current['holds'] == ctx['base_plan']['holds']
+        assert current['holds'] == normalize(ctx['base_plan']['holds'])
         assert len(current['unreserved_ready']) == sum(r['ready'] and r['state'] == 'ready_unreserved' for r in ledger.rows().values())
         found = True
     assert found, 'G0 1649.82 context must be included in the SELECT'
