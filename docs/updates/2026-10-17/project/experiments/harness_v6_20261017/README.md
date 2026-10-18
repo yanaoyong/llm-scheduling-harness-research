@@ -441,3 +441,5 @@ footer 提供精确（未舍入）current_time、expected_state_version、submis
 
 CodexRunner 按 leader 退出判定完成，在正常/失败/超时返回前均清理进程组，
 stdout 以非阻塞方式同步读取；子进程持有管道不再误判超时。
+
+- Phase Q：提交/校验回执覆盖仅报告计数及最多 50 个排序后的未预留就绪工序 ID；复用账本就绪定义，完整未覆盖集合可由已保存计划和冻结问题离线重建，不拒绝覆盖不足。

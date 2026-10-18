@@ -11,7 +11,11 @@ after its anchor task has executed and the machine has no pending tasks.
 Frozen tasks retain byte-equivalent JSON and queue prefixes; a host-invalidated
 frozen task may be explicitly cancelled. Invalidation does not authorize rewriting.
 Use validate_plan for violation counts and up to 50 detailed violations, then atomic submit_plan (no dry_run).
-Coverage shortfall is reported, never rejected. CQT/Q-time is not implemented.
+Coverage shortfall is reported, never rejected. coverage contains observed_operations,
+reserved_operations, ready_operations, ready_unreserved_count, ready_unreserved_sample
+(first 50 sorted ready-and-unreserved IDs), truncated and report_only=true.
+Readiness uses the ledger definition; non-ready work is excluded from ready counts
+and sample. Full uncovered IDs can be reconstructed offline from saved plan/problem. CQT/Q-time is not implemented.
 '''
 
 V6_RULES += """Snapshot format SNAPSHOT_V1: static prefix first, then CURRENT.

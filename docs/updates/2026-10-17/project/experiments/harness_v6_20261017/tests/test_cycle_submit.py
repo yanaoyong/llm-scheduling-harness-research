@@ -94,7 +94,10 @@ def test_submit_atomic_idempotent_closed():
 def test_empty_and_absent_submission():
     f=SyntheticFactory();f.plan['valid_until']=900;s=submitter(f)
     r=s.submit_plan(1,'noop',{});assert r['accepted'] and r['no_change']
-    assert len(r['coverage']['uncovered_operation_ids'])==4
+    assert r['coverage']==dict(observed_operations=4, reserved_operations=0,
+        ready_operations=4, ready_unreserved_count=4,
+        ready_unreserved_sample=['0:1:1','1:1:1','2:1:1','3:1:1'],
+        truncated=False, report_only=True)
     assert s.finalize(process_ok=True)==f.plan and s.adopted
     absent=submitter(f);assert absent.finalize(process_ok=True)==f.plan and not absent.adopted
 
@@ -114,8 +117,8 @@ def test_lower_bound_stale_collecting_precheck():
 def test_implicit_retention_and_detachment():
     f=SyntheticFactory();d=scripted_delta(f,1)
     s=submitter(f);r=s.submit_plan(1,'x',d);assert r['accepted']
-    r['coverage']['uncovered_operation_ids'].append('tamper')
-    assert 'tamper' not in s.submit_plan(1,'x',d)['coverage']['uncovered_operation_ids']
+    r['coverage']['ready_unreserved_sample'].append('tamper')
+    assert 'tamper' not in s.submit_plan(1,'x',d)['coverage']['ready_unreserved_sample']
 
 
 def test_drift():
@@ -165,3 +168,68 @@ def test_all_drift_signals(key,value):
     d=DriftMonitor(DriftRule({key:value/2},2))
     assert not d.observe(0,{key:value})
     assert d.observe(1,{key:value})
+
+
+def test_coverage_ready_definition_and_sorted_bound():
+    from harness_v6.submit import coverage_report
+    from harness_v6.ledger import ledger_from_scratch
+    operations = [dict(operation_id=f'op-{i:05d}') for i in reversed(range(100))]
+    operations += [dict(operation_id='conditional', conditional=True),
+                   dict(operation_id='predecessor', predecessor_ids=['op-00000']),
+                   dict(operation_id='future', release_time=11)]
+    problem = dict(time=10, operations=operations, machines=[])
+    plan = dict(tasks=[dict(id='reserved', operation_ids=['op-00000'])], holds=[])
+    report = coverage_report(plan, problem)
+    assert report == dict(observed_operations=103, reserved_operations=1,
+                         ready_operations=100, ready_unreserved_count=99,
+                         ready_unreserved_sample=[f'op-{i:05d}' for i in range(1, 51)],
+                         truncated=True, report_only=True)
+    ledger = ledger_from_scratch(problem, plan)
+    expected = sorted(oid for oid, r in ledger.rows().items()
+                      if r['ready'] and r['state'] == 'ready_unreserved')
+    assert report['ready_unreserved_count'] == len(expected)
+    assert report['ready_unreserved_sample'] == expected[:50]
+    problem['operations'].reverse()
+    assert coverage_report(plan, problem) == report
+
+
+def test_receipt_size_bounded_by_sample():
+    from harness_v6.contracts import encode
+    receipts = []
+    for count in (1000, 9000):
+        f = SyntheticFactory()
+        f.plan['valid_until'] = 900
+        f.lots = {f'{i:05d}': dict(step=1, visit=1, ready_at=0) for i in range(count)}
+        s = submitter(f)
+        receipt = s.submit_plan(1, 'bounded', {})
+        assert receipt['accepted']
+        assert receipt['coverage']['ready_unreserved_count'] == count
+        assert len(receipt['coverage']['ready_unreserved_sample']) == 50
+        receipts.append(receipt)
+    # Same-width exact counts: thousands more operations add no serialized bytes.
+    assert len(encode(receipts[0])) == len(encode(receipts[1])) < 2500
+
+
+def test_bounded_coverage_mcp_evidence_and_single_action_replay(tmp_path):
+    from harness_v6.contracts import encode, digest
+    from harness_v6.single_action import audit_provenance
+    from test_mcp_session import setup_cycle, artifacts
+    f = SyntheticFactory()
+    f.plan['valid_until'] = 900
+    f.lots = {str(i): dict(step=1, visit=1, ready_at=0) for i in range(100)}
+    server, _ = setup_cycle(tmp_path, f)
+    try:
+        initial = server.submitter.capture()
+        args = dict(expected_state_version=0, submission_id='bounded', delta={})
+        validated = server.call('validate_plan', args)
+        submitted = server.call('submit_plan', args)
+        assert validated == submitted == artifacts(server)['submission']['receipt']
+        assert submitted['accepted'] and submitted['coverage']['truncated']
+        jsonl = '\n'.join(encode(row).decode() for row in [
+            dict(type='item.completed', item=dict(type='agent_message', text=encode(args).decode())),
+            dict(type='turn.completed', usage=dict(input_tokens=100, cached_input_tokens=0, output_tokens=10))])
+        evidence = dict(jsonl=jsonl, jsonl_sha256=digest(jsonl), arguments=args,
+                        receipt=submitted, plan=server.submitter.candidate)
+        assert audit_provenance(evidence, initial) == []
+    finally:
+        server.close()

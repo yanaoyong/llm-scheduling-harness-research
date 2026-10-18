@@ -7,13 +7,23 @@ from copy import deepcopy
 from collections import Counter
 from .plan_delta import (compile_plan_delta, DeltaError, json_sha256, anchor_hashes)
 from .normalize import validate_plan, number
+from .ledger import ready
 
 
 def coverage_report(plan, problem):
+    """Report bounded ready-work coverage, never an acceptance constraint.
+
+    The full uncovered set is reproducible offline from the saved compiled plan
+    and frozen problem; no additional evidence file is needed.
+    """
     assigned = {o for task in plan['tasks'] for o in task['operation_ids']}
     observed = {o['operation_id'] for o in problem['operations']}
+    ready_ids = {o['operation_id'] for o in problem['operations'] if ready(o, problem['time'])}
+    unreserved = sorted(ready_ids - assigned)
     return {'observed_operations': len(observed), 'reserved_operations': len(assigned & observed),
-            'uncovered_operation_ids': sorted(observed - assigned), 'report_only': True}
+            'ready_operations': len(ready_ids), 'ready_unreserved_count': len(unreserved),
+            'ready_unreserved_sample': unreserved[:50], 'truncated': len(unreserved) > 50,
+            'report_only': True}
 
 
 def bounded_receipt(receipt):

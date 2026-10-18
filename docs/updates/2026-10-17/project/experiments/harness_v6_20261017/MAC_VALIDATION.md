@@ -446,3 +446,5 @@ python -m pytest -q tests/test_phase_p.py tests/test_codex_runner.py tests/test_
 大小/越界/错误输入失败关闭；leader 退出留 TERM-ignoring child 不误超时，正常及超时均无运行中后代；
 A/B fake 100% 与预算预检、overhead 两模式录制分析、hash 篡改、一会话停止/恢复通过。
 真实 Mac 的全部 12 项仍须独立执行且无 skip，A/B 理解与正式 E1/P2 质量/成本尚未测量。
+
+- Phase Q：配置 `V6_SEALED_DB`、`V6_SEALED_SELECT` 和缓存 `TIKTOKEN_CACHE_DIR` 后运行 `python -m pytest -q -s tests/test_mac_snapshot.py::test_g0_bounded_coverage_tokens`；G0 1649.82 基础计划回执 coverage 的 o200k token 必须 < 1,500，打印旧/新 token 数，最多 50 个就绪未预留 ID。

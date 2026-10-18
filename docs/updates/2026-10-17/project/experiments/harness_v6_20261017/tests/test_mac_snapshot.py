@@ -67,3 +67,35 @@ def test_real_manifest_and_g0_compact_roundtrip(snapshot_format):
         assert build_snapshot(prefix, ledger, snapshot_format=snapshot_format, token_counter=tiktoken_counter(), token_budget=10**9, **args) == payload
         return
     pytest.fail('configured fixture missing G0 1649.82')
+
+
+def test_g0_bounded_coverage_tokens():
+    import os
+    from harness_v6.contracts import encode
+    from harness_v6.sealed_contexts import SQLiteContextReader
+    from harness_v6.submit import Submitter
+    path = os.environ.get('V6_SEALED_DB')
+    if not path:
+        pytest.skip('Mac-only sealed G0 context absent: set V6_SEALED_DB')
+    count = tiktoken_counter('o200k_base')
+    query = os.environ.get('V6_SEALED_SELECT', 'SELECT group_name,payload FROM contexts')
+    for entry in SQLiteContextReader(path, query).contexts():
+        ctx = entry['context']
+        if entry['group'] != 'G0' or abs(ctx['time'] - 1649.82) > .01:
+            continue
+        plan, problem = ctx['base_plan'], ctx['problem']
+        submitter = Submitter(plan, problem, ctx['execution_state'],
+                              state_version=ctx['state_revision'], next_anchor=ctx['time'] + 60,
+                              source_sha256='0' * 64)
+        receipt = submitter.submit_plan(ctx['state_revision'], 'coverage-measurement', {})
+        assigned = {oid for task in plan['tasks'] for oid in task['operation_ids']}
+        observed = {op['operation_id'] for op in problem['operations']}
+        old = dict(observed_operations=len(observed), reserved_operations=len(assigned & observed),
+                   uncovered_operation_ids=sorted(observed - assigned), report_only=True)
+        old_tokens = count(encode(old).decode())
+        tokens = count(encode(receipt['coverage']).decode())
+        print(f'G0 coverage o200k tokens: old={old_tokens}, new={tokens}; coverage={receipt["coverage"]}')
+        assert tokens < 1500
+        assert len(receipt['coverage']['ready_unreserved_sample']) <= 50
+        return
+    pytest.fail('configured fixture missing G0 1649.82')
