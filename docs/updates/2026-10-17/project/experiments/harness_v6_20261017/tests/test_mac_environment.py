@@ -86,9 +86,29 @@ def test_public_observation_cache_matches_original():
     source=root/'context_window_batch60_20261016/src/smt_fullfab/observation.py'
     original=ModuleType('original_observation_reference')
     exec(compile(source.read_text(),str(source),'exec'),original.__dict__)
-    assert env.problem()==original.build_problem(env)
+    def compare_unchanged_facts():
+        # Phase T intentionally adds causal bounds/window rows and corrects
+        # absent-dedication labels. Retain the cache/reference regression for
+        # every pre-existing operation and every other public fact.
+        actual, reference=env.problem(),original.build_problem(env)
+        by_id={o['operation_id']:o for o in actual['operations']}
+        old_ids={o['operation_id'] for o in reference['operations']}
+        assert old_ids <= set(by_id)
+        for old in reference['operations']:
+            expected=deepcopy(old)
+            if expected.pop('qualification_uncertain',False):
+                expected['qualification_basis']='no recorded dedication; simulator does not restrict'
+            new={k:v for k,v in by_id[old['operation_id']].items() if k not in
+                 ('earliest_start','nominal_start','processing_seconds_min','processing_seconds_max')}
+            assert new==expected
+        assert all(o['earliest_start']<=env.t+900 for oid,o in by_id.items() if oid not in old_ids)
+        assert actual['forecast_limitations'][:-1]==reference['forecast_limitations'][:-1]
+        assert actual['forecast_limitations'][-1]=='future maintenance is not provided; public releases within the physical window are included'
+        assert {k:v for k,v in actual.items() if k not in ('operations','forecast_limitations')} == {
+            k:v for k,v in reference.items() if k not in ('operations','forecast_limitations')}
+    compare_unchanged_facts()
     env._events_to(env.q[0][0])
-    assert env.problem()==original.build_problem(env)
+    compare_unchanged_facts()
 
 
 def test_public_expired_conditional_hold_anchor_gone():

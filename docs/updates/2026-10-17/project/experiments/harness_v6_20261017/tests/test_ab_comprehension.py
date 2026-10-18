@@ -25,7 +25,7 @@ def states():
     ops = [op(str(i), eligible_machines=[1] if i < 40 else [2]) for i in range(80)]
     for i, row in enumerate(ops):
         row.update(batch_min=2, batch_max=4, release_time=10, batch_key=['A' if i % 2 else 'B'])
-    current = dict(time=10, unreserved_ready=ops, machine_orders=[dict(machine=1, task_ids=['task-a'])],
+    current = dict(upcoming_operations=[dict(ops[0], operation_id='future', earliest_start=20)], time=10, unreserved_ready=ops, machine_orders=[dict(machine=1, task_ids=['task-a'])],
         running_jobs=[dict(job=12, machine=2)], machines=[dict(machine=i, available_at=10000+i,
         processing_until=[10000+i], current_setup='' if i < 90 else 'A') for i in range(100)])
     return {'synthetic': {fmt: encode_prefix(prefix, fmt) + encode_current(prefix, current, fmt)
@@ -36,7 +36,10 @@ def independent_answers(questions, current, prefix):
     result = {}
     for q in questions:
         t = q['target']
-        if q['type'] in ('eligible', 'batch_bounds'):
+        if q['type'] == 'upcoming':
+            row = next((r for r in current.get('upcoming_operations', []) if r['operation_id'] == t['operation_id']), None)
+            value = dict(present=row is not None, earliest_start=row['earliest_start'] if row else None, eligible_machines=sorted(row['eligible_machines']) if row else [])
+        elif q['type'] in ('eligible', 'batch_bounds'):
             row = next(r for r in current['unreserved_ready'] if r['operation_id'] == t['operation_id'])
             value = sorted(row['eligible_machines']) if q['type'] == 'eligible' else {'batch_min': row['batch_min'], 'batch_max': row['batch_max']}
         elif q['type'] == 'batch_compatible':
@@ -77,7 +80,7 @@ def test_generation_determinism_keys_and_counterbalance(tmp_path):
     assert {p.name: p.read_bytes() for p in a.iterdir()} == {p.name: p.read_bytes() for p in b.iterdir()}
     assert b'answer_class' not in (a / 'questions.json').read_bytes()
     assert key == independent_answers(questions, *decode_snapshot(data['synthetic']['explicit'])[::-1])
-    assert {q['type'] for q in questions} == {'eligible', 'batch_bounds', 'batch_compatible', 'queue', 'available_time', 'value_semantics', 'route_step'}
+    assert {q['type'] for q in questions} == {'upcoming', 'eligible', 'batch_bounds', 'batch_compatible', 'queue', 'available_time', 'value_semantics', 'route_step'}
     assert [r['format'] for r in plan[:2]] == [r['format'] for r in plan[2:4]][::-1]
     for fmt in ab.FORMATS:
         prompt = (a / f'state-000-{fmt}.txt').read_text()
@@ -127,18 +130,51 @@ def test_configured_real_generation(tmp_path):
     fixture_path, database = os.environ.get('V6_MAC_FIXTURE'), os.environ.get('V6_SEALED_DB')
     if not fixture_path or not database:
         pytest.skip('Mac-only real snapshots: set V6_MAC_FIXTURE and V6_SEALED_DB plus physics/tokenizer dependencies')
-    real = ab.load_real_states(fixture_path, database, ['g0', 'public:702', 'public:703'], tiktoken_counter())
+    public_ledger = os.environ.get('V6_PUBLIC_LEDGER')
+    selectors = ['g0', 'public:702', 'public:1182', 'public:1602'] if public_ledger else ['g0', 'public:702', 'public:703']
+    real = ab.load_real_states(fixture_path, database, selectors, tiktoken_counter(), public_ledger=public_ledger)
     output = Path(os.environ.get('V6_AB_OUTPUT', str(tmp_path / 'real')))
     questions, key, plan = ab.generate(real, output, seed=7)
     assert_validity(real, questions, key)
-    assert len(real) == 3 and len(plan) == 12
+    assert len(real) == len(selectors) and len(plan) == 4 * len(selectors)
     times = set()
     for state, snapshots in real.items():
         prefix, current = decode_snapshot(snapshots['explicit'])
         times.add(current['time'])
         subset = [q for q in questions if q['state'] == state]
         assert {q['id']: key[q['id']] for q in subset} == independent_answers(subset, current, prefix)
-    assert len(times) == 3
+    assert len(times) == len(selectors)
+    if public_ledger:
+        import gzip, json
+        from harness_v6.compact import normalize
+        seen = set()
+        with gzip.open(public_ledger, 'rt') as stream:
+            for line in stream:
+                source = json.loads(line); now = source['time']
+                if now not in (702,1182,1602) or now in seen: continue
+                seen.add(now)
+                completed = {r['task_id'] for r in source['receipts'].get('tasks',[]) if r['state'] in ('running','done')}
+                reserved = {oid for t in source['plan']['tasks'] if t['id'] not in completed for oid in t['operation_ids']}
+                from harness_v6.physical_window import frozen_operations
+                from harness_v6.factory_v6 import restore
+                from harness_v6.ledger import ready
+                bundle=json.loads(Path(fixture_path).read_bytes())
+                seed=bundle['mixed_702']
+                manifest=restore(seed['state'],seed['trace'],data_dir=bundle['data_dir']).manifest
+                problem=frozen_operations(source['problem'],manifest)
+                expected=[]
+                for op in problem['operations']:
+                    if not ready(op,now) and op['earliest_start']<=now+900 and op['operation_id'] not in reserved:
+                        expected.append({k:op.get(k) for k in ('operation_id','earliest_start','nominal_start',
+                            'batch_key','batch_min','batch_max','setup','eligible_machines','priority',
+                            'processing_seconds_min','processing_seconds_max','readiness_basis','predecessor_ids',
+                            'sampling_percent','conditional')})
+                expected.sort(key=lambda r:r['operation_id'])
+                for fmt in ab.FORMATS:
+                    assert decode_snapshot(real['public:'+str(int(now))][fmt])[1]['upcoming_operations']==normalize(expected)
+                if len(seen)==3: break
+        assert seen == {702,1182,1602}
+
     assert abs(decode_snapshot(real['g0']['explicit'])[1]['time'] - 1649.82) < .01
 
 

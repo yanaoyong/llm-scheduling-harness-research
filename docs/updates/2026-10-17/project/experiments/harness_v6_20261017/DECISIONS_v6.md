@@ -187,3 +187,52 @@ Dense 扩展 legend 仅 dense 包含。默认值只依赖所属表，静态表�
   不自动挑选格式、不自动重试，不把 fake usage 当模型成本。
 - `--max-sessions` 按本次调用新增会话数停止，保留可恢复检查点；smoke 独立目录不进最终统计。
 - preflight 只查 --version；认证由用户管理并在独立真实 smoke 验证。CQT/Q-time 未实现。
+
+- Phase Q：提交/校验回执覆盖仅报告计数及最多 50 个排序后的未预留就绪工序 ID；复用账本就绪定义，完整未覆盖集合可由已保存计划和冻结问题离线重建，不拒绝覆盖不足。
+
+Phase R（2026-10-18）：用户确认三层区分：SMT2020/模拟器物理事实、必须经用户明确批准的展示/近似规则、仅模型作出的调度决定。隐藏工作的展示规则也可能等效于调度决定；本阶段仅审计既有过滤，不改变它们。唯一批准的新增展示是 `upcoming_operations`：未被 pending task 预留、ledger 尚未就绪的 `executing_predecessor` 工序，预计 `release_time <= time + horizon_seconds`；保留 sampling/conditional/qualification_uncertain。H 从登记的周期配置显式传入，不在 current_state 中默认。explicit/dense 使用同一 family/set 引用，按 operation_id 解码；release_time 是估计，可用 when_ready 预留。完整审计见 [报告](reports/harness_filtering_audit_20261018.md)。
+
+
+## 2026-10-18 Phase T：用户已批准的展示规则
+
+用户批准三层边界：物理事实、明确批准的展示规则、仅由模型决定的生产调度。
+周期重排 + 滚动时域不变；`cycle.py` 未修改，不添加诊断唤醒条件。锚点之间仍仅
+plan_invalidated / expired_task / no_plan（无有效计划且存在可避免空闲）/ terminal。
+
+- W 使用已登记的 horizon_seconds（默认 H=max(3Δ,900)）。生产导出为物理下界窗口与原
+  lookahead_depth 导出的并集；不是按深度替代或删除已可提交工序。冻结 G0/P2 仅增强原有工序，
+  不重新导出。unreserved_ready 成员不变；upcoming 包含窗口内所有未就绪、未被 pending task
+  预留的已导出工序，按 operation_id 排列，无均值过滤。
+- earliest_start 为均匀分布最小值、常数 c、指数分布零下界，含固定 load/unload 与进入下一步的
+  transport；setup、排队、凑批、PM、故障下界取零。未观察到且 sampling<100 的步骤仍列出且
+  conditional，但对后续下界贡献零。执行中的 lot 使用公开开工 + 当前阶段最短持续时间并截到 now；
+  未释放 lot 使用公开 release。缺少公开 job/start 的冻结 P2 使用弱 now 下界，绝不以均值充当下界。
+  nominal_start 仅为均值路径信息；未来返工重访不投影。when_ready 实际到料检查不变。
+- 模型视图不再输出内部兼容 release_time；展示 earliest_start / nominal_start，已观察 ready 才
+  展示 waiting_since。FactReader 的 source hashes 仍指向精确原始事实，value 为明确的公共展示投影；
+  内部 facts 重建与编译输入不变。若旧记录缺少可计算的均值路径且有未完成前驱，
+  nominal_start=null，不把兼容 release_time=now 占位符改名为预测。
+- 删除 qualification_uncertain 的排除；无 dedication 记录时模拟器不限制同 family 机器。
+  observed binding（A05）、same_machine_as 不变。idle 按 processing_until 的成员数检查处理槽：
+  非 cascading 1、cascading 2，不使用预测结束值判定槽是否空闲。贪心 avoidable_idle 为下界。
+- ready/upcoming 增加 priority、processing_seconds_min/max；ready 增加 waiting_since。
+  processing 范围仅为加工 + load/unload，不含 setup/transport，指数上界为 null。
+  due 独立 lot→due 表仅含这两个区段中的 lot，不破坏原行分组；G0 增量 explicit 10,670 /
+  dense 10,676 tokens，高于批准上限 8,000，因此 INCLUDE_DUE=False，默认不展示。
+- 静态前缀展示 setup_transitions、min_runs。setup 优先显式 step setup_time，其次 old→new 表，
+  其次 empty-old fallback，否则零；min_runs 每 lot 递减。unavailable_intervals=[] 表示未提供数据，
+  不保证可用；不提供未来维护。running_jobs 的 step/finish、jobs/metadata 查询类型仍延期。
+- 快照/回执报告阻塞机器、队首任务及 invalid task / head task waiting for material 原因，另列
+  引用当前观察缺失工序的 pending tasks；仅模型显式取消，不自动取消、跳过或重排。
+- coverage 保留 50-ID 样本与总数。validate/submit 的 coverage.complete_read 是完整列表的精确调用；
+  后续页保持 where 与 next_cursor，直到 null。游标绑定观察、候选计划和过滤条件；再次验证不同计划
+  后旧 coverage 游标失效。初始 coverage_uncovered 为冻结 base 计划的视图。
+  read_entities 支持有限数字 gt/gte/lt/lte；bool/非有限操作数拒绝，null/缺失/非数字不匹配范围，
+  eq 的显式 null 与缺失仍不同，不隐式排序或打分。
+- explicit/dense 使用同一可逆字段编码。A/B 的 upcoming 问题改问 earliest_start，保持 8 类、
+  每类 12 问、4 状态共 384 问/16 requests；本阶段不调用理解模型。qualification_basis 可直接查询，
+  未新增第九类问题。CQT/Q-time 仍未实现。
+
+对应方案：审阅计划二的 ledger/snapshot/submit/metrics、M3–M5，以及长跑补充一.2/3/6/8/9、二.1/3。
+除明确批准的 eligibility/idle 与导出展示变化，不改变 normalize/plan_delta/executor 校验规则。
+submit.py 仅添加诊断与 coverage 读取说明；FactReader 公共投影不改原始 facts/compiler 输入。

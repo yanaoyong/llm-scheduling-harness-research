@@ -15,7 +15,7 @@
       "source_sha256": "0581ab7c7829401dcff56ad453b4f768a5a5d1cf92e7f6e3f216a2a8f86990b9"
     },
     {
-      "copy_sha256": "3a86a0123e1ffa12579ba327f5685e3dfebc23d274bcd382f60ccd56fbab5e70",
+      "copy_sha256": "4806bf6b79a4d7187f6f3afa40d33ae40b7250273db09ca07401b5e7227ab502",
       "initial_copy_sha256": "d05cdd65cc9e3a0bd31270eb9770e480264cfb0b3e412caf69ae6f79d8f1aa29",
       "modified": true,
       "path": "src/harness_v6/facts.py",
@@ -48,7 +48,7 @@
       "source_sha256": "518b42367dab09ca70a1831f3dc0b0b7964f621734b8c249bfd9acc9a58bd26d"
     },
     {
-      "copy_sha256": "1d126cc20c9c763aad5a77068058a63ba727f03b768ed5ca929a35712e0f531c",
+      "copy_sha256": "015e867ae86b5dff339e7111586121218355ec3efeb581e6343986c91ce24846",
       "initial_copy_sha256": "4f739da8892793764b05f53b1d3349fefb00e4ac4adfad2a3425986f2515af92",
       "modified": true,
       "path": "src/harness_v6/observation.py",
@@ -80,7 +80,7 @@
       "source_sha256": "cc8b852d0116d29c5add3fe20989104b3f390f5164ed2a0a49163864b1d26b00"
     },
     {
-      "copy_sha256": "d171777489e8272b13055a2a43e656061f6410f8514488548e9f5e2a90e9b196",
+      "copy_sha256": "ab39c66d8be4db048883cf3550a0d05af22efea750d3dd9d428a8a770e7e1923",
       "initial_copy_sha256": "2f9cca3b76fb8546fb9e191b1a5994b858cbf38303195a0c524c11a6362993b7",
       "modified": true,
       "path": "src/harness_v6/env_adapter.py",

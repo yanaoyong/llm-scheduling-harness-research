@@ -127,15 +127,22 @@ def _job_forecast(env, history, jid, pm_by_key):
             'machine_available':machine_available,'expected_piece_pm_seconds':expected_pm}
 
 
-def build_problem(env, plan_seconds=14400, lookahead_depth=3):
+def build_problem(env, plan_seconds=14400, lookahead_depth=3, horizon_seconds=900):
     """Export common observations and conditional expected routes without RNG state.
 
     `currently_busy`/`currently_down` are observable booleans. `available_at`,
     `processing_until`, and successor release times are forecasts. Planned public
-    release streams are not expanded here; newly released demand triggers replans.
+    release streams are included in the physical window; display changes create no interrupts.
     """
+    from .normalize import number
+    if not number(horizon_seconds) or horizon_seconds<=0:
+        raise ValueError('positive finite presentation horizon required')
     if plan_seconds<=0 or type(lookahead_depth) is not int or lookahead_depth<1:
         raise ValueError('positive planning window and lookahead depth required')
+    from .physical_window import lower_bound_walk, phase_duration, distribution_bounds
+    source_machines = defaultdict(list)
+    for m in env.manifest.get('machines',[]):
+        source_machines[m['family']].append(m)
     history=_history(env)
     route_tables=_route_tables(env)
     pm_by_key={c['key']:c['length'] for cs in env.pm_counters.values() for c in cs}
@@ -161,21 +168,39 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
             'current_setup':state['setup'],'min_left':state['min_left'],'min_setup':state['min_setup'],
             'cascading':machine.cascading,'processing_until':active,'unavailable_intervals':[],
             'availability_basis':'observed state + source means + elapsed past downtime; unknown future events excluded'})
+    release_by_lot={l['id']:l['release'] for l in env.manifest.get('lots',[])}
     active_job_by_lot={lid:jid for jid,job in env.jobs.items() if not job['done'] for lid in job['lots']}
     operations=[]
     for lid,lot in sorted(env.lots.items()):
-        if lot['status'] in {'done','unreleased'}:
+        if lot['status'] == 'done':
+            continue
+        if lot['status']=='unreleased' and release_by_lot[lid]>env.t+horizon_seconds:
             continue
         index=lot['step']; ready=env.t
         if lot['status']=='processing':
             ready=forecasts[active_job_by_lot[lid]]['lot_available']
             index+=1
+        source_route = env.manifest['routes'][lot['route']]
+        executing = None
+        if lot['status'] == 'processing':
+            evidence = history['dispatch'][active_job_by_lot[lid]]
+            executing = (evidence['start'], phase_duration(source_route, lot['step'], source_machines)[0])
+        release = release_by_lot[lid] if lot['status'] == 'unreleased' else None
+        effective_depth=0 if lot['status']=='unreleased' else lookahead_depth
+        physical_indices=[i for i in range(index,len(source_route)) if any(m in env.physical for m in env.family_machines[source_route[i]['family']])][:effective_depth]
+        minimum_end_index=physical_indices[-1] if physical_indices else index-1
+        bounds = {r['step']: r for r in lower_bound_walk(source_route, index, now=env.t,
+            first_bound=env.t, first_nominal=ready, machines=source_machines,
+            executing=executing, release=release, observed_first=lot['status']=='waiting',
+            horizon_end=env.t+horizon_seconds,minimum_end_index=minimum_end_index)}
         previous=None; delay=0.; count=0; conditional_virtual=[]
         route=env.routes[lot['route']].steps
         # Future bindings can be endogenous to another operation in this plan.
         included_by_step={}
         for si in range(index,len(route)):
             step=route[si]
+            if step.order not in bounds:
+                break
             mids=[mid for mid in env.family_machines[step.family] if mid in env.physical]
             next_transport=_mean(route[si+1].transport_time) if si+1<len(route) and route[si+1].transport_time else 0.
             if not mids:
@@ -184,7 +209,7 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
                 conditional_virtual.append({'step':step.order,'sampling_percent':step.sampling_percent,
                     'rework_percent':step.rework_percent,'nominal_delay_seconds':_mean(step.processing_time)+virtual.load_time+virtual.unload_time+next_transport})
                 continue
-            if count>=lookahead_depth:
+            if count>=effective_depth and bounds[step.order]['earliest_start'] > env.t + horizon_seconds:
                 break
             known=lot['dedications'].get(str(step.order))
             if known is not None:
@@ -196,9 +221,12 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
                 operations[-1]['transport_seconds']+=delay
                 operations[-1]['conditional_virtual_successors']=deepcopy(conditional_virtual)
             op={'operation_id':oid,'lot_id':lid,'step':step.order,'visit':visit,'family':step.family,
-                'eligible_machines':mids,'release_time':ready+delay if previous is None else env.t,
+                'eligible_machines':mids,'release_time':(release if release is not None else ready+delay) if previous is None else env.t,
+                'earliest_start':bounds[step.order]['earliest_start'], 'nominal_start':bounds[step.order]['nominal_start'],
                 'predecessor_ids':[previous] if previous else [],
                 'processing_seconds':_mean(step.processing_time)+machine.load_time+machine.unload_time,
+                'processing_seconds_min':distribution_bounds(source_route[si]['processing'])[0]+min(env.machines[m].load_time+env.machines[m].unload_time for m in mids),
+                'processing_seconds_max':(None if distribution_bounds(source_route[si]['processing'])[2] is None else distribution_bounds(source_route[si]['processing'])[2]+max(env.machines[m].load_time+env.machines[m].unload_time for m in mids)),
                 'occupation_seconds':_mean(step.cascading_time)+(0 if machine.cascading else machine.load_time+machine.unload_time),
                 'transport_seconds':next_transport,'batch_key':[lot['part'],step.order,step.step_name],
                 'batch_min':step.batch_min,'batch_max':step.batch_max,
@@ -208,6 +236,7 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
                 'conditional':si!=lot['step'] or lot['status']!='waiting',
                 'readiness_basis':('exported_predecessor' if previous is not None else
                     'executing_predecessor' if lot['status']=='processing' else
+                    'unreleased_first_step' if lot['status']=='unreleased' else
                     'observed_ready' if si==lot['step'] and lot['status']=='waiting' else 'nominal_unplanned_route'),
                 'sampling_percent':step.sampling_percent,'rework_percent':step.rework_percent,
                 'initial_virtual_predecessors':deepcopy(conditional_virtual) if previous is None else []}
@@ -220,8 +249,7 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
                     op['same_machine_as']=included_by_step[origin]
                     op['qualification_basis']='conditional binding to included nominal predecessor'
                 else:
-                    op['qualification_basis']='historical or out-of-window binding unknown; executor rechecks observed binding'
-                    op['qualification_uncertain']=True
+                    op['qualification_basis']='no recorded dedication; simulator does not restrict'
                     op['binding_origin_step']=origin
             else:
                 op['qualification_basis']='source family eligibility'
@@ -246,5 +274,5 @@ def build_problem(env, plan_seconds=14400, lookahead_depth=3):
             'overlapping repairs use a nominal last-observed-repair residual; no exact future end is exposed',
             'piece PM duration is the source mean, not the private sampled duration',
             'initial historical bindings and active CQT start times cannot be recovered from source WIP',
-            'known future public releases/maintenance windows are not yet expanded; replan on observations'],
+            'future maintenance is not provided; public releases within the physical window are included'],
         'scope':sorted(env.physical)}

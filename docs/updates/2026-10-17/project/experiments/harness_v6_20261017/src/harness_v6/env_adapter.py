@@ -421,7 +421,8 @@ class FullFabEnvironment(SmtEnvironment):
     def problem(self, *, plan_seconds=14400, lookahead_depth=3):
         """White-listed expectations only; no pending RNG events or future outcomes."""
         from .observation import build_problem
-        return build_problem(self, plan_seconds=plan_seconds, lookahead_depth=lookahead_depth)
+        return build_problem(self, plan_seconds=plan_seconds, lookahead_depth=lookahead_depth,
+                             horizon_seconds=getattr(self, "presentation_horizon_seconds", 900))
 
 
 def plan_from_action(env, action, version, *, valid_seconds=1800, reason='reference-policy decision'):

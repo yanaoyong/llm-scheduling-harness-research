@@ -32,7 +32,7 @@ def validate(directory):
     counter = tiktoken_counter()
     from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS
     prefix = stable_prefix(tool_descriptions=[{'name':name,'description':TOOL_DESCRIPTIONS[name],'inputSchema':schema} for name,schema in TOOLS.items()],
-                           routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
+                           routing=env.manifest['routes'], machine_groups=env.manifest['machines'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs))
     case_refs = {c['context_ref'] for c in bundle['w1462_case']['calls']}
     exception_refs = {c['context_ref'] for c in report['new_rule_exceptions']}
     result['exception_details'] = []
@@ -67,9 +67,12 @@ def validate(directory):
         assert state['t'] == ctx['time']
         running = [dict(job=int(i),machine=j['machine'],lot_ids=j['lots'],started_at=j['start']) for i,j in sorted(state['jobs'].items(),key=lambda item:int(item[0])) if not j['done']]
         (directory/'provenance.json').write_bytes(encode(provenance))
+        from harness_v6.physical_window import frozen_operations
+        enriched=frozen_operations(ctx['problem'],env.manifest,running_jobs=running,dispatches=bundle['g0_trace'])
+        ledger=ledger_from_scratch(enriched,ctx['base_plan'],receipts)
         args = dict(state_version=ctx['state_revision'], running_jobs=running,
                     last_cycle_receipt=None, model_notes='', token_counter=counter)
-        payload = build_snapshot(prefix, ledger, token_budget=10**9, **args)
+        payload = build_snapshot(prefix, ledger, horizon_seconds=900, token_budget=10**9, **args)
         current = decode_snapshot(payload)[1]
         pending = [t for t in ctx['base_plan']['tasks'] if t['id'] not in execution['dispatched_task_ids']]
         assert current['pending_tasks'] == normalize([model_task(t) for t in pending])
@@ -97,7 +100,7 @@ def validate(directory):
         assert {row['operation_id'] for row in current['unreserved_ready']} == expected_ready
         budget = bundle['sealed_input_budget']
         try:
-            build_snapshot(prefix, ledger, token_budget=budget, **args)
+            build_snapshot(prefix, ledger, horizon_seconds=900, token_budget=budget, **args)
         except SnapshotBudgetExceeded as error:
             result['snapshot'] = error.report
         else:

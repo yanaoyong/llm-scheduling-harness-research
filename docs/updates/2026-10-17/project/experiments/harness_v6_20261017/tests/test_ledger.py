@@ -48,7 +48,7 @@ def test_constraints(constraint):
     if constraint in ('busy', 'down'):
         for m in p['machines']: m['currently_' + constraint] = True
     if constraint == 'predecessor': p['operations'][0]['predecessor_ids'] = ['previous']
-    assert checked(p, plan).metrics()['avoidable_idle'] == 0
+    assert checked(p, plan).metrics()['avoidable_idle'] == (1 if constraint == 'uncertain' else 0)
 
 
 def test_batch_key_bounds_and_no_double_count():

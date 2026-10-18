@@ -7,13 +7,26 @@ from copy import deepcopy
 from collections import Counter
 from .plan_delta import (compile_plan_delta, DeltaError, json_sha256, anchor_hashes)
 from .normalize import validate_plan, number
+from .ledger import ready
 
 
 def coverage_report(plan, problem):
+    """Report bounded ready-work coverage, never an acceptance constraint.
+
+    The full uncovered set is reproducible offline from the saved compiled plan
+    and frozen problem; no additional evidence file is needed.
+    """
     assigned = {o for task in plan['tasks'] for o in task['operation_ids']}
     observed = {o['operation_id'] for o in problem['operations']}
+    ready_ids = {o['operation_id'] for o in problem['operations'] if ready(o, problem['time'])}
+    unreserved = sorted(ready_ids - assigned)
     return {'observed_operations': len(observed), 'reserved_operations': len(assigned & observed),
-            'uncovered_operation_ids': sorted(observed - assigned), 'report_only': True}
+            'ready_operations': len(ready_ids), 'ready_unreserved_count': len(unreserved),
+            'ready_unreserved_sample': unreserved[:50], 'truncated': len(unreserved) > 50,
+            'report_only': True, 'coverage_plan_sha256': json_sha256(plan),
+            'complete_read': {'kind':'operations','cursor':None,'count':512,'where':[
+                {'field':'coverage_uncovered','op':'eq','value':True},
+                {'field':'coverage_plan_sha256','op':'eq','value':json_sha256(plan)}]}}
 
 
 def bounded_receipt(receipt):
@@ -33,6 +46,7 @@ class Submitter:
         self.trigger = trigger
         self.delta_min = delta_min
         self.base_plan = deepcopy(base_plan)
+        self.coverage_plan = self.base_plan
         self.problem = deepcopy(problem)
         self.execution_state = deepcopy(execution_state)
         self.state_version = state_version
@@ -97,6 +111,12 @@ class Submitter:
                    'accepted': not errors, 'violations': errors, 'no_change': delta == {},
                    'coverage': coverage_report(plan, self.problem) if plan is not None else None,
                    'plan_sha256': json_sha256(plan) if plan is not None else None, 'evidence': evidence}
+        if plan is not None:
+            self.coverage_plan=plan
+        from .physical_window import queue_diagnostics
+        from .ledger import ledger_read_view
+        receipt.update(queue_diagnostics(ledger_read_view(self.problem, plan or self.base_plan,
+            {'tasks':[dict(task_id=t,state='running') for t in self.execution_state.get('dispatched_task_ids',[])]})))
         if not errors:
             self.candidate = plan
             self.closed = True

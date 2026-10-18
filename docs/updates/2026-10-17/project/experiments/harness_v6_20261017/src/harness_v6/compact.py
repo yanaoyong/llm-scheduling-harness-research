@@ -261,28 +261,33 @@ def encode_current(prefix, current, snapshot_format="explicit", token_counter=to
         if 'family' in m:
             families.setdefault(m['family'], []).append(mid)
     family_keys = {cell(sorted(v)): k for k, v in sorted(families.items())}
-    eligible_sets, groups = {}, {}
-    for row in sorted(result.pop('unreserved_ready'), key=lambda r: r['operation_id']):
-        row = dict(row)
-        eligible = row.pop('eligible_machines')
-        key = cell(eligible)
-        if key in family_keys:
-            ref = ['family', family_keys[key]]
-        else:
-            if key not in eligible_sets:
-                eligible_sets[key] = (len(eligible_sets), eligible)
-            ref = ['set', eligible_sets[key][0]]
-        oid = row.pop('operation_id')
-        if snapshot_format == 'dense' and 'release_time' in row and 'time' in current and cell(row['release_time']) == cell(current['time']):
-            del row['release_time']
-            row['$release_time_is_time'] = True
-        row['$eligible'] = ref
-        key = cell(row)
-        if key not in groups:
-            groups[key] = dict(row, **{'$operations': []})
-        groups[key]['$operations'].append(oid)
+    eligible_sets = {}
+    for source, destination in [('unreserved_ready', 'ready_groups'), ('upcoming_operations', 'upcoming_operations')]:
+        if source not in result:
+            continue
+        source_rows = result.pop(source)
+        groups = {}
+        for row in sorted(source_rows, key=lambda r: r['operation_id']):
+            row = dict(row)
+            eligible = row.pop('eligible_machines')
+            key = cell(eligible)
+            if key in family_keys:
+                ref = ['family', family_keys[key]]
+            else:
+                if key not in eligible_sets:
+                    eligible_sets[key] = (len(eligible_sets), eligible)
+                ref = ['set', eligible_sets[key][0]]
+            oid = row.pop('operation_id')
+            if snapshot_format == 'dense' and 'release_time' in row and 'time' in current and cell(row['release_time']) == cell(current['time']):
+                del row['release_time']
+                row['$release_time_is_time'] = True
+            row['$eligible'] = ref
+            key = cell(row)
+            if key not in groups:
+                groups[key] = dict(row, **{'$operations': []})
+            groups[key]['$operations'].append(oid)
+        result[destination] = list(groups.values())
     result['eligible_sets'] = [dict(id=i, machines=ms) for i, ms in eligible_sets.values()]
-    result['ready_groups'] = list(groups.values())
     constants = {}
     machines = result['machines'] = sorted(result['machines'], key=lambda m: m['machine'])
     if machines and all('availability_basis' in m and m['availability_basis'] == machines[0].get('availability_basis') for m in machines):
@@ -313,17 +318,21 @@ def decode_snapshot(payload):
         if 'family' in m:
             families.setdefault(m['family'], []).append(mid)
     sets = {r['id']: r['machines'] for r in current.pop('eligible_sets')}
-    ready = []
-    for group in current.pop('ready_groups'):
-        group = dict(group)
-        if group.pop('$release_time_is_time', False):
-            group['release_time'] = current['time']
-        reference = group.pop('$eligible')
-        kind, ref = reference
-        ids = group.pop('$operations')
-        eligible = sorted(families[ref]) if kind == 'family' else sets[ref]
-        ready.extend(dict(deepcopy(group), operation_id=oid, eligible_machines=list(eligible)) for oid in ids)
-    current['unreserved_ready'] = sorted(ready, key=lambda r: r['operation_id'])
+    for source, destination in [('ready_groups', 'unreserved_ready'), ('upcoming_operations', 'upcoming_operations')]:
+        if source not in current:
+            continue
+        source_groups = current.pop(source)
+        ready = []
+        for group in source_groups:
+            group = dict(group)
+            if group.pop('$release_time_is_time', False):
+                group['release_time'] = current['time']
+            reference = group.pop('$eligible')
+            kind, ref = reference
+            ids = group.pop('$operations')
+            eligible = sorted(families[ref]) if kind == 'family' else sets[ref]
+            ready.extend(dict(deepcopy(group), operation_id=oid, eligible_machines=list(eligible)) for oid in ids)
+        current[destination] = sorted(ready, key=lambda r: r['operation_id'])
     current['machines'].sort(key=lambda m: m['machine'])
     constants = current.pop('machine_constants')
     by_id = {m['machine']: m for m in current['machines']}
