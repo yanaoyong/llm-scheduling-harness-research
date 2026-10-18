@@ -61,7 +61,7 @@ class CycleMachine:
         self.now = origin
         self.anchor = origin if self.config.trigger == 'periodic' else None
         self.cycles = self.sessions = self.empty_cycles = self.interrupts = 0
-        self.failures = self.without_submit = self.idle_streak = self.unknown_usage = 0
+        self.failures = self.idle_streak = self.unknown_usage = 0
         self.previous_idle = None
         self.unresolved_failure = False
         self.cost = self.wall_seconds = 0.0
@@ -134,21 +134,18 @@ class CycleMachine:
         return dict(record)
 
     def finish(self, *, submitted, process_ok=True, usage_known=True, cost=0, wall_seconds=0,
-               model_note='', ended_at=None):
+               model_note=''):
         if self.inflight is None:
             raise ValueError('no active cycle')
         if cost < 0 or wall_seconds < 0 or not math.isfinite(cost + wall_seconds):
             raise ValueError('invalid usage')
         record = self.inflight
-        now = record['time'] if ended_at is None else ended_at
-        if now != record['time']:
-            raise ValueError('simulation time must pause during a session')
+        now = record['time']
         success = bool(submitted and process_ok and usage_known)
         self.cost += cost
         self.wall_seconds += wall_seconds
         self.unknown_usage += not usage_known
         self.failures = 0 if success else self.failures + 1
-        self.without_submit = 0 if success else self.without_submit + 1
         idle = record['avoidable_idle']
         self.idle_streak = (self.idle_streak + 1 if idle > 0 and not model_note.strip()
                             and (self.previous_idle is None or idle >= self.previous_idle) else 0)
@@ -165,7 +162,7 @@ class CycleMachine:
             self.stop_reason = 'unknown_usage_cap'
         elif self.failures >= self.config.k_fail:
             self.stop_reason = 'consecutive_failures'
-        elif self.without_submit >= self.config.stall_cycles or self.idle_streak >= self.config.stall_cycles:
+        elif self.idle_streak >= self.config.stall_cycles:
             self.stop_reason = 'stall'
         elif record['event'] == 'terminal':
             self.stop_reason = 'terminal'

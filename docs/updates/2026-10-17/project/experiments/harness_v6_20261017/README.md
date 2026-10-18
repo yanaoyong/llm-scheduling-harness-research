@@ -1,6 +1,6 @@
 # Harness v6：账本、周期与物理机制验证
 
-本目录保存 Phase A–F 的独立实验实现；默认纯函数 suite 不需要模拟器，所有测试均不调用模型或网络。
+本目录保存 Phase A–I 的独立实验实现；默认纯函数 suite 不需要模拟器，所有测试均不调用模型或网络。
 获准的公开 SMT2020 物理机制验证与复跑入口见文末 Phase F。
 权威依据：`research/2026-10-17-codex-search/HARNESS_V6_PLAN_reviewed.md` 第二部分
 及 `HARNESS_V6_LONG_RUN_ADDENDUM.md`（冲突时以后者和 COMMON 的最终决定为准）。
@@ -77,16 +77,16 @@ receipts、task_receipts；主键依次为 operation_id、machine、id、id、op
 可能低估最优可利用机组数。顺序只用于计量见证，不生成生产任务、排名建议或派工。
 组批上限、已知专用、min-run 均检查；需要 Mac 与真实 has_legal 对账。
 
-有队列/hold 不视为覆盖；hold 下未预留工作也计入 avoidable_idle。
+有队列不视为覆盖；有效 hold 的机组从 avoidable_idle 匹配中排除，不因该机组触发。
 explicit_wait_idle 单独对每个有效 hold 机组检查可行批次，包含已预留工作。
 条件 hold 必须锚任务已执行且队列为空；过期 hold 无效果。
-两种空闲指标有交集，不能相加；explicit_wait 的不同机组可能共享候选批次。
+两种空闲指标按机组互斥，可以相加；explicit_wait 的不同机组可能共享候选批次。
 reserved_but_earlier_startable 只报告其他空闲合格机组上的提前机会，不参与触发。
 机会秒数来自公开 available_at/not_before 预测差，不是实际空闲积分；没有可用预测时为零，
 不代表没有机会。静态分类按同一上下文/工序取最大差，避免多个替代机组重复计秒。
 
 `audit_ledger.audit_ledger` 不导入账本或 normalize 辅助函数，独立筛选兼容类并取首个
-最小合法组合，复算相同贪心口径；`reconcile` 返回所有指标差异。Phase F 用独立资格
+最小合法批次，复算相同贪心口径（检查实现错误，不证明算法最优）；`reconcile` 返回所有指标差异。Phase F 用独立资格
 索引避免逐机组扫描整个 WIP，并与穷举 oracle 对照；仍是全量读取，不是物理增量更新。
 它验证公开近似口径，不替代真实物理审计。
 
@@ -99,7 +99,7 @@ running jobs、全部未预留就绪工序、匹配、机会、失效任务、�
 
 默认 token counter 为 ceil(字符数/4)，只用于离线确定性估计。支持注入真实计数器，
 超预算抛出 SnapshotBudgetExceeded，report 含计数、预算、字节数和完整行数，dropped_rows=0，
-不返回被裁剪快照。partitioned/tiered 仅保留 mode 接口，明确抛 NotImplementedError。
+不返回被裁剪快照。仅支持完整快照；分区/分层仍待用户决定，无 mode 参数。
 Mac tiktoken 惰性适配器及封存 SQLite 只读适配器不在本地访问真实证据。
 
 ## Phase C：周期、提交、长序列机制验证
@@ -124,7 +124,7 @@ Mac tiktoken 惰性适配器及封存 SQLite 只读适配器不在本地访问�
   仅供快照前瞻与建议跨度，不能作为 valid_until 上限。S2–S4 默认启用 breakdown。
   K_fail、stall_cycles、unknown_usage_cap、segment_seconds/cycles、累计/每小时成本上限
   都在配置中；未登记预算时 cap=None，仅适用于机制测试。
-- 停滞：连续非空周期无成功提交，或正的 avoidable_idle 连续不下降且无显式模型说明。
+- 连续失败由 K_fail 控制；停滞仅指正的 avoidable_idle 连续不下降且无显式模型说明。
   零空闲不会造成假停滞；空周期重置 idle streak。未知用量按失败会话累计，不能清零。
 - `Metrics`：integrate 按小时边界拆分计数×秒；生产与执行事件计入发生小时，
   会话成本计入开始小时。请求下界=工具轮次+1；input_per_request 使用此下界作分母，
@@ -139,7 +139,7 @@ Mac tiktoken 惰性适配器及封存 SQLite 只读适配器不在本地访问�
 检查点宿主协议：在段边界调用 `CheckpointStore.save`（或合成 runner.checkpoint），
 传入工厂状态、cycle.capture()、capture_ledger()、累计成本与指标状态。
 每次会话启动前必须 `mark_inflight` 保存最新完整恢复包；可在收到用量/提交后更新。
-正常完成后先发布新检查点，再 clear_inflight。恢复用 recover()，未完成会话不重跑，
+正常完成后清除 private.json，再 clear_inflight；仅段边界和停止时发布完整检查点。恢复用 recover()，未完成会话不重跑，
 丢弃候选提交、保留已知成本并增加未知用量/失败计数。返回状态继续到下一个有效锚点。
 日志文件按段关闭后用 rotate_logs(segment, {'trace': path, 'mcp': path, 'jsonl': path})
 压缩；压缩文件与哈希清单持久化之后才移除原文件。检查点/marker 用 tmp+rename、fsync；
@@ -170,11 +170,12 @@ capture JSON），用于副本预检。输入目录只读；每周期使用全�
 新增/替换字段来自此次工具参数。只在全部通过后调用原子 compare-and-commit。
 checkpoint 接口先写 in-flight，完成回执持久化后才清除；崩溃前 submission 不采纳。
 `store_v6.py` 默认限制写入本实验目录，也允许宿主显式指定独立 root；MCP 不导入 Store。
-真实工厂使用 factory_v6.commit_physical 同事务写计划、物理状态及新增事件，返回成功后
-宿主才替换内存环境。失败费用及未知用量仍进入 metrics。
+SQLite 宿主可用 factory_v6.commit_physical 同事务写计划、物理状态及新增事件。
+本轮 live 宿主为唯一写者，检查暂停周期版本后 prepare/adopt，段边界或停止时原子发布检查点；
+崩溃窗口由 inflight 恢复旧状态。失败费用及未知用量仍进入 metrics。
 
 JSONL 类型表集中于 EVENT_TYPES，属于待 Mac 验证的接口契约。并行工具不能按工具个数
-计算请求下界；未有逐请求证据时保守记“有工具的一轮 + 最后一轮”，不把它当精确请求数。
+计算请求下界；按 DECISIONS_v6 的 started/completed 轮次规则计数，不把下界当精确请求数。
 工具数量由服务端限制，墙钟由 Runner 限制；累计 token 上限在会话退出时检查，可能有
 最后一轮超额。model_max_output_tokens/压缩阈值是待 F6 验证的配置，不能宣称硬计费上限。
 
@@ -214,7 +215,7 @@ event 模式 anchor=None，宿主每个物理事件后读取账本；正的 avoi
 立即启动决策，未满足组批下限的 ready 行及已预留机会均不触发。失效、到期、
 no_plan、terminal 和开启后的故障失效路径保留。同一模拟时刻不重复决策
 （terminal 除外）；失败保留旧计划，推进到下一物理事件，按同一 K_fail/
-无成功提交/空闲不下降规则停止。没有事件锚点，也不因“上次失败”自造定时请求。
+空闲不下降规则停止。没有事件锚点，也不因“上次失败”自造定时请求。
 event 提交要求 valid_until > now + delta_min（默认 60 秒，严格大于）；
 periodic 仍要求 valid_until >= next_anchor + delta。
 
@@ -277,3 +278,22 @@ Phase F 修复：过期条件 hold 不要求已消失的锚任务；冻结 when_
 观察不再崩溃；回执排序确定。静态 route 缓存保持原浮点求和顺序，并与原观察逐字段核对。
 `ledger_read_view` 只供拥有当前不可变输入的即时读取使用；持久化和可变调用者仍使用
 深复制的 ledger_from_scratch。上述优化未把物理观察变成 O(变化量) 增量维护。
+
+## Phase I 宿主集成
+
+`live.LiveRun` 是四组共用宿主，绑定环境、CycleMachine、完整冻结输入、注入 Runner、
+会话证据核验、比较版本后采纳、指标、固定历史、漂移和检查点。`SyntheticRun` 继承此路径；
+脚本 MCP Runner 调用真实 CycleServer，依次读取快照、validate、submit，保存 MCP/JSONL 双路证据。
+真实物理使用 `factory_v6.LiveFactory`，`private_state` 只供服务器恢复副本预检。
+完整公开输入按决策冻结；两次决策间 trace 只保留指标，避免逐物理事件积存完整 WIP。
+完整逐事件机会证据审计仍由 `run_public_physics.py` 的流式日志验证承担。
+每次启动前保存 inflight；完成后清 marker，仅段边界和停止保存完整检查点。崩溃恢复不采纳残留 submission，
+计失败并前进；无 inflight 时重放最近段检查点之后的周期，已有目录改名为 cycle-N.abandoned-k。
+检查点链清单保留 segment/file/SHA256/前驱 SHA256，latest 校验清单及一个最新完整文件；仅保留最新两个完整文件。
+完成周期删除 private.json；段边界把周期目录压成一个 gzip tar，SHA256 清单持久化后才删除原目录。
+LiveRun 必须显式传入 snapshot_token_budget 和 token_counter，独立于每会话预算；Mac 使用 o200k_base。
+账本检查点单独保存 hold 索引，不向模型可见 hold 增加 id。
+
+用户批准：hold 期间只计 explicit_wait_idle，不触发。到期后恢复 avoidable_idle 匹配；
+未激活条件 hold 不阻止匹配。指标积分 `explicit_wait_idle_seconds` 单独计费。
+完整快照为唯一接口，分层/分区仍待用户决定。

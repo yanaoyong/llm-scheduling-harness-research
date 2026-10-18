@@ -27,8 +27,8 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
 ## Phase B 实现口径
 
 - 账本增量应用与全量投影分离；更新 O(变化记录及成员)，匹配/快照读取依赖当前 WIP。
-- 可避免空闲采用确定性贪心极大匹配（非最优）；独立组合枚举审计复算同一近似。
-- 任务/hold 存在不等于覆盖；显式等待指标与可避免空闲有交集，不相加。
+- 可避免空闲采用确定性贪心极大匹配（非最优）；独立审计复算同一贪心近似，只检查实现偏差，不证明算法最优。
+- 用户批准：hold 期间只计 explicit_wait_idle，不触发；与 avoidable_idle 互斥，可相加。
 - 未来非就绪工序保留 ready=False；未知资格保守排除，真实物理一致性留 Mac。
 - 历史压缩为固定大小证据链摘要；不携带跨会话对话历史。超预算失败关闭。
 - 静态机会秒数是公开预测差，不是 v6 反事实轨迹收益。未实施分区/分层。
@@ -39,7 +39,7 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
   unknown_usage_cap=2、segment_seconds=3600、segment_cycles=60。
   这些是合成默认值，不是授权真实试验的预算或最优配置。
 - 停滞的 idle 分支仅对正空闲计数；零空闲/空周期重置，以免健康空跑被判停滞。
-  模型明确说明可重置该分支，但不能免除无提交/会话失败阈值。
+  模型明确说明可重置该分支，但不能免除 K_fail 会话失败阈值。
 - 近邻锚点在 begin 时确定合并，submit 的 next_anchor 使用合并后的边界，
   valid_until 下限更保守，避免被跳过的锚点使计划恰在下一真实会话前失效。
 - 每周期 Submitter 是事务暂存区；accepted 不等于已经改变物理状态。
@@ -82,7 +82,7 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
 
 ## Phase F
 
-公开物理夹具使用独立 public_702，不替代封存 mixed_702。默认真实 tokenizer 改为 o200k_base（本次 tiktoken 0.14.0），保持与 v5 一致；字符估算器仍仅用于离线纯函数测试。独立批次审计仅枚举每个兼容类首个组合，避免指数级枚举；不复用 ledger 实现。
+公开物理夹具使用独立 public_702，不替代封存 mixed_702。默认真实 tokenizer 改为 o200k_base（本次 tiktoken 0.14.0），保持与 v5 一致；字符估算器仍仅用于离线纯函数测试。独立批次审计取每个兼容类排序后的最小批次，复算相同贪心策略；不复用 ledger 实现。
 
 ## Phase H：编排者修订，待用户确认
 
@@ -90,3 +90,22 @@ Phase A 接口选择：省略 start_mode 的默认仅在读取时解释，不写
 
 1. test_mac_sealed_classification: reviewed plan M1(b) says "新口径下这些上下文全部不触发，例外逐条列出" — listed exceptions are allowed. Replace `exceptions == []` with: every exception must (a) have avoidable_idle > 0 confirmed by the independent audit, (b) be caused by an UNRESERVED legal operation that is not one of the old-gap (already reserved) operations, (c) never be triggered by reserved_but_earlier_startable. Then pin the exact observed set: G0 context:97eada3675ec457ca5a28750 and G1 context:61d6652b89614a3aa60bfe1e at t≈1593.13, operation w1703:86:1, machine 325. Keep 10/15/4 old-rule assertion unchanged.
 2. test_mac_snapshot_26_pending: the plan's "26/26" conflated base-plan size with pending count. New criterion: all 26 base-plan tasks are accounted for in the snapshot — 23 pending tasks verbatim in the pending table AND the 3 dispatched tasks (ids from execution_state.dispatched_task_ids) visible in the running-jobs / execution section of the snapshot (by task id or by their lot/operation identities). Verify this against the actual snapshot. If the 3 dispatched tasks are NOT visible, that is a real snapshot gap: fix snapshot.py (with a synthetic regression test) so dispatched-but-running plan tasks are represented, then assert.
+
+## Phase I（用户批准）
+
+- 用户批准：hold 期间只计 explicit_wait_idle，不触发。条件 hold 必须已激活；到期无效果。
+- MCP 请求下界 = 工具轮次 + 1。轮次是没有 MCP item.completed 插入的最大 MCP
+  item.started 序列；并行调用同轮，结果返回后的下一调用另起一轮。零调用为 1；
+  顺序 read→validate→submit 为 4；两个并行 read 后 submit 为 3。
+- failures 唯一控制连续失败阈值 K_fail；停滞仅由 idle_streak 判定。
+- 检查点链从 segment 0 开始，包含前驱 SHA256；latest 校验追加清单和最新一个完整文件，不能从中间片段假冒根。
+- audit_ledger 是同一贪心策略的独立实现。小夹具 a 可到 1/2、b/c 只能到 1，
+  贪心先把 a 放到 1 得 1，最大匹配把 b 放 1、a 放 2 得 2。
+
+## Phase J
+
+完整检查点仅在初始化、段边界和停止写入，保留最新两个；追加链清单不删除。
+恢复中断会话由 in-flight 包保留旧计划并记失败，不重跑该会话；恢复计算不另存完整检查点。
+无 in-flight 时从段检查点重放，冲突周期目录保留为 abandoned 证据。
+MCP tool_calls 只取 mcp.jsonl 行数；JSONL 轮次独立记录，证据不一致时仍记失败成本。
+审计复用 audit_ledger 同一贪心策略的参考实现，不再保留第三份 audit_idle。

@@ -36,9 +36,10 @@ class CycleServer:
             if not handle.is_relative_to(self.input_dir.resolve()):
                 raise ValueError('private state outside frozen input')
             physical=restore(strict_json(handle.read_bytes()), [])
-            def physical_precheck(plan, problem, execution):
+            def private_precheck(plan, problem, execution):
                 try: prepare(physical,plan); return []
                 except ValueError as exc: return [{'code':'physical_precheck','detail':str(exc)}]
+            physical_precheck=private_precheck
         self.submitter=Submitter(base,problem,payload['execution_state'],physical_precheck=physical_precheck,**payload['submit_config'])
 
     def call(self, name, arguments):

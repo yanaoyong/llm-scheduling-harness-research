@@ -13,6 +13,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+from .audit_ledger import audit_ledger
 
 def read_events(source):
     if isinstance(source, (str, Path)):
@@ -208,9 +209,10 @@ def audit_plan_sources(source):
 def audit_opportunity_coverage(source):
     """Independently enumerate recorded public ledger inputs at each clock step.
 
+    Active held machines contribute only explicit_wait_idle, never avoidable_idle.
+    The independent audit re-implements the same greedy policy, not an optimum.
     Does not certify private readiness: physical replay must check observation inputs.
     """
-    from .audit_ledger import audit_ledger
     events=read_events(source);errors=[];snapshot=None;integrals={};steps=0
     for index,e in enumerate(events):
         if e['kind']=='ledger_snapshot':

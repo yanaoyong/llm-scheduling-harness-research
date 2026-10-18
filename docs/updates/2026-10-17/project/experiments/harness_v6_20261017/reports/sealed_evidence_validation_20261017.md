@@ -60,7 +60,7 @@
 
 两者均在 t=1593.1323091758827，avoidable_idle=1（machine=325，operation=w1703:86:1），explicit_wait_idle=0。旧缺口的工序均已预留，但另有机组因既有未来队列被旧 _gaps 隐藏。新账本发现的是另一项未预留合法工作，不是把 reserved opportunity 当触发。
 
-| 组 / context_ref | machine 325 的原队列任务 | reserved 机会（原始行 / 去重工序 / 秒） | 独立审计 |
+| 组 / context_ref | machine 325 的原队列任务 | reserved 机会（原始行 / 去重工序 / 秒） | 同一贪心策略的独立审计（非最优性证明） |
 |---|---|---|---|
 | G0 / `context:97eada3675ec457ca5a28750` | d39-b → w2086:133:1 | 11 / 2 / 96.227938975 | {'differences': [], 'ok': True} |
 | G1 / `context:61d6652b89614a3aa60bfe1e` | d40-2086 → w2086:133:1 | 11 / 2 / 153.639272916 | {'differences': [], 'ok': True} |
@@ -105,7 +105,7 @@ Configured 的两条失败必须保留：test_mac_sealed_classification（两个
 M3 的 26/26 改为所有 base-plan tasks 可见，不再混淆总数与 pending 数。
 旧规则 10/15/4 断言未改，未改账本、物理语义或原始封存证据。
 
-M1(b) 测试钉住上表两个 context/ref/time/machine/operation，并以独立 audit_ledger
+M1(b) 测试钉住上表两个 context/ref/time/machine/operation，并以独立实现同一贪心策略的 audit_ledger
 确认 avoidable_idle=1 与匹配完全一致。所有旧 gap 工序均已预留，w1703:86:1
 不属于任何预留工序、旧 gap 工序或预留机会。额外静态反事实检查仅移除该未预留见证：
 reserved_but_earlier_startable 列表保持原样，ledger 与独立 audit 的 avoidable_idle
@@ -147,3 +147,30 @@ scripts/build_sealed_fixture.py、scripts/validate_sealed_fixture.py。未删除
 
 全部生成的 fixture、SQLite、逐项指标和日志留在 scratch。
 未运行 Codex/model/network；原有 F6、live budgets、CQT/Q-time 与长时间验收限制仍适用。
+
+## Phase I 审计口径更正
+
+本文“独立审计一致”指不导入 ledger 辅助函数、独立实现**同一贪心策略**。
+它能发现实现偏差，不能证明匹配算法最优，也不能发现两者共有的算法近似误差。
+此前“穷举匹配一致”仅指给定贪心顺序下的批次选择，不能解释为全局最大匹配。
+有效 hold 现在仅计 explicit_wait_idle，不计 avoidable_idle；两指标按机组互斥。
+
+Phase I 重跑：旧分类仍为 G0/G1/G2=10/15/4；两个异常仍严格为上述 G0/G1 的
+context:97eada3675ec457ca5a28750 / context:61d6652b89614a3aa60bfe1e，
+均由 machine 325 的未预留 w1703:86:1 触发。共同终点三个组仍为 avoidable/explicit=1/0，
+w1703 均见于 avoidable_idle_matches，M1(d) 保持。75 个去重机会、
+10389.52046615674 静态预测秒保持。与 Phase I 前的 86 条 context 指标逐条比较无变化；
+这批证据未包含会改变这些指标的有效 hold 可行工作，不能用数值不变否认新 hold 语义。
+原时刻物理回放仍为 128 个事件完全一致。
+
+新增真实宿主 P2 测试通过：`1 passed in 248.17s (0:04:08)`，三个周期均使用
+CycleServer 和 private_state 恢复/预检；只使用脚本 Runner，不是模型轨迹。
+
+Phase I 最终 tokenizer 测量亦保持：756359 tokens（前缀 563837）、23 pending +
+3 dispatched/running = 26 项全部计入，907 running jobs、1011 ready rows、holds=0；
+历史 220000 cap 失败关闭且 dropped_rows=0。静态测量脚本正常退出。
+
+Phase I 完整验证：纯 suite `267 passed, 42 skipped, 42 subtests passed in 629.54s (0:10:29)`；
+配置 suite `297 passed, 12 skipped, 42 subtests passed in 1775.79s (0:29:35)`。配置 skip 仅为
+12 个未授权 Codex 探针。最终 tools/call RPC 形态另通过纯宿主 16 项及真实物理
+3 周期验证；编译和 diff 格式检查通过。没有模型/网络调用或提交。

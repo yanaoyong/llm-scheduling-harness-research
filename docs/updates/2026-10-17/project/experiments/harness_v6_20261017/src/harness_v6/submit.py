@@ -79,7 +79,7 @@ class Submitter:
             end = plan.get('valid_until') if plan is not None else (
                 delta.get('plan_header', {}).get('valid_until') if isinstance(delta, dict)
                 and isinstance(delta.get('plan_header', {}), dict) else None)
-            event_mode = getattr(self, 'trigger', 'periodic') == 'event'
+            event_mode = self.trigger == 'event'
             lower = (self.execution_state['time'] + self.delta_min if event_mode
                      else self.next_anchor + self.delta_seconds)
             if not number(end) or (end <= lower if event_mode else end < lower):

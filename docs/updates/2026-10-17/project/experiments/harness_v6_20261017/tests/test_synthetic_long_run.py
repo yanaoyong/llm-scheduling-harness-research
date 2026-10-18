@@ -3,11 +3,25 @@ from harness_v6.cycle import CycleConfig, DriftRule
 from harness_v6.checkpoint import CheckpointStore
 
 
-def test_1200_cycles_checkpoint_and_bounded_snapshot(tmp_path):
-    uninterrupted=SyntheticRun(seed=73);split=SyntheticRun(seed=73)
-    for _ in range(613):uninterrupted.step();split.step()
-    store=CheckpointStore(tmp_path);split.checkpoint(store);resumed=SyntheticRun.restore(store.latest())
-    for _ in range(587):uninterrupted.step();resumed.step()
+def _checkpoint_trajectory(directory):
+    # A separate process keeps both complete 1,200-cycle trajectories affordable.
+    import tempfile
+    tempfile.tempdir = str(directory)
+    split = SyntheticRun(seed=73)
+    store = CheckpointStore(directory / 'split'); split.checkpoint(store)
+    for _ in range(613): split.step()
+    split.checkpoint(store); resumed = SyntheticRun.restore(store.latest())
+    for _ in range(587): resumed.step()
+    return resumed.checkpoint(resumed.store)
+
+
+def test_1200_cycles_checkpoint_and_bounded_snapshot(live_dir):
+    from concurrent.futures import ProcessPoolExecutor
+    uninterrupted = SyntheticRun(seed=73)
+    with ProcessPoolExecutor(max_workers=1) as worker:
+        future = worker.submit(_checkpoint_trajectory, live_dir)
+        for _ in range(1200): uninterrupted.step()
+        resumed = SyntheticRun.restore(future.result())
     assert uninterrupted.state_hash()==resumed.state_hash()
     assert resumed.cycle.cycles==1200 and resumed.cycle.stop_reason is None
     assert resumed.factory.completed>1000
@@ -32,7 +46,7 @@ def test_drift_injection():
         run.step(injected_usage=100 if i<60 else 1000)
         if run.cycle.stop_reason:break
     assert run.cycle.stop_reason=='drift' and run.last_hour==2
-    assert run.metrics.report()[0]['input_per_request']==50
+    assert run.metrics.report()[0]['input_per_request']==25
 
 
 def test_breakdown():

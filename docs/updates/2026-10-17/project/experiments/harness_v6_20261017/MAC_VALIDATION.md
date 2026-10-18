@@ -299,3 +299,38 @@ configured **280 passed / 12 skipped / 42 subtests passed**（1002.87s）。
 M0b 仍为 128 事件完全相同；M1(a) 10/15/4，M1(b) 两项例外独立核验通过；
 M3 26/26 accounted、907 running jobs、1011 ready rows、0 holds；756359 tokens，
 历史 220000 上限失败关闭，零丢行。复跑日志在 `/workspace/v6-mac-env/work/phase-h-*.log`。
+
+## Phase I — 宿主与代码审查验收
+
+沿用上节 Phase H/G 的 merged fixture、venv、PYTHONPATH、TIKTOKEN_CACHE_DIR，禁止模型/Codex/网络。
+
+- `python3 -m pytest -q`：纯仓库完整测试；新增 `tests/test_live.py`，四组各 50 次真实宿主决策，MCP 双路审计、篡改失败、提交后崩溃恢复、hold 互斥、无 id hold 往返、请求轮次和链前驱篡改。
+- `/workspace/v6-mac-env/venv/bin/python -m pytest -q`：配置完整 suite；仅允许 9 个 F6/MCP 与 3 个 single_action Codex 探针跳过。
+- `/workspace/v6-mac-env/venv/bin/python -m pytest -q tests/test_live.py::test_mac_live_p2_three_cycles`：mixed_702 实际物理 ≥3 个 P2 周期，通过 live.py、真实 CycleServer 和 private_state restore/prepare 预检；脚本只续订封存任务，不调用模型。
+- `/workspace/v6-mac-env/venv/bin/python scripts/run_public_physics.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --group P2 --until 1603.10 --output /workspace/v6-mac-env/work/phase-i-p2.json`：公开物理回放，检查点必须真实调用 restore_ledger，rows/metrics 与重建一致，恢复终态和积分一致。
+- `/workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2`：更新静态分类和完整快照测量，保留 10/15/4、两项异常与 M1(d) 的证据核验；数值变化据实报告。
+- `python3 -m compileall -q src` 和 `git diff --check` 必须通过。
+
+审计说明：audit_ledger 与 audit_v6 各自实现相同贪心政策，只检查实现差异，不证明全局最优。
+有效 hold 只计 explicit_wait_idle_seconds，不触发；条件 hold 未激活时继续参与 avoidable_idle。
+
+Phase I 已完成的独立验证：纯 suite `267 passed, 42 skipped, 42 subtests passed in 629.54s (0:10:29)`；
+真实宿主三周期 `1 passed in 248.17s (0:04:08)`；会话定向回归 `38 passed, 5 deselected in 6.11s`。
+公开 P2 重新运行、restore_ledger 比较和恢复均通过，分类仍为 10/15/4 与两项固定异常，
+M1(d) 三组均通过，完整 token 仍为 756359。最终完整配置 suite 结果如下。
+
+最终配置 suite：`297 passed, 12 skipped, 42 subtests passed in 1775.79s (0:29:35)`。12 个 skip 仅为 9 个 F6/MCP 与
+3 个 single_action Codex 探针；没有数据、物理或 tokenizer skip。最终 RPC 改动另由
+`16 passed, 1 skipped in 30.43s`（纯宿主测试，唯一 skip 为物理）及
+`1 passed in 248.17s (0:04:08)`（真实物理三周期 RPC）覆盖。
+日志：`work/phase-i-plain-final.log`、`work/phase-i-configured-final.log`、
+`work/phase-i-live-rpc-final.log`、`work/phase-i-live-rpc-mac-final.log`。
+`python3 -m compileall -q src` 与 `git diff --check` 均通过。
+
+## Phase J
+
+沿用上述配置运行 `python -m pytest -q tests/test_live.py::test_mac_live_p2_three_cycles`：
+必须显式使用 snapshot_token_budget=10**8、tiktoken_counter('o200k_base')，三次提交通过私有物理预检；完成后 private.json 不存在。
+纯合成 `python3 -m pytest -q tests/test_checkpoint_segments.py tests/test_synthetic_long_run.py --durations=10`：
+1,200 周期不缩减；检查点最多两个、latest 仅读一个完整文件，链篡改失败；段后两周期恢复保留 abandoned 目录且终态一致。
+测试以 /dev/shm 为合成 LiveRun 临时目录，缺失时回退 tmp_path；物理测试仍用磁盘，避免 64MB tmpfs 容量不足。

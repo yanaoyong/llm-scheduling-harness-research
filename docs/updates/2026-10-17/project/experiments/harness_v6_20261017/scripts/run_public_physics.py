@@ -16,7 +16,7 @@ from harness_v6.audit_v6 import audit_opportunity_coverage, audit_plan_sources
 from harness_v6.snapshot import stable_prefix, build_snapshot, tiktoken_counter
 from harness_v6.plan_delta import SCHEMA, STATE_SCHEMA, ORDER_POLICY, anchor_hashes
 from harness_v6.submit import Submitter
-from harness_v6.checkpoint import capture_ledger
+from harness_v6.checkpoint import capture_ledger, restore_ledger
 
 SOURCE=digest('public-scripted-mechanism')
 
@@ -121,7 +121,11 @@ def run(bundle,group,stop,delta,breakdowns,output):
     cp=json.loads(Path(output+'.checkpoint.json').read_text());clone=restore(cp['state'],cp['trace'],data_dir=b['data_dir'])
     c=CycleMachine.restore(cp['cycle']);ev=cp['event'];recovered=[]
     ls=clone.ledger_snapshot()
-    assert capture_ledger(ledger_read_view(ls['problem'],ls['plan'],ls['receipts']))==cp['ledger']
+    current = ledger_read_view(ls['problem'],ls['plan'],ls['receipts'])
+    restored = restore_ledger(cp['ledger'])
+    assert restored.rows() == current.rows()
+    assert restored.metrics() == current.metrics()
+    assert capture_ledger(current) == cp['ledger']
     resumed_integrals=cp['integrals'];resumed_steps=cp['steps']
     while clone.t<stop:
         result,audit=step(clone,c,recovered,prefix,counter,stop,ev,output+'.recovery-ledger.jsonl.gz')

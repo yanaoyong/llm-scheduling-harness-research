@@ -6,12 +6,11 @@ by event consumption order. This is not SMT2020 or production-quality evidence.
 """
 from copy import deepcopy
 import hashlib
-from .snapshot import canonical, HistorySummary, stable_prefix, build_snapshot
+from .snapshot import canonical, HistorySummary, stable_prefix, estimate_tokens
 from .plan_delta import SCHEMA, STATE_SCHEMA, ORDER_POLICY, anchor_hashes, json_sha256
 from .executor import decide_start
 from .ledger import Ledger, ledger_apply
-from .cycle import CycleMachine, CycleConfig, DriftMonitor, DriftRule
-from .submit import Submitter
+from .cycle import CycleMachine, DriftMonitor, DriftRule
 from .metrics import Metrics
 
 SOURCE = hashlib.sha256(b'harness-v6-synthetic-v1').hexdigest()
@@ -131,8 +130,29 @@ class SyntheticFactory:
             if stop_on_event:
                 return
 
+    def advance_to(self, target, stop_on_event):
+        if not stop_on_event:
+            self.advance(target, self.metrics)
+            return None
+        horizon = target - self.now
+        self.advance(target, self.metrics, stop_on_event=True)
+        self._dispatch(self.metrics)
+        while self.ledger().metrics()['avoidable_idle'] <= 0 and not self.invalid:
+            before = self.now
+            self.advance(self.now + horizon, self.metrics, stop_on_event=True)
+            self._dispatch(self.metrics)
+            if self.now == before:
+                raise RuntimeError('synthetic event clock stalled')
+        return 'plan_invalidated' if self.invalid else None
+
+    def running_jobs(self):
+        return self.running
+
+    def private_state(self):
+        return None
+
     def capture(self):
-        return deepcopy(vars(self))
+        return deepcopy({k:v for k,v in vars(self).items() if k != 'metrics'})
 
     @classmethod
     def restore(cls, state):
@@ -166,106 +186,68 @@ def scripted_delta(factory, cycle):
 from .checkpoint import capture_ledger as ledger_capture
 
 
-class SyntheticRun:
-    def __init__(self, *, seed=1, config=None, drift_rule=None, group=None):
+class ScriptedRunner:
+    """Non-model planner; emits real tool calls and matching wire evidence."""
+    def __init__(self, planner):
+        self.planner = planner
+        self.usage = 100
+
+    def run(self, argv, prompt, *, timeout):
+        import json
+        from pathlib import Path
+        from .session import RunResult
+        from .mcp_server import CycleServer
+        inputs = Path(argv[argv.index('--cd') + 1])
+        frozen = json.loads((inputs / 'cycle.json').read_bytes())
+        args = self.planner(frozen)
+        events = []
+        if '--output-schema' in argv:
+            events.append({'type':'item.completed','item':{'type':'agent_message','text':canonical(args).decode()}})
+        else:
+            outputs = inputs.parent / 'output'
+            server = CycleServer(inputs, outputs)
+            try:
+                for index, (tool, arguments) in enumerate([
+                    ('get_decision_snapshot', {}), ('validate_plan', args), ('submit_plan', args)]):
+                    item = dict(id=str(index), type='mcp_tool_call', server='harness_v6', tool=tool, arguments=arguments)
+                    events.append(dict(type='item.started', item=dict(item)))
+                    server.rpc(dict(jsonrpc='2.0', id=index, method='tools/call',
+                                    params=dict(name=tool, arguments=arguments)))
+                    events.append(dict(type='item.completed', item=dict(item, status='completed')))
+            finally:
+                server.close()
+        events.append(dict(type='turn.completed', usage=dict(input_tokens=self.usage, cached_input_tokens=0, output_tokens=0)))
+        return RunResult('\n'.join(canonical(e).decode() for e in events))
+
+
+from .live import LiveRun
+
+
+class SyntheticRun(LiveRun):
+    def __init__(self, *, seed=1, config=None, drift_rule=None, group=None, directory=None):
+        import tempfile
         if group is not None:
             from .groups import config_for
             config = config_for(group, config)
-        self.factory = SyntheticFactory(seed)
-        self.cycle = CycleMachine(config=config or CycleConfig())
-        self.metrics = Metrics(exclude_first_hours=1)
-        self.history = HistorySummary()
-        self.max_snapshot_bytes = 0
-        self.min_snapshot_bytes = None
-        self.drift = DriftMonitor(drift_rule) if drift_rule else None
-        self.last_hour = -1
+        self._temporary = tempfile.TemporaryDirectory() if directory is None else None
+        runner = ScriptedRunner(lambda frozen: dict(expected_state_version=self.cycle.cycles,
+            submission_id=str(self.cycle.cycles), delta=scripted_delta(self.factory, self.cycle.cycles)))
+        super().__init__(SyntheticFactory(seed), runner, directory=directory or self._temporary.name,
+            prefix=stable_prefix(tool_descriptions=[], routing=[1,2], machine_groups=[1,2]),
+            source_sha256=SOURCE, snapshot_token_budget=100000, token_counter=estimate_tokens, config=config, drift_rule=drift_rule, model_note=LABEL)
 
     def step(self, *, event=None, injected_usage=100):
-        c, f = self.cycle, self.factory
-        if c.stop_reason:
-            return None
-        if event is None:
-            if c.config.trigger == 'periodic':
-                f.advance(c.anchor, self.metrics)
-            else:
-                # Dispatch already-chosen queue heads before measuring idle.
-                # Subsequent decisions require a real physical time advance.
-                if c.last_record is not None:
-                    f.advance(f.now + c.config.horizon, self.metrics, stop_on_event=True)
-                f._dispatch(self.metrics)
-                while f.ledger().metrics()['avoidable_idle'] <= 0 and not f.invalid:
-                    before = f.now
-                    f.advance(f.now + c.config.horizon, self.metrics, stop_on_event=True)
-                    f._dispatch(self.metrics)
-                    if f.now == before:
-                        raise RuntimeError('synthetic event clock stalled')
-        ledger = f.ledger()
-        record = c.begin(f.now, avoidable_idle=ledger.metrics()['avoidable_idle'], invalid_tasks=f.invalid,
-                         valid_until=f.plan['valid_until'], event=event)
-        if record['session']:
-            payload = build_snapshot(stable_prefix(tool_descriptions=[], routing=[1, 2], machine_groups=[1, 2]),
-                ledger, state_version=c.cycles, running_jobs=f.running, last_cycle_receipt=c.last_record,
-                model_notes=LABEL, token_budget=100000, history=self.history)
-            self.max_snapshot_bytes = max(self.max_snapshot_bytes, len(payload))
-            self.min_snapshot_bytes = min(self.min_snapshot_bytes or len(payload), len(payload))
-            submit = Submitter(f.plan, f.problem(), f.execution_state(), state_version=c.cycles,
-                               next_anchor=c.anchor, delta_seconds=c.config.delta, source_sha256=SOURCE,
-                               trigger=c.config.trigger, delta_min=c.config.delta_min)
-            if c.config.interaction == 'single_action':
-                from .single_action import run, command
-                from .session import RunResult
-                args = {'expected_state_version': c.cycles, 'submission_id': str(c.cycles),
-                        'delta': scripted_delta(f, c.cycles)}
-                class ScriptedRunner:
-                    def run(self, argv, prompt, *, timeout):
-                        events = [
-                            {'type': 'item.completed', 'item': {'type': 'agent_message',
-                             'text': canonical(args).decode()}},
-                            {'type': 'turn.completed', 'usage': {'input_tokens': injected_usage,
-                             'cached_input_tokens': 0, 'output_tokens': 0}}]
-                        return RunResult('\n'.join(canonical(e).decode() for e in events))
-                def commit(version, plan):
-                    if version != c.cycles:
-                        return False
-                    f.adopt(plan)
-                    return True
-                outcome = run(ScriptedRunner(), command('.', 'submit.schema.json', model='scripted'),
-                              payload.decode(), submitter=submit, commit=commit, metrics=self.metrics,
-                              now=f.now, cycle=c, model_note=LABEL)
-                receipt = outcome['evidence']['receipt'] if outcome['evidence'] else {'accepted': False}
-            else:
-                receipt = submit.submit_plan(c.cycles, str(c.cycles), scripted_delta(f, c.cycles))
-                f.adopt(submit.finalize(process_ok=True))
-                c.finish(submitted=receipt['accepted'], cost=injected_usage, model_note=LABEL)
-                self.metrics.session(f.now, tool_calls=1, tool_rounds=1, input_tokens=injected_usage,
-                                     submit_attempts=1, submit_rejections=int(not receipt['accepted']), failed=not receipt['accepted'])
-            self.history = self.history.append(receipt)
-        completed_hour = int((f.now-c.origin)//3600)-1
-        while self.last_hour < completed_hour:
-            self.last_hour += 1
-            if self.drift and self.drift.observe(self.last_hour, self.metrics.derived(self.metrics.buckets.get(self.last_hour, {}))):
-                c.stop_reason = c.stop_reason or 'drift'
-        return record
-
-    def capture(self):
-        return {'factory': self.factory.capture(), 'cycle': self.cycle.capture(), 'metrics': self.metrics.capture(),
-                'history': self.history.digest, 'max_snapshot_bytes': self.max_snapshot_bytes,
-                'min_snapshot_bytes': self.min_snapshot_bytes, 'last_hour': self.last_hour,
-                'drift': None if not self.drift else {'limits': self.drift.rule.limits,
-                    'consecutive_hours': self.drift.rule.consecutive_hours, 'streak': self.drift.streak,
-                    'last_hour': self.drift.last_hour}}
-
-    def checkpoint(self, store):
-        return store.save(self.cycle.segment, state=self.factory.capture(), cycle=self.cycle.capture(),
-                          ledger=ledger_capture(self.factory.ledger()), cumulative_costs={'cost': self.cycle.cost,
-                          'wall_seconds': self.cycle.wall_seconds}, extra=self.capture())
+        self.runner.usage = injected_usage
+        return super().step(event=event)
 
     @classmethod
     def restore(cls, payload):
-        state = payload['extra']; obj = cls()
+        obj = cls()
+        state = payload['extra']
         obj.factory = SyntheticFactory.restore(payload['state'])
         obj.cycle = CycleMachine.restore(payload['cycle'])
         obj.metrics = Metrics.restore(state['metrics'])
+        obj.factory.metrics = obj.metrics
         obj.history = HistorySummary(state['history'])
         for key in ('max_snapshot_bytes', 'min_snapshot_bytes', 'last_hour'):
             setattr(obj, key, state[key])
@@ -273,6 +255,3 @@ class SyntheticRun:
             d = state['drift']; obj.drift = DriftMonitor(DriftRule(d['limits'], d['consecutive_hours']))
             obj.drift.streak = d['streak']; obj.drift.last_hour = d['last_hour']
         return obj
-
-    def state_hash(self):
-        return json_sha256(self.capture())

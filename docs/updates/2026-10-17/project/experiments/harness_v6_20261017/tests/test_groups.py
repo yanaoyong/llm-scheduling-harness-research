@@ -40,7 +40,7 @@ def test_fifty_decisions_per_group(group):
     totals = {k: sum(b.get(k, 0) for b in r.metrics.buckets.values())
               for k in ('sessions', 'model_request_lower_bound', 'uncached_equivalent_input_tokens')}
     assert totals['sessions'] == 55
-    assert totals['model_request_lower_bound'] == 55 * (1 if GROUPS[group]['interaction'] == 'single_action' else 2)
+    assert totals['model_request_lower_bound'] == 55 * (1 if GROUPS[group]['interaction'] == 'single_action' else 4)
     assert totals['uncached_equivalent_input_tokens'] == 5500
     for row in r.metrics.report().values():
         if row.get('simulated_seconds'):
@@ -209,12 +209,12 @@ def test_group_checkpoint_roundtrip(group, tmp_path):
     assert r.state_hash() == restored.state_hash()
 
 
-def test_no_successful_submit_stalls_even_with_improving_idle():
+def test_failures_use_k_fail_when_idle_improves():
     c = CycleMachine(config=CycleConfig(trigger='event', k_fail=10, stall_cycles=3))
     for t, idle in [(1, 3), (2, 2), (3, 1)]:
         c.begin(t, avoidable_idle=idle)
         c.finish(submitted=False, model_note='explanation')
-    assert c.stop_reason == 'stall'
+    assert c.stop_reason is None and c.failures == 3
 
 
 @pytest.mark.parametrize('key,value', [('trigger','bad'), ('interaction','bad'), ('delta_min',0)])

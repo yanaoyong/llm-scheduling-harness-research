@@ -40,7 +40,7 @@ def test_hash_and_logs(tmp_path):
         data=(tmp_path/row['file']).read_bytes()
         assert sha(data)==row['sha256'] and gzip.decompress(data)==b'{"event":1}\n'
         assert not paths[row['kind']].exists()
-    latest=json.loads((tmp_path/'latest.json').read_bytes())
+    latest=json.loads((tmp_path/'chain.jsonl').read_bytes().splitlines()[-1])
     (tmp_path/latest['file']).write_bytes(b'tampered')
     with pytest.raises(ValueError,match='hash'):store.latest()
 
