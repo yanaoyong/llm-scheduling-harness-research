@@ -60,3 +60,26 @@ Example addition delta (assuming empty base queues):
  "holds":{"cancel_ids":[],"replace":[],"add":[]},
  "machine_orders":[{"machine":1,"task_ids":["t1"]}]}
 """
+
+
+DENSE_LEGEND = """Dense conventions (SNAPSHOT_V1_DENSE): table headers append defaults {column:value}
+and equals {column:source} (or {column:[source]} for a singleton list).
+Empty cells mean the declared column default; ! still means absent, never null.
+= means the declared same-row source (cadence=processing; processing_until=[available_at]).
+Strings may be bare unless ambiguous, empty, numeric-looking or marker-prefixed;
+otherwise they are JSON-quoted. Nested values remain JSON/distribution cells.
+Defaults use the most frequent normalized typed value, ties by encoded lexical order;
+only positive whole-table savings under the supplied token counter are used.
+$release_time_is_time=true means omitted release_time equals CURRENT time in that ready group;
+without that flag, an absent release_time remains absent. All other compact conventions apply.
+"""
+
+
+def rules_for_format(snapshot_format):
+    if snapshot_format == 'explicit':
+        return V6_RULES
+    if snapshot_format != 'dense':
+        raise ValueError('snapshot_format must be explicit or dense')
+    return V6_RULES.replace('Snapshot format SNAPSHOT_V1:', 'Snapshot format SNAPSHOT_V1_DENSE:').replace(
+        'All cells are explicit JSON values:', 'Base cell types:').replace(
+        'No blank defaults or =.', 'Dense cell overrides are declared below.') + DENSE_LEGEND

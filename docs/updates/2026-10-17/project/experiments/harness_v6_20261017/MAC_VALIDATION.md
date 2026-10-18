@@ -386,3 +386,21 @@ P2 16 sessions、232 steps、878 dispatches、恢复相等、全部任务生产�
 完整 configured suite 使用 Phase J 的环境变量，分类输出改为 `classification-m-final.json`。
 仍待真实 Mac/Codex 验证：模型能否读懂完整 schema/小例子、single_action 接受同一 schema；
 既有 F6 12 项探针未获新的运行授权，不能把离线结果写成 live-model 成功。
+
+
+## Phase N：双格式与理解准确率
+
+离线设置沿用 Phase J（PYTHONPATH、TIKTOKEN_CACHE_DIR、V6_MAC_FIXTURE、V6_SEALED_DB）。
+命令：`python -m pytest -q tests/test_mac_snapshot.py tests/test_dense.py tests/test_compact.py`。
+通过标准：真实 manifest 和 G0 t=1649.82 两种格式还原相同规范生产对象，类型及覆盖一致，
+两种前缀各自跨周期字节稳定；只有格式 legend 不同。
+`python scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --output /tmp/phase-n-tokens.json`
+使用 o200k_base 计数；输出 explicit/dense 工艺、静态机组、ready、动态机组、运行作业、其余、legend、总数。
+默认选择以同一计数器的完整表 token 严格减少为准，不能使用字符估计器宣称真实收益。
+
+待独立授权的模型理解 A/B：固定同一组状态和工具、模型、预算；仅更换登记 snapshot_format。
+两种格式询问同一题集：指定工序的完整合格机组集合；batch_min/max 与可组批判断；
+队首任务、设备可用时刻、正在加工/待执行区分；缺字段/null/空串与默认值解释。
+从规范解码对象建立标准答案，报告逐题正确率、按题型正确率、全请求 token、请求数；
+顺序随机或交叉平衡，并报告重复次数。不得仅凭压缩率宣称理解能力等价。
+本阶段只执行离线检查，不调用模型。CQT/Q-time 仍未实现。

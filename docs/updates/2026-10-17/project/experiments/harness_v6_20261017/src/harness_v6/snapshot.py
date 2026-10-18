@@ -6,8 +6,8 @@ from .delta_schema import model_task
 from dataclasses import dataclass
 import hashlib
 import json
-from .prompt_rules import V6_RULES
-from .compact import encode_prefix, decode_prefix, encode_current, decode_snapshot
+from .prompt_rules import V6_RULES, rules_for_format
+from .compact import token_cost, encode_prefix, decode_prefix, encode_current, decode_snapshot
 
 
 def canonical(value):
@@ -26,11 +26,11 @@ def tiktoken_counter(encoding_name='o200k_base'):
     return lambda text: len(encoding.encode(text, disallowed_special=()))
 
 
-def stable_prefix(*, tool_descriptions, routing, machine_groups):
+def stable_prefix(*, tool_descriptions, routing, machine_groups, snapshot_format="explicit", token_counter=token_cost):
     if all(isinstance(m, dict) and 'id' in m for m in machine_groups):
         machine_groups = sorted(machine_groups, key=lambda m: m['id'])
-    return encode_prefix({'rules': V6_RULES, 'tools': tool_descriptions,
-                          'routing': routing, 'machine_groups': machine_groups})
+    return encode_prefix({'rules': rules_for_format(snapshot_format), 'tools': tool_descriptions,
+                          'routing': routing, 'machine_groups': machine_groups}, snapshot_format=snapshot_format, token_counter=token_counter)
 
 
 @dataclass(frozen=True)
@@ -82,10 +82,16 @@ def current_state(ledger, *, state_version, running_jobs, last_cycle_receipt,
 
 def build_snapshot(prefix, ledger, *, state_version, running_jobs, last_cycle_receipt,
                    model_notes, token_budget, token_counter=estimate_tokens,
-                   history=HistorySummary()):
+                   history=HistorySummary(), snapshot_format="explicit"):
+    from .compact import check_format
+    check_format(snapshot_format)
+    magic = b"SNAPSHOT_V1_DENSE\n" if snapshot_format == "dense" else b"SNAPSHOT_V1\n"
+    if not prefix.startswith(magic):
+        raise ValueError("snapshot_format does not match prefix")
     current = current_state(ledger, state_version=state_version, running_jobs=running_jobs,
                             last_cycle_receipt=last_cycle_receipt, model_notes=model_notes, history=history)
-    payload = prefix + encode_current(decode_prefix(prefix), current)
+    payload = prefix + (encode_current(decode_prefix(prefix), current, snapshot_format="dense", token_counter=token_counter)
+                        if snapshot_format == "dense" else encode_current(decode_prefix(prefix), current))
     count = token_counter(payload.decode('utf-8'))
     if count > token_budget:
         raise SnapshotBudgetExceeded({'code': 'snapshot_budget_exceeded', 'tokens': count,

@@ -353,3 +353,27 @@ python3 -m pytest -q tests/test_compact.py tests/test_mac_snapshot.py tests/test
 submission_id、权威 anchors 和 delta 的确定性 SHA256；四项 anchors 留在 receipt/evidence。
 因此新旧物理计划的生产字段可逐项相等，但版本字符串及包含版本的审计哈希会改变。
 完整小例子见 `prompt_rules.py`；离线 token 对比命令见 MAC_VALIDATION 的 Phase M 条目。
+
+
+## Phase N：explicit / dense 快照 A/B
+
+登记表必须填写 `snapshot_format: "explicit" | "dense"`，模板为 explicit。
+将登记值同时传入 `stable_prefix(..., snapshot_format=...)` 和
+`LiveRun(..., snapshot_format=...)`；后者传给 `build_snapshot`，格式与前缀不符会拒绝。
+检查点保存格式，恢复时拒绝格式变化。旧纯函数调用默认 explicit。
+第一行分别为 SNAPSHOT_V1 / SNAPSHOT_V1_DENSE，decode_snapshot 自动识别。
+生产任务、物理语义和信息覆盖不变；格式说明文字按格式不同，其余规范对象一致。
+
+Dense 表头声明 defaults 和 equals；空单元格为声明默认值，! 为缺字段，null 为 None。
+默认值取规范化后整列众数（含类型），并列按编码字典序。
+逐列试算完整表（含表头）token 数，仅严格减少时采用。
+cadence 的 = 引用 processing；processing_until 的 = 引用 [available_at]。
+字符串仅在无歧义时裸写；嵌套对象仍是 JSON/分布编码。
+release_time 等于 time 且类型相同时省略，由 $release_time_is_time 声明恢复；真正缺字段仍缺。
+原有工步去重、family/set、ID 范围、10 位浮点及规范排序保留。
+
+实测/正式 Mac 调用须向 stable_prefix 与 build_snapshot/LiveRun 传入同一个
+`tiktoken_counter('o200k_base')`。纯 stdlib 合成测试使用确定性估计器，不能证明真实
+模型 token 节省；相同输入和同一计数器保证字节稳定，不能跨计数器比较前缀哈希。
+计数器是既有预算计量依赖，不是新增实验变量；新增变量仅 snapshot_format。
+Dense 扩展 legend 仅 dense 包含。默认值只依赖所属表，静态表不依赖当前周期。

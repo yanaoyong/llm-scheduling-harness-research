@@ -6,6 +6,8 @@ Wire sections have an explicit shape and row count. Cells are JSON values, !
 from copy import deepcopy
 import json
 import math
+import re
+from collections import Counter
 
 CURRENT = b'CURRENT\n'
 
@@ -41,6 +43,84 @@ def uncell(value):
     return json.loads(value)
 
 
+
+def check_format(snapshot_format):
+    if snapshot_format not in ('explicit', 'dense'):
+        raise ValueError('snapshot_format must be explicit or dense')
+    return snapshot_format
+
+
+def dense_cell(value):
+    if isinstance(value, str) and value and not any(c in value for c in '\t\n\r') and value[0] not in '!=$@UC"[{':
+        try:
+            json.loads(value)
+        except (ValueError, TypeError):
+            # Numeric-looking strings, including non-JSON numeric spellings, stay quoted.
+            if not re.match(r'^[+\-.0-9]', value) and value.strip() == value:
+                return value
+    return cell(value)
+
+
+def dense_uncell(value):
+    try:
+        return uncell(value)
+    except (ValueError, TypeError):
+        return value
+
+
+def token_cost(text):
+    """Fixed stdlib token proxy; independent of optional tokenizer installation."""
+    return len(re.findall(r'\w{1,4}|[^\w\s]|[\t\n]', text))
+
+
+def dense_section(name, value, token_counter=token_cost):
+    if isinstance(value, dict):
+        rows, shape = [value], 'object'
+    elif isinstance(value, list) and value and all(isinstance(v, dict) for v in value):
+        rows, shape = value, 'table'
+    else:
+        return '@' + name + '\tvalue\t' + cell(value) + '\n'
+    columns = sorted({k for row in rows for k in row})
+    defaults, aliases = {}, {}
+    encoded = [[dense_cell(row[k]) if k in row else '!' for k in columns] for row in rows]
+    def render():
+        header = '@' + name + '\t' + shape + '\t' + str(len(rows)) + '\t' + cell(columns)
+        header += '\tdefaults ' + cell(defaults) + '\tequals ' + cell(aliases)
+        return header + '\n' + '\n'.join('\t'.join(row) for row in encoded) + '\n'
+    for target, source, wrap in [('cadence', 'processing', False), ('processing_until', 'available_at', True)]:
+        if target not in columns or source not in columns:
+            continue
+        i = columns.index(target)
+        matches = [n for n, row in enumerate(rows) if target in row and source in row and
+                   cell(row[target]) == cell([row[source]] if wrap else row[source])]
+        before = token_counter(render())
+        saved = [encoded[n][i] for n in matches]
+        aliases[target] = [source] if wrap else source
+        for n in matches:
+            encoded[n][i] = '='
+        if token_counter(render()) >= before:
+            del aliases[target]
+            for n, old in zip(matches, saved):
+                encoded[n][i] = old
+    for i, key in enumerate(columns):
+        # Mode is over the entire present column, including aliased values.
+        counts = Counter(cell(row[key]) for row in rows if key in row)
+        if not counts:
+            continue
+        winner = min(counts, key=lambda x: (-counts[x], x))
+        matches = [n for n, row in enumerate(rows) if key in row and cell(row[key]) == winner and encoded[n][i] != '=']
+        before = token_counter(render())
+        saved = [encoded[n][i] for n in matches]
+        defaults[key] = uncell(winner)
+        for n in matches:
+            encoded[n][i] = ''
+        if token_counter(render()) >= before:
+            del defaults[key]
+            for n, old in zip(matches, saved):
+                encoded[n][i] = old
+    return render()
+
+
 def section(name, value):
     """All record lists and record objects use one header, including nested cells."""
     if isinstance(value, dict):
@@ -66,14 +146,24 @@ def sections(text):
             value = uncell(rest)
         else:
             count, header = rest.split('\t', 1)
-            columns = json.loads(header)
+            parts = header.split('\t')
+            columns = json.loads(parts[0])
+            dense = len(parts) > 1
+            defaults = json.loads(parts[1].removeprefix('defaults ')) if dense else {}
+            aliases = json.loads(parts[2].removeprefix('equals ')) if dense else {}
             rows = []
             for _ in range(int(count)):
                 raw = next(lines)
                 cells = raw.split('\t') if columns else []
                 if len(cells) != len(columns):
                     raise ValueError('compact table width mismatch')
-                rows.append({k: uncell(v) for k, v in zip(columns, cells) if v != '!'})
+                row = {k: deepcopy(defaults[k]) if v == '' and dense else (dense_uncell(v) if dense else uncell(v))
+                       for k, v in zip(columns, cells) if v != '!' and not (dense and v == '=')}
+                for k, v in zip(columns, cells):
+                    if dense and v == '=':
+                        source = aliases[k]
+                        row[k] = [deepcopy(row[source[0]])] if isinstance(source, list) else deepcopy(row[source])
+                rows.append(row)
             if shape not in ('object', 'table') or (shape == 'object' and len(rows) != 1):
                 raise ValueError('invalid table shape')
             value = rows[0] if shape == 'object' else rows
@@ -100,7 +190,8 @@ def unranges(value):
     return out
 
 
-def encode_prefix(obj):
+def encode_prefix(obj, snapshot_format="explicit", token_counter=token_cost):
+    check_format(snapshot_format)
     routing, machines = obj['routing'], obj['machine_groups']
     result = {k: v for k, v in obj.items() if k not in ('routing', 'machine_groups')}
     if isinstance(routing, dict) and all(isinstance(v, list) and all(isinstance(s, dict) for s in v) for v in routing.values()):
@@ -132,14 +223,16 @@ def encode_prefix(obj):
             '$ids': ranges(g['ids'])}) for g in groups.values()]
     else:
         result['machine_groups'] = machines
-    return ('SNAPSHOT_V1\n' + ''.join(section(k, v) for k, v in sorted(result.items()))).encode()
+    writer = (lambda k, v: dense_section(k, v, token_counter)) if snapshot_format == 'dense' else section
+    magic = 'SNAPSHOT_V1_DENSE' if snapshot_format == 'dense' else 'SNAPSHOT_V1'
+    return (magic + '\n' + ''.join(writer(k, v) for k, v in sorted(result.items()))).encode()
 
 
 def decode_prefix(payload):
     text = payload.decode() if isinstance(payload, bytes) else payload
-    if not text.startswith('SNAPSHOT_V1\n'):
+    if text.split('\n', 1)[0] not in ('SNAPSHOT_V1', 'SNAPSHOT_V1_DENSE'):
         raise ValueError('unsupported snapshot encoding')
-    result = sections(text[len('SNAPSHOT_V1\n'):])
+    result = sections(text.split('\n', 1)[1])
     if 'routes' in result:
         definitions = result.pop('step_definitions')
         positional = result.pop('step_number_is_position')
@@ -159,7 +252,8 @@ def static_machines(prefix):
             if isinstance(m, dict) and 'id' in m}
 
 
-def encode_current(prefix, current):
+def encode_current(prefix, current, snapshot_format="explicit", token_counter=token_cost):
+    check_format(snapshot_format)
     result = deepcopy(current)
     static = static_machines(prefix)
     families = {}
@@ -179,6 +273,9 @@ def encode_current(prefix, current):
                 eligible_sets[key] = (len(eligible_sets), eligible)
             ref = ['set', eligible_sets[key][0]]
         oid = row.pop('operation_id')
+        if snapshot_format == 'dense' and 'release_time' in row and 'time' in current and cell(row['release_time']) == cell(current['time']):
+            del row['release_time']
+            row['$release_time_is_time'] = True
         row['$eligible'] = ref
         key = cell(row)
         if key not in groups:
@@ -200,7 +297,8 @@ def encode_current(prefix, current):
             del m[k]
     result['machine_constants'] = constants
     result['machine_inheritance'] = [dict(field=k, machines=ranges(ids)) for k, ids in inherited.items() if ids]
-    return CURRENT + ''.join(section(k, v) for k, v in sorted(result.items())).encode()
+    writer = (lambda k, v: dense_section(k, v, token_counter)) if snapshot_format == 'dense' else section
+    return CURRENT + ''.join(writer(k, v) for k, v in sorted(result.items())).encode()
 
 
 def decode_snapshot(payload):
@@ -218,6 +316,8 @@ def decode_snapshot(payload):
     ready = []
     for group in current.pop('ready_groups'):
         group = dict(group)
+        if group.pop('$release_time_is_time', False):
+            group['release_time'] = current['time']
         reference = group.pop('$eligible')
         kind, ref = reference
         ids = group.pop('$operations')

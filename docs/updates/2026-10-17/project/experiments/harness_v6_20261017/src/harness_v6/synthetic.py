@@ -224,7 +224,7 @@ from .live import LiveRun
 
 
 class SyntheticRun(LiveRun):
-    def __init__(self, *, seed=1, config=None, drift_rule=None, group=None, directory=None):
+    def __init__(self, *, seed=1, config=None, drift_rule=None, group=None, directory=None, snapshot_format="explicit"):
         import tempfile
         if group is not None:
             from .groups import config_for
@@ -233,7 +233,8 @@ class SyntheticRun(LiveRun):
         runner = ScriptedRunner(lambda frozen: dict(expected_state_version=self.cycle.cycles,
             submission_id=str(self.cycle.cycles), delta=scripted_delta(self.factory, self.cycle.cycles)))
         super().__init__(SyntheticFactory(seed), runner, directory=directory or self._temporary.name,
-            prefix=stable_prefix(tool_descriptions=[], routing=[1,2], machine_groups=[1,2]),
+            prefix=stable_prefix(tool_descriptions=[], routing=[1,2], machine_groups=[1,2], snapshot_format=snapshot_format, token_counter=estimate_tokens),
+            snapshot_format=snapshot_format,
             source_sha256=SOURCE, request_overhead_tokens=0, output_reserve_tokens=0, context_token_budget=100000, token_counter=estimate_tokens, config=config, drift_rule=drift_rule, model_note=LABEL)
 
     def step(self, *, event=None, injected_usage=100):
@@ -242,7 +243,7 @@ class SyntheticRun(LiveRun):
 
     @classmethod
     def restore(cls, payload):
-        obj = cls()
+        obj = cls(snapshot_format=payload['extra'].get('snapshot_format', 'explicit'))
         state = payload['extra']
         obj.budget_report = state.get('budget_report')
         obj.factory = SyntheticFactory.restore(payload['state'])

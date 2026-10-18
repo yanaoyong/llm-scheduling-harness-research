@@ -30,7 +30,8 @@ def test_public_complete_snapshot_and_budget():
     assert error.value.report['tokens']==tokens and error.value.report['dropped_rows']==0
 
 
-def test_real_manifest_and_g0_compact_roundtrip():
+@pytest.mark.parametrize('snapshot_format', ['explicit', 'dense'])
+def test_real_manifest_and_g0_compact_roundtrip(snapshot_format):
     import os
     from mac_fixture import bundle
     from harness_v6.sealed_contexts import SQLiteContextReader
@@ -42,7 +43,7 @@ def test_real_manifest_and_g0_compact_roundtrip():
     path = os.environ.get('V6_SEALED_DB')
     if not path:
         pytest.skip('Mac-only sealed G0 context absent: set V6_SEALED_DB')
-    prefix = stable_prefix(tool_descriptions=[], routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
+    prefix = stable_prefix(snapshot_format=snapshot_format, token_counter=tiktoken_counter(), tool_descriptions=[], routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
     equivalent(env.manifest['routes'], decode_prefix(prefix)['routing'])
     equivalent(env.manifest['machines'], decode_prefix(prefix)['machine_groups'])
     for entry in SQLiteContextReader(path, 'SELECT group_name,payload FROM contexts').contexts():
@@ -54,9 +55,15 @@ def test_real_manifest_and_g0_compact_roundtrip():
         args = dict(state_version=ctx['state_revision'], running_jobs=bundle('g0_snapshot')['g0_snapshot']['running_jobs'],
                     last_cycle_receipt=None, model_notes='')
         expected = current_state(ledger, **args)
-        payload = build_snapshot(prefix, ledger, token_budget=10**9, **args)
+        payload = build_snapshot(prefix, ledger, snapshot_format=snapshot_format, token_counter=tiktoken_counter(), token_budget=10**9, **args)
         equivalent(expected, decode_snapshot(payload)[1])
+        explicit = stable_prefix(tool_descriptions=[], routing=env.manifest['routes'], machine_groups=env.manifest['machines'])
+        other = decode_snapshot(build_snapshot(explicit, ledger, token_budget=10**9, **args))
+        decoded = decode_snapshot(payload)
+        equivalent(other[1], decoded[1])
+        for key in ('routing', 'machine_groups', 'tools'):
+            equivalent(other[0][key], decoded[0][key])
         assert payload.startswith(prefix)
-        assert build_snapshot(prefix, ledger, token_budget=10**9, **args) == payload
+        assert build_snapshot(prefix, ledger, snapshot_format=snapshot_format, token_counter=tiktoken_counter(), token_budget=10**9, **args) == payload
         return
     pytest.fail('configured fixture missing G0 1649.82')

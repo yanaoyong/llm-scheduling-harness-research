@@ -28,8 +28,9 @@ def equivalent(expected, actual):
         assert expected == actual
 
 
+@pytest.mark.parametrize('snapshot_format', ['explicit', 'dense'])
 @pytest.mark.parametrize('seed', range(30))
-def test_generated_routes_machines_ledger_roundtrip(seed, monkeypatch):
+def test_generated_routes_machines_ledger_roundtrip(seed, monkeypatch, snapshot_format):
     rng = random.Random(seed)
     p, plan = fixture()
     ids = [1, 2, 8, 10, 11]
@@ -52,16 +53,16 @@ def test_generated_routes_machines_ledger_roundtrip(seed, monkeypatch):
     if seed % 2:
         route[0]['step'] = 1.0  # Noncanonical inputs retain step type verbatim.
     prefix_obj = dict(rules='rule', tools=[], routing={'r':route, 'empty':[], 'r2':deepcopy(route)}, machine_groups=sorted(machines, key=lambda m: m['id']))
-    prefix = encode_prefix(prefix_obj)
+    prefix = encode_prefix(prefix_obj, snapshot_format=snapshot_format)
     jobs = [dict(job=i, started_at=rng.random(), machine=1, lot_ids=[str(i)]) for i in range(10)]
     captured = []
     import harness_v6.snapshot as snap
     original = snap.encode_current
-    def capture(prefix_obj, current):
+    def capture(prefix_obj, current, **kwargs):
         captured.append(deepcopy(current))
-        return original(prefix_obj, current)
+        return original(prefix_obj, current, **kwargs)
     monkeypatch.setattr(snap, 'encode_current', capture)
-    args = dict(state_version=seed, running_jobs=jobs, last_cycle_receipt={'accepted':False,'violations':[{'code':'x'}]},
+    args = dict(snapshot_format=snapshot_format, state_version=seed, running_jobs=jobs, last_cycle_receipt={'accepted':False,'violations':[{'code':'x'}]},
                 model_notes='\u2028\n\t! null ""', token_budget=100000)
     payload = build_snapshot(prefix, ledger, **args)
     decoded_prefix, current = decode_snapshot(payload)
@@ -72,7 +73,7 @@ def test_generated_routes_machines_ledger_roundtrip(seed, monkeypatch):
     assert b'$positions' not in payload
     assert [r['operation_id'] for r in current['unreserved_ready']] == sorted(r['operation_id'] for r in current['unreserved_ready'])
     assert [m['machine'] for m in current['machines']] == sorted(ids)
-    assert stable_prefix(tool_descriptions=[], routing={}, machine_groups=machines) == stable_prefix(tool_descriptions=[], routing={}, machine_groups=list(reversed(machines)))
+    assert stable_prefix(tool_descriptions=[], routing={}, machine_groups=machines, snapshot_format=snapshot_format) == stable_prefix(tool_descriptions=[], routing={}, machine_groups=list(reversed(machines)), snapshot_format=snapshot_format)
     from harness_v6.compact import sections, CURRENT
     groups = sections(payload.split(CURRENT, 1)[1].decode())['ready_groups']
     for group in groups:

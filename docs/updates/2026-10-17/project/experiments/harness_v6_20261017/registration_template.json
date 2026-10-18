@@ -53,5 +53,6 @@
   "steady_state_window": {
     "exclude_first_hours": 0
   },
-  "trajectories_per_group": 3
+  "trajectories_per_group": 3,
+  "snapshot_format": "explicit"
 }

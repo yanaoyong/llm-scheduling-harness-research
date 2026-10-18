@@ -51,6 +51,30 @@ def measure(fixture, database):
             'current': dict(old=old(current),new=counter(payload[len(prefix):].decode())),
             'total': dict(old=counter((canonical(prefix_obj)+b'\n'+canonical(current)).decode()),new=counter(payload.decode())),
         }
+        dense_prefix = stable_prefix(tool_descriptions=tools, routing=prefix_obj['routing'],
+                                     machine_groups=prefix_obj['machine_groups'], snapshot_format='dense', token_counter=counter)
+        dense_payload = build_snapshot(dense_prefix, ledger, snapshot_format='dense', token_counter=counter, token_budget=10**9, **args)
+        dp, dc = decode_snapshot(dense_payload)
+        assert dc == decoded_current
+        assert all(dp[k] == decoded_prefix[k] for k in ('tools', 'routing', 'machine_groups'))
+        from harness_v6.compact import dense_section
+        ds = sections(dense_prefix.decode().split('\n',1)[1])
+        dd = sections(dense_payload[len(dense_prefix)+len(CURRENT):].decode())
+        groups = {'routes':['routes','step_definitions','step_number_is_position'],
+                  'static_machines':['machine_groups_compact'], 'unreserved_ready':['ready_groups','eligible_sets'],
+                  'machine_state':['machines','machine_constants','machine_inheritance'], 'running_jobs':['running_jobs']}
+        used = set(sum(groups.values(), [])) | {'rules'}
+        for name, names in groups.items():
+            values = ds if name in ('routes','static_machines') else dd
+            rows[name]['dense'] = sum(counter(dense_section(k, values[k], counter)) for k in names)
+        rows['legend'] = dict(new=counter(section('rules', static_sections['rules'])),
+                              dense=counter(dense_section('rules', ds['rules'], counter)))
+        rows['rest'] = dict(new=sum(counter(section(k,val)) for values in (static_sections,dynamic_sections) for k,val in values.items() if k not in used),
+                            dense=sum(counter(dense_section(k,val,counter)) for values in (ds,dd) for k,val in values.items() if k not in used))
+        for name, raw in [('prefix',dense_prefix),('current',dense_payload[len(dense_prefix):]),('total',dense_payload)]:
+            rows[name]['dense'] = counter(raw.decode())
+        for row in rows.values():
+            row['explicit'] = row.pop('new')
         return dict(context_ref=ctx['context_ref'],time=ctx['time'],tokenizer='o200k_base',
                     tiktoken_version=importlib.metadata.version('tiktoken'),tokens=rows,
                     note='Old column is raw JSON with the same current rules/three tools; pre-L production total was 756359 (prefix 563837). Section token counts are standalone and need not sum exactly.',
