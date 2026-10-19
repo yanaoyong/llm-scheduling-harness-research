@@ -16,9 +16,9 @@ def require_real_codex(manifest):
         assert binary.resolve() != fake and binary.name != fake.name, 'repository fake Codex binary cannot satisfy the Mac gate'
         assert hashlib.sha256(binary.read_bytes()).hexdigest() == manifest.get('binary_sha256'), 'Codex binary hash mismatch'
         with binary.open('rb') as stream:
-            assert stream.read(4) in (b'\xcf\xfa\xed\xfe', b'\xca\xfe\xba\xbe', b'\xca\xfe\xba\xbf'), 'Mac gate requires a native Mach-O executable'
-    from harness_v6.codex_pin import ISOLATED_VERSION
-    assert manifest['codex_version'] == ISOLATED_VERSION, 'unqualified Codex version'
+            assert stream.read(4) in (b'\xcf\xfa\xed\xfe', b'\xca\xfe\xba\xbe', b'\xca\xfe\xba\xbf', b'\x7fELF'), 'official gate requires a native Mach-O or ELF executable'
+    from harness_v6.codex_pin import OFFICIAL_VERSION
+    assert manifest['codex_version'] == OFFICIAL_VERSION, 'unqualified Codex version'
 
 
 def check_hashes(root, row):
@@ -54,11 +54,15 @@ def check_single_action(root, manifest, check):
     assert strict_json((root / row['schema']).read_bytes()) == OUTPUT_SCHEMA
     parsed = parse((root / row['jsonl']).read_text())
     if check == 'single_tool_rejection':
-        assert any(e.startswith('forbidden_item:') for e in parsed['errors'])
+        if manifest.get('mechanism_only'):
+            assert any(e.startswith('forbidden_item:') for e in parsed['errors'])
+        else:
+            assert row['timed_out'] and row['returncode'] != 0
+            assert 'usage_unknown' in parsed['errors']
     else:
         assert not parsed['errors']
         assert parsed['arguments'] == row['expected_arguments']
     requests = [strict_json(line) for line in (root / row['requests']).read_bytes().splitlines()]
-    assert len(requests) == 1
+    assert 1 <= len(requests) <= 20 if check == 'single_tool_rejection' else len(requests) == 1
     from harness_v6.tool_contract import request_tools
     assert not request_tools(strict_json(requests[0]['body']))

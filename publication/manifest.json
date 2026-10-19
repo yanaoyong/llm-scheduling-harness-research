@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 2478,
+  "public_file_count_excluding_this_manifest": 2481,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -14648,10 +14648,10 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/DECISIONS_v6.md",
-      "bytes": 22282,
-      "public_sha256": "033f7328e2b92c134a37e7bf04b5afcf4201969aa9ab8e495d20bedee6bb7465",
+      "bytes": 24520,
+      "public_sha256": "cab3e6602c377ad975b5ff902bb543ad49c62faca8825889905ea9ab83ff3e0d",
       "source_tracked_sha256": "033f7328e2b92c134a37e7bf04b5afcf4201969aa9ab8e495d20bedee6bb7465",
-      "publication_note": "Existing base-commit file newly indexed; file bytes not changed by this PR"
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/GOAL_PROMPT_S0_20261019.txt",
@@ -14705,14 +14705,22 @@
       }
     },
     {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/PHASE_U_REPORT.md",
+      "source_tracked_sha256": "9e1cca2f9708e36f63dd5144ff57a1bec15f86155fc631795243d9e6fc44e844",
+      "bytes": 15327,
+      "public_sha256": "9e1cca2f9708e36f63dd5144ff57a1bec15f86155fc631795243d9e6fc44e844",
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
+    },
+    {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/README.md",
-      "bytes": 41375,
-      "public_sha256": "2f142fc9efb169bac4fd28cf8d3a3de893cb8d3a4cae3e644eb8c35050c66e4d",
+      "bytes": 42993,
+      "public_sha256": "9af7f74f63c44e11e11e77fee6905a1df600a1ab5aac3a160741fa0112085ab1",
       "source_tracked_sha256": "5457349dafd15da29c86fa1f1985c3fbf6f33167bdbc6b650d461f3a49d2fb7c",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 1
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/STEP34_REPAIR_20261018.md",
@@ -14853,12 +14861,13 @@
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/ab_comprehension.py",
       "bytes": 36235,
-      "public_sha256": "94fc75a9432fa65b7839f5e491c3d71434c4258f627cc564fda995c61aa65576",
+      "public_sha256": "e4849d9161c5da6716ac285518bc37e204a7f332988f8198e7419fd87e85947d",
       "source_tracked_sha256": "94fc75a9432fa65b7839f5e491c3d71434c4258f627cc564fda995c61aa65576",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/audit_filters.py",
@@ -14869,13 +14878,14 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/build_harness_codex.py",
-      "bytes": 5188,
-      "public_sha256": "2b2d62782ca21d22d6bf3ce2e9ae971f6df032c2358b29b693fd2354cab04bb3",
+      "bytes": 5288,
+      "public_sha256": "413732d4d271970678dbdc75b6e08184c642d3686e05cfcaae74e6ab083c4a9f",
       "source_tracked_sha256": "2b2d62782ca21d22d6bf3ce2e9ae971f6df032c2358b29b693fd2354cab04bb3",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/build_public_fixture.py",
@@ -14893,6 +14903,13 @@
         "publication_sanitization": 0,
         "current_status_note": 0
       }
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/freeze_model_catalog.py",
+      "source_tracked_sha256": "755412ac89776d0f1f50a9e2044403a69bed26d178c5f6f6c0cf362882da3fab",
+      "bytes": 1464,
+      "public_sha256": "755412ac89776d0f1f50a9e2044403a69bed26d178c5f6f6c0cf362882da3fab",
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/mac_preflight.py",
@@ -14964,23 +14981,25 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/run_codex_probes.py",
-      "bytes": 28256,
-      "public_sha256": "f3b4f7047f6eb4ea538ff9946b12e004c8333d98b1ca1bfdd1eed26ce3aaed22",
+      "bytes": 33036,
+      "public_sha256": "5d88ba41022eb39077945df88786c7038348fefdb32e06762effba6d5cbebf9d",
       "source_tracked_sha256": "f3b4f7047f6eb4ea538ff9946b12e004c8333d98b1ca1bfdd1eed26ce3aaed22",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/run_live.py",
       "bytes": 11365,
-      "public_sha256": "e9fcb789ba3ca2827b79f7dd1da2603a12314689df0dc23bc37a718cdc614957",
+      "public_sha256": "a8850814dd00be2cd4430e090d5b3c6dc51a55a68d448ec138081230a3e4e5a8",
       "source_tracked_sha256": "e9fcb789ba3ca2827b79f7dd1da2603a12314689df0dc23bc37a718cdc614957",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/run_public_physics.py",
@@ -15036,20 +15055,21 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/codex_pin.py",
-      "bytes": 640,
-      "public_sha256": "6ac55057c3418d97f2978a9d13ad70c05b08e7111079113baf2aab48907d2663",
+      "bytes": 573,
+      "public_sha256": "96e999e44ecd998d2443024ab266fca06f1cc4ed297ee5faebef0e1af0a909af",
       "source_tracked_sha256": "6ac55057c3418d97f2978a9d13ad70c05b08e7111079113baf2aab48907d2663",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/codex_runner.py",
-      "bytes": 5263,
-      "public_sha256": "b4be8117fb6ee37541bc552b85bf3af33ee4bb13e57ed849ac08e81c5d466f1e",
+      "bytes": 5735,
+      "public_sha256": "ca84aa416fb9dada19ffe6fe3c628da54057f442d7c0a3eda41b2b11f21aac15",
       "source_tracked_sha256": "b4be8117fb6ee37541bc552b85bf3af33ee4bb13e57ed849ac08e81c5d466f1e",
-      "publication_note": "Existing base-commit file newly indexed; file bytes not changed by this PR"
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/compact.py",
@@ -15150,13 +15170,14 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/mcp_server.py",
-      "bytes": 8296,
-      "public_sha256": "d373c99d44d4ef0a7dba028eb69dc5cfb040163f178fa53cf98b6afe63d3a12f",
+      "bytes": 9119,
+      "public_sha256": "531194051d1e78913301b815b1fed45003a8a6bdaa1fe9c30430ed221e37e80a",
       "source_tracked_sha256": "d373c99d44d4ef0a7dba028eb69dc5cfb040163f178fa53cf98b6afe63d3a12f",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/metrics.py",
@@ -15167,13 +15188,14 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/model_config.py",
-      "bytes": 3219,
-      "public_sha256": "170ff50f3332c20ae62bb54b7bee23fc7ba1094f1fd0657350c67e7933f0b687",
+      "bytes": 3279,
+      "public_sha256": "e190a5b1803fc86057a5ded78a1a31ddea96291f3c2867d5e6d9bf2150c3feaf",
       "source_tracked_sha256": "170ff50f3332c20ae62bb54b7bee23fc7ba1094f1fd0657350c67e7933f0b687",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/normalize.py",
@@ -15239,23 +15261,25 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/session.py",
-      "bytes": 11096,
-      "public_sha256": "948d2ab8d63b74a4610b845c211fb211abcc82f92e7b22278d51f147b687bd48",
+      "bytes": 11190,
+      "public_sha256": "43825145bd0be6d6ba28fdac89a7fa3947659d588633468638db2bd8b6a3f249",
       "source_tracked_sha256": "948d2ab8d63b74a4610b845c211fb211abcc82f92e7b22278d51f147b687bd48",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/single_action.py",
-      "bytes": 6859,
-      "public_sha256": "efe674253b253d52c23d4333fb31bf48444d3603b72360f2372cd6e0dfef8898",
+      "bytes": 6666,
+      "public_sha256": "226073913d154ad0968af414a46c5c29c0e9660541f7d508a4babaf0075807e6",
       "source_tracked_sha256": "efe674253b253d52c23d4333fb31bf48444d3603b72360f2372cd6e0dfef8898",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/snapshot.py",
@@ -15310,13 +15334,14 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/tool_contract.py",
-      "bytes": 2454,
-      "public_sha256": "53cdc2ed3896bcfc7a28014e3059fcd5f06bdf12bf4051d09159a1e7c40c4328",
+      "bytes": 3279,
+      "public_sha256": "14370e7d9c6a3045d6fab1c0de82f3d2c1d1b12c0515603fd875b05e825a13bd",
       "source_tracked_sha256": "53cdc2ed3896bcfc7a28014e3059fcd5f06bdf12bf4051d09159a1e7c40c4328",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/work_paths.py",
@@ -15351,13 +15376,14 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/probe_checks.py",
-      "bytes": 3403,
-      "public_sha256": "a1a401ba4d1f5ad968873bc6db21507a594b025b38ed4bad698115bee3bdd7b6",
+      "bytes": 3672,
+      "public_sha256": "a1cfaa0e4079eb43af4c1b77368fe20d390a50500b9da72c5a9bbe22a9861050",
       "source_tracked_sha256": "a1a401ba4d1f5ad968873bc6db21507a594b025b38ed4bad698115bee3bdd7b6",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_ab_comprehension.py",
@@ -15458,10 +15484,10 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_mac_factory.py",
-      "bytes": 1282,
-      "public_sha256": "66e4a77807845f8d4c04757be019d9027860f37f2badf393e044f22b72d5cb39",
+      "bytes": 1243,
+      "public_sha256": "960beb0429bf2f1aca44fb2c359a3ee7b547f1dcf9ec3eebd88e6660046c75e2",
       "source_tracked_sha256": "66e4a77807845f8d4c04757be019d9027860f37f2badf393e044f22b72d5cb39",
-      "publication_note": "Existing base-commit file newly indexed; file bytes not changed by this PR"
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_mac_ledger.py",
@@ -15547,23 +15573,32 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_native_request_budget.py",
-      "bytes": 1952,
-      "public_sha256": "8fcf6bfc2c9931e1b436f4a201f3dccd64058be946bf8e1ae56d9a33ec8960cf",
+      "bytes": 2049,
+      "public_sha256": "7336797188511bdfd048f7f4ebf530cb324a5c1f5777e23d78072b2a5aa24f48",
       "source_tracked_sha256": "8fcf6bfc2c9931e1b436f4a201f3dccd64058be946bf8e1ae56d9a33ec8960cf",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_official_codex.py",
+      "source_tracked_sha256": "452d24fb696afa32f2f7984837390c5f4c17f3fd0f4e61c902bef7fa58676174",
+      "bytes": 6574,
+      "public_sha256": "452d24fb696afa32f2f7984837390c5f4c17f3fd0f4e61c902bef7fa58676174",
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_phase_p.py",
-      "bytes": 10971,
-      "public_sha256": "4e9cf19b506dada689ba0e4c8e27a3eb78761884d2b61dc4ea3248a0f9ff7a30",
+      "bytes": 11023,
+      "public_sha256": "d17fdf320773d9c321d4d6e302ae8727b8dc3b052f0c26b8a639f0024cf894c2",
       "source_tracked_sha256": "4e9cf19b506dada689ba0e4c8e27a3eb78761884d2b61dc4ea3248a0f9ff7a30",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_phase_s_measure.py",
@@ -15625,13 +15660,14 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_run_cli.py",
-      "bytes": 7315,
-      "public_sha256": "47afa4ffa98e9462595ce89f69aa403beff9179974b05f10a9f284a18ad94755",
+      "bytes": 7463,
+      "public_sha256": "4f08b894fc08e5d0e29e090fd9a7a83a63ebe19282ae685eeb80248218bf50cf",
       "source_tracked_sha256": "47afa4ffa98e9462595ce89f69aa403beff9179974b05f10a9f284a18ad94755",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 0
-      }
+      },
+      "publication_note": "Harness v6 Phase U: official Codex 0.163.0 instead of the patched fork; independent acceptance on Linux, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_sealed_contexts.py",
@@ -20627,7 +20663,7 @@
       "source_tracked_sha256": "5e2da9a3c174f8fe8f5f6eaf0af111445df00e04a25465526815e0a341f2c4b9"
     }
   ],
-  "last_updated": "2026-10-19T06:29:13.607355+00:00",
+  "last_updated": "2026-10-19T06:32:06.655675+00:00",
   "latest_evidence_release": {
     "schema": "public-lean-publication-v1",
     "date": "2026-10-13",
@@ -20704,5 +20740,15 @@
     "mac_input_recheck": "passed",
     "model_calls": 0,
     "input_contents_published": false
+  },
+  "harness_v6_official_codex_20261019": {
+    "entrypoint": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/PHASE_U_REPORT.md",
+    "codex_version": "codex-cli 0.163.0",
+    "codex_binary_sha256": "399ff69c431c066e40de318fba45c2b07f45a76b19939d247ee4828fc70c4215",
+    "fork_required": false,
+    "probes": "18/18 passed (gpt-6.1-sol catalog, loopback mock)",
+    "configured_suite": "673 passed, 0 failed, 0 skipped",
+    "model_calls": 0,
+    "formal_trajectories": "0/6"
   }
 }

@@ -25,7 +25,7 @@ def test_probe_refuses_non_loopback(url):
 def test_probe_manifest_existing_consumers(tmp_path):
     probes = module('run_codex_probes')
     root = tmp_path/'probes'
-    manifest = probes.run(str(FAKE), 'fake-codex 1', root)
+    manifest = probes.run(str(FAKE), 'fake-codex 1', root, checks=probes.CHECKS[:13])
     assert len(manifest['checks']) == 13 and manifest['mechanism_only']
     from probe_checks import check_f6, check_single_action, require_real_codex
     for check in manifest['checks']:
@@ -50,7 +50,7 @@ def test_ab_runner_fake_and_budget(tmp_path, monkeypatch):
     result = ab.score(kit/'questions.json', tmp_path/'run/answers', tmp_path/'score.json')
     assert all(r['overall']['accuracy'] == 1 for r in result['summary'].values())
     assert len(manifest['requests']) == 4
-    assert all('model_max_output_tokens=5000' in r['command'] and 'model_auto_compact_token_limit=1000001' in r['command'] for r in manifest['requests'])
+    assert all(not any(x.startswith('model_max_output_tokens=') for x in r['command']) and 'model_auto_compact_token_limit=1000001' in r['command'] for r in manifest['requests'])
     assert all('mcp_servers={}' in r['command'] for r in manifest['requests'])
     kw['context_token_budget'] = 1
     with pytest.raises(ValueError, match='context budget'): ab.run(kit, tmp_path/'bad', **kw)
@@ -143,10 +143,10 @@ def test_mac_gate_rejects_fake_binary_even_if_flag_changed(tmp_path):
 
 def test_mac_gate_rejects_renamed_script_with_native_version_claim(tmp_path):
     from probe_checks import require_real_codex
-    from harness_v6.codex_pin import ISOLATED_VERSION
+    from harness_v6.codex_pin import OFFICIAL_VERSION
     import hashlib
     binary=tmp_path/'codex';binary.write_bytes(b'#!/bin/sh\nexit 0\n')
-    manifest=dict(mechanism_only=False,codex_version=ISOLATED_VERSION,
+    manifest=dict(mechanism_only=False,codex_version=OFFICIAL_VERSION,
         binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
         checks={'probe':{'command':[str(binary)]}})
     with pytest.raises(AssertionError,match='Mach-O'):

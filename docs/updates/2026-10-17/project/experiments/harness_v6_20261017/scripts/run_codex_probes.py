@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Pinned-Codex loopback-only capability recordings. Wire assumptions fail closed."""
 import argparse
+import difflib
 import hashlib
 import json
 import os
@@ -15,13 +16,13 @@ from harness_v6.contracts import digest, encode
 from harness_v6.mac_probe import create_server
 from harness_v6.session import Budget, classify, command
 from harness_v6.single_action import command as single_command, parse, OUTPUT_SCHEMA
-from harness_v6.tool_contract import declared_tools, request_tools
+from harness_v6.tool_contract import declared_tools, request_tools, RESOURCE_TOOLS
 
 CHECKS = ('config_injection', 'approval_never', 'schema_with_mcp', 'jsonl_fields',
           'startup_timeout', 'tool_timeout', 'compaction_detection',
           'environment_inheritance', 'large_result_complete',
           'single_schema_no_mcp', 'single_tool_rejection', 'single_usage')
-CHECKS += ('required_startup_ready',)
+CHECKS += ('required_startup_ready', 'over_limit_harness', 'resource_abort', 'rollout_budget_stop', 'resource_list_abort', 'resource_templates_abort')
 ACTION = dict(expected_state_version=1, submission_id='probe', delta={})
 SENTINEL = 'v6-explicit-environment'
 COMPACTION_SENTINEL = 'V6_OFFLINE_COMPACTION_REQUEST'
@@ -89,21 +90,34 @@ def result_payload(check):
 def mcp(check, directory):
     write(directory/'mcp-start.json', dict(started=True))
     overhead = (directory/'overhead.json').exists()
-    if overhead:
-        from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS
+    from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS, CycleServer
+    guard = None
+    if check == 'over_limit_harness' or check.startswith('resource_'):
+        from harness_v6.synthetic import SyntheticFactory, SOURCE
+        from harness_v6.facts import build_facts
+        factory = SyntheticFactory()
+        inp = directory/'cycle-input'; inp.mkdir()
+        write(inp/'cycle.json', dict(context_ref='probe', facts=build_facts(factory.problem(), factory.plan),
+            execution_state=factory.execution_state(),
+            submit_config=dict(state_version=0, next_anchor=60, source_sha256=SOURCE)))
+        guard = CycleServer(inp, directory, max_tool_calls=1)
     if check == 'startup_timeout': time.sleep(4)
     if check == 'required_startup_ready': time.sleep(2)
     for line in sys.stdin:
         request = json.loads(line)
         if 'id' not in request: continue
         method = request['method']
+        if guard is not None:
+            response = guard.rpc(request)
+            if response is not None: print(encode(response).decode(), flush=True)
+            continue
         if method == 'initialize':
             result = dict(protocolVersion='2024-11-05', capabilities=dict(tools={}),
                           serverInfo=dict(name='harness_v6', version='probe'))
         elif method == 'tools/list':
             result = dict(tools=[dict(name='read_entities', description='Return probe data',
                 inputSchema=dict(type='object', properties={}, additionalProperties=False))])
-            if overhead:
+            if overhead or not os.environ.get('V6_FAKE_PROBE'):
                 result = dict(tools=[dict(name=k, description=TOOL_DESCRIPTIONS[k], inputSchema=v) for k,v in TOOLS.items()])
         elif method == 'tools/call':
             write(directory/'tool-start.json', request['params'])
@@ -218,9 +232,10 @@ def probe_call_matches(envelope, arguments):
     return True
 
 
-def capture(binary, version, directory, check, *, prompt='Return the scripted probe response.', snapshot=None, model='gpt-5.4', timeout=15, overhead_rounds=None, context_token_budget=1000000, output_reserve_tokens=10000, forbidden_name='apply_patch', model_config=None, forbidden_with_mcp=False):
+def capture(binary, version, directory, check, *, prompt='Return the scripted probe response.', snapshot=None, model='gpt-5.4', timeout=15, overhead_rounds=None, context_token_budget=1000000, output_reserve_tokens=10000, forbidden_name='apply_patch', model_config=None, forbidden_with_mcp=False, rollout_budget=None):
     from harness_v6.model_config import settings as model_settings
     model_settings(model_config, model=model, context_token_budget=context_token_budget)
+    if check == 'single_tool_rejection': timeout = min(timeout, 2)
     directory = Path(directory).resolve(); directory.mkdir(parents=True, exist_ok=False)
     if forbidden_with_mcp and check != 'single_tool_rejection':
         raise ValueError('forbidden_with_mcp is only valid for tool rejection probes')
@@ -246,8 +261,6 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
         if model_config is not None and (body.get('model') != model or
                 body.get('reasoning', {}).get('effort') != model_config['reasoning_effort']):
             raise ValueError('native request model/reasoning differs from frozen configuration')
-        if not version.startswith('fake-codex') and body.get('max_output_tokens') != output_reserve_tokens:
-            raise ValueError('native request omitted or changed the configured output token limit')
         tools = request_tools(body)
         if single and tools:
             raise ValueError('single_action unexpectedly exposes tools')
@@ -266,23 +279,33 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
             compaction_requests.append(len(requests))
             return sse([dict(type='message', id='msg_compaction', role='assistant', status='completed',
                 content=[dict(type='output_text',text='Offline compaction summary.',annotations=[])])],len(requests))
+        if not version.startswith('fake-codex') and check != 'startup_timeout':
+            request_tools(body, interaction='single_action' if single else 'mcp_session')
         if not single:
             from harness_v6.mcp_server import TOOLS
-            expected_tools = set() if check == 'startup_timeout' else set(TOOLS) if overhead_rounds else {'read_entities'}
+            expected_tools = ({'read_entities'} if version.startswith('fake-codex') and not overhead_rounds else set(TOOLS))
+            if not version.startswith('fake-codex'): expected_tools |= RESOURCE_TOOLS
+            if check == 'startup_timeout': expected_tools = set()
             if set(functions) != expected_tools:
                 raise ValueError('unexpected native/foreign/missing tools advertised')
-        if not single and check != 'startup_timeout' and len(requests) <= (overhead_rounds or 1):
+        if check.startswith('resource_'):
+            items = [dict(type='function_call', id='fc_resource', call_id='call_resource',
+                name={'resource_abort':'read_mcp_resource', 'resource_list_abort':'list_mcp_resources',
+                      'resource_templates_abort':'list_mcp_resource_templates'}[check],
+                arguments=json.dumps(dict(server='harness_v6', **({'uri':'probe://blocked'} if check == 'resource_abort' else {}))), status='completed')]
+        elif not single and check != 'startup_timeout' and len(requests) <= (2 if check == 'over_limit_harness' else overhead_rounds or 1):
             namespace, name = functions['read_entities']
             items = [dict(type='function_call', id='fc_probe_'+str(len(requests)), call_id='call_probe_'+str(len(requests)), name=name,
                           **({'namespace': namespace} if namespace else {}),
-                          arguments=json.dumps({'kind':'operations'} if overhead_rounds else {}), status='completed')]
+                          arguments=json.dumps({'kind':'operations', 'ids':[]} if check == 'over_limit_harness' else {'kind':'operations'} if overhead_rounds else {}), status='completed')]
         elif check == 'single_tool_rejection':
             items = [dict(type='function_call', id='fc_forbidden', call_id='call_forbidden',
                           name=forbidden_name, arguments='{}', status='completed')]
         else:
             items = [dict(type='message', id='msg_probe', role='assistant', status='completed',
                           content=[dict(type='output_text', text=json.dumps(ACTION), annotations=[])])]
-        if len(requests) > (overhead_rounds or 1)+3: raise ValueError('unverified wire: unexpected extra model round')
+        if check == 'single_tool_rejection': time.sleep(.1)
+        if check != 'single_tool_rejection' and len(requests) > (overhead_rounds or 1)+3: raise ValueError('unverified wire: unexpected extra model round')
         usage = None
         if counter is not None:
             from harness_v6.snapshot import canonical
@@ -307,7 +330,15 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
             argv = command(directory, directory, model=model, budget=budget, binary=binary,
                 context_token_budget=context_token_budget, output_reserve_tokens=output_reserve_tokens, model_config=model_config)
         settings = provider_settings(endpoint)
+        if check == 'rollout_budget_stop': rollout_budget = 90
+        if rollout_budget is not None:
+            settings.update({'features.rollout_budget': None})
+            for key, value in dict(enabled=True, limit_tokens=rollout_budget, sampling_token_weight=1.0,
+                    prefill_token_weight=1.0, reminder_at_remaining_tokens=[]).items():
+                settings['features.rollout_budget.'+key] = value
         if not single:
+            if version.startswith('fake-codex'):
+                settings['mcp_servers.harness_v6.env.V6_FAKE_PROBE'] = '1'
             settings.update({'mcp_servers.harness_v6.command': sys.executable,
                 'mcp_servers.harness_v6.args': [str(Path(__file__).resolve()), '--probe-mcp', check, '--output', str(directory)],
                 'mcp_servers.harness_v6.env.PYTHONPATH': os.pathsep.join(str(Path(p).resolve()) for p in sys.path if p),
@@ -317,6 +348,8 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
         if check == 'compaction_detection':
             settings.update(model_auto_compact_token_limit=1, compact_prompt=COMPACTION_SENTINEL)
         argv = configure(argv, settings)
+        if rollout_budget is not None:
+            i = argv.index('features.rollout_budget=null'); del argv[i-1:i+1]
         if check == 'schema_with_mcp': argv[-1:-1] = ['--output-schema', str(directory/'schema.json')]
         runner = CodexRunner(binary, workdir=directory, env_allowlist=['PATH','PYTHONPATH'], stderr_path=directory/'stderr.log')
         argv[0] = runner.binary
@@ -342,12 +375,11 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
     if single:
         passed &= len(requests) == 1 and not request_tools(requests[0])
         if check == 'single_tool_rejection':
-            # Dedicated native build aborts on an unregistered call; success is
-            # rejection before any second request, never a healthy completion.
-            rejected = result.returncode != 0 and not result.timed_out
             if version.startswith('fake-codex'):
-                rejected = healthy  # legacy fake mechanism fixture only
-            passed = rejected and len(requests) == 1 and any(e.startswith('forbidden_item:') for e in parsed['errors'])
+                passed = healthy and len(requests) == 1 and any(e.startswith('forbidden_item:') for e in parsed['errors'])
+            else:
+                passed = result.timed_out and result.returncode != 0 and 1 <= len(requests) <= 20 and 'usage_unknown' in parsed['errors']
+            reason = 'wall-clock guard stops unsupported-call loop; failed session with unknown usage'
         else:
             passed &= parsed['arguments'] == ACTION
             if check == 'single_usage':
@@ -357,6 +389,18 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
                 passed &= (all(usage.get(k)==v for k,v in expected_usage.items())
                     and set(usage) <= set(expected_usage)|extras
                     and all(usage.get(k,0)==0 for k in extras))
+    elif check == 'over_limit_harness' or check.startswith('resource_'):
+        expected_count = 2 if check == 'over_limit_harness' else 1
+        passed = (result.timed_out and result.returncode != 0 and len(requests) == expected_count
+            and (directory/'abort.json').exists() and 'usage_unknown' in parsed['errors'])
+        if check == 'over_limit_harness':
+            records = [json.loads(line) for line in (directory/'mcp.jsonl').read_text().splitlines()]
+            passed &= len(records) == 1 and not records[0]['result'].get('isError')
+        reason = 'server abort marker blocks reply; host kills group before any extra request'
+    elif check == 'rollout_budget_stop':
+        passed = (result.returncode != 0 and not result.timed_out and len(requests) == 1
+            and 'usage_unknown' in parsed['errors'] and 'shared rollout token budget exhausted' in result.jsonl)
+        reason = 'official rollout budget stops after first 90 weighted tokens; diagnostic only'
     elif check in ('startup_timeout', 'tool_timeout'):
         # A host deadline is NOT proof that Codex honored its configured timeout.
         raw = result.jsonl + (directory/'stderr.log').read_text()
@@ -388,17 +432,17 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
             passed &= expected in received
             write(directory/'received_result.json', received[0] if received else None)
     if forbidden_with_mcp:
-        passed = (result.returncode != 0 and not result.timed_out and len(requests) == 2
+        passed = (result.returncode != 0 and result.timed_out and 2 <= len(requests) <= 20
             and parsed['calls'] == [dict(tool='read_entities', arguments={})]
-            and any(e.startswith('forbidden_item:') for e in parsed['errors']))
-        reason = 'one allowed MCP read followed by fatal forbidden-tool rejection before a third request'
+            and 'usage_unknown' in parsed['errors'])
+        reason = 'one allowed MCP read followed by unsupported-call loop stopped by wall-clock guard'
     if overhead_rounds is not None:
         passed = healthy and not parsed['errors'] and len(requests) == (1 if single else overhead_rounds+1)
         if counter is not None:
             for key in ('input_tokens', 'output_tokens'):
                 passed &= (parsed['usage'] or {}).get(key) == sum(u[key] for u in measured_usage)
     row = dict(passed=bool(passed), command=argv, expected=reason, jsonl='session.jsonl',
-               requests='requests.jsonl', schema='schema.json', expected_arguments=ACTION,
+               request_count=len(requests), requests='requests.jsonl', schema='schema.json', expected_arguments=ACTION,
                errors=parsed['errors'], returncode=result.returncode, timed_out=result.timed_out)
     if counter is not None:
         row['usage_basis'] = 'synthetic conservative full serialized request counts; cached=0; not provider billing'
@@ -433,6 +477,26 @@ def run(binary, version, output, checks=CHECKS, *, model='gpt-5.4', model_config
             for key in ('jsonl','requests','schema','received_result') if key in row}
         write(root/'manifest.json', manifest)
         print(check, 'PASS' if row['passed'] else 'FAIL: inspect JSONL, stderr and recorded requests', flush=True)
+    if {'config_injection', 'rollout_budget_stop'} <= set(manifest['checks']):
+        def first_body(check):
+            record = json.loads((root/check/'requests.jsonl').read_text().splitlines()[0])
+            return json.loads(record['body'])
+        def without_ids(value):
+            if isinstance(value, dict): return {k:without_ids(v) for k,v in value.items() if k != 'id'}
+            if isinstance(value, list): return [without_ids(v) for v in value]
+            return value
+        baseline = without_ids(first_body('config_injection'))
+        enabled = without_ids(first_body('rollout_budget_stop'))
+        diff = ''.join(difflib.unified_diff(
+            json.dumps(baseline, indent=2, sort_keys=True).splitlines(True),
+            json.dumps(enabled, indent=2, sort_keys=True).splitlines(True),
+            fromfile='budget-off', tofile='budget-on-empty-reminders'))
+        (root/'rollout-budget.diff').write_text(diff)
+        manifest['rollout_budget_evidence'] = dict(enabled_in_production=False,
+            input_equal=baseline.get('input') == enabled.get('input'),
+            diff='rollout-budget.diff', normalization='remove message ids only',
+            reason='empty reminder thresholds still inject initial rollout_budget developer input')
+        write(root/'manifest.json', manifest)
     if not all(row['passed'] for row in manifest['checks'].values()):
         raise ValueError('probe failure: pinned Codex flags/Responses wire/capability unverified; do not proceed to live runs')
     return manifest
