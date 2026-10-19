@@ -1,6 +1,6 @@
 # 证据范围、哈希与恢复
 
-本次 Git 中保存当前代码、阶段结论、简明记录；压缩的[公开选定证据包](https://github.com/yanaoyong/llm-scheduling-harness-research/releases/tag/evidence-20261019-harness-v6-s0)通过配套 GitHub Release 保存。包内 `manifest.json` 逐文件登记原始 SHA-256、公开 SHA-256、大小和是否转换。压缩包哈希见 [构建记录](verification/archive-build.json)，核验结果见 [核验记录](verification/archive-verification.json)。
+本次 Git 中保存当前代码、阶段结论、简明记录，以及 [Mac 预检的 28,047 文件可信 SHA-256 清单](TRUSTED_INPUTS.md)。压缩的公开选定证据包已在 Mac 本地归档，计划使用 Release 标签 `evidence-20261019-harness-v6-s0`；公开上传此前被自动审批拦截，尚未发布，下面的 Release 下载命令仅在另行授权并发布后可用。本次清单提交不包含该压缩包。包内 `manifest.json` 逐文件登记原始 SHA-256、公开 SHA-256、大小和是否转换。压缩包哈希见 [构建记录](verification/archive-build.json)，核验结果见 [核验记录](verification/archive-verification.json)。
 
 公开包包含 **2,917** 个文件，展开约 **1.187 GB**，压缩大小 **145,887,459 字节**（约 145.9 MB）。SHA-256：`4b234b48343474b0ca98f98e823e7d472e0d6e982fdcd24f51a922ec257bf8a7`。
 
