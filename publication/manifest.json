@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 2480,
+  "public_file_count_excluding_this_manifest": 2481,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -16487,10 +16487,10 @@
     },
     {
       "path": "docs/updates/2026-10-19/EVIDENCE.md",
-      "bytes": 3927,
-      "public_sha256": "46faf222e54fd4f47e6ab61998fd59d220d5f102143a3300298a5873ee429454",
+      "bytes": 4673,
+      "public_sha256": "70321d36b00b665a01a30fe660ff5b77ee12014a81b37a04b785313c118d1b05",
       "source_tracked_sha256": "8f7a0ff89918724fec8994c4390fddb126522eede5a1783776159a88a1ea11d1",
-      "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19"
+      "publication_note": "S0 release publication and verified remote assets, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-19/README.md",
@@ -16626,6 +16626,13 @@
       "public_sha256": "48846d02220b3c74dc38eff7eb6fa0e9a060af64d9c14348e8b6093eddc9ce7d",
       "source_tracked_sha256": "48846d02220b3c74dc38eff7eb6fa0e9a060af64d9c14348e8b6093eddc9ce7d",
       "publication_note": "Harness v6 S0 archive or editorial update, 2026-10-19"
+    },
+    {
+      "path": "docs/updates/2026-10-19/verification/release-publication.json",
+      "source_tracked_sha256": "8152363da6b8e77cbf79d9eb96900205a29db34c480da77aa478bc68ec6f4a89",
+      "bytes": 2725,
+      "public_sha256": "8152363da6b8e77cbf79d9eb96900205a29db34c480da77aa478bc68ec6f4a89",
+      "publication_note": "S0 release publication and verified remote assets, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-19/verification/sanitizer-regression.json",
@@ -20656,7 +20663,7 @@
       "source_tracked_sha256": "5e2da9a3c174f8fe8f5f6eaf0af111445df00e04a25465526815e0a341f2c4b9"
     }
   ],
-  "last_updated": "2026-10-19T06:25:50.315368+00:00",
+  "last_updated": "2026-10-19T06:32:06.655675+00:00",
   "latest_evidence_release": {
     "schema": "public-lean-publication-v1",
     "date": "2026-10-13",
@@ -20718,7 +20725,10 @@
     "archive_build": "docs/updates/2026-10-19/verification/archive-build.json",
     "archive_verification": "docs/updates/2026-10-19/verification/archive-verification.json",
     "git_files_added_or_refreshed": 185,
-    "unchanged_base_files_newly_indexed": 106
+    "unchanged_base_files_newly_indexed": 106,
+    "release_published": true,
+    "release_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/tag/evidence-20261019-harness-v6-s0",
+    "release_verification": "docs/updates/2026-10-19/verification/release-publication.json"
   },
   "harness_v6_trusted_inputs_20261019": {
     "entrypoint": "docs/updates/2026-10-19/TRUSTED_INPUTS.md",
