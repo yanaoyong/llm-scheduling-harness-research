@@ -93,8 +93,8 @@ def execute(args):
             workdir=Path.cwd(), env_allowlist=reg.get('env_allowlist', ['PATH','HOME']), stderr_path=output/'codex.stderr.log')
         version = runner.version(reg.get('codex_version'))
         if not args.dry_run_scripted:
-            from harness_v6.codex_pin import require_isolated_pin
-            require_isolated_pin(runner.binary, version, reg.get('codex_binary_sha256'))
+            from harness_v6.codex_pin import require_official_pin
+            require_official_pin(runner.binary, version, reg.get('codex_binary_sha256'))
         if not args.dry_run_scripted and version == 'fake-codex 1':
             raise ValueError('fake executable cannot produce results')
         if args.dry_run_scripted and version != 'fake-codex 1':

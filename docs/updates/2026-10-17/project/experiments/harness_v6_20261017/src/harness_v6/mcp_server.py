@@ -67,7 +67,8 @@ class CycleServer:
         with self.lock:
             arguments=deepcopy(arguments)
             try:
-                if len(self.records)>=self.max_tool_calls: raise ValueError('tool_budget')
+                if len(self.records)>=self.max_tool_calls:
+                    self.abort('tool_budget', 'tools/call', len(self.records)+1)
                 if name=='read_entities': result=self.reader.read(arguments)
                 elif name in ('validate_plan','submit_plan'):
                     target=self.submitter if name=='submit_plan' else Submitter.restore(self.submitter.capture(),physical_precheck=self.submitter.physical_precheck)
@@ -91,10 +92,25 @@ class CycleServer:
             self.records.append(row)
             return deepcopy(result)
 
+    def abort(self, reason, method, count):
+        parent = os.getppid()
+        temporary = self.output_dir/'abort.tmp'
+        temporary.write_bytes(encode(dict(reason=reason, method=method, count=count)))
+        temporary.replace(self.output_dir/'abort.json')
+        # Never return a tool response: the host owns process-group termination.
+        # Official Codex puts MCP in a separate process group. Exit only after
+        # its parent dies, so blocking cannot leave an orphan server behind.
+        blocked = threading.Event()
+        while os.getppid() == parent:
+            blocked.wait(.1)
+        raise SystemExit(1)
+
     def rpc(self, request):
         identity=request.get('id')
         if request.get('jsonrpc')!='2.0': return {'jsonrpc':'2.0','id':identity,'error':{'code':-32600,'message':'Invalid Request'}}
         method=request.get('method')
+        if isinstance(method,str) and method.startswith('resources/'):
+            self.abort('resource_method', method, len(self.records))
         if method=='notifications/initialized': return None
         try:
             if method=='initialize': result={'protocolVersion':request.get('params',{}).get('protocolVersion','2024-11-05'),'capabilities':{'tools':{}},'serverInfo':{'name':'harness_v6','version':'1'}}

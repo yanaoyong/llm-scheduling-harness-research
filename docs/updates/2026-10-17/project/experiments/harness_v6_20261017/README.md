@@ -496,3 +496,26 @@ plan_invalidated / expired_task / no_plan（无有效计划且存在可避免空
 submit.py 仅添加诊断与 coverage 读取说明；FactReader 公共投影不改原始 facts/compiler 输入。
 
 交接与 Mac 执行计划（2026-10-18，Phase Q–T）：见 [HANDOFF_20261018.md](HANDOFF_20261018.md)。
+
+## Phase U: official Codex（2026-10-19）
+
+生产 pin 为 `codex-cli 0.163.0` 加 registration 的二进制 SHA256，拒绝 fork。
+旧 patches/build/报告保留历史。接受四项放宽：三个官方 MCP 资源工具；宿主中止后 usage
+unknown（已有完整 turn.completed 除外）；无逐请求输出上限；客户端 catalog 六字段编辑。
+`freeze_model_catalog.py` 从显式文件提取单一模型，清除非 models 顶层键，写仓库外并打印 SHA。
+
+实测 MCP 为 `mcp__harness_v6` namespace 中 read_entities/validate_plan/submit_plan，加顶层
+list_mcp_resources/list_mcp_resource_templates/read_mcp_resource，各一次；single_action 零工具。
+全部 schema 计入请求 overhead。超限 Harness 调用或 resources/* RPC 写 abort 标记并阻塞，
+宿主终止进程组；失败不采用。rollout_budget 空提醒数组仍注入 developer 输入，生产关闭。
+官方仍有 90% 自动压缩钳制，保留 admission gate。
+
+| 请求数（N=max_tool_calls，无传输重试） | single_action | mcp_session |
+| --- | --- | --- |
+| 正常 | 1 | ≤N+1 |
+| 超限 Harness 调用 | 视为幻觉工具 | ≤N+1，标记后无下一请求 |
+| 合法资源调用到达 RPC | 视为幻觉工具 | ≤N+1，标记后无下一请求 |
+| 幻觉工具/资源本地拒绝循环 | 无固定上限，仅墙钟 | 无固定上限，仅墙钟 |
+
+开放项：内置 openai websocket 传输、中止实际计费/unknown usage、无输出上限仍待真实 smoke。
+本阶段真实模型请求 0。详见 [Phase U 核验报告](PHASE_U_REPORT.md)，含请求体差异及验证结果。

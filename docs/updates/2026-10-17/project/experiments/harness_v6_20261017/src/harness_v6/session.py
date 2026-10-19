@@ -45,8 +45,22 @@ def command(input_dir, output_dir, *, model, budget=Budget(), binary='codex', py
               'features.async_compaction':False,'model_post_turn_compact_threshold_percent':0,
               'tools.experimental_request_user_input.enabled':False,
               'tool_output_token_limit':context_token_budget or budget.token_cap,
-              'model_max_output_tokens':output_reserve_tokens or budget.token_cap,
-              'harness_max_inference_requests':budget.max_tool_calls+1,
+              'features.goals':False,'features.code_mode':False,
+              'features.code_mode_only':False,'features.code_mode_host':False,
+              'features.rollout_budget':False,
+              'features.sleep_tool':False,
+              'features.unified_exec':False,
+              'features.hooks':False,
+              'features.apps':False,
+              'features.tool_suggest':False,
+              'features.plugins':False,
+              'features.browser_use':False,
+              'features.computer_use':False,
+              'features.image_generation':False,
+              'features.skill_search':False,
+              'features.skill_mcp_dependency_install':False,
+              'features.workspace_dependencies':False,
+              'features.current_time_reminder':False,
               'model_context_window':context_token_budget or budget.token_cap,
               'model_auto_compact_token_limit':(context_token_budget or budget.token_cap)+1,
               'mcp_servers.harness_v6.command':python,'mcp_servers.harness_v6.args':args,
@@ -77,7 +91,10 @@ def classify(jsonl, *, interaction="mcp_session"):
             elif kind in EVENT_TYPES['passive_events']: pass
             elif kind in EVENT_TYPES['item_events']:
                 item=e['item'];typ=item['type']
-                if typ in EVENT_TYPES['passive_items']: pass
+                if (kind=='item.completed' and typ=='error' and isinstance(item.get('message'),str)
+                        and item['message'].startswith('Heads up: Long threads and multiple compactions')):
+                    errors.append('compaction')
+                elif typ in EVENT_TYPES['passive_items']: pass
                 elif interaction == 'single_action': errors.append('forbidden_item:'+str(typ))
                 elif typ==EVENT_TYPES['mcp_item']:
                     if kind=='item.started':
@@ -105,17 +122,6 @@ def classify(jsonl, *, interaction="mcp_session"):
                 else: errors.append('usage_unknown')
             elif kind in ('error', 'turn.failed'):
                 message=e.get('message') if kind=='error' else e.get('error',{}).get('message')
-                # The dedicated native guard stops BEFORE another inference.
-                # Only that failure can attest that prior cumulative usage is
-                # complete. Other failures may have unreported partial usage.
-                if (kind=='turn.failed' and isinstance(message,str)
-                        and message.startswith('Fatal error: Harness inference request limit reached: ')
-                        and message.rsplit(': ',1)[-1].isdigit()):
-                    u=e.get('usage',{})
-                    if (isinstance(u,dict) and all(type(u.get(k)) is int and u[k]>=0
-                            for k in ('input_tokens','cached_input_tokens','output_tokens'))
-                            and u['cached_input_tokens']<=u['input_tokens']):
-                        usage=u
                 if isinstance(message,str) and 'HARNESS_FORBIDDEN_TOOL:' in message:
                     errors.append('forbidden_item:unadvertised_tool')
                 errors.append('failed_event:'+kind)

@@ -11,9 +11,9 @@ def load(path):
 
 
 def admission_limit(value, *, model, context_token_budget):
-    """Usable pre-request ceiling for the pinned Harness client.
+    """Usable pre-request ceiling for the official 0.163.0 client.
 
-    Its native auto-compaction threshold is at most floor(window * 0.9),
+    protocol/src/openai_models.rs::auto_compact_token_limit confirms its auto-compaction threshold is at most floor(window * 0.9),
     even when a larger config override is supplied. Reject before that boundary.
     Callers count snapshot + complete overhead + output reserve against this.
     """

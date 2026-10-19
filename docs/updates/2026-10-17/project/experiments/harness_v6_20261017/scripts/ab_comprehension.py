@@ -518,8 +518,8 @@ def run(kit, output, *, codex_binary, codex_version, model, context_token_budget
                          stderr_path=evidence/'stderr.log')
     version = runner.version(codex_version)
     if not version.startswith('fake-codex'):
-        from harness_v6.codex_pin import require_isolated_pin
-        require_isolated_pin(runner.binary, version, codex_binary_sha256)
+        from harness_v6.codex_pin import require_official_pin
+        require_official_pin(runner.binary, version, codex_binary_sha256)
     manifest = dict(codex_version=version, codex_binary_sha256=codex_binary_sha256, model=model, model_config=model_config, context_token_budget=context_token_budget,
         request_overhead_tokens=request_overhead_tokens, output_reserve_tokens=output_reserve_tokens,
         request_context_limit=request_context_limit,
