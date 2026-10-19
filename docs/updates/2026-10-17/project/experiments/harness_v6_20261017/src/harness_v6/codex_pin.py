@@ -1,14 +1,13 @@
-"""The dedicated build is intentionally distinct from upstream Codex."""
+"""Production requires the official release and its registered binary digest."""
 import hashlib
 from pathlib import Path
 
-SOURCE_COMMIT = '83086188ae0614bd882818ff1aa23f3194962012'
-ISOLATED_VERSION = 'codex-cli 0.163.0-harness-v6.5'
+OFFICIAL_VERSION = 'codex-cli 0.163.0'
 
 
-def require_isolated_pin(binary, version, expected_sha256):
-    if version != ISOLATED_VERSION:
-        raise ValueError('production requires the verified Harness-only Codex build')
+def require_official_pin(binary, version, expected_sha256):
+    if version != OFFICIAL_VERSION:
+        raise ValueError('production requires the official Codex 0.163.0 release')
     actual = hashlib.sha256(Path(binary).read_bytes()).hexdigest()
     if not isinstance(expected_sha256, str) or actual != expected_sha256:
         raise ValueError('codex_binary_sha256 mismatch or missing pin')

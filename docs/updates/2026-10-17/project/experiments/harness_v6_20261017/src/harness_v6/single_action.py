@@ -29,9 +29,6 @@ def command(input_dir, schema_path, *, model, budget=Budget(), binary='codex',
     while index < len(argv) - 1:
         if argv[index] == '-c' and argv[index + 1].startswith('mcp_servers.'):
             index += 2
-        elif argv[index] == '-c' and argv[index + 1].startswith('harness_max_inference_requests='):
-            result.extend(['-c', 'harness_max_inference_requests=1'])
-            index += 2
         else:
             result.append(argv[index])
             index += 1

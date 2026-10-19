@@ -3,6 +3,7 @@
 Only explicit environment names are inherited. model_seconds conservatively
 uses elapsed wall time: the pinned JSONL contract has no model-time field.
 """
+import json
 import os
 from pathlib import Path
 import selectors
@@ -30,6 +31,12 @@ class CodexRunner:
         self._version = None
 
     def _execute(self, argv, prompt, timeout):
+        marker = None
+        for arg in argv:
+            if arg.startswith('mcp_servers.harness_v6.args='):
+                args = json.loads(arg.split('=', 1)[1])
+                if '--output' in args:
+                    marker = Path(args[args.index('--output')+1])/'abort.json'
         start = time.monotonic()
         self.stderr_path.parent.mkdir(parents=True, exist_ok=True)
         with self.stderr_path.open('ab') as errors:
@@ -72,7 +79,7 @@ class CodexRunner:
                     deadline = start + timeout
                     while process.poll() is None:
                         remaining = deadline - time.monotonic()
-                        if remaining <= 0:
+                        if (marker is not None and marker.exists()) or remaining <= 0:
                             expired = process.poll() is None
                             break
                         pump(min(.02, remaining))
@@ -92,6 +99,8 @@ class CodexRunner:
                     process.stdin.close()
             output = b''.join(chunks)
         wall = time.monotonic() - start
+        # A marker remains fatal even if the leader exited between polls.
+        expired |= marker is not None and marker.exists()
         return RunResult(output.decode('utf-8', errors='replace'), process.returncode,
                          wall, expired, wall)
 

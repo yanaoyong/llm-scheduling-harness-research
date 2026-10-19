@@ -10,7 +10,9 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
-from harness_v6.codex_pin import SOURCE_COMMIT, ISOLATED_VERSION
+# Archived fork builder; not a production dependency.
+SOURCE_COMMIT = '83086188ae0614bd882818ff1aa23f3194962012'
+ISOLATED_VERSION = 'codex-cli 0.163.0-harness-v6.5'
 from harness_v6.work_paths import checked_output
 
 
