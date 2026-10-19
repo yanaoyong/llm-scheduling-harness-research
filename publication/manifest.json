@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 2481,
+  "public_file_count_excluding_this_manifest": 2490,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -43,14 +43,14 @@
     },
     {
       "path": "PUBLICATION.md",
-      "bytes": 4080,
-      "public_sha256": "e53ecd3807b4e8965723f1878831063da47f27388016be89a0c1e4f2a1345458",
+      "bytes": 4558,
+      "public_sha256": "440d0a81f0ebb799c4d756fea56bd396c7d32f1f87755973ac0865fa284d08af",
       "transformations": {
         "public_lean_release_documentation": 1,
         "followup_archive_20261017": 1
       },
       "source_tracked_sha256": "e53ecd3807b4e8965723f1878831063da47f27388016be89a0c1e4f2a1345458",
-      "publication_note": "Harness v6 S0 archive or editorial update, 2026-10-19"
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19"
     },
     {
       "path": "README.md",
@@ -16487,10 +16487,17 @@
     },
     {
       "path": "docs/updates/2026-10-19/EVIDENCE.md",
-      "bytes": 4673,
-      "public_sha256": "70321d36b00b665a01a30fe660ff5b77ee12014a81b37a04b785313c118d1b05",
+      "bytes": 4925,
+      "public_sha256": "827c7ff414ff74d63214c9a69600df6fee16782862d6b8b864cd0cdfa8cc22fd",
       "source_tracked_sha256": "8f7a0ff89918724fec8994c4390fddb126522eede5a1783776159a88a1ea11d1",
-      "publication_note": "S0 release publication and verified remote assets, 2026-10-19"
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19"
+    },
+    {
+      "path": "docs/updates/2026-10-19/PHYSICS_FIXTURE.md",
+      "source_tracked_sha256": "13d73b3e0608a3af3694b94a7e23b41795eb0f1086475b62ffde13fcf353bd49",
+      "bytes": 4881,
+      "public_sha256": "13d73b3e0608a3af3694b94a7e23b41795eb0f1086475b62ffde13fcf353bd49",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-19/README.md",
@@ -16519,6 +16526,73 @@
       "public_sha256": "8237889bd1a1624647a15dc48197c49b170705a8e32604f302b9206299a84a3a",
       "source_tracked_sha256": "8237889bd1a1624647a15dc48197c49b170705a8e32604f302b9206299a84a3a",
       "publication_note": "Harness v6 S0 archive or editorial update, 2026-10-19"
+    },
+    {
+      "path": "docs/updates/2026-10-19/evidence/physics-fixture/goal-s0-20261019/independent_physics/__init__.py",
+      "source_tracked_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19",
+      "original_mac_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "storage_encoding": "identity",
+      "original_bytes_preserved": true
+    },
+    {
+      "path": "docs/updates/2026-10-19/evidence/physics-fixture/goal-s0-20261019/independent_physics/audit.py",
+      "source_tracked_sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "bytes": 17710,
+      "public_sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19",
+      "original_mac_sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "storage_encoding": "identity",
+      "original_bytes_preserved": true
+    },
+    {
+      "path": "docs/updates/2026-10-19/evidence/physics-fixture/goal-s0-20261019/independent_physics/audit_prefix.py",
+      "source_tracked_sha256": "ac474f3595dc1fcde3254240b8057b9d7f191d17f21f5a268989c86225c8067f",
+      "bytes": 18071,
+      "public_sha256": "ac474f3595dc1fcde3254240b8057b9d7f191d17f21f5a268989c86225c8067f",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19",
+      "original_mac_sha256": "ac474f3595dc1fcde3254240b8057b9d7f191d17f21f5a268989c86225c8067f",
+      "storage_encoding": "identity",
+      "original_bytes_preserved": true
+    },
+    {
+      "path": "docs/updates/2026-10-19/evidence/physics-fixture/goal-s0-20261019/independent_physics/manifest.json",
+      "source_tracked_sha256": "9444bfbbd9e48123406e8c90347f3263db960da8c592aba175c07f01ea4fd859",
+      "bytes": 1079,
+      "public_sha256": "9444bfbbd9e48123406e8c90347f3263db960da8c592aba175c07f01ea4fd859",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19",
+      "original_mac_sha256": "9444bfbbd9e48123406e8c90347f3263db960da8c592aba175c07f01ea4fd859",
+      "storage_encoding": "identity",
+      "original_bytes_preserved": true
+    },
+    {
+      "path": "docs/updates/2026-10-19/evidence/physics-fixture/goal-s0-20261019/independent_physics/source_check.py",
+      "source_tracked_sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "bytes": 8324,
+      "public_sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19",
+      "original_mac_sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "storage_encoding": "identity",
+      "original_bytes_preserved": true
+    },
+    {
+      "path": "docs/updates/2026-10-19/evidence/physics-fixture/manifest.json",
+      "source_tracked_sha256": "6593e9c524db89dea211a6bfb0d13a22866c907fd54767604c47343db2d2e12c",
+      "bytes": 4239,
+      "public_sha256": "6593e9c524db89dea211a6bfb0d13a22866c907fd54767604c47343db2d2e12c",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19"
+    },
+    {
+      "path": "docs/updates/2026-10-19/evidence/physics-fixture/sealed/fixture.json.gz",
+      "source_tracked_sha256": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+      "bytes": 43821896,
+      "public_sha256": "7333bb764d778f60b31cf6da4e22c97e53d8810eac0dd9d4b03b4bba2e8b37f8",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19",
+      "original_mac_sha256": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+      "storage_encoding": "gzip",
+      "original_bytes_preserved": true
     },
     {
       "path": "docs/updates/2026-10-19/evidence/records/GOAL_STATUS.json",
@@ -16619,6 +16693,13 @@
       "public_sha256": "330ff8414e2487378c51d5edbda1b42b1a69e2d32d93f628bd268fe551d12dfc",
       "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19",
       "byte_identical_to_mac_original": true
+    },
+    {
+      "path": "docs/updates/2026-10-19/verification/physics-fixture-handoff.json",
+      "source_tracked_sha256": "529acb3742b7e338974035c08b27a9a06e4ea0bcb2be76dd805ca18ac3a08af3",
+      "bytes": 703,
+      "public_sha256": "529acb3742b7e338974035c08b27a9a06e4ea0bcb2be76dd805ca18ac3a08af3",
+      "publication_note": "User-requested original physics audit module and sealed fixture; historical paths retained to preserve frozen byte hashes, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-19/verification/pr-regression.json",
@@ -20663,7 +20744,7 @@
       "source_tracked_sha256": "5e2da9a3c174f8fe8f5f6eaf0af111445df00e04a25465526815e0a341f2c4b9"
     }
   ],
-  "last_updated": "2026-10-19T06:32:06.655675+00:00",
+  "last_updated": "2026-10-19T07:47:03.223253+00:00",
   "latest_evidence_release": {
     "schema": "public-lean-publication-v1",
     "date": "2026-10-13",
@@ -20750,5 +20831,14 @@
     "configured_suite": "673 passed, 0 failed, 0 skipped",
     "model_calls": 0,
     "formal_trajectories": "0/6"
+  },
+  "harness_v6_physics_fixture_20261019": {
+    "entrypoint": "docs/updates/2026-10-19/PHYSICS_FIXTURE.md",
+    "manifest": "docs/updates/2026-10-19/evidence/physics-fixture/manifest.json",
+    "original_files": 6,
+    "fixture_sha256": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+    "gzip_sha256": "7333bb764d778f60b31cf6da4e22c97e53d8810eac0dd9d4b03b4bba2e8b37f8",
+    "original_bytes_preserved": true,
+    "model_calls": 0
   }
 }

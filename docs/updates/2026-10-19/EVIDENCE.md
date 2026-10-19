@@ -46,4 +46,6 @@ tar -xzf "$S0_EVIDENCE/harness-v6-s0-public.tar.gz" -C "$S0_EVIDENCE/extracted"
 
 审计脚本已经包含在包内，例如 `goal/audit_model_run_v4.py`、`goal/audit_idle_replay_v2.py`、`goal/verify_independent_physics.py`、`goal/verify_native_trace_v163.py` 和 `goal/verify_cycle_artifacts.py`，无需另行寻找未发布的脚本附件。
 
+这些入口依赖的 `goal-s0-20261019/independent_physics/` 完整目录和 `sealed/fixture.json` 已另行通过 Git 补交；夹具采用无损 gzip 存储，原件恢复和哈希核验见[独立物理模块与夹具交接](PHYSICS_FIXTURE.md)。
+
 历史脚本保留原相对结构与路径占位符，仅供审计和续作；跨机执行需重建环境、重映射路径、校验原始输入并重新登记。此次归档没有进行模型复跑，也没有扩展已暂停实验的授权。
