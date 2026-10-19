@@ -1,6 +1,6 @@
 # 证据范围、哈希与恢复
 
-本次 Git 中保存当前代码、阶段结论、简明记录，以及 [Mac 预检的 28,047 文件可信 SHA-256 清单](TRUSTED_INPUTS.md)。压缩的公开选定证据包已在 Mac 本地归档，计划使用 Release 标签 `evidence-20261019-harness-v6-s0`；公开上传此前被自动审批拦截，尚未发布，下面的 Release 下载命令仅在另行授权并发布后可用。本次清单提交不包含该压缩包。包内 `manifest.json` 逐文件登记原始 SHA-256、公开 SHA-256、大小和是否转换。压缩包哈希见 [构建记录](verification/archive-build.json)，核验结果见 [核验记录](verification/archive-verification.json)。
+本次 Git 中保存当前代码、阶段结论、简明记录，以及 [Mac 预检的 28,047 文件可信 SHA-256 清单](TRUSTED_INPUTS.md)。经用户明确授权，公开选定证据包现已发布到 [GitHub Release `evidence-20261019-harness-v6-s0`](https://github.com/yanaoyong/llm-scheduling-harness-research/releases/tag/evidence-20261019-harness-v6-s0)，包含压缩包和四个配套核验附件；[发布核验记录](verification/release-publication.json)登记远程附件大小和 SHA-256。包内 `manifest.json` 逐文件登记原始 SHA-256、公开 SHA-256、大小和是否转换。压缩包哈希见 [构建记录](verification/archive-build.json)，内容核验结果见 [核验记录](verification/archive-verification.json)。
 
 公开包包含 **2,917** 个文件，展开约 **1.187 GB**，压缩大小 **145,887,459 字节**（约 145.9 MB）。SHA-256：`4b234b48343474b0ca98f98e823e7d472e0d6e982fdcd24f51a922ec257bf8a7`。
 
@@ -21,24 +21,29 @@
 
 ## 只读核验
 
-在仓库根目录执行：
+在仓库根目录执行，将 `S0_EVIDENCE` 改为仓库外的下载目录；以下命令下载全部五个附件：
 
 ```sh
+export S0_EVIDENCE=/absolute/path/outside-repository/harness-v6-s0-download
 gh release download evidence-20261019-harness-v6-s0 \
   --repo yanaoyong/llm-scheduling-harness-research \
-  --pattern harness-v6-s0-public.tar.gz --dir downloaded-evidence
+  --dir "$S0_EVIDENCE"
+(cd "$S0_EVIDENCE" && shasum -a 256 -c checksums.sha256)
 python3 docs/updates/2026-10-19/archive_tools/verify_harness_archive.py \
-  --archive downloaded-evidence/harness-v6-s0-public.tar.gz
+  --archive "$S0_EVIDENCE/harness-v6-s0-public.tar.gz" \
+  --build "$S0_EVIDENCE/archive-build.json"
 python3 scripts/verify_public_release.py
 ```
 
-第一个命令检查压缩包哈希、全部成员哈希、安全路径、关键验收结论，并从全部真实 native trace 重新加总 55 次尝试、51 次已知响应、4 次未知用量失败及 token 总数。不会执行历史脚本、模拟器或模型。
+`checksums.sha256` 核对压缩包及其余三个核验附件。`verify_harness_archive.py` 检查压缩包哈希、全部成员哈希、安全路径、关键验收结论，并从全部真实 native trace 重新加总 55 次尝试、51 次已知响应、4 次未知用量失败及 token 总数。不会执行历史脚本、模拟器或模型。也可在下载目录使用随包附带的同名脚本，显式传入 `--build archive-build.json`。
 
 如需阅读完整选定证据，先核验，再解压到新的空目录：
 
 ```sh
-mkdir harness-v6-s0-evidence
-tar -xzf downloaded-evidence/harness-v6-s0-public.tar.gz -C harness-v6-s0-evidence
+mkdir "$S0_EVIDENCE/extracted"
+tar -xzf "$S0_EVIDENCE/harness-v6-s0-public.tar.gz" -C "$S0_EVIDENCE/extracted"
 ```
+
+审计脚本已经包含在包内，例如 `goal/audit_model_run_v4.py`、`goal/audit_idle_replay_v2.py`、`goal/verify_independent_physics.py`、`goal/verify_native_trace_v163.py` 和 `goal/verify_cycle_artifacts.py`，无需另行寻找未发布的脚本附件。
 
 历史脚本保留原相对结构与路径占位符，仅供审计和续作；跨机执行需重建环境、重映射路径、校验原始输入并重新登记。此次归档没有进行模型复跑，也没有扩展已暂停实验的授权。

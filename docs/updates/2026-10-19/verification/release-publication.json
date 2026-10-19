@@ -1,0 +1,57 @@
+{
+  "schema": "harness-v6-s0-release-publication-v1",
+  "release": {
+    "assets": [
+      {
+        "browser_download_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/download/evidence-20261019-harness-v6-s0/archive-build.json",
+        "digest": "sha256:25a443cf5fd115ab9b480d52fdbf32259d713e4a6dabc5ed8e2b61263e30897d",
+        "name": "archive-build.json",
+        "size": 836,
+        "state": "uploaded"
+      },
+      {
+        "browser_download_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/download/evidence-20261019-harness-v6-s0/archive-verification.json",
+        "digest": "sha256:021fd9b2e83262e9cca67dbd60d781eae75c5fb40a0f56d94860fab02655e4bd",
+        "name": "archive-verification.json",
+        "size": 317,
+        "state": "uploaded"
+      },
+      {
+        "browser_download_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/download/evidence-20261019-harness-v6-s0/checksums.sha256",
+        "digest": "sha256:4d21ad2066c24a5489756c8e60c26b3ec3ec94a169a9f6e32d8cbfb9945bcbde",
+        "name": "checksums.sha256",
+        "size": 363,
+        "state": "uploaded"
+      },
+      {
+        "browser_download_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/download/evidence-20261019-harness-v6-s0/harness-v6-s0-public.tar.gz",
+        "digest": "sha256:4b234b48343474b0ca98f98e823e7d472e0d6e982fdcd24f51a922ec257bf8a7",
+        "name": "harness-v6-s0-public.tar.gz",
+        "size": 145887459,
+        "state": "uploaded"
+      },
+      {
+        "browser_download_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/download/evidence-20261019-harness-v6-s0/verify_harness_archive.py",
+        "digest": "sha256:8237889bd1a1624647a15dc48197c49b170705a8e32604f302b9206299a84a3a",
+        "name": "verify_harness_archive.py",
+        "size": 3828,
+        "state": "uploaded"
+      }
+    ],
+    "draft": false,
+    "html_url": "https://github.com/yanaoyong/llm-scheduling-harness-research/releases/tag/evidence-20261019-harness-v6-s0",
+    "id": 416971619,
+    "published_at": "2026-10-19T06:27:46Z",
+    "tag_name": "evidence-20261019-harness-v6-s0",
+    "target_commitish": "c6b14c8cbe09abb62cc0753ff8e8aa99d0c7fa67"
+  },
+  "verification": {
+    "passed": true,
+    "method": "Compare SHA-256 and size of all five local assets with GitHub release asset digest and size; confirm non-draft release through the public tag endpoint.",
+    "assets_checked": 5,
+    "expected_archive_bytes": 145887459,
+    "expected_archive_sha256": "4b234b48343474b0ca98f98e823e7d472e0d6e982fdcd24f51a922ec257bf8a7"
+  },
+  "source_archive_changed": false,
+  "real_model_requests": 0
+}
