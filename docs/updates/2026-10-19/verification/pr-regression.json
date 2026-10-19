@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "tests": 81,
+  "failed": 0,
+  "skipped": 0,
+  "scope": [
+    "stall_observation",
+    "phase_t",
+    "tool_codec",
+    "tool_contract",
+    "structured_schema",
+    "native_request_budget"
+  ],
+  "source": "PR worktree",
+  "full_suite_reference": "evidence/records/qualification-stall-v1.json",
+  "real_model_requests": 0
+}

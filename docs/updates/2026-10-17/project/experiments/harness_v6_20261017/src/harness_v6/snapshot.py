@@ -34,6 +34,21 @@ def stable_prefix(*, tool_descriptions, routing, machine_groups, snapshot_format
                           **({'setup_transitions':setup_transitions,'min_runs':min_runs} if setup_transitions is not None else {})}, snapshot_format=snapshot_format, token_counter=token_counter)
 
 
+def production_prefix(*, routing, machine_groups, setup_transitions, min_runs,
+                      snapshot_format="explicit", token_counter=token_cost):
+    """One static contract for live runs, A/B samples and request recordings.
+
+    These schemas describe the planning interface in the snapshot. Actual tool
+    exposure is separately enforced by the single-action/MCP command boundary.
+    """
+    from .mcp_server import TOOLS, TOOL_DESCRIPTIONS
+    return stable_prefix(tool_descriptions=[
+        dict(name=name, description=TOOL_DESCRIPTIONS[name], inputSchema=schema)
+        for name, schema in TOOLS.items()], routing=routing, machine_groups=machine_groups,
+        setup_transitions=setup_transitions, min_runs=min_runs,
+        snapshot_format=snapshot_format, token_counter=token_counter)
+
+
 @dataclass(frozen=True)
 class HistorySummary:
     """Constant storage chain digest, no unbounded counters or raw history."""

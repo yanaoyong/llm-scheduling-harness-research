@@ -1,5 +1,10 @@
 # Mac 验收清单
 
+> 当前状态（2026-10-19）：[S0 阶段归档](../../../../2026-10-19/README.md)。离线 660 项及 38 子测试通过；真实 A/B 已完成，正式轨迹 0/6，已按 E1 smoke 次数上限暂停。下文保留各自日期的历史记录，旧的“零真实调用”等表述不代表当前状态。
+
+2026-10-18 后续修复及最终验收见 `STEP34_REPAIR_20261018.md`。原生 12 项探针已通过，
+步骤 4 三轮完整状态压力预算未通过；下文各 Phase 表保留其历史时点。真实模型调用仍为 0。
+
 以下 A–E 记录为历史阶段说明。Phase F 已获准使用预装公开 SMT2020/vendor/tiktoken；没有读取封存证据或运行模型。最新状态见文末 Phase H 表；Phase F 表保留为历史记录。以下命令均从本实验目录运行。
 后续阶段应添加下列测试文件和同名测试；Phase A 尚未实现这些适配器，不能声称已通过。
 这些集成测试缺依赖时须 pytest.skip 并说明缺失项；Mac 正式验收必须实际通过，不能计 skip。
@@ -238,12 +243,12 @@ export TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache
 /workspace/v6-mac-env/venv/bin/python scripts/build_sealed_fixture.py \
   --evidence-root /workspace/v6-mac-env/evidence/project/experiments/context_window_batch60_20261016 \
   --public-fixture /workspace/v6-mac-env/work/public.json \
-  --output /workspace/v6-mac-env/work/sealed2
+  --output /workspace/v6-mac-env/work/sealed2 --work-root /workspace/v6-mac-env/work
 export V6_MAC_FIXTURE=/workspace/v6-mac-env/work/sealed2/fixture.json
 export V6_SEALED_DB=/workspace/v6-mac-env/work/sealed2/contexts.sqlite
 export V6_SEALED_SELECT='SELECT group_name,payload FROM contexts'
 export V6_CLASSIFICATION_REPORT=/workspace/v6-mac-env/work/sealed2/classification.json
-/workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2
+/workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2 --work-root /workspace/v6-mac-env/work
 /workspace/v6-mac-env/venv/bin/python -m pytest -q
 ```
 
@@ -308,7 +313,7 @@ M3 26/26 accounted、907 running jobs、1011 ready rows、0 holds；756359 token
 - `/workspace/v6-mac-env/venv/bin/python -m pytest -q`：配置完整 suite；仅允许 9 个 F6/MCP 与 3 个 single_action Codex 探针跳过。
 - `/workspace/v6-mac-env/venv/bin/python -m pytest -q tests/test_live.py::test_mac_live_p2_three_cycles`：mixed_702 实际物理 ≥3 个 P2 周期，通过 live.py、真实 CycleServer 和 private_state restore/prepare 预检；脚本只续订封存任务，不调用模型。
 - `/workspace/v6-mac-env/venv/bin/python scripts/run_public_physics.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --group P2 --until 1603.10 --output /workspace/v6-mac-env/work/phase-i-p2.json`：公开物理回放，检查点必须真实调用 restore_ledger，rows/metrics 与重建一致，恢复终态和积分一致。
-- `/workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2`：更新静态分类和完整快照测量，保留 10/15/4、两项异常与 M1(d) 的证据核验；数值变化据实报告。
+- `/workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2 --work-root /workspace/v6-mac-env/work`：更新静态分类和完整快照测量，保留 10/15/4、两项异常与 M1(d) 的证据核验；数值变化据实报告。
 - `python3 -m compileall -q src` 和 `git diff --check` 必须通过。
 
 审计说明：audit_ledger 与 audit_v6 各自实现相同贪心政策，只检查实现差异，不证明全局最优。
@@ -344,7 +349,7 @@ V6_CLASSIFICATION_REPORT 指向新的 classification-l-final.json。最终结果
 
 ```bash
 python3 -m pytest -q
-python3 scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2
+python3 scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2 --work-root /workspace/v6-mac-env/work
 python3 scripts/run_public_physics.py --fixture "$V6_MAC_FIXTURE" --group P2 --until 1603.10 --output /workspace/v6-mac-env/work/phase-l-p2.json
 python3 scripts/measure_compact_snapshot.py --fixture "$V6_MAC_FIXTURE" --database "$V6_SEALED_DB" --output /workspace/v6-mac-env/work/compact-l-tokens.json
 ```
@@ -375,7 +380,7 @@ F6 新测量须与九项已有 probe 一起人工核验并保存报告；此阶�
 
 ```bash
 PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/measure_model_delta.py --database /workspace/v6-mac-env/work/sealed2/contexts.sqlite --output /workspace/v6-mac-env/work/model-m-tokens.json
-PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2
+PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/validate_sealed_fixture.py /workspace/v6-mac-env/work/sealed2 --work-root /workspace/v6-mac-env/work
 PYTHONPATH=src:/workspace/v6-mac-env/physical TIKTOKEN_CACHE_DIR=/workspace/v6-mac-env/tiktoken_cache /workspace/v6-mac-env/venv/bin/python scripts/run_public_physics.py --fixture /workspace/v6-mac-env/work/sealed2/fixture.json --group P2 --until 1603.10 --output /workspace/v6-mac-env/work/phase-m-p2.json
 ```
 

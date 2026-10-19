@@ -4,7 +4,7 @@ import importlib.metadata
 import json
 from pathlib import Path
 from harness_v6.compact import CURRENT, decode_snapshot, section, sections
-from harness_v6.snapshot import stable_prefix, current_state, build_snapshot, canonical, tiktoken_counter
+from harness_v6.snapshot import production_prefix, current_state, build_snapshot, canonical, tiktoken_counter
 from harness_v6.prompt_rules import V6_RULES
 from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS
 from harness_v6.factory_v6 import restore
@@ -18,7 +18,7 @@ def measure(fixture, database):
     env = restore(seed['state'], seed['trace'], data_dir=bundle['data_dir'])
     tools = [{'name': n, 'description': TOOL_DESCRIPTIONS[n], 'inputSchema': s} for n, s in TOOLS.items()]
     prefix_obj = dict(rules=V6_RULES, tools=tools, routing=env.manifest['routes'], machine_groups=env.manifest['machines'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs))
-    prefix = stable_prefix(tool_descriptions=tools, routing=prefix_obj['routing'], machine_groups=prefix_obj['machine_groups'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs))
+    prefix = production_prefix(routing=prefix_obj['routing'], machine_groups=prefix_obj['machine_groups'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs))
     for entry in SQLiteContextReader(database, 'SELECT group_name,payload FROM contexts').contexts():
         ctx = entry['context']
         if entry['group'] != 'G0' or abs(ctx['time'] - 1649.82) > .01:
@@ -54,7 +54,7 @@ def measure(fixture, database):
             'current': dict(old=old(current),new=counter(payload[len(prefix):].decode())),
             'total': dict(old=counter((canonical(prefix_obj)+b'\n'+canonical(current)).decode()),new=counter(payload.decode())),
         }
-        dense_prefix = stable_prefix(tool_descriptions=tools, routing=prefix_obj['routing'],
+        dense_prefix = production_prefix(routing=prefix_obj['routing'],
                                      machine_groups=prefix_obj['machine_groups'], setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs),snapshot_format='dense', token_counter=counter)
         dense_payload = build_snapshot(dense_prefix, ledger, horizon_seconds=900, snapshot_format='dense', token_counter=counter, token_budget=10**9, **args)
         # Attribute shared eligible-set overhead by removing only this section.

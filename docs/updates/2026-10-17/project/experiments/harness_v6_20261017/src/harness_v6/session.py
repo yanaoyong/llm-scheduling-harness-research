@@ -33,20 +33,32 @@ class RunResult:
 class Runner(Protocol):
     def run(self, command:list, prompt:str, *, timeout:float)->RunResult: ...
 
-def command(input_dir, output_dir, *, model, budget=Budget(), binary='codex', python=sys.executable, env=None):
+def command(input_dir, output_dir, *, model, budget=Budget(), binary='codex', python=sys.executable, env=None,
+            context_token_budget=None, output_reserve_tokens=None, model_config=None):
     args=['-m','harness_v6.mcp_server','--input',str(input_dir),'--output',str(output_dir),'--max-tool-calls',str(budget.max_tool_calls)]
     settings={'approval_policy':'never','history.persistence':'none','shell_environment_policy.inherit':'none',
               'include_environment_context':False,'include_apps_instructions':False,
               'include_collaboration_mode_instructions':False,'skills.include_instructions':False,
-              'skills.bundled.enabled':False,'features.skip_host_skill_discovery':True,
-              'features.shell_tool':False,'features.web_search_request':False,
+              'skills.bundled.enabled':False,
+              'features.shell_snapshot':False,'features.shell_tool':False,'web_search':'disabled','features.view_image':False,
               'features.multi_agent':False,'tools.update_plan.enabled':False,
+              'features.async_compaction':False,'model_post_turn_compact_threshold_percent':0,
               'tools.experimental_request_user_input.enabled':False,
-              'model_max_output_tokens':budget.token_cap,
-              'model_auto_compact_token_limit':budget.token_cap+1,
+              'tool_output_token_limit':context_token_budget or budget.token_cap,
+              'model_max_output_tokens':output_reserve_tokens or budget.token_cap,
+              'harness_max_inference_requests':budget.max_tool_calls+1,
+              'model_context_window':context_token_budget or budget.token_cap,
+              'model_auto_compact_token_limit':(context_token_budget or budget.token_cap)+1,
               'mcp_servers.harness_v6.command':python,'mcp_servers.harness_v6.args':args,
+              'mcp_servers.harness_v6.required':True,
               'mcp_servers.harness_v6.startup_timeout_sec':min(30,budget.wall_seconds),
               'mcp_servers.harness_v6.tool_timeout_sec':budget.wall_seconds}
+    from .model_config import settings as model_settings
+    settings.update(model_settings(model_config, model=model,
+        context_token_budget=context_token_budget or budget.token_cap))
+    # Explicit consent is scoped to the three local Harness tools only.
+    settings['mcp_servers.harness_v6.enabled_tools'] = list(TOOLS)
+    settings.update({'mcp_servers.harness_v6.tools.'+name+'.approval_mode':'approve' for name in TOOLS})
     # TOML inline table, not JSON object syntax.
     settings.update({'mcp_servers.harness_v6.env.'+k:v for k,v in (env or {}).items()})
     argv=[binary,'exec','--ephemeral','--json','--ignore-user-config','--ignore-rules','--skip-git-repo-check','--sandbox','read-only','--model',model,'--cd',str(input_dir)]
@@ -91,6 +103,22 @@ def classify(jsonl, *, interaction="mcp_session"):
                 u=e.get('usage',{})
                 if all(type(u.get(k)) is int and u[k]>=0 for k in ('input_tokens','cached_input_tokens','output_tokens')) and u['cached_input_tokens']<=u['input_tokens']: usage=u
                 else: errors.append('usage_unknown')
+            elif kind in ('error', 'turn.failed'):
+                message=e.get('message') if kind=='error' else e.get('error',{}).get('message')
+                # The dedicated native guard stops BEFORE another inference.
+                # Only that failure can attest that prior cumulative usage is
+                # complete. Other failures may have unreported partial usage.
+                if (kind=='turn.failed' and isinstance(message,str)
+                        and message.startswith('Fatal error: Harness inference request limit reached: ')
+                        and message.rsplit(': ',1)[-1].isdigit()):
+                    u=e.get('usage',{})
+                    if (isinstance(u,dict) and all(type(u.get(k)) is int and u[k]>=0
+                            for k in ('input_tokens','cached_input_tokens','output_tokens'))
+                            and u['cached_input_tokens']<=u['input_tokens']):
+                        usage=u
+                if isinstance(message,str) and 'HARNESS_FORBIDDEN_TOOL:' in message:
+                    errors.append('forbidden_item:unadvertised_tool')
+                errors.append('failed_event:'+kind)
             else: errors.append('unknown_event:'+str(kind))
         except (ValueError,KeyError,TypeError,AttributeError): errors.append('malformed_jsonl')
     if pending: errors.append('incomplete_mcp_items')

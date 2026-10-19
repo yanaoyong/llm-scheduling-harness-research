@@ -4,10 +4,28 @@ import json
 from pathlib import Path
 import sqlite3
 import zlib
+import pytest
 
 spec = importlib.util.spec_from_file_location('sealed_builder', Path(__file__).resolve().parents[1]/'scripts/build_sealed_fixture.py')
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
+
+
+def test_builder_rejects_data_overlap_before_writing(tmp_path):
+    data = tmp_path/'data'; data.mkdir()
+    public = tmp_path/'public.json'; public.write_text(json.dumps({'data_dir': str(data)}))
+    with pytest.raises(ValueError, match='overlap'):
+        module.build(tmp_path/'evidence', public, data/'generated', work_root=tmp_path)
+    assert list(data.iterdir()) == []
+
+
+def test_builder_preserves_existing_failed_run(tmp_path):
+    public = tmp_path/'public.json'; public.write_text(json.dumps({'data_dir': str(tmp_path/'data')}))
+    output = tmp_path/'sealed'; output.mkdir()
+    evidence = output/'contexts.sqlite'; evidence.write_bytes(b'previous failed run')
+    with pytest.raises(FileExistsError):
+        module.build(tmp_path/'evidence', public, output, work_root=tmp_path)
+    assert evidence.read_bytes() == b'previous failed run'
 
 
 def test_public_archive_hashes_and_export_order(tmp_path):

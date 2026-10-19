@@ -1,0 +1,210 @@
+{
+  "experiment_complete": false,
+  "formal_trajectories_completed": 0,
+  "formal_trajectories_required": 6,
+  "goal_state": "paused at user E1 smoke limit",
+  "offline_tests": {
+    "passed": 660,
+    "subtests": 38,
+    "failed": 0,
+    "skipped": 0
+  },
+  "actual_usage": {
+    "attempts_started": 55,
+    "known_completed_responses": 51,
+    "unknown_usage_failures": 4,
+    "pending_native_requests": 0,
+    "known_usage_totals": {
+      "input_tokens": 9766089,
+      "cached_input_tokens": 1981312,
+      "output_tokens": 107404
+    },
+    "batches": [
+      {
+        "name": "ab-real-v1",
+        "started": 1,
+        "completed": 0,
+        "failed": 1,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 0,
+          "cached_input_tokens": 0,
+          "output_tokens": 0
+        }
+      },
+      {
+        "name": "ab-real-v163-v1",
+        "started": 1,
+        "completed": 0,
+        "failed": 1,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 0,
+          "cached_input_tokens": 0,
+          "output_tokens": 0
+        }
+      },
+      {
+        "name": "ab-real-schema-v1",
+        "started": 5,
+        "completed": 4,
+        "failed": 1,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 681703,
+          "cached_input_tokens": 10368,
+          "output_tokens": 12628
+        }
+      },
+      {
+        "name": "ab-real-proxy-v1",
+        "started": 7,
+        "completed": 6,
+        "failed": 1,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 1100018,
+          "cached_input_tokens": 0,
+          "output_tokens": 19464
+        }
+      },
+      {
+        "name": "ab-real-network-recovery-v1",
+        "started": 16,
+        "completed": 16,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 3172926,
+          "cached_input_tokens": 0,
+          "output_tokens": 51460
+        }
+      },
+      {
+        "name": "smoke-E1-1-v1",
+        "started": 1,
+        "completed": 1,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 180724,
+          "cached_input_tokens": 0,
+          "output_tokens": 1455
+        }
+      },
+      {
+        "name": "smoke-E1-1-v2",
+        "started": 1,
+        "completed": 1,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 180816,
+          "cached_input_tokens": 0,
+          "output_tokens": 1211
+        }
+      },
+      {
+        "name": "smoke-P2-1-v2",
+        "started": 6,
+        "completed": 6,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 1316717,
+          "cached_input_tokens": 1058176,
+          "output_tokens": 5890
+        }
+      },
+      {
+        "name": "smoke-E1-1-v3",
+        "started": 1,
+        "completed": 1,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 180881,
+          "cached_input_tokens": 0,
+          "output_tokens": 1246
+        }
+      },
+      {
+        "name": "smoke-P2-1-v3",
+        "started": 3,
+        "completed": 3,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 552607,
+          "cached_input_tokens": 363136,
+          "output_tokens": 2875
+        }
+      },
+      {
+        "name": "smoke-E1-1-v4",
+        "started": 1,
+        "completed": 1,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 180828,
+          "cached_input_tokens": 0,
+          "output_tokens": 1441
+        }
+      },
+      {
+        "name": "smoke-E1-selfcheck-1",
+        "started": 1,
+        "completed": 1,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 180968,
+          "cached_input_tokens": 0,
+          "output_tokens": 1575
+        }
+      },
+      {
+        "name": "smoke-P2-selfcheck-1",
+        "started": 3,
+        "completed": 3,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 551244,
+          "cached_input_tokens": 362752,
+          "output_tokens": 2370
+        }
+      },
+      {
+        "name": "formal-E1-1-v4",
+        "started": 7,
+        "completed": 7,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 1305689,
+          "cached_input_tokens": 186880,
+          "output_tokens": 4874
+        }
+      },
+      {
+        "name": "smoke-E1-stall-1",
+        "started": 1,
+        "completed": 1,
+        "failed": 0,
+        "pending": 0,
+        "usage": {
+          "input_tokens": 180968,
+          "cached_input_tokens": 0,
+          "output_tokens": 915
+        }
+      }
+    ],
+    "usage_status": "Completed native response usage only; failed/incomplete usages unknown, never zero. Completion does not imply host plan adoption."
+  },
+  "latest_failure": "machine_order: undefined tasks n23..n31",
+  "selected_format": "explicit",
+  "rules_unchanged": true,
+  "archival_model_calls": 0
+}

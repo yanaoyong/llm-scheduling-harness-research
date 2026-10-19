@@ -6,6 +6,7 @@ import argparse
 import json
 from pathlib import Path
 from harness_v6.contracts import digest, encode
+from harness_v6.work_paths import checked_output
 from harness_v6.factory_v6 import capture, restore
 from harness_v6.ledger import ledger_from_scratch
 from harness_v6.replay import equivalence
@@ -13,10 +14,11 @@ from harness_v6.sealed_contexts import SQLiteContextReader, classify_sealed_cont
 from harness_v6.snapshot import build_snapshot, stable_prefix, tiktoken_counter, SnapshotBudgetExceeded
 
 
-def validate(directory):
-    if not directory.resolve().is_relative_to(Path('/workspace/v6-mac-env/work')):
-        raise ValueError('outputs must be under /workspace/v6-mac-env/work')
+def validate(directory, *, work_root):
+    directory = checked_output(directory, work_root)
     bundle = json.loads((directory/'fixture.json').read_bytes())
+    provenance = json.loads((directory/'provenance.json').read_bytes())
+    checked_output(directory, work_root, inputs=[bundle['data_dir'], *provenance])
     reader = SQLiteContextReader(directory/'contexts.sqlite', 'SELECT group_name,payload FROM contexts')
     report = classify_sealed_contexts(reader, expected={'G0':10,'G1':15,'G2':4}, witness_operation='w1703:86:1')
     (directory/'classification.json').write_bytes(encode(report))
@@ -112,4 +114,6 @@ def validate(directory):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser();parser.add_argument('directory',type=Path)
-    validate(parser.parse_args().directory)
+    parser.add_argument('--work-root', type=Path, required=True)
+    args = parser.parse_args()
+    validate(args.directory, work_root=args.work_root)

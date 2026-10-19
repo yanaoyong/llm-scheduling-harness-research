@@ -20,6 +20,7 @@ from pathlib import Path
 
 from harness_v6.compact import decode_snapshot
 from harness_v6.snapshot import canonical
+from harness_v6.structured_schema import validate_strict_schema
 
 FORMATS = ('explicit', 'dense')
 
@@ -33,8 +34,15 @@ def object_schema(properties):
 
 
 # Defined from the question contract, never from an answer or sampled state.
-ANY_JSON = {'type': ['null', 'boolean', 'number', 'string', 'array', 'object']}
 NUMBER = {'type': 'number'}
+# The fixed queried fields have scalar, numeric-list, or dist_spec values.
+# All three physical distribution shapes are offered to EVERY such question;
+# no sampled value/type or expected distribution selects a schema branch.
+DISTRIBUTIONS = [object_schema(dict(type={'type': 'string'}, **fields)) for fields in (
+    {'c': NUMBER}, {'m': NUMBER, 'offset': NUMBER}, {'mean': NUMBER})]
+CONTRACT_VALUE = {'anyOf': [
+    {'type': ['null', 'boolean', 'number', 'string']},
+    {'type': 'array', 'items': NUMBER}, *DISTRIBUTIONS]}
 BOUNDS = {k: NUMBER for k in ('batch_min', 'batch_max')}
 ROUTE_FIELDS = ('processing', 'cadence', 'batch_min', 'batch_max', 'setup')
 SCHEMAS = {
@@ -46,8 +54,8 @@ SCHEMAS = {
     'queue': object_schema(dict(pending={'type': 'array', 'items': {'type': 'string'}},
         head={'type': ['null', 'string']}, running={'type': 'array', 'items': {'type': 'integer'}})),
     'value_semantics': object_schema(dict(present={'type': 'boolean'},
-        kind={'type': 'string', 'enum': ['absent', 'null', 'empty_string', 'value']}, value=ANY_JSON)),
-    'route_step': object_schema({k: ANY_JSON if k in ('processing', 'cadence') else
+        kind={'type': 'string', 'enum': ['absent', 'null', 'empty_string', 'value']}, value=CONTRACT_VALUE)),
+    'route_step': object_schema({k: CONTRACT_VALUE if k in ('processing', 'cadence') else
                                NUMBER if k in BOUNDS else {'type': 'string'} for k in ROUTE_FIELDS}),
 }
 
@@ -281,6 +289,8 @@ def generate(states, output, *, seed=0, repetitions=2, output_schema=None, per_t
         if a[1] != b[1] or any(a[0][k] != b[0][k] for k in ('routing', 'machine_groups', 'tools')):
             raise ValueError(f'{state}: formats decode to different production objects')
         for row in questions_for(state, a[0], a[1], rng, states[state], per_type):
+            if not schema_matches(row['answer'], row['answer_schema']):
+                raise ValueError('question value outside fixed physical field contract: ' + row['id'])
             answers[row['id']] = row.pop('answer')
             questions.append(row)
     if not questions:
@@ -292,6 +302,7 @@ def generate(states, output, *, seed=0, repetitions=2, output_schema=None, per_t
         subset = [q for q in questions if q['state'] == state]
         properties = {q['id']: q['answer_schema'] for q in subset}
         response_schema = dict(type='object', properties=properties, required=sorted(properties), additionalProperties=False)
+        validate_strict_schema(response_schema)
         state_file = f'state-{index:03d}'
         write_json(output / f'{state_file}.schema.json', response_schema)
         for fmt in FORMATS:
@@ -330,12 +341,12 @@ def load_real_states(fixture, database, selectors, counter, *, public_ledger=Non
     from harness_v6.factory_v6 import restore
     from harness_v6.ledger import ledger_from_scratch
     from harness_v6.sealed_contexts import SQLiteContextReader
-    from harness_v6.snapshot import stable_prefix, build_snapshot
+    from harness_v6.snapshot import production_prefix, build_snapshot
     bundle = json.loads(Path(fixture).read_bytes())
     seed = bundle['mixed_702']
     env = restore(seed['state'], seed['trace'], data_dir=bundle['data_dir'])
     from harness_v6.physical_window import frozen_operations
-    prefixes = {fmt: stable_prefix(tool_descriptions=[], routing=env.manifest['routes'],
+    prefixes = {fmt: production_prefix(routing=env.manifest['routes'],
                 machine_groups=env.manifest['machines'],setup_transitions=env.manifest['setups'],min_runs=dict(env.min_runs),snapshot_format=fmt, token_counter=counter) for fmt in FORMATS}
     states = {}
     if len(selectors) != len(set(selectors)):
@@ -455,6 +466,8 @@ def score(questions_path, answers_dir, output, answer_key=None):
 
 def schema_matches(value, schema):
     import math
+    if 'anyOf' in schema and not any(schema_matches(value, branch) for branch in schema['anyOf']):
+        return False
     types = schema.get('type', [])
     types = [types] if isinstance(types, str) else types
     actual = ('null' if value is None else 'boolean' if type(value) is bool else
@@ -475,7 +488,7 @@ def schema_matches(value, schema):
 
 def run(kit, output, *, codex_binary, codex_version, model, context_token_budget,
         request_overhead_tokens, output_reserve_tokens, wall_seconds=300,
-        env_allowlist=('PATH', 'HOME'), counter=None):
+        env_allowlist=('PATH', 'HOME'), counter=None, codex_binary_sha256=None, model_config=None):
     """Execute the existing counterbalanced plan; never load the answer key."""
     from harness_v6.codex_runner import CodexRunner
     from harness_v6.session import Budget, classify
@@ -483,6 +496,8 @@ def run(kit, output, *, codex_binary, codex_version, model, context_token_budget
     from harness_v6.contracts import digest
     from harness_v6.snapshot import tiktoken_counter
     kit = Path(kit).resolve(); output = Path(output).resolve()
+    from harness_v6.model_config import admission_limit
+    request_context_limit = admission_limit(model_config, model=model, context_token_budget=context_token_budget)
     if min(context_token_budget, output_reserve_tokens, wall_seconds) <= 0 or request_overhead_tokens < 0:
         raise ValueError('invalid A/B budget')
     counter = counter or tiktoken_counter('o200k_base')
@@ -490,9 +505,10 @@ def run(kit, output, *, codex_binary, codex_version, model, context_token_budget
     # Preflight every prompt before spending on the first request.
     prepared = []
     for row in plan:
+        validate_strict_schema(json.loads((kit/row['output_schema']).read_bytes()))
         prompt = (kit/row['prompt']).read_text()
         tokens = counter(prompt)
-        if tokens + request_overhead_tokens + output_reserve_tokens > context_token_budget:
+        if tokens + request_overhead_tokens + output_reserve_tokens > request_context_limit:
             raise ValueError('A/B context budget exceeded: '+row['request_id'])
         prepared.append((row, prompt, tokens))
     output.mkdir(parents=True, exist_ok=False)
@@ -501,16 +517,20 @@ def run(kit, output, *, codex_binary, codex_version, model, context_token_budget
     runner = CodexRunner(codex_binary, workdir=output, env_allowlist=env_allowlist,
                          stderr_path=evidence/'stderr.log')
     version = runner.version(codex_version)
-    manifest = dict(codex_version=version, model=model, context_token_budget=context_token_budget,
+    if not version.startswith('fake-codex'):
+        from harness_v6.codex_pin import require_isolated_pin
+        require_isolated_pin(runner.binary, version, codex_binary_sha256)
+    manifest = dict(codex_version=version, codex_binary_sha256=codex_binary_sha256, model=model, model_config=model_config, context_token_budget=context_token_budget,
         request_overhead_tokens=request_overhead_tokens, output_reserve_tokens=output_reserve_tokens,
+        request_context_limit=request_context_limit,
         wall_seconds=wall_seconds, plan_sha256=digest(plan), requests=[],
         mechanism_only=version.startswith('fake-codex'))
     failures = []
     for row, prompt, tokens in prepared:
         rid = row['request_id']; schema = kit/row['output_schema']
         argv = command(output, schema, model=model, binary=codex_binary,
+                       context_token_budget=context_token_budget, output_reserve_tokens=output_reserve_tokens, model_config=model_config,
                        budget=Budget(wall_seconds=wall_seconds, token_cap=context_token_budget))
-        argv = ['model_max_output_tokens='+str(output_reserve_tokens) if arg.startswith('model_max_output_tokens=') else arg for arg in argv]
         result = runner.run(argv, prompt, timeout=wall_seconds)
         (evidence/(rid+'.jsonl')).write_text(result.jsonl)
         parsed = classify(result.jsonl, interaction='single_action')
@@ -548,7 +568,7 @@ def main():
         gen.add_argument('--' + name, required=True)
     gen.add_argument('--states', nargs='+', default=['g0', 'public:702', 'public:703'])
     gen.add_argument('--public-ledger')
-    gen.add_argument('--horizon-seconds', type=float, default=900)
+    gen.add_argument('--horizon-seconds', type=json.loads, default=900)
     gen.add_argument('--per-type', type=int, default=12)
     gen.add_argument('--seed', type=int, default=0)
     gen.add_argument('--repetitions', type=int, default=2)
@@ -558,15 +578,18 @@ def main():
         scoring.add_argument('--' + name, required=True)
     scoring.add_argument('--answer-key')
     running = sub.add_parser('run', help='run the counterbalanced plan with pinned Codex')
-    for name in ('kit', 'output', 'codex-binary', 'codex-version', 'model'):
+    for name in ('kit', 'output', 'codex-binary', 'codex-version', 'codex-binary-sha256', 'model'):
         running.add_argument('--'+name, required=True)
     for name in ('context-token-budget', 'request-overhead-tokens', 'output-reserve-tokens'):
         running.add_argument('--'+name, type=int, required=True)
     running.add_argument('--wall-seconds', type=float, default=300)
+    running.add_argument('--model-config', help='Frozen model catalog/hash/reasoning JSON')
     running.add_argument('--env-allowlist', nargs='+', default=['PATH', 'HOME'])
     args = parser.parse_args()
     if args.command == 'run':
+        from harness_v6.model_config import load as load_model_config
         run(args.kit, args.output, codex_binary=args.codex_binary, codex_version=args.codex_version,
+            codex_binary_sha256=args.codex_binary_sha256, model_config=load_model_config(args.model_config),
             model=args.model, context_token_budget=args.context_token_budget,
             request_overhead_tokens=args.request_overhead_tokens, output_reserve_tokens=args.output_reserve_tokens,
             wall_seconds=args.wall_seconds, env_allowlist=args.env_allowlist)

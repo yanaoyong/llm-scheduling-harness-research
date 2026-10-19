@@ -16,6 +16,15 @@ from harness_v6.metrics import Metrics
 from harness_v6.store_v6 import Store, compare_and_commit
 
 
+def test_native_forbidden_tool_is_a_failed_session():
+    raw=json.dumps({'type':'error','message':'Fatal error: HARNESS_FORBIDDEN_TOOL: unsupported call: apply_patch'})
+    parsed=classify(raw,interaction='single_action')
+    assert 'forbidden_item:unadvertised_tool' in parsed['errors']
+    assert 'failed_event:error' in parsed['errors']
+    assert 'missing_turn_completed' in parsed['errors']
+    assert parsed['usage'] is None and parsed['calls']==[]
+
+
 def setup_cycle(tmp_path, f=None, version=0):
     f=f or SyntheticFactory()
     inp=tmp_path/'input';inp.mkdir(parents=True)
@@ -68,7 +77,29 @@ def test_stdio_roundtrip(tmp_path):
     assert [r['id'] for r in replies]==[1,2,3]
     assert len(replies[1]['result']['tools'])==3
     assert not replies[2]['result']['isError']
+    from harness_v6.tool_codec import unpack
+    wire = strict_json(replies[2]['result']['content'][0]['text'])
+    raw_rows = [json.loads(x) for x in (tmp_path/'stdio/mcp.jsonl').read_text().splitlines()]
+    assert encode(unpack(wire)) == encode(raw_rows[-1]['result'])
     assert not audit_chain([json.loads(x) for x in (tmp_path/'stdio/mcp.jsonl').read_text().splitlines()])
+
+
+def test_rpc_read_validate_submit_codec_matches_raw_audit(tmp_path):
+    from harness_v6.tool_codec import unpack
+    server, factory = setup_cycle(tmp_path)
+    args = {'expected_state_version': 0, 'submission_id': 'codec-test', 'delta': scripted_delta(factory, 1)}
+    calls = [('read_entities', {'kind': 'operations', 'ids': ['absent-id']}),
+             ('validate_plan', args), ('submit_plan', args)]
+    try:
+        for i, (name, arguments) in enumerate(calls):
+            response = server.rpc({'jsonrpc':'2.0', 'id':i, 'method':'tools/call',
+                'params':{'name':name, 'arguments':arguments}})
+            wire = strict_json(response['result']['content'][0]['text'])
+            assert encode(unpack(wire)) == encode(server.records[-1]['result'])
+        assert server.records[-1]['result']['accepted']
+        assert not audit_chain(server.records)
+    finally:
+        server.close()
 
 
 def test_serialized_idempotent_submit_and_readonly(tmp_path):
@@ -122,6 +153,10 @@ def test_command_is_only_built(tmp_path):
     assert 'mcp_servers.harness_v6.command='+json.dumps(sys.executable) in argv
     assert 'model_auto_compact_token_limit=1001' in argv
     assert '--output-schema' not in argv
+    assert 'features.shell_snapshot=false' in argv
+    assert 'mcp_servers.harness_v6.enabled_tools='+json.dumps(list(__import__('harness_v6.mcp_server',fromlist=['TOOLS']).TOOLS)) in argv
+    approvals=[x for x in argv if x.startswith('mcp_servers.harness_v6.tools.')]
+    assert len(approvals)==3 and all(x.endswith('.approval_mode="approve"') for x in approvals)
 
 
 def test_store_root_and_atomic_cas(tmp_path):

@@ -26,7 +26,7 @@ def test_probe_manifest_existing_consumers(tmp_path):
     probes = module('run_codex_probes')
     root = tmp_path/'probes'
     manifest = probes.run(str(FAKE), 'fake-codex 1', root)
-    assert len(manifest['checks']) == 12 and manifest['mechanism_only']
+    assert len(manifest['checks']) == 13 and manifest['mechanism_only']
     from probe_checks import check_f6, check_single_action, require_real_codex
     for check in manifest['checks']:
         validate = check_single_action if check.startswith('single_') else check_f6
@@ -139,3 +139,73 @@ def test_mac_gate_rejects_fake_binary_even_if_flag_changed(tmp_path):
                         checks={'probe': {'command': [str(binary)]}})
         with pytest.raises(AssertionError, match='repository fake'):
             require_real_codex(manifest)
+
+
+def test_mac_gate_rejects_renamed_script_with_native_version_claim(tmp_path):
+    from probe_checks import require_real_codex
+    from harness_v6.codex_pin import ISOLATED_VERSION
+    import hashlib
+    binary=tmp_path/'codex';binary.write_bytes(b'#!/bin/sh\nexit 0\n')
+    manifest=dict(mechanism_only=False,codex_version=ISOLATED_VERSION,
+        binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
+        checks={'probe':{'command':[str(binary)]}})
+    with pytest.raises(AssertionError,match='Mach-O'):
+        require_real_codex(manifest)
+
+
+def test_mcp_transport_metadata_does_not_relax_tool_arguments():
+    match=module('run_codex_probes').probe_call_matches
+    assert match(dict(name='read_entities',arguments={},_meta={'progressToken':1,'threadId':'thread'}),{})
+    assert not match(dict(name='read_entities',arguments={'injected':1},_meta={}),{})
+    assert not match(dict(name='read_entities',arguments={},_meta={'unknown':1}),{})
+    assert not match(dict(name='read_entities',arguments={},unexpected=1),{})
+    assert not match(dict(name='foreign',arguments={},_meta={}),{})
+    assert not match(dict(name='read_entities',arguments={},_meta={'progressToken':True}),{})
+
+
+def test_native_result_wrapper_preserves_payload_and_rejects_truncation():
+    unpack=module('run_codex_probes').unpack_result
+    expected=dict(payload='0123456789abcdef'*1024,marker='sentinel')
+    wrapped='Wall time: 0.0012 seconds\nOutput:\n'+json.dumps([dict(type='text',text=json.dumps(expected))])
+    assert unpack(wrapped)==expected
+    assert unpack(wrapped[:-30])!=expected
+    assert unpack('unexpected header\n'+wrapped)!=expected
+
+
+@pytest.mark.parametrize('mutation', ['none','arguments','unknown','bool_type','session','window','version','bridge'])
+def test_v163_metadata_is_strict_and_separate_from_tool_arguments(mutation):
+    match=module('run_codex_probes').probe_call_matches
+    thread='01a15137-bb59-7cc0-9053-a554b8f848d8'
+    trace=dict(model='gpt-6-astra',reasoning_effort='medium',sandbox='seatbelt',
+        session_id=thread,thread_id=thread,thread_source='user',turn_id='turn',
+        turn_started_at_unix_ms=1792363969452,codex_version='0.163.0',
+        sandbox_mode='read-only',turn_trigger='exec',auto_review_enabled=False,
+        node_repl_auto_review_required=True,node_repl_disabled=False)
+    meta=dict(progressToken=1,threadId=thread,sessionId=thread,windowId=thread+':0',
+        callId='call_probe_1',itemId='fc_probe_1',codex_bridge_mcp_call_id=thread)
+    meta['x-codex-turn-metadata']=trace
+    envelope=dict(name='read_entities',arguments={},_meta=meta)
+    if mutation=='arguments': envelope['arguments']={'injected':1}
+    if mutation=='unknown': meta['unknown']=1
+    if mutation=='bool_type': trace['node_repl_disabled']=0
+    if mutation=='session': meta['sessionId']='different'
+    if mutation=='window': meta['windowId']='different:0'
+    if mutation=='version': trace['codex_version']='unverified'
+    if mutation=='bridge': meta['codex_bridge_mcp_call_id']='malformed'
+    assert match(envelope,{}) == (mutation=='none')
+
+
+def test_v163_complete_mcp_text_parts_and_rejection():
+    from copy import deepcopy
+    from harness_v6.tool_codec import pack
+    decode=module('run_codex_probes').decoded_tool_output
+    original=dict(payload='0123456789abcdef'*1024,absent=None,flag=False)
+    text=json.dumps(pack(original),ensure_ascii=False)
+    parts=[dict(type='input_text',text='Wall time: 0.0012 seconds\nOutput:'),
+           dict(type='input_text',text=text)]
+    assert decode(parts)==(original,text)
+    invalid=[parts[:1],parts+[parts[1]],parts[::-1]]
+    for field,value in [('type','input_image'),('text',text[:-1]),('extra',True)]:
+        bad=deepcopy(parts);bad[1][field]=value;invalid.append(bad)
+    for bad in invalid:
+        with pytest.raises((ValueError,KeyError)): decode(bad)

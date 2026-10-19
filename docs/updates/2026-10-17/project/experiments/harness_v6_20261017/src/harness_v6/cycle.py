@@ -146,7 +146,9 @@ class CycleMachine:
         self.wall_seconds += wall_seconds
         self.unknown_usage += not usage_known
         self.failures = 0 if success else self.failures + 1
-        idle = record['avoidable_idle']
+        # Live adoption supplies the resulting-plan gauge on the same frozen
+        # observation. Without adoption, the old-plan gauge remains authoritative.
+        idle = record.get('avoidable_idle_after', record['avoidable_idle'])
         self.idle_streak = (self.idle_streak + 1 if idle > 0 and not model_note.strip()
                             and (self.previous_idle is None or idle >= self.previous_idle) else 0)
         self.previous_idle = idle

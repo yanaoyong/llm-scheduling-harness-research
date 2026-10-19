@@ -64,6 +64,7 @@
     3
   ],
   "codex_version": null,
+  "codex_binary_sha256": null,
   "model": null,
   "context_token_budget": null,
   "request_overhead_tokens": null,

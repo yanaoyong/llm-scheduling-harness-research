@@ -1,5 +1,7 @@
 # Harness v6：账本、周期与物理机制验证
 
+> 当前状态（2026-10-19）：[S0 阶段归档](../../../../2026-10-19/README.md)。离线 660 项及 38 子测试通过；真实 A/B 已完成，正式轨迹 0/6，已按 E1 smoke 次数上限暂停。下文保留各自日期的历史记录，旧的“零真实调用”等表述不代表当前状态。
+
 本目录保存 Phase A–I 的独立实验实现；默认纯函数 suite 不需要模拟器，所有测试均不调用模型或网络。
 获准的公开 SMT2020 物理机制验证与复跑入口见文末 Phase F。
 权威依据：`research/2026-10-17-codex-search/HARNESS_V6_PLAN_reviewed.md` 第二部分
@@ -125,6 +127,8 @@ Mac tiktoken 惰性适配器及封存 SQLite 只读适配器不在本地访问�
   K_fail、stall_cycles、unknown_usage_cap、segment_seconds/cycles、累计/每小时成本上限
   都在配置中；未登记预算时 cap=None，仅适用于机制测试。
 - 连续失败由 K_fail 控制；停滞仅指正的 avoidable_idle 连续不下降且无显式模型说明。
+  成功采纳时，在同一冻结观测上按结果计划重新计算 avoidable_idle_after；
+  失败时沿用原计划的决策前观测。新事件带来的新需求不能冒充上一轮未解决的空闲。
   零空闲不会造成假停滞；空周期重置 idle streak。未知用量按失败会话累计，不能清零。
 - `Metrics`：integrate 按小时边界拆分计数×秒；生产与执行事件计入发生小时，
   会话成本计入开始小时。请求下界=工具轮次+1；input_per_request 使用此下界作分母，

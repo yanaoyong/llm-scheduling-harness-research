@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "files": 2917,
+  "logical_bytes": 1187135140,
+  "archive_bytes": 145887459,
+  "archive_sha256": "4b234b48343474b0ca98f98e823e7d472e0d6e982fdcd24f51a922ec257bf8a7",
+  "original_selected_archive_sha256": "d8f9041be79d58514586c21d376698e6d408258d988d9de1d9787c9135f95703",
+  "transformations": {
+    "local_identity": 5148,
+    "opaque_ciphertext": 0,
+    "api_key": 0,
+    "github_token": 0,
+    "github_fine_token": 0,
+    "bearer": 0,
+    "jwt": 0,
+    "private_key": 0,
+    "email_matches": 0,
+    "non_visible_reasoning": 102,
+    "private_field": 2
+  },
+  "excluded_counts": {
+    "private_runtime_or_symlink": 2389,
+    "binary_cache_database_or_log": 127
+  },
+  "production_python_byte_identical": true,
+  "python_files_checked": 107,
+  "real_model_requests": 0,
+  "full_private_workspace_not_copied": true
+}

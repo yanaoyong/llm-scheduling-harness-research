@@ -82,9 +82,16 @@ def test_diagnostics_fields_roundtrip_do_not_mutate_or_interrupt(fmt):
 
 
 def test_cycle_decisions_same_for_identical_inputs():
-    # Pin the actual pre-T implementation, in addition to behavioral checks.
+    # Retain the pre-T source pin except for the separately tested post-adoption
+    # idle observation fix. Any other state-machine change still fails this pin.
     path=Path(__file__).parents[1]/'src/harness_v6/cycle.py'
-    assert hashlib.sha256(path.read_bytes()).hexdigest()=='2ad7002dcef8d826ca9c7b61d1577085894a371ab2e4466cada2f57575444972'
+    revised = ("        # Live adoption supplies the resulting-plan gauge on the same frozen\n"
+               "        # observation. Without adoption, the old-plan gauge remains authoritative.\n"
+               "        idle = record.get('avoidable_idle_after', record['avoidable_idle'])\n")
+    source = path.read_text()
+    assert source.count(revised) == 1
+    original = source.replace(revised, "        idle = record['avoidable_idle']\n")
+    assert hashlib.sha256(original.encode()).hexdigest()=='2ad7002dcef8d826ca9c7b61d1577085894a371ab2e4466cada2f57575444972'
     for event in (None,'plan_invalidated','expired_task','no_plan','terminal'):
         for idle_count in (0,1):
             a,b=CycleMachine(),CycleMachine()

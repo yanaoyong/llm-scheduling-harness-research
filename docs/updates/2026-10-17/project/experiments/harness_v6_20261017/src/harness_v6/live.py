@@ -21,8 +21,11 @@ from .prompt_rules import cycle_footer
 
 class LiveRun:
     def __init__(self, factory, runner, *, directory, prefix, source_sha256,
-                 context_token_budget, request_overhead_tokens, output_reserve_tokens, token_counter, config=None, drift_rule=None, model='scripted', budget=session.Budget(), model_note='', snapshot_format='explicit', checkpoint_completed=False):
+                 context_token_budget, request_overhead_tokens, output_reserve_tokens, token_counter, config=None, drift_rule=None, model='scripted', budget=session.Budget(), model_note='', snapshot_format='explicit', checkpoint_completed=False, model_config=None):
         from .compact import check_format
+        from .model_config import admission_limit
+        self.request_context_limit = admission_limit(model_config, model=model, context_token_budget=context_token_budget)
+        self.model_config = None if model_config is None else dict(model_config)
         self.checkpoint_completed = checkpoint_completed
         self.snapshot_format = check_format(snapshot_format)
         magic = b"SNAPSHOT_V1_DENSE\n" if snapshot_format == "dense" else b"SNAPSHOT_V1\n"
@@ -63,6 +66,9 @@ class LiveRun:
             f.env.presentation_horizon_seconds = c.config.horizon
         if c.stop_reason:
             return None
+        from .model_config import admission_limit
+        self.request_context_limit = admission_limit(self.model_config, model=self.model,
+            context_token_budget=self.context_token_budget)
         if event is None:
             target = c.anchor if c.config.trigger == 'periodic' else f.now + c.config.horizon
             if until is not None:
@@ -79,20 +85,24 @@ class LiveRun:
                          invalid_tasks=execution.get('invalidated_task_ids', []),
                          valid_until=f.plan['valid_until'] if f.plan else None, event=event)
         if record['session']:
+            problem = f.problem()
             footer = cycle_footer(state_version=c.cycles, submission_id=str(c.cycles),
                 now=f.now, next_anchor=c.anchor, delta=c.config.delta, delta_min=c.config.delta_min,
-                trigger=c.config.trigger, interaction=c.config.interaction, wall_seconds=self.budget.wall_seconds)
+                trigger=c.config.trigger, interaction=c.config.interaction, wall_seconds=self.budget.wall_seconds,
+                valid_until_maximum=min(execution['observation_end'], problem['horizon_end']),
+                max_tool_calls=self.budget.max_tool_calls)
             try:
                 payload = build_snapshot(self.prefix, ledger, horizon_seconds=c.config.horizon, snapshot_format=self.snapshot_format, state_version=c.cycles,
                     running_jobs=f.running_jobs(), last_cycle_receipt=c.last_record,
-                    model_notes=self.model_note, token_budget=self.context_token_budget - self.request_overhead_tokens - self.output_reserve_tokens, token_counter=self.token_counter, history=self.history)
+                    model_notes=self.model_note, token_budget=self.request_context_limit - self.request_overhead_tokens - self.output_reserve_tokens, token_counter=self.token_counter, history=self.history)
                 prompt = payload.decode() + footer
                 prompt_tokens = self.token_counter(prompt)
-                if prompt_tokens + self.request_overhead_tokens + self.output_reserve_tokens > self.context_token_budget:
+                if prompt_tokens + self.request_overhead_tokens + self.output_reserve_tokens > self.request_context_limit:
                     raise SnapshotBudgetExceeded(dict(tokens=prompt_tokens, bytes=len(prompt.encode()), dropped_rows=0))
             except SnapshotBudgetExceeded as exc:
                 self.budget_report = dict(exc.report, code='context_budget_exceeded',
                     snapshot_tokens=exc.report['tokens'], request_overhead_tokens=self.request_overhead_tokens,
+                    request_context_limit=self.request_context_limit,
                     output_reserve_tokens=self.output_reserve_tokens, context_token_budget=self.context_token_budget,
                     request_tokens=exc.report['tokens'] + self.request_overhead_tokens + self.output_reserve_tokens)
                 atomic_write(self.directory / 'budget_report.json', canonical(self.budget_report))
@@ -104,7 +114,6 @@ class LiveRun:
             self.min_snapshot_bytes = min(self.min_snapshot_bytes or len(payload), len(payload))
             config = dict(state_version=c.cycles, next_anchor=c.anchor, delta_seconds=c.config.delta,
                           source_sha256=self.source_sha256, trigger=c.config.trigger, delta_min=c.config.delta_min)
-            problem = f.problem()
             submit = Submitter(f.plan, problem, execution, **config)
             initial = submit.capture()
             directory = self.directory / f'cycle-{c.cycles}'
@@ -129,10 +138,20 @@ class LiveRun:
             def commit(version, plan):
                 if version != c.cycles or c.inflight is None:
                     return False
+                # Evaluate the adopted plan against this same frozen observation
+                # before publishing it. New demand at a later decision must not
+                # count as unresolved idle from the preceding successful plan.
+                from .ledger import ledger_read_view
+                receipts = {'tasks': list(ledger.task_receipts.values()),
+                            'operations': list(ledger.receipts.values())}
+                idle_after = ledger_read_view(problem, plan, receipts).metrics()['avoidable_idle']
                 f.adopt(plan)
+                c.inflight['avoidable_idle_after'] = idle_after
                 return True
             class RecordingRunner:
                 def run(_, argv, prompt, *, timeout):
+                    atomic_write(outputs / 'command.json', canonical(
+                        [getattr(self.runner, 'binary', argv[0]), *argv[1:]]))
                     result = self.runner.run(argv, prompt, timeout=timeout)
                     atomic_write(outputs / 'session.jsonl', result.jsonl.encode())
                     return result
@@ -147,10 +166,12 @@ class LiveRun:
                           persist_completed=completed, model_note=self.model_note)
             if c.config.interaction == 'single_action':
                 schema = inputs / 'submit.schema.json'; single_action.write_schema(schema)
-                argv = single_action.command(inputs, schema, model=self.model, budget=self.budget)
+                argv = single_action.command(inputs, schema, model=self.model, budget=self.budget,
+                    context_token_budget=self.context_token_budget, output_reserve_tokens=self.output_reserve_tokens, model_config=self.model_config)
                 self.outcome = single_action.run(RecordingRunner(), argv, prompt, submitter=submit, **common)
             else:
                 argv = session.command(inputs, outputs, model=self.model, budget=self.budget,
+                    context_token_budget=self.context_token_budget, output_reserve_tokens=self.output_reserve_tokens, model_config=self.model_config,
                     env={'PYTHONPATH': os.pathsep.join(str(Path(p).resolve()) for p in sys.path)})
                 self.outcome = session.run_session(RecordingRunner(), argv, prompt,
                     initial_state=initial, artifacts=lambda: session.read_artifacts(outputs), **common)
@@ -175,6 +196,7 @@ class LiveRun:
 
     def capture(self):
         return {'factory': self.factory.capture(), 'cycle': self.cycle.capture(), 'metrics': self.metrics.capture(),
+                'model_config': self.model_config,
                 'snapshot_format': self.snapshot_format, 'history': self.history.digest, 'budget_report': self.budget_report, 'max_snapshot_bytes': self.max_snapshot_bytes,
                 'min_snapshot_bytes': self.min_snapshot_bytes, 'last_hour': self.last_hour,
                 'drift': None if not self.drift else {'limits': self.drift.rule.limits,
@@ -192,6 +214,8 @@ class LiveRun:
         state = payload['extra']
         if state.get('snapshot_format', 'explicit') != self.snapshot_format:
             raise ValueError('checkpoint snapshot_format mismatch')
+        if state.get('model_config') != self.model_config:
+            raise ValueError('checkpoint model_config mismatch')
         self.budget_report = state.get('budget_report')
         self.factory = self.factory.restore(payload['state'])
         self.cycle = CycleMachine.restore(payload['cycle'])
