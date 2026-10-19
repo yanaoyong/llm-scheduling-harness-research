@@ -1,0 +1,2 @@
+# Archived unified diffs retain blank context lines and exact pinned hashes.
+docs/updates/2026-10-17/project/experiments/harness_v6_20261017/patches/*.patch -whitespace

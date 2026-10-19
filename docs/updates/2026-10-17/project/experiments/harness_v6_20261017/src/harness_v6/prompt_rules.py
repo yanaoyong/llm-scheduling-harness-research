@@ -108,15 +108,35 @@ def rules_for_format(snapshot_format):
 
 
 def cycle_footer(*, state_version, submission_id, now, next_anchor, delta,
-                 delta_min, trigger, interaction, wall_seconds):
+                 delta_min, trigger, interaction, wall_seconds, valid_until_maximum, max_tool_calls):
     """Only per-cycle instruction tail; snapshot prefix remains byte-stable."""
     import json
     minimum = next_anchor + delta if trigger == 'periodic' else now + delta_min
-    instruction = ('Use read_entities for additional public facts, validate_plan, then submit_plan.'
+    instruction = ('The full snapshot is already provided. read_entities is optional for additional public facts.'
+                   ' validate_plan checks a candidate but does not commit it; submit_plan is required to commit.'
+                   ' All tool calls, including extra read pages, count toward max_tool_calls.'
+                   ' Reserve at least one tool call for submit_plan; do not spend the last call on reading or validation.'
                    if interaction == 'mcp_session' else
                    'Return exactly the JSON object {expected_state_version,submission_id,delta} '
                    'matching the output schema; no prose or tool calls. Use earliest_start as a lower bound and nominal_start as information only; diagnostics require your explicit delta.')
     value = dict(current_time=now, expected_state_version=state_version, submission_id=submission_id,
+                 max_tool_calls=max_tool_calls if interaction == 'mcp_session' else 0,
+                 max_model_requests=max_tool_calls+1 if interaction == 'mcp_session' else 1,
+                 valid_until_maximum=valid_until_maximum, valid_until_maximum_comparison="<=",
                  valid_until_minimum=minimum, valid_until_comparison=">=" if trigger == "periodic" else ">", trigger=trigger,
-                 wall_deadline_seconds=wall_seconds, instruction=instruction + ' Use exact current_time for freeze_until; snapshot times are rounded.')
+                 wall_deadline_seconds=wall_seconds, instruction=instruction +
+                 ' Use exact current_time for freeze_until; snapshot times are rounded.'
+                 ' valid_until must satisfy both the stated minimum comparison and valid_until <= valid_until_maximum.'
+                 ' The maximum is the host plan boundary, independent of the snapshot lookahead horizon.'
+                 ' In the complete resulting plan, each operation_id may occur in at most one task, including retained tasks.'
+                 ' Every assigned machine must belong to the eligible_machines of every operation in its task.'
+                 ' Before final output or submit_plan, silently check the complete delta against the frozen snapshot:'
+                 ' For task changes, cancel_ids and replace IDs must name existing pending base tasks; do not cancel a newly added task.'
+                 ' Every task ID in machine_orders must exist in the resulting plan, and every new task must appear exactly once.'
+                 ' Every supplied machine order must contain its full resulting queue, including retained tasks.'
+                 ' For each operation, verify exact membership of its assigned machine in its decoded eligible_machines'
+                 ' and exact equality of operation family and machine family; similar names or nearby machine IDs do not establish eligibility.'
+                 ' Resolve any inconsistencies in your own proposed action before returning or submitting it; do not describe the check in the output.'
+                 ' Plan expiry stops the trajectory as plan_horizon_defect; it never triggers automatic replanning.'
+                 ' For event sessions, the next decision may occur after valid_until_minimum; choose sufficient plan validity.')
     return '\nCYCLE_FOOTER\n' + json.dumps(value, sort_keys=True, separators=(',', ':')) + '\n'

@@ -11,8 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from harness_v6 import registration
 from harness_v6.checkpoint import atomic_write
 from harness_v6.contracts import digest
-from harness_v6.snapshot import canonical, stable_prefix, estimate_tokens, tiktoken_counter
-from harness_v6.mcp_server import TOOL_DESCRIPTIONS
+from harness_v6.snapshot import canonical, production_prefix, estimate_tokens, tiktoken_counter
 from harness_v6.cycle import CycleConfig, DriftRule
 from harness_v6.groups import config_for
 from harness_v6.live import LiveRun
@@ -93,18 +92,25 @@ def execute(args):
         runner = CodexRunner(str(Path(args.codex_binary).resolve()) if args.codex_binary and '/' in args.codex_binary else args.codex_binary or 'codex',
             workdir=Path.cwd(), env_allowlist=reg.get('env_allowlist', ['PATH','HOME']), stderr_path=output/'codex.stderr.log')
         version = runner.version(reg.get('codex_version'))
+        if not args.dry_run_scripted:
+            from harness_v6.codex_pin import require_isolated_pin
+            require_isolated_pin(runner.binary, version, reg.get('codex_binary_sha256'))
         if not args.dry_run_scripted and version == 'fake-codex 1':
             raise ValueError('fake executable cannot produce results')
         if args.dry_run_scripted and version != 'fake-codex 1':
             raise ValueError('dry-run process boundary only supports tests/fake_codex.py')
-    prefix = stable_prefix(tool_descriptions=TOOL_DESCRIPTIONS, routing=routing, machine_groups=machines,
+    prefix = production_prefix(routing=routing, machine_groups=machines,
+                           setup_transitions={} if synthetic else env.manifest['setups'],
+                           min_runs={} if synthetic else dict(env.min_runs),
                            snapshot_format=reg['snapshot_format'], token_counter=counter)
     run = LiveRun(factory, runner, directory=output, prefix=prefix, source_sha256=fixture_hash,
         context_token_budget=reg.get('context_token_budget') or 1000000, request_overhead_tokens=reg.get('request_overhead_tokens') or 0,
         output_reserve_tokens=reg.get('output_reserve_tokens') or 0, token_counter=counter, config=config,
-        model=reg.get('model') or 'scripted', budget=budget, checkpoint_completed=True, snapshot_format=reg['snapshot_format'],
+        model=reg.get('model') or 'scripted', model_config=reg.get('model_config'), budget=budget, checkpoint_completed=True, snapshot_format=reg['snapshot_format'],
         model_note=registration.LABEL if args.dry_run_scripted else '',
         drift_rule=DriftRule(**reg['drift_rule']) if reg.get('drift_rule') else None)
+    if run.prefix != prefix:
+        raise ValueError('production prefix changed after construction; requalify recording contract')
     # ScriptedRunner consumes only the same public prompt as the fake process.
     if isinstance(runner, ScriptedRunner):
         original = runner.run

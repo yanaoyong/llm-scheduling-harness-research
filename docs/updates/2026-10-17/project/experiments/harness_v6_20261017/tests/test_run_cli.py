@@ -73,9 +73,38 @@ def test_results_registration_requires_runner_fields(tmp_path):
     reg=json.loads(registration(tmp_path/'reg.json').read_text())
     reg.update(dry_run=False,plan_source='model',is_result=True,per_sim_hour_token_cap=1000,per_sim_hour_request_cap=10)
     for value in reg['quality'].values(): value.update(floor=0,tolerance=1)
-    for key in ('codex_version','model','context_token_budget','request_overhead_tokens','output_reserve_tokens'):
+    for key in ('codex_version','codex_binary_sha256','model','context_token_budget','request_overhead_tokens','output_reserve_tokens'):
         copy=dict(reg);copy[key]=None
         assert key in validate(copy,results=True)
+
+
+def test_production_rejects_wrong_codex_pin(tmp_path):
+    from harness_v6.codex_pin import require_isolated_pin, ISOLATED_VERSION
+    import hashlib
+    binary=tmp_path/'codex';binary.write_bytes(b'fixture')
+    sha=hashlib.sha256(binary.read_bytes()).hexdigest()
+    assert require_isolated_pin(binary,ISOLATED_VERSION,sha)==sha
+    with pytest.raises(ValueError,match='Harness-only'):
+        require_isolated_pin(binary,'codex-cli 0.147.0',sha)
+    with pytest.raises(ValueError,match='sha256'):
+        require_isolated_pin(binary,ISOLATED_VERSION,'0'*64)
+
+
+@pytest.mark.parametrize('group', ['E1', 'P2'])
+def test_live_uses_context_and_output_limits_independently_of_cumulative_cap(tmp_path, group):
+    cli=module('run_live'); reg_path=registration(tmp_path/'reg.json')
+    reg=json.loads(reg_path.read_text())
+    reg.update(context_token_budget=800000,output_reserve_tokens=4000)
+    reg['session_budget']['token_cap']=12000000
+    reg_path.write_text(json.dumps(reg))
+    a=args(reg_path,tmp_path/'run');a.group=group;a.max_sessions=1
+    cli.execute(a)
+    argv=json.loads(next((tmp_path/'run').glob('cycle-*/output/command.json')).read_text())
+    assert 'model_max_output_tokens=4000' in argv
+    assert 'model_context_window=800000' in argv
+    assert 'model_auto_compact_token_limit=800001' in argv
+    assert 'tool_output_token_limit=800000' in argv
+    assert not any(x.endswith('=12000000') for x in argv)
 
 
 def test_physical_production_metrics_from_new_events_only():

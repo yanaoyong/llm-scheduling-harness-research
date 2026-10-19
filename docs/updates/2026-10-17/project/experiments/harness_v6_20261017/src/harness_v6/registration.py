@@ -10,6 +10,12 @@ def validate(value, *, results=False):
     def check(ok,name):
         if not ok: errors.append(name)
     def positive(x): return type(x) in (int,float) and math.isfinite(x) and x>0
+    if value.get('model_config') is not None or value.get('model') == 'gpt-6-astra':
+        from .model_config import settings
+        try:
+            settings(value.get('model_config'), model=value.get('model'), context_token_budget=value.get('context_token_budget'))
+        except (ValueError, TypeError, OSError):
+            errors.append('model_config')
     check(value.get('snapshot_format') in ('explicit', 'dense'), 'snapshot_format')
     check(value.get('stage') in ('S0','S1','S2','S3','S4'),'stage')
     check(positive(value.get('delta_seconds')),'delta_seconds')
@@ -47,8 +53,10 @@ def validate(value, *, results=False):
         check(value.get('is_result') is True, 'is_result')
         for key in ('codex_version', 'model'):
             check(isinstance(value.get(key), str) and bool(value[key].strip()), key)
+        sha = value.get('codex_binary_sha256')
+        check(isinstance(sha, str) and len(sha) == 64 and all(c in '0123456789abcdef' for c in sha), 'codex_binary_sha256')
         for key in ('context_token_budget', 'request_overhead_tokens', 'output_reserve_tokens'):
-            check(type(value.get(key)) is int and value[key] >= (1 if key == 'context_token_budget' else 0), key)
+            check(type(value.get(key)) is int and value[key] >= (0 if key == 'request_overhead_tokens' else 1), key)
     if results or not value.get('dry_run'):
         check(positive(value.get('per_sim_hour_token_cap')),'token_cap')
         check(positive(value.get('per_sim_hour_request_cap')),'request_cap')

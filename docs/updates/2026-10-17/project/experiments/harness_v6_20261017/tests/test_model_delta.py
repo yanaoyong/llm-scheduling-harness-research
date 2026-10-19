@@ -75,7 +75,9 @@ def test_cancellation_without_order_preserves_remaining_queue(case):
 
 def test_schema_is_complete_shared_and_closed():
     assert OUTPUT_SCHEMA == TOOLS['submit_plan'] == TOOLS['validate_plan']
-    assert OUTPUT_SCHEMA['properties']['delta'] == DELTA_SCHEMA
+    from harness_v6.structured_schema import strict_projection, validate_strict_schema
+    assert OUTPUT_SCHEMA['properties']['delta'] == strict_projection(DELTA_SCHEMA)
+    validate_strict_schema(OUTPUT_SCHEMA)
     assert set(TASK['properties']) == {'id','operation_ids','start_mode','not_before','latest_start'}
     assert set(HOLD['properties']) == {'machine','until','reason','after_task_id'}
     assert all(TOOL_DESCRIPTIONS[n] != n for n in TOOLS)

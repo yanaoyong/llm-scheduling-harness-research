@@ -1,0 +1,419 @@
+{
+  "files": [
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/GOAL_PROMPT_S0_20261019.txt",
+      "source_sha256": "c9a3e2d44c30051b11278e5b220b930b7c680755b3492dab16120b94f5cc8b03",
+      "public_sha256": "b986c89025dbe5baaccae387f72e425983a80443f3edf500dd13562ac523da66",
+      "bytes": 15721,
+      "transformed": true,
+      "editorial_change": "; normalize final blank lines"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/HANDOFF_20261018.md",
+      "source_sha256": "7acf11fe026c515c99f183953c0e323c3bc0305d5123f04c93df2b5fb9a8ddec",
+      "public_sha256": "95f92f6417c78120755d900644d1d2e7e84941bd0ff9ff9ecd1362610f4ac3d0",
+      "bytes": 9514,
+      "transformed": false,
+      "pre_editorial_public_sha256": "7acf11fe026c515c99f183953c0e323c3bc0305d5123f04c93df2b5fb9a8ddec",
+      "editorial_change": "Current-status link added above historical content"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/MAC_ACCEPTANCE_20261018.md",
+      "source_sha256": "2663fe89dcfc2377198ec46ea3a4c8270c4eaf6a6e3e0ba8a905ddfdd351f982",
+      "public_sha256": "e3b28cc2d5879fc8c1f5c9acd2331ab47c9bf30e51342e403473b82563b9ad7d",
+      "bytes": 12057,
+      "transformed": true,
+      "pre_editorial_public_sha256": "d15075d2d9512e5e7d39f44d3f23d795ca38f953d2b795021d29aef5dcee7e57",
+      "editorial_change": "Current-status link added above historical content"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/MAC_RUNBOOK.md",
+      "source_sha256": "955fd663fe74319cb17f3d743f919e7981cf2068f484e68c1852f4d9c1d4e227",
+      "public_sha256": "d3bce7b248d5ae5f0e78001e9816afc15fd4f265abf38b4e7487592d61c9212a",
+      "bytes": 28706,
+      "transformed": false,
+      "pre_editorial_public_sha256": "955fd663fe74319cb17f3d743f919e7981cf2068f484e68c1852f4d9c1d4e227",
+      "editorial_change": "Current-status link added above historical content"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/MAC_VALIDATION.md",
+      "source_sha256": "b1316202545be28920607108d20da59b63e7e6af628dbcc0829a39df901f8f86",
+      "public_sha256": "683cde66440bce7ffe342911157c64a27b113c19c38e807c0e1729822595c432",
+      "bytes": 42247,
+      "transformed": false,
+      "pre_editorial_public_sha256": "b1316202545be28920607108d20da59b63e7e6af628dbcc0829a39df901f8f86",
+      "editorial_change": "Current-status link added above historical content"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/README.md",
+      "source_sha256": "5457349dafd15da29c86fa1f1985c3fbf6f33167bdbc6b650d461f3a49d2fb7c",
+      "public_sha256": "2f142fc9efb169bac4fd28cf8d3a3de893cb8d3a4cae3e644eb8c35050c66e4d",
+      "bytes": 41375,
+      "transformed": false,
+      "pre_editorial_public_sha256": "5457349dafd15da29c86fa1f1985c3fbf6f33167bdbc6b650d461f3a49d2fb7c",
+      "editorial_change": "Current-status link added above historical content"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/STEP34_REPAIR_20261018.md",
+      "source_sha256": "8e7876b998bbd84b6c79e9d9ba901fe4f05b01c793b7a256b5aae10c31222512",
+      "public_sha256": "c54249d02b9616470cfc442b0ddabe30755b93bb4ac8fc9ef9f4fb4c918a0aa1",
+      "bytes": 11005,
+      "transformed": true,
+      "pre_editorial_public_sha256": "29bde1a1850b0de2886f89b8ce72e137998d73d74af229bdc4262f7c1709a4c4",
+      "editorial_change": "Current-status link added above historical content"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/STEP4_BUDGET_ANALYSIS_20261019.md",
+      "source_sha256": "31f8d07d6eea50071ab04ca6642599f82d7b1bad465a8a2f8473ffa3275c748e",
+      "public_sha256": "5d82885e04cc56054caaa6a6a39400a7e75a27102bcdeb9976a712a5d0e6962d",
+      "bytes": 15281,
+      "transformed": true,
+      "pre_editorial_public_sha256": "1d96897b95bc67dc06290d606580d9520c8ce29de1ce87b7c864887a437f96e2",
+      "editorial_change": "Current-status link added above historical content; normalize final blank lines"
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/patches/codex-0.147.0-harness-v6.2.patch",
+      "source_sha256": "5af2eda930ebf6cba58ac1d2271a1db29cca61cb162ca8162dd16320bdec3c08",
+      "public_sha256": "5af2eda930ebf6cba58ac1d2271a1db29cca61cb162ca8162dd16320bdec3c08",
+      "bytes": 44970,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/patches/codex-0.147.0-harness-v6.patch",
+      "source_sha256": "2da682ef153a574c2c759e9dad8ef5fefab3ae69d012e5db038b3b2557f0b200",
+      "public_sha256": "2da682ef153a574c2c759e9dad8ef5fefab3ae69d012e5db038b3b2557f0b200",
+      "bytes": 43237,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/patches/codex-0.163.0-harness-v6.3.patch",
+      "source_sha256": "96501826accb26484e31f15c80370d5d1119d129fa0d4d65cc0c62eaf3ea6261",
+      "public_sha256": "96501826accb26484e31f15c80370d5d1119d129fa0d4d65cc0c62eaf3ea6261",
+      "bytes": 51265,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/patches/codex-0.163.0-harness-v6.4.patch",
+      "source_sha256": "14d6fa3e33e8ed3871e10f436170621da99541b0e67733c1777d4575f4d31d9e",
+      "public_sha256": "14d6fa3e33e8ed3871e10f436170621da99541b0e67733c1777d4575f4d31d9e",
+      "bytes": 53123,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/patches/codex-0.163.0-harness-v6.5.patch",
+      "source_sha256": "49c9997cef51e88ade910dcd484c4c54292dfad9b353e83149d72d17d3392da9",
+      "public_sha256": "49c9997cef51e88ade910dcd484c4c54292dfad9b353e83149d72d17d3392da9",
+      "bytes": 55479,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/registration_template.json",
+      "source_sha256": "b4d07bd7634dc18cd831565d0612571c5d53c811046e610ac9968df733c60323",
+      "public_sha256": "b4d07bd7634dc18cd831565d0612571c5d53c811046e610ac9968df733c60323",
+      "bytes": 1715,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/ab_comprehension.py",
+      "source_sha256": "94fc75a9432fa65b7839f5e491c3d71434c4258f627cc564fda995c61aa65576",
+      "public_sha256": "94fc75a9432fa65b7839f5e491c3d71434c4258f627cc564fda995c61aa65576",
+      "bytes": 36235,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/build_harness_codex.py",
+      "source_sha256": "2b2d62782ca21d22d6bf3ce2e9ae971f6df032c2358b29b693fd2354cab04bb3",
+      "public_sha256": "2b2d62782ca21d22d6bf3ce2e9ae971f6df032c2358b29b693fd2354cab04bb3",
+      "bytes": 5188,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/build_sealed_fixture.py",
+      "source_sha256": "29fc79b97af7f2829775400eed9ffaff7326035c335a51fcfe35a11811a1a823",
+      "public_sha256": "29fc79b97af7f2829775400eed9ffaff7326035c335a51fcfe35a11811a1a823",
+      "bytes": 10275,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/mac_preflight.py",
+      "source_sha256": "ffac8bc62ba56281e1574f272b2110b367d1883b9330463253e8cc2de1fc9edd",
+      "public_sha256": "ffac8bc62ba56281e1574f272b2110b367d1883b9330463253e8cc2de1fc9edd",
+      "bytes": 4818,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/measure_compact_snapshot.py",
+      "source_sha256": "89d2a28a8bcc4f208b28758285f9dfd983b16191bf6b4c4f289f8554524a9990",
+      "public_sha256": "89d2a28a8bcc4f208b28758285f9dfd983b16191bf6b4c4f289f8554524a9990",
+      "bytes": 8504,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/measure_request_overhead.py",
+      "source_sha256": "921e401a6b0d9d0708ce9cd6b0559910ea7379328aceca58f878e9ba3fb31f56",
+      "public_sha256": "921e401a6b0d9d0708ce9cd6b0559910ea7379328aceca58f878e9ba3fb31f56",
+      "bytes": 16567,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/prepare_recording_snapshots.py",
+      "source_sha256": "7d37ac0d4da9a032804f8656b1cfc6f35278bce4c1fade9e8807354f0ef71be4",
+      "public_sha256": "7d37ac0d4da9a032804f8656b1cfc6f35278bce4c1fade9e8807354f0ef71be4",
+      "bytes": 4328,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/run_codex_probes.py",
+      "source_sha256": "f3b4f7047f6eb4ea538ff9946b12e004c8333d98b1ca1bfdd1eed26ce3aaed22",
+      "public_sha256": "f3b4f7047f6eb4ea538ff9946b12e004c8333d98b1ca1bfdd1eed26ce3aaed22",
+      "bytes": 28256,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/run_live.py",
+      "source_sha256": "e9fcb789ba3ca2827b79f7dd1da2603a12314689df0dc23bc37a718cdc614957",
+      "public_sha256": "e9fcb789ba3ca2827b79f7dd1da2603a12314689df0dc23bc37a718cdc614957",
+      "bytes": 11365,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/validate_sealed_fixture.py",
+      "source_sha256": "fca28662e31ac3fd0219b0085b0db9f55fa49305ce288164e29581e570c0e711",
+      "public_sha256": "fca28662e31ac3fd0219b0085b0db9f55fa49305ce288164e29581e570c0e711",
+      "bytes": 8198,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/codex_pin.py",
+      "source_sha256": "6ac55057c3418d97f2978a9d13ad70c05b08e7111079113baf2aab48907d2663",
+      "public_sha256": "6ac55057c3418d97f2978a9d13ad70c05b08e7111079113baf2aab48907d2663",
+      "bytes": 640,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/cycle.py",
+      "source_sha256": "3052282f0a5d197b74f722a141337104fcd495af16a1b64800d1d9edebe26513",
+      "public_sha256": "3052282f0a5d197b74f722a141337104fcd495af16a1b64800d1d9edebe26513",
+      "bytes": 10830,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/live.py",
+      "source_sha256": "5219544b47d08967da230070393d6f7f88f1be7dda73dd8a2dd87c82affd8515",
+      "public_sha256": "5219544b47d08967da230070393d6f7f88f1be7dda73dd8a2dd87c82affd8515",
+      "bytes": 15204,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/mcp_server.py",
+      "source_sha256": "d373c99d44d4ef0a7dba028eb69dc5cfb040163f178fa53cf98b6afe63d3a12f",
+      "public_sha256": "d373c99d44d4ef0a7dba028eb69dc5cfb040163f178fa53cf98b6afe63d3a12f",
+      "bytes": 8296,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/model_config.py",
+      "source_sha256": "170ff50f3332c20ae62bb54b7bee23fc7ba1094f1fd0657350c67e7933f0b687",
+      "public_sha256": "170ff50f3332c20ae62bb54b7bee23fc7ba1094f1fd0657350c67e7933f0b687",
+      "bytes": 3219,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/prompt_rules.py",
+      "source_sha256": "793327421450c87350d4073ec349dea4e075ac88589380d204f9bbb282ed3f19",
+      "public_sha256": "793327421450c87350d4073ec349dea4e075ac88589380d204f9bbb282ed3f19",
+      "bytes": 11370,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/registration.py",
+      "source_sha256": "4d0986704e666c75c8de79f82f381990c70ced54249e26813282b5dcc55e1bec",
+      "public_sha256": "4d0986704e666c75c8de79f82f381990c70ced54249e26813282b5dcc55e1bec",
+      "bytes": 4482,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/session.py",
+      "source_sha256": "948d2ab8d63b74a4610b845c211fb211abcc82f92e7b22278d51f147b687bd48",
+      "public_sha256": "948d2ab8d63b74a4610b845c211fb211abcc82f92e7b22278d51f147b687bd48",
+      "bytes": 11096,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/single_action.py",
+      "source_sha256": "efe674253b253d52c23d4333fb31bf48444d3603b72360f2372cd6e0dfef8898",
+      "public_sha256": "efe674253b253d52c23d4333fb31bf48444d3603b72360f2372cd6e0dfef8898",
+      "bytes": 6859,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/snapshot.py",
+      "source_sha256": "90759ab164c990d99f55018a5f21c56902014cc9a41655bb168a22f36a5f0afd",
+      "public_sha256": "90759ab164c990d99f55018a5f21c56902014cc9a41655bb168a22f36a5f0afd",
+      "bytes": 7672,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/structured_schema.py",
+      "source_sha256": "ccb7ceb093493bf9f60af201b9c25769ff1098e5a1deff8d3102e8936e8422b4",
+      "public_sha256": "ccb7ceb093493bf9f60af201b9c25769ff1098e5a1deff8d3102e8936e8422b4",
+      "bytes": 5135,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/tool_codec.py",
+      "source_sha256": "1556d4b58dc851bf2e05ce46fdbee433630806e6206c2b97025348910c2a804f",
+      "public_sha256": "1556d4b58dc851bf2e05ce46fdbee433630806e6206c2b97025348910c2a804f",
+      "bytes": 6542,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/tool_contract.py",
+      "source_sha256": "53cdc2ed3896bcfc7a28014e3059fcd5f06bdf12bf4051d09159a1e7c40c4328",
+      "public_sha256": "53cdc2ed3896bcfc7a28014e3059fcd5f06bdf12bf4051d09159a1e7c40c4328",
+      "bytes": 2454,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/work_paths.py",
+      "source_sha256": "8ab40db3342c3013c95dfec347d2080e45e83f99f0cee73809dd3db9820357af",
+      "public_sha256": "8ab40db3342c3013c95dfec347d2080e45e83f99f0cee73809dd3db9820357af",
+      "bytes": 926,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/probe_checks.py",
+      "source_sha256": "a1a401ba4d1f5ad968873bc6db21507a594b025b38ed4bad698115bee3bdd7b6",
+      "public_sha256": "a1a401ba4d1f5ad968873bc6db21507a594b025b38ed4bad698115bee3bdd7b6",
+      "bytes": 3403,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_ab_comprehension.py",
+      "source_sha256": "159f4ac5e4ccad00cdd0626a04db1f56435200e58bc0f534b5da54eda6131600",
+      "public_sha256": "159f4ac5e4ccad00cdd0626a04db1f56435200e58bc0f534b5da54eda6131600",
+      "bytes": 16215,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_codex_runner.py",
+      "source_sha256": "f5565967440e61885438b0d0ee543afea13cf9ec04b7fe81e5a2e1cc657affc3",
+      "public_sha256": "f5565967440e61885438b0d0ee543afea13cf9ec04b7fe81e5a2e1cc657affc3",
+      "bytes": 9945,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_mac_session.py",
+      "source_sha256": "5a94957aeca43f9ca353a0d14ec05ea1a6cceb2e544f516aaa3f3b33d1e62e4a",
+      "public_sha256": "5a94957aeca43f9ca353a0d14ec05ea1a6cceb2e544f516aaa3f3b33d1e62e4a",
+      "bytes": 825,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_mcp_session.py",
+      "source_sha256": "f4aae1be5b07818cb98515bee15884900491c74533281835619bd5c850dad4ad",
+      "public_sha256": "f4aae1be5b07818cb98515bee15884900491c74533281835619bd5c850dad4ad",
+      "bytes": 10595,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_model_config.py",
+      "source_sha256": "5dc0c5001db992fa440580bf7480792cff26778f5817ffb249be5ea804d892f0",
+      "public_sha256": "5dc0c5001db992fa440580bf7480792cff26778f5817ffb249be5ea804d892f0",
+      "bytes": 4316,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_model_delta.py",
+      "source_sha256": "15a26f190353ef28e2c0ded0dfe9de420e6f4f2bc26ef231e90cd1d59da0a47e",
+      "public_sha256": "15a26f190353ef28e2c0ded0dfe9de420e6f4f2bc26ef231e90cd1d59da0a47e",
+      "bytes": 8089,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_native_request_budget.py",
+      "source_sha256": "8fcf6bfc2c9931e1b436f4a201f3dccd64058be946bf8e1ae56d9a33ec8960cf",
+      "public_sha256": "8fcf6bfc2c9931e1b436f4a201f3dccd64058be946bf8e1ae56d9a33ec8960cf",
+      "bytes": 1952,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_phase_p.py",
+      "source_sha256": "4e9cf19b506dada689ba0e4c8e27a3eb78761884d2b61dc4ea3248a0f9ff7a30",
+      "public_sha256": "4e9cf19b506dada689ba0e4c8e27a3eb78761884d2b61dc4ea3248a0f9ff7a30",
+      "bytes": 10971,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_phase_t.py",
+      "source_sha256": "b29a233fe59bf269a86ebc9f7f03709aa167679e9743add57405d01af4a8c9d5",
+      "public_sha256": "b29a233fe59bf269a86ebc9f7f03709aa167679e9743add57405d01af4a8c9d5",
+      "bytes": 10724,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_recording_snapshots.py",
+      "source_sha256": "82c9829c0b0118966cfcef88318d924a54d2b52ec6bd68094c01684519dfcd5c",
+      "public_sha256": "82c9829c0b0118966cfcef88318d924a54d2b52ec6bd68094c01684519dfcd5c",
+      "bytes": 2787,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_request_overhead.py",
+      "source_sha256": "a547cf7b929b691d9a695b3fb7b419025860e975dc9406abe651193e97ff07bc",
+      "public_sha256": "a547cf7b929b691d9a695b3fb7b419025860e975dc9406abe651193e97ff07bc",
+      "bytes": 6764,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_run_cli.py",
+      "source_sha256": "47afa4ffa98e9462595ce89f69aa403beff9179974b05f10a9f284a18ad94755",
+      "public_sha256": "47afa4ffa98e9462595ce89f69aa403beff9179974b05f10a9f284a18ad94755",
+      "bytes": 7315,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_sealed_fixture_builder.py",
+      "source_sha256": "292ca61f829de6d20c5a4c68add49fa00ce377d3d948f810dd539eaa62e346d8",
+      "public_sha256": "292ca61f829de6d20c5a4c68add49fa00ce377d3d948f810dd539eaa62e346d8",
+      "bytes": 2613,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_stall_observation.py",
+      "source_sha256": "f2d992be0c6fec96fb45587fc4cbdaf4c9756c869f0690ade6522ca411901be7",
+      "public_sha256": "f2d992be0c6fec96fb45587fc4cbdaf4c9756c869f0690ade6522ca411901be7",
+      "bytes": 2526,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_structured_schema.py",
+      "source_sha256": "f225ec9220d984431577a92e5f71c89891ad069547768c7619dda3a80783c755",
+      "public_sha256": "f225ec9220d984431577a92e5f71c89891ad069547768c7619dda3a80783c755",
+      "bytes": 4290,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_tool_codec.py",
+      "source_sha256": "083540aff45cc17e65e1aa004ec1b16d1bfdc07af6c28a99db9b3cc7cd3c6f19",
+      "public_sha256": "083540aff45cc17e65e1aa004ec1b16d1bfdc07af6c28a99db9b3cc7cd3c6f19",
+      "bytes": 2867,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_tool_contract.py",
+      "source_sha256": "c4bbd3ff218eb0b322142efdf76c3a6d1fe5b457458fe5cec8ecc541bd4d1a5b",
+      "public_sha256": "c4bbd3ff218eb0b322142efdf76c3a6d1fe5b457458fe5cec8ecc541bd4d1a5b",
+      "bytes": 1718,
+      "transformed": false
+    },
+    {
+      "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/tests/test_work_paths.py",
+      "source_sha256": "1cea5af2d912a6a33efaa6760d0d5367037a1dc4653243417ef489b015287530",
+      "public_sha256": "1cea5af2d912a6a33efaa6760d0d5367037a1dc4653243417ef489b015287530",
+      "bytes": 1313,
+      "transformed": false
+    }
+  ],
+  "source_worktree_changed": false
+}

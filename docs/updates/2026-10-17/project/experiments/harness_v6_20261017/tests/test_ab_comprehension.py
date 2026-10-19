@@ -133,6 +133,22 @@ def test_configured_real_generation(tmp_path):
     public_ledger = os.environ.get('V6_PUBLIC_LEDGER')
     selectors = ['g0', 'public:702', 'public:1182', 'public:1602'] if public_ledger else ['g0', 'public:702', 'public:703']
     real = ab.load_real_states(fixture_path, database, selectors, tiktoken_counter(), public_ledger=public_ledger)
+    # Cross-entrypoint invariant: A/B/recording samples carry exactly the static
+    # schemas and physics tables used by the live production prefix.
+    from harness_v6.factory_v6 import restore
+    from harness_v6.snapshot import production_prefix
+    from harness_v6.compact import decode_prefix
+    import json
+    bundle = json.loads(Path(fixture_path).read_bytes())
+    seed = bundle['mixed_702']
+    env = restore(seed['state'], seed['trace'], data_dir=bundle['data_dir'])
+    for fmt in ab.FORMATS:
+        expected = production_prefix(routing=env.manifest['routes'], machine_groups=env.manifest['machines'],
+            setup_transitions=env.manifest['setups'], min_runs=dict(env.min_runs),
+            snapshot_format=fmt, token_counter=tiktoken_counter())
+        for snapshots in real.values():
+            assert snapshots[fmt].startswith(expected)
+            assert decode_snapshot(snapshots[fmt])[0] == decode_prefix(expected)
     output = Path(os.environ.get('V6_AB_OUTPUT', str(tmp_path / 'real')))
     questions, key, plan = ab.generate(real, output, seed=7)
     assert_validity(real, questions, key)
@@ -192,8 +208,12 @@ def assert_validity(data, questions, key):
             elif isinstance(obj, list):
                 for value in obj: check(value)
         check(ab.SCHEMAS[kind])
-    assert ab.SCHEMAS['value_semantics']['properties']['value']['type'] == [
-        'null', 'boolean', 'number', 'string', 'array', 'object']
+    value_schema = ab.SCHEMAS['value_semantics']['properties']['value']
+    assert value_schema == ab.CONTRACT_VALUE
+    for value in (None, True, 0, '', [], [1, 2.5], {'type':'constant','c':2},
+                  {'type':'uniform','m':3,'offset':1}, {'type':'exponential','mean':4}):
+        assert ab.schema_matches(value, value_schema)
+    assert not ab.schema_matches({'unknown_distribution': 1}, value_schema)
     for state, snapshots in data.items():
         wires = {fmt: ab.wire_tables(snapshots[fmt]) for fmt in ab.FORMATS}
         subset = [q for q in questions if q['state'] == state]

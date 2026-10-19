@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 
 from harness_v6.snapshot import canonical, tiktoken_counter
+from harness_v6.tool_contract import declared_tools, request_tools
 
 
 def fail(field, message):
@@ -43,11 +44,24 @@ def validate_input(value):
                     fail(p + '.type', 'only input_text/output_text supported; image/audio tokens cannot be inferred')
                 if not isinstance(part.get('text'), str):
                     fail(p + '.text', 'missing text string')
+        elif kind == 'additional_tools':
+            try:
+                request_tools({'input': [item]})
+            except ValueError as error:
+                fail(path, str(error))
         elif kind in ('function_call', 'function_call_output'):
-            fields = ('call_id', 'name', 'arguments') if kind == 'function_call' else ('call_id', 'output')
+            fields = ('call_id', 'name', 'arguments') if kind == 'function_call' else ('call_id',)
             for field in fields:
                 if not isinstance(item.get(field), str):
                     fail(path + '.' + field, 'missing string')
+            if kind == 'function_call_output':
+                output = item.get('output')
+                if not isinstance(output,str):
+                    if not isinstance(output,list) or not output or any(
+                        not isinstance(part,dict) or set(part)!={'type','text'}
+                        or part['type']!='input_text' or not isinstance(part['text'],str)
+                        for part in output):
+                        fail(path+'.output','expected complete string or input_text array; opaque/nontext content cannot be measured')
         elif kind == 'reasoning':
             if item.get('encrypted_content'):
                 fail(path + '.encrypted_content', 'opaque reasoning tokens cannot be measured')
@@ -103,26 +117,24 @@ def analyze(records, snapshot, counter):
             instructions = ''
         if not isinstance(instructions, str):
             fail('instructions', 'expected string or null')
-        tools = body.get('tools', [])
-        if not isinstance(tools, list):
-            fail('tools', 'expected array')
-        for index, tool in enumerate(tools):
-            if not isinstance(tool, dict) or tool.get('type') != 'function':
-                fail(f'tools[{index}].type', 'only explicit function schemas supported')
-            for field, expected_type in (('name', str), ('parameters', dict)):
-                if not isinstance(tool.get(field), expected_type):
-                    fail(f'tools[{index}].{field}', 'missing field or invalid type')
+        try:
+            tools = request_tools(body)
+        except ValueError as error:
+            fail('tools', str(error))
         stripped, occurrences = strip_snapshot(body['input'], snapshot)
         if occurrences != 1:
             fail('input.snapshot', f'expected exactly one exact snapshot occurrence, found {occurrences}')
-        system, other = [], []
+        system, other, lite_tools = [], [], []
         if isinstance(stripped, str):
             other = stripped
         else:
             for item in stripped:
+                if item.get('type') == 'additional_tools':
+                    lite_tools.append(item)
+                    continue
                 (system if item.get('role') in ('system', 'developer') else other).append(item)
         system_tokens = counter(instructions) + (count(system) if system else 0)
-        tool_tokens = count(tools) if tools else 0
+        tool_tokens = count(lite_tools) if lite_tools else count(tools) if tools else 0
         other_tokens = count(other)
         metadata = {k: v for k, v in body.items() if k not in ('input', 'instructions', 'tools')}
         metadata_tokens = count(metadata)
@@ -174,6 +186,36 @@ def named_files(values):
     return result
 
 
+
+def validate_production_prompt(snapshot, prompt):
+    """Require the complete recorded payload and a real production cycle tail."""
+    from harness_v6.compact import decode_snapshot
+    from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS
+    prefix, _ = decode_snapshot(snapshot.encode())
+    expected = [dict(name=name, description=TOOL_DESCRIPTIONS[name], inputSchema=schema)
+                for name, schema in TOOLS.items()]
+    if prefix['tools'] != expected:
+        raise ValueError('recording snapshot differs from production tool schemas')
+    if not prompt.startswith(snapshot + '\nCYCLE_FOOTER\n'):
+        raise ValueError('recording prompt must contain the exact complete snapshot and cycle footer')
+    footer = json.loads(prompt[len(snapshot + '\nCYCLE_FOOTER\n'):])
+    required = {'current_time', 'expected_state_version', 'submission_id',
+                'valid_until_minimum', 'valid_until_comparison', 'trigger',
+                'valid_until_maximum', 'valid_until_maximum_comparison',
+                'max_tool_calls', 'max_model_requests',
+                'wall_deadline_seconds', 'instruction'}
+    if not isinstance(footer, dict) or set(footer) != required:
+        raise ValueError('invalid production cycle footer')
+    from harness_v6.normalize import number
+    if (not number(footer['valid_until_maximum'])
+            or footer['valid_until_maximum'] <= footer['current_time']
+            or footer['valid_until_maximum_comparison'] != '<='):
+        raise ValueError('invalid production cycle footer plan boundary')
+    if (type(footer['max_tool_calls']) is not int or footer['max_tool_calls'] < 0
+            or footer['max_model_requests'] != footer['max_tool_calls'] + 1):
+        raise ValueError('invalid production cycle footer request budget')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--requests', action='append')
@@ -181,27 +223,36 @@ def main():
     parser.add_argument('--codex-binary')
     parser.add_argument('--codex-version')
     parser.add_argument('--model')
+    parser.add_argument('--model-config', help='Frozen model catalog/hash/reasoning JSON')
     parser.add_argument('--capture-dir', type=Path)
     parser.add_argument('--capture-rounds', type=int, default=3)
     parser.add_argument('--wall-seconds', type=float, default=300)
     parser.add_argument('--snapshot', action='append', required=True)
+    parser.add_argument('--prompt', action='append', help='production snapshot plus cycle footer, explicit=FILE and dense=FILE')
     parser.add_argument('--context-token-budget', type=int, required=True)
     parser.add_argument('--output-reserve-tokens', type=int, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
+    from harness_v6.model_config import load as load_model_config
+    model_config = load_model_config(args.model_config)
     if args.capture:
-        if args.requests or not all((args.codex_binary, args.codex_version, args.model, args.capture_dir)):
-            parser.error('capture requires binary/version/model/capture-dir and excludes --requests')
+        if args.requests or not all((args.codex_binary, args.codex_version, args.model, args.capture_dir, args.prompt)):
+            parser.error('capture requires binary/version/model/capture-dir/production prompts and excludes --requests')
         from run_codex_probes import capture
+        prompts = named_files(args.prompt)
+        if set(prompts) != {'explicit', 'dense'}:
+            parser.error('both production prompt formats are required')
         args.capture_dir.mkdir(parents=True, exist_ok=False)
         args.requests = []
         for fmt, path in named_files(args.snapshot).items():
             directory = args.capture_dir/fmt
+            snapshot_text, prompt_text = path.read_text(), prompts[fmt].read_text()
+            validate_production_prompt(snapshot_text, prompt_text)
             _, row = capture(args.codex_binary, args.codex_version, directory,
                 'single_schema_no_mcp' if args.capture == 'single_action' else 'config_injection',
-                prompt=path.read_text(), model=args.model, timeout=args.wall_seconds,
+                prompt=prompt_text, snapshot=snapshot_text, model=args.model, timeout=args.wall_seconds,
                 overhead_rounds=args.capture_rounds, context_token_budget=args.context_token_budget,
-                output_reserve_tokens=args.output_reserve_tokens)
+                output_reserve_tokens=args.output_reserve_tokens, model_config=model_config)
             if not row['passed']:
                 raise ValueError('capture failed: inspect '+str(directory))
             args.requests.append(fmt+'='+str(directory/'requests.jsonl'))
@@ -212,11 +263,29 @@ def main():
     snapshots = {fmt: path.read_text() for fmt, path in named_files(args.snapshot).items()}
     result = measure(logs, snapshots, tiktoken_counter('o200k_base'),
                      context_token_budget=args.context_token_budget, output_reserve_tokens=args.output_reserve_tokens)
+    if model_config is not None:
+        from harness_v6.model_config import admission_limit
+        limit = admission_limit(model_config, model=args.model, context_token_budget=args.context_token_budget)
+        result['request_context_limit'] = limit
+        for value in result['formats'].values():
+            check = value['budget_check']
+            check['passed'] &= check['required_tokens'] <= limit
+            check['request_context_limit'] = limit
+            check['remaining_admissible_tokens'] = limit-check['required_tokens']
+        result['passed'] = all(v['budget_check']['passed'] for v in result['formats'].values())
     result.update(tokenizer='o200k_base', tiktoken_version=importlib.metadata.version('tiktoken'))
     result.update(interaction=args.capture, measured_tool_rounds=args.capture_rounds if args.capture == 'mcp_session' else None)
+    if args.capture:
+        import hashlib
+        result.update(codex_version=args.codex_version, model=args.model, model_config=model_config,
+            binary_sha256=hashlib.sha256(Path(args.codex_binary).read_bytes()).hexdigest(),
+            snapshot_sha256={fmt: hashlib.sha256(text.encode()).hexdigest() for fmt,text in snapshots.items()},
+            prompt_sha256={fmt: hashlib.sha256(path.read_bytes()).hexdigest() for fmt,path in prompts.items()},
+            real_model_requests=0, tool_result_contract='harness-tool-json-v2/full-current-state-pressure-v1')
     args.output.write_bytes(canonical(result) + b'\n')
     print(json.dumps(dict(request_overhead_tokens=result['request_overhead_tokens'], passed=result['passed']), sort_keys=True))
+    return 0 if result['passed'] else 1
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

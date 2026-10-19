@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Pinned-Codex loopback-only capability recordings. Wire assumptions fail closed."""
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -14,13 +15,16 @@ from harness_v6.contracts import digest, encode
 from harness_v6.mac_probe import create_server
 from harness_v6.session import Budget, classify, command
 from harness_v6.single_action import command as single_command, parse, OUTPUT_SCHEMA
+from harness_v6.tool_contract import declared_tools, request_tools
 
 CHECKS = ('config_injection', 'approval_never', 'schema_with_mcp', 'jsonl_fields',
           'startup_timeout', 'tool_timeout', 'compaction_detection',
           'environment_inheritance', 'large_result_complete',
           'single_schema_no_mcp', 'single_tool_rejection', 'single_usage')
+CHECKS += ('required_startup_ready',)
 ACTION = dict(expected_state_version=1, submission_id='probe', delta={})
 SENTINEL = 'v6-explicit-environment'
+COMPACTION_SENTINEL = 'V6_OFFLINE_COMPACTION_REQUEST'
 
 
 def write(path, value):
@@ -51,9 +55,9 @@ def configure(argv, settings):
     return result + ['-']
 
 
-def sse(items, number):
+def sse(items, number, usage=None):
     response = dict(id=f'resp_{number}', object='response', status='completed', output=items,
-        usage=dict(input_tokens=100, output_tokens=10, total_tokens=110,
+        usage=usage if usage is not None else dict(input_tokens=100, output_tokens=10, total_tokens=110,
                    input_tokens_details=dict(cached_tokens=20)))
     events = [dict(type='response.created', response=dict(response, status='in_progress', output=[]))]
     for index, item in enumerate(items):
@@ -88,6 +92,7 @@ def mcp(check, directory):
     if overhead:
         from harness_v6.mcp_server import TOOLS, TOOL_DESCRIPTIONS
     if check == 'startup_timeout': time.sleep(4)
+    if check == 'required_startup_ready': time.sleep(2)
     for line in sys.stdin:
         request = json.loads(line)
         if 'id' not in request: continue
@@ -107,11 +112,12 @@ def mcp(check, directory):
             if overhead:
                 from harness_v6.compact import decode_snapshot
                 payload = decode_snapshot((directory/'snapshot.txt').read_bytes())[1]
-            result = dict(content=[dict(type='text', text=json.dumps(payload))])
+            from harness_v6.tool_codec import text as result_text
+            result = dict(content=[dict(type='text', text=result_text(payload) if overhead else encode(payload).decode())], isError=False)
             write(directory/'mcp-received.json', dict(arguments=request['params'], result=result,
                   marker=os.environ.get('V6_PROBE_SENTINEL'), inherited=os.environ.get('V6_FORBIDDEN_SENTINEL')))
         else: raise ValueError('unsupported MCP method '+method)
-        print(json.dumps(dict(jsonrpc='2.0', id=request['id'], result=result)), flush=True)
+        print(encode(dict(jsonrpc='2.0', id=request['id'], result=result)).decode(), flush=True)
 
 
 def outputs(body):
@@ -119,8 +125,34 @@ def outputs(body):
             if isinstance(item, dict) and item.get('type') == 'function_call_output']
 
 
+def decoded_tool_output(value):
+    from harness_v6.contracts import strict_json
+    from harness_v6.tool_codec import unpack
+    # 0.163 emits a separate header and the unmodified MCP text content.
+    # Accept only this exact two-part shape; never join/drop arbitrary parts.
+    if isinstance(value,list):
+        if len(value)!=2 or any(not isinstance(p,dict) or set(p)!={'type','text'}
+                or p['type']!='input_text' or not isinstance(p['text'],str) for p in value):
+            raise ValueError('expected complete native text header and one MCP text result')
+        if not re.fullmatch(r'Wall time: \d+(?:\.\d+)? seconds\nOutput:',value[0]['text']):
+            raise ValueError('unknown native MCP result framing')
+        return unpack(strict_json(value[1]['text'])),value[1]['text']
+    if not isinstance(value, str): raise ValueError('tool output must be complete text')
+    wrapped = re.fullmatch(r'Wall time: \d+(?:\.\d+)? seconds\nOutput:\n(.*)', value, re.S)
+    if not wrapped: raise ValueError('unknown native MCP result framing')
+    content = strict_json(wrapped.group(1))
+    if not isinstance(content, list) or len(content) != 1 or content[0].get('type') != 'text':
+        raise ValueError('expected one complete MCP text result')
+    return unpack(strict_json(content[0]['text'])), content[0]['text']
+
+
 def unpack_result(value):
     if isinstance(value, str):
+        # Native Codex wraps the complete MCP content with measured wall time.
+        # Only this exact wrapper is decoded; payload bytes are still SHA checked.
+        wrapped = re.fullmatch(r'Wall time: \d+(?:\.\d+)? seconds\nOutput:\n(.*)', value, re.S)
+        if wrapped:
+            return unpack_result(wrapped.group(1))
         try: return unpack_result(json.loads(value))
         except ValueError: return value
     if isinstance(value, dict):
@@ -136,47 +168,145 @@ def unpack_result(value):
     return value
 
 
-def capture(binary, version, directory, check, *, prompt='Return the scripted probe response.', model='probe-model', timeout=15, overhead_rounds=None, context_token_budget=1000000, output_reserve_tokens=10000):
+
+def probe_call_matches(envelope, arguments):
+    """MCP transport metadata is outside, and never merged into, tool arguments."""
+    if not isinstance(envelope, dict) or set(envelope)-{'name','arguments','_meta'}:
+        return False
+    if envelope.get('name') != 'read_entities' or envelope.get('arguments') != arguments:
+        return False
+    if '_meta' not in envelope:
+        return True
+    meta = envelope['_meta']
+    modern_keys = {'callId','itemId','sessionId','windowId'}
+    allowed = {'progressToken','threadId','x-codex-turn-metadata','codex_bridge_mcp_call_id'} | modern_keys
+    if not isinstance(meta, dict) or set(meta)-allowed:
+        return False
+    if 'progressToken' in meta and type(meta['progressToken']) not in (int,str):
+        return False
+    if 'threadId' in meta and not isinstance(meta['threadId'],str):
+        return False
+    if 'codex_bridge_mcp_call_id' in meta:
+        from uuid import UUID
+        try:
+            bridge = meta['codex_bridge_mcp_call_id']
+            if not isinstance(bridge,str) or str(UUID(bridge)) != bridge: return False
+        except ValueError:
+            return False
+    modern = bool(set(meta) & modern_keys)
+    if modern:
+        if not modern_keys <= set(meta) or not all(isinstance(meta[k],str) and meta[k] for k in modern_keys):
+            return False
+        if meta['sessionId'] != meta.get('threadId') or not re.fullmatch(re.escape(meta['sessionId'])+r':\d+',meta['windowId']):
+            return False
+        if 'x-codex-turn-metadata' not in meta: return False
+    if 'x-codex-turn-metadata' in meta:
+        trace = meta['x-codex-turn-metadata']
+        string_keys = {'model','reasoning_effort','sandbox','session_id','thread_id','thread_source','turn_id'}
+        bool_keys = {'auto_review_enabled','node_repl_auto_review_required','node_repl_disabled'} if modern else set()
+        if modern: string_keys |= {'codex_version','sandbox_mode','turn_trigger'}
+        if not isinstance(trace,dict) or set(trace) != string_keys | bool_keys | {'turn_started_at_unix_ms'}:
+            return False
+        if not all(isinstance(trace[k],str) for k in string_keys) or type(trace['turn_started_at_unix_ms']) is not int:
+            return False
+        if not all(type(trace[k]) is bool for k in bool_keys): return False
+        if modern and (trace['codex_version'] != '0.163.0' or trace['sandbox_mode'] != 'read-only'
+                       or trace['turn_trigger'] != 'exec' or trace['auto_review_enabled']):
+            return False
+        if trace['thread_id'] != meta.get('threadId') or trace['session_id'] != meta.get('threadId'):
+            return False
+    return True
+
+
+def capture(binary, version, directory, check, *, prompt='Return the scripted probe response.', snapshot=None, model='gpt-5.4', timeout=15, overhead_rounds=None, context_token_budget=1000000, output_reserve_tokens=10000, forbidden_name='apply_patch', model_config=None, forbidden_with_mcp=False):
+    from harness_v6.model_config import settings as model_settings
+    model_settings(model_config, model=model, context_token_budget=context_token_budget)
     directory = Path(directory).resolve(); directory.mkdir(parents=True, exist_ok=False)
-    single = check.startswith('single_')
+    if forbidden_with_mcp and check != 'single_tool_rejection':
+        raise ValueError('forbidden_with_mcp is only valid for tool rejection probes')
+    single = check.startswith('single_') and not forbidden_with_mcp
     write(directory/'schema.json', OUTPUT_SCHEMA)
     if overhead_rounds is not None:
         if overhead_rounds < 1: raise ValueError('capture rounds must be positive')
         write(directory/'overhead.json', dict(rounds=overhead_rounds))
-        (directory/'snapshot.txt').write_text(prompt)
+        (directory/'snapshot.txt').write_text(prompt if snapshot is None else snapshot)
     requests = []
+    compaction_requests = []
+    measured_usage = []
+    counter = None
+    if overhead_rounds is not None and not version.startswith('fake-codex'):
+        from harness_v6.snapshot import tiktoken_counter
+        from harness_v6.compact import decode_snapshot
+        from harness_v6.tool_codec import text as result_text
+        counter = tiktoken_counter()
+        expected_current = decode_snapshot((directory/'snapshot.txt').read_bytes())[1]
+        expected_result_text = result_text(expected_current)
     def response(body):
         requests.append(body)
-        tools = body.get('tools', [])
+        if model_config is not None and (body.get('model') != model or
+                body.get('reasoning', {}).get('effort') != model_config['reasoning_effort']):
+            raise ValueError('native request model/reasoning differs from frozen configuration')
+        if not version.startswith('fake-codex') and body.get('max_output_tokens') != output_reserve_tokens:
+            raise ValueError('native request omitted or changed the configured output token limit')
+        tools = request_tools(body)
         if single and tools:
             raise ValueError('single_action unexpectedly exposes tools')
-        if not single and len(requests) <= (overhead_rounds or 1):
-            names = [t.get('name', t.get('function', {}).get('name', '')) for t in tools]
-            name = next((n for n in names if n.endswith('read_entities')), None)
-            if any(n != name for n in names) and overhead_rounds is None:
-                raise ValueError('unexpected native/foreign tools advertised')
-            if name is None: raise ValueError('unverified wire: read_entities tool absent')
+        functions = declared_tools(tools)
+        if counter is not None and not single:
+            found = outputs(body)
+            if len(found) != len(requests)-1:
+                raise ValueError('tool history missing or duplicated')
+            for output in found:
+                value, raw = decoded_tool_output(output)
+                if encode(value) != encode(expected_current) or raw != expected_result_text:
+                    raise ValueError('tool result bytes/facts changed or truncated')
+        if check == 'compaction_detection' and COMPACTION_SENTINEL in json.dumps(body.get('input')):
+            if functions:
+                raise ValueError('compaction unexpectedly advertises tools')
+            compaction_requests.append(len(requests))
+            return sse([dict(type='message', id='msg_compaction', role='assistant', status='completed',
+                content=[dict(type='output_text',text='Offline compaction summary.',annotations=[])])],len(requests))
+        if not single:
+            from harness_v6.mcp_server import TOOLS
+            expected_tools = set() if check == 'startup_timeout' else set(TOOLS) if overhead_rounds else {'read_entities'}
+            if set(functions) != expected_tools:
+                raise ValueError('unexpected native/foreign/missing tools advertised')
+        if not single and check != 'startup_timeout' and len(requests) <= (overhead_rounds or 1):
+            namespace, name = functions['read_entities']
             items = [dict(type='function_call', id='fc_probe_'+str(len(requests)), call_id='call_probe_'+str(len(requests)), name=name,
+                          **({'namespace': namespace} if namespace else {}),
                           arguments=json.dumps({'kind':'operations'} if overhead_rounds else {}), status='completed')]
         elif check == 'single_tool_rejection':
             items = [dict(type='function_call', id='fc_forbidden', call_id='call_forbidden',
-                          name='unadvertised_forbidden_tool', arguments='{}', status='completed')]
+                          name=forbidden_name, arguments='{}', status='completed')]
         else:
             items = [dict(type='message', id='msg_probe', role='assistant', status='completed',
                           content=[dict(type='output_text', text=json.dumps(ACTION), annotations=[])])]
         if len(requests) > (overhead_rounds or 1)+3: raise ValueError('unverified wire: unexpected extra model round')
-        return sse(items, len(requests))
+        usage = None
+        if counter is not None:
+            from harness_v6.snapshot import canonical
+            input_tokens = counter(canonical(body).decode())
+            output_tokens = sum(counter(item['arguments'] if item['type'] == 'function_call'
+                else item['content'][0]['text']) for item in items)
+            if output_tokens > output_reserve_tokens:
+                raise ValueError('synthetic response exceeds output reserve')
+            usage = dict(input_tokens=input_tokens, output_tokens=output_tokens,
+                total_tokens=input_tokens+output_tokens, input_tokens_details=dict(cached_tokens=0))
+            measured_usage.append(usage)
+        return sse(items, len(requests), usage=usage)
     with (directory/'requests.jsonl').open('xb') as log:
         server = create_server(response, log)
         endpoint = f'http://127.0.0.1:{server.server_port}/v1'
         thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
-        budget = Budget(wall_seconds=timeout, token_cap=context_token_budget)
+        budget = Budget(wall_seconds=timeout, token_cap=context_token_budget, max_tool_calls=overhead_rounds or 100)
         if single:
-            argv = single_command(directory, directory/'schema.json', model=model, budget=budget, binary=binary)
+            argv = single_command(directory, directory/'schema.json', model=model, budget=budget, binary=binary,
+                context_token_budget=context_token_budget, output_reserve_tokens=output_reserve_tokens, model_config=model_config)
         else:
-            argv = command(directory, directory, model=model, budget=budget, binary=binary)
+            argv = command(directory, directory, model=model, budget=budget, binary=binary,
+                context_token_budget=context_token_budget, output_reserve_tokens=output_reserve_tokens, model_config=model_config)
         settings = provider_settings(endpoint)
-        settings['model_max_output_tokens'] = output_reserve_tokens
         if not single:
             settings.update({'mcp_servers.harness_v6.command': sys.executable,
                 'mcp_servers.harness_v6.args': [str(Path(__file__).resolve()), '--probe-mcp', check, '--output', str(directory)],
@@ -184,12 +314,18 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
                 'mcp_servers.harness_v6.env.V6_PROBE_SENTINEL': SENTINEL,
                 'mcp_servers.harness_v6.startup_timeout_sec': 1 if check == 'startup_timeout' else 5,
                 'mcp_servers.harness_v6.tool_timeout_sec': 1 if check == 'tool_timeout' else 5})
-        if check == 'compaction_detection': settings['model_auto_compact_token_limit'] = 1
+        if check == 'compaction_detection':
+            settings.update(model_auto_compact_token_limit=1, compact_prompt=COMPACTION_SENTINEL)
         argv = configure(argv, settings)
         if check == 'schema_with_mcp': argv[-1:-1] = ['--output-schema', str(directory/'schema.json')]
         runner = CodexRunner(binary, workdir=directory, env_allowlist=['PATH','PYTHONPATH'], stderr_path=directory/'stderr.log')
         argv[0] = runner.binary
         runner.env['PYTHONPATH'] = os.pathsep.join(str(Path(p).resolve()) for p in sys.path if p)
+        # Keep mock runs independent of the user's credentials, configuration and plugins.
+        for variable, child in (('HOME', 'home'), ('CODEX_HOME', 'codex-home')):
+            isolated = directory / child
+            isolated.mkdir()
+            runner.env[variable] = str(isolated)
         runner.env['V6_FORBIDDEN_SENTINEL'] = 'must-not-reach-mcp'
         try:
             runner.version(version)
@@ -204,24 +340,40 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
     passed = healthy and bool(requests) and not parsed['errors']
     reason = 'schema output and usage, or completed MCP call with matching recorded arguments'
     if single:
-        passed &= len(requests) == 1 and not requests[0].get('tools')
+        passed &= len(requests) == 1 and not request_tools(requests[0])
         if check == 'single_tool_rejection':
-            passed = healthy and len(requests) == 1 and any(e.startswith('forbidden_item:') for e in parsed['errors'])
+            # Dedicated native build aborts on an unregistered call; success is
+            # rejection before any second request, never a healthy completion.
+            rejected = result.returncode != 0 and not result.timed_out
+            if version.startswith('fake-codex'):
+                rejected = healthy  # legacy fake mechanism fixture only
+            passed = rejected and len(requests) == 1 and any(e.startswith('forbidden_item:') for e in parsed['errors'])
         else:
             passed &= parsed['arguments'] == ACTION
             if check == 'single_usage':
-                passed &= parsed['usage'] == dict(input_tokens=100, cached_input_tokens=20, output_tokens=10)
+                expected_usage = dict(input_tokens=100, cached_input_tokens=20, output_tokens=10)
+                usage = parsed['usage'] or {}
+                extras = {'cache_write_input_tokens','reasoning_output_tokens'}
+                passed &= (all(usage.get(k)==v for k,v in expected_usage.items())
+                    and set(usage) <= set(expected_usage)|extras
+                    and all(usage.get(k,0)==0 for k in extras))
     elif check in ('startup_timeout', 'tool_timeout'):
         # A host deadline is NOT proof that Codex honored its configured timeout.
         raw = result.jsonl + (directory/'stderr.log').read_text()
-        passed = (not result.timed_out and bool(requests) and evidence is None
+        request_gate = bool(requests)
+        if check == 'startup_timeout' and not version.startswith('fake-codex'):
+            request_gate = not requests and result.returncode != 0
+        passed = (not result.timed_out and request_gate and evidence is None
                   and result.wall_seconds < 4
                   and bool(re.search(r'(harness_v6|initialize|tools/call).{0,200}(timed out|timeout)', raw, re.I|re.S))
                   and (directory/'mcp-start.json').exists()
                   and ((directory/'tool-start.json').exists() == (check == 'tool_timeout')))
-        reason = 'configured MCP timeout before host deadline; no successful tool result'
+        reason = ('required MCP startup timeout aborts before any model request' if check == 'startup_timeout'
+            else 'configured MCP tool timeout before host deadline; no successful tool result')
     elif check == 'compaction_detection':
-        passed = healthy and bool(requests) and 'compaction' in parsed['errors']
+        passed = healthy and bool(requests) and 'compaction' in parsed['errors'] and 'mcp_failed' not in parsed['errors']
+        if not version.startswith('fake-codex'):
+            passed &= bool(compaction_requests)
         reason = 'actual Codex compaction event recognized by classifier'
     else:
         passed &= evidence is not None and parsed['calls'] == [dict(tool='read_entities', arguments={})]
@@ -229,33 +381,56 @@ def capture(binary, version, directory, check, *, prompt='Return the scripted pr
         passed &= any(i.get('type') == 'mcp_tool_call' and i.get('server') == 'harness_v6' and i.get('tool') == 'read_entities' and i.get('arguments') in ({}, '{}') for i in started)
         if evidence:
             passed &= evidence['marker'] == SENTINEL and evidence['inherited'] is None
-            passed &= evidence['arguments'] == dict(name='read_entities', arguments={})
+            passed &= probe_call_matches(evidence['arguments'], {})
         if check == 'large_result_complete':
             received = [unpack_result(o) for body in requests[1:] for o in outputs(body)]
             expected = dict(marker=SENTINEL, inherited=None, payload='0123456789abcdef'*16384)
             passed &= expected in received
             write(directory/'received_result.json', received[0] if received else None)
+    if forbidden_with_mcp:
+        passed = (result.returncode != 0 and not result.timed_out and len(requests) == 2
+            and parsed['calls'] == [dict(tool='read_entities', arguments={})]
+            and any(e.startswith('forbidden_item:') for e in parsed['errors']))
+        reason = 'one allowed MCP read followed by fatal forbidden-tool rejection before a third request'
     if overhead_rounds is not None:
         passed = healthy and not parsed['errors'] and len(requests) == (1 if single else overhead_rounds+1)
+        if counter is not None:
+            for key in ('input_tokens', 'output_tokens'):
+                passed &= (parsed['usage'] or {}).get(key) == sum(u[key] for u in measured_usage)
     row = dict(passed=bool(passed), command=argv, expected=reason, jsonl='session.jsonl',
                requests='requests.jsonl', schema='schema.json', expected_arguments=ACTION,
                errors=parsed['errors'], returncode=result.returncode, timed_out=result.timed_out)
+    if counter is not None:
+        row['usage_basis'] = 'synthetic conservative full serialized request counts; cached=0; not provider billing'
+        row['synthetic_request_usage'] = measured_usage
+        row['native_cumulative_usage'] = parsed['usage']
+        row['complete_tool_output_occurrences'] = sum(len(outputs(body)) for body in requests)
+    if check == 'single_tool_rejection': row['forbidden_tool'] = forbidden_name
+    if check == 'compaction_detection': row['compaction_request_numbers'] = compaction_requests
     if check == 'large_result_complete':
         row.update(received_result='received_result.json', sent_result_sha256=digest(dict(marker=SENTINEL, inherited=None, payload='0123456789abcdef'*16384)))
     write(directory/'check.json', row)
     return endpoint, row
 
 
-def run(binary, version, output, checks=CHECKS):
+def run(binary, version, output, checks=CHECKS, *, model='gpt-5.4', model_config=None, context_token_budget=1000000, output_reserve_tokens=10000):
     root = Path(output).resolve(); root.mkdir(parents=True, exist_ok=False)
-    manifest = dict(endpoint='', real_model_requests=0, codex_version=version, checks={},
+    manifest = dict(endpoint='', real_model_requests=0, codex_version=version, model=model, model_config=model_config,
+        context_token_budget=context_token_budget, output_reserve_tokens=output_reserve_tokens, checks={},
         wire_status='Unverified until all checks pass against this exact pinned binary',
         mechanism_only=version.startswith('fake-codex'))
     for check in checks:
-        endpoint, row = capture(binary, version, root/check, check)
+        endpoint, row = capture(binary, version, root/check, check, model=model, model_config=model_config,
+            context_token_budget=context_token_budget, output_reserve_tokens=output_reserve_tokens)
         for key in ('jsonl','requests','schema','received_result'):
             if key in row: row[key] = check+'/'+row[key]
         manifest['checks'][check] = row; manifest['endpoint'] = endpoint
+        binary_sha256 = hashlib.sha256(Path(row['command'][0]).read_bytes()).hexdigest()
+        if manifest.get('binary_sha256') not in (None, binary_sha256):
+            raise ValueError('Codex binary changed between probe checks')
+        manifest['binary_sha256'] = binary_sha256
+        row['artifact_sha256'] = {key: hashlib.sha256((root/row[key]).read_bytes()).hexdigest()
+            for key in ('jsonl','requests','schema','received_result') if key in row}
         write(root/'manifest.json', manifest)
         print(check, 'PASS' if row['passed'] else 'FAIL: inspect JSONL, stderr and recorded requests', flush=True)
     if not all(row['passed'] for row in manifest['checks'].values()):
@@ -266,10 +441,17 @@ def run(binary, version, output, checks=CHECKS):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--codex-binary'); parser.add_argument('--codex-version')
+    parser.add_argument('--model', default='gpt-5.4', help='Local mock model metadata label; never calls that model')
+    parser.add_argument('--model-config', help='Frozen model catalog/hash/reasoning JSON')
+    parser.add_argument('--context-token-budget', type=int, default=1000000)
+    parser.add_argument('--output-reserve-tokens', type=int, default=10000)
     parser.add_argument('--output', required=True); parser.add_argument('--probe-mcp', choices=CHECKS)
     args = parser.parse_args()
     if args.probe_mcp: mcp(args.probe_mcp, Path(args.output)); return
     if not args.codex_binary or not args.codex_version: parser.error('--codex-binary and --codex-version required')
-    run(args.codex_binary, args.codex_version, args.output)
+    from harness_v6.model_config import load as load_model_config
+    run(args.codex_binary, args.codex_version, args.output, model=args.model,
+        model_config=load_model_config(args.model_config), context_token_budget=args.context_token_budget,
+        output_reserve_tokens=args.output_reserve_tokens)
 
 if __name__ == '__main__': main()

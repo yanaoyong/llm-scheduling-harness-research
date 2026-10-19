@@ -12,6 +12,7 @@ from pathlib import Path
 import sqlite3
 import zlib
 from harness_v6.contracts import encode, digest
+from harness_v6.work_paths import checked_output
 
 
 class Archive:
@@ -80,13 +81,11 @@ def add_common_endpoints(root, output, data_dir):
     (output/'provenance.json').write_bytes(encode(provenance))
 
 
-def build(root, public, output):
-    # Never permit evidence or repository output by accident.
-    if not output.resolve().is_relative_to(Path('/workspace/v6-mac-env/work')):
-        raise ValueError('outputs must be under /workspace/v6-mac-env/work')
-    output.mkdir(parents=True, exist_ok=True)
-    provenance = {}
+def build(root, public, output, *, work_root):
     bundle = json.loads(public.read_bytes())
+    output = checked_output(output, work_root, inputs=(root, public, bundle['data_dir']))
+    output.mkdir(parents=True, exist_ok=False)
+    provenance = {}
     segment = root / 'live_pilots/extended_three_group_final_segment_20261017'
     db = sqlite3.connect(output / 'contexts.sqlite')
     db.execute('CREATE TABLE IF NOT EXISTS contexts(group_name TEXT, payload TEXT)')
@@ -166,5 +165,6 @@ if __name__ == '__main__':
     parser.add_argument('--evidence-root', type=Path, required=True)
     parser.add_argument('--public-fixture', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--work-root', type=Path, required=True)
     args = parser.parse_args()
-    build(args.evidence_root, args.public_fixture, args.output)
+    build(args.evidence_root, args.public_fixture, args.output, work_root=args.work_root)

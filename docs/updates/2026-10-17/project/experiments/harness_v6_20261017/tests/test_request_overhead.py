@@ -58,3 +58,62 @@ def test_string_input_and_reasoning_summary():
     rec[1]['body']['input'].append(dict(type='reasoning', summary=[dict(type='summary_text', text='reason')]))
     assert overhead.analyze(rec, 'SNAPSHOT\ntext', len)['request_count'] == 2
     with pytest.raises(ValueError, match='empty'): overhead.analyze([], 'snap', len)
+
+
+def test_complete_native_tool_text_array_is_fully_counted():
+    rec=records()
+    output=[dict(type='input_text',text='Wall time: 0.0012 seconds\nOutput:'),
+            dict(type='input_text',text='complete-result'*1000)]
+    rec[1]['body']['input'][-1]['output']=output
+    row=overhead.analyze(rec,'SNAPSHOT\ntext',len)['rounds'][-1]
+    assert row['conservative_input_tokens']>=len(overhead.canonical(rec[1]['body']).decode())
+    for bad in ([],[dict(type='input_image',image_url='opaque')],
+                [dict(type='input_text',text='partial',unknown='opaque')]):
+        rec[1]['body']['input'][-1]['output']=bad
+        with pytest.raises(ValueError,match='output'):
+            overhead.analyze(rec,'SNAPSHOT\ntext',len)
+
+
+def test_namespaced_tool_cost_and_foreign_rejection():
+    body = json.loads(records()[0]['body'])
+    body['tools'] = [dict(type='namespace', name='mcp__harness_v6', description='Harness',
+        tools=body['tools'])]
+    report = overhead.analyze([dict(path='/responses', body=body)], 'SNAPSHOT\ntext', len)
+    assert report['rounds'][0]['tool_schema_tokens'] == len(overhead.canonical(body['tools']).decode())
+    body['tools'].append(dict(type='custom', name='apply_patch'))
+    with pytest.raises(ValueError, match='tools'):
+        overhead.analyze([dict(path='/responses', body=body)], 'SNAPSHOT\ntext', len)
+
+
+def test_lite_tools_are_counted_and_checked_inside_input():
+    body = json.loads(records()[0]['body'])
+    block = dict(type='additional_tools', role='developer', tools=body.pop('tools'))
+    body['input'].insert(0, block)
+    report = overhead.analyze([dict(path='/responses', body=body)], 'SNAPSHOT\ntext', len)
+    row = report['rounds'][0]
+    assert row['tool_schema_tokens'] == len(overhead.canonical([block]).decode())
+    assert row['conservative_input_tokens'] >= len(overhead.canonical(body).decode())
+    body['tools'] = []
+    with pytest.raises(ValueError, match='ambiguous'):
+        overhead.analyze([dict(path='/responses', body=body)], 'SNAPSHOT\ntext', len)
+    del body['tools']
+    block['tools'].append(dict(type='function', name='apply_patch', parameters={}))
+    with pytest.raises(ValueError, match='unexpected'):
+        overhead.analyze([dict(path='/responses', body=body)], 'SNAPSHOT\ntext', len)
+
+
+@pytest.mark.parametrize('budget,expected_exit',[(1,1),(100000,0)])
+def test_cli_budget_status_matches_report(tmp_path,monkeypatch,budget,expected_exit):
+    import sys
+    argv=['measure','--context-token-budget',str(budget),'--output-reserve-tokens','50',
+          '--output',str(tmp_path/'report.json')]
+    for fmt in ('explicit','dense'):
+        snapshot=tmp_path/(fmt+'.txt');snapshot.write_text('SNAPSHOT\ntext')
+        log=tmp_path/(fmt+'.jsonl')
+        log.write_text('\n'.join(json.dumps(row) for row in records())+'\n')
+        argv+=['--snapshot',fmt+'='+str(snapshot),'--requests',fmt+'='+str(log)]
+    monkeypatch.setattr(sys,'argv',argv)
+    monkeypatch.setattr(overhead,'tiktoken_counter',lambda *a:len)
+    monkeypatch.setattr(overhead.importlib.metadata,'version',lambda *a:'test')
+    assert overhead.main()==expected_exit
+    assert json.loads((tmp_path/'report.json').read_text())['passed']==(expected_exit==0)

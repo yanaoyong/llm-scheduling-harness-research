@@ -35,7 +35,7 @@ def main():
     for key in ('physical-root','data-dir','vendor-dir','evidence-root','hash-manifest',
                 'codex-binary','codex-version','tiktoken-version','output'):
         parser.add_argument('--'+key, required=True)
-    parser.add_argument('--branch', default='feat/harness-v6-codex-runner')
+    parser.add_argument('--branch', default='main')
     args = parser.parse_args()
     rows = []
     def check(name, fn):

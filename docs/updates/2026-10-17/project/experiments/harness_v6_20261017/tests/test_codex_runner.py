@@ -69,11 +69,33 @@ def test_timeout_group_and_version(tmp_path,monkeypatch):
 
 def test_footer_deterministic():
     args=dict(state_version=1,submission_id='1',now=0,next_anchor=60,delta=60,delta_min=60,
-              trigger='periodic',interaction='mcp_session',wall_seconds=300)
+              trigger='periodic',interaction='mcp_session',wall_seconds=300,valid_until_maximum=3600,max_tool_calls=3)
     assert cycle_footer(**args)==cycle_footer(**args)
     assert json.loads(cycle_footer(**args).split('CYCLE_FOOTER\n')[1])['valid_until_minimum']==120
     args.update(trigger='event',next_anchor=None)
     assert json.loads(cycle_footer(**args).split('CYCLE_FOOTER\n')[1])['valid_until_minimum']==60
+
+
+@pytest.mark.parametrize('group',['E1','P2'])
+@pytest.mark.parametrize('problem_end,state_end',[(1600.125,3600),(3600,1600.125)])
+def test_live_footer_discloses_both_host_plan_boundaries(tmp_path,monkeypatch,group,problem_end,state_end):
+    run=SyntheticRun(directory=tmp_path/'run',group=group)
+    problem=run.factory.problem;execution=run.factory.execution_state
+    monkeypatch.setattr(type(run.factory),'problem',lambda self:dict(problem(),horizon_end=problem_end))
+    monkeypatch.setattr(type(run.factory),'execution_state',lambda self:dict(execution(),observation_end=state_end))
+    seen=[];original=run.runner.run
+    def record(argv,prompt,**kwargs):
+        seen.append(prompt);return original(argv,prompt,**kwargs)
+    run.runner.run=record
+    run.step()
+    assert len(seen)==1
+    footer=json.loads(seen[0].rsplit('\nCYCLE_FOOTER\n',1)[1])
+    assert footer['valid_until_maximum']==min(problem_end,state_end)
+    assert footer['valid_until_maximum_comparison']=='<='
+    assert footer['max_tool_calls']==(run.budget.max_tool_calls if group=='P2' else 0)
+    assert footer['max_model_requests']==footer['max_tool_calls']+1
+    initial=json.loads((run.directory/'cycle-1/initial.json').read_text())
+    assert footer['valid_until_maximum']==min(initial['execution_state']['observation_end'],initial['problem']['horizon_end'])
 
 
 def test_prompt_prefix_current_footer_and_budget(tmp_path):
@@ -108,7 +130,7 @@ def test_fake_planner_keeps_retained_future_bounds_inside_validity(tmp_path):
     snapshot=build_snapshot(run.prefix, run.factory.ledger(), horizon_seconds=900,state_version=2,running_jobs=[],
         last_cycle_receipt=None,model_notes='',token_budget=100000,token_counter=estimate_tokens)
     footer=cycle_footer(state_version=2,submission_id='2',now=0,next_anchor=60,delta=60,
-        delta_min=60,trigger='periodic',interaction='mcp_session',wall_seconds=300)
+        delta_min=60,trigger='periodic',interaction='mcp_session',wall_seconds=300,valid_until_maximum=100000,max_tool_calls=3)
     action=prompt_action(snapshot.decode()+footer)
     assert action['delta']['plan_header']['valid_until']>500
     assert not action['delta']['tasks']['replace']
@@ -118,11 +140,11 @@ def test_fake_planner_keeps_retained_future_bounds_inside_validity(tmp_path):
 def test_exited_leader_cleans_stdout_holding_child(tmp_path, exit_code):
     script = tmp_path / 'leader.py'
     child_file = tmp_path / 'child.pid'
-    script.write_text("#!/usr/bin/env python3\nimport os, signal, time\n"
+    script.write_text("#!/usr/bin/env python3\nimport os, signal, time, json\n"
         "pid = os.fork()\nif pid == 0:\n"
         " signal.signal(signal.SIGTERM, signal.SIG_IGN)\n"
         " while True: time.sleep(1)\n"
-        f"open({str(child_file)!r}, 'w').write(str(pid))\n"
+        f"open({str(child_file)!r}, 'w').write(json.dumps(dict(pid=pid, leader_finished_at=time.monotonic())))\n"
         "print('{\"type\":\"turn.completed\"}', flush=True)\n"
         f"raise SystemExit({exit_code})\n")
     script.chmod(0o755)
@@ -130,9 +152,13 @@ def test_exited_leader_cleans_stdout_holding_child(tmp_path, exit_code):
                     stderr_path=tmp_path/'stderr')
     result = r.run(['codex'], '', timeout=5)
     assert not result.timed_out and result.returncode == exit_code
-    assert result.wall_seconds < 2
+    child = json.loads(child_file.read_text())
+    # This regression bounds cleanup after leader exit, not interpreter startup
+    # (which varies with host load on macOS). The five-second
+    # host deadline above remains in force, including process startup.
+    assert time.monotonic() - child['leader_finished_at'] < 2
     assert json.loads(result.jsonl) == {'type': 'turn.completed'}
-    stat = Path(f'/proc/{int(child_file.read_text())}/stat')
+    stat = Path(f"/proc/{child['pid']}/stat")
     deadline = time.monotonic() + 1
     while stat.exists() and stat.read_text().split()[2] != 'Z' and time.monotonic() < deadline:
         time.sleep(.01)

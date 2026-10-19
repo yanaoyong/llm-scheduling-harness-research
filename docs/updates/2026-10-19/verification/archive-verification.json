@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "files": 2917,
+  "native_attempts": 55,
+  "known_responses": 51,
+  "unknown_usage_failures": 4,
+  "known_usage": {
+    "input_tokens": 9766089,
+    "cached_input_tokens": 1981312,
+    "output_tokens": 107404
+  },
+  "formal_complete": "0/6",
+  "privacy_pattern_findings": 0,
+  "model_calls": 0
+}

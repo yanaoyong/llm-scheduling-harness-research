@@ -8,11 +8,13 @@ import threading
 from .contracts import encode, digest, strict_json
 from .facts import FactReader, reconstruct
 from .submit import Submitter
+from .tool_codec import text as result_text, LEGEND as RESULT_LEGEND
 
 from .delta_schema import DELTA_SCHEMA
+from .structured_schema import strict_projection, validate_strict_schema
 
 TOOL_DESCRIPTIONS = {
-    "read_entities": "Finite numeric gt/gte/lt/lte exclude null/absent; eq/contains also supported. coverage_uncovered=true reads all uncovered operations with version-bound paging, no ranking. Read authoritative frozen entities by IDs or paginated filters (up to 512 IDs).",
+    "read_entities": "Finite numeric gt/gte/lt/lte exclude null/absent; eq/contains also supported. coverage_uncovered=true reads all uncovered operations with version-bound paging, no ranking. Read authoritative frozen entities by IDs or paginated filters (up to 512 IDs). " + RESULT_LEGEND,
     "validate_plan": "Validate decision delta without adoption; returns all violation counts and up to 50 details.",
     "submit_plan": "Atomically accept one state-bound decision delta; adoption requires successful session exit.",
 }
@@ -22,6 +24,19 @@ TOOLS = {
     'validate_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':DELTA_SCHEMA},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
     'submit_plan': {'type':'object','properties':{'expected_state_version':{},'submission_id':{'type':'string'},'delta':DELTA_SCHEMA},'required':['expected_state_version','submission_id','delta'],'additionalProperties':False},
 }
+
+# Fully typed common decision wire schema for MCP and strict final output.
+# Canonical delta constraints and host validation remain in delta_schema and
+# plan_delta. In particular omission remains omission, never a null sentinel.
+for _name in ('validate_plan', 'submit_plan'):
+    TOOLS[_name]['properties']['expected_state_version'] = {'type': ['integer', 'string']}
+    TOOLS[_name] = strict_projection(TOOLS[_name])
+    validate_strict_schema(TOOLS[_name])
+# Non-strict MCP reader retains optional query fields and its exact host domain.
+TOOLS['read_entities']['properties']['ids']['items'] = {'type': ['string', 'integer']}
+TOOLS['read_entities']['properties']['fields']['items'] = {'type': 'string'}
+TOOLS['read_entities']['properties']['where']['items']['properties']['op']['type'] = 'string'
+TOOLS['read_entities']['properties']['where']['items']['properties']['value'] = {'type': ['null', 'boolean', 'number', 'string']}
 
 class CycleServer:
     def __init__(self, input_dir, output_dir, *, physical_precheck=None, max_tool_calls=100):
@@ -86,7 +101,7 @@ class CycleServer:
             elif method=='tools/list': result={'tools':[{'name':n,'description':TOOL_DESCRIPTIONS[n],'inputSchema':s} for n,s in TOOLS.items()]}
             elif method=='tools/call':
                 p=request['params'];value=self.call(p['name'],p.get('arguments',{}))
-                result={'content':[{'type':'text','text':encode(value).decode()}],'isError':bool(value.get('isError',False))}
+                result={'content':[{'type':'text','text':result_text(value)}],'isError':bool(value.get('isError',False))}
             else: return {'jsonrpc':'2.0','id':identity,'error':{'code':-32601,'message':'Method not found'}}
             return {'jsonrpc':'2.0','id':identity,'result':result} if 'id' in request else None
         except (KeyError,TypeError,ValueError) as exc:

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "semantic_equivalence_cases": 512,
+  "large_text_characters": 2000000,
+  "large_text_seconds": 0.074,
+  "reason": "Email local-part boundary avoids quadratic retries; substitutions agree with the existing publication policy",
+  "real_model_requests": 0
+}

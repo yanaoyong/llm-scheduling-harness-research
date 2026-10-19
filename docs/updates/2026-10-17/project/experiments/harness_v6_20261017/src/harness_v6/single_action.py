@@ -10,20 +10,27 @@ from .contracts import encode, digest, strict_json
 from .mcp_server import TOOLS
 from .session import Budget, RunResult, command as session_command, classify
 from .submit import Submitter
+from .structured_schema import validate_strict_schema
 
 OUTPUT_SCHEMA = deepcopy(TOOLS['submit_plan'])
 
 
 def write_schema(path):
+    validate_strict_schema(OUTPUT_SCHEMA)
     Path(path).write_bytes(encode(OUTPUT_SCHEMA))
 
 
-def command(input_dir, schema_path, *, model, budget=Budget(), binary='codex'):
-    argv = session_command(input_dir, input_dir, model=model, budget=budget, binary=binary)
+def command(input_dir, schema_path, *, model, budget=Budget(), binary='codex',
+            context_token_budget=None, output_reserve_tokens=None, model_config=None):
+    argv = session_command(input_dir, input_dir, model=model, budget=budget, binary=binary,
+        context_token_budget=context_token_budget, output_reserve_tokens=output_reserve_tokens, model_config=model_config)
     result = []
     index = 0
     while index < len(argv) - 1:
         if argv[index] == '-c' and argv[index + 1].startswith('mcp_servers.'):
+            index += 2
+        elif argv[index] == '-c' and argv[index + 1].startswith('harness_max_inference_requests='):
+            result.extend(['-c', 'harness_max_inference_requests=1'])
             index += 2
         else:
             result.append(argv[index])
