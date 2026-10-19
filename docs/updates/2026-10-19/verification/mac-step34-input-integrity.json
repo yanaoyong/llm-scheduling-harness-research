@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checked_files": 28047,
+  "failed": [],
+  "manifest_sha256": "d2205351e4368d6d600dd915ee61ca31f882d9762833aa74924b17ca34a70fd9",
+  "counts": {
+    "physical": 3,
+    "data": 20,
+    "vendor": 26,
+    "evidence": 27998
+  }
+}

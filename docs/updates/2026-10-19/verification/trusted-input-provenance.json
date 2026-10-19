@@ -1,0 +1,82 @@
+{
+  "schema": "harness-v6-trusted-input-provenance-v1",
+  "verified_at_utc": "2026-10-19T03:31:41.004353+00:00",
+  "manifest": {
+    "path": "docs/updates/2026-10-19/evidence/trusted-input-sha256.json",
+    "bytes": 6234964,
+    "sha256": "d2205351e4368d6d600dd915ee61ca31f882d9762833aa74924b17ca34a70fd9",
+    "source_work_relative_path": "trusted-input-sha256.json",
+    "copied_byte_for_byte": true,
+    "counts": {
+      "physical": 3,
+      "data": 20,
+      "vendor": 26,
+      "evidence": 27998
+    },
+    "files": 28047
+  },
+  "historical_integrity_report": {
+    "path": "docs/updates/2026-10-19/verification/mac-step34-input-integrity.json",
+    "source_work_relative_path": "reports/step34-input-integrity.json",
+    "sha256": "330ff8414e2487378c51d5edbda1b42b1a69e2d32d93f628bd268fe551d12dfc",
+    "copied_byte_for_byte": true,
+    "manifest_digest_matches": true
+  },
+  "historical_preflight_cross_checks": [
+    {
+      "source_work_relative_path": "preflight.json",
+      "source_sha256": "6b27a77bfc64ae1c27bbf4f1f4a121239be94bb8a9052dcd06475ad0c9b08815",
+      "preflight_passed": true,
+      "total_checks": 28054,
+      "input_hash_checks": 28047,
+      "all_input_hashes_match_original_manifest": true
+    },
+    {
+      "source_work_relative_path": "preflight-final.json",
+      "source_sha256": "6b27a77bfc64ae1c27bbf4f1f4a121239be94bb8a9052dcd06475ad0c9b08815",
+      "preflight_passed": true,
+      "total_checks": 28054,
+      "input_hash_checks": 28047,
+      "all_input_hashes_match_original_manifest": true
+    },
+    {
+      "source_work_relative_path": "preflight-step34-final.json",
+      "source_sha256": "a06eae4a97ed31d172d6c7b0ae775a48bd8da3d5ab3ecd7914cb5a7900395e88",
+      "preflight_passed": true,
+      "total_checks": 28054,
+      "input_hash_checks": 28047,
+      "all_input_hashes_match_original_manifest": true
+    },
+    {
+      "source_work_relative_path": "goal-s0-20261019/preflight-current.json",
+      "source_sha256": "3e30e22417740f0c79833f5ce6e3e1de8af6bd7f48f5b28ed8f53a4ee86d8fb1",
+      "preflight_passed": true,
+      "total_checks": 28054,
+      "input_hash_checks": 28047,
+      "all_input_hashes_match_original_manifest": true
+    },
+    {
+      "source_work_relative_path": "goal-s0-20261019/preflight-v163.json",
+      "source_sha256": "c85de9aac51d0096c074cbd79403c1cad3a90d00815ab926fc2434332e1e002c",
+      "preflight_passed": true,
+      "total_checks": 28054,
+      "input_hash_checks": 28047,
+      "all_input_hashes_match_original_manifest": true
+    }
+  ],
+  "current_mac_input_recheck": {
+    "checker": "scripts/mac_preflight.py:hashes",
+    "roots_relative_to_work": {
+      "physical": "inputs/physical",
+      "data": "inputs/physical/data/smt/SMT2020_LVHM",
+      "vendor": "inputs/physical/vendor",
+      "evidence": "inputs/evidence"
+    },
+    "checked_files": 28047,
+    "passed": true,
+    "failed": []
+  },
+  "source_of_expected_hashes": "Existing Mac preflight manifest, not regenerated from the receiving mirror. Current hashing is verification against that original manifest.",
+  "published_payload": "Relative input filenames and SHA-256 digests, original small integrity report, and provenance summaries; no input file contents or full local preflight logs.",
+  "real_model_requests": 0
+}

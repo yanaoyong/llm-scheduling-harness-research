@@ -48,6 +48,10 @@ python scripts/mac_preflight.py --branch main --physical-root "$PHYSICAL" --data
 可信 hash 清单来自输入包发布方/已验收归档，格式是四个非空对象：
 `{"physical":{"src/smt/environment.py":"SHA256",...},"data":{"相对文件":"SHA256",...},"vendor":{...},"evidence":{...}}`。
 必须列出使用的所有数据/vendor/证据文件，不能把当前文件自算的 hash 当成来源认证。
+Mac 预检所用的 28,047 文件原始清单现已提交到
+[`trusted-input-sha256.json`](../../../../2026-10-19/evidence/trusted-input-sha256.json)，
+来源链、清单哈希、四类根目录映射和异机只读核验命令见
+[输入清单交接](../../../../2026-10-19/TRUSTED_INPUTS.md)。将上面的 `TRUSTED_HASHES` 指向该原件。
 脚本逐文件流式核对，拒绝越界路径，核对分支、Python 3.12/3.13、venv、tokenizer/cache 和 Codex pin。
 预期全部 PASS、退出 0；失败修复路径/版本/缺件，保留 `preflight.json` 和 stderr。
 **`codex --version` 只证明版本，不证明登录。** 用户已有 `codex exec` 登录能力是前置条件；

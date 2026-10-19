@@ -3,7 +3,7 @@
   "created_at": "2026-10-12T13:58:34.456399+00:00",
   "source_archive_commit": "4dc9b674781f15c6f67c7c193065612ffde3ae5e",
   "source_tracked_files": 825,
-  "public_file_count_excluding_this_manifest": 2473,
+  "public_file_count_excluding_this_manifest": 2477,
   "transformation_totals": {
     "public_exclusions": 1,
     "public_lean_release_documentation": 13,
@@ -14685,13 +14685,14 @@
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/MAC_RUNBOOK.md",
-      "bytes": 28706,
-      "public_sha256": "d3bce7b248d5ae5f0e78001e9816afc15fd4f265abf38b4e7487592d61c9212a",
+      "bytes": 29052,
+      "public_sha256": "31dc8d335679d2b7cd0ed4b79e7219d27fd89bd32ee97f8cf38e5604134fd278",
       "source_tracked_sha256": "955fd663fe74319cb17f3d743f919e7981cf2068f484e68c1852f4d9c1d4e227",
       "transformations": {
         "publication_sanitization": 0,
         "current_status_note": 1
-      }
+      },
+      "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-17/project/experiments/harness_v6_20261017/MAC_VALIDATION.md",
@@ -16450,17 +16451,24 @@
     },
     {
       "path": "docs/updates/2026-10-19/EVIDENCE.md",
-      "bytes": 3736,
-      "public_sha256": "8f7a0ff89918724fec8994c4390fddb126522eede5a1783776159a88a1ea11d1",
+      "bytes": 3927,
+      "public_sha256": "46faf222e54fd4f47e6ab61998fd59d220d5f102143a3300298a5873ee429454",
       "source_tracked_sha256": "8f7a0ff89918724fec8994c4390fddb126522eede5a1783776159a88a1ea11d1",
-      "publication_note": "Harness v6 S0 archive or editorial update, 2026-10-19"
+      "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-19/README.md",
-      "bytes": 6055,
-      "public_sha256": "00f48b9de5fc1e60435c7e72ea921528d2423811f677d9c0d61c58633eba0d94",
+      "bytes": 6447,
+      "public_sha256": "6d6810430924a0d4d4b315c2c9afb1cd3bb82c12effa524329ed5621974dbf20",
       "source_tracked_sha256": "00f48b9de5fc1e60435c7e72ea921528d2423811f677d9c0d61c58633eba0d94",
-      "publication_note": "Harness v6 S0 archive or editorial update, 2026-10-19"
+      "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19"
+    },
+    {
+      "path": "docs/updates/2026-10-19/TRUSTED_INPUTS.md",
+      "source_tracked_sha256": "137955602d7e5d63b43f3c9eeaae65456a1cd860b3aad6a6f07d4e353f468dad",
+      "bytes": 4604,
+      "public_sha256": "137955602d7e5d63b43f3c9eeaae65456a1cd860b3aad6a6f07d4e353f468dad",
+      "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19"
     },
     {
       "path": "docs/updates/2026-10-19/archive_tools/archive_harness_s0.py",
@@ -16547,6 +16555,14 @@
       "publication_note": "Harness v6 S0 archive or editorial update, 2026-10-19"
     },
     {
+      "path": "docs/updates/2026-10-19/evidence/trusted-input-sha256.json",
+      "source_tracked_sha256": "d2205351e4368d6d600dd915ee61ca31f882d9762833aa74924b17ca34a70fd9",
+      "bytes": 6234964,
+      "public_sha256": "d2205351e4368d6d600dd915ee61ca31f882d9762833aa74924b17ca34a70fd9",
+      "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19",
+      "byte_identical_to_mac_original": true
+    },
+    {
       "path": "docs/updates/2026-10-19/verification/archive-build.json",
       "bytes": 836,
       "public_sha256": "25a443cf5fd115ab9b480d52fdbf32259d713e4a6dabc5ed8e2b61263e30897d",
@@ -16559,6 +16575,14 @@
       "public_sha256": "021fd9b2e83262e9cca67dbd60d781eae75c5fb40a0f56d94860fab02655e4bd",
       "source_tracked_sha256": "021fd9b2e83262e9cca67dbd60d781eae75c5fb40a0f56d94860fab02655e4bd",
       "publication_note": "Harness v6 S0 archive or editorial update, 2026-10-19"
+    },
+    {
+      "path": "docs/updates/2026-10-19/verification/mac-step34-input-integrity.json",
+      "source_tracked_sha256": "330ff8414e2487378c51d5edbda1b42b1a69e2d32d93f628bd268fe551d12dfc",
+      "bytes": 246,
+      "public_sha256": "330ff8414e2487378c51d5edbda1b42b1a69e2d32d93f628bd268fe551d12dfc",
+      "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19",
+      "byte_identical_to_mac_original": true
     },
     {
       "path": "docs/updates/2026-10-19/verification/pr-regression.json",
@@ -16580,6 +16604,13 @@
       "public_sha256": "3f499e1b5915797b88bf73a60a65819c5dc81578e4f8796338c6e8edf0d23ba3",
       "source_tracked_sha256": "ac1ad43ba16abe4dffaae344a66208a3f7c2384e9ded546f68abceaf1370e211",
       "publication_note": "Harness v6 S0 archive or editorial update, 2026-10-19"
+    },
+    {
+      "path": "docs/updates/2026-10-19/verification/trusted-input-provenance.json",
+      "source_tracked_sha256": "393d06e9a689d7462344df7e4e8fd71d9be20f7d034c046a1432bc2d27a02691",
+      "bytes": 3276,
+      "public_sha256": "393d06e9a689d7462344df7e4e8fd71d9be20f7d034c046a1432bc2d27a02691",
+      "publication_note": "Mac trusted input manifest handoff: original hash files copied byte-for-byte; documentation and provenance updated, 2026-10-19"
     },
     {
       "path": "manifests/archive_scope.json",
@@ -20589,7 +20620,7 @@
       "source_tracked_sha256": "5e2da9a3c174f8fe8f5f6eaf0af111445df00e04a25465526815e0a341f2c4b9"
     }
   ],
-  "last_updated": "2026-10-19T02:53:52.687618+00:00",
+  "last_updated": "2026-10-19T03:33:14.081611+00:00",
   "latest_evidence_release": {
     "schema": "public-lean-publication-v1",
     "date": "2026-10-13",
@@ -20652,5 +20683,16 @@
     "archive_verification": "docs/updates/2026-10-19/verification/archive-verification.json",
     "git_files_added_or_refreshed": 185,
     "unchanged_base_files_newly_indexed": 106
+  },
+  "harness_v6_trusted_inputs_20261019": {
+    "entrypoint": "docs/updates/2026-10-19/TRUSTED_INPUTS.md",
+    "manifest": "docs/updates/2026-10-19/evidence/trusted-input-sha256.json",
+    "manifest_sha256": "d2205351e4368d6d600dd915ee61ca31f882d9762833aa74924b17ca34a70fd9",
+    "input_files": 28047,
+    "original_bytes_preserved": true,
+    "historical_preflights_cross_checked": 5,
+    "mac_input_recheck": "passed",
+    "model_calls": 0,
+    "input_contents_published": false
   }
 }
