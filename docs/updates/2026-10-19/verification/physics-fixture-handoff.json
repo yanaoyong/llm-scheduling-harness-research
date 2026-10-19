@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "restored_files": 6,
+  "restoration_command": "exact Python block from PHYSICS_FIXTURE.md",
+  "all_restored_files_byte_identical_to_mac_originals": true,
+  "fixture_gzip_roundtrip_passed": true,
+  "fixture_sha256": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+  "fixture_matches_formal_and_smoke_frozen_hash": true,
+  "audit_prefix_matches_independent_physics_qualification_hash": true,
+  "original_audit_and_source_check_manifest_bindings_verified": true,
+  "python_modules_imported": [
+    "independent_physics.audit",
+    "independent_physics.audit_prefix",
+    "independent_physics.source_check"
+  ],
+  "simulator_calls": 0,
+  "real_model_requests": 0
+}

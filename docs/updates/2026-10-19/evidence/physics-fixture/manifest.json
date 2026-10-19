@@ -1,0 +1,91 @@
+{
+  "schema": "harness-v6-physics-fixture-handoff-v1",
+  "created_at_utc": "2026-10-19T07:43:43.900338+00:00",
+  "source_work_label": "harness_v6_mac_20261018",
+  "files": [
+    {
+      "source_relative_to_work": "goal-s0-20261019/independent_physics/__init__.py",
+      "stored_path": "goal-s0-20261019/independent_physics/__init__.py",
+      "restored_path": "goal-s0-20261019/independent_physics/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stored_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byte_identical": true,
+      "encoding": "identity"
+    },
+    {
+      "source_relative_to_work": "goal-s0-20261019/independent_physics/audit.py",
+      "stored_path": "goal-s0-20261019/independent_physics/audit.py",
+      "restored_path": "goal-s0-20261019/independent_physics/audit.py",
+      "bytes": 17710,
+      "sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "stored_sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "byte_identical": true,
+      "encoding": "identity"
+    },
+    {
+      "source_relative_to_work": "goal-s0-20261019/independent_physics/audit_prefix.py",
+      "stored_path": "goal-s0-20261019/independent_physics/audit_prefix.py",
+      "restored_path": "goal-s0-20261019/independent_physics/audit_prefix.py",
+      "bytes": 18071,
+      "sha256": "ac474f3595dc1fcde3254240b8057b9d7f191d17f21f5a268989c86225c8067f",
+      "stored_sha256": "ac474f3595dc1fcde3254240b8057b9d7f191d17f21f5a268989c86225c8067f",
+      "byte_identical": true,
+      "encoding": "identity"
+    },
+    {
+      "source_relative_to_work": "goal-s0-20261019/independent_physics/manifest.json",
+      "stored_path": "goal-s0-20261019/independent_physics/manifest.json",
+      "restored_path": "goal-s0-20261019/independent_physics/manifest.json",
+      "bytes": 1079,
+      "sha256": "9444bfbbd9e48123406e8c90347f3263db960da8c592aba175c07f01ea4fd859",
+      "stored_sha256": "9444bfbbd9e48123406e8c90347f3263db960da8c592aba175c07f01ea4fd859",
+      "byte_identical": true,
+      "encoding": "identity"
+    },
+    {
+      "source_relative_to_work": "goal-s0-20261019/independent_physics/source_check.py",
+      "stored_path": "goal-s0-20261019/independent_physics/source_check.py",
+      "restored_path": "goal-s0-20261019/independent_physics/source_check.py",
+      "bytes": 8324,
+      "sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "stored_sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "byte_identical": true,
+      "encoding": "identity"
+    },
+    {
+      "source_relative_to_work": "sealed/fixture.json",
+      "stored_path": "sealed/fixture.json.gz",
+      "restored_path": "sealed/fixture.json",
+      "bytes": 226952512,
+      "sha256": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+      "stored_bytes": 43821896,
+      "stored_sha256": "7333bb764d778f60b31cf6da4e22c97e53d8810eac0dd9d4b03b4bba2e8b37f8",
+      "byte_identical_after_decompression": true,
+      "encoding": "gzip"
+    }
+  ],
+  "original_manifest_source_bindings": [
+    {
+      "file": "audit.py",
+      "sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "matches_original_manifest": true,
+      "matches_original_source": true
+    },
+    {
+      "file": "source_check.py",
+      "sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "matches_original_manifest": true,
+      "matches_original_source": true
+    }
+  ],
+  "publication_scope": "User-requested original independent_physics directory and sealed/fixture.json. Preserve original bytes including historical local paths because the independent audit binds fixture_hash to these exact bytes. No model calls or regenerated fixture.",
+  "fixture_local_path_fields": [
+    "data_dir",
+    "mechanism_results/e1",
+    "mechanism_results/hour",
+    "mechanism_results/p2"
+  ],
+  "restoration": "Use restored_path under a repository-external work directory. Hashes verify original Mac bytes; local path remapping is a separate execution concern.",
+  "real_model_requests": 0
+}
