@@ -1,0 +1,75 @@
+{
+  "files": [
+    {
+      "name": "run_registered_s1.py",
+      "original_sha256": "d71195448b888f9e3460001a04a198db5f6ab26e8b8f9313e19396f49f32edfe",
+      "new_sha256": "c3b9e59ad4c780ee65bad80f618a1d60ef3faf04d1522da386d09332b60c15b9",
+      "identical": false
+    },
+    {
+      "name": "traced_runtime_s1.py",
+      "original_sha256": "c755ef7d240bfb5033839ffafe1501062989d35df3226f0cc372a94d709e0bd7",
+      "new_sha256": "c755ef7d240bfb5033839ffafe1501062989d35df3226f0cc372a94d709e0bd7",
+      "identical": true
+    },
+    {
+      "name": "audit_model_run_s1.py",
+      "original_sha256": "fe130fa819a1bb91c54c051c3605deb6719ea937f355bc991fedade1a2bccc3e",
+      "new_sha256": "fe130fa819a1bb91c54c051c3605deb6719ea937f355bc991fedade1a2bccc3e",
+      "identical": true
+    },
+    {
+      "name": "audit_physical_prefix.py",
+      "original_sha256": "6d1b0ed9152167302fd1bcfde40822787997fad29c580e7ba345b65a76244d0d",
+      "new_sha256": "6d1b0ed9152167302fd1bcfde40822787997fad29c580e7ba345b65a76244d0d",
+      "identical": true
+    },
+    {
+      "name": "audit_idle_replay_v2.py",
+      "original_sha256": "c0f580ef0f846f6eb9ef37793f23f1657c6b56345b975f4450be00270b8a7757",
+      "new_sha256": "c0f580ef0f846f6eb9ef37793f23f1657c6b56345b975f4450be00270b8a7757",
+      "identical": true
+    },
+    {
+      "name": "cycle_artifacts.py",
+      "original_sha256": "a2d15a3b536dba96c33334e0ec2d804206a03c1955ddc381ee5205bbf374d04a",
+      "new_sha256": "a2d15a3b536dba96c33334e0ec2d804206a03c1955ddc381ee5205bbf374d04a",
+      "identical": true
+    },
+    {
+      "name": "independent_physics/__init__.py",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "new_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    {
+      "name": "independent_physics/audit.py",
+      "original_sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "new_sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "identical": true
+    },
+    {
+      "name": "independent_physics/audit_prefix.py",
+      "original_sha256": "ac474f3595dc1fcde3254240b8057b9d7f191d17f21f5a268989c86225c8067f",
+      "new_sha256": "ac474f3595dc1fcde3254240b8057b9d7f191d17f21f5a268989c86225c8067f",
+      "identical": true
+    },
+    {
+      "name": "independent_physics/source_check.py",
+      "original_sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "new_sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "identical": true
+    },
+    {
+      "name": "independent_physics/manifest.json",
+      "original_sha256": "9444bfbbd9e48123406e8c90347f3263db960da8c592aba175c07f01ea4fd859",
+      "new_sha256": "9444bfbbd9e48123406e8c90347f3263db960da8c592aba175c07f01ea4fd859",
+      "identical": true
+    }
+  ],
+  "driver_changes": [
+    "scientific rules basename experiment-rules-stage-s1.json",
+    "CLI group choices restricted to P2"
+  ],
+  "status": "Preparatory copies only; not frozen or qualified for execution"
+}

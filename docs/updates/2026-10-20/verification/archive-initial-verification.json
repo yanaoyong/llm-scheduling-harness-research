@@ -1,0 +1,92 @@
+{
+  "passed": false,
+  "reviewed_exceptions": [
+    {
+      "path": "docs/updates/2026-10-20/COMPARISON_DRAFT.md",
+      "kind": "absolute_local_paths",
+      "count": 11
+    }
+  ],
+  "exception_reason": "Original comparison draft must remain byte-identical; 11 local-path references retained and reported.",
+  "binary_review": "PDF text extracted; all DOCX XML scanned; sole DOCX embedded image matches visually reviewed roadmap PNG; PDF contains no raster images.",
+  "release_files_checked": 5341,
+  "private_files_checked": 5390,
+  "git_files_scanned": 182,
+  "git_bytes": 20436968,
+  "leak_counts": {
+    "absolute_local_paths": 59,
+    "emails": 1,
+    "personal_phone": 0,
+    "personal_birth_date": 0,
+    "personal_email_domain": 12,
+    "opaque_ciphertext": 0,
+    "private_key": 0,
+    "api_secret": 0,
+    "token_secret": 0,
+    "bearer_secret": 0,
+    "base64_image": 0,
+    "private_content_block": 0,
+    "private_summary_channel": 0,
+    "image_content_block": 0,
+    "hostname": 0,
+    "task_exact_private_identifiers": 0
+  },
+  "findings": [
+    {
+      "path": "s1/audit-opt/profile_run.py",
+      "kind": "personal_email_domain",
+      "count": 2
+    },
+    {
+      "path": "s1/audit-opt/results/baseline-s0.log",
+      "kind": "personal_email_domain",
+      "count": 1
+    },
+    {
+      "path": "s1/audit-opt/run_audit.py",
+      "kind": "personal_email_domain",
+      "count": 1
+    },
+    {
+      "path": "s1/codex-impl-w2.jsonl",
+      "kind": "emails",
+      "count": 1
+    },
+    {
+      "path": "s1/codex-impl-w2.jsonl",
+      "kind": "personal_email_domain",
+      "count": 1
+    },
+    {
+      "path": "s1/codex-impl-x.jsonl",
+      "kind": "personal_email_domain",
+      "count": 6
+    },
+    {
+      "path": "excluded.jsonl",
+      "kind": "absolute_local_paths",
+      "count": 24
+    },
+    {
+      "path": "docs/updates/2026-10-20/COMPARISON_DRAFT.md",
+      "kind": "absolute_local_paths",
+      "count": 11
+    },
+    {
+      "path": "docs/updates/2026-10-20/archive_tools/archive_stage.py",
+      "kind": "personal_email_domain",
+      "count": 1
+    },
+    {
+      "path": "docs/updates/2026-10-20/evidence/excluded.jsonl",
+      "kind": "absolute_local_paths",
+      "count": 24
+    }
+  ],
+  "protected_files_unchanged": 8,
+  "models_or_experiments_run": 0,
+  "exact_identifier_patterns_checked": 4,
+  "release_sha256": "e5d9115a688c504385725dc3030ae6fdeb23bb0f5503eb3cf346ee0838daa00c",
+  "private_sha256": "38a72c7f47bd98fcdd29462481c11048d0417893c8b5c2df27f808873d83837b",
+  "review_note": "All public/private member hashes passed. Remaining non-protected scan hits were relative path components and Python decorator syntax; scanner precision and decorator preservation were corrected before final verification."
+}

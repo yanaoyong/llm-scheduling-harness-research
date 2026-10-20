@@ -1,0 +1,288 @@
+{
+  "allowed_prefixes": [
+    "/arms",
+    "/frozen_at",
+    "/interpretation",
+    "/quality",
+    "/quality_basis",
+    "/scheduling/H",
+    "/scheduling/delta",
+    "/scheduling/delta_basis",
+    "/scheduling/delta_min",
+    "/scheduling/end",
+    "/scheduling/groups",
+    "/scheduling/seeds",
+    "/scheduling/stage",
+    "/scheduling/trajectories_per_group"
+  ],
+  "asserted": true,
+  "differences": [
+    {
+      "new": {
+        "300": {
+          "admission": {
+            "effective_overhead": 471000,
+            "limit": 784799,
+            "margin": 110244,
+            "max_prompt_tokens": 193979,
+            "max_snapshot_tokens": 193555,
+            "measured_overhead": 325374,
+            "passed": true,
+            "prompt_margin": 109820,
+            "required": 674555,
+            "worst_snapshot": {
+              "cycle": 12,
+              "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-12",
+              "delta": 300,
+              "prompt_tokens": 193979,
+              "seed": 1,
+              "serialized_pressure_result_tokens": 95965,
+              "snapshot_sha256": "8647d878334392ef80ba0995118bb3a3ecfffad7773dd847d494913da0432918",
+              "snapshot_tokens": 193555,
+              "time": 4002.0
+            }
+          },
+          "delta_min_seconds": 300,
+          "delta_seconds": 300,
+          "estimated_formal_input_tokens": 6600000,
+          "estimated_smoke_plus_formal_input_tokens": 7150000,
+          "horizon_seconds": 900,
+          "per_sim_hour_request_cap": 100,
+          "per_sim_hour_token_cap": 38000000,
+          "quality": {
+            "avoidable_idle_integral": {
+              "direction": "upper bound",
+              "floor": 51457.61149434129,
+              "tolerance": 5145.761149434129,
+              "unit": "machine-seconds"
+            },
+            "throughput": {
+              "direction": "lower bound",
+              "floor": 2,
+              "tolerance": 0,
+              "unit": "completed lots"
+            },
+            "weighted_tardiness": {
+              "direction": "upper bound",
+              "floor": 4242.296694920063,
+              "tolerance": 0,
+              "unit": "weight times tardiness seconds for newly completed lots"
+            }
+          },
+          "reference_seed1_sessions": 12,
+          "reference_session_bound": 12,
+          "request_overhead_tokens": 471000
+        },
+        "900": {
+          "admission": {
+            "effective_overhead": 471000,
+            "limit": 784799,
+            "margin": 56709,
+            "max_prompt_tokens": 247514,
+            "max_snapshot_tokens": 247090,
+            "measured_overhead": 470796,
+            "passed": true,
+            "prompt_margin": 56285,
+            "required": 728090,
+            "worst_snapshot": {
+              "cycle": 4,
+              "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d900-seed1/cycle-4",
+              "delta": 900,
+              "prompt_tokens": 247514,
+              "seed": 1,
+              "serialized_pressure_result_tokens": 141646,
+              "snapshot_sha256": "bc3847ebb82c5e478f0b6289e274a400ea795e26e9d40e67afa92f6f69507670",
+              "snapshot_tokens": 247090,
+              "time": 3402.0
+            }
+          },
+          "delta_min_seconds": 900,
+          "delta_seconds": 900,
+          "estimated_formal_input_tokens": 2200000,
+          "estimated_smoke_plus_formal_input_tokens": 2750000,
+          "horizon_seconds": 2700,
+          "per_sim_hour_request_cap": 100,
+          "per_sim_hour_token_cap": 13000000,
+          "quality": {
+            "avoidable_idle_integral": {
+              "direction": "upper bound",
+              "floor": 146897.46876950562,
+              "tolerance": 14689.746876950563,
+              "unit": "machine-seconds"
+            },
+            "throughput": {
+              "direction": "lower bound",
+              "floor": 1,
+              "tolerance": 0,
+              "unit": "completed lots"
+            },
+            "weighted_tardiness": {
+              "direction": "upper bound",
+              "floor": 0,
+              "tolerance": 0,
+              "unit": "weight times tardiness seconds for newly completed lots"
+            }
+          },
+          "reference_seed1_sessions": 4,
+          "reference_session_bound": 4,
+          "request_overhead_tokens": 471000
+        }
+      },
+      "old": null,
+      "path": "/arms"
+    },
+    {
+      "new": "2026-10-19T23:22:18.145222+00:00",
+      "old": "2026-10-18T22:35:00.196608+00:00",
+      "path": "/frozen_at"
+    },
+    {
+      "new": "P2 only, one seed-1 trajectory per delta. Completion, quality compliance and cost are separate; between-arm differences are descriptive, not a significance claim.",
+      "old": "Experiment completion, quality compliance, and lower cost are separate. Cost improvement is descriptive mean P2 < E1 for both registered primary metrics; n=3 is not a significance claim. Negative outcomes are retained.",
+      "path": "/interpretation"
+    },
+    {
+      "new": {
+        "avoidable_idle_integral": {
+          "direction": "upper bound",
+          "floor": 51457.61149434129,
+          "tolerance": 5145.761149434129,
+          "unit": "machine-seconds"
+        },
+        "throughput": {
+          "direction": "lower bound",
+          "floor": 2,
+          "tolerance": 0,
+          "unit": "completed lots"
+        },
+        "weighted_tardiness": {
+          "direction": "upper bound",
+          "floor": 4242.296694920063,
+          "tolerance": 0,
+          "unit": "weight times tardiness seconds for newly completed lots"
+        }
+      },
+      "old": null,
+      "path": "/quality/300"
+    },
+    {
+      "new": {
+        "avoidable_idle_integral": {
+          "direction": "upper bound",
+          "floor": 146897.46876950562,
+          "tolerance": 14689.746876950563,
+          "unit": "machine-seconds"
+        },
+        "throughput": {
+          "direction": "lower bound",
+          "floor": 1,
+          "tolerance": 0,
+          "unit": "completed lots"
+        },
+        "weighted_tardiness": {
+          "direction": "upper bound",
+          "floor": 0,
+          "tolerance": 0,
+          "unit": "weight times tardiness seconds for newly completed lots"
+        }
+      },
+      "old": null,
+      "path": "/quality/900"
+    },
+    {
+      "new": null,
+      "old": {
+        "direction": "upper bound",
+        "floor": 1847.583240755634,
+        "tolerance": 184.75832407556342,
+        "unit": "machine-seconds"
+      },
+      "path": "/quality/avoidable_idle_integral"
+    },
+    {
+      "new": null,
+      "old": {
+        "direction": "lower bound",
+        "floor": 1,
+        "tolerance": 0,
+        "unit": "completed lots"
+      },
+      "path": "/quality/throughput"
+    },
+    {
+      "new": null,
+      "old": {
+        "direction": "upper bound",
+        "floor": 0,
+        "tolerance": 0,
+        "unit": "weight times tardiness seconds for newly completed lots"
+      },
+      "path": "/quality/weighted_tardiness"
+    },
+    {
+      "new": "Per arm, seed-1 scripted floors, zero throughput/tardiness tolerance, 10% idle tolerance. Only completed references (d300 seed 1; d900 seeds 1/2), three-seed bound unavailable; maximum reference session count sets engineering guard caps. Mechanism evidence only.",
+      "old": "Offline scripted delta60 is a mechanism/scale reference only, not verified model quality. Absolute acceptance follows existing summary floor +/- tolerance; P2 vs E1 uses the same absolute tolerance. Only one lot completes and no tardiness occurs in this short reference window; these two metrics may have low discriminating power, endpoint stays fixed.",
+      "path": "/quality_basis"
+    },
+    {
+      "new": {
+        "300": 900,
+        "900": 2700
+      },
+      "old": 900,
+      "path": "/scheduling/H"
+    },
+    {
+      "new": [
+        300,
+        900
+      ],
+      "old": 60,
+      "path": "/scheduling/delta"
+    },
+    {
+      "new": "Separate full one-hour scripted references on the new registered fixture, d300 seed 1, d900 seeds 1/2; three-seed bound unavailable; no model-quality evidence.",
+      "old": "Offline same physical mixed_702 public-prompt planner: delta 60/120/300 yields 16/8/4 sessions; idle integral 1847.583240755634/3471.983240755632/8747.583240755634 machine-seconds, throughput 1 and tardiness 0. Larger intervals exceed 10% idle tolerance; retain 60. No real model results used.",
+      "path": "/scheduling/delta_basis"
+    },
+    {
+      "new": {
+        "300": 300,
+        "900": 900
+      },
+      "old": 60,
+      "path": "/scheduling/delta_min"
+    },
+    {
+      "new": 4302,
+      "old": 1603.1,
+      "path": "/scheduling/end"
+    },
+    {
+      "new": null,
+      "old": "event/single_action",
+      "path": "/scheduling/groups/E1"
+    },
+    {
+      "new": [
+        1
+      ],
+      "old": [
+        1,
+        2,
+        3
+      ],
+      "path": "/scheduling/seeds"
+    },
+    {
+      "new": "S1",
+      "old": "S0",
+      "path": "/scheduling/stage"
+    },
+    {
+      "new": 1,
+      "old": 3,
+      "path": "/scheduling/trajectories_per_group"
+    }
+  ]
+}

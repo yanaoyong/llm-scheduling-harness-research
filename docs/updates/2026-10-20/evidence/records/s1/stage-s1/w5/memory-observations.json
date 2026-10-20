@@ -1,0 +1,8 @@
+{
+  "scope": "Shared cgroup, d300 smoke audit; sparse observations, not peak measurement",
+  "observed_anon_bytes": [
+    7508291584,
+    7629258752
+  ],
+  "note": "Above approximate 7 GB target; W5 qualifications kept sequential, no additional heavy work launched, background processes untouched"
+}

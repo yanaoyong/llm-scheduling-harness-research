@@ -1,0 +1,164 @@
+{
+  "executed": false,
+  "real_requests": 0,
+  "cwd": "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src:__LOCAL_WORKSPACE__/v6-mac-env/physical",
+    "TIKTOKEN_CACHE_DIR": "__LOCAL_WORKSPACE__/v6-mac-env/tiktoken_cache"
+  },
+  "commands": [
+    {
+      "name": "smoke-S1-d300",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py",
+        "--v6",
+        "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017",
+        "--registration",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/registration-smoke-S1-d300.json",
+        "--output",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d300",
+        "--group",
+        "P2",
+        "--trajectory",
+        "1",
+        "--max-sessions",
+        "1"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py --v6 __PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017 --registration __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/registration-smoke-S1-d300.json --output __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d300 --group P2 --trajectory 1 --max-sessions 1"
+    },
+    {
+      "name": "smoke-S1-d300-audit",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py",
+        "--run",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d300",
+        "--trace",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d300-native-trace",
+        "--fixture",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json",
+        "--output",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d300-audit.json",
+        "--smoke"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py --run __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d300 --trace __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d300-native-trace --fixture __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json --output __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d300-audit.json --smoke"
+    },
+    {
+      "name": "smoke-S1-d900",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py",
+        "--v6",
+        "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017",
+        "--registration",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/registration-smoke-S1-d900.json",
+        "--output",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d900",
+        "--group",
+        "P2",
+        "--trajectory",
+        "1",
+        "--max-sessions",
+        "1"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py --v6 __PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017 --registration __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/registration-smoke-S1-d900.json --output __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d900 --group P2 --trajectory 1 --max-sessions 1"
+    },
+    {
+      "name": "smoke-S1-d900-audit",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py",
+        "--run",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d900",
+        "--trace",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d900-native-trace",
+        "--fixture",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json",
+        "--output",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d900-audit.json",
+        "--smoke"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py --run __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d900 --trace __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d900-native-trace --fixture __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json --output __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/smoke-S1-d900-audit.json --smoke"
+    },
+    {
+      "name": "freeze_formal_after_both_real_smokes",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/freeze_formal_stage_s1.py"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/freeze_formal_stage_s1.py"
+    },
+    {
+      "name": "formal-S1-d300",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py",
+        "--v6",
+        "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017",
+        "--registration",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/registration-formal-S1-d300.json",
+        "--output",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d300",
+        "--group",
+        "P2",
+        "--trajectory",
+        "1"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py --v6 __PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017 --registration __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/registration-formal-S1-d300.json --output __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d300 --group P2 --trajectory 1"
+    },
+    {
+      "name": "formal-S1-d300-audit",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py",
+        "--run",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d300",
+        "--trace",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d300-native-trace",
+        "--fixture",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json",
+        "--output",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d300-audit.json"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py --run __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d300 --trace __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d300-native-trace --fixture __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json --output __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d300-audit.json"
+    },
+    {
+      "name": "formal-S1-d900",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py",
+        "--v6",
+        "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017",
+        "--registration",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/registration-formal-S1-d900.json",
+        "--output",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d900",
+        "--group",
+        "P2",
+        "--trajectory",
+        "1"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py --v6 __PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017 --registration __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/registration-formal-S1-d900.json --output __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d900 --group P2 --trajectory 1"
+    },
+    {
+      "name": "formal-S1-d900-audit",
+      "argv": [
+        "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py",
+        "--run",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d900",
+        "--trace",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d900-native-trace",
+        "--fixture",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json",
+        "--output",
+        "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d900-audit.json"
+      ],
+      "shell": "__LOCAL_WORKSPACE__/v6-mac-env/venv/bin/python __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py --run __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d900 --trace __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d900-native-trace --fixture __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json --output __LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/formal-S1-d900-audit.json"
+    }
+  ],
+  "orchestrator_entrypoint": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_real_stage_s1.sh",
+  "policy": "Sequential, stop on any driver/audit failure; no retries, overwrites or live calls during W2; formal files are created only after audited real smokes"
+}

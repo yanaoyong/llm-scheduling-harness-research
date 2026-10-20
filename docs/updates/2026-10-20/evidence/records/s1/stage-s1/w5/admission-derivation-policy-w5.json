@@ -1,0 +1,8 @@
+{
+  "scope": "W5 user-authorized fast path",
+  "d300": "All seed-1 snapshots, one overhead recording at largest snapshot",
+  "d900": "Seed-1 cycle4 retained recording: snapshot 247090, overhead 470796",
+  "overhead": "Shared maximum measured, rounded up to 1000, minimum 471000",
+  "runtime": "LiveRun.step checks every complete prompt before runner invocation; context_budget_exceeded stops before a model call; no row dropping",
+  "full_three_seed_bound_available": false
+}

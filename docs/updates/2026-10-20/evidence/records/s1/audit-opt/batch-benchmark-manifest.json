@@ -1,0 +1,11 @@
+[
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-P2-2-s1"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-P2-3-s1"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-P2-1-s1"
+  }
+]

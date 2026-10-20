@@ -1,0 +1,18 @@
+{
+  "executed": false,
+  "entrypoint": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/run_real_stage_s1_w5.sh",
+  "sequence": [
+    "smoke d300",
+    "audit smoke d300",
+    "smoke d900",
+    "audit smoke d900",
+    "freeze formal from smoke",
+    "formal d300",
+    "background audit d300",
+    "formal d900",
+    "background audit d900",
+    "wait all audits"
+  ],
+  "resume_supported": false,
+  "reason": "Frozen driver unconditionally sets run_live resume=False and rejects existing outputs"
+}

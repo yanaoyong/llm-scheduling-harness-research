@@ -1,0 +1,25 @@
+{
+  "files": 5341,
+  "logical_bytes": 5812883369,
+  "archive_bytes": 804020166,
+  "archive_sha256": "fa431f6ed417baf3ef79a0eb4c5c603f7f060e670fff38d469bf09f04795f638",
+  "private_files": 5390,
+  "private_bytes": 839325025,
+  "private_sha256": "38a72c7f47bd98fcdd29462481c11048d0417893c8b5c2df27f808873d83837b",
+  "sessions": {
+    "claude-subagent": 8,
+    "claude-main": 7,
+    "codex": 10
+  },
+  "messages": 1074,
+  "excluded": {
+    "symlink_not_followed": 28,
+    "runtime_database_or_binary_profile": 235,
+    "cli_runtime_state": 34,
+    "rebuildable_cache": 180,
+    "unsupported_binary_or_runtime": 2,
+    "tool_spill_private_only_public_reference_in_index": 24
+  },
+  "model_calls": 0,
+  "scientific_sqlite_exports": 2
+}

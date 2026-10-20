@@ -1,0 +1,11 @@
+{
+  "audit-opt/optimized/audit_idle_replay_v2.py": "40876c1e25ab25a9433e08e6bb406e7ba180523ad92a8834b3c3e657f30b3eb1",
+  "audit-opt/optimized/audit_model_run_s1.py": "7c7e6953ca7b47847595171afb71e44c9dc642d8f3f3ec907788f3a66adbb3eb",
+  "audit-opt/optimized/audit_physical_prefix.py": "6d1b0ed9152167302fd1bcfde40822787997fad29c580e7ba345b65a76244d0d",
+  "audit-opt/optimized/cached_observation.py": "e1acd9a94f410468ee5a87e0ce34053c2162a95c893d7d6b50d64e013c76de4a",
+  "audit-opt/optimized/cached_window.py": "06ec5eafc74e222e370b400e26217c6ada1f3e653b0f0d73c34ea1a1e91f5b44",
+  "audit-opt/optimized/cycle_artifacts.py": "a2d15a3b536dba96c33334e0ec2d804206a03c1955ddc381ee5205bbf374d04a",
+  "audit-opt/optimized/independent_idle.py": "22d7d4213427789ec9d423ac14ef3a84f7ec45f07f42c83abef7478b54a9ff16",
+  "audit-opt/optimized/stage_workers.py": "3dd8f8e4006ebf3c0b7a1b71d861193fa584bc2dfddd78f3d4f3846c7d9fd388",
+  "audit-opt/optimized/traced_runtime_s1.py": "c755ef7d240bfb5033839ffafe1501062989d35df3226f0cc372a94d709e0bd7"
+}

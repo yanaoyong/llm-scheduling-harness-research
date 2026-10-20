@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "returncode": 2,
+  "stderr": "usage: execute_stage_s1_w5.py [-h] [--resume]\nexecute_stage_s1_w5.py: error: Frozen S1 driver exposes no resume API (run_live resume=False). No model call made; preserve interrupted artifacts for separately qualified recovery.\n",
+  "no_pipeline_lock": true,
+  "real_model_requests": 0
+}

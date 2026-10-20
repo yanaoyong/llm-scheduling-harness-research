@@ -1,0 +1,576 @@
+{
+  "allowed_fields": [
+    "calibration_path",
+    "calibration_sha256",
+    "delta_min_seconds",
+    "delta_seconds",
+    "end_time",
+    "engineering_amendment_path",
+    "engineering_amendment_sha256",
+    "execution_driver_sha256",
+    "fixture",
+    "fixture_sha256",
+    "formal_schedule",
+    "frozen_at",
+    "groups",
+    "guard_basis",
+    "horizon_seconds",
+    "label",
+    "per_sim_hour_request_cap",
+    "per_sim_hour_token_cap",
+    "phase",
+    "quality",
+    "request_overhead_tokens",
+    "scientific_rules_sha256",
+    "smoke_registration_path",
+    "smoke_registration_sha256",
+    "trajectories_per_group",
+    "trajectory_seeds"
+  ],
+  "arms": {
+    "300": [
+      {
+        "field": "calibration_path",
+        "new": null,
+        "new_present": false,
+        "old": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-calibration-s1.json",
+        "old_present": true
+      },
+      {
+        "field": "calibration_sha256",
+        "new": null,
+        "new_present": false,
+        "old": "ad0ee907bfcf368ef46356fa99d95afd6890b3db6c42369f7045c9a5466099c4",
+        "old_present": true
+      },
+      {
+        "field": "delta_min_seconds",
+        "new": 300,
+        "new_present": true,
+        "old": 60,
+        "old_present": true
+      },
+      {
+        "field": "delta_seconds",
+        "new": 300,
+        "new_present": true,
+        "old": 60,
+        "old_present": true
+      },
+      {
+        "field": "end_time",
+        "new": 4302,
+        "new_present": true,
+        "old": 1603.1,
+        "old_present": true
+      },
+      {
+        "field": "engineering_amendment_path",
+        "new": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/technical-amendment-stage-s1.json",
+        "new_present": true,
+        "old": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/technical-amendment-s1-v2.json",
+        "old_present": true
+      },
+      {
+        "field": "engineering_amendment_sha256",
+        "new": "cebdeb31b2e821cd0397582c0b643caebb160db1d1d0b5e30c8f83f51992b1e5",
+        "new_present": true,
+        "old": "39dbff18fafd1831fa0d295cfc78e624d105a4f967d7df00d8b28e4686fb9246",
+        "old_present": true
+      },
+      {
+        "field": "execution_driver_sha256",
+        "new": "110a4f9ab955f550fe147a45d2044c35261c142bbf8386f6e1fa2511af6c4d37",
+        "new_present": true,
+        "old": "d71195448b888f9e3460001a04a198db5f6ab26e8b8f9313e19396f49f32edfe",
+        "old_present": true
+      },
+      {
+        "field": "fixture",
+        "new": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json",
+        "new_present": true,
+        "old": "__LOCAL_WORKSPACE__/v6-mac-env/s1/restored-mac-inputs/sealed/fixture.json",
+        "old_present": true
+      },
+      {
+        "field": "fixture_sha256",
+        "new": "07afb411bbd691bad487ef5f515fde330300667ae168c134ec8eae7ef7dbc772",
+        "new_present": true,
+        "old": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+        "old_present": true
+      },
+      {
+        "field": "formal_schedule",
+        "new": null,
+        "new_present": false,
+        "old": [
+          {
+            "group": "E1",
+            "trajectory": 1
+          },
+          {
+            "group": "P2",
+            "trajectory": 1
+          },
+          {
+            "group": "E1",
+            "trajectory": 2
+          },
+          {
+            "group": "P2",
+            "trajectory": 2
+          },
+          {
+            "group": "E1",
+            "trajectory": 3
+          },
+          {
+            "group": "P2",
+            "trajectory": 3
+          }
+        ],
+        "old_present": true
+      },
+      {
+        "field": "frozen_at",
+        "new": "2026-10-19T23:22:18.145222+00:00",
+        "new_present": true,
+        "old": "2026-10-19T08:17:15.659761+00:00",
+        "old_present": true
+      },
+      {
+        "field": "groups",
+        "new": [
+          "P2"
+        ],
+        "new_present": true,
+        "old": [
+          "E1",
+          "P2"
+        ],
+        "old_present": true
+      },
+      {
+        "field": "guard_basis",
+        "new": "1.25 times maximum offline sessions 12, 4 requests/session and 2500000 tokens/session, rounded per S0 formula",
+        "new_present": true,
+        "old": {
+          "formal_calibration": "Use independent smoke usage to freeze formal guard thresholds; any substantive difference needs matching independent smoke",
+          "formula": "ceil(1.25 * max(E1 bound, P2 bound) * 3600 / 901.1), round to 100 requests or 1M tokens. E1: 51 sessions * 1 request * 784799 total-token admission; P2: 16 sessions * 4 requests or 2.5M session tokens. Provisional finite guards, not user spend caps.",
+          "max_requests_per_session": {
+            "E1": 1,
+            "P2": 4
+          },
+          "offline_reference_max_sessions": {
+            "E1": 51,
+            "P2": 16
+          },
+          "provisional_margin": 1.25,
+          "reference_duration_seconds": 901.0999999999999,
+          "session_cap": 2500000,
+          "trajectory_request_bound": 64,
+          "trajectory_token_bound": 40024749
+        },
+        "old_present": true
+      },
+      {
+        "field": "label",
+        "new": "Independent S1 P2 d300 one-session real smoke; prepared only",
+        "new_present": true,
+        "old": "真实模型正式 S0（官方 Codex + gpt-6.1-sol 第二次尝试）；E1/P2 各三条轨迹",
+        "old_present": true
+      },
+      {
+        "field": "per_sim_hour_request_cap",
+        "new": 100,
+        "new_present": true,
+        "old": 400,
+        "old_present": true
+      },
+      {
+        "field": "per_sim_hour_token_cap",
+        "new": 38000000,
+        "new_present": true,
+        "old": 200000000,
+        "old_present": true
+      },
+      {
+        "field": "phase",
+        "new": "independent_smoke",
+        "new_present": true,
+        "old": "formal_S1",
+        "old_present": true
+      },
+      {
+        "field": "quality",
+        "new": {
+          "avoidable_idle_integral": {
+            "direction": "upper bound",
+            "floor": 51457.61149434129,
+            "tolerance": 5145.761149434129,
+            "unit": "machine-seconds"
+          },
+          "throughput": {
+            "direction": "lower bound",
+            "floor": 2,
+            "tolerance": 0,
+            "unit": "completed lots"
+          },
+          "weighted_tardiness": {
+            "direction": "upper bound",
+            "floor": 4242.296694920063,
+            "tolerance": 0,
+            "unit": "weight times tardiness seconds for newly completed lots"
+          }
+        },
+        "new_present": true,
+        "old": {
+          "avoidable_idle_integral": {
+            "direction": "upper bound",
+            "floor": 1847.583240755634,
+            "tolerance": 184.75832407556342,
+            "unit": "machine-seconds"
+          },
+          "throughput": {
+            "direction": "lower bound",
+            "floor": 1,
+            "tolerance": 0,
+            "unit": "completed lots"
+          },
+          "weighted_tardiness": {
+            "direction": "upper bound",
+            "floor": 0,
+            "tolerance": 0,
+            "unit": "weight times tardiness seconds for newly completed lots"
+          }
+        },
+        "old_present": true
+      },
+      {
+        "field": "request_overhead_tokens",
+        "new": 471000,
+        "new_present": true,
+        "old": 441000,
+        "old_present": true
+      },
+      {
+        "field": "scientific_rules_sha256",
+        "new": "50b2cd8e220d23e4bc1fa5501193031fe7b99955853d813b126f455d20102da4",
+        "new_present": true,
+        "old": "bca2c55cb07b920e67c60fe0b6eacc01d186d2be28bbbd5e202a109f5172c80f",
+        "old_present": true
+      },
+      {
+        "field": "smoke_registration_path",
+        "new": null,
+        "new_present": false,
+        "old": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/registration-smoke-s1.json",
+        "old_present": true
+      },
+      {
+        "field": "smoke_registration_sha256",
+        "new": null,
+        "new_present": false,
+        "old": "55f9f6b2d3c11009950c959a35e7ca2c6d8e1fad0cdffbf60eb8d676d2c56f8d",
+        "old_present": true
+      },
+      {
+        "field": "trajectories_per_group",
+        "new": 1,
+        "new_present": true,
+        "old": 3,
+        "old_present": true
+      },
+      {
+        "field": "trajectory_seeds",
+        "new": [
+          1
+        ],
+        "new_present": true,
+        "old": [
+          1,
+          2,
+          3
+        ],
+        "old_present": true
+      }
+    ],
+    "900": [
+      {
+        "field": "calibration_path",
+        "new": null,
+        "new_present": false,
+        "old": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-calibration-s1.json",
+        "old_present": true
+      },
+      {
+        "field": "calibration_sha256",
+        "new": null,
+        "new_present": false,
+        "old": "ad0ee907bfcf368ef46356fa99d95afd6890b3db6c42369f7045c9a5466099c4",
+        "old_present": true
+      },
+      {
+        "field": "delta_min_seconds",
+        "new": 900,
+        "new_present": true,
+        "old": 60,
+        "old_present": true
+      },
+      {
+        "field": "delta_seconds",
+        "new": 900,
+        "new_present": true,
+        "old": 60,
+        "old_present": true
+      },
+      {
+        "field": "end_time",
+        "new": 4302,
+        "new_present": true,
+        "old": 1603.1,
+        "old_present": true
+      },
+      {
+        "field": "engineering_amendment_path",
+        "new": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/technical-amendment-stage-s1.json",
+        "new_present": true,
+        "old": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/technical-amendment-s1-v2.json",
+        "old_present": true
+      },
+      {
+        "field": "engineering_amendment_sha256",
+        "new": "cebdeb31b2e821cd0397582c0b643caebb160db1d1d0b5e30c8f83f51992b1e5",
+        "new_present": true,
+        "old": "39dbff18fafd1831fa0d295cfc78e624d105a4f967d7df00d8b28e4686fb9246",
+        "old_present": true
+      },
+      {
+        "field": "execution_driver_sha256",
+        "new": "110a4f9ab955f550fe147a45d2044c35261c142bbf8386f6e1fa2511af6c4d37",
+        "new_present": true,
+        "old": "d71195448b888f9e3460001a04a198db5f6ab26e8b8f9313e19396f49f32edfe",
+        "old_present": true
+      },
+      {
+        "field": "fixture",
+        "new": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json",
+        "new_present": true,
+        "old": "__LOCAL_WORKSPACE__/v6-mac-env/s1/restored-mac-inputs/sealed/fixture.json",
+        "old_present": true
+      },
+      {
+        "field": "fixture_sha256",
+        "new": "07afb411bbd691bad487ef5f515fde330300667ae168c134ec8eae7ef7dbc772",
+        "new_present": true,
+        "old": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+        "old_present": true
+      },
+      {
+        "field": "formal_schedule",
+        "new": null,
+        "new_present": false,
+        "old": [
+          {
+            "group": "E1",
+            "trajectory": 1
+          },
+          {
+            "group": "P2",
+            "trajectory": 1
+          },
+          {
+            "group": "E1",
+            "trajectory": 2
+          },
+          {
+            "group": "P2",
+            "trajectory": 2
+          },
+          {
+            "group": "E1",
+            "trajectory": 3
+          },
+          {
+            "group": "P2",
+            "trajectory": 3
+          }
+        ],
+        "old_present": true
+      },
+      {
+        "field": "frozen_at",
+        "new": "2026-10-19T23:22:18.145222+00:00",
+        "new_present": true,
+        "old": "2026-10-19T08:17:15.659761+00:00",
+        "old_present": true
+      },
+      {
+        "field": "groups",
+        "new": [
+          "P2"
+        ],
+        "new_present": true,
+        "old": [
+          "E1",
+          "P2"
+        ],
+        "old_present": true
+      },
+      {
+        "field": "guard_basis",
+        "new": "1.25 times maximum offline sessions 4, 4 requests/session and 2500000 tokens/session, rounded per S0 formula",
+        "new_present": true,
+        "old": {
+          "formal_calibration": "Use independent smoke usage to freeze formal guard thresholds; any substantive difference needs matching independent smoke",
+          "formula": "ceil(1.25 * max(E1 bound, P2 bound) * 3600 / 901.1), round to 100 requests or 1M tokens. E1: 51 sessions * 1 request * 784799 total-token admission; P2: 16 sessions * 4 requests or 2.5M session tokens. Provisional finite guards, not user spend caps.",
+          "max_requests_per_session": {
+            "E1": 1,
+            "P2": 4
+          },
+          "offline_reference_max_sessions": {
+            "E1": 51,
+            "P2": 16
+          },
+          "provisional_margin": 1.25,
+          "reference_duration_seconds": 901.0999999999999,
+          "session_cap": 2500000,
+          "trajectory_request_bound": 64,
+          "trajectory_token_bound": 40024749
+        },
+        "old_present": true
+      },
+      {
+        "field": "horizon_seconds",
+        "new": 2700,
+        "new_present": true,
+        "old": 900,
+        "old_present": true
+      },
+      {
+        "field": "label",
+        "new": "Independent S1 P2 d900 one-session real smoke; prepared only",
+        "new_present": true,
+        "old": "真实模型正式 S0（官方 Codex + gpt-6.1-sol 第二次尝试）；E1/P2 各三条轨迹",
+        "old_present": true
+      },
+      {
+        "field": "per_sim_hour_request_cap",
+        "new": 100,
+        "new_present": true,
+        "old": 400,
+        "old_present": true
+      },
+      {
+        "field": "per_sim_hour_token_cap",
+        "new": 13000000,
+        "new_present": true,
+        "old": 200000000,
+        "old_present": true
+      },
+      {
+        "field": "phase",
+        "new": "independent_smoke",
+        "new_present": true,
+        "old": "formal_S1",
+        "old_present": true
+      },
+      {
+        "field": "quality",
+        "new": {
+          "avoidable_idle_integral": {
+            "direction": "upper bound",
+            "floor": 146897.46876950562,
+            "tolerance": 14689.746876950563,
+            "unit": "machine-seconds"
+          },
+          "throughput": {
+            "direction": "lower bound",
+            "floor": 1,
+            "tolerance": 0,
+            "unit": "completed lots"
+          },
+          "weighted_tardiness": {
+            "direction": "upper bound",
+            "floor": 0,
+            "tolerance": 0,
+            "unit": "weight times tardiness seconds for newly completed lots"
+          }
+        },
+        "new_present": true,
+        "old": {
+          "avoidable_idle_integral": {
+            "direction": "upper bound",
+            "floor": 1847.583240755634,
+            "tolerance": 184.75832407556342,
+            "unit": "machine-seconds"
+          },
+          "throughput": {
+            "direction": "lower bound",
+            "floor": 1,
+            "tolerance": 0,
+            "unit": "completed lots"
+          },
+          "weighted_tardiness": {
+            "direction": "upper bound",
+            "floor": 0,
+            "tolerance": 0,
+            "unit": "weight times tardiness seconds for newly completed lots"
+          }
+        },
+        "old_present": true
+      },
+      {
+        "field": "request_overhead_tokens",
+        "new": 471000,
+        "new_present": true,
+        "old": 441000,
+        "old_present": true
+      },
+      {
+        "field": "scientific_rules_sha256",
+        "new": "50b2cd8e220d23e4bc1fa5501193031fe7b99955853d813b126f455d20102da4",
+        "new_present": true,
+        "old": "bca2c55cb07b920e67c60fe0b6eacc01d186d2be28bbbd5e202a109f5172c80f",
+        "old_present": true
+      },
+      {
+        "field": "smoke_registration_path",
+        "new": null,
+        "new_present": false,
+        "old": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/registration-smoke-s1.json",
+        "old_present": true
+      },
+      {
+        "field": "smoke_registration_sha256",
+        "new": null,
+        "new_present": false,
+        "old": "55f9f6b2d3c11009950c959a35e7ca2c6d8e1fad0cdffbf60eb8d676d2c56f8d",
+        "old_present": true
+      },
+      {
+        "field": "trajectories_per_group",
+        "new": 1,
+        "new_present": true,
+        "old": 3,
+        "old_present": true
+      },
+      {
+        "field": "trajectory_seeds",
+        "new": [
+          1
+        ],
+        "new_present": true,
+        "old": [
+          1,
+          2,
+          3
+        ],
+        "old_present": true
+      }
+    ]
+  },
+  "asserted": true,
+  "source": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/registration-formal-s1.json",
+  "source_sha256": "deea2dcf7066d321e18962f501a768a99e723cd88425088e1fe20a54cebe64c9"
+}

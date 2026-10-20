@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "prior_indexes_checked": [
+    "conversations/index.json",
+    "docs/updates/2026-10-17/conversations/index.json"
+  ],
+  "codex_sessions": 10,
+  "already_archived_ids": [],
+  "oct19_archive_conversation_directory_exists": false,
+  "personal_archived_sessions_directory_exists": false,
+  "excluded_unrelated_oct19_session_count": 1,
+  "selection": "All selected Codex sessions are unarchived; no invented Oct-19 conversation cutoff used."
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "career-application-report-v1",
+  "title": "项目说明：半导体智能排程 Agent 的 Harness 工程与现场落地",
+  "author": "鄢澳勇",
+  "document_date": "2026-10-20",
+  "audience": "HR 与面试官；针对半导体研发与生产场景的 AI Agent 开发",
+  "status": "项目说明；排程 Harness 初步可用，项目仍在进行，现场规则共建与培训为入职后计划",
+  "repository": "https://github.com/yanaoyong/llm-scheduling-harness-research",
+  "supersedes": "../2026-10-13-semiconductor-agent-portfolio/（保留不变）",
+  "pages": 4,
+  "files": [
+    {
+      "path": "portfolio.md",
+      "bytes": 13544,
+      "sha256": "d3dcb788b31486ec6ea438734893061746f5cd057ce3bb28be820c6ba89598f9"
+    },
+    {
+      "path": "portfolio.pdf",
+      "bytes": 208367,
+      "sha256": "70e210615caade49efb17c7b97a7c4814f103076715403998ac24f3c1836c368"
+    },
+    {
+      "path": "portfolio.docx",
+      "bytes": 214722,
+      "sha256": "a4a51f073c2e11d3e167dff21f67cf4437f4a04b353c2299169482d4898fb6a8"
+    },
+    {
+      "path": "figures/roadmap.png",
+      "bytes": 176768,
+      "sha256": "98d6e448ce58c141b7c8f80ffefe1633fd7fda2d8190966e1bf40d3941d3dcf7"
+    },
+    {
+      "path": "build_portfolio.py",
+      "bytes": 16849,
+      "sha256": "8fdcc1e1cad8a7ad10b52e88e5fbab71251021a3e9e61e7e6a7e9f3dae9fa48f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 787,
+      "sha256": "d30cfe522277bedf6e82018fed14d3bc0a790d1a906fdac8b6f2933f8835bd16"
+    }
+  ],
+  "build": "portfolio.pdf、portfolio.docx 与 figures/roadmap.png 由 build_portfolio.py 从 portfolio.md 生成（reportlab + Noto Sans SC 400/500/700 静态实例；python-docx；pdftoppm）。配色取自作者简历。"
+}

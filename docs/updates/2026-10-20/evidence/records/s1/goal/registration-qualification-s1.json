@@ -1,0 +1,140 @@
+{
+  "cached_input_weight": 0.1,
+  "counting_basis": "cumulative_session_usage; requests >= tool_rounds + 1",
+  "delta_min_seconds": 60,
+  "delta_seconds": 60,
+  "dry_run": false,
+  "failure": {
+    "adopt_crashed_submission": false,
+    "k_fail": 2,
+    "keep_old_plan": true,
+    "retry": false,
+    "unknown_usage_cap": 2
+  },
+  "group_configs": {
+    "E1": {
+      "interaction": "single_action",
+      "trigger": "event"
+    },
+    "P2": {
+      "interaction": "mcp_session",
+      "trigger": "periodic"
+    }
+  },
+  "groups": [
+    "E1",
+    "P2"
+  ],
+  "horizon_seconds": 900,
+  "is_result": true,
+  "label": "S1 independent matching smoke; one E1 then P2, stop any failure",
+  "per_sim_hour_request_cap": 400,
+  "per_sim_hour_token_cap": 200000000,
+  "plan_source": "model",
+  "primary_metrics": [
+    "uncached_equivalent_input_tokens_per_sim_hour",
+    "model_request_lower_bound_per_sim_hour"
+  ],
+  "quality": {
+    "throughput": {
+      "floor": 1,
+      "tolerance": 0,
+      "unit": "completed lots",
+      "direction": "lower bound"
+    },
+    "weighted_tardiness": {
+      "floor": 0,
+      "tolerance": 0,
+      "unit": "weight times tardiness seconds for newly completed lots",
+      "direction": "upper bound"
+    },
+    "avoidable_idle_integral": {
+      "floor": 1847.583240755634,
+      "tolerance": 184.75832407556342,
+      "unit": "machine-seconds",
+      "direction": "upper bound"
+    }
+  },
+  "stage": "S1",
+  "steady_state_window": {
+    "exclude_first_hours": 0
+  },
+  "trajectories_per_group": 3,
+  "snapshot_format": "explicit",
+  "fixture": "__LOCAL_WORKSPACE__/v6-mac-env/work/sealed2/fixture.json",
+  "fixture_key": "mixed_702",
+  "end_time": 1603.1,
+  "trajectory_seeds": [
+    1,
+    2,
+    3
+  ],
+  "codex_version": "codex-cli 0.163.0",
+  "codex_binary_sha256": "399ff69c431c066e40de318fba45c2b07f45a76b19939d247ee4828fc70c4215",
+  "model": "gpt-6.1-sol",
+  "context_token_budget": 872000,
+  "request_overhead_tokens": 441000,
+  "output_reserve_tokens": 10000,
+  "env_allowlist": [
+    "PATH",
+    "HOME",
+    "CODEX_HOME",
+    "CODEX_ROLLOUT_TRACE_ROOT"
+  ],
+  "session_budget": {
+    "max_tool_calls": 3,
+    "wall_seconds": 300,
+    "token_cap": 2500000
+  },
+  "harness_source_root": "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017",
+  "model_config": {
+    "model_catalog_json": "__LOCAL_WORKSPACE__/v6-mac-env/work/official/catalog-gpt-6.1-sol.json",
+    "model_catalog_sha256": "d5ec7a2ed2ca98f8308ecbf08da289efa33e2b6861566a80b9b5d93aba8d484b",
+    "reasoning_effort": "medium"
+  },
+  "breakdowns": false,
+  "format_decision_path": "__LOCAL_WORKSPACE__/v6-mac-env/s0-evidence/x/goal/ab-real-scoring-network-v1/format-decision.json",
+  "format_decision_sha256": "92691320d46c9c9a14e8552676bd2b567b33f6d04a6ba791c25c5224e8c03cfc",
+  "execution_driver_sha256": "31a5743b9e850c5f7678ce6b19d593b3d3b600ca85e6de164aaa9ec10f09a2cb",
+  "model_run_auditor_sha256": "fe130fa819a1bb91c54c051c3605deb6719ea937f355bc991fedade1a2bccc3e",
+  "audit_version_policy": "Initial read-only verifier hashes; later verifier corrections must be documented and re-audit retained raw evidence, never repeat model generation solely to repair reporting.",
+  "model_run_audit_dependencies": {
+    "traced_runtime_s1.py": "c755ef7d240bfb5033839ffafe1501062989d35df3226f0cc372a94d709e0bd7",
+    "cycle_artifacts.py": "a2d15a3b536dba96c33334e0ec2d804206a03c1955ddc381ee5205bbf374d04a",
+    "audit_idle_replay_v2.py": "c0f580ef0f846f6eb9ef37793f23f1657c6b56345b975f4450be00270b8a7757",
+    "audit_physical_prefix.py": "6d1b0ed9152167302fd1bcfde40822787997fad29c580e7ba345b65a76244d0d"
+  },
+  "scientific_rules_sha256": "bca2c55cb07b920e67c60fe0b6eacc01d186d2be28bbbd5e202a109f5172c80f",
+  "engineering_amendment_sha256": "6a92e785619d8556496100b1b27d6d7037ad9245acde0dfb7b78d5264b4f1fd6",
+  "fixture_sha256": "fb25761c6236f2cae66027497db6efdef21440037b1b231e53eb79b81eb155cf",
+  "model_config_sha256": "d1fd12fdcf240f24f91c7a90829bf7a8b35c519498f4dcc4dc8d30e90f0251af",
+  "tokenizer": "tiktoken 0.14.0 o200k_base; conservative native full-request calibration",
+  "phase": "independent_smoke",
+  "frozen_at": "2026-10-19T07:34:34.227590+00:00",
+  "guard_basis": {
+    "offline_reference_max_sessions": {
+      "E1": 51,
+      "P2": 16
+    },
+    "reference_duration_seconds": 901.0999999999999,
+    "max_requests_per_session": {
+      "E1": 1,
+      "P2": 4
+    },
+    "session_cap": 2500000,
+    "provisional_margin": 1.25,
+    "trajectory_request_bound": 64,
+    "trajectory_token_bound": 40024749,
+    "formula": "ceil(1.25 * max(E1 bound, P2 bound) * 3600 / 901.1), round to 100 requests or 1M tokens. E1: 51 sessions * 1 request * 784799 total-token admission; P2: 16 sessions * 4 requests or 2.5M session tokens. Provisional finite guards, not user spend caps.",
+    "formal_calibration": "Use independent smoke usage to freeze formal guard thresholds; any substantive difference needs matching independent smoke"
+  },
+  "calendar_semantics": "breakdowns=false disables plan invalidation interrupts; physical calendars remain enabled and audited",
+  "stall_cycles": 4,
+  "stall_observation": "post_adoption_same_frozen_state; unadopted uses old plan",
+  "qualification_only_fixture_rebind": {
+    "expected_s0": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+    "actual": "fb25761c6236f2cae66027497db6efdef21440037b1b231e53eb79b81eb155cf",
+    "production_authorized": false
+  },
+  "format_decision_provenance": "Carried over from gpt-6-astra; not gpt-6.1-sol evidence"
+}
