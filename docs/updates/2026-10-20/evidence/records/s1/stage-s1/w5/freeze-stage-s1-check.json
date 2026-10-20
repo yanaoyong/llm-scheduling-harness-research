@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "registrations_results_validation": 4,
+  "stage_validation": 4,
+  "frozen_files": 133,
+  "outputs": {
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/experiment-rules-stage-s1.json": "50b2cd8e220d23e4bc1fa5501193031fe7b99955853d813b126f455d20102da4",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/scientific-rules-stage-s1-diff.json": "cbd02c3fa09d779d35bcf91646949f03986b9c97ef83aa675d00dc5c0dab30bf",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/technical-amendment-stage-s1.json": "cebdeb31b2e821cd0397582c0b643caebb160db1d1d0b5e30c8f83f51992b1e5",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/registration-stage-s1-diff.json": "adbfa3a52644b6fa98f7cc4457b277df5b0a762aa66826fa79e20de187114293",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/registration-smoke-S1-d300.json": "698dea8ab295901e911e837f81b762f1c2d310d41074540e3c38229bac1d4953",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/registration-mock-S1-d300.json": "36aa97e160cd473328fdd28e14355f969d9bafed7e10cdf88cb4b4cd9dc8f86c",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/registration-smoke-S1-d900.json": "ee26459b7ffc2a004e5ea0bd207bd7935c19d56bb2b2ef71404568e6fbf23864",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/registration-mock-S1-d900.json": "5212608bb115c56086224ee89ea8632a151dab3ad60c9fdd2e388c5b20c330cd"
+  },
+  "retained_initial_freeze_log": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/freeze-execution.log",
+  "completion_note": "Initial freeze wrote all exclusive records then failed because relocated unchanged validator expected stage-s1/goal/registration-formal-s1.json. Added read-only symlink for this single S0 registration and completed every hash and validation check; no frozen record overwritten."
+}

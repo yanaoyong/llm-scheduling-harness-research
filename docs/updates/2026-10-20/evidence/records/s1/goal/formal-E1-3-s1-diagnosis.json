@@ -1,0 +1,46 @@
+[
+ {
+  "cycle": "cycle-1",
+  "time": 702.0,
+  "accepted": false,
+  "violations": [
+   {
+    "code": "eligibility",
+    "detail": "w1416:234:1"
+   },
+   {
+    "code": "eligibility",
+    "detail": "w1565:321:1"
+   },
+   {
+    "code": "eligibility",
+    "detail": "w11:500:1"
+   }
+  ],
+  "delta_keys": [
+   "holds",
+   "machine_orders",
+   "plan_header",
+   "tasks"
+  ],
+  "added_tasks": 97
+ },
+ {
+  "cycle": "cycle-2",
+  "time": 708.75,
+  "accepted": false,
+  "violations": [
+   {
+    "code": "machine_order",
+    "detail": "invalid/duplicate machine order"
+   }
+  ],
+  "delta_keys": [
+   "holds",
+   "machine_orders",
+   "plan_header",
+   "tasks"
+  ],
+  "added_tasks": 28
+ }
+]

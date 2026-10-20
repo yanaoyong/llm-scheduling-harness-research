@@ -1,0 +1,14 @@
+[
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/qualification-s1-v2/E1",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/qualification-s1-v2/cli-smoke-E1-final.json",
+    "smoke": true,
+    "test-base-url": "http://127.0.0.1:42017/v1"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/qualification-s1-v2/P2",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/qualification-s1-v2/cli-smoke-P2-final.json",
+    "smoke": true,
+    "test-base-url": "http://127.0.0.1:42877/v1"
+  }
+]

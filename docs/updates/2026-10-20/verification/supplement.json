@@ -1,0 +1,36 @@
+{
+  "capture_started_utc": "2026-10-20T05:53:10.732475+00:00",
+  "capture_finished_utc": "2026-10-20T05:53:30.924517+00:00",
+  "primary_capture_sha256": "a775a64494d964576e768b3656eba428b974008f17a828407d3f3629899d0f2a",
+  "files": [
+    {
+      "path": "s1/stage-s1/fixture/sealed-36000/G0.sqlite",
+      "bytes": 778240,
+      "sha256": "226d02489def9673fa8cb1a772585ffc8343bdcc7d5fcfb1e1295d934262396e",
+      "source_changed_after_inventory": false,
+      "source_mtime_utc": "2026-10-19T14:34:45.277033+00:00"
+    },
+    {
+      "path": "s1/stage-s1/fixture/sealed-36000/contexts.sqlite",
+      "bytes": 1045803008,
+      "sha256": "c7e0718d1a142c0ef65e85306e389b5d07a2e1e6ce7af18f0e07042b95763bc1",
+      "source_changed_after_inventory": false,
+      "source_mtime_utc": "2026-10-19T14:25:28.538824+00:00"
+    },
+    {
+      "path": "source/v6/pytest.ini",
+      "bytes": 44,
+      "sha256": "d6e3e89cc6aab7944c11e4a14fb0a4db51c9ae36606bf263f47b7a9378f6de65",
+      "source_changed_after_inventory": false,
+      "source_mtime_utc": "2026-10-18T05:22:33.292479+00:00"
+    }
+  ],
+  "removed_caches": [
+    "source/v6/.hypothesis/.gitignore",
+    "source/v6/.pytest_cache/.gitignore",
+    "source/v6/.pytest_cache/README.md",
+    "source/v6/.pytest_cache/v/cache/lastfailed",
+    "source/v6/.pytest_cache/v/cache/nodeids"
+  ],
+  "reason": "Scientific G0/context databases are evidence, unlike CLI state databases. pytest.ini is source configuration."
+}

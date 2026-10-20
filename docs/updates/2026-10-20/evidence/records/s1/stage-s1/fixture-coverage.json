@@ -1,0 +1,51 @@
+{
+  "status": "blocked_fixture_coverage",
+  "real_model_requests": 0,
+  "mock_requests": 0,
+  "fixture": "__LOCAL_WORKSPACE__/v6-mac-env/s1/restored-mac-inputs/sealed/fixture.json",
+  "fixture_sha256": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69",
+  "fixture_key": "mixed_702",
+  "data_dir": "__HOME__/Downloads/\u5927\u6a21\u578b\u8bad\u7ec3\u8425/\u667a\u80fd\u6392\u7a0b\u8c03\u7814/validation/harness_v6_mac_20261018/inputs/physical/data/smt/SMT2020_LVHM",
+  "resolved_data_dir": "__LOCAL_WORKSPACE__/v6-mac-env/physical/data/smt/SMT2020_LVHM",
+  "check_scope": "Exact run_live.execute guard extracted by AST; not a full driver invocation or physical audit.",
+  "harness_guard_line": 74,
+  "arms": [
+    {
+      "delta": 300,
+      "H": 900,
+      "delta_min": 300,
+      "start": 702.0,
+      "end": 4302,
+      "duration": 3600.0,
+      "fixture_horizon": 3600.0,
+      "required_horizon": 5202,
+      "shortfall": 1602.0,
+      "passed": false,
+      "error": "fixture horizon must cover end_time + horizon_seconds"
+    },
+    {
+      "delta": 900,
+      "H": 2700,
+      "delta_min": 900,
+      "start": 702.0,
+      "end": 4302,
+      "duration": 3600.0,
+      "fixture_horizon": 3600.0,
+      "required_horizon": 7002,
+      "shortfall": 3402.0,
+      "passed": false,
+      "error": "fixture horizon must cover end_time + horizon_seconds"
+    }
+  ],
+  "source_hashes": {
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/PHASE_V_REPORT.md": "0298b7a4540e603d869b2d885dd8e85bd51d743c41d31f535c0cbce76a06cd54",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/registration-formal-s1.json": "deea2dcf7066d321e18962f501a768a99e723cd88425088e1fe20a54cebe64c9",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/experiment-rules-s1.json": "bca2c55cb07b920e67c60fe0b6eacc01d186d2be28bbbd5e202a109f5172c80f",
+    "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017/scripts/run_live.py": "a8850814dd00be2cd4430e090d5b3c6dc51a55a68d448ec138081230a3e4e5a8",
+    "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/cycle.py": "3052282f0a5d197b74f722a141337104fcd495af16a1b64800d1d9edebe26513",
+    "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/live.py": "5219544b47d08967da230070393d6f7f88f1be7dda73dd8a2dd87c82affd8515",
+    "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017/src/harness_v6/factory_v6.py": "88fb887c00cb6bc26cbf444248800ff6469579db7539cfd0293a3a80672fd1ba",
+    "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017/DECISIONS_v6.md": "cab3e6602c377ad975b5ff902bb543ad49c62faca8825889905ea9ab83ff3e0d",
+    "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/check_fixture_coverage.py": "92025811369fca02726d541dcc1ba6eacff9a719b40b2760a053a3674745b40b"
+  }
+}

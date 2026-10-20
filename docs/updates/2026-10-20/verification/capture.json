@@ -1,0 +1,55 @@
+{
+  "inventory_started_utc": "2026-10-20T05:34:31.035256+00:00",
+  "cutoff_utc": "2026-10-20T05:53:10.732475+00:00",
+  "cutoff_beijing": "2026-10-20T13:53:10.732475+08:00",
+  "capture_finished_utc": "2026-10-20T05:53:30.924517+00:00",
+  "semantics": "Per-file size-bounded prefix captured after inventory; not an atomic filesystem snapshot. Current Claude and Codex sessions are prefixes. Scientific SQLite inputs and pytest configuration were captured in a later, separately recorded supplement; conversation prefixes retain the primary cutoff.",
+  "previous_conversation_cutoff_utc": "2026-10-17T06:02:18+00:00",
+  "oct19_explicit_conversation_cutoff": null,
+  "selection_reason": "Oct-19 archive has no conversations or explicit capture cutoff; all selected Codex IDs are absent from prior conversation indexes. Includes one earlier Oct-19 unarchived session.",
+  "protected": [
+    {
+      "path": "docs/updates/2026-10-20/COMPARISON_DRAFT.md",
+      "sha256": "9a1a7f160ae35fe21f1c8de22f533b592b06bba0eb82b9fbcf6d25305bafd4f6"
+    },
+    {
+      "path": "docs/career-application/2026-10-20-semiconductor-agent-portfolio/README.md",
+      "sha256": "d30cfe522277bedf6e82018fed14d3bc0a790d1a906fdac8b6f2933f8835bd16"
+    },
+    {
+      "path": "docs/career-application/2026-10-20-semiconductor-agent-portfolio/build_portfolio.py",
+      "sha256": "8fdcc1e1cad8a7ad10b52e88e5fbab71251021a3e9e61e7e6a7e9f3dae9fa48f"
+    },
+    {
+      "path": "docs/career-application/2026-10-20-semiconductor-agent-portfolio/figures/roadmap.png",
+      "sha256": "98d6e448ce58c141b7c8f80ffefe1633fd7fda2d8190966e1bf40d3941d3dcf7"
+    },
+    {
+      "path": "docs/career-application/2026-10-20-semiconductor-agent-portfolio/manifest.json",
+      "sha256": "cc991d76319ede0034d107224141109cfc78d21ef51a7b29404b972679eb591b"
+    },
+    {
+      "path": "docs/career-application/2026-10-20-semiconductor-agent-portfolio/portfolio.docx",
+      "sha256": "a4a51f073c2e11d3e167dff21f67cf4437f4a04b353c2299169482d4898fb6a8"
+    },
+    {
+      "path": "docs/career-application/2026-10-20-semiconductor-agent-portfolio/portfolio.md",
+      "sha256": "d3dcb788b31486ec6ea438734893061746f5cd057ce3bb28be820c6ba89598f9"
+    },
+    {
+      "path": "docs/career-application/2026-10-20-semiconductor-agent-portfolio/portfolio.pdf",
+      "sha256": "70e210615caade49efb17c7b97a7c4814f103076715403998ac24f3c1836c368"
+    }
+  ],
+  "conversation_cutoff_utc": "2026-10-20T05:34:32.009994+00:00",
+  "primary_inventory_cutoff_utc": "2026-10-20T05:34:32.009994+00:00",
+  "growing_prefixes": [
+    "s1/audit-opt/results/parallel-stages/memory.jsonl",
+    "s1/audit-opt/results/parallel-stages/stages.jsonl",
+    "s1/audit-opt/results/resources.jsonl",
+    "conversations/codex/rollout-2026-10-20T03-24-29-01a15756-c840-7150-97df-cadc422eb8b1.jsonl",
+    "conversations/codex/rollout-2026-10-20T05-32-38-01a157cc-1ff3-70e1-b541-2a476648cd30.jsonl"
+  ],
+  "evidence_snapshot_cutoff_utc": "2026-10-20T05:34:32.009994+00:00",
+  "supplement_capture_utc": "2026-10-20T05:53:10.732475+00:00"
+}

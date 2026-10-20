@@ -1,0 +1,127 @@
+{
+  "audit_version_policy": "Initial read-only verifier hashes; later verifier corrections must be documented and re-audit retained raw evidence, never repeat model generation solely to repair reporting.",
+  "breakdowns": false,
+  "cached_input_weight": 0.1,
+  "calendar_semantics": "breakdowns=false disables plan invalidation interrupts; physical calendars remain enabled and audited",
+  "codex_binary_sha256": "399ff69c431c066e40de318fba45c2b07f45a76b19939d247ee4828fc70c4215",
+  "codex_version": "codex-cli 0.163.0",
+  "context_token_budget": 872000,
+  "counting_basis": "cumulative_session_usage; requests >= tool_rounds + 1",
+  "delta_min_seconds": 300,
+  "delta_seconds": 300,
+  "dry_run": false,
+  "end_time": 4302,
+  "engineering_amendment_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/technical-amendment-stage-s1.json",
+  "engineering_amendment_sha256": "cebdeb31b2e821cd0397582c0b643caebb160db1d1d0b5e30c8f83f51992b1e5",
+  "env_allowlist": [
+    "PATH",
+    "HOME",
+    "CODEX_HOME",
+    "CODEX_ROLLOUT_TRACE_ROOT"
+  ],
+  "execution_driver_sha256": "110a4f9ab955f550fe147a45d2044c35261c142bbf8386f6e1fa2511af6c4d37",
+  "failure": {
+    "adopt_crashed_submission": false,
+    "k_fail": 2,
+    "keep_old_plan": true,
+    "retry": false,
+    "unknown_usage_cap": 2
+  },
+  "fixture": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/fixture/sealed-36000/fixture.json",
+  "fixture_key": "mixed_702",
+  "fixture_sha256": "07afb411bbd691bad487ef5f515fde330300667ae168c134ec8eae7ef7dbc772",
+  "format_decision_path": "__LOCAL_WORKSPACE__/v6-mac-env/s0-evidence/x/goal/ab-real-scoring-network-v1/format-decision.json",
+  "format_decision_provenance": "Carried over from gpt-6-astra; not gpt-6.1-sol evidence",
+  "format_decision_sha256": "92691320d46c9c9a14e8552676bd2b567b33f6d04a6ba791c25c5224e8c03cfc",
+  "frozen_at": "2026-10-19T23:41:56.125699+00:00",
+  "group_configs": {
+    "E1": {
+      "interaction": "single_action",
+      "trigger": "event"
+    },
+    "P2": {
+      "interaction": "mcp_session",
+      "trigger": "periodic"
+    }
+  },
+  "groups": [
+    "P2"
+  ],
+  "guard_basis": "1.25 times maximum offline sessions 12, 4 requests/session and 2500000 tokens/session, rounded per S0 formula",
+  "harness_source_root": "__PROJECT_ROOT__/docs/updates/2026-10-17/project/experiments/harness_v6_20261017",
+  "horizon_seconds": 900,
+  "is_result": true,
+  "label": "Formal one-hour S1 P2 d300, seed 1",
+  "model": "gpt-6.1-sol",
+  "model_config": {
+    "model_catalog_json": "__LOCAL_WORKSPACE__/v6-mac-env/work/official/catalog-gpt-6.1-sol.json",
+    "model_catalog_sha256": "d5ec7a2ed2ca98f8308ecbf08da289efa33e2b6861566a80b9b5d93aba8d484b",
+    "reasoning_effort": "medium"
+  },
+  "model_config_sha256": "d1fd12fdcf240f24f91c7a90829bf7a8b35c519498f4dcc4dc8d30e90f0251af",
+  "model_run_audit_dependencies": {
+    "audit_idle_replay_v2.py": "c0f580ef0f846f6eb9ef37793f23f1657c6b56345b975f4450be00270b8a7757",
+    "audit_physical_prefix.py": "6d1b0ed9152167302fd1bcfde40822787997fad29c580e7ba345b65a76244d0d",
+    "cycle_artifacts.py": "a2d15a3b536dba96c33334e0ec2d804206a03c1955ddc381ee5205bbf374d04a",
+    "traced_runtime_s1.py": "c755ef7d240bfb5033839ffafe1501062989d35df3226f0cc372a94d709e0bd7"
+  },
+  "model_run_auditor_sha256": "fe130fa819a1bb91c54c051c3605deb6719ea937f355bc991fedade1a2bccc3e",
+  "output_reserve_tokens": 10000,
+  "per_sim_hour_request_cap": 100,
+  "per_sim_hour_token_cap": 38000000,
+  "phase": "formal_S1",
+  "plan_source": "model",
+  "primary_metrics": [
+    "uncached_equivalent_input_tokens_per_sim_hour",
+    "model_request_lower_bound_per_sim_hour"
+  ],
+  "quality": {
+    "avoidable_idle_integral": {
+      "direction": "upper bound",
+      "floor": 51457.61149434129,
+      "tolerance": 5145.761149434129,
+      "unit": "machine-seconds"
+    },
+    "throughput": {
+      "direction": "lower bound",
+      "floor": 2,
+      "tolerance": 0,
+      "unit": "completed lots"
+    },
+    "weighted_tardiness": {
+      "direction": "upper bound",
+      "floor": 4242.296694920063,
+      "tolerance": 0,
+      "unit": "weight times tardiness seconds for newly completed lots"
+    }
+  },
+  "request_overhead_tokens": 471000,
+  "scientific_rules_sha256": "50b2cd8e220d23e4bc1fa5501193031fe7b99955853d813b126f455d20102da4",
+  "session_budget": {
+    "max_tool_calls": 3,
+    "token_cap": 2500000,
+    "wall_seconds": 300
+  },
+  "snapshot_format": "explicit",
+  "stage": "S1",
+  "stall_cycles": 4,
+  "stall_observation": "post_adoption_same_frozen_state; unadopted uses old plan",
+  "steady_state_window": {
+    "exclude_first_hours": 0
+  },
+  "tokenizer": "tiktoken 0.14.0 o200k_base; conservative native full-request calibration",
+  "trajectories_per_group": 1,
+  "trajectory_seeds": [
+    1
+  ],
+  "smoke_registration_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/registration-smoke-S1-d300.json",
+  "smoke_registration_sha256": "698dea8ab295901e911e837f81b762f1c2d310d41074540e3c38229bac1d4953",
+  "formal_schedule": [
+    {
+      "group": "P2",
+      "trajectory": 1
+    }
+  ],
+  "calibration_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-calibration-stage-s1.json",
+  "calibration_sha256": "05240acf28a0d20d59dbb70f78e82453ea587b59ba8c78a9c5ff52e1cc91416b"
+}

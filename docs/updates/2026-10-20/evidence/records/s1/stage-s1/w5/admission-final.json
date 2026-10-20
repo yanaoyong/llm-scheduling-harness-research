@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "arms": {
+    "300": {
+      "max_snapshot_tokens": 193555,
+      "max_prompt_tokens": 193979,
+      "measured_overhead": 325374,
+      "effective_overhead": 471000,
+      "required": 674555,
+      "margin": 110244,
+      "prompt_margin": 109820,
+      "limit": 784799,
+      "worst_snapshot": {
+        "delta": 300,
+        "seed": 1,
+        "cycle": 12,
+        "time": 4002.0,
+        "snapshot_tokens": 193555,
+        "prompt_tokens": 193979,
+        "serialized_pressure_result_tokens": 95965,
+        "snapshot_sha256": "8647d878334392ef80ba0995118bb3a3ecfffad7773dd847d494913da0432918",
+        "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-12"
+      },
+      "passed": true
+    },
+    "900": {
+      "max_snapshot_tokens": 247090,
+      "max_prompt_tokens": 247514,
+      "measured_overhead": 470796,
+      "effective_overhead": 471000,
+      "required": 728090,
+      "margin": 56709,
+      "prompt_margin": 56285,
+      "limit": 784799,
+      "worst_snapshot": {
+        "delta": 900,
+        "seed": 1,
+        "cycle": 4,
+        "time": 3402.0,
+        "snapshot_tokens": 247090,
+        "prompt_tokens": 247514,
+        "serialized_pressure_result_tokens": 141646,
+        "snapshot_sha256": "bc3847ebb82c5e478f0b6289e274a400ea795e26e9d40e67afa92f6f69507670",
+        "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d900-seed1/cycle-4"
+      },
+      "passed": true
+    }
+  },
+  "recordings": [
+    {
+      "delta": 300,
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/overhead/d300-w5-worst.json",
+      "sha256": "c132b3ce61e716f047d81ee70e58b42ce72f664840c266f7738555133b2a7183"
+    },
+    {
+      "delta": 900,
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/overhead/d900-cycle4.json",
+      "sha256": "f469faf92810606486c8dc9adab63b8db2704d5511b2dfbaebd79ff4b50f79b0"
+    }
+  ],
+  "reference_token_inventory_sha256": "b68c39c1b40d1b8a75e5012c5ee37b8b63e128647a64e885eb8796aa75fccaa1",
+  "scope": "W5 fast path: seed-1 snapshot inventory only; retained d900 cycle4 and new largest d300 state recording; three-seed bound unavailable",
+  "runtime_admission": "Each complete prompt is checked with registered overhead and reserve before invoking Codex; later states exceeding capacity fail closed. A state larger than the reference maximum but within capacity is allowed.",
+  "real_model_requests": 0
+}

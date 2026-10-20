@@ -1,5 +1,9 @@
 # 智能排程与 Harness 调研归档（公开版）
 
+## 2026-10-20：S0 后续、S1 与首次 Claude Code 会话归档
+
+新增 [阶段归档](docs/updates/2026-10-20/README.md)、[会话索引](docs/updates/2026-10-20/conversations/README.md) 和 [证据说明](docs/updates/2026-10-20/EVIDENCE.md)。S0 保留 E1/P2 各三次尝试（五次到终点）；S1 Δ=300/Δ=900 各一条一小时轨迹通过审计。模型已切换为 gpt-6.1-sol，结果限于 n=1～3。公开证据包见配套 Release；[新版项目说明](docs/career-application/2026-10-20-semiconductor-agent-portfolio/) 与比较草稿原文保留。
+
 ## 2026-10-19：Harness v6 Mac 修复与 S0 实验阶段归档
 
 新增 [阶段归档](docs/updates/2026-10-19/README.md)：660 项离线测试、38 项子测试通过；真实 A/B 按事前规则选择 explicit。正式前缀因宿主停滞观测缺陷中止，修复后最后一次 E1 smoke 因未定义任务引用被拒绝，按用户次数上限暂停。正式完成仍为 **0/6**。附全部真实尝试的公开选定证据、失败与用量记录、冻结登记和只读核验工具；不把工程验收或归档完成表述为正式实验成功。

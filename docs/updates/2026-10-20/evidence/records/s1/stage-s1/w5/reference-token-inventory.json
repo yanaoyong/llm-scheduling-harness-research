@@ -1,0 +1,239 @@
+{
+  "arms": {
+    "300": {
+      "max_snapshot_tokens": 193555,
+      "max_prompt_tokens": 193979,
+      "worst_snapshot": {
+        "delta": 300,
+        "seed": 1,
+        "cycle": 12,
+        "time": 4002.0,
+        "snapshot_tokens": 193555,
+        "prompt_tokens": 193979,
+        "serialized_pressure_result_tokens": 95965,
+        "snapshot_sha256": "8647d878334392ef80ba0995118bb3a3ecfffad7773dd847d494913da0432918",
+        "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-12"
+      },
+      "worst_pressure": {
+        "delta": 300,
+        "seed": 1,
+        "cycle": 12,
+        "time": 4002.0,
+        "snapshot_tokens": 193555,
+        "prompt_tokens": 193979,
+        "serialized_pressure_result_tokens": 95965,
+        "snapshot_sha256": "8647d878334392ef80ba0995118bb3a3ecfffad7773dd847d494913da0432918",
+        "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-12"
+      },
+      "cycles": [
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 1,
+          "time": 702.0,
+          "snapshot_tokens": 173088,
+          "prompt_tokens": 173511,
+          "serialized_pressure_result_tokens": 78006,
+          "snapshot_sha256": "458fa61d23988b11a8a6069dbb731e58bdcb20a8a5a4cd1382c13b478a96591d",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-1"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 2,
+          "time": 1002.0,
+          "snapshot_tokens": 178766,
+          "prompt_tokens": 179190,
+          "serialized_pressure_result_tokens": 82038,
+          "snapshot_sha256": "3bffe2cc0e7c92aa1c188eb0ebabbef62f597b1117ee2515e51e81f35af90e27",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-2"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 3,
+          "time": 1302.0,
+          "snapshot_tokens": 180501,
+          "prompt_tokens": 180925,
+          "serialized_pressure_result_tokens": 83711,
+          "snapshot_sha256": "b9c84ddfb2e3410d6f5909a035d6f69f07db361994a839baa5b438f8e858b02f",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-3"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 4,
+          "time": 1602.0,
+          "snapshot_tokens": 180933,
+          "prompt_tokens": 181357,
+          "serialized_pressure_result_tokens": 84406,
+          "snapshot_sha256": "764a00d78aee042b98d3b889e02e8da57cbc630f012470cf08e398d4067a199e",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-4"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 5,
+          "time": 1902.0,
+          "snapshot_tokens": 180275,
+          "prompt_tokens": 180699,
+          "serialized_pressure_result_tokens": 83872,
+          "snapshot_sha256": "00e4c2b24dc2770269b0e9523d4b955bf8bea66476427667fbf051abc54e8427",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-5"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 6,
+          "time": 2202.0,
+          "snapshot_tokens": 181308,
+          "prompt_tokens": 181732,
+          "serialized_pressure_result_tokens": 84678,
+          "snapshot_sha256": "c7f0859ef1def93667c3fc5c8f3062fc98e17be030a0221e5803ab700273050b",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-6"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 7,
+          "time": 2502.0,
+          "snapshot_tokens": 182205,
+          "prompt_tokens": 182629,
+          "serialized_pressure_result_tokens": 85356,
+          "snapshot_sha256": "3f3039016c36a666e69d9a333a543d78734ee35cb311e6de12f3323de028b6fc",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-7"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 8,
+          "time": 2802.0,
+          "snapshot_tokens": 184169,
+          "prompt_tokens": 184593,
+          "serialized_pressure_result_tokens": 87190,
+          "snapshot_sha256": "f49cdba0d4ea9cd71ab9e406cd0a6c72b24706151a4dda8f22f4958d785e74aa",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-8"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 9,
+          "time": 3102.0,
+          "snapshot_tokens": 185278,
+          "prompt_tokens": 185702,
+          "serialized_pressure_result_tokens": 88295,
+          "snapshot_sha256": "c606a90cc65c726150e7518e2f1dc5508d0e36b6ff3a4eefacc20621c39c72c3",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-9"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 10,
+          "time": 3402.0,
+          "snapshot_tokens": 189148,
+          "prompt_tokens": 189572,
+          "serialized_pressure_result_tokens": 92139,
+          "snapshot_sha256": "cd245be12f05ea2ec194cbcc1af81d0b358322ca0e5030e69218924592a0efbd",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-10"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 11,
+          "time": 3702.0,
+          "snapshot_tokens": 190510,
+          "prompt_tokens": 190934,
+          "serialized_pressure_result_tokens": 93190,
+          "snapshot_sha256": "d9c71c92be0f197ee8955344971ae26aa3434ac85a709f2881c0d0e0c579629e",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-11"
+        },
+        {
+          "delta": 300,
+          "seed": 1,
+          "cycle": 12,
+          "time": 4002.0,
+          "snapshot_tokens": 193555,
+          "prompt_tokens": 193979,
+          "serialized_pressure_result_tokens": 95965,
+          "snapshot_sha256": "8647d878334392ef80ba0995118bb3a3ecfffad7773dd847d494913da0432918",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d300-seed1/cycle-12"
+        }
+      ]
+    },
+    "900": {
+      "max_snapshot_tokens": 247090,
+      "max_prompt_tokens": 247514,
+      "worst_snapshot": {
+        "delta": 900,
+        "seed": 1,
+        "cycle": 4,
+        "time": 3402.0,
+        "snapshot_tokens": 247090,
+        "prompt_tokens": 247514,
+        "serialized_pressure_result_tokens": 141646,
+        "snapshot_sha256": "bc3847ebb82c5e478f0b6289e274a400ea795e26e9d40e67afa92f6f69507670",
+        "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d900-seed1/cycle-4"
+      },
+      "worst_pressure": {
+        "delta": 900,
+        "seed": 1,
+        "cycle": 4,
+        "time": 3402.0,
+        "snapshot_tokens": 247090,
+        "prompt_tokens": 247514,
+        "serialized_pressure_result_tokens": 141646,
+        "snapshot_sha256": "bc3847ebb82c5e478f0b6289e274a400ea795e26e9d40e67afa92f6f69507670",
+        "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d900-seed1/cycle-4"
+      },
+      "cycles": [
+        {
+          "delta": 900,
+          "seed": 1,
+          "cycle": 1,
+          "time": 702.0,
+          "snapshot_tokens": 222666,
+          "prompt_tokens": 223089,
+          "serialized_pressure_result_tokens": 118106,
+          "snapshot_sha256": "a58b1b41da6f69bf860eabc67b404cb741d58406ca2f174cfe37692a653a6496",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d900-seed1/cycle-1"
+        },
+        {
+          "delta": 900,
+          "seed": 1,
+          "cycle": 2,
+          "time": 1602.0,
+          "snapshot_tokens": 234479,
+          "prompt_tokens": 234903,
+          "serialized_pressure_result_tokens": 129370,
+          "snapshot_sha256": "eedce14c9f7135eeb36dd8023928465399b04aca9d6d29b1b716ed7e2fe104f4",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d900-seed1/cycle-2"
+        },
+        {
+          "delta": 900,
+          "seed": 1,
+          "cycle": 3,
+          "time": 2502.0,
+          "snapshot_tokens": 243264,
+          "prompt_tokens": 243688,
+          "serialized_pressure_result_tokens": 138192,
+          "snapshot_sha256": "3480bb1e4c7defd7e3bdd87e2cac811e2196e2e715960136c27fabb56ebe130b",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d900-seed1/cycle-3"
+        },
+        {
+          "delta": 900,
+          "seed": 1,
+          "cycle": 4,
+          "time": 3402.0,
+          "snapshot_tokens": 247090,
+          "prompt_tokens": 247514,
+          "serialized_pressure_result_tokens": 141646,
+          "snapshot_sha256": "bc3847ebb82c5e478f0b6289e274a400ea795e26e9d40e67afa92f6f69507670",
+          "cycle_path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/references-v2/d900-seed1/cycle-4"
+        }
+      ]
+    }
+  },
+  "real_model_requests": 0,
+  "scope": "All seed-1 decision sessions; W5 fast path; three-seed bound unavailable; empty cycles have no model snapshot",
+  "pressure_selection": "Worst snapshot and worst JSON-serialized full tool_codec current-state result, each re-recorded if distinct"
+}

@@ -1,0 +1,294 @@
+{
+  "passed": true,
+  "repaired_files": [
+    {
+      "path": "s1/codex-impl-w2.jsonl",
+      "before_sha256": "70d05151c02c68e1005d3136e9ac8871642b1841254e2f71af260ede84f22075",
+      "sha256": "9cc4f4ae3465050b32bec9e656a12449a5eee72ab0938a9aae21ba6d211e8d75",
+      "source_sha256": "47b8855ea71ea94f3513281d039dceabdd638231c602ec68f1f92f41ce9dc6be",
+      "bytes": 1724964,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "s1/codex-impl-x.jsonl",
+      "before_sha256": "eb129d73142ed7ba801e5d2a6feef46eae8c13b9b84b97413b1453450bd2a710",
+      "sha256": "95cad68e0669fbb1b570a786cec58acede30693644eb7b7eb0fa7f93c6e7b7aa",
+      "source_sha256": "64e43af51c5e2f1e8879d34e44df11c6482b7f959067dd2b29294520d9d96ec4",
+      "bytes": 642005,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/conftest.py",
+      "before_sha256": "dec00ccd518912805ba5c64e50f500efe9a73159006a02f69387e0fc4379b075",
+      "sha256": "5c7dd802443b7387a0c058d94e430b612e6c8937341fa8ed5cc50a92e36be4d7",
+      "source_sha256": "5c7dd802443b7387a0c058d94e430b612e6c8937341fa8ed5cc50a92e36be4d7",
+      "bytes": 704,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_checkpoint_segments.py",
+      "before_sha256": "85fc66a6dd3d95ab817d473dc1b1ca04726227d0a15c9949a44721d0f6d17925",
+      "sha256": "3ae7cdebd1a5d57a5831042c0e452b975603622097856ffdedfd5240ba181ad3",
+      "source_sha256": "3ae7cdebd1a5d57a5831042c0e452b975603622097856ffdedfd5240ba181ad3",
+      "bytes": 9462,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_codex_runner.py",
+      "before_sha256": "8ae93876ba3ff1bc1ddf13284c1a6ded63afc35143cf090a0a032330003f3e30",
+      "sha256": "f5565967440e61885438b0d0ee543afea13cf9ec04b7fe81e5a2e1cc657affc3",
+      "source_sha256": "f5565967440e61885438b0d0ee543afea13cf9ec04b7fe81e5a2e1cc657affc3",
+      "bytes": 9945,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_compact.py",
+      "before_sha256": "f31735efd6ee4fa57df6cf8669c129e06eeb4a8b7ff257c818297b8f97c56683",
+      "sha256": "930450670af989fe10d0605d842afdbecf466ab18946482ab1a63ad79146a45b",
+      "source_sha256": "930450670af989fe10d0605d842afdbecf466ab18946482ab1a63ad79146a45b",
+      "bytes": 10598,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_cycle_submit.py",
+      "before_sha256": "865f9293dc3306af9e007ec02ddfb28bc677db7f9f6683d6231898f897c3f011",
+      "sha256": "c0cd361127814033e5ee58714e0d1dd051cb6cfa94d827c29c93d60351b8f831",
+      "source_sha256": "c0cd361127814033e5ee58714e0d1dd051cb6cfa94d827c29c93d60351b8f831",
+      "bytes": 11685,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_dense.py",
+      "before_sha256": "baaf2eca08712bd1930446843dabf252f5425655f9cc7e3c7b0b200661e4f2b6",
+      "sha256": "0fffd2a43157eccfc83678bd3f634a1ef9d625019f6850e09f533a46701ef76b",
+      "source_sha256": "0fffd2a43157eccfc83678bd3f634a1ef9d625019f6850e09f533a46701ef76b",
+      "bytes": 3431,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_groups.py",
+      "before_sha256": "9b8e0e7c5b5d9473cd43d41988352dfe9884a14bb060d82dd995cf61db9592e5",
+      "sha256": "961168c699d3d25c0bbc0c54f056c61fc6604fef499f6b69e5e2c8db8ee1f22a",
+      "source_sha256": "961168c699d3d25c0bbc0c54f056c61fc6604fef499f6b69e5e2c8db8ee1f22a",
+      "bytes": 10751,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_ledger.py",
+      "before_sha256": "c05f24a309b060b2df61f80f9af00248e3a2a856d0ed69b702355b554f44ac21",
+      "sha256": "bdfc5dad4ae9f293714bee960ab2739fa29651d7b77e591f66f5dc7d4afe2e47",
+      "source_sha256": "bdfc5dad4ae9f293714bee960ab2739fa29651d7b77e591f66f5dc7d4afe2e47",
+      "bytes": 6774,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_live.py",
+      "before_sha256": "aef054c11ccacc73f311c5f96a62e7a3f9770565bd945bd90f703607282198d5",
+      "sha256": "ad7993d07db4cb70054ea9fb6fcef7b31f8f28f340d859e12b91a2bdd474ecc9",
+      "source_sha256": "ad7993d07db4cb70054ea9fb6fcef7b31f8f28f340d859e12b91a2bdd474ecc9",
+      "bytes": 9776,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_mac_session.py",
+      "before_sha256": "e54798e6aac84dd6c085b1fc0c329e8a8c39ff218934ec2109ac3f77933ec262",
+      "sha256": "5a94957aeca43f9ca353a0d14ec05ea1a6cceb2e544f516aaa3f3b33d1e62e4a",
+      "source_sha256": "5a94957aeca43f9ca353a0d14ec05ea1a6cceb2e544f516aaa3f3b33d1e62e4a",
+      "bytes": 825,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_mac_single_action.py",
+      "before_sha256": "24c68ab60c4ef15eecdecb2ec0ce66e1925b3e1c284121b67363c52ac42cfc39",
+      "sha256": "443b24ea0d715b20254f3076cbc507a015aff383bc0d5301c2c39b9d8d00aad6",
+      "source_sha256": "443b24ea0d715b20254f3076cbc507a015aff383bc0d5301c2c39b9d8d00aad6",
+      "bytes": 735,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_mac_snapshot.py",
+      "before_sha256": "4676ad4b928696b5fbfefc3c73edf956d1a1a743f974c1bf4827696996c5f772",
+      "sha256": "080d3c8dfdbd18bd29ca4c2da6495116cd6ab573f7bf435b2de3120f847823d3",
+      "source_sha256": "080d3c8dfdbd18bd29ca4c2da6495116cd6ab573f7bf435b2de3120f847823d3",
+      "bytes": 6164,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_mcp_session.py",
+      "before_sha256": "34059b372198242c577f3e511228dfcf2adb6a54ac42db6eeb8a6502b1cd54f9",
+      "sha256": "f4aae1be5b07818cb98515bee15884900491c74533281835619bd5c850dad4ad",
+      "source_sha256": "f4aae1be5b07818cb98515bee15884900491c74533281835619bd5c850dad4ad",
+      "bytes": 10595,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_model_config.py",
+      "before_sha256": "81e8b8c5ea4a684edd25b522734830edf83be251b8d58b7e168f9c06b04a6448",
+      "sha256": "5dc0c5001db992fa440580bf7480792cff26778f5817ffb249be5ea804d892f0",
+      "source_sha256": "5dc0c5001db992fa440580bf7480792cff26778f5817ffb249be5ea804d892f0",
+      "bytes": 4316,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_model_delta.py",
+      "before_sha256": "bf133808854012d9da797e93a263ae0eb869a76500fd70ee101c488cb2ed31d3",
+      "sha256": "15a26f190353ef28e2c0ded0dfe9de420e6f4f2bc26ef231e90cd1d59da0a47e",
+      "source_sha256": "15a26f190353ef28e2c0ded0dfe9de420e6f4f2bc26ef231e90cd1d59da0a47e",
+      "bytes": 8089,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_native_request_budget.py",
+      "before_sha256": "9f118f5064cfe0bf4859f3c94f085a99d5318bdba49e87cbcd2113b38ec43fc3",
+      "sha256": "7336797188511bdfd048f7f4ebf530cb324a5c1f5777e23d78072b2a5aa24f48",
+      "source_sha256": "7336797188511bdfd048f7f4ebf530cb324a5c1f5777e23d78072b2a5aa24f48",
+      "bytes": 2049,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_official_codex.py",
+      "before_sha256": "3168603508401d644277b2adb9cd73cf1cb6f73760d1c3554267f0f9351e921d",
+      "sha256": "452d24fb696afa32f2f7984837390c5f4c17f3fd0f4e61c902bef7fa58676174",
+      "source_sha256": "452d24fb696afa32f2f7984837390c5f4c17f3fd0f4e61c902bef7fa58676174",
+      "bytes": 6574,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_phase_p.py",
+      "before_sha256": "4d9ee0b1997f2c3585fa097b43ca382665f556fb073c5a985962e302f7623913",
+      "sha256": "d17fdf320773d9c321d4d6e302ae8727b8dc3b052f0c26b8a639f0024cf894c2",
+      "source_sha256": "d17fdf320773d9c321d4d6e302ae8727b8dc3b052f0c26b8a639f0024cf894c2",
+      "bytes": 11023,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_phase_s_measure.py",
+      "before_sha256": "83a84ee09c19322e3155c5a1fbf52ab00c8e843745c2fdf8f4d30cdd7d43d331",
+      "sha256": "aca9f02f85f577844cf7310a829b5a2c6deaa61c011edced584082eaabef7afb",
+      "source_sha256": "aca9f02f85f577844cf7310a829b5a2c6deaa61c011edced584082eaabef7afb",
+      "bytes": 5299,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_phase_t.py",
+      "before_sha256": "5441e308ef34259059561307154c22d21849e47310f07fd1b0b459f325ca0daf",
+      "sha256": "b29a233fe59bf269a86ebc9f7f03709aa167679e9743add57405d01af4a8c9d5",
+      "source_sha256": "b29a233fe59bf269a86ebc9f7f03709aa167679e9743add57405d01af4a8c9d5",
+      "bytes": 10724,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_public_physics.py",
+      "before_sha256": "d7acecc849901f9f02c076f658e20f185508940db2e6eaf9f03eb05be3206ea2",
+      "sha256": "c4651ecf6935d0c82e5beb0d8c4e700c6d5a31d5b77fbf051e65a779a2a46d56",
+      "source_sha256": "c4651ecf6935d0c82e5beb0d8c4e700c6d5a31d5b77fbf051e65a779a2a46d56",
+      "bytes": 7554,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_request_overhead.py",
+      "before_sha256": "428bf35d9b464718593698f747c9f3cb00ea1d3de31dab564508c07a04cb7560",
+      "sha256": "a547cf7b929b691d9a695b3fb7b419025860e975dc9406abe651193e97ff07bc",
+      "source_sha256": "a547cf7b929b691d9a695b3fb7b419025860e975dc9406abe651193e97ff07bc",
+      "bytes": 6764,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_run_cli.py",
+      "before_sha256": "040854621c5a0ee4ed28fc3b7b85e54f18675b9eca933c1ba46a9723bbd89297",
+      "sha256": "4f08b894fc08e5d0e29e090fd9a7a83a63ebe19282ae685eeb80248218bf50cf",
+      "source_sha256": "4f08b894fc08e5d0e29e090fd9a7a83a63ebe19282ae685eeb80248218bf50cf",
+      "bytes": 7463,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_stall_observation.py",
+      "before_sha256": "adf9b3a7bf611f4077759bc9ac090aa95de7b199b425951424a91c90b3fa688f",
+      "sha256": "f2d992be0c6fec96fb45587fc4cbdaf4c9756c869f0690ade6522ca411901be7",
+      "source_sha256": "f2d992be0c6fec96fb45587fc4cbdaf4c9756c869f0690ade6522ca411901be7",
+      "bytes": 2526,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_structured_schema.py",
+      "before_sha256": "c5846f0cbdca937df0633df52f710bb6f84e111a84b0265929b3e47d55717fa0",
+      "sha256": "f225ec9220d984431577a92e5f71c89891ad069547768c7619dda3a80783c755",
+      "source_sha256": "f225ec9220d984431577a92e5f71c89891ad069547768c7619dda3a80783c755",
+      "bytes": 4290,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_tool_codec.py",
+      "before_sha256": "c41ca7ccdb3c07eed6329aadc64eba76237525e5d8e0f9997feec99b6704e576",
+      "sha256": "083540aff45cc17e65e1aa004ec1b16d1bfdc07af6c28a99db9b3cc7cd3c6f19",
+      "source_sha256": "083540aff45cc17e65e1aa004ec1b16d1bfdc07af6c28a99db9b3cc7cd3c6f19",
+      "bytes": 2867,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_tool_contract.py",
+      "before_sha256": "f9242cff147920963d88212b5fdc096ba65e9b7ba08802ee6060804d13445875",
+      "sha256": "c4bbd3ff218eb0b322142efdf76c3a6d1fe5b457458fe5cec8ecc541bd4d1a5b",
+      "source_sha256": "c4bbd3ff218eb0b322142efdf76c3a6d1fe5b457458fe5cec8ecc541bd4d1a5b",
+      "bytes": 1718,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_upcoming.py",
+      "before_sha256": "48892f2485be838e1c1183ff68a2434f2e360450437dfd8ca5c235fb82f99e43",
+      "sha256": "91cd113e37651ef1b1b574c037985b927f8390f16adfe4dab21a84f56a33d660",
+      "source_sha256": "91cd113e37651ef1b1b574c037985b927f8390f16adfe4dab21a84f56a33d660",
+      "bytes": 5787,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_v6_semantics.py",
+      "before_sha256": "beed914977ab5139a2f771575a2de1913ec0b0826d306abfbeb51a5bb0ac7c20",
+      "sha256": "e9bac398a435a6ec4575248e9504c810e050165959c0ef988704d2496a4a4a8a",
+      "source_sha256": "e9bac398a435a6ec4575248e9504c810e050165959c0ef988704d2496a4a4a8a",
+      "bytes": 9042,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    },
+    {
+      "path": "source/v6/tests/test_work_paths.py",
+      "before_sha256": "d65b03682fb091789569618ff331fcc0148c54ba898036b046f2f1417ed58dcb",
+      "sha256": "1cea5af2d912a6a33efaa6760d0d5367037a1dc4653243417ef489b015287530",
+      "source_sha256": "1cea5af2d912a6a33efaa6760d0d5367037a1dc4653243417ef489b015287530",
+      "bytes": 1313,
+      "reason": "Preserve Python decorator syntax during mailbox sanitization"
+    }
+  ],
+  "python_ast_structure_and_decorators_preserved": [
+    "source/v6/tests/conftest.py",
+    "source/v6/tests/test_checkpoint_segments.py",
+    "source/v6/tests/test_codex_runner.py",
+    "source/v6/tests/test_compact.py",
+    "source/v6/tests/test_cycle_submit.py",
+    "source/v6/tests/test_dense.py",
+    "source/v6/tests/test_groups.py",
+    "source/v6/tests/test_ledger.py",
+    "source/v6/tests/test_live.py",
+    "source/v6/tests/test_mac_session.py",
+    "source/v6/tests/test_mac_single_action.py",
+    "source/v6/tests/test_mac_snapshot.py",
+    "source/v6/tests/test_mcp_session.py",
+    "source/v6/tests/test_model_config.py",
+    "source/v6/tests/test_model_delta.py",
+    "source/v6/tests/test_native_request_budget.py",
+    "source/v6/tests/test_official_codex.py",
+    "source/v6/tests/test_phase_p.py",
+    "source/v6/tests/test_phase_s_measure.py",
+    "source/v6/tests/test_phase_t.py",
+    "source/v6/tests/test_public_physics.py",
+    "source/v6/tests/test_request_overhead.py",
+    "source/v6/tests/test_run_cli.py",
+    "source/v6/tests/test_stall_observation.py",
+    "source/v6/tests/test_structured_schema.py",
+    "source/v6/tests/test_tool_codec.py",
+    "source/v6/tests/test_tool_contract.py",
+    "source/v6/tests/test_upcoming.py",
+    "source/v6/tests/test_v6_semantics.py",
+    "source/v6/tests/test_work_paths.py"
+  ],
+  "scope": "AST comparison abstracts string/bytes constants only; private path and mailbox substitutions remain allowed. Original source bytes were unchanged."
+}

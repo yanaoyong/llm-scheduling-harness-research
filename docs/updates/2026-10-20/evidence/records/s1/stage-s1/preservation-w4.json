@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "retained_references": [
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/references-v2/d300-seed1",
+      "files_verified": 90
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/references-v2/d900-seed1",
+      "files_verified": 34
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/references-v2/d900-seed2",
+      "files_verified": 34
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/references-v2/d300-seed2",
+      "files_verified": 47
+    }
+  ],
+  "original_fixture_sha256": "d76827abb88c0ffdfbf4770a3b9fd4a119ff5416dd61deb968761a334e4ecd69"
+}

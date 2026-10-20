@@ -1,0 +1,54 @@
+[
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-E1-1-s1",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-E1-1-s1-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-E1-2-s1",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-E1-2-s1-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-E1-3-s1",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-E1-3-s1-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-P2-1-s1",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-P2-1-s1-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-P2-3-s1",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/formal-P2-3-s1-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-E1-1-s1",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-E1-1-s1-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-P2-1-s1",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-P2-1-s1-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/formal-S1-d300",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/formal-S1-d300-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-S1-d300",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-S1-d300-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-S1-d900",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-S1-d900-audit.json"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/qualification-stage-s1/d300",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/qualification-stage-s1/d300-audit.json",
+    "smoke": true,
+    "test-base-url": "http://127.0.0.1:45025/v1"
+  },
+  {
+    "run": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/qualification-stage-s1/d900",
+    "official": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/qualification-stage-s1/d900-audit.json",
+    "smoke": true,
+    "test-base-url": "http://127.0.0.1:45955/v1"
+  }
+]

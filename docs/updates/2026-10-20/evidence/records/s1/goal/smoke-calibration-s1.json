@@ -1,0 +1,52 @@
+{
+  "smoke": {
+    "E1": {
+      "directory": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-E1-1-s1",
+      "audit": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-E1-1-s1-audit.json",
+      "audit_sha256": "bb47935cd5bbb90b4082078a6919a336fae186e04cc857ae091793ccccbe125b",
+      "registration_hash": "8005d9bcce1db03a6b443fe27afef20f4e8649419a913a14800ba4a92f50083d",
+      "usage": {
+        "input_tokens": 179900,
+        "cached_input_tokens": 0,
+        "output_tokens": 1768
+      },
+      "requests": 1,
+      "wall_seconds": 39.6815862681251,
+      "mechanism_reference_sessions": 51,
+      "session_token_headroom": 2318332,
+      "wall_headroom": 260.3184137318749
+    },
+    "P2": {
+      "directory": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-P2-1-s1",
+      "audit": "__LOCAL_WORKSPACE__/v6-mac-env/s1/goal/smoke-P2-1-s1-audit.json",
+      "audit_sha256": "c141b776d0e00c385c42acab4cc7dbf3e6cf1893acb4acd4eb9a49cc04b66d03",
+      "registration_hash": "8005d9bcce1db03a6b443fe27afef20f4e8649419a913a14800ba4a92f50083d",
+      "usage": {
+        "input_tokens": 566737,
+        "cached_input_tokens": 367232,
+        "output_tokens": 6702
+      },
+      "requests": 3,
+      "wall_seconds": 136.5988083530683,
+      "mechanism_reference_sessions": 16,
+      "session_token_headroom": 1926561,
+      "wall_headroom": 163.4011916469317
+    }
+  },
+  "projected_six_trajectories": {
+    "input_tokens": 54728076,
+    "cached_input_tokens": 17627136,
+    "output_tokens": 592200,
+    "requests": 297,
+    "wall_seconds": 12628.02549997042
+  },
+  "smoke_attempts": {
+    "E1": 1,
+    "P2": 1
+  },
+  "smoke_interpretation": "Independent engineering acceptance only, not a model reliability or quality claim.",
+  "projection_basis": "Smoke usage times offline mechanism session counts (E1 51, P2 16 per trajectory); estimate only, not a spend cap.",
+  "guard_decision": "Retain smoke context, output, tool, session, wall and per-hour guards; no runtime parameter changed from smoke.",
+  "changed_runtime_parameters": [],
+  "scientific_criteria_changed": false
+}

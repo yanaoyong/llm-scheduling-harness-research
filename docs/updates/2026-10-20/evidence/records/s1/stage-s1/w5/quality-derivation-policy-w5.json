@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-10-19T14:36:36.349655+00:00",
+  "status": "W5 user-authorized fast path",
+  "quality_reference_seed": 1,
+  "basis": "Same S0 method: use the scripted seed-1 mechanism reference as the floor; formal S1 also uses seed 1. Supplemental seeds 2 and 3 are reported separately, never selected after seeing results.",
+  "throughput": {
+    "floor": "seed-1 completed lots",
+    "tolerance": 0,
+    "direction": "lower bound"
+  },
+  "weighted_tardiness": {
+    "floor": "seed-1 weighted tardiness",
+    "tolerance": 0,
+    "direction": "upper bound"
+  },
+  "avoidable_idle_integral": {
+    "floor": "seed-1 avoidable_idle_seconds",
+    "tolerance": "0.10 * seed-1 integral",
+    "direction": "upper bound"
+  },
+  "guard_session_bound": "Maximum completed reference sessions: d300 seed 1 only; d900 seeds 1 and 2. Three-seed bound unavailable.",
+  "request_cap": "100 * ceil(1.25 * N * 4 / 100)",
+  "token_cap": "1000000 * ceil(1.25 * N * 2500000 / 1000000)",
+  "simulated_hours": 1,
+  "model_quality_evidence": false
+}

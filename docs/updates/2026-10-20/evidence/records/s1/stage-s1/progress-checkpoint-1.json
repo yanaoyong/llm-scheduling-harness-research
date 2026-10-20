@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-19T15:27:09.324249+00:00",
+  "status": "In progress; do not finalize or run real commands",
+  "fixture": "fixture/sealed-36000/fixture.json",
+  "fixture_sha256": "07afb411bbd691bad487ef5f515fde330300667ae168c134ec8eae7ef7dbc772",
+  "references": "references-v2",
+  "queue": "run_reference_queue_v4.py",
+  "queue_log": "reference-queue-v4.log",
+  "external_live_reference_pid": 708248,
+  "known_profile_roots": [
+    714314,
+    717861,
+    719293
+  ],
+  "active_tool_sessions": {
+    "reference_queue": 37734,
+    "cycle4_recording": 13607,
+    "reference_audit_watcher": 20041,
+    "resume300": 9200,
+    "resume900": 5541,
+    "resume_metrics300": 60609,
+    "resume_metrics900": 40826,
+    "resume_session300": 54084,
+    "resume_session900": 65950,
+    "final_admission_watcher": 51758
+  },
+  "watch_for_failure": [
+    "references-v2/queue-results.json",
+    "overhead/d900-cycle4-admission.json",
+    "overhead-admission-failure.json"
+  ],
+  "completed": {
+    "fixture_validation": true,
+    "physics_positive_and_7_mutations": true,
+    "resume300_boundary_and_metrics": true,
+    "overhead_recordings": {
+      "initial900": 396810,
+      "cycle2_900": 432311,
+      "cycle3_900": 459830
+    },
+    "loopback_requests_so_far": 24,
+    "real_requests": 0
+  },
+  "next_steps": [
+    "Wait for six references and per-arm final admission; intermediate overhead failure requires stop all task jobs and report",
+    "finish_reference_admission.py is already waiting and will measure all cycles then record worst snapshot and tool-pressure states",
+    "audit_completed_references.py is already waiting for each seed-1 full hour; physical/idle audits serialized with heavy-audit.lock",
+    "Checkpoint resume boundary and one-new-scripted-session tests queued, both deltas",
+    "Once final admission passes, review values then run freeze_stage_s1_records.py; scripts prepared but no records frozen yet",
+    "Run qualify_stage_s1_mock.py for both arms (full-hour actual driver on loopback), plus qualify_native_negatives.py and qualify_launcher_stop.py",
+    "Need stage validator mutation qualification and final frozen hash check, report final append, readiness record only after all gates pass"
+  ],
+  "hard_rules": "No real model calls; no auth file access; no commit/push; goal/original fixture/S0 evidence untouched",
+  "report": "PHASE_W_REPORT.md already has appended Phase W2 fixture section; append final reference/admission/qualification outcomes later"
+}

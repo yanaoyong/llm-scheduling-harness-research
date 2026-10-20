@@ -1,0 +1,56 @@
+[
+  {
+    "path": "scripts/build_public_fixture.py",
+    "current": "0f37ac900a79cbc7d6947842b7272e508ebf7c5d9ec93a184776058c76d381a5",
+    "archive": "0f37ac900a79cbc7d6947842b7272e508ebf7c5d9ec93a184776058c76d381a5",
+    "identical": true
+  },
+  {
+    "path": "scripts/build_sealed_fixture.py",
+    "current": "29fc79b97af7f2829775400eed9ffaff7326035c335a51fcfe35a11811a1a823",
+    "archive": "29fc79b97af7f2829775400eed9ffaff7326035c335a51fcfe35a11811a1a823",
+    "identical": true
+  },
+  {
+    "path": "scripts/validate_sealed_fixture.py",
+    "current": "fca28662e31ac3fd0219b0085b0db9f55fa49305ce288164e29581e570c0e711",
+    "archive": "fca28662e31ac3fd0219b0085b0db9f55fa49305ce288164e29581e570c0e711",
+    "identical": true
+  },
+  {
+    "path": "scripts/run_live.py",
+    "current": "a8850814dd00be2cd4430e090d5b3c6dc51a55a68d448ec138081230a3e4e5a8",
+    "archive": "e9fcb789ba3ca2827b79f7dd1da2603a12314689df0dc23bc37a718cdc614957",
+    "identical": false
+  },
+  {
+    "path": "src/harness_v6/factory_v6.py",
+    "current": "88fb887c00cb6bc26cbf444248800ff6469579db7539cfd0293a3a80672fd1ba",
+    "archive": "88fb887c00cb6bc26cbf444248800ff6469579db7539cfd0293a3a80672fd1ba",
+    "identical": true
+  },
+  {
+    "path": "src/harness_v6/env_adapter.py",
+    "current": "ab39c66d8be4db048883cf3550a0d05af22efea750d3dd9d428a8a770e7e1923",
+    "archive": "ab39c66d8be4db048883cf3550a0d05af22efea750d3dd9d428a8a770e7e1923",
+    "identical": true
+  },
+  {
+    "path": "src/harness_v6/cycle.py",
+    "current": "3052282f0a5d197b74f722a141337104fcd495af16a1b64800d1d9edebe26513",
+    "archive": "3052282f0a5d197b74f722a141337104fcd495af16a1b64800d1d9edebe26513",
+    "identical": true
+  },
+  {
+    "path": "src/harness_v6/synthetic.py",
+    "current": "b9e8dc815e77c7f80789e7233a998dee5c6614cbdfff2aa3ce7058733a66526c",
+    "archive": "b9e8dc815e77c7f80789e7233a998dee5c6614cbdfff2aa3ce7058733a66526c",
+    "identical": true
+  },
+  {
+    "path": "src/harness_v6/snapshot.py",
+    "current": "90759ab164c990d99f55018a5f21c56902014cc9a41655bb168a22f36a5f0afd",
+    "archive": "90759ab164c990d99f55018a5f21c56902014cc9a41655bb168a22f36a5f0afd",
+    "identical": true
+  }
+]

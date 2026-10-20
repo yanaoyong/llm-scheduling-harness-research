@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "valid restore",
+    "traversal rejected",
+    "corrupt rejected",
+    "existing target rejected"
+  ]
+}

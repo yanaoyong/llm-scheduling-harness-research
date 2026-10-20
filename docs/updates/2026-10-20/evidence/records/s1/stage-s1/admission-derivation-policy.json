@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-10-19T15:15:05.543146+00:00",
+  "scope": "Per arm, all cycles and seeds 1/2/3",
+  "select_states": [
+    "maximum complete explicit snapshot token count",
+    "maximum JSON-serialized full tool_codec current-state result token count"
+  ],
+  "format": "explicit production; explicit+dense paired recorder only",
+  "tool_rounds": 3,
+  "overhead": "For each arm, max of 441000 and all measured common format bounds for that arm, rounded upward to 1000",
+  "admission": 784799,
+  "reserve": 10000,
+  "strict": true,
+  "also_check": "max complete prompt + effective overhead + reserve < admission",
+  "failure": "stop; no H/row/filter/tool-budget change"
+}

@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "databases": [
+    {
+      "source_path": "s1/stage-s1/fixture/sealed-36000/G0.sqlite",
+      "tables": {
+        "events": 399,
+        "metadata": 3,
+        "physical": 5943,
+        "records": 959
+      },
+      "sanitized_row_hashes": {
+        "events": "b7b100c4647282a6d702680c25579b17db5e5360876ebea4cb0bcefb4dfb9e6d",
+        "metadata": "73901955cc50e84ca256bf4a440c17f8231eefcd2b8457e6c4153d19f36350eb",
+        "physical": "5dbdcf0c4b87461cd27da35a9f32df8c6bc80cf1b91e5d6da77d0e33834f4976",
+        "records": "a2120b24e6d0bbdde74f7045c5fc2105c369adf21c2c5561af862912f0fb5e78"
+      },
+      "integrity_check": "ok",
+      "restored_rows_identical": true,
+      "sql_sha256": "fc0c85531a88cda38965d22e9423e6db17317fffc873f9e5b53707a889cb928d",
+      "sql_bytes": 861209,
+      "source_sha256": "226d02489def9673fa8cb1a772585ffc8343bdcc7d5fcfb1e1295d934262396e"
+    },
+    {
+      "source_path": "s1/stage-s1/fixture/sealed-36000/contexts.sqlite",
+      "tables": {
+        "contexts": 86
+      },
+      "sanitized_row_hashes": {
+        "contexts": "aafa7583d82961f770becc91cd9ba75f7fe53c244fefb468a6efb14fbccbe4cb"
+      },
+      "integrity_check": "ok",
+      "restored_rows_identical": true,
+      "sql_sha256": "4fea15514508e5ac135134cb5c2d121f2898a61d0e0e0f4acf5dc1e5cb95fa2c",
+      "sql_bytes": 1044718454,
+      "source_sha256": "c7e0718d1a142c0ef65e85306e389b5d07a2e1e6ce7af18f0e07042b95763bc1"
+    }
+  ]
+}

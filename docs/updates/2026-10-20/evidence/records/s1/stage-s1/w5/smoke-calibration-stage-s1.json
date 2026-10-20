@@ -1,0 +1,46 @@
+{
+  "arms": {
+    "300": {
+      "smoke": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-S1-d300",
+      "audit": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-S1-d300-audit.json",
+      "audit_sha256": "28ddcf3c76a7744bec787d6b6d6180d98a92f010c276f952b246bf9e2ef34f9d",
+      "smoke_registration_sha256": "698dea8ab295901e911e837f81b762f1c2d310d41074540e3c38229bac1d4953",
+      "reference_sessions": 12,
+      "usage": {
+        "input_tokens": 740181,
+        "cached_input_tokens": 546304,
+        "output_tokens": 5913
+      },
+      "projected_usage": {
+        "input_tokens": 8882172,
+        "cached_input_tokens": 6555648,
+        "output_tokens": 70956
+      },
+      "projected_requests": 48,
+      "projected_wall_seconds": 1382.8895879415795
+    },
+    "900": {
+      "smoke": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-S1-d900",
+      "audit": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/w5/smoke-S1-d900-audit.json",
+      "audit_sha256": "c17ef7e0527446d08972abfbba5966f5829e359d5dc83a4dfff23078764dd3ec",
+      "smoke_registration_sha256": "ee26459b7ffc2a004e5ea0bd207bd7935c19d56bb2b2ef71404568e6fbf23864",
+      "reference_sessions": 4,
+      "usage": {
+        "input_tokens": 703845,
+        "cached_input_tokens": 462592,
+        "output_tokens": 4178
+      },
+      "projected_usage": {
+        "input_tokens": 2815380,
+        "cached_input_tokens": 1850368,
+        "output_tokens": 16712
+      },
+      "projected_requests": 12,
+      "projected_wall_seconds": 366.41773883160204
+    }
+  },
+  "changed_runtime_parameters": [],
+  "scientific_criteria_changed": false,
+  "basis": "Audited smoke usage times seed-1 offline session count; estimate, not spend cap",
+  "real_smokes_required": true
+}

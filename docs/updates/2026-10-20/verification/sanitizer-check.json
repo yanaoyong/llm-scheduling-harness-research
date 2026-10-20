@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "Claude private blocks removed",
+    "image block replaced",
+    "credential value removed",
+    "nested JSON string sanitized",
+    "visible text retained",
+    "SSE private delta inside a JSON string removed",
+    "Python decorators including escaped source lines preserved",
+    "Actual mailboxes including decorator-like domains still removed",
+    "Relative runtime paths distinguished from absolute paths",
+    "Encoded newline and file URI paths detected"
+  ],
+  "model_calls": 0
+}

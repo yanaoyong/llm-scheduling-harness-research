@@ -1,0 +1,62 @@
+{
+  "retained_driver_and_auditors": [
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/run_registered_s1.py",
+      "sha256": "110a4f9ab955f550fe147a45d2044c35261c142bbf8386f6e1fa2511af6c4d37",
+      "matches_initial_w2_copy_record": false
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/traced_runtime_s1.py",
+      "sha256": "c755ef7d240bfb5033839ffafe1501062989d35df3226f0cc372a94d709e0bd7",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_model_run_s1.py",
+      "sha256": "fe130fa819a1bb91c54c051c3605deb6719ea937f355bc991fedade1a2bccc3e",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_physical_prefix.py",
+      "sha256": "6d1b0ed9152167302fd1bcfde40822787997fad29c580e7ba345b65a76244d0d",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/audit_idle_replay_v2.py",
+      "sha256": "c0f580ef0f846f6eb9ef37793f23f1657c6b56345b975f4450be00270b8a7757",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/cycle_artifacts.py",
+      "sha256": "a2d15a3b536dba96c33334e0ec2d804206a03c1955ddc381ee5205bbf374d04a",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/independent_physics/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/independent_physics/audit.py",
+      "sha256": "a0b96922c76950f323a5c60bf34051419fc3955bfe982973c77bf7da9aa50cf1",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/independent_physics/audit_prefix.py",
+      "sha256": "ac474f3595dc1fcde3254240b8057b9d7f191d17f21f5a268989c86225c8067f",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/independent_physics/source_check.py",
+      "sha256": "973bf61ea9754101795cf6875967479ad0ca7fd65938bf2799405ceba4c4b786",
+      "matches_initial_w2_copy_record": true
+    },
+    {
+      "path": "__LOCAL_WORKSPACE__/v6-mac-env/s1/stage-s1/independent_physics/manifest.json",
+      "sha256": "9444bfbbd9e48123406e8c90347f3263db960da8c592aba175c07f01ea4fd859",
+      "matches_initial_w2_copy_record": true
+    }
+  ],
+  "harness_git_status": "",
+  "harness_diff_check": 0,
+  "harness_modified_by_w4": false
+}
